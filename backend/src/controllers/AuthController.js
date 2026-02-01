@@ -7,9 +7,12 @@ const bcrypt = require('bcrypt');
 const db = require('../db');
 const logger = require('../utils/logger');
 
-// ✅ VALIDAR secrets na inicialização
-if (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET) {
-  logger.error('❌ JWT_SECRET ou JWT_REFRESH_SECRET não definidos em .env');
+// Use environment variables or defaults for dev
+const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_key_minimum_32_chars_long_987654';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'dev_refresh_secret_key_minimum_32_chars_long_987';
+
+if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET)) {
+  logger.error('❌ JWT secrets não definidos em produção');
   process.exit(1);
 }
 
@@ -126,13 +129,13 @@ class AuthController {
           role,
           name
         },
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         { expiresIn: '24h' }
       );
 
       const refreshToken = jwt.sign(
         { id: userId, email },
-        process.env.JWT_REFRESH_SECRET,
+        JWT_REFRESH_SECRET,
         { expiresIn: '7d' }
       );
 
@@ -207,13 +210,13 @@ class AuthController {
           role: user.role,
           name: user.name
         },
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         { expiresIn: '24h' }
       );
 
       const refreshToken = jwt.sign(
         { id: user.id, email: user.email },
-        process.env.JWT_REFRESH_SECRET,
+        JWT_REFRESH_SECRET,
         { expiresIn: '7d' }
       );
 
@@ -331,7 +334,7 @@ class AuthController {
 
       const decoded = jwt.verify(
         refreshToken,
-        process.env.JWT_REFRESH_SECRET
+        JWT_REFRESH_SECRET
       );
 
       const user = await db.get('SELECT * FROM users WHERE id = ?', decoded.id);
@@ -349,7 +352,7 @@ class AuthController {
           role: user.role,
           name: user.name
         },
-        process.env.JWT_SECRET,
+        JWT_SECRET,
         { expiresIn: '24h' }
       );
 
