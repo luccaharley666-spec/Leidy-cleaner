@@ -6,6 +6,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 const crypto = require('crypto');
+const StripeService = require('../services/StripeService');
 
 const DB_PATH = path.join(__dirname, '../../backend_data/limpeza.db');
 
@@ -59,19 +60,25 @@ class PaymentController {
         return res.status(404).json({ error: 'Agendamento não encontrado' });
       }
 
-      const transactionId = crypto.randomBytes(8).toString('hex');
+      // Processar pagamento via StripeService (recebe paymentMethod token do client)
+      const paymentResult = await StripeService.processPayment(paymentMethod, amount, bookingId);
 
-      // Salvar transação no banco
+      if (!paymentResult.success) {
+        db.close();
+        return res.status(402).json({ error: paymentResult.error || 'Falha no processamento do pagamento' });
+      }
+
+      // Salvar transação no banco (apenas dados não sensíveis)
       const result = await runAsync(db,
-        `INSERT INTO transactions (booking_id, user_id, amount, payment_method, status, transaction_id)
-         VALUES (?, ?, ?, ?, 'completed', ?)`,
-        [bookingId, booking.user_id, amount, paymentMethod, transactionId]
+        `INSERT INTO transactions (booking_id, user_id, amount, payment_method, status, transaction_id, stripe_id, last_four)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+        [bookingId, booking.user_id, amount, paymentMethod, paymentResult.status, crypto.randomBytes(8).toString('hex'), paymentResult.id, paymentResult.last4]
       );
 
       // Atualizar status do agendamento para confirmado
       await runAsync(db,
-        'UPDATE bookings SET status = ? WHERE id = ?',
-        ['confirmed', bookingId]
+        'UPDATE bookings SET status = ?, paid = ? WHERE id = ?',
+        ['confirmed', 1, bookingId]
       );
 
       const transaction = await getAsync(db, 'SELECT * FROM transactions WHERE id = ?', [result.lastID]);

@@ -2,8 +2,17 @@
  * Logger Utility Tests
  */
 
-const path = require('path');
-jest.mock('winston');
+// Mock logger antes de require
+jest.mock('../utils/logger', () => {
+  const actualLogger = jest.requireActual('../utils/logger');
+  return {
+    ...actualLogger,
+    info: jest.fn(),
+    error: jest.fn(),
+    warn: jest.fn(),
+    debug: jest.fn(),
+  };
+});
 
 const logger = require('../utils/logger');
 

@@ -90,4 +90,13 @@ module.exports = {
   validateBookingData,
   validatePaymentData,
   validateReviewData,
+  // Aliases para testes unitários
+  validateEmail: isValidEmail,
+  validatePhone: isValidPhone,
+  validateCEP: isValidCEP,
+  validateDateRange: (date) => {
+    if (!(date instanceof Date) || isNaN(date)) return false;
+    if (date <= new Date()) return false;
+    return date.getDay() !== 0; // false para domingo
+  }
 };

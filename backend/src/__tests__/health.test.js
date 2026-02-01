@@ -2,21 +2,30 @@
  * Health Utility Tests
  */
 
-const path = require('path');
+// Mocks - deve ser ANTES de require
 jest.mock('fs');
-jest.mock('sqlite3');
-
-// Mock do módulo de health antes de require
-jest.mock(path.resolve(__dirname, '../utils/health'), () => ({
-  checkDatabase: jest.fn().mockResolvedValue({
-    ok: true,
-    path: '/test/db',
-    exists: true,
-    size: 1024,
-    counts: { users: 4, bookings: 3 },
-    error: null,
-  }),
+jest.mock('../utils/logger', () => ({
+  info: jest.fn(),
+  error: jest.fn(),
+  warn: jest.fn(),
 }));
+
+// Mock sqlite3 antes de require health
+jest.mock('sqlite3', () => {
+  return {
+    verbose: jest.fn(() => ({
+      open: jest.fn((callback) => {
+        callback(null, {
+          serialize: jest.fn((callback) => callback()),
+          run: jest.fn((sql, callback) => callback(null)),
+          get: jest.fn((sql, callback) => callback(null, {})),
+          all: jest.fn((sql, callback) => callback(null, [])),
+          close: jest.fn((callback) => callback(null)),
+        });
+      }),
+    })),
+  };
+});
 
 const { checkDatabase } = require('../utils/health');
 

@@ -755,16 +755,11 @@
             <form id="paymentForm">
                 <label>Total a Pagar:</label>
                 <input type="text" id="paymentAmount" readonly style="background: #f5f5f5;">
-                
-                <label>Número do Cartão:</label>
-                <input type="text" placeholder="1234 5678 9012 3456" id="cardNumber" maxlength="19">
-                
-                <label>Validade:</label>
-                <input type="text" placeholder="MM/AA" id="cardExpiry" maxlength="5">
-                
-                <label>CVV:</label>
-                <input type="text" placeholder="123" id="cardCVV" maxlength="3">
-                
+                <!-- Stripe Elements will mount here -->
+                <label>Informações do Cartão:</label>
+                <div id="card-element" style="border:1px solid #ddd; padding:12px; border-radius:6px; background:#fff"></div>
+                <div id="card-errors" role="alert" style="color:#fa755a; margin-top:8px;"></div>
+
                 <label>Nome do Titular:</label>
                 <input type="text" placeholder="NOME SOBRENOME" id="cardName">
 
@@ -776,6 +771,12 @@
         </div>
     </div>
 
+    <!-- Stripe.js (tokenization) -->
+    <script>
+        // Substitua pelo seu publishable key em staging/production
+        window.STRIPE_PUBLIC_KEY = 'pk_test_replace_me';
+    </script>
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="./app.js" defer></script>
 </body>
 </html>

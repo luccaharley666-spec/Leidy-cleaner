@@ -24,7 +24,7 @@ describe('ReviewController', () => {
     app.use(express.json());
     
     app.get('/reviews/stats', (req, res) => {
-      ReviewController.getStats(req, res);
+      ReviewController.getRatingStats(req, res);
     });
     
     app.get('/reviews', (req, res) => {

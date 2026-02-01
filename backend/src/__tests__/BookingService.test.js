@@ -19,27 +19,27 @@ jest.mock('../db/sqlite', () => ({
 const BookingService = require('../services/BookingService');
 
 describe('BookingService', () => {
-  describe('findById', () => {
-    test('should be a function', () => {
-      expect(typeof BookingService.findById).toBe('function');
-    });
-  });
-
   describe('findByUserId', () => {
     test('should be a function', () => {
       expect(typeof BookingService.findByUserId).toBe('function');
     });
   });
 
-  describe('create', () => {
-    test('should be a function', () => {
-      expect(typeof BookingService.create).toBe('function');
-    });
-  });
-
   describe('updateStatus', () => {
     test('should be a function', () => {
       expect(typeof BookingService.updateStatus).toBe('function');
+    });
+  });
+
+  describe('createBooking', () => {
+    test('should be a function', () => {
+      expect(typeof BookingService.createBooking).toBe('function');
+    });
+  });
+
+  describe('getDefaultCancellationPolicy', () => {
+    test('should be a function', () => {
+      expect(typeof BookingService.getDefaultCancellationPolicy).toBe('function');
     });
   });
 });

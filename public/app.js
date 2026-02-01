@@ -2,6 +2,10 @@
 const API_URL = 'http://localhost:3001/api';
 let currentUser = null;
 let authToken = null;
+let stripe = null;
+let cardElement = null;
+let currentBookingId = null;
+let bookingTotal = 0;
 
 // ===== UTILITÁRIOS DE MÁSCARA E VALIDAÇÃO =====
 function maskCPF(value) {
@@ -41,8 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Event listeners
     setupEventListeners();
+    // Inicializar Stripe Elements
+    initializeStripe();
     initializeDatePicker();
 });
+
+function initializeStripe() {
+    try {
+        const key = window.STRIPE_PUBLIC_KEY || null;
+        if (!key) return console.warn('STRIPE_PUBLIC_KEY não configurada no navegador.');
+        stripe = Stripe(key);
+        const elements = stripe.elements();
+        cardElement = elements.create('card', { hidePostalCode: true });
+        // Pode falhar se #card-element não existir (render condicional)
+        const mountPoint = document.getElementById('card-element');
+        if (mountPoint) cardElement.mount('#card-element');
+    } catch (err) {
+        console.error('Erro ao inicializar Stripe:', err);
+    }
+}
 
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
@@ -270,6 +291,14 @@ async function handleBooking(e) {
         const data = await response.json();
         showAlert('Agendamento criado! Prosseguindo para pagamento...', 'success');
         
+        // Guardar booking id e total para pagamento
+        currentBookingId = data?.booking?.id || data?.bookingId || data?.id || null;
+        bookingTotal = data?.booking?.totalPrice || parseFloat((document.getElementById('totalPrice')?.textContent || '0').replace(/[^0-9,.-]+/g, '').replace(',', '.')) || 0;
+
+        // Exibir valor no modal
+        const paymentAmountEl = document.getElementById('paymentAmount');
+        if (paymentAmountEl) paymentAmountEl.value = `R$ ${bookingTotal.toFixed(2)}`;
+
         // Abrir modal de pagamento
         document.getElementById('paymentModal').classList.add('show');
     } catch (error) {
@@ -281,12 +310,29 @@ async function handleBooking(e) {
 // ===== PAGAMENTO =====
 async function handlePayment(e) {
     e.preventDefault();
+    // Stripe Elements -> criar PaymentMethod e enviar token ao backend
+    if (!stripe || !cardElement) {
+        showAlert('Sistema de pagamento não inicializado. Recarregue a página.', 'error');
+        return;
+    }
 
-    const paymentData = {
-        cardNumber: document.getElementById('cardNumber').value.replace(/\s/g, ''),
-        cardExpiry: document.getElementById('cardExpiry').value,
-        cardCVV: document.getElementById('cardCVV').value,
-        cardName: document.getElementById('cardName').value
+    const cardName = document.getElementById('cardName')?.value || '';
+
+    const { error, paymentMethod } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: cardElement,
+        billing_details: { name: cardName }
+    });
+
+    if (error) {
+        showAlert(error.message || 'Erro ao processar cartão', 'error');
+        return;
+    }
+
+    const paymentPayload = {
+        bookingId: currentBookingId,
+        amount: bookingTotal,
+        paymentMethod: paymentMethod.id
     };
 
     try {
@@ -296,12 +342,12 @@ async function handlePayment(e) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${authToken}`
             },
-            body: JSON.stringify(paymentData)
+            body: JSON.stringify(paymentPayload)
         });
 
-        if (!response.ok) {
-            const error = await response.json();
-            showAlert(error.message || 'Erro no pagamento', 'error');
+        const result = await response.json();
+        if (!response.ok || !result.success) {
+            showAlert(result.error || 'Erro no pagamento', 'error');
             return;
         }
 
@@ -309,15 +355,15 @@ async function handlePayment(e) {
         closePaymentModal();
         document.getElementById('bookingForm').reset();
         calculatePrice();
-        
+
         // Carregar agendamentos
         setTimeout(() => {
             loadUserBookings();
             showSection('meus-agendamentos');
         }, 1000);
-    } catch (error) {
+    } catch (err) {
         showAlert('Erro ao processar pagamento', 'error');
-        console.error(error);
+        console.error(err);
     }
 }
 
