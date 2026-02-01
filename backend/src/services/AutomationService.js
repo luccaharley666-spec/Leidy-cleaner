@@ -3,13 +3,15 @@
  * Gerencia tarefas automáticas do sistema
  */
 
+const logger = require('../utils/logger');
+
 class AutomationService {
   /**
    * Executar automações de agendamento
    */
   async executeBookingAutomations(booking) {
     try {
-      console.log(`Iniciando automações para agendamento ${booking.id}`);
+      logger.info(`Iniciando automações para agendamento ${booking.id}`);
 
       // 1. Confirmar agendamento
       await this.confirmBooking(booking);
@@ -26,10 +28,10 @@ class AutomationService {
       // 5. Agendar lembretes
       await this.scheduleReminders(booking);
 
-      console.log(`Automações concluídas para agendamento ${booking.id}`);
+      logger.info(`Automações concluídas para agendamento ${booking.id}`);
       return { success: true };
     } catch (error) {
-      console.error('Erro em automações:', error);
+      logger.error('Erro em automações:', error);
       return { success: false, error: error.message };
     }
   }
@@ -41,7 +43,7 @@ class AutomationService {
     try {
       // Atualizar status
       // await BookingService.updateStatus(booking.id, 'confirmed');
-      console.log(`Agendamento ${booking.id} confirmado`);
+      logger.info(`Agendamento ${booking.id} confirmado`);
       return true;
     } catch (error) {
       throw error;
@@ -56,7 +58,7 @@ class AutomationService {
       // Buscar membro disponível
       // const teamMember = await TeamService.findAvailable(booking.date, booking.location);
       // await BookingService.assignTeamMember(booking.id, teamMember.id);
-      console.log(`Equipa atribuída ao agendamento ${booking.id}`);
+      logger.info(`Equipa atribuída ao agendamento ${booking.id}`);
       return true;
     } catch (error) {
       throw error;
@@ -70,7 +72,7 @@ class AutomationService {
     try {
       // const route = await RoutingService.optimizeRoute([booking]);
       // await BookingService.setRoute(booking.id, route);
-      console.log(`Rota calculada para agendamento ${booking.id}`);
+      logger.info(`Rota calculada para agendamento ${booking.id}`);
       return true;
     } catch (error) {
       throw error;
@@ -88,7 +90,7 @@ class AutomationService {
       // Notificação para equipa
       // await NotificationService.notifyTeam(booking.id);
       
-      console.log(`Confirmações enviadas para agendamento ${booking.id}`);
+      logger.info(`Confirmações enviadas para agendamento ${booking.id}`);
       return true;
     } catch (error) {
       throw error;
@@ -106,7 +108,7 @@ class AutomationService {
       // Lembrete 1h antes
       // await SchedulerService.schedule('send-reminder', booking.id, 1 * 60 * 60 * 1000);
       
-      console.log(`Lembretes agendados para ${booking.id}`);
+      logger.info(`Lembretes agendados para ${booking.id}`);
       return true;
     } catch (error) {
       throw error;
@@ -118,7 +120,7 @@ class AutomationService {
    */
   async executeFollowUp(bookingId) {
     try {
-      console.log(`Iniciando follow-up para agendamento ${bookingId}`);
+      logger.info(`Iniciando follow-up para agendamento ${bookingId}`);
 
       // Enviar solicitação de avaliação
       // await NotificationService.sendFollowUpNotification(bookingId);
@@ -128,7 +130,7 @@ class AutomationService {
 
       return { success: true };
     } catch (error) {
-      console.error('Erro em follow-up:', error);
+      logger.error('Erro em follow-up:', error);
       return { success: false, error: error.message };
     }
   }
@@ -138,7 +140,7 @@ class AutomationService {
    */
   async handleIssueAutomatically(issue) {
     try {
-      console.log(`Tratando problema: ${issue.type}`);
+      logger.info(`Tratando problema: ${issue.type}`);
 
       switch (issue.type) {
         case 'no_show':
@@ -163,7 +165,7 @@ class AutomationService {
 
       return { success: true };
     } catch (error) {
-      console.error('Erro ao resolver problema:', error);
+      logger.error('Erro ao resolver problema:', error);
       return { success: false, error: error.message };
     }
   }

@@ -4,6 +4,7 @@
  */
 
 const NotificationController = require('../controllers/NotificationController');
+const logger = require('./logger');
 
 class NotificationService {
   /**
@@ -24,7 +25,7 @@ class NotificationService {
    * Notificar problema
    */
   static async notifyIssue(issue) {
-    console.log(`Issue reported: ${issue.type} - ${issue.message}`);
+    logger.warn(`Issue reported: ${issue.type} - ${issue.message}`);
     // Implementar envio de alerta
     return true;
   }

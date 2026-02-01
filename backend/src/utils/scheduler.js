@@ -6,45 +6,46 @@
 const cron = require('node-cron');
 const NotificationService = require('./notifications');
 const AutomationService = require('../services/AutomationService');
+const logger = require('./logger');
 
 class Scheduler {
   /**
    * Inicializar todos os schedules
    */
   static init() {
-    console.log('Inicializando scheduler...');
+    logger.info('Inicializando scheduler...');
 
     // Enviar lembretes a cada dia às 10:00
     cron.schedule('0 10 * * *', async () => {
-      console.log('Executando: envio de lembretes diários');
+      logger.info('Executando: envio de lembretes diários');
       await NotificationService.notifyReminders();
     });
 
     // Verificar agendamentos próximos a cada hora
     cron.schedule('0 * * * *', async () => {
-      console.log('Executando: verificação de agendamentos');
+      logger.info('Executando: verificação de agendamentos');
       await this.checkUpcomingBookings();
     });
 
     // Follow-up automático a cada 6 horas
     cron.schedule('0 */6 * * *', async () => {
-      console.log('Executando: follow-up automático');
+      logger.info('Executando: follow-up automático');
       await this.executeFollowUps();
     });
 
     // Limpeza de dados antigos a cada semana
     cron.schedule('0 0 * * 0', async () => {
-      console.log('Executando: limpeza de dados');
+      logger.info('Executando: limpeza de dados');
       await this.cleanupOldData();
     });
 
     // Gerar relatórios mensais
     cron.schedule('0 0 1 * *', async () => {
-      console.log('Executando: geração de relatórios');
+      logger.info('Executando: geração de relatórios');
       await this.generateMonthlyReports();
     });
 
-    console.log('Scheduler inicializado com sucesso');
+    logger.info('Scheduler inicializado com sucesso');
   }
 
   /**
@@ -57,9 +58,9 @@ class Scheduler {
       // for (const booking of bookings) {
       //   await AutomationService.executeBookingAutomations(booking);
       // }
-      console.log('Verificação concluída');
+      logger.info('Verificação concluída');
     } catch (error) {
-      console.error('Erro em checkUpcomingBookings:', error);
+      logger.error('Erro em checkUpcomingBookings:', error);
     }
   }
 
@@ -74,9 +75,9 @@ class Scheduler {
       //     await AutomationService.executeFollowUp(booking.id);
       //   }
       // }
-      console.log('Follow-ups executados');
+      logger.info('Follow-ups executados');
     } catch (error) {
-      console.error('Erro em executeFollowUps:', error);
+      logger.error('Erro em executeFollowUps:', error);
     }
   }
 
@@ -87,9 +88,9 @@ class Scheduler {
     try {
       // Remover dados com mais de 1 ano
       // await BookingService.deleteOldBookings(365);
-      console.log('Limpeza de dados concluída');
+      logger.info('Limpeza de dados concluída');
     } catch (error) {
-      console.error('Erro em cleanupOldData:', error);
+      logger.error('Erro em cleanupOldData:', error);
     }
   }
 
@@ -100,9 +101,9 @@ class Scheduler {
     try {
       // const report = await ReportService.generateMonthlyReport();
       // await EmailService.sendToAdmin(report);
-      console.log('Relatórios gerados');
+      logger.info('Relatórios gerados');
     } catch (error) {
-      console.error('Erro em generateMonthlyReports:', error);
+      logger.error('Erro em generateMonthlyReports:', error);
     }
   }
 

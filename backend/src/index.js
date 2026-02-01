@@ -20,6 +20,7 @@ const logger = require('./utils/logger');
 const path = require('path');
 
 const app = express();
+app.set('trust proxy', true);
 const server = http.createServer(app);
 const io = socketIO(server, {
   cors: {
