@@ -1,5 +1,9 @@
 module.exports = {
   testEnvironment: 'node',
+  setupFiles: ['<rootDir>/jest.env.js'],
+  moduleNameMapper: {
+    '^newrelic$': '<rootDir>/__mocks__/newrelic.js'
+  },
   collectCoverageFrom: [
     'src/**/*.js',
     '!src/**/*.test.js',

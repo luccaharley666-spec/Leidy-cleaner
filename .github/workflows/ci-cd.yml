@@ -9,6 +9,10 @@ on:
 env:
   NODE_VERSION: '20'
   REGISTRY: ghcr.io
+permissions:
+  contents: write
+  deployments: write
+  issues: write
 
 jobs:
   # ============================================
@@ -54,6 +58,13 @@ jobs:
           flags: ${{ matrix.working-directory }}
           name: ${{ matrix.working-directory }}-coverage
           fail_ci_if_error: false
+
+      - name: 💾 Upload coverage artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.working-directory }}-coverage
+          path: ${{ matrix.working-directory }}/coverage
+          retention-days: 7
 
   # ============================================
   # 🔍 LINTING - Code Quality
@@ -306,8 +317,17 @@ jobs:
       - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: 📥 Download coverage reports
+      - name: 📥 Download backend coverage artifact
         uses: actions/download-artifact@v3
+        with:
+          name: backend-coverage
+          path: coverage/backend
+
+      - name: 📥 Download frontend coverage artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-coverage
+          path: coverage/frontend
 
       - name: 📊 Generate coverage badge
         run: |
@@ -327,10 +347,21 @@ jobs:
         with:
           script: |
             const fs = require('fs');
-            const coverage = fs.readFileSync('coverage/coverage-summary.json', 'utf8');
+            const paths = [
+              'coverage/backend/coverage-summary.json',
+              'coverage/frontend/coverage-summary.json',
+            ];
+            let body = '📊 **Test Coverage Report**\n\n';
+            for (const p of paths) {
+              if (fs.existsSync(p)) {
+                const coverage = fs.readFileSync(p, 'utf8');
+                body += `**${p}**\n\n\`\`\`json\n${coverage}\n\`\`\`\n\n`;
+              }
+            }
+            if (body === '📊 **Test Coverage Report**\n\n') body += '_No coverage artifacts found._';
             github.rest.issues.createComment({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `📊 **Test Coverage Report**\n\n\`\`\`\n${coverage}\n\`\`\``
+              body,
             });

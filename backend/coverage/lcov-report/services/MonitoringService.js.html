@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">18.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/70</span>
+                <span class='fraction'>13/70</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">4.87% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/41</span>
+                <span class='fraction'>2/41</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">14.28% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>2/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">19.11% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/68</span>
+                <span class='fraction'>13/68</span>
             </div>
         
             
@@ -328,15 +328,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -427,16 +427,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">121x</span>
+<span class="cline-any cline-yes">121x</span>
+<span class="cline-any cline-yes">121x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">121x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">121x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -566,9 +566,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * 🔍 Monitoring Service - Integração com Sentry e NewRelic
  * 
@@ -581,15 +581,15 @@
  * @module services/MonitoringService
  */
 &nbsp;
-const Sentry = <span class="cstat-no" title="statement not covered" >require('@sentry/node');</span>
-const newrelic = <span class="cstat-no" title="statement not covered" >require('newrelic');</span>
-const logger = <span class="cstat-no" title="statement not covered" >require('../utils/logger');</span>
+const Sentry = require('@sentry/node');
+const newrelic = require('newrelic');
+const logger = require('../utils/logger');
 &nbsp;
 class MonitoringService {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor() {
-<span class="cstat-no" title="statement not covered" >    this.initialized = false;</span>
-<span class="cstat-no" title="statement not covered" >    this.sentryEnabled = process.env.SENTRY_DSN !== undefined;</span>
-<span class="cstat-no" title="statement not covered" >    this.newrelicEnabled = process.env.NEW_RELIC_APP_NAME !== undefined;</span>
+  constructor() {
+    this.initialized = false;
+    this.sentryEnabled = process.env.SENTRY_DSN !== undefined;
+    this.newrelicEnabled = process.env.NEW_RELIC_APP_NAME !== undefined;
   }
 &nbsp;
   /**
@@ -679,17 +679,17 @@ class MonitoringService {
   /**
    * 📊 Registra métrica customizada
    */
-<span class="fstat-no" title="function not covered" >  re</span>cordMetric(name, value, tags = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      if (this.newrelicEnabled) {</span>
-<span class="cstat-no" title="statement not covered" >        newrelic.recordMetric(name, value);</span>
+  recordMetric(name, value, tags = {}) {
+    try {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (this.newrelicEnabled) {
+        newrelic.recordMetric(name, value);
       }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      Sentry.captureMessage(`Métrica: ${name}=${value}`, 'info', {</span>
+      Sentry.captureMessage(`Métrica: ${name}=${value}`, 'info', {
         tags,
       });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      logger.debug(`📊 Métrica registrada: ${name}=${value}`);</span>
+      logger.debug(`📊 Métrica registrada: ${name}=${value}`);
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >      logger.warn('Erro ao registrar métrica:', error);</span>
     }
@@ -819,9 +819,9 @@ class MonitoringService {
   }
 }
 &nbsp;
-const monitoringService = <span class="cstat-no" title="statement not covered" >new MonitoringService();</span>
+const monitoringService = new MonitoringService();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = monitoringService;</span>
+module.exports = monitoringService;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -829,7 +829,7 @@ const monitoringService = <span class="cstat-no" title="statement not covered" >
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-02T01:24:48.680Z
+                at 2026-02-02T13:56:22.724Z
             </div>
         <script src="../prettify.js"></script>
         <script>
