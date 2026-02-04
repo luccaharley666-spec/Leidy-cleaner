@@ -11,12 +11,12 @@
 
 const express = require('express');
 const router = express.Router();
-const { authenticateToken, requireRole } = require('../middleware/auth');
+const { authenticateToken, authorizeRole } = require('../middleware/auth');
 const db = require('../db');
 const logger = require('../utils/logger');
 
-// Middleware: Verificar admin
-const requireAdmin = requireRole('admin');
+// Middleware: Verificar admin (autenticação + autorização)
+const requireAdmin = [authenticateToken, authorizeRole(['admin'])];
 
 /**
  * POST /api/admin/teams

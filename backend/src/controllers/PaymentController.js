@@ -191,4 +191,4 @@ class PaymentController {
   }
 }
 
-module.exports = new PaymentController();
+module.exports = PaymentController;

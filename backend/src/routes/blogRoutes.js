@@ -9,7 +9,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { authenticateToken, requireRole } = require('../middleware/auth');
+const { authenticateToken, authorizeRole } = require('../middleware/auth');
 const db = require('../db');
 const logger = require('../utils/logger');
 
@@ -120,7 +120,7 @@ router.get('/:slug', async (req, res) => {
  * Criar novo post (admin)
  * Body: { title, content, category, keywords, featured_image }
  */
-router.post('/', authenticateToken, requireRole('admin'), async (req, res) => {
+router.post('/', authenticateToken, authorizeRole(['admin']), async (req, res) => {
   try {
     const { title, content, category = 'tips', keywords, featured_image } = req.body;
 
@@ -178,7 +178,7 @@ router.post('/', authenticateToken, requireRole('admin'), async (req, res) => {
  * PUT /api/blog/:id
  * Editar post (admin)
  */
-router.put('/:id', authenticateToken, requireRole('admin'), async (req, res) => {
+router.put('/:id', authenticateToken, authorizeRole(['admin']), async (req, res) => {
   try {
     const { title, content, category, keywords, featured_image, published } = req.body;
 
@@ -244,7 +244,7 @@ router.put('/:id', authenticateToken, requireRole('admin'), async (req, res) => 
  * DELETE /api/blog/:id
  * Deletar post (admin)
  */
-router.delete('/:id', authenticateToken, requireRole('admin'), async (req, res) => {
+router.delete('/:id', authenticateToken, authorizeRole(['admin']), async (req, res) => {
   try {
     await db.run('DELETE FROM blog_posts WHERE id = ?', req.params.id);
 
@@ -264,7 +264,7 @@ router.delete('/:id', authenticateToken, requireRole('admin'), async (req, res) 
  * GET /api/blog/categories
  * Listar categorias de blog
  */
-router.get('/', async (req, res) => {
+router.get('/categories', async (req, res) => {
   try {
     const categories = await db.all(
       'SELECT DISTINCT category FROM blog_posts WHERE published = 1 ORDER BY category'

@@ -57,6 +57,35 @@ async function all(sql, ...params) {
   return db.all(sql, ...params);
 }
 
+async function query(sql, ...params) {
+  // Compat layer: aceita SQL com placeholders $1 (Postgres style) ou ? (sqlite style)
+  if (mode === 'pg' && pgPool) {
+    // Se o SQL veio com '?' converte para $1... para Postgres
+    const q = sql.includes('?') ? convertPlaceholders(sql) : sql;
+    const res = await pgPool.query(q, params);
+    return res;
+  }
+
+  // SQLite path: substituir $n por ? para compatibilidade
+  const sqliteSql = sql.replace(/\$[0-9]+/g, '?');
+  const db = await sqliteDbPromise();
+  const trimmed = sqliteSql.trim().toUpperCase();
+
+  if (trimmed.startsWith('SELECT')) {
+    const rows = await db.all(sqliteSql, ...params);
+    return { rows, rowCount: rows.length };
+  }
+
+  if (trimmed.startsWith('INSERT')) {
+    const result = await db.run(sqliteSql, ...params);
+    return { rows: result.lastID ? [{ id: result.lastID }] : [], rowCount: result.changes || 0, lastID: result.lastID };
+  }
+
+  // UPDATE / DELETE / other
+  const runRes = await db.run(sqliteSql, ...params);
+  return { rows: [], rowCount: runRes.changes || 0, lastID: runRes.lastID };
+}
+
 async function close() {
   if (mode === 'pg' && pgPool) {
     await pgPool.end();
@@ -66,4 +95,4 @@ async function close() {
   }
 }
 
-module.exports = { run, get, all, close, mode };
+module.exports = { run, get, all, query, close, mode };
