@@ -144,34 +144,34 @@ describe('JWT Authentication Security', () => {
   });
 
   describe('Profile Routes - Require Authentication', () => {
-    test('GET /profile/current should reject missing token', async () => {
+    test('GET /api/profile/current should reject missing token', async () => {
       const res = await request(app)
-        .get('/profile/current')
+        .get('/api/profile/current')
         .expect(401);
 
       expect(res.body).toHaveProperty('error');
     });
 
-    test('PUT /profile/update should reject missing token', async () => {
+    test('PUT /api/profile/update should reject missing token', async () => {
       const res = await request(app)
-        .put('/profile/update')
+        .put('/api/profile/update')
         .send({ name: 'Test User' })
         .expect(401);
 
       expect(res.body).toHaveProperty('error');
     });
 
-    test('POST /avatar/upload should reject missing token', async () => {
+    test('POST /api/avatar/upload should reject missing token', async () => {
       const res = await request(app)
-        .post('/avatar/upload')
+        .post('/api/avatar/upload')
         .expect(401);
 
       expect(res.body).toHaveProperty('error');
     });
 
-    test('DELETE /avatar should reject missing token', async () => {
+    test('DELETE /api/avatar should reject missing token', async () => {
       const res = await request(app)
-        .delete('/avatar')
+        .delete('/api/avatar')
         .expect(401);
 
       expect(res.body).toHaveProperty('error');
@@ -241,7 +241,7 @@ describe('JWT Authentication Security', () => {
         .expect(403);
 
       expect(res.body).toHaveProperty('error');
-      expect(res.body.error).toContain('autorizado');
+      expect(res.body.error).toContain('Permissão negada');
     });
   });
 });

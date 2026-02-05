@@ -4,15 +4,9 @@
  */
 
 jest.mock('../../db', () => ({
-  run: jest.fn((sql, params, callback) => {
-    if (callback) callback(null, { id: 1 });
-  }),
-  get: jest.fn((sql, params, callback) => {
-    if (callback) callback(null, { id: 1, amount: 100 });
-  }),
-  all: jest.fn((sql, params, callback) => {
-    if (callback) callback(null, [{ id: 1, amount: 100 }]);
-  })
+  run: jest.fn().mockResolvedValue({ lastID: 1 }),
+  get: jest.fn().mockResolvedValue({ id: 1, amount: 100 }),
+  all: jest.fn().mockResolvedValue([{ id: 1, amount: 100 }])
 }));
 
 jest.mock('stripe', () => {

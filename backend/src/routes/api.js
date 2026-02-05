@@ -249,12 +249,12 @@ router.get('/reviews/filter', (req, res) => {
 const ProfileController = require('../controllers/ProfileController');
 
 // Profile routes
-router.get('/profile/:userId', (req, res) => {
+router.get('/profile/current', authenticateToken, (req, res) => {
+  req.params.userId = req.user.id;
   ProfileController.getProfile(req, res);
 });
 
-router.get('/profile-current', authenticateToken, (req, res) => {
-  req.params.userId = req.user.id;
+router.get('/profile/:userId', (req, res) => {
   ProfileController.getProfile(req, res);
 });
 

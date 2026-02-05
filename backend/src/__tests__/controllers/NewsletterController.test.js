@@ -2,6 +2,23 @@
  * Newsletter Controller Tests
  */
 
+jest.mock('../../db', () => ({
+  run: jest.fn().mockResolvedValue({ lastID: 1 }),
+  get: jest.fn().mockResolvedValue({ id: 1, amount: 100 }),
+  all: jest.fn().mockResolvedValue([{ id: 1, amount: 100 }])
+}));
+
+jest.mock('../../services/EmailService', () => ({
+  sendWelcomeEmail: jest.fn().mockResolvedValue(true)
+}));
+
+jest.mock('../../utils/logger', () => ({
+  error: jest.fn(),
+  warn: jest.fn(),
+  info: jest.fn(),
+  debug: jest.fn()
+}));
+
 const NewsletterController = require('../controllers/NewsletterController');
 
 describe('NewsletterController', () => {
