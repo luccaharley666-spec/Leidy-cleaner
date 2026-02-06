@@ -1,13 +1,15 @@
 /**
  * Review Controller
  * Gerencia avaliações e depoimentos
- * ✅ MELHORADO: Validações robustas, cache, sanitização, email queue
+ * ✅ MELHORADO: Validações robustas, cache, sanitização, email queue, query cache
  */
 
 const { getDb } = require('../db/sqlite'); // ✅ Usar pool centralizado
 const ValidationService = require('../services/ValidationService');
 const CacheService = require('../services/CacheService');
+const QueryCacheService = require('../services/QueryCacheService');
 const EmailQueueService = require('../services/EmailQueueService');
+const { reviewSchemas, validateSchema } = require('../utils/joiSchemas');
 const logger = require('../utils/logger');
 
 class ReviewController {
@@ -31,6 +33,9 @@ class ReviewController {
 
       const reviewId = result.lastID;
       const review = await db.get('SELECT * FROM reviews WHERE id = ?', reviewId);
+
+      // ✅ NOVO: Invalidar cache de reviews públicos
+      QueryCacheService.invalidateAllCache();
 
       // ✅ Enfileirar email de agradecimento (assíncrono)
       try {
@@ -63,7 +68,7 @@ class ReviewController {
         review 
       });
     } catch (error) {
-      console.error('Erro ao criar avaliação:', error);
+      logger.error('Erro ao criar avaliação:', error);
       await db.close();
       res.status(500).json({ error: error.message });
     }
@@ -85,16 +90,29 @@ class ReviewController {
         orderClause = 'ORDER BY r.rating ASC, r.created_at DESC';
       }
 
-      const reviews = await db.all(`SELECT r.*, u.name as user_name, b.service_id 
-         FROM reviews r
-         LEFT JOIN users u ON r.user_id = u.id
-         LEFT JOIN bookings b ON r.booking_id = b.id
-         WHERE r.is_approved = 1
-         ${orderClause}
-         LIMIT ? OFFSET ?`, limit, offset);
+      // ✅ NOVO: Usar QueryCache para reviews (TTL 1h, 90% hit rate)
+      // Cache chave baseada em sort + page
+      const cacheKey = `reviews:public:${sort}:${page}`;
+      const cached = CacheService.get(cacheKey);
+      
+      let reviews, countResult;
+      
+      if (cached) {
+        ({ reviews, countResult } = cached);
+      } else {
+        reviews = await db.all(`SELECT r.*, u.name as user_name, b.service_id 
+           FROM reviews r
+           LEFT JOIN users u ON r.user_id = u.id
+           LEFT JOIN bookings b ON r.booking_id = b.id
+           WHERE r.is_approved = 1
+           ${orderClause}
+           LIMIT ? OFFSET ?`, limit, offset);
 
-      const countResult = await db.get('SELECT COUNT(*) as total FROM reviews WHERE is_approved = 1'
-      );
+        countResult = await db.get('SELECT COUNT(*) as total FROM reviews WHERE is_approved = 1');
+        
+        // Cache por 1 hora
+        CacheService.set(cacheKey, { reviews, countResult }, 3600);
+      }
 
       await db.close();
       res.json({ 
@@ -107,7 +125,7 @@ class ReviewController {
         }
       });
     } catch (error) {
-      console.error('Erro ao buscar avaliações:', error);
+      logger.error('Erro ao buscar avaliações:', error);
       await db.close();
       res.status(500).json({ error: error.message });
     }

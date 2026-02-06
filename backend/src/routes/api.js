@@ -54,14 +54,17 @@ const NotificationsController = require('../controllers/NotificationsController'
 // Middleware
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
 const { validateBookingData, validatePaymentData, validateReviewData } = require('../middleware/validation');
+const { limiters, logRateLimitViolation } = require('../middleware/rateLimited');
+const { validateSchema } = require('../utils/joiSchemas');
+const { bookingSchemas, reviewSchemas, paymentSchemas, userSchemas } = require('../utils/joiSchemas');
 
 // ===== BOOKINGS =====
 // ===== AUTH =====
-router.post('/auth/register', (req, res) => {
+router.post('/auth/register', limiters.register, validateSchema(userSchemas.register), (req, res) => {
   AuthController.register(req, res);
 });
 
-router.post('/auth/login', (req, res) => {
+router.post('/auth/login', limiters.login, validateSchema(userSchemas.login), (req, res) => {
   AuthController.login(req, res);
 });
 
@@ -78,12 +81,12 @@ router.post('/auth/logout', authenticateToken, (req, res) => {
   AuthController.logout(req, res);
 });
 
-router.post('/bookings', authenticateToken, validateBookingData, (req, res) => {
+router.post('/bookings', authenticateToken, limiters.createBooking, validateSchema(bookingSchemas.create), (req, res) => {
   BookingController.createBooking(req, res);
 });
 
 // Upload de arquivos (fotos)
-router.post('/uploads', authenticateToken, upload.array('photos', 8), (req, res) => {
+router.post('/uploads', authenticateToken, limiters.upload, upload.array('photos', 8), (req, res) => {
   const files = req.files || [];
   const urls = files.map(f => ({ filename: f.filename, url: `${process.env.BASE_URL || ''}/uploads/${f.filename}` }));
   res.json({ success: true, files: urls });
@@ -93,7 +96,7 @@ router.get('/bookings/:userId', authenticateToken, (req, res) => {
   BookingController.getUserBookings(req, res);
 });
 
-router.put('/bookings/:bookingId', authenticateToken, (req, res) => {
+router.put('/bookings/:bookingId', authenticateToken, limiters.general, validateSchema(bookingSchemas.update), (req, res) => {
   BookingController.updateBooking(req, res);
 });
 
@@ -102,7 +105,7 @@ router.delete('/bookings/:bookingId', authenticateToken, (req, res) => {
 });
 
 // ===== PAYMENTS =====
-router.post('/payments', authenticateToken, validatePaymentData, (req, res) => {
+router.post('/payments', authenticateToken, limiters.payment, validateSchema(paymentSchemas.process), (req, res) => {
   PaymentController.processPayment(req, res);
 });
 
@@ -110,7 +113,7 @@ router.get('/payments/:userId', authenticateToken, (req, res) => {
   PaymentController.getPaymentHistory(req, res);
 });
 
-router.post('/refunds', authenticateToken, authorizeRole(['admin']), (req, res) => {
+router.post('/refunds', authenticateToken, limiters.refund, authorizeRole(['admin']), validateSchema(paymentSchemas.refund), (req, res) => {
   PaymentController.processRefund(req, res);
 });
 
@@ -120,7 +123,7 @@ router.get('/payments/pix/:pixTransactionId', authenticateToken, (req, res) => {
 });
 
 // ===== REVIEWS =====
-router.post('/reviews', authenticateToken, validateReviewData, (req, res) => {
+router.post('/reviews', authenticateToken, limiters.createReview, validateSchema(reviewSchemas.create), (req, res) => {
   ReviewController.createReview(req, res);
 });
 
