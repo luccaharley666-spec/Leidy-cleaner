@@ -123,7 +123,7 @@ class ChatEncryptionClient {
   /**
    ✅ NOVO: Encriptar mensagem (simulado - em produção usar Web Crypto)
    */
-  async encryptMessage(message, encryptionKeyHex) {
+  async encryptMessage(message, _encryptionKeyHex) {
     // Simulado: em produção seria:
     // const keyBuffer = await this.hexToBuffer(encryptionKeyHex);
     // const iv = new Uint8Array(12);
@@ -141,7 +141,7 @@ class ChatEncryptionClient {
   /**
    ✅ NOVO: Descriptografar mensagem
    */
-  async decryptMessage(encrypted, ivHex, authTagHex, encryptionKeyHex) {
+  async decryptMessage(_encrypted, _ivHex, _authTagHex, _encryptionKeyHex) {
     console.log(`🔓 Descriptografando mensagem...`);
     // Simulado: em produção seria crypto.subtle.decrypt(...)
     return 'Mensagem descriptografada com sucesso';

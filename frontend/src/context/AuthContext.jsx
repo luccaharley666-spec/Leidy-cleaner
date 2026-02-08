@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect, useCallback } from 'react';
+import { apiCall } from '../config/api';
 
 export const AuthContext = createContext(null);
 
@@ -20,28 +21,24 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
-  // ✅ CORRIGIDO: Função para verificar token
+  // ✅ CORRIGIDO: Função para verificar token (com apiCall)
   const verifyToken = async (authToken) => {
     try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/auth/verify`, {
+      const data = await apiCall('/api/auth/verify', {
+        method: 'GET',
         headers: {
           'Authorization': `Bearer ${authToken}`
         }
       });
       
-      if (response.ok) {
-        const data = await response.json();
-        setUser(data.user);
-        setToken(authToken);
-      } else {
+      setUser(data.user);
+      setToken(authToken);
+    } catch (err) {
+      if (err.code !== 'TIMEOUT') {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('auth_user');
         setToken(null);
       }
-    } catch (err) {
-      console.error('Token verification failed:', err);
-      localStorage.removeItem('auth_token');
-      setToken(null);
     } finally {
       setIsLoading(false);
     }
@@ -51,21 +48,11 @@ export function AuthProvider({ children }) {
     setIsLoading(true);
     setError(null);
     try {
-      // ✅ CORRIGIDO: Implementar chamada real ao /api/auth/login
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/auth/login`, {
+      // ✅ CORRIGIDO: Usar apiCall com timeout automático
+      const data = await apiCall('/api/auth/login', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify({ email, password })
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Login failed');
-      }
-
-      const data = await response.json();
       
       setUser(data.user);
       setToken(data.accessToken);
@@ -108,21 +95,11 @@ export function AuthProvider({ children }) {
     setIsLoading(true);
     setError(null);
     try {
-      // ✅ CORRIGIDO: Implementar chamada real ao /api/auth/register
-      const response = await fetch(`${process.env.REACT_APP_API_URL || 'http://localhost:3001'}/api/auth/register`, {
+      // ✅ CORRIGIDO: Usar apiCall com timeout automático
+      const data = await apiCall('/api/auth/register', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
         body: JSON.stringify(userData)
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Registration failed');
-      }
-
-      const data = await response.json();
       
       setUser(data.user);
       setToken(data.accessToken);

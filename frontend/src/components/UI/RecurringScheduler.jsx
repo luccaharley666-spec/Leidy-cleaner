@@ -77,21 +77,25 @@ export function RecurringScheduler() {
       let nextDate = new Date(baseDate);
 
       switch (service.frequency) {
-        case 'daily':
+        case 'daily': {
           nextDate.setDate(baseDate.getDate() + Math.ceil(diffDays));
           break;
-        case 'weekly':
+        }
+        case 'weekly': {
           const weeksToAdd = Math.ceil(diffDays / 7);
           nextDate.setDate(baseDate.getDate() + (weeksToAdd * 7));
           break;
-        case 'biweekly':
+        }
+        case 'biweekly': {
           const biweeksToAdd = Math.ceil(diffDays / 14);
           nextDate.setDate(baseDate.getDate() + (biweeksToAdd * 14));
           break;
-        case 'monthly':
+        }
+        case 'monthly': {
           const monthsToAdd = Math.ceil(diffDays / 30);
           nextDate.setMonth(baseDate.getMonth() + monthsToAdd);
           break;
+        }
         default:
           nextDate = baseDate;
       }

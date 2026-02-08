@@ -1,6 +1,1 @@
-{
-  "/_app": "pages/_app.js",
-  "/_error": "pages/_error.js",
-  "/_document": "pages/_document.js",
-  "/": "pages/index.js"
-}
+{"/_app":"pages/_app.js","/_error":"pages/_error.js","/_document":"pages/_document.js","/admin/dashboard":"pages/admin/dashboard.html","/admin":"pages/admin.html","/agendar-updated":"pages/agendar-updated.html","/agendar":"pages/agendar.html","/chat":"pages/chat.html","/checkout":"pages/checkout.html","/color-palette":"pages/color-palette.html","/dashboard-new":"pages/dashboard-new.html","/dashboard":"pages/dashboard.html","/":"pages/index.html","/login":"pages/login.html","/register":"pages/register.html","/reviews":"pages/reviews.html","/servicos":"pages/servicos.html","/staff/dashboard":"pages/staff/dashboard.html","/admin/analytics-dashboard":"pages/admin/analytics-dashboard.js","/index-new":"pages/index-new.html","/servicos-new":"pages/servicos-new.html","/404":"pages/404.html"}

@@ -24,7 +24,7 @@ export default function MyApp({ Component, pageProps }) {
     const handleRouteChange = (url) => {
       try {
         gtag.pageview(url)
-      } catch (e) {}
+      } catch (e) { /* ignore gtag error */ }
     }
 
     router.events.on('routeChangeComplete', handleRouteChange)

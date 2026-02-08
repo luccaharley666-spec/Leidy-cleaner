@@ -16,7 +16,7 @@ export function ThemeProvider({ children }) {
         setTheme(parsed.theme || 'light');
         if (parsed.accent) setAccent(parsed.accent);
         if (parsed.fontScale) setFontScale(parsed.fontScale);
-      } catch(e){}
+      } catch(e) { /* ignore parse error */ }
     }
   }, []);
 

@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Header from '../components/Layout/Header';
 import Footer from '../components/Layout/Footer';
 import CalendarPicker from '../components/Scheduling/CalendarPicker';
 import ServiceSelector from '../components/Scheduling/ServiceSelector';
 import PriceCalculator from '../components/Scheduling/PriceCalculator';
+import { AuthContext } from '../context/AuthContext';
+import { apiCall } from '../config/api';
 
 export default function Agendar() {
+  const { user } = useContext(AuthContext); // ✅ NOVO: Pegar user autenticado
   const [step, setStep] = useState(1);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedTime, setSelectedTime] = useState('10:00'); // ✅ NOVO: Hora selecionada
   const [selectedServices, setSelectedServices] = useState([]);
   const [address, setAddress] = useState('');
   const [cep, setCep] = useState('');
@@ -26,7 +30,7 @@ export default function Agendar() {
   };
 
   const handleSubmit = async () => {
-    // ✅ CORRIGIDO: Error handling completo + POST real ao backend
+    // ✅ CORRIGIDO: Usar userId do context + hora do state + apiCall
     try {
       setLoading(true);
       
@@ -37,45 +41,36 @@ export default function Agendar() {
         return;
       }
 
+      // Validar usuário autenticado
+      if (!user || !user.id) {
+        alert('⚠️ Você precisa estar autenticado para fazer um agendamento');
+        setLoading(false);
+        return;
+      }
+
       // Preparar dados para envio ao backend
       const booking = {
-        userId: 1, // TODO: Usar ID do usuário logado (from context/localStorage)
+        userId: user.id, // ✅ CORRIGIDO: Usar ID do usuário logado (from context)
         serviceId: selectedServices[0]?.id || 1,
         date: selectedDate,
-        time: '10:00', // TODO: Permitir seleção de hora
+        time: selectedTime, // ✅ CORRIGIDO: Usar hora selecionada pelo usuário
         address,
         phone,
         price: calculateTotal(),
         notes,
       };
       
-      // Enviar ao backend
-      const token = localStorage.getItem('token') || 'demo-token';
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
-      
-      const response = await fetch(
-        `${apiUrl}/api/bookings`,
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify(booking),
-        }
-      );
+      // ✅ CORRIGIDO: Usar apiCall com timeout automático
+      const result = await apiCall('/api/bookings', {
+        method: 'POST',
+        body: JSON.stringify(booking),
+      });
 
-      if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Falha ao agendar');
-      }
-
-      const result = await response.json();
-      console.log('✅ Agendamento criado:', result);
       alert(`✅ Agendamento realizado com sucesso!\nID: ${result.booking?.id || 'N/A'}`);
       
       // Limpar formulário
       setSelectedDate(null);
+      setSelectedTime('10:00');
       setSelectedServices([]);
       setAddress('');
       setPhone('');
@@ -84,7 +79,6 @@ export default function Agendar() {
       setStep(1);
       
     } catch (error) {
-      console.error('❌ Erro ao processar agendamento:', error);
       alert(`❌ Erro: ${error.message || 'Falha ao agendar. Tente novamente.'}`);
     } finally {
       setLoading(false);
@@ -134,6 +128,15 @@ export default function Agendar() {
               <h3 className="text-xl font-bold mb-6">Localização e Detalhes</h3>
               <div className="space-y-6">
                 <div>
+                  <label className="block font-semibold mb-2">Hora Preferida *</label>
+                  <input
+                    type="time"
+                    value={selectedTime}
+                    onChange={(e) => setSelectedTime(e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
+                  />
+                </div>
+                <div>
                   <label className="block font-semibold mb-2">Telefone *</label>
                   <input
                     type="tel"
@@ -182,6 +185,7 @@ export default function Agendar() {
               <h3 className="text-xl font-bold mb-6">Resumo do Agendamento</h3>
               <div className="bg-gray-50 p-6 rounded-lg space-y-3">
                 <p><strong>Data:</strong> {selectedDate}</p>
+                <p><strong>Hora:</strong> {selectedTime}</p>
                 <p><strong>Serviço:</strong> {selectedServices.map(s => s.name).join(', ')}</p>
                 <p><strong>Endereço:</strong> {address}</p>
                 <p><strong>Telefone:</strong> {phone}</p>
