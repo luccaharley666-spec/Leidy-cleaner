@@ -609,4 +609,37 @@ router.get('/recommendations/at-risk', authenticateToken, authorizeRole(['admin'
   RecommendationController.getAtRiskCustomers(req, res);
 });
 
+// ===== NEW FEATURES (12 Premium Services) =====
+// LOYALTY & REWARDS
+const loyaltyRoutes = require('./loyaltyRoutes');
+router.use('/loyalty', loyaltyRoutes);
+
+// ADD-ONS & MARKETPLACE
+const addonsRoutes = require('./addonsRoutes');
+router.use('/addons', addonsRoutes);
+
+// SUBSCRIPTIONS
+const subscriptionRoutes = require('./subscriptionRoutes');
+router.use('/subscriptions', subscriptionRoutes);
+
+// GEOLOCATION
+const geolocationRoutes = require('./geolocationRoutes');
+router.use('/geolocation', geolocationRoutes);
+
+// HOURLY BOOKING
+const hourlyBookingRoutes = require('./hourlyBookingRoutes');
+router.use('/hourly', hourlyBookingRoutes);
+
+// PROFESSIONAL RATINGS (Admin)
+const professionalRatingRoutes = require('./professionalRatingRoutes');
+router.use('/professional-ratings', professionalRatingRoutes);
+
+// CANCELLATIONS & REFUNDS
+const cancellationRoutes = require('./cancellationRoutes');
+router.use('/cancellations', cancellationRoutes);
+
+// RECEIPTS & INVOICES
+const receiptRoutes = require('./receiptRoutes');
+router.use('/receipts', receiptRoutes);
+
 module.exports = router;
