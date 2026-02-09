@@ -558,6 +558,10 @@ router.get('/pricing/simulate', (req, res) => {
   PricingController.simulatePriceOptions(req, res);
 });
 
+// ===== HOUR PACKAGING (Novos Endpoints Pagamento em Horas) =====
+const hourPricingRoutes = require('./hourPricingRoutes');
+router.use('/pricing', hourPricingRoutes);
+
 // ===== INTELLIGENT RECOMMENDATIONS (CROSS-SELLING) =====
 const RecommendationController = require('../controllers/RecommendationController');
 router.get('/recommendations/smart', (req, res) => {
