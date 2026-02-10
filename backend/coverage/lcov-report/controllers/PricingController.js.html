@@ -549,7 +549,7 @@ const { getDb } = require('../db/sqlite');
 &nbsp;
 class PricingController {
   constructor() {
-    this.ALLOWED_CLEANING_TYPES = ['standard', 'deep', 'move_in_out', 'commercial'];
+    this.[REDACTED_TOKEN] = ['standard', 'deep', 'move_in_out', 'commercial'];
     this.ALLOWED_FREQUENCIES = ['once', 'weekly', 'biweekly', 'monthly'];
     this.ALLOWED_URGENCIES = ['normal', 'express', 'emergency'];
     this.MAX_SERVICE_IDS = 10;
@@ -623,8 +623,8 @@ class PricingController {
       }
 &nbsp;
       // Validate enums
-<span class="cstat-no" title="statement not covered" >      if (!this._validateEnum(cleaningType, this.ALLOWED_CLEANING_TYPES)) {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'Invalid cleaningType', code: 'INVALID_CLEANING_TYPE' });</span>
+<span class="cstat-no" title="statement not covered" >      if (!this._validateEnum(cleaningType, this.[REDACTED_TOKEN])) {</span>
+<span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'Invalid cleaningType', code: '[REDACTED_TOKEN]' });</span>
       }
 <span class="cstat-no" title="statement not covered" >      if (!this._validateEnum(frequency, this.ALLOWED_FREQUENCIES)) {</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'Invalid frequency', code: 'INVALID_FREQUENCY' });</span>
@@ -650,7 +650,7 @@ class PricingController {
       }
 &nbsp;
       // Calcular preço dinâmico
-      const pricingResult = <span class="cstat-no" title="statement not covered" >await PricingService.calculateDynamicPrice({</span>
+      const pricingResult = <span class="cstat-no" title="statement not covered" >await PricingService.[REDACTED_TOKEN]({</span>
         basePrice: services.reduce(<span class="fstat-no" title="function not covered" >(s</span>um, s) =&gt; <span class="cstat-no" title="statement not covered" >sum + (s.base_price || 0),</span> 0),
         services: services.map(<span class="fstat-no" title="function not covered" >(s</span>) =&gt; (<span class="cstat-no" title="statement not covered" >{ basePrice: s.base_price, name: s.name })</span>),
         date,
@@ -661,7 +661,7 @@ class PricingController {
         frequency,
         urgency,
         isNewCustomer: userId ? await this.isNewCustomer(db, userId) : false,
-        daysUntilService: this.calculateDaysUntilService(date, time)
+        daysUntilService: this.[REDACTED_TOKEN](date, time)
       });
 &nbsp;
       // Retornar resultado com breakdown
@@ -692,7 +692,7 @@ class PricingController {
    * GET /api/pricing/simulate
    * Simula múltiplas opções de preço
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync simulatePriceOptions(req, res) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { serviceId, date, time, userId } = <span class="cstat-no" title="statement not covered" >req.query;</span>
 &nbsp;
@@ -713,14 +713,14 @@ class PricingController {
 <span class="cstat-no" title="statement not covered" >        return res.status(404).json({ error: 'Service not found' });</span>
       }
 &nbsp;
-      const options = <span class="cstat-no" title="statement not covered" >await PricingService.simulatePriceOptions({</span>
+      const options = <span class="cstat-no" title="statement not covered" >await PricingService.[REDACTED_TOKEN]({</span>
         basePrice: service.base_price,
         services: [{ basePrice: service.base_price, name: service.name }],
         date,
         time,
         userId,
         isNewCustomer: userId ? await this.isNewCustomer(db, userId) : false,
-        daysUntilService: this.calculateDaysUntilService(date, time)
+        daysUntilService: this.[REDACTED_TOKEN](date, time)
       });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
@@ -754,7 +754,7 @@ class PricingController {
   /**
    * Calcular dias até o serviço
    */
-<span class="fstat-no" title="function not covered" >  ca</span>lculateDaysUntilService(dateStr, timeStr) {
+<span class="fstat-no" title="function not covered" >  ca</span>[REDACTED_TOKEN](dateStr, timeStr) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Prefer explicit YYYY-MM-DD and HH:mm -&gt; create a local datetime
       let iso = <span class="cstat-no" title="statement not covered" >dateStr;</span>

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/ChatEncryptionService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> ChatEncryptionService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -454,7 +454,7 @@
 const crypto = require('crypto');
 const logger = require('../utils/logger');
 &nbsp;
-class ChatEncryptionService {
+class [REDACTED_TOKEN] {
   /**
    * Derivar chave a partir de senha com PBKDF2
    */
@@ -608,7 +608,7 @@ class ChatEncryptionService {
   /**
    ✅ NOVO: Verificar integridade de mensagem
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic verifyMessageIntegrity(message, hash, algorithm = <span class="branch-0 cbranch-no" title="branch not covered" >'sha256')</span> {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](message, hash, algorithm = <span class="branch-0 cbranch-no" title="branch not covered" >'sha256')</span> {
     const computedHash = <span class="cstat-no" title="statement not covered" >this.hashMessage(message, algorithm);</span>
 <span class="cstat-no" title="statement not covered" >    return computedHash === hash;</span>
   }
@@ -635,7 +635,7 @@ class ChatEncryptionService {
   }
 }
 &nbsp;
-module.exports = ChatEncryptionService;
+module.exports = [REDACTED_TOKEN];
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/PushNotificationService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> PushNotificationService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -608,7 +608,7 @@
 &nbsp;
 const logger = require('../utils/logger');
 &nbsp;
-class PushNotificationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.notifications = new Map();
     this.subscriptions = new Map();
@@ -618,7 +618,7 @@ class PushNotificationService {
   /**
    * Registrar subscription push
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync registerSubscription(userId, subscription) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, subscription) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const subscriptionId = <span class="cstat-no" title="statement not covered" >`sub_${Date.now()}`;</span>
       const sub = <span class="cstat-no" title="statement not covered" >{</span>
@@ -651,7 +651,7 @@ class PushNotificationService {
   /**
    * Enviar notificação push
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendPushNotification(userId, payload) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, payload) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const {
         title,
@@ -719,10 +719,10 @@ class PushNotificationService {
   /**
    * Enviar notificação para múltiplos usuários
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync broadcastNotification(userIds, payload) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userIds, payload) {
     const results = <span class="cstat-no" title="statement not covered" >[];</span>
 <span class="cstat-no" title="statement not covered" >    for (const userId of userIds) {</span>
-      const result = <span class="cstat-no" title="statement not covered" >await this.sendPushNotification(userId, payload);</span>
+      const result = <span class="cstat-no" title="statement not covered" >await this.[REDACTED_TOKEN](userId, payload);</span>
 <span class="cstat-no" title="statement not covered" >      results.push(result);</span>
     }
 <span class="cstat-no" title="statement not covered" >    return {</span>
@@ -736,7 +736,7 @@ class PushNotificationService {
    * Notificar sobre novo booking
    */
 <span class="fstat-no" title="function not covered" >  as</span>ync notifyNewBooking(userId, bookingData) {
-<span class="cstat-no" title="statement not covered" >    return this.sendPushNotification(userId, {</span>
+<span class="cstat-no" title="statement not covered" >    return this.[REDACTED_TOKEN](userId, {</span>
       title: '🎉 Novo Agendamento!',
       body: `${bookingData.serviceName} confirmado para ${bookingData.date}`,
       icon: 'https://api.example.com/icons/booking.png',
@@ -749,7 +749,7 @@ class PushNotificationService {
    * Notificar sobre preço reduzido
    */
 <span class="fstat-no" title="function not covered" >  as</span>ync notifyPriceDrop(userId, serviceData) {
-<span class="cstat-no" title="statement not covered" >    return this.sendPushNotification(userId, {</span>
+<span class="cstat-no" title="statement not covered" >    return this.[REDACTED_TOKEN](userId, {</span>
       title: '💰 Preço Reduzido!',
       body: `${serviceData.serviceName} agora por R$ ${serviceData.newPrice}`,
       icon: 'https://api.example.com/icons/discount.png',
@@ -760,9 +760,9 @@ class PushNotificationService {
   /**
    * Notificar próxima data agendada
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync notifyUpcomingBooking(userId, bookingData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, bookingData) {
     const hoursUntil = <span class="cstat-no" title="statement not covered" >Math.floor((new Date(bookingData.date) - new Date()) / 3600000);</span>
-<span class="cstat-no" title="statement not covered" >    return this.sendPushNotification(userId, {</span>
+<span class="cstat-no" title="statement not covered" >    return this.[REDACTED_TOKEN](userId, {</span>
       title: '⏰ Lembrete de Agendamento',
       body: `Seu compromisso é em ${hoursUntil} horas`,
       icon: 'https://api.example.com/icons/reminder.png',
@@ -774,7 +774,7 @@ class PushNotificationService {
    * Notificar review do cliente
    */
 <span class="fstat-no" title="function not covered" >  as</span>ync notifyNewReview(userId, reviewData) {
-<span class="cstat-no" title="statement not covered" >    return this.sendPushNotification(userId, {</span>
+<span class="cstat-no" title="statement not covered" >    return this.[REDACTED_TOKEN](userId, {</span>
       title: '⭐ Nova Avaliação!',
       body: `${reviewData.authorName} deixou uma ${reviewData.rating}⭐ avaliação`,
       icon: 'https://api.example.com/icons/review.png',
@@ -797,7 +797,7 @@ class PushNotificationService {
   /**
    * Obter preferências de notificação
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getNotificationPreferences(userId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId) {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       userId,
       preferences: {
@@ -818,7 +818,7 @@ class PushNotificationService {
   /**
    * Atualizar preferências
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync updateNotificationPreferences(userId, preferences) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, preferences) {
 <span class="cstat-no" title="statement not covered" >    logger.log({</span>
       level: 'info',
       message: 'Notification preferences updated',
@@ -831,7 +831,7 @@ class PushNotificationService {
   /**
    * Histórico de notificações
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getNotificationHistory(userId, limit = <span class="branch-0 cbranch-no" title="branch not covered" >50)</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, limit = <span class="branch-0 cbranch-no" title="branch not covered" >50)</span> {
     const userNotifications = <span class="cstat-no" title="statement not covered" >Array.from(this.notifications.values())</span>
       .filter(<span class="fstat-no" title="function not covered" >n </span>=&gt; <span class="cstat-no" title="statement not covered" >n.userId === userId)</span>
       .sort(<span class="fstat-no" title="function not covered" >(a</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >b.sentAt - a.sentAt)</span>
@@ -869,7 +869,7 @@ class PushNotificationService {
   }
 }
 &nbsp;
-module.exports = new PushNotificationService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

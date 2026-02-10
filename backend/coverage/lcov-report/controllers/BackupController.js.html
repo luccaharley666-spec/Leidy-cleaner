@@ -310,7 +310,7 @@ router.post('/full', <span class="fstat-no" title="function not covered" >as</sp
 // POST /api/backup/incremental
 router.post('/incremental', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const backup = <span class="cstat-no" title="statement not covered" >await BackupService.createIncrementalBackup();</span>
+    const backup = <span class="cstat-no" title="statement not covered" >await BackupService.[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(backup);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -321,7 +321,7 @@ router.post('/incremental', <span class="fstat-no" title="function not covered" 
 router.post('/schedule', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { schedule, time, retention } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await BackupService.scheduleAutomaticBackups({</span>
+    const result = <span class="cstat-no" title="statement not covered" >await BackupService.[REDACTED_TOKEN]({</span>
       schedule,
       time,
       retention
@@ -336,7 +336,7 @@ router.post('/schedule', <span class="fstat-no" title="function not covered" >as
 router.post('/restore-pitr', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { restoreDate } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const restore = <span class="cstat-no" title="statement not covered" >await BackupService.restoreFromPointInTime(restoreDate);</span>
+    const restore = <span class="cstat-no" title="statement not covered" >await BackupService.[REDACTED_TOKEN](restoreDate);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(restore);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -358,7 +358,7 @@ router.post('/:backupId/restore', <span class="fstat-no" title="function not cov
 router.post('/geo-replication', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { primaryRegion, replicaRegions } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const replication = <span class="cstat-no" title="statement not covered" >await BackupService.configureGeoReplication({</span>
+    const replication = <span class="cstat-no" title="statement not covered" >await BackupService.[REDACTED_TOKEN]({</span>
       primaryRegion,
       replicaRegions
     });
@@ -391,7 +391,7 @@ router.get('/stats', <span class="fstat-no" title="function not covered" >as</sp
 // GET /api/backup/validate
 router.get('/validate', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await BackupService.validateDatabaseIntegrity();</span>
+    const result = <span class="cstat-no" title="statement not covered" >await BackupService.[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>

@@ -1,15 +1,15 @@
 /**
- * AvailableStaffWidget.jsx
+ * [REDACTED_TOKEN].jsx
  * Mostra staff disponível com scores, ratings, carga
  * Componente reutilizável para booking flow
  * ✅ Real-time updates via WebSocket ready
  */
 
 import React, { useEffect, useState } from 'react';
-import styles from './AvailableStaffWidget.module.css';
+import styles from './[REDACTED_TOKEN].module.css';
 import { apiCall } from '../config/api';
 
-const AvailableStaffWidget = ({ 
+const [REDACTED_TOKEN] = ({ 
   date, 
   time, 
   serviceId, 
@@ -205,7 +205,7 @@ const AvailableStaffWidget = ({
                     <div
                       className={styles.loadFill}
                       style={{
-                        width: `${100 - s.availability_percent}%`,
+                        width: `${100 - s.[REDACTED_TOKEN]}%`,
                         backgroundColor: getLoadStatusColor(s.load_status)
                       }}
                     />
@@ -219,7 +219,7 @@ const AvailableStaffWidget = ({
                 <div className={styles.metric}>
                   <label>Disponibilidade</label>
                   <span className={styles.metricValue}>
-                    {s.availability_percent}%
+                    {s.[REDACTED_TOKEN]}%
                   </span>
                   <small className={styles.metricLabel}>
                     {getLoadStatusLabel(s.load_status)}
@@ -299,4 +299,4 @@ const AvailableStaffWidget = ({
   );
 };
 
-export default AvailableStaffWidget;
+export default [REDACTED_TOKEN];

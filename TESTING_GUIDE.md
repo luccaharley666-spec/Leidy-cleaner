@@ -160,7 +160,7 @@ Response:
   "success": true,
   "data": {
     "userId": 1,
-    "avatar_url": "/uploads/avatars/user-1-1706818345678.jpg",
+    "avatar_url": "/uploads/avatars/[REDACTED_TOKEN].jpg",
     "file_size": 45324
   }
 }

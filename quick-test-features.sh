@@ -106,11 +106,11 @@ else
     print_warning "PixWebhookService.js não encontrado!"
 fi
 
-if [ -f "backend/src/controllers/PixWebhookController.js" ]; then
-    lines=$(wc -l < backend/src/controllers/PixWebhookController.js)
-    print_success "PixWebhookController.js encontrado ($lines linhas)"
+if [ -f "backend/src/controllers/[REDACTED_TOKEN].js" ]; then
+    lines=$(wc -l < backend/src/controllers/[REDACTED_TOKEN].js)
+    print_success "[REDACTED_TOKEN].js encontrado ($lines linhas)"
 else
-    print_warning "PixWebhookController.js não encontrado!"
+    print_warning "[REDACTED_TOKEN].js não encontrado!"
 fi
 
 if [ -f "backend/src/routes/pixWebhook.routes.js" ]; then
@@ -142,9 +142,9 @@ echo ""
 print_step "6. Verificando documentação..."
 
 docs=(
-    "PIX_IMPLEMENTATION_GUIDE.md"
-    "IMPLEMENTACAO_3_FEATURES_COMPLETO.md"
-    "README_RESUMIDO_IMPLEMENTACAO.md"
+    "[REDACTED_TOKEN].md"
+    "[REDACTED_TOKEN].md"
+    "[REDACTED_TOKEN].md"
 )
 
 for doc in "${docs[@]}"; do
@@ -177,7 +177,7 @@ echo "  4. Testar Dark Mode (botão na header)"
 echo "  5. node test-pix-webhook.js (testar webhook)"
 echo ""
 echo "${BLUE}📚 DOCUMENTAÇÃO:${NC}"
-echo "  - PIX_IMPLEMENTATION_GUIDE.md"
-echo "  - IMPLEMENTACAO_3_FEATURES_COMPLETO.md"
-echo "  - README_RESUMIDO_IMPLEMENTACAO.md"
+echo "  - [REDACTED_TOKEN].md"
+echo "  - [REDACTED_TOKEN].md"
+echo "  - [REDACTED_TOKEN].md"
 echo ""

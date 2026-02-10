@@ -29,7 +29,7 @@
 
 ### 3. **PIX Real Confirmation** ✅
 - **Webhook Real**: `/backend/src/services/PixWebhookService.js`
-- **Controller**: `/backend/src/controllers/PixWebhookController.js`
+- **Controller**: `/backend/src/controllers/[REDACTED_TOKEN].js`
 - **Rotas**: `/backend/src/routes/pixWebhook.routes.js`
 - **Assinatura HMAC-SHA256**: Validação segura de webhooks
 - **APIs Suportadas**:
@@ -51,7 +51,7 @@
 PIX_KEY=seu-email@pix.com  # Sua chave PIX (email, telefone, CPF ou CNPJ)
 PIX_BANK_API_URL=https://api.bank.com/v1  # URL da API do banco (se disponível)
 PIX_BANK_API_KEY=sua-api-key-123  # Chave de acesso à API do banco
-PIX_WEBHOOK_SECRET=seu-webhook-secret-super-seguro-123456  # Para assinar webhooks
+[REDACTED_TOKEN]=[REDACTED_TOKEN]  # Para assinar webhooks
 
 # Logging
 LOG_LEVEL=info
@@ -60,8 +60,8 @@ NODE_ENV=production
 
 #### Frontend `.env.local`:
 ```env
-NEXT_PUBLIC_BACKEND_URL=https://sua-api.com
-NEXT_PUBLIC_PIX_ENABLED=true
+[REDACTED_TOKEN]=https://sua-api.com
+[REDACTED_TOKEN]=true
 ```
 
 ### Passo 2: Criar Tabela PIX Transactions
@@ -95,7 +95,7 @@ CREATE INDEX idx_pix_status ON pix_transactions(status);
 2. Registrar URL: https://sua-api.com/webhooks/pix
 3. Evento: pix.transfer.in.received
 4. Assinatura: HMAC-SHA256
-5. Secret: PIX_WEBHOOK_SECRET
+5. Secret: [REDACTED_TOKEN]
 ```
 
 #### Bradesco/Itaú (Via Ecosystem):
@@ -103,7 +103,7 @@ CREATE INDEX idx_pix_status ON pix_transactions(status);
 1. Portal de integrações do banco
 2. Novo Webhook → Tipo: PIX Payment
 3. URL: https://sua-api.com/webhooks/pix
-4. Assinar com: PIX_WEBHOOK_SECRET (HMAC-SHA256)
+4. Assinar com: [REDACTED_TOKEN] (HMAC-SHA256)
 ```
 
 #### Para Testes Locais (via ngrok):
@@ -200,7 +200,7 @@ O webhook valida usando:
 ```javascript
 const signature = HMAC-SHA256(
   JSON.stringify(webhookData),
-  PIX_WEBHOOK_SECRET
+  [REDACTED_TOKEN]
 );
 ```
 
@@ -278,7 +278,7 @@ console.log('Signature:', signature);
 - [x] Dashboard Admin com Recharts
 - [x] Dark Mode com Context e Toggle
 - [x] PixWebhookService com HMAC-SHA256
-- [x] PixWebhookController com endpoints
+- [x] [REDACTED_TOKEN] com endpoints
 - [x] Rotas PIX webhook integradas
 - [ ] Integração com banco específico (escolher a implementação)
 - [ ] Testes E2E para fluxo completo
@@ -301,6 +301,6 @@ console.log('Signature:', signature);
 
 Para erros:
 - Verificar `logger.error()` em `/backend/logs`
-- Confirmar `PIX_WEBHOOK_SECRET` é igual nos dois lados
+- Confirmar `[REDACTED_TOKEN]` é igual nos dois lados
 - Validar que URL do webhook é acessível publicamente
 

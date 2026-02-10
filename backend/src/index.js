@@ -19,10 +19,10 @@ const ChatService = require('./services/ChatService');
 const MonitoringService = require('./services/MonitoringService');
 const HealthCheckService = require('./services/HealthCheckService');
 const logger = require('./utils/logger');
-const requestLoggingMiddleware = require('./middleware/requestLogging');
+const [REDACTED_TOKEN] = require('./middleware/requestLogging');
 const path = require('path');
 const { initCsrf } = require('./middleware/csrf');
-const { setupEmailQueueDashboard } = require('./utils/queueDashboard');
+const { [REDACTED_TOKEN] } = require('./utils/queueDashboard');
 const { ensureSchema } = require('./db/ensureSchema');
 const { validateEnv } = require('./config/envValidator');
 const { globalErrorHandler, handle404, asyncHandler } = require('./middleware/globalErrorHandler');
@@ -71,7 +71,7 @@ try {
 // ===== MIDDLEWARE =====
 // Segurança com Helmet (CSP + HSTS explícitos)
 app.use(helmet({
-  contentSecurityPolicy: {
+  [REDACTED_TOKEN]: {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", 'https://www.googletagmanager.com', 'https://www.google-analytics.com'],
@@ -105,7 +105,7 @@ const authLimiter = rateLimit({
   windowMs: 15 * 60 * 1000,
   max: 5, // Máximo 5 tentativas de login/signup em 15 min
   message: 'Muitas tentativas de acesso. Tente novamente em 15 minutos.',
-  skipSuccessfulRequests: true // Reseta contador se sucesso
+  [REDACTED_TOKEN]: true // Reseta contador se sucesso
 });
 
 const apiLimiter = rateLimit({
@@ -119,7 +119,7 @@ const apiLimiter = rateLimit({
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true,
-  optionsSuccessStatus: 200,
+  [REDACTED_TOKEN]: 200,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
@@ -129,7 +129,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // ✅ NOVO: Middleware de logging (estruturado e automático)
-app.use(requestLoggingMiddleware);
+app.use([REDACTED_TOKEN]);
 
 // Servir arquivos estáticos (HTML, CSS, JS)
 app.use(express.static(path.join(__dirname, '..', '..', 'public')));
@@ -234,7 +234,7 @@ if (app.locals.monitoring && typeof app.locals.monitoring.setupErrorHandler === 
 // ===== QUEUE DASHBOARD (Bull Board) =====
 if (process.env.NODE_ENV !== 'production') {
   try {
-    setupEmailQueueDashboard(app, '/queues');
+    [REDACTED_TOKEN](app, '/queues');
   } catch (error) {
     logger.warn('Dashboard de filas não disponível', { error: error.message });
   }
@@ -244,9 +244,9 @@ if (process.env.NODE_ENV !== 'production') {
 const PORT = process.env.PORT || 3001;
 
 // Iniciar o servidor. Por padrão não iniciamos durante testes, mas suportamos
-// sobrescrever esse comportamento com `START_SERVER_IN_TEST=true` para permitir
+// sobrescrever esse comportamento com `[REDACTED_TOKEN]=true` para permitir
 // rodar a aplicação localmente em um processo de teste.
-if (process.env.NODE_ENV !== 'test' || process.env.START_SERVER_IN_TEST === 'true') {
+if (process.env.NODE_ENV !== 'test' || process.env.[REDACTED_TOKEN] === 'true') {
   (async () => {
     try {
       await ensureSchema();

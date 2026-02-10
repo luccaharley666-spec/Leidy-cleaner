@@ -5,7 +5,7 @@
 
 const logger = require('../utils/logger');
 
-class DatabaseOptimizationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.queryStats = new Map();
     this.slowQueryThreshold = 100; // ms
@@ -173,7 +173,7 @@ class DatabaseOptimizationService {
           column: 'email'
         },
         {
-          name: 'idx_bookings_user_id',
+          name: '[REDACTED_TOKEN]',
           table: 'bookings',
           unique: false,
           seq: 0,
@@ -195,7 +195,7 @@ class DatabaseOptimizationService {
   /**
    ✅ NOVO: Validar integridade de banco
    */
-  async validateDatabaseIntegrity(db) {
+  async [REDACTED_TOKEN](db) {
     try {
       // SQLite PRAGMA integrity_check;
       // Simular resposta
@@ -299,7 +299,7 @@ class DatabaseOptimizationService {
   /**
    ✅ NOVO: Backup incrementar
    */
-  async createIncrementalBackup(db, backupPath) {
+  async [REDACTED_TOKEN](db, backupPath) {
     try {
       logger.log({
         level: 'info',
@@ -334,4 +334,4 @@ class DatabaseOptimizationService {
   }
 }
 
-module.exports = new DatabaseOptimizationService();
+module.exports = new [REDACTED_TOKEN]();

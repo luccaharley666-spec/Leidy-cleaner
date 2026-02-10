@@ -390,7 +390,7 @@ const cacheMiddleware = <span class="cstat-no" title="statement not covered" ><s
 /**
  * 🗑️ Middleware para invalidar cache
  */
-const invalidateCacheMiddleware = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>atterns = <span class="branch-0 cbranch-no" title="branch not covered" >[])</span> =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(p</span>atterns = <span class="branch-0 cbranch-no" title="branch not covered" >[])</span> =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {</span>
     // Armazena a função original res.json
     const originalJson = <span class="cstat-no" title="statement not covered" >res.json.bind(res);</span>
@@ -415,7 +415,7 @@ const invalidateCacheMiddleware = <span class="cstat-no" title="statement not co
 /**
  * 🔍 Middleware para debug de cache
  */
-const cacheDebugMiddleware = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {</span>
   const cacheKey = <span class="cstat-no" title="statement not covered" >`http:${req.originalUrl || req.url}`;</span>
   
 <span class="cstat-no" title="statement not covered" >  try {</span>
@@ -432,7 +432,7 @@ const cacheDebugMiddleware = <span class="cstat-no" title="statement not covered
 /**
  * 📊 Middleware para cache de agendamentos (mais agressivo)
  */
-const bookingCacheMiddleware = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (req, res, next) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  if (req.method !== 'GET') {</span>
 <span class="cstat-no" title="statement not covered" >    return next();</span>
   }
@@ -464,9 +464,9 @@ const bookingCacheMiddleware = <span class="cstat-no" title="statement not cover
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
   cacheMiddleware,
-  invalidateCacheMiddleware,
-  cacheDebugMiddleware,
-  bookingCacheMiddleware,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
 };
 &nbsp;</pre></td></tr></table></pre>
 

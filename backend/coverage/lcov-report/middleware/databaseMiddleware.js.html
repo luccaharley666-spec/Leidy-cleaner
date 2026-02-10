@@ -332,13 +332,13 @@
  * Rastreia e analisa queries para otimização
  */
 &nbsp;
-const DatabaseOptimizationService = <span class="cstat-no" title="statement not covered" >require('../services/DatabaseOptimizationService');</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" >require('../services/[REDACTED_TOKEN]');</span>
 const logger = <span class="cstat-no" title="statement not covered" >require('../utils/logger');</span>
 &nbsp;
 /**
  * Middleware para rastrear tempo de execução das queries
  */
-function <span class="fstat-no" title="function not covered" >queryTrackingMiddleware(</span>db) {
+function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>db) {
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {</span>
     // Interceptar métodos de query do banco
     const originalRun = <span class="cstat-no" title="statement not covered" >db.run?.bind(db);</span>
@@ -351,7 +351,7 @@ function <span class="fstat-no" title="function not covered" >queryTrackingMiddl
         const startTime = <span class="cstat-no" title="statement not covered" >Date.now();</span>
         const wrappedCallback = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>rr, result) =&gt; {</span>
           const executionTime = <span class="cstat-no" title="statement not covered" >Date.now() - startTime;</span>
-<span class="cstat-no" title="statement not covered" >          DatabaseOptimizationService.trackQuery(sql, executionTime);</span>
+<span class="cstat-no" title="statement not covered" >          [REDACTED_TOKEN].trackQuery(sql, executionTime);</span>
 <span class="cstat-no" title="statement not covered" >          if (callback) <span class="cstat-no" title="statement not covered" >callback(err, result);</span></span>
         };
 <span class="cstat-no" title="statement not covered" >        return originalRun(sql, params, wrappedCallback);</span>
@@ -363,7 +363,7 @@ function <span class="fstat-no" title="function not covered" >queryTrackingMiddl
         const startTime = <span class="cstat-no" title="statement not covered" >Date.now();</span>
         const wrappedCallback = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>rr, rows) =&gt; {</span>
           const executionTime = <span class="cstat-no" title="statement not covered" >Date.now() - startTime;</span>
-<span class="cstat-no" title="statement not covered" >          DatabaseOptimizationService.trackQuery(sql, executionTime);</span>
+<span class="cstat-no" title="statement not covered" >          [REDACTED_TOKEN].trackQuery(sql, executionTime);</span>
 <span class="cstat-no" title="statement not covered" >          if (callback) <span class="cstat-no" title="statement not covered" >callback(err, rows);</span></span>
         };
 <span class="cstat-no" title="statement not covered" >        return originalAll(sql, params, wrappedCallback);</span>
@@ -375,7 +375,7 @@ function <span class="fstat-no" title="function not covered" >queryTrackingMiddl
         const startTime = <span class="cstat-no" title="statement not covered" >Date.now();</span>
         const wrappedCallback = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(e</span>rr, row) =&gt; {</span>
           const executionTime = <span class="cstat-no" title="statement not covered" >Date.now() - startTime;</span>
-<span class="cstat-no" title="statement not covered" >          DatabaseOptimizationService.trackQuery(sql, executionTime);</span>
+<span class="cstat-no" title="statement not covered" >          [REDACTED_TOKEN].trackQuery(sql, executionTime);</span>
 <span class="cstat-no" title="statement not covered" >          if (callback) <span class="cstat-no" title="statement not covered" >callback(err, row);</span></span>
         };
 <span class="cstat-no" title="statement not covered" >        return originalGet(sql, params, wrappedCallback);</span>
@@ -403,7 +403,7 @@ function <span class="fstat-no" title="function not covered" >logPreparedQueries
 /**
  * Middleware para cache de queries (se habilitado)
  */
-function <span class="fstat-no" title="function not covered" >queryCacheMiddleware(</span>cache) {
+function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>cache) {
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {</span>
 <span class="cstat-no" title="statement not covered" >    if (!req.query.cache || req.method !== 'GET') {</span>
 <span class="cstat-no" title="statement not covered" >      return next();</span>
@@ -432,7 +432,7 @@ function <span class="fstat-no" title="function not covered" >queryCacheMiddlewa
 /**
  * Middleware para monitorar conexões
  */
-function <span class="fstat-no" title="function not covered" >connectionPoolMonitor(</span>) {
+function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>) {
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >fu</span>nction(req, res, next) {</span>
     // Adicionar info de pool ao request
 <span class="cstat-no" title="statement not covered" >    req.dbPoolStats = {</span>
@@ -454,10 +454,10 @@ function <span class="fstat-no" title="function not covered" >connectionPoolMoni
 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
-  queryTrackingMiddleware,
+  [REDACTED_TOKEN],
   logPreparedQueries,
-  queryCacheMiddleware,
-  connectionPoolMonitor
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN]
 };
 &nbsp;</pre></td></tr></table></pre>
 

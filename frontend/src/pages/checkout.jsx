@@ -227,7 +227,7 @@ export default function CheckoutPage() {
                     <div className="flex justify-between items-center">
                       <span className="font-bold text-gray-900 dark:text-white">Total:</span>
                       <span className="text-2xl font-bold text-green-600 dark:text-green-400">
-                        R$ {finalAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                        R$ {finalAmount.toLocaleString('pt-BR', { [REDACTED_TOKEN]: 2 })}
                       </span>
                     </div>
                   </div>
@@ -240,7 +240,7 @@ export default function CheckoutPage() {
                       Valor do Pagamento
                     </h3>
                     <div className="text-3xl font-bold text-green-600 dark:text-green-400">
-                      R$ {finalAmount.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+                      R$ {finalAmount.toLocaleString('pt-BR', { [REDACTED_TOKEN]: 2 })}
                     </div>
                   </div>
                 )}

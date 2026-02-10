@@ -30,7 +30,7 @@ router.get('/revenue', authenticateToken, async (req, res) => {
 // Agendamentos por serviço
 router.get('/services', authenticateToken, async (req, res) => {
   try {
-    const data = await AnalyticsService.getBookingsByService();
+    const data = await AnalyticsService.[REDACTED_TOKEN]();
     res.json({ success: true, data });
   } catch (error) {
     console.error('Erro ao obter dados por serviço:', error);
@@ -54,7 +54,7 @@ router.get('/top-professionals', authenticateToken, async (req, res) => {
 router.get('/conversion', authenticateToken, async (req, res) => {
   try {
     const days = parseInt(req.query.days) || 30;
-    const data = await AnalyticsService.getConversionMetrics(days);
+    const data = await AnalyticsService.[REDACTED_TOKEN](days);
     res.json({ success: true, data });
   } catch (error) {
     console.error('Erro ao obter conversão:', error);
@@ -65,7 +65,7 @@ router.get('/conversion', authenticateToken, async (req, res) => {
 // Análise de clientes
 router.get('/customers', authenticateToken, async (req, res) => {
   try {
-    const data = await AnalyticsService.getCustomerAnalytics();
+    const data = await AnalyticsService.[REDACTED_TOKEN]();
     res.json({ success: true, data });
   } catch (error) {
     console.error('Erro ao obter análise de clientes:', error);

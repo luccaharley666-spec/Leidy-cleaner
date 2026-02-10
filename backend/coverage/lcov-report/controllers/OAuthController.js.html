@@ -915,7 +915,7 @@ const router = express.Router();
 router.post('/google', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const googleProfile = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await OAuthService.handleGoogleCallback(googleProfile);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await OAuthService.[REDACTED_TOKEN](googleProfile);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(200).json({</span>
       success: true,
@@ -960,7 +960,7 @@ router.post('/google', <span class="fstat-no" title="function not covered" >as</
 router.post('/facebook', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const facebookProfile = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await OAuthService.handleFacebookCallback(facebookProfile);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await OAuthService.[REDACTED_TOKEN](facebookProfile);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(200).json({</span>
       success: true,
@@ -1003,7 +1003,7 @@ router.post('/facebook', <span class="fstat-no" title="function not covered" >as
 router.post('/whatsapp', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const whatsappProfile = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await OAuthService.handleWhatsAppCallback(whatsappProfile);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await OAuthService.[REDACTED_TOKEN](whatsappProfile);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(200).json({</span>
       success: true,

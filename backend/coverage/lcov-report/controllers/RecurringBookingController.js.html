@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/RecurringBookingController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> RecurringBookingController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -190,13 +190,13 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const RecurringBookingService = require('../services/RecurringBookingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 // POST /api/bookings/recurring
 router.post('/recurring', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, serviceId, frequency, dayOfWeek, time, startDate, notes } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const booking = <span class="cstat-no" title="statement not covered" >RecurringBookingService.createRecurringBooking({</span>
+    const booking = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN]({</span>
       userId,
       serviceId,
       frequency,
@@ -213,32 +213,32 @@ router.post('/recurring', <span class="fstat-no" title="function not covered" >(
 &nbsp;
 // GET /api/bookings/recurring/:userId
 router.get('/recurring/:userId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const bookings = <span class="cstat-no" title="statement not covered" >RecurringBookingService.getUserRecurringBookings(req.params.userId);</span>
+  const bookings = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(bookings);</span>
 });
 &nbsp;
 // PUT /api/bookings/recurring/:bookingId/pause
 router.put('/recurring/:bookingId/pause', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
   const { resumeUntil } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-  const booking = <span class="cstat-no" title="statement not covered" >RecurringBookingService.pauseRecurring(req.params.bookingId, resumeUntil);</span>
+  const booking = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].pauseRecurring(req.params.bookingId, resumeUntil);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(booking);</span>
 });
 &nbsp;
 // PUT /api/bookings/recurring/:bookingId/resume
 router.put('/recurring/:bookingId/resume', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const booking = <span class="cstat-no" title="statement not covered" >RecurringBookingService.resumeRecurring(req.params.bookingId);</span>
+  const booking = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].resumeRecurring(req.params.bookingId);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(booking);</span>
 });
 &nbsp;
 // DELETE /api/bookings/recurring/:bookingId
 router.delete('/recurring/:bookingId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const result = <span class="cstat-no" title="statement not covered" >RecurringBookingService.cancelRecurring(req.params.bookingId);</span>
+  const result = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].cancelRecurring(req.params.bookingId);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(result);</span>
 });
 &nbsp;
 // PUT /api/bookings/recurring/:bookingId
 router.put('/recurring/:bookingId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const updated = <span class="cstat-no" title="statement not covered" >RecurringBookingService.updateRecurring(req.params.bookingId, req.body);</span>
+  const updated = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].updateRecurring(req.params.bookingId, req.body);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(updated);</span>
 });
 &nbsp;

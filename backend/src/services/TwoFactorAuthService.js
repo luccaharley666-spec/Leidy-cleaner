@@ -8,7 +8,7 @@ const QRCode = require('qrcode');
 const db = require('../db');
 const crypto = require('crypto');
 
-class TwoFactorAuthService {
+class [REDACTED_TOKEN] {
   /**
    * Gera novo secret TOTP e QR code
    * Retorna secret e QR code para usuário scanear
@@ -178,7 +178,7 @@ class TwoFactorAuthService {
    * Criptografa secret TOTP (usando env var ENCRYPTION_KEY)
    */
   static encryptSecret(secret) {
-    const encryptionKey = process.env.ENCRYPTION_KEY || 'default-key-change-this-32chars!';
+    const encryptionKey = process.env.ENCRYPTION_KEY || '[REDACTED_TOKEN]!';
     const iv = crypto.randomBytes(16);
     const cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(encryptionKey.slice(0, 32)), iv);
 
@@ -192,7 +192,7 @@ class TwoFactorAuthService {
    * Descriptografa secret TOTP
    */
   static decryptSecret(encrypted) {
-    const encryptionKey = process.env.ENCRYPTION_KEY || 'default-key-change-this-32chars!';
+    const encryptionKey = process.env.ENCRYPTION_KEY || '[REDACTED_TOKEN]!';
     const parts = encrypted.split(':');
     const iv = Buffer.from(parts[0], 'hex');
     const decipher = crypto.createDecipheriv('aes-256-cbc', Buffer.from(encryptionKey.slice(0, 32)), iv);
@@ -204,4 +204,4 @@ class TwoFactorAuthService {
   }
 }
 
-module.exports = TwoFactorAuthService;
+module.exports = [REDACTED_TOKEN];

@@ -110,15 +110,15 @@ ARQUIVOS NECESSÁRIOS:
    NODE_ENV=development
    JWT_SECRET=[gerado]
    STRIPE_SECRET_KEY=sk_test_...
-   STRIPE_WEBHOOK_SECRET=whsec_test_...
+   [REDACTED_TOKEN]=[REDACTED_TOKEN]...
    TWILIO_ACCOUNT_SID=[test]
    TWILIO_AUTH_TOKEN=[test]
    PIX_KEY=test@pix.com
 
 ✅ frontend/.env.local
    REACT_APP_API_URL=http://localhost:3000
-   REACT_APP_STRIPE_PUBLIC_KEY=pk_test_...
-   NEXT_PUBLIC_FEATURES_ENABLED=true
+   [REDACTED_TOKEN]=pk_test_...
+   [REDACTED_TOKEN]=true
 
 ✅ backend_data/database.db
    SQLite com 16 migrações aplicadas
@@ -383,7 +383,7 @@ ERRO: "Cannot PUT /api/bookings"
 → Solução: Backend não iniciou. Espere 5 segundos e retente
 
 ERRO: "Webhook signature invalid"
-→ Solução: Verifique STRIPE_WEBHOOK_SECRET no .env matches Stripe dashboard
+→ Solução: Verifique [REDACTED_TOKEN] no .env matches Stripe dashboard
 
 
 ════════════════════════════════════════════════════════════════════════════════════

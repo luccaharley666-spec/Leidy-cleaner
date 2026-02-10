@@ -17,7 +17,7 @@ const configs = {
     ],
     secureCookies: false,
     allowCredentials: true,
-    jwtSecret: process.env.JWT_SECRET || 'dev-secret-change-in-prod',
+    jwtSecret: process.env.JWT_SECRET || '[REDACTED_TOKEN]',
     emailService: {
       enabled: true,
       verifyEmail: false // Skip email verification in dev
@@ -134,12 +134,12 @@ module.exports = {
 
   // Headers de segurança recomendados
   getSecurityHeaders: () => ({
-    'X-Content-Type-Options': 'nosniff',
+    '[REDACTED_TOKEN]': 'nosniff',
     'X-Frame-Options': 'DENY',
     'X-XSS-Protection': '1; mode=block',
-    'Strict-Transport-Security': selectedConfig.secureCookies ? 'max-age=31536000; includeSubDomains' : undefined,
-    'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
-    'Referrer-Policy': 'no-referrer-when-downgrade'
+    '[REDACTED_TOKEN]': selectedConfig.secureCookies ? 'max-age=31536000; includeSubDomains' : undefined,
+    '[REDACTED_TOKEN]': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'",
+    'Referrer-Policy': '[REDACTED_TOKEN]'
   }),
 
   // Config para fetch/axios no browser

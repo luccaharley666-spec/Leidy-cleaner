@@ -250,7 +250,7 @@ Próximos passos:
 Tempo total: ~27 minutos
 
 Recursos úteis:
-- Documentação: ANALISE_MELHORIAS_E_ORIONHOST.md
+- Documentação: [REDACTED_TOKEN].md
 - Suporte: support@orionhost.com.br
 - Status: status.orionhost.com.br
 

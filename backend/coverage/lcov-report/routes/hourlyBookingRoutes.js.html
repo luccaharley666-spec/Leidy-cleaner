@@ -249,7 +249,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express');
 const { authenticateToken } = require('../middleware/auth');
-const HourlyBookingService = require('../services/HourlyBookingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 const router = express.Router();
 &nbsp;
@@ -259,7 +259,7 @@ router.post('/create', authenticateToken, <span class="fstat-no" title="function
     const { professionalId, date, startTime, durationHours } = <span class="cstat-no" title="statement not covered" >req.body;</span>
     const userId = <span class="cstat-no" title="statement not covered" >req.user.id;</span>
 &nbsp;
-    const booking = <span class="cstat-no" title="statement not covered" >await HourlyBookingService.createHourlyBooking(</span>
+    const booking = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].createHourlyBooking(</span>
       userId,
       professionalId,
       date,
@@ -287,7 +287,7 @@ router.get('/availability/:professionalId', <span class="fstat-no" title="functi
       });
     }
 &nbsp;
-    const isAvailable = <span class="cstat-no" title="statement not covered" >await HourlyBookingService.checkAvailability(</span>
+    const isAvailable = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].checkAvailability(</span>
       professionalId,
       date,
       startTime,
@@ -306,7 +306,7 @@ router.get('/rates/:professionalId', <span class="fstat-no" title="function not 
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { professionalId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 &nbsp;
-    const rates = <span class="cstat-no" title="statement not covered" >await HourlyBookingService.getProfessionalRates(professionalId);</span>
+    const rates = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](professionalId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, rates });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao obter tarifas:', error);</span>

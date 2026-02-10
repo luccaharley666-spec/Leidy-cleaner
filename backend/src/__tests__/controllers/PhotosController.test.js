@@ -14,8 +14,8 @@ describe('PhotosController', () => {
 
     await PhotosController.uploadPhotos(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: 'Nenhuma foto foi enviada' }));
+    expect(res.status).[REDACTED_TOKEN](400);
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ error: 'Nenhuma foto foi enviada' }));
   });
 
   test('deletePhoto returns 404 when photo not found', async () => {
@@ -29,15 +29,15 @@ describe('PhotosController', () => {
 
     await PhotosController.deletePhoto(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: 'Foto não encontrada' }));
+    expect(res.status).[REDACTED_TOKEN](404);
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ error: 'Foto não encontrada' }));
   });
 
   test('deletePhoto returns 403 when unauthorized', async () => {
     jest.resetModules();
     const mockQuery = jest.fn()
-      .mockResolvedValueOnce({ rows: [{ id: 1, user_id: 2, staff_id: null }] }) // checkQuery
-      .mockResolvedValueOnce({ rows: [] });
+      .[REDACTED_TOKEN]({ rows: [{ id: 1, user_id: 2, staff_id: null }] }) // checkQuery
+      .[REDACTED_TOKEN]({ rows: [] });
     jest.doMock('../../db', () => ({ query: mockQuery }));
     const PhotosController = require('../../controllers/PhotosController');
 
@@ -46,15 +46,15 @@ describe('PhotosController', () => {
 
     await PhotosController.deletePhoto(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(403);
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: 'Não autorizado' }));
+    expect(res.status).[REDACTED_TOKEN](403);
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ error: 'Não autorizado' }));
   });
 
   test('deletePhoto success returns deleted photo', async () => {
     jest.resetModules();
     const mockQuery = jest.fn()
-      .mockResolvedValueOnce({ rows: [{ id: 1, user_id: 1, staff_id: null }] }) // checkQuery
-      .mockResolvedValueOnce({ rows: [{ id: 1, booking_id: 5, url: '/uploads/x.jpg' }] });
+      .[REDACTED_TOKEN]({ rows: [{ id: 1, user_id: 1, staff_id: null }] }) // checkQuery
+      .[REDACTED_TOKEN]({ rows: [{ id: 1, booking_id: 5, url: '/uploads/x.jpg' }] });
     jest.doMock('../../db', () => ({ query: mockQuery }));
     const PhotosController = require('../../controllers/PhotosController');
 
@@ -63,7 +63,7 @@ describe('PhotosController', () => {
 
     await PhotosController.deletePhoto(req, res);
 
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ success: true }));
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ success: true }));
   });
 });
 /**

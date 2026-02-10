@@ -9,12 +9,12 @@
  * Pós-obra: x1.5 do total
  */
 
-function calculateBookingPrice(booking, service) {
+function [REDACTED_TOKEN](booking, service) {
   let price = 0;
 
   // 1. PREÇO BASE
   const firstHourPrice = service.base_price || 40.00;
-  const additionalHourPrice = service.additional_hour_price || 20.00;
+  const additionalHourPrice = service.[REDACTED_TOKEN] || 20.00;
   const durationHours = booking.duration_hours || 2;
 
   // Cálculo das horas
@@ -36,7 +36,7 @@ function calculateBookingPrice(booking, service) {
 
   // 3. TAXA FUNCIONÁRIA (+40%)
   if (booking.has_staff) {
-    const staffFeePercentage = service.staff_fee_percentage || 40;
+    const staffFeePercentage = service.[REDACTED_TOKEN] || 40;
     booking.staff_fee = parseFloat((price * (staffFeePercentage / 100)).toFixed(2));
     price += booking.staff_fee;
   } else {
@@ -45,11 +45,11 @@ function calculateBookingPrice(booking, service) {
 
   // 4. PÓS-OBRA (x1.5)
   if (booking.is_post_work) {
-    const multiplier = service.post_work_multiplier || 1.50;
-    booking.post_work_adjustment = parseFloat((price * (multiplier - 1)).toFixed(2));
-    price += booking.post_work_adjustment;
+    const multiplier = service.[REDACTED_TOKEN] || 1.50;
+    booking.[REDACTED_TOKEN] = parseFloat((price * (multiplier - 1)).toFixed(2));
+    price += booking.[REDACTED_TOKEN];
   } else {
-    booking.post_work_adjustment = 0;
+    booking.[REDACTED_TOKEN] = 0;
   }
 
   // 5. APLICAR BÔNUS DE FIDELIDADE (se houver)
@@ -63,14 +63,14 @@ function calculateBookingPrice(booking, service) {
     basePrice: booking.base_price,
     extraQuarter: booking.extra_quarter_hours,
     staffFee: booking.staff_fee,
-    postWorkAdjustment: booking.post_work_adjustment,
+    postWorkAdjustment: booking.[REDACTED_TOKEN],
     finalPrice: booking.final_price,
     breakdown: {
       '1ª hora': firstHourPrice,
       'Horas adicionais': (durationHours - 1) * additionalHourPrice,
       'Quarto do trabalho': booking.extra_quarter_hours,
       'Taxa funcionária (+40%)': booking.staff_fee,
-      'Pós-obra (+50%)': booking.post_work_adjustment,
+      'Pós-obra (+50%)': booking.[REDACTED_TOKEN],
       'Total': booking.final_price
     }
   };
@@ -80,7 +80,7 @@ function calculateBookingPrice(booking, service) {
  * Calcula bônus de fidelidade
  * 10 faxinas 5⭐ seguidas = R$ 100 de bônus
  */
-function calculateLoyaltyBonus(user) {
+function [REDACTED_TOKEN](user) {
   const bonus = {
     fiveStarStreak: user.five_star_streak || 0,
     bonusAmount: 0,
@@ -106,8 +106,8 @@ function calculateLoyaltyBonus(user) {
 /**
  * Gera resumo de preço para o usuário
  */
-function generatePriceSummary(booking, service) {
-  const calc = calculateBookingPrice(booking, service);
+function [REDACTED_TOKEN](booking, service) {
+  const calc = [REDACTED_TOKEN](booking, service);
 
   const summary = {
     serviceTitle: service.name,
@@ -153,7 +153,7 @@ function generatePriceSummary(booking, service) {
 }
 
 module.exports = {
-  calculateBookingPrice,
-  calculateLoyaltyBonus,
-  generatePriceSummary
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN]
 };

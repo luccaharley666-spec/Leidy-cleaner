@@ -5,7 +5,7 @@
 
 const logger = require('../utils/logger');
 
-class PushNotificationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.notifications = new Map();
     this.subscriptions = new Map();
@@ -15,7 +15,7 @@ class PushNotificationService {
   /**
    * Registrar subscription push
    */
-  async registerSubscription(userId, subscription) {
+  async [REDACTED_TOKEN](userId, subscription) {
     try {
       const subscriptionId = `sub_${Date.now()}`;
       const sub = {
@@ -48,7 +48,7 @@ class PushNotificationService {
   /**
    * Enviar notificação push
    */
-  async sendPushNotification(userId, payload) {
+  async [REDACTED_TOKEN](userId, payload) {
     try {
       const {
         title,
@@ -116,10 +116,10 @@ class PushNotificationService {
   /**
    * Enviar notificação para múltiplos usuários
    */
-  async broadcastNotification(userIds, payload) {
+  async [REDACTED_TOKEN](userIds, payload) {
     const results = [];
     for (const userId of userIds) {
-      const result = await this.sendPushNotification(userId, payload);
+      const result = await this.[REDACTED_TOKEN](userId, payload);
       results.push(result);
     }
     return {
@@ -133,7 +133,7 @@ class PushNotificationService {
    * Notificar sobre novo booking
    */
   async notifyNewBooking(userId, bookingData) {
-    return this.sendPushNotification(userId, {
+    return this.[REDACTED_TOKEN](userId, {
       title: '🎉 Novo Agendamento!',
       body: `${bookingData.serviceName} confirmado para ${bookingData.date}`,
       icon: 'https://api.example.com/icons/booking.png',
@@ -146,7 +146,7 @@ class PushNotificationService {
    * Notificar sobre preço reduzido
    */
   async notifyPriceDrop(userId, serviceData) {
-    return this.sendPushNotification(userId, {
+    return this.[REDACTED_TOKEN](userId, {
       title: '💰 Preço Reduzido!',
       body: `${serviceData.serviceName} agora por R$ ${serviceData.newPrice}`,
       icon: 'https://api.example.com/icons/discount.png',
@@ -157,9 +157,9 @@ class PushNotificationService {
   /**
    * Notificar próxima data agendada
    */
-  async notifyUpcomingBooking(userId, bookingData) {
+  async [REDACTED_TOKEN](userId, bookingData) {
     const hoursUntil = Math.floor((new Date(bookingData.date) - new Date()) / 3600000);
-    return this.sendPushNotification(userId, {
+    return this.[REDACTED_TOKEN](userId, {
       title: '⏰ Lembrete de Agendamento',
       body: `Seu compromisso é em ${hoursUntil} horas`,
       icon: 'https://api.example.com/icons/reminder.png',
@@ -171,7 +171,7 @@ class PushNotificationService {
    * Notificar review do cliente
    */
   async notifyNewReview(userId, reviewData) {
-    return this.sendPushNotification(userId, {
+    return this.[REDACTED_TOKEN](userId, {
       title: '⭐ Nova Avaliação!',
       body: `${reviewData.authorName} deixou uma ${reviewData.rating}⭐ avaliação`,
       icon: 'https://api.example.com/icons/review.png',
@@ -194,7 +194,7 @@ class PushNotificationService {
   /**
    * Obter preferências de notificação
    */
-  async getNotificationPreferences(userId) {
+  async [REDACTED_TOKEN](userId) {
     return {
       userId,
       preferences: {
@@ -215,7 +215,7 @@ class PushNotificationService {
   /**
    * Atualizar preferências
    */
-  async updateNotificationPreferences(userId, preferences) {
+  async [REDACTED_TOKEN](userId, preferences) {
     logger.log({
       level: 'info',
       message: 'Notification preferences updated',
@@ -228,7 +228,7 @@ class PushNotificationService {
   /**
    * Histórico de notificações
    */
-  async getNotificationHistory(userId, limit = 50) {
+  async [REDACTED_TOKEN](userId, limit = 50) {
     const userNotifications = Array.from(this.notifications.values())
       .filter(n => n.userId === userId)
       .sort((a, b) => b.sentAt - a.sentAt)
@@ -266,4 +266,4 @@ class PushNotificationService {
   }
 }
 
-module.exports = new PushNotificationService();
+module.exports = new [REDACTED_TOKEN]();

@@ -8,8 +8,8 @@ Para que o pipeline CI/CD funcione corretamente, você precisa adicionar os segu
 ```
 VERCEL_TOKEN=seu_token_vercel
 VERCEL_ORG_ID=seu_org_id_vercel
-VERCEL_PROJECT_ID=seu_project_id_staging
-VERCEL_PROJECT_ID_STAGING=seu_project_id_staging
+VERCEL_PROJECT_ID=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 ```
 
 **Como obter:**
@@ -21,7 +21,7 @@ VERCEL_PROJECT_ID_STAGING=seu_project_id_staging
 ```
 RAILWAY_TOKEN=seu_token_railway
 RAILWAY_PROJECT_ID=seu_project_id
-RAILWAY_PROJECT_ID_STAGING=seu_project_id_staging
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 ```
 
 **Como obter:**

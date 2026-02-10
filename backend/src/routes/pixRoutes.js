@@ -5,7 +5,7 @@
 
 const express = require('express');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
-const PixPaymentController = require('../controllers/PixPaymentController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 
 /**
  * Criar rotas PIX
@@ -14,7 +14,7 @@ const PixPaymentController = require('../controllers/PixPaymentController');
  */
 function createPixRoutes(db) {
   const router = express.Router();
-  const pixController = new PixPaymentController(db);
+  const pixController = new [REDACTED_TOKEN](db);
 
   /**
    * @route POST /api/pix/create

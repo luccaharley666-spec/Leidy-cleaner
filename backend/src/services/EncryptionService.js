@@ -107,7 +107,7 @@ class EncryptionService {
 /**
  * Mock para testes (sem criptografia real)
  */
-class EncryptionServiceMock extends EncryptionService {
+class [REDACTED_TOKEN] extends EncryptionService {
   encrypt(plaintext) {
     return plaintext; // Retorna plaintext em testes
   }
@@ -174,7 +174,7 @@ function decryptAfterRead(model, data) {
 
 module.exports = {
   EncryptionService,
-  EncryptionServiceMock,
+  [REDACTED_TOKEN],
   ENCRYPTED_FIELDS,
   encryptBeforeSave,
   decryptAfterRead

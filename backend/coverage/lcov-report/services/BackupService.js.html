@@ -671,7 +671,7 @@ class BackupService {
   /**
    * Criar backup incremental
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync createIncrementalBackup() {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN]() {
     const backupId = <span class="cstat-no" title="statement not covered" >`backup_inc_${Date.now()}`;</span>
     const backup = <span class="cstat-no" title="statement not covered" >{</span>
       id: backupId,
@@ -691,7 +691,7 @@ class BackupService {
   /**
    * Agendar backups automáticos
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync scheduleAutomaticBackups(config) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](config) {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       enabled: true,
       schedule: config.schedule || 'daily',
@@ -705,7 +705,7 @@ class BackupService {
   /**
    * Restaurar de ponto específico no tempo (PITR)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync restoreFromPointInTime(restoreDate) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](restoreDate) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const restoreId = <span class="cstat-no" title="statement not covered" >`restore_${Date.now()}`;</span>
       const restore = <span class="cstat-no" title="statement not covered" >{</span>
@@ -775,7 +775,7 @@ class BackupService {
   /**
    * Configurar replicação geográfica
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync configureGeoReplication(config) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](config) {
     const replication = <span class="cstat-no" title="statement not covered" >{</span>
       id: `repl_${Date.now()}`,
       primaryRegion: config.primaryRegion || 'sp-east',
@@ -800,7 +800,7 @@ class BackupService {
   /**
    * Obter versões de um arquivo
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getFileVersionHistory(tableName) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](tableName) {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       table: tableName,
       versions: [
@@ -862,13 +862,13 @@ class BackupService {
   /**
    ✅ NOVO: Validar integridade de banco de dados
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync validateDatabaseIntegrity() {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       timestamp: new Date().toISOString(),
       status: 'healthy',
       checks: {
         tableIntegrity: 'passed',
-        foreignKeyConstraints: 'passed',
+        [REDACTED_TOKEN]: 'passed',
         indexConsistency: 'passed',
         dataConsistency: 'passed'
       },

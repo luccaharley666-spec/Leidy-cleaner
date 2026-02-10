@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GeoMap.css';
 
-const GeoMap = ({ userId, token, onProfessionalSelect }) => {
+const GeoMap = ({ userId, token, [REDACTED_TOKEN] }) => {
   const [userLocation, setUserLocation] = useState(null);
-  const [nearbyProfessionals, setNearbyProfessionals] = useState([]);
+  const [nearbyProfessionals, [REDACTED_TOKEN]] = useState([]);
   const [radius, setRadius] = useState(5);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -57,7 +57,7 @@ const GeoMap = ({ userId, token, onProfessionalSelect }) => {
       const { latitude, longitude } = geocodeRes.data.coordinates;
       setUserLocation({ latitude, longitude });
       setSelectedAddress(address);
-      await searchNearbyProfessionals(latitude, longitude);
+      await [REDACTED_TOKEN](latitude, longitude);
     } catch (error) {
       setMessage('❌ Erro ao geocodificar endereço');
     } finally {
@@ -65,7 +65,7 @@ const GeoMap = ({ userId, token, onProfessionalSelect }) => {
     }
   };
 
-  const searchNearbyProfessionals = async (lat, lng) => {
+  const [REDACTED_TOKEN] = async (lat, lng) => {
     try {
       setLoading(true);
       const res = await axios.get(
@@ -73,7 +73,7 @@ const GeoMap = ({ userId, token, onProfessionalSelect }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      setNearbyProfessionals(res.data.professionals || []);
+      [REDACTED_TOKEN](res.data.professionals || []);
       if (res.data.professionals?.length === 0) {
         setMessage(`⚠️ Nenhum profissional encontrado em ${radius}km`);
       }
@@ -89,7 +89,7 @@ const GeoMap = ({ userId, token, onProfessionalSelect }) => {
       setMessage('❌ Obtenha sua localização primeiro');
       return;
     }
-    searchNearbyProfessionals(userLocation.latitude, userLocation.longitude);
+    [REDACTED_TOKEN](userLocation.latitude, userLocation.longitude);
   };
 
   return (
@@ -173,12 +173,12 @@ const GeoMap = ({ userId, token, onProfessionalSelect }) => {
                 </p>
 
                 {professional.address && (
-                  <p className="professional-address">{professional.address}</p>
+                  <p className="[REDACTED_TOKEN]">{professional.address}</p>
                 )}
 
                 <button
-                  className="select-professional-btn"
-                  onClick={() => onProfessionalSelect?.(professional)}
+                  className="[REDACTED_TOKEN]"
+                  onClick={() => [REDACTED_TOKEN]?.(professional)}
                 >
                   Selecionar
                 </button>

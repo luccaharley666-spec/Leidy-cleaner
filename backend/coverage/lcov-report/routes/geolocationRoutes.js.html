@@ -269,7 +269,7 @@ router.get('/nearby', authenticateToken, <span class="fstat-no" title="function 
     }
 &nbsp;
     const radius = <span class="cstat-no" title="statement not covered" >radiusKm ? parseFloat(radiusKm) : 5;</span>
-    const professionals = <span class="cstat-no" title="statement not covered" >await GeoLocationService.getNearbyProfessionals(</span>
+    const professionals = <span class="cstat-no" title="statement not covered" >await GeoLocationService.[REDACTED_TOKEN](</span>
       parseFloat(latitude), 
       parseFloat(longitude), 
       radius

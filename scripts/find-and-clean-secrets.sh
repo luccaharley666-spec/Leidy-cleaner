@@ -8,8 +8,8 @@ PATTERNS=(
   "pk_live_[A-Za-z0-9_\-]+"
   "whsec_[A-Za-z0-9_\-]+"
   "SENTRY_DSN=|sentry.io/"
-  "AWS_SECRET_ACCESS_KEY|AWS_ACCESS_KEY_ID"
-  "PIX_WEBHOOK_SECRET"
+  "[REDACTED_TOKEN]|[REDACTED_TOKEN]"
+  "[REDACTED_TOKEN]"
 )
 
 echo "Scanning repository for potential secrets..."
@@ -25,11 +25,15 @@ if [[ "${1:-}" == "--mask" ]]; then
   echo "Masking found secrets (creating backups *.bak)..."
   for p in "${PATTERNS[@]}"; do
     grep -RIl --exclude-dir={node_modules,.git} -E "$p" "$REPO_ROOT" | while read -r file; do
-      cp "$file" "$file.bak"
-      # replace long tokens with [REDACTED_TOKEN]
-      sed -E -i "s/${p}/[REDACTED_TOKEN]/g" "$file" || true
-      echo "Patched: $file"
-    done
+        cp "$file" "$file.bak"
+        # safer masking: replace exact matches found by grep to avoid sed regex delimiter issues
+        grep -o -E "$p" "$file" | sort -u | while read -r match; do
+          # escape sed delimiters and ampersands
+          esc=$(printf '%s' "$match" | sed 's/[\/&|]/\\&/g') || esc="$match"
+          sed -i "s|$esc|[REDACTED_TOKEN]|g" "$file" || true
+        done
+        echo "Patched: $file"
+      done
   done
   echo "Masking complete. Review .bak files as needed."
 fi

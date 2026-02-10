@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/HourPackagingService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> HourPackagingService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -507,7 +507,7 @@
 &nbsp;
 const { getDb } = require('../db/sqlite');
 &nbsp;
-class HourPackagingService {
+class [REDACTED_TOKEN] {
   /**
    * Gerar lista de pacotes disponíveis
    * 40h (primeira), depois +20h cada
@@ -647,7 +647,7 @@ class HourPackagingService {
         usedHours: credit.used_hours,
       };
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      console.error('[HourPackagingService] Erro ao buscar crédito:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >      console.error('[[REDACTED_TOKEN]] Erro ao buscar crédito:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >      return { hasCredit: false, availableHours: 0 };</span>
     }
   }
@@ -709,14 +709,14 @@ class HourPackagingService {
    * Ex: se pede 50h, sugere pacote de 60h
    */
 <span class="fstat-no" title="function not covered" >  su</span>ggestPackage(requestedHours) {
-    const packages = <span class="cstat-no" title="statement not covered" >this.getAvailablePackages();</span>
+    const packages = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN]();</span>
     // Encontrar o primeiro pacote que atende às horas solicitadas
     const suggested = <span class="cstat-no" title="statement not covered" >packages.find(<span class="fstat-no" title="function not covered" >(p</span>kg) =&gt; <span class="cstat-no" title="statement not covered" >pkg.hours &gt;= requestedHours)</span>;</span>
 <span class="cstat-no" title="statement not covered" >    return suggested || packages[packages.length - 1]; </span>// fallback para maior
   }
 }
 &nbsp;
-module.exports = new HourPackagingService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

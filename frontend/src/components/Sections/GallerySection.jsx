@@ -11,7 +11,7 @@ export default function GallerySection() {
       title: 'Limpeza Residencial',
       description: 'Antes & Depois',
       icon: '🏠',
-      image: 'https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 2,
@@ -19,7 +19,7 @@ export default function GallerySection() {
       title: 'Limpeza Comercial',
       description: 'Escritórios impecáveis',
       icon: '🏢',
-      image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 3,
@@ -27,7 +27,7 @@ export default function GallerySection() {
       title: 'Limpeza Pós-Obra',
       description: 'Espaço transformado',
       icon: '🏗️',
-      image: 'https://images.unsplash.com/photo-1552683878-69429d06b15e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 4,
@@ -35,7 +35,7 @@ export default function GallerySection() {
       title: 'Quartos Organizados',
       description: 'Organização perfeita',
       icon: '🛏️',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 5,
@@ -43,7 +43,7 @@ export default function GallerySection() {
       title: 'Limpeza de Vidros',
       description: 'Brilho cristalino',
       icon: '🪟',
-      image: 'https://images.unsplash.com/photo-1581092918067-2d4e5f4dd4fd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 6,
@@ -51,7 +51,7 @@ export default function GallerySection() {
       title: 'Limpeza Profunda',
       description: 'Cada detalhe importa',
       icon: '✨',
-      image: 'https://images.unsplash.com/photo-1584622650111-993a426fbf0a?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 7,
@@ -59,7 +59,7 @@ export default function GallerySection() {
       title: 'Cozinhas Limpas',
       description: 'Pronta para cozinhar',
       icon: '🍳',
-      image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     },
     {
       id: 8,
@@ -67,7 +67,7 @@ export default function GallerySection() {
       title: 'Ambientes Corporativos',
       description: 'Profissionalismo em cada canto',
       icon: '💼',
-      image: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
+      image: 'https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=60'
     }
   ]
 

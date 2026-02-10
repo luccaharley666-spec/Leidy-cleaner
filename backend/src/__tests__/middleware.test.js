@@ -292,7 +292,7 @@ describe('Logging Middleware', () => {
   test('should track response time', () => {
     const startTime = Date.now();
     const elapsed = Date.now() - startTime;
-    expect(elapsed).toBeGreaterThanOrEqual(0);
+    expect(elapsed).[REDACTED_TOKEN](0);
   });
 
   test('should log response status', () => {

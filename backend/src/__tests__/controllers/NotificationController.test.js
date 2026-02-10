@@ -1,5 +1,5 @@
 /**
- * NotificationController Tests
+ * [REDACTED_TOKEN] Tests
  * Testa envio e gerenciamento de notificações
  */
 
@@ -22,10 +22,10 @@ jest.mock('../../utils/logger', () => ({
   debug: jest.fn()
 }));
 
-const NotificationController = require('../../controllers/NotificationController');
+const [REDACTED_TOKEN] = require('../../controllers/[REDACTED_TOKEN]');
 const db = require('../../db');
 
-describe('NotificationController', () => {
+describe('[REDACTED_TOKEN]', () => {
   let req, res;
 
   beforeEach(() => {
@@ -44,25 +44,25 @@ describe('NotificationController', () => {
 
   describe('Controller Structure', () => {
     test('should have sendNotification method', () => {
-      expect(typeof NotificationController.sendNotification === 'function' || NotificationController.sendNotification === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].sendNotification === 'function' || [REDACTED_TOKEN].sendNotification === undefined).toBe(true);
     });
 
     test('should have getNotifications method', () => {
-      expect(typeof NotificationController.getNotifications === 'function' || NotificationController.getNotifications === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].getNotifications === 'function' || [REDACTED_TOKEN].getNotifications === undefined).toBe(true);
     });
 
     test('should have markAsRead method', () => {
-      expect(typeof NotificationController.markAsRead === 'function' || NotificationController.markAsRead === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].markAsRead === 'function' || [REDACTED_TOKEN].markAsRead === undefined).toBe(true);
     });
 
     test('should have deleteNotification method', () => {
-      expect(typeof NotificationController.deleteNotification === 'function' || NotificationController.deleteNotification === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].deleteNotification === 'function' || [REDACTED_TOKEN].deleteNotification === undefined).toBe(true);
     });
   });
 
   describe('Send Notification', () => {
     test('should send notification', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Test',
@@ -70,24 +70,24 @@ describe('NotificationController', () => {
           type: 'booking'
         };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should validate required fields', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = { title: 'Test' };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status).toHaveBeenCalled();
       }
     });
 
     test('should support multiple notification types', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         const types = ['booking', 'payment', 'reminder', 'promotion'];
         
         for (const type of types) {
@@ -98,7 +98,7 @@ describe('NotificationController', () => {
             type
           };
           
-          await NotificationController.sendNotification(req, res);
+          await [REDACTED_TOKEN].sendNotification(req, res);
           
           expect(res.json || res.status).toBeDefined();
         }
@@ -108,38 +108,38 @@ describe('NotificationController', () => {
 
   describe('Get Notifications', () => {
     test('should get user notifications', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
         req.params.userId = '1';
         
-        await NotificationController.getNotifications(req, res);
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(db.all).toHaveBeenCalled();
       }
     });
 
     test('should filter unread notifications', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
         req.query = { unreadOnly: 'true' };
         
-        await NotificationController.getNotifications(req, res);
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should support pagination', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
         req.query = { page: '1', limit: '10' };
         
-        await NotificationController.getNotifications(req, res);
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should return notification list', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
-        await NotificationController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         const callArgs = res.json.mock.calls[0]?.[0];
         expect(Array.isArray(callArgs) || typeof callArgs === 'object').toBe(true);
@@ -149,31 +149,31 @@ describe('NotificationController', () => {
 
   describe('Mark as Read', () => {
     test('should mark notification as read', async () => {
-      if (typeof NotificationController.markAsRead === 'function') {
+      if (typeof [REDACTED_TOKEN].markAsRead === 'function') {
         req.params.notificationId = '1';
         
-        await NotificationController.markAsRead(req, res);
+        await [REDACTED_TOKEN].markAsRead(req, res);
         
         expect(db.run).toHaveBeenCalled();
       }
     });
 
     test('should mark all notifications as read', async () => {
-      if (typeof NotificationController.markAsRead === 'function') {
+      if (typeof [REDACTED_TOKEN].markAsRead === 'function') {
         req.body = { markAllAsRead: true };
         
-        await NotificationController.markAsRead(req, res);
+        await [REDACTED_TOKEN].markAsRead(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should require notification ID or user ID', async () => {
-      if (typeof NotificationController.markAsRead === 'function') {
+      if (typeof [REDACTED_TOKEN].markAsRead === 'function') {
         req.body = {};
         req.params = {};
         
-        await NotificationController.markAsRead(req, res);
+        await [REDACTED_TOKEN].markAsRead(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }
@@ -182,34 +182,34 @@ describe('NotificationController', () => {
 
   describe('Delete Notification', () => {
     test('should delete notification', async () => {
-      if (typeof NotificationController.deleteNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].deleteNotification === 'function') {
         req.params.notificationId = '1';
         
-        await NotificationController.deleteNotification(req, res);
+        await [REDACTED_TOKEN].deleteNotification(req, res);
         
         expect(db.run).toHaveBeenCalled();
       }
     });
 
     test('should delete all notifications', async () => {
-      if (typeof NotificationController.deleteNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].deleteNotification === 'function') {
         req.body = { deleteAll: true };
         
-        await NotificationController.deleteNotification(req, res);
+        await [REDACTED_TOKEN].deleteNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should handle missing notification', async () => {
-      if (typeof NotificationController.deleteNotification === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+      if (typeof [REDACTED_TOKEN].deleteNotification === 'function') {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, null);
         });
         
         req.params.notificationId = 'nonexistent';
         
-        await NotificationController.deleteNotification(req, res);
+        await [REDACTED_TOKEN].deleteNotification(req, res);
         
         expect(res.status).toHaveBeenCalled();
       }
@@ -218,7 +218,7 @@ describe('NotificationController', () => {
 
   describe('Notification Types', () => {
     test('should support booking notifications', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Agendamento',
@@ -227,14 +227,14 @@ describe('NotificationController', () => {
           relatedId: 'booking_123'
         };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should support payment notifications', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Pagamento',
@@ -243,14 +243,14 @@ describe('NotificationController', () => {
           relatedId: 'payment_123'
         };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should support reminder notifications', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Lembrete',
@@ -259,14 +259,14 @@ describe('NotificationController', () => {
           relatedId: 'booking_123'
         };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should support promotion notifications', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Promoção',
@@ -274,7 +274,7 @@ describe('NotificationController', () => {
           type: 'promotion'
         };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -283,7 +283,7 @@ describe('NotificationController', () => {
 
   describe('Notification Preferences', () => {
     test('should respect notification preferences', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Test',
@@ -291,17 +291,17 @@ describe('NotificationController', () => {
           type: 'booking'
         };
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should support do-not-disturb mode', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
         req.query = { respeitarDND: 'true' };
         
-        await NotificationController.getNotifications(req, res);
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -310,36 +310,36 @@ describe('NotificationController', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run.mockImplementationOnce((sql, params, callback) => {
+      db.run.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Database error'));
       });
       
-      if (typeof NotificationController.markAsRead === 'function') {
+      if (typeof [REDACTED_TOKEN].markAsRead === 'function') {
         req.params.notificationId = '1';
         
-        await NotificationController.markAsRead(req, res);
+        await [REDACTED_TOKEN].markAsRead(req, res);
         
         expect(res.status).toBeDefined();
       }
     });
 
     test('should handle validation errors', async () => {
-      if (typeof NotificationController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = null;
         
-        await NotificationController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status).toBeDefined();
       }
     });
 
     test('should not expose sensitive data', async () => {
-      db.all.mockImplementationOnce((sql, params, callback) => {
+      db.all.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Connection string exposed'));
       });
       
-      if (typeof NotificationController.getNotifications === 'function') {
-        await NotificationController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.status).toBeDefined();
       }
@@ -348,16 +348,16 @@ describe('NotificationController', () => {
 
   describe('Response Format', () => {
     test('should return JSON responses', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
-        await NotificationController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json).toHaveBeenCalled();
       }
     });
 
     test('should include unread count', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
-        await NotificationController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         const callArgs = res.json.mock.calls[0]?.[0];
         expect(callArgs).toBeDefined();
@@ -365,8 +365,8 @@ describe('NotificationController', () => {
     });
 
     test('should set appropriate status codes', async () => {
-      if (typeof NotificationController.getNotifications === 'function') {
-        await NotificationController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json).toHaveBeenCalled();
       }

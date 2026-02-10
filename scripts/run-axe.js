@@ -14,7 +14,7 @@ async function run() {
   await page.addScriptTag({ content: axe.source });
 
   const results = await page.evaluate(async () => {
-    // eslint-disable-next-line no-undef
+    // [REDACTED_TOKEN] no-undef
     return await axe.run(document, { runOnly: { type: 'tag', values: ['wcag2aa'] } });
   });
 

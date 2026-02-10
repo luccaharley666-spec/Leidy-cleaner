@@ -598,7 +598,7 @@
 const Sentry = require('@sentry/node');
 let newrelic = null;
 try {
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NEW_RELIC_ENABLED === 'true' || process.env.NEW_RELIC_LICENSE_KEY) {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NEW_RELIC_ENABLED === 'true' || process.env.[REDACTED_TOKEN]) {
 <span class="cstat-no" title="statement not covered" >    newrelic = require('newrelic');</span>
   }
 } catch (error) {

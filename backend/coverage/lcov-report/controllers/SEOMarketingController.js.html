@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/SEOMarketingController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> SEOMarketingController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -324,7 +324,7 @@ router.post('/meta-tags', <span class="fstat-no" title="function not covered" >(
 router.post('/schema', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { entityType, entityData } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const schema = <span class="cstat-no" title="statement not covered" >SEOMarketingService.generateSchemaMarkup(entityType, entityData);</span>
+    const schema = <span class="cstat-no" title="statement not covered" >SEOMarketingService.[REDACTED_TOKEN](entityType, entityData);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ '@context': 'schema.org', schema });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -350,7 +350,7 @@ router.get('/sitemap', <span class="fstat-no" title="function not covered" >(r</
 router.post('/campaigns', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { name, type, targetAudience, budget, startDate, endDate, content } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const campaign = <span class="cstat-no" title="statement not covered" >await SEOMarketingService.createMarketingCampaign({</span>
+    const campaign = <span class="cstat-no" title="statement not covered" >await SEOMarketingService.[REDACTED_TOKEN]({</span>
       name,
       type,
       targetAudience,

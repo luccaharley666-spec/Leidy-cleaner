@@ -16,10 +16,10 @@ const RecurringBookings = ({ token }) => {
   });
 
   useEffect(() => {
-    fetchRecurringBookings();
+    [REDACTED_TOKEN]();
   }, []);
 
-  const fetchRecurringBookings = async () => {
+  const [REDACTED_TOKEN] = async () => {
     try {
       setLoading(true);
       const res = await axios.get('/api/recurring-bookings/my-recurring', {
@@ -33,14 +33,14 @@ const RecurringBookings = ({ token }) => {
     }
   };
 
-  const handleCreateRecurring = async (e) => {
+  const [REDACTED_TOKEN] = async (e) => {
     e.preventDefault();
     try {
       await axios.post('/api/recurring-bookings/create', formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setShowForm(false);
-      fetchRecurringBookings();
+      [REDACTED_TOKEN]();
       alert('✅ Agendamento recorrente criado!');
     } catch (error) {
       alert('❌ Erro ao criar agendamento');
@@ -53,7 +53,7 @@ const RecurringBookings = ({ token }) => {
       await axios.post(endpoint, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      fetchRecurringBookings();
+      [REDACTED_TOKEN]();
       alert('✅ Status atualizado!');
     } catch (error) {
       alert('❌ Erro ao atualizar');
@@ -77,7 +77,7 @@ const RecurringBookings = ({ token }) => {
       </div>
 
       {showForm && (
-        <form onSubmit={handleCreateRecurring} className="recurring-form">
+        <form onSubmit={[REDACTED_TOKEN]} className="recurring-form">
           <input
             type="text"
             placeholder="ID do Profissional"

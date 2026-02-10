@@ -11,7 +11,7 @@ export function ThemeProvider({ children }) {
   // Detectar preferência de tema do sistema
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+      const mediaQuery = window.matchMedia('([REDACTED_TOKEN]: dark)');
       const systemIsDark = mediaQuery.matches;
       setSystemTheme(systemIsDark ? 'dark' : 'light');
 

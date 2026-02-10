@@ -5,7 +5,7 @@
 
 const logger = require('../utils/logger');
 
-class SmartNotificationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.notifications = new Map();
     this.userPreferences = new Map();
@@ -16,11 +16,11 @@ class SmartNotificationService {
   /**
    * Enviar notificação inteligente (melhor canal + melhor timing)
    */
-  async sendSmartNotification(userId, message) {
+  async [REDACTED_TOKEN](userId, message) {
     try {
       const preferences = this.getUserPreferences(userId);
-      const optimalChannel = this.determineOptimalChannel(userId, preferences);
-      const optimalTime = this.calculateOptimalSendTime(userId);
+      const optimalChannel = this.[REDACTED_TOKEN](userId, preferences);
+      const optimalTime = this.[REDACTED_TOKEN](userId);
 
       const notificationId = `notif_smart_${Date.now()}`;
       const notification = {
@@ -60,7 +60,7 @@ class SmartNotificationService {
   /**
    * Determinar melhor canal para o usuário
    */
-  determineOptimalChannel(userId, preferences) {
+  [REDACTED_TOKEN](userId, preferences) {
     const weights = {
       push: 0.4,
       email: 0.3,
@@ -80,7 +80,7 @@ class SmartNotificationService {
   /**
    * Calcular melhor hora para enviar notificação
    */
-  calculateOptimalSendTime(userId) {
+  [REDACTED_TOKEN](userId) {
     // Análise de histórico: quando o usuário mais interage
     const userHistory = this.notificationLog.filter(n => n.userId === userId);
 
@@ -232,7 +232,7 @@ class SmartNotificationService {
   /**
    ✅ NOVO: Registrar interação de notificação
    */
-  async recordNotificationInteraction(notificationId, action = 'opened') {
+  async [REDACTED_TOKEN](notificationId, action = 'opened') {
     const notification = this.notifications.get(notificationId);
     if (!notification) return;
 
@@ -263,7 +263,7 @@ class SmartNotificationService {
   /**
    * Obter métricas de engajamento
    */
-  async getEngagementMetrics(timeWindow = 7) {
+  async [REDACTED_TOKEN](timeWindow = 7) {
     const recentNotifs = this.notificationLog.filter(n =>
       new Date() - new Date(n.timestamp) < timeWindow * 24 * 60 * 60 * 1000
     );
@@ -337,4 +337,4 @@ class SmartNotificationService {
   }
 }
 
-module.exports = new SmartNotificationService();
+module.exports = new [REDACTED_TOKEN]();

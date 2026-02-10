@@ -426,7 +426,7 @@ class TwoFactorService {
   /**
    ✅ NOVO: Validar e consumir backup code
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic verifyAndConsumeBackupCode(hashedCodes, providedCode) {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](hashedCodes, providedCode) {
     const hashedProvided = <span class="cstat-no" title="statement not covered" >this.hashCode(providedCode.toUpperCase());</span>
     const index = <span class="cstat-no" title="statement not covered" >hashedCodes.findIndex(<span class="fstat-no" title="function not covered" >h </span>=&gt; <span class="cstat-no" title="statement not covered" >h === hashedProvided)</span>;</span>
     
@@ -441,7 +441,7 @@ class TwoFactorService {
   /**
    ✅ NOVO: Formatar backup codes para display
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic formatBackupCodesForDisplay(codes) {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](codes) {
 <span class="cstat-no" title="statement not covered" >    return codes.map(<span class="fstat-no" title="function not covered" >co</span>de =&gt; (<span class="cstat-no" title="statement not covered" >{</span></span>
       code: code.slice(0, 4) + ' ' + code.slice(4),
       used: false

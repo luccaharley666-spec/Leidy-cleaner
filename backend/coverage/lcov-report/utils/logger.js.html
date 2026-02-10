@@ -457,10 +457,10 @@ const jsonFormat = combine(
 // ✅ NOVO: Tentar usar daily-rotate-file se disponível
 let rotateFile;
 try {
-  rotateFile = require('winston-daily-rotate-file');
+  rotateFile = require('[REDACTED_TOKEN]');
 } catch (e) {
 <span class="cstat-no" title="statement not covered" >  rotateFile = null;</span>
-<span class="cstat-no" title="statement not covered" >  console.warn('⚠️ winston-daily-rotate-file não instalado, usando arquivo simples');</span>
+<span class="cstat-no" title="statement not covered" >  console.warn('⚠️ [REDACTED_TOKEN] não instalado, usando arquivo simples');</span>
 }
 &nbsp;
 // ✅ NOVO: Configurar transports

@@ -495,7 +495,7 @@
  */
 &nbsp;
 const router = require('express').Router();
-const HourPackagingService = require('../services/HourPackagingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const PricingService = require('../services/PricingService');
 const { authenticateToken } = require('../middleware/auth');
 &nbsp;
@@ -505,14 +505,14 @@ const { authenticateToken } = require('../middleware/auth');
  */
 router.get('/hour-packages', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const packages = <span class="cstat-no" title="statement not covered" >HourPackagingService.getAvailablePackages();</span>
+    const packages = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.json({</span>
       success: true,
       packages: packages,
       message: 'Packages retrieved successfully',
     });
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('[HourPricingController] Error fetching packages:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('[[REDACTED_TOKEN]] Error fetching packages:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       success: false,
       error: error.message,
@@ -537,7 +537,7 @@ router.post('/calculate-hours', <span class="fstat-no" title="function not cover
     }
 &nbsp;
     const userId = <span class="cstat-no" title="statement not covered" >req.user?.id;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await HourPackagingService.calculateHourPrice({</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].calculateHourPrice({</span>
       hours: parseFloat(hours),
       characteristics: characteristics,
       userId: userId,
@@ -552,7 +552,7 @@ router.post('/calculate-hours', <span class="fstat-no" title="function not cover
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('[HourPricingController] Error calculating price:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('[[REDACTED_TOKEN]] Error calculating price:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       success: false,
       error: error.message,
@@ -577,7 +577,7 @@ router.post('/purchase-package', authenticateToken, <span class="fstat-no" title
       });
     }
 &nbsp;
-    const packages = <span class="cstat-no" title="statement not covered" >HourPackagingService.getAvailablePackages();</span>
+    const packages = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN]();</span>
     const selectedPackage = <span class="cstat-no" title="statement not covered" >packages.find(<span class="fstat-no" title="function not covered" >(p</span>) =&gt; <span class="cstat-no" title="statement not covered" >p.hours === packageHours)</span>;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!selectedPackage) {</span>
@@ -589,7 +589,7 @@ router.post('/purchase-package', authenticateToken, <span class="fstat-no" title
 &nbsp;
     // Aqui você integrar com o sistema de pagamento (Stripe, PIX, etc)
     // Por enquanto, vamos simular que a compra foi bem-sucedida
-<span class="cstat-no" title="statement not covered" >    await HourPackagingService.addUserHourCredit(userId, packageHours, 365);</span>
+<span class="cstat-no" title="statement not covered" >    await [REDACTED_TOKEN].addUserHourCredit(userId, packageHours, 365);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.json({</span>
       success: true,
@@ -598,7 +598,7 @@ router.post('/purchase-package', authenticateToken, <span class="fstat-no" title
       userId: userId,
     });
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('[HourPricingController] Error purchasing package:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('[[REDACTED_TOKEN]] Error purchasing package:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       success: false,
       error: error.message,
@@ -621,14 +621,14 @@ router.get('/user-hour-credit', authenticateToken, <span class="fstat-no" title=
       });
     }
 &nbsp;
-    const creditInfo = <span class="cstat-no" title="statement not covered" >await HourPackagingService.getUserHourCredit(userId);</span>
+    const creditInfo = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getUserHourCredit(userId);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.json({</span>
       success: true,
       creditInfo: creditInfo,
     });
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('[HourPricingController] Error fetching credit info:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('[[REDACTED_TOKEN]] Error fetching credit info:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       success: false,
       error: error.message,
@@ -644,7 +644,7 @@ router.get('/user-hour-credit', authenticateToken, <span class="fstat-no" title=
 router.get('/suggest-package', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { hoursNeeded = <span class="branch-0 cbranch-no" title="branch not covered" >40 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const suggested = <span class="cstat-no" title="statement not covered" >HourPackagingService.suggestPackage(parseFloat(hoursNeeded));</span>
+    const suggested = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].suggestPackage(parseFloat(hoursNeeded));</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.json({</span>
       success: true,
@@ -652,7 +652,7 @@ router.get('/suggest-package', <span class="fstat-no" title="function not covere
       suggestedPackage: suggested,
     });
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('[HourPricingController] Error suggesting package:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('[[REDACTED_TOKEN]] Error suggesting package:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       success: false,
       error: error.message,
@@ -670,8 +670,8 @@ router.post('/booking-estimate', authenticateToken, <span class="fstat-no" title
     const { durationHours = <span class="branch-0 cbranch-no" title="branch not covered" >1,</span> useHourCredit = <span class="branch-0 cbranch-no" title="branch not covered" >false </span>} = <span class="cstat-no" title="statement not covered" >req.body;</span>
     const userId = <span class="cstat-no" title="statement not covered" >req.user?.id;</span>
 &nbsp;
-    const BookingPricingService = <span class="cstat-no" title="statement not covered" >require('../services/BookingPricingService');</span>
-    const result = <span class="cstat-no" title="statement not covered" >await BookingPricingService.calculateBookingPrice({</span>
+    const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" >require('../services/[REDACTED_TOKEN]');</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN]({</span>
       userId: userId,
       durationHours: parseFloat(durationHours),
       useHourCredit: useHourCredit,
@@ -682,7 +682,7 @@ router.post('/booking-estimate', authenticateToken, <span class="fstat-no" title
     }
 &nbsp;
     // Incluir breakdown visual
-    const breakdown = <span class="cstat-no" title="statement not covered" >BookingPricingService.generatePriceBreakdown(</span>
+    const breakdown = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN](</span>
       result.hourPrice,
       result.paidWithCredits
     );
@@ -693,7 +693,7 @@ router.post('/booking-estimate', authenticateToken, <span class="fstat-no" title
       breakdown: breakdown,
     });
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    console.error('[HourPricingController] Error estimating booking price:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >    console.error('[[REDACTED_TOKEN]] Error estimating booking price:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(500).json({</span>
       success: false,
       error: error.message,

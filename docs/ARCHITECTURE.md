@@ -33,7 +33,7 @@ vamos/
 ├── database/           # Scripts de database
 │   ├── schema.sql      # Schema inicial
 │   ├── migrations/     # Migrations versionadas
-│   └── add-performance-indices.sql  # Índices para performance
+│   └── [REDACTED_TOKEN].sql  # Índices para performance
 │
 └── docs/              # Documentação
 ```
@@ -95,9 +95,9 @@ Response em ~200ms (com índices)
 ```
 1. authenticateToken()      → Valida JWT
 2. authorizeRole()          → Verifica admin/staff/customer
-3. validationMiddleware()   → Sanitiza inputs
+3. [REDACTED_TOKEN]()   → Sanitiza inputs
 4. rateLimit()              → Rate limiting por IP
-5. paginationMiddleware()   → Parse limit/page
+5. [REDACTED_TOKEN]()   → Parse limit/page
 ```
 
 ## 📊 Database Design
@@ -182,7 +182,7 @@ Production:
 async createBooking(req, res) {
   try {
     // 1. Validar entrada
-    const { errors } = validateBookingInput(req.body);
+    const { errors } = [REDACTED_TOKEN](req.body);
     if (errors.length) return res.status(400).json({ errors });
 
     // 2. Delegar lógica para Service

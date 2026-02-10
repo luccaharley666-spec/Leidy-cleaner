@@ -239,9 +239,9 @@ const { booking_id, amount, method } = router.query;
 // Em /backend/src/webhooks/pix.js (a implementar)
 const crypto = require('crypto');
 
-function validateWebhookSignature(body, signature) {
-  const secret = process.env.PIX_WEBHOOK_SECRET;
-  // '50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1'
+function [REDACTED_TOKEN](body, signature) {
+  const secret = process.env.[REDACTED_TOKEN];
+  // '[REDACTED_TOKEN]'
   
   const hash = crypto
     .createHmac('sha256', secret)
@@ -441,7 +441,7 @@ CREATE TABLE payments (
   "success": true,
   "data": {
     "id": "uuid-transaction",
-    "qrCode": "iVBORw0KGgoAAAANSUhEUgAAAMIAAAAzCAYAA...",
+    "qrCode": "[REDACTED_TOKEN]...",
     "brCode": "00020126360014br.gov.bcb.pix0136...",
     "expiresAt": "2024-01-15T12:00:00Z",
     "amount": 150.00,
@@ -475,7 +475,7 @@ CREATE TABLE payments (
 - [ ] Teste de retry
 
 ### Fase 4: Produção
-- [ ] Migrar PIX_WEBHOOK_SECRET para produção
+- [ ] Migrar [REDACTED_TOKEN] para produção
 - [ ] Atualizar URL webhook com domínio real
 - [ ] Habilitar HTTPS
 - [ ] Monitorar logs de webhook

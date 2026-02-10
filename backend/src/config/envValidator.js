@@ -32,10 +32,10 @@ const envSchema = z.object({
   TWILIO_ACCOUNT_SID: z.string().optional(),
   TWILIO_AUTH_TOKEN: z.string().optional(),
   TWILIO_PHONE_NUMBER: z.string().optional(),
-  TWILIO_WHATSAPP_FROM: z.string().optional(),
+  [REDACTED_TOKEN]: z.string().optional(),
   
   // PIX
-  PIX_WEBHOOK_SECRET: z.string().min(32),
+  [REDACTED_TOKEN]: z.string().min(32),
   
   // Sentry
   SENTRY_DSN: z.string().url().optional(),
@@ -44,8 +44,8 @@ const envSchema = z.object({
   // S3/Upload
   AWS_S3_BUCKET: z.string().optional(),
   AWS_REGION: z.string().optional(),
-  AWS_ACCESS_KEY_ID: z.string().optional(),
-  AWS_SECRET_ACCESS_KEY: z.string().optional(),
+  [REDACTED_TOKEN]: z.string().optional(),
+  [REDACTED_TOKEN]: z.string().optional(),
   
   // Redis (optional)
   REDIS_URL: z.string().optional(),
@@ -81,8 +81,8 @@ function validateEnv() {
         PORT: 3000,
         HOST: 'localhost',
         DATABASE_URL: 'sqlite:///:memory:',
-        JWT_SECRET: 'test-secret-key-32-chars-minimum!!',
-        PIX_WEBHOOK_SECRET: 'test-webhook-secret-32-chars!!',
+        JWT_SECRET: '[REDACTED_TOKEN]!!',
+        [REDACTED_TOKEN]: '[REDACTED_TOKEN]!!',
         SENTRY_ENVIRONMENT: 'test'
       };
     }

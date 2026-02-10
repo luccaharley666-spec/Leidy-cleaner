@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/Advanced2FAController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> Advanced2FAController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -1155,7 +1155,7 @@ router.post('/recovery-codes/generate', <span class="fstat-no" title="function n
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ error: 'User ID required' });</span>
     }
 &nbsp;
-    const codes = <span class="cstat-no" title="statement not covered" >await twoFAService.generateRecoveryCodes(userId, count);</span>
+    const codes = <span class="cstat-no" title="statement not covered" >await twoFAService.[REDACTED_TOKEN](userId, count);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(201).json({ success: true, data: codes });</span>
   } catch (error) {
@@ -1274,7 +1274,7 @@ router.post('/webauthn/verify', <span class="fstat-no" title="function not cover
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ error: 'Missing required fields' });</span>
     }
 &nbsp;
-    const result = <span class="cstat-no" title="statement not covered" >await twoFAService.verifyWebAuthnAssertion(userId, credentialId, assertion);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await twoFAService.[REDACTED_TOKEN](userId, credentialId, assertion);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, data: result });</span>
   } catch (error) {

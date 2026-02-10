@@ -60,7 +60,7 @@ fi
 # Update Sentry DSN
 sed -i "s|SENTRY_DSN=.*|SENTRY_DSN=$SENTRY_DSN|" .env.production
 sed -i "s|SENTRY_ENVIRONMENT=.*|SENTRY_ENVIRONMENT=production|" .env.production
-sed -i "s|SENTRY_TRACES_SAMPLE_RATE=.*|SENTRY_TRACES_SAMPLE_RATE=0.1|" .env.production
+sed -i "s|[REDACTED_TOKEN]=.*|[REDACTED_TOKEN]=0.1|" .env.production
 
 log "✅ .env.production atualizado"
 echo ""
@@ -93,7 +93,7 @@ echo "  Documentação: https://docs.sentry.io/product/performance/"
 echo "  Node.js: https://docs.sentry.io/platforms/node/"
 echo ""
 echo "⚙️  Configuracoes recomendadas:"
-echo "  1. Ativar ProfilingIntegration para performance monitoring"
+echo "  1. Ativar [REDACTED_TOKEN] para performance monitoring"
 echo "  2. Configurar alertas para erros críticos"
 echo "  3. Integrar com Slack/PagerDuty para notificações"
 echo "  4. Setup Source Maps para stack traces melhores"

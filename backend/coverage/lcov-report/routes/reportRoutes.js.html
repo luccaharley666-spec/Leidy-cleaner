@@ -250,7 +250,7 @@ router.get('/bookings/:period', authenticateToken, <span class="fstat-no" title=
     const { period } = <span class="cstat-no" title="statement not covered" >req.params;</span>
     const userId = <span class="cstat-no" title="statement not covered" >req.user.id;</span>
 &nbsp;
-    const pdfPath = <span class="cstat-no" title="statement not covered" >await ReportsService.generateBookingsReport(userId, period);</span>
+    const pdfPath = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](userId, period);</span>
     
 <span class="cstat-no" title="statement not covered" >    res.download(pdfPath, `bookings-${period}.pdf`);</span>
   } catch (error) {
@@ -264,7 +264,7 @@ router.get('/revenue/:period', authenticateToken, authorizeRole(['admin']), <spa
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { period } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 &nbsp;
-    const pdfPath = <span class="cstat-no" title="statement not covered" >await ReportsService.generateRevenueReport(period);</span>
+    const pdfPath = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](period);</span>
     
 <span class="cstat-no" title="statement not covered" >    res.download(pdfPath, `revenue-${period}.pdf`);</span>
   } catch (error) {
@@ -278,7 +278,7 @@ router.get('/performance/:period', authenticateToken, authorizeRole(['admin']), 
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { period } = <span class="cstat-no" title="statement not covered" >req.params;</span>
 &nbsp;
-    const pdfPath = <span class="cstat-no" title="statement not covered" >await ReportsService.generatePerformanceReport(period);</span>
+    const pdfPath = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](period);</span>
     
 <span class="cstat-no" title="statement not covered" >    res.download(pdfPath, `performance-${period}.pdf`);</span>
   } catch (error) {

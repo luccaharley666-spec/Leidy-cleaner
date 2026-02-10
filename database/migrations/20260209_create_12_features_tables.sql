@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS user_subscriptions (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   user_id INTEGER NOT NULL,
   plan_id INTEGER NOT NULL,
-  stripe_subscription_id VARCHAR(255),
+  [REDACTED_TOKEN] VARCHAR(255),
   status VARCHAR(50),
   started_at DATETIME,
   cancelled_at DATETIME,
@@ -90,7 +90,7 @@ CREATE TABLE IF NOT EXISTS user_addresses (
 );
 
 -- Avaliação de profissional
-CREATE TABLE IF NOT EXISTS professional_ratings (
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   professional_id INTEGER NOT NULL,
   admin_id INTEGER NOT NULL,
@@ -153,11 +153,11 @@ CREATE TABLE IF NOT EXISTS push_subscriptions (
 );
 
 -- Criar índices
-CREATE INDEX IF NOT EXISTS idx_cancellations_booking_id ON cancellations(booking_id);
-CREATE INDEX IF NOT EXISTS idx_loyalty_points_user_id ON loyalty_points(user_id);
-CREATE INDEX IF NOT EXISTS idx_booking_addons_booking_id ON booking_addons(booking_id);
-CREATE INDEX IF NOT EXISTS idx_user_subscriptions_user_id ON user_subscriptions(user_id);
-CREATE INDEX IF NOT EXISTS idx_user_addresses_user_id ON user_addresses(user_id);
-CREATE INDEX IF NOT EXISTS idx_professional_ratings_professional_id ON professional_ratings(professional_id);
-CREATE INDEX IF NOT EXISTS idx_hourly_bookings_booking_id ON hourly_bookings(professional_id, date);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON cancellations(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON loyalty_points(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON booking_addons(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON user_subscriptions(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON user_addresses(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON [REDACTED_TOKEN](professional_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON hourly_bookings(professional_id, date);
 CREATE INDEX IF NOT EXISTS idx_blog_posts_slug ON blog_posts(slug);

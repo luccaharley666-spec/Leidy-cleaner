@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/IntegrationController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> IntegrationController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -984,7 +984,7 @@ router.post('/whatsapp/send', <span class="fstat-no" title="function not covered
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ error: 'Missing required fields' });</span>
     }
 &nbsp;
-    const result = <span class="cstat-no" title="statement not covered" >await integrationService.sendWhatsAppNotification(phoneNumber, message, templateId);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await integrationService.[REDACTED_TOKEN](phoneNumber, message, templateId);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(201).json({ success: true, data: result });</span>
   } catch (error) {
@@ -1025,7 +1025,7 @@ router.post('/slack/send', <span class="fstat-no" title="function not covered" >
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ error: 'Missing required fields' });</span>
     }
 &nbsp;
-    const result = <span class="cstat-no" title="statement not covered" >await integrationService.sendSlackNotification(channelId, message, blocks);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await integrationService.[REDACTED_TOKEN](channelId, message, blocks);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(201).json({ success: true, data: result });</span>
   } catch (error) {
@@ -1066,7 +1066,7 @@ router.post('/telegram/send', <span class="fstat-no" title="function not covered
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ error: 'Missing required fields' });</span>
     }
 &nbsp;
-    const result = <span class="cstat-no" title="statement not covered" >await integrationService.sendTelegramNotification(chatId, message, parseMode);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await integrationService.[REDACTED_TOKEN](chatId, message, parseMode);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.status(201).json({ success: true, data: result });</span>
   } catch (error) {

@@ -7,7 +7,7 @@ const logger = require('../utils/logger');
 const fs = require('fs').promises;
 const path = require('path');
 
-class CDNAssetOptimizerService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.cdnUrl = process.env.CDN_URL || 'https://cdn.example.com';
     this.assetCache = new Map();
@@ -35,7 +35,7 @@ class CDNAssetOptimizerService {
    ✅ NOVO: Gerar URL otimizada para imagem
    * Suporta width, height, format (webp, jpeg, png), quality
    */
-  generateOptimizedImageUrl(imagePath, options = {}) {
+  [REDACTED_TOKEN](imagePath, options = {}) {
     const {
       width,
       height,
@@ -67,7 +67,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar srcset para responsive images
    */
-  generateResponsiveImageSet(imagePath, options = {}) {
+  [REDACTED_TOKEN](imagePath, options = {}) {
     const sizes = [320, 640, 1024, 1920];
     const qualityBySize = {
       320: 70,  // Mobile
@@ -78,7 +78,7 @@ class CDNAssetOptimizerService {
 
     const srcset = sizes
       .map(size => {
-        const url = this.generateOptimizedImageUrl(imagePath, {
+        const url = this.[REDACTED_TOKEN](imagePath, {
           width: size,
           quality: qualityBySize[size],
           format: 'webp'
@@ -90,7 +90,7 @@ class CDNAssetOptimizerService {
     return {
       srcset,
       sizes: '(max-width: 320px) 100vw, (max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw',
-      defaultSrc: this.generateOptimizedImageUrl(imagePath, { quality: 80 })
+      defaultSrc: this.[REDACTED_TOKEN](imagePath, { quality: 80 })
     };
   }
 
@@ -99,7 +99,7 @@ class CDNAssetOptimizerService {
    */
   generateLQIPUrl(imagePath) {
     // Gerar versão ultra-comprimida para placeholder
-    return this.generateOptimizedImageUrl(imagePath, {
+    return this.[REDACTED_TOKEN](imagePath, {
       width: 50,
       height: 50,
       quality: 20,
@@ -110,7 +110,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Calcular economia de banda
    */
-  calculateBandwidthSavings() {
+  [REDACTED_TOKEN]() {
     if (this.compressionStats.filesProcessed === 0) {
       return {
         savings: 0,
@@ -136,8 +136,8 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar tag HTML com lazy loading
    */
-  generateLazyLoadImageTag(imagePath, alt = '', options = {}) {
-    const responsive = this.generateResponsiveImageSet(imagePath, options);
+  [REDACTED_TOKEN](imagePath, alt = '', options = {}) {
+    const responsive = this.[REDACTED_TOKEN](imagePath, options);
     const lqip = this.generateLQIPUrl(imagePath);
 
     return `
@@ -160,7 +160,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar manifesto de assets
    */
-  async generateAssetManifest(publicPath) {
+  async [REDACTED_TOKEN](publicPath) {
     try {
       const manifest = {
         version: '1.0.0',
@@ -184,7 +184,7 @@ class CDNAssetOptimizerService {
               path: `/${file}`,
               size: stat.size,
               mtime: stat.mtime,
-              optimizedUrl: this.generateOptimizedImageUrl(`/${file}`, {
+              optimizedUrl: this.[REDACTED_TOKEN](`/${file}`, {
                 format: 'webp',
                 quality: 80
               })
@@ -208,7 +208,7 @@ class CDNAssetOptimizerService {
   getCacheHeaders(fileType) {
     const headers = {
       'Cache-Control': 'public, max-age=31536000, immutable',
-      'X-Content-Type-Options': 'nosniff'
+      '[REDACTED_TOKEN]': 'nosniff'
     };
 
     if (fileType === 'image') {
@@ -244,7 +244,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar sitemap de imagens (para SEO)
    */
-  async generateImageSitemap(assets) {
+  async [REDACTED_TOKEN](assets) {
     const urls = assets
       .filter(asset => asset.type === 'image')
       .map(asset => ({
@@ -273,12 +273,12 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Medir performance de imagem
    */
-  async measureImagePerformance(imageUrl) {
+  async [REDACTED_TOKEN](imageUrl) {
     return {
       url: imageUrl,
       metrics: {
-        largestContentfulPaint: 'depends on user connection',
-        cumulativeLayoutShift: 'depends on image dimensions',
+        [REDACTED_TOKEN]: 'depends on user connection',
+        [REDACTED_TOKEN]: 'depends on image dimensions',
         firstInputDelay: 'not affected if lazy-loaded',
         recommendations: [
           'Use responsive images with srcset',
@@ -321,9 +321,9 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar report de otimização
    */
-  generateOptimizationReport() {
+  [REDACTED_TOKEN]() {
     return {
-      bandwidthSavings: this.calculateBandwidthSavings(),
+      bandwidthSavings: this.[REDACTED_TOKEN](),
       cachePolicy: this.generateCachePolicy(),
       recommendations: [
         'Use WebP format with JPEG fallback',
@@ -346,4 +346,4 @@ class CDNAssetOptimizerService {
   }
 }
 
-module.exports = new CDNAssetOptimizerService();
+module.exports = new [REDACTED_TOKEN]();

@@ -11,12 +11,12 @@ services:
       POSTGRES_DB: ${DB_NAME:-limpeza_pro}
       POSTGRES_USER: ${DB_USER:-postgres}
       POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
-      POSTGRES_INITDB_ARGS: "--encoding=UTF8"
+      [REDACTED_TOKEN]: "--encoding=UTF8"
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      - ./scripts/init-db.sql:/docker-entrypoint-initdb.d/01-init.sql
+      - ./scripts/init-db.sql:/[REDACTED_TOKEN].d/01-init.sql
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U ${DB_USER:-postgres}"]
       interval: 10s
@@ -65,8 +65,8 @@ services:
       DATABASE_URL: postgresql://${DB_USER:-postgres}:${DB_PASSWORD:-postgres}@postgres:5432/${DB_NAME:-limpeza_pro}
       REDIS_URL: redis://:${REDIS_PASSWORD:-redis123}@redis:6379
       JWT_SECRET: ${JWT_SECRET}
-      STRIPE_KEY_PRODUCTION: ${STRIPE_KEY_PRODUCTION}
-      STRIPE_SECRET_PRODUCTION: ${STRIPE_SECRET_PRODUCTION}
+      [REDACTED_TOKEN]: ${[REDACTED_TOKEN]}
+      [REDACTED_TOKEN]: ${[REDACTED_TOKEN]}
       SENTRY_DSN: ${SENTRY_DSN}
       # ... outras variáveis
     ports:
@@ -156,7 +156,7 @@ services:
     image: grafana/grafana:latest
     container_name: limpeza-grafana
     environment:
-      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_PASSWORD:-admin}
+      [REDACTED_TOKEN]: ${GRAFANA_PASSWORD:-admin}
       GF_INSTALL_PLUGINS: redis-datasource
     ports:
       - "3002:3000"

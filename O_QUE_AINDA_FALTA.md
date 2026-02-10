@@ -257,7 +257,7 @@ curl -X POST http://localhost:3000/api/payments/webhook \
 Leia para entender melhor:
 
 - **[COMO_INICIAR.md](COMO_INICIAR.md)** - Como rodar projeto ⭐ COMECE AQUI
-- **[STATUS_FINAL_E_PRONTO.md](STATUS_FINAL_E_PRONTO.md)** - Status técnico completo
+- **[[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)** - Status técnico completo
 - **[CORRECOES_APLICADAS.md](CORRECOES_APLICADAS.md)** - Tudo que foi corrigido
 - **[DEPLOYMENT_READY.md](DEPLOYMENT_READY.md)** - Deploy em produção
 - **[ACOES_PRIORITARIAS.md](ACOES_PRIORITARIAS.md)** - 11 passos para concluir
@@ -290,7 +290,7 @@ curl http://localhost:3001
 | Module not found | npm install não rodou | `npm install` (backend/frontend) |
 | .env not found | Arquivo não existe | `cp .env.example .env` |
 | Database locked | SQLite occupied | Fechar outro processo, `npm start` |
-| Webhook signature invalid | STRIPE_WEBHOOK_SECRET errado | Copiar de Stripe dashboard |
+| Webhook signature invalid | [REDACTED_TOKEN] errado | Copiar de Stripe dashboard |
 | Tests timeout | Suites muito lentas | Aumentar timeout ou mockar |
 
 ---

@@ -717,10 +717,10 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * Chat Controller com Criptografia
- * Integra ChatEncryptionService para mensagens privadas
+ * Integra [REDACTED_TOKEN] para mensagens privadas
  */
 &nbsp;
-const ChatEncryptionService = require('../services/ChatEncryptionService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const logger = require('../utils/logger');
 &nbsp;
 class ChatController {
@@ -728,7 +728,7 @@ class ChatController {
    * Enviar mensagem privada criptografada
    * POST /api/chat/messages
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async sendEncryptedMessage(req, res) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { receiverId, message, encryptionKey } = <span class="cstat-no" title="statement not covered" >req.body;</span>
       const senderId = <span class="cstat-no" title="statement not covered" >req.user.id;</span>
@@ -755,7 +755,7 @@ class ChatController {
       }
 &nbsp;
       // Criptografar mensagem
-      const encrypted = <span class="cstat-no" title="statement not covered" >ChatEncryptionService.encryptMessage(message, keyBuffer);</span>
+      const encrypted = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].encryptMessage(message, keyBuffer);</span>
 &nbsp;
       // Salvar no banco (aqui é DB.query ou similar)
       const chatMessage = <span class="cstat-no" title="statement not covered" >{</span>
@@ -772,7 +772,7 @@ class ChatController {
       // Simular salvamento (em produção: INSERT INTO messages)
       // const savedMessage = await db.chat_messages.create(chatMessage);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(senderId, 'send_message', true);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(senderId, 'send_message', true);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.status(201).json({</span>
         success: true,
@@ -785,7 +785,7 @@ class ChatController {
         error: error.message, 
         userId: req.user.id 
       });
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(req.user.id, 'send_message', false);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(req.user.id, 'send_message', false);</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(500).json({ error: 'Falha ao enviar mensagem' });</span>
     }
   }
@@ -794,7 +794,7 @@ class ChatController {
    * Obter mensagens criptografadas
    * GET /api/chat/messages/:conversationId
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async getEncryptedMessages(req, res) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { conversationId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
       const { encryptionKey } = <span class="cstat-no" title="statement not covered" >req.query;</span>
@@ -834,7 +834,7 @@ class ChatController {
       // Descriptografar cada mensagem
       const decryptedMessages = <span class="cstat-no" title="statement not covered" >simulatedMessages.map(<span class="fstat-no" title="function not covered" >ms</span>g =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        try {</span>
-          const decrypted = <span class="cstat-no" title="statement not covered" >ChatEncryptionService.decryptMessage(</span>
+          const decrypted = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].decryptMessage(</span>
             msg.encryptedMessage,
             msg.iv,
             msg.authTag,
@@ -855,7 +855,7 @@ class ChatController {
         }
       });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(userId, 'read_messages', true);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(userId, 'read_messages', true);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -899,9 +899,9 @@ class ChatController {
       }
 &nbsp;
       // Criptografar arquivo
-      const encrypted = <span class="cstat-no" title="statement not covered" >ChatEncryptionService.encryptFile(req.file.buffer, keyBuffer);</span>
+      const encrypted = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].encryptFile(req.file.buffer, keyBuffer);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(userId, 'upload_encrypted_file', true);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(userId, '[REDACTED_TOKEN]', true);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -920,7 +920,7 @@ class ChatController {
         error: error.message, 
         userId: req.user.id 
       });
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(req.user.id, 'upload_encrypted_file', false);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(req.user.id, '[REDACTED_TOKEN]', false);</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(500).json({ error: 'Falha ao fazer upload' });</span>
     }
   }
@@ -929,7 +929,7 @@ class ChatController {
    ✅ NOVO: Download de arquivo descriptografado
    * GET /api/chat/download-encrypted/:fileId
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async downloadEncryptedFile(req, res) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { fileId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
       const { encryptionKey } = <span class="cstat-no" title="statement not covered" >req.query;</span>
@@ -948,20 +948,20 @@ class ChatController {
         mimeType: 'application/pdf',
         iv: '1234567890ab',
         authTag: 'fedcba9876543210',
-        encryptedData: 'encrypted_hex_data_here'
+        encryptedData: '[REDACTED_TOKEN]'
       };
 &nbsp;
       const keyBuffer = <span class="cstat-no" title="statement not covered" >Buffer.from(encryptionKey, 'hex');</span>
 &nbsp;
       // Descriptografar
-      const decrypted = <span class="cstat-no" title="statement not covered" >ChatEncryptionService.decryptFile(</span>
+      const decrypted = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].decryptFile(</span>
         simulatedFile.encryptedData,
         simulatedFile.iv,
         simulatedFile.authTag,
         keyBuffer
       );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(userId, 'download_encrypted_file', true);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(userId, '[REDACTED_TOKEN]', true);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      res.setHeader('Content-Type', simulatedFile.mimeType);</span>
 <span class="cstat-no" title="statement not covered" >      res.setHeader(</span>
@@ -974,7 +974,7 @@ class ChatController {
         error: error.message, 
         userId: req.user.id 
       });
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(req.user.id, 'download_encrypted_file', false);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(req.user.id, '[REDACTED_TOKEN]', false);</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(500).json({ error: 'Falha ao fazer download' });</span>
     }
   }
@@ -998,7 +998,7 @@ class ChatController {
       };
 &nbsp;
       // Calcular hash
-      const hash = <span class="cstat-no" title="statement not covered" >ChatEncryptionService.hashMessage(simulatedMessage.message);</span>
+      const hash = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].hashMessage(simulatedMessage.message);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -1026,7 +1026,7 @@ class ChatController {
       // await db.chat_messages.deleteMany({ conversationId });
       // await db.conversations.deleteOne({ id: conversationId });
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(userId, 'delete_conversation', true);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(userId, 'delete_conversation', true);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -1034,7 +1034,7 @@ class ChatController {
       });
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >      logger.error('Error deleting conversation', { error: error.message });</span>
-<span class="cstat-no" title="statement not covered" >      ChatEncryptionService.logCryptoOperation(req.user.id, 'delete_conversation', false);</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(req.user.id, 'delete_conversation', false);</span>
 <span class="cstat-no" title="statement not covered" >      return res.status(500).json({ error: 'Falha ao deletar conversa' });</span>
     }
   }

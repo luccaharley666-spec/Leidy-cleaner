@@ -66,7 +66,7 @@ describe('Database Factory', () => {
       process.env.DATABASE_URL = 'postgresql://localhost/test';
 
       const postgresModule = require('../db/postgres');
-      postgresModule.initializePool.mockImplementationOnce(() => {
+      postgresModule.initializePool.[REDACTED_TOKEN](() => {
         throw new Error('Connection failed');
       });
 
@@ -251,7 +251,7 @@ describe('Database Factory', () => {
       process.env.DATABASE_URL = 'postgresql://localhost/test';
 
       const postgresModule = require('../db/postgres');
-      postgresModule.initializePool.mockImplementationOnce(() => {
+      postgresModule.initializePool.[REDACTED_TOKEN](() => {
         throw new Error('Connection error');
       });
 

@@ -414,7 +414,7 @@ router.get('/calendar/:professionalId', <span class="fstat-no" title="function n
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { days = <span class="branch-0 cbranch-no" title="branch not covered" >30,</span> duration = <span class="branch-0 cbranch-no" title="branch not covered" >2 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
 &nbsp;
-    const availability = <span class="cstat-no" title="statement not covered" >await AvailabilityService.getNextAvailableDays(</span>
+    const availability = <span class="cstat-no" title="statement not covered" >await AvailabilityService.[REDACTED_TOKEN](</span>
       parseInt(req.params.professionalId),
       parseInt(duration),
       parseInt(days)

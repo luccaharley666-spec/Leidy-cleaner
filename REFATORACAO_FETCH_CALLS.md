@@ -42,7 +42,7 @@ Refatoração de **12 arquivos críticos** com **18 fetch calls** para usar a fu
 **Localização**: `/workspaces/mmmm/frontend/src/components/Notifications/PushManager.jsx`
 
 **Funções refatoradas**:
-1. `registerAndSubscribe()` - Subscribe para push notifications
+1. `[REDACTED_TOKEN]()` - Subscribe para push notifications
    - ❌ `await fetch(...API_URL}/api/notifications/subscribe, {...})`
    - ✅ `await apiCall('/api/notifications/subscribe', { method: 'POST', body: JSON.stringify(sub) })`
 
@@ -130,8 +130,8 @@ Refatoração de **12 arquivos críticos** com **18 fetch calls** para usar a fu
 
 ---
 
-### 10. **AvailableStaffWidget.jsx** (1 refatoração)
-**Localização**: `/workspaces/mmmm/frontend/src/components/AvailableStaffWidget.jsx`
+### 10. **[REDACTED_TOKEN].jsx** (1 refatoração)
+**Localização**: `/workspaces/mmmm/frontend/src/components/[REDACTED_TOKEN].jsx`
 
 **Função refatorada**: `fetchAvailableStaff()` - Widget de staff disponível
 - ❌ `await fetch('/api/staff/available?${params}', { method: 'GET', headers: {...} })`
@@ -141,23 +141,23 @@ Refatoração de **12 arquivos críticos** com **18 fetch calls** para usar a fu
 
 ---
 
-### 11. **ChatEncryptionClient.js** (5 refatorações)
-**Localização**: `/workspaces/mmmm/frontend/src/services/ChatEncryptionClient.js`
+### 11. **[REDACTED_TOKEN].js** (5 refatorações)
+**Localização**: `/workspaces/mmmm/frontend/src/services/[REDACTED_TOKEN].js`
 
 **Funções refatoradas**:
 1. `uploadEncryptedFile()` - Upload de arquivo
    - ❌ `await fetch('/api/chat/upload-encrypted', { method: 'POST', headers: {...} })`
    - ✅ `await apiCall('/api/chat/upload-encrypted', { method: 'POST', body: formData })`
 
-2. `downloadEncryptedFile()` - Download de arquivo
+2. `[REDACTED_TOKEN]()` - Download de arquivo
    - ❌ `await fetch('/api/chat/download-encrypted/${fileId}...', {...})`
    - ✅ `await apiCall('/api/chat/download-encrypted/${fileId}...', { method: 'GET' })`
 
-3. `sendEncryptedMessage()` - Enviar mensagem criptografada
+3. `[REDACTED_TOKEN]()` - Enviar mensagem criptografada
    - ❌ `await fetch('/api/chat/messages', { method: 'POST', headers: {...} })`
    - ✅ `await apiCall('/api/chat/messages', { method: 'POST', body: JSON.stringify(...) })`
 
-4. `getEncryptedMessages()` - Buscar mensagens criptografadas
+4. `[REDACTED_TOKEN]()` - Buscar mensagens criptografadas
    - ❌ `await fetch('/api/chat/messages/${conversationId}...', {...})`
    - ✅ `await apiCall('/api/chat/messages/${conversationId}...', { method: 'GET' })`
 
@@ -193,8 +193,8 @@ Refatoração de **12 arquivos críticos** com **18 fetch calls** para usar a fu
 - [x] ClientDashboard.jsx - dashboard com apiCall
 - [x] StaffDashboard.jsx - staff dashboard com apiCall
 - [x] AdminPanel.jsx - admin com apiCall
-- [x] AvailableStaffWidget.jsx - staff widget com apiCall
-- [x] ChatEncryptionClient.js - chat encryption com apiCall (5 funções)
+- [x] [REDACTED_TOKEN].jsx - staff widget com apiCall
+- [x] [REDACTED_TOKEN].js - chat encryption com apiCall (5 funções)
 
 ---
 
@@ -229,7 +229,7 @@ try {
 
 ## Próximos Passos Opcionais
 
-1. **Refatorar ChatEncryptionClient.js para usar import**
+1. **Refatorar [REDACTED_TOKEN].js para usar import**
    - Atualmente é classe com export simples
    - Pode ser convertida para ES6 module
 

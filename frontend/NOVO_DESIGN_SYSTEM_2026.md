@@ -342,7 +342,7 @@ Desktop: > 1024px
 
 O sistema já suporta dark mode via:
 ```css
-@media (prefers-color-scheme: dark) {
+@media ([REDACTED_TOKEN]: dark) {
   /* Cores ajustadas automaticamente */
 }
 ```

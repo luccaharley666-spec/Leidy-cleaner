@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/AutoSchedulingController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> AutoSchedulingController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -280,19 +280,19 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const AutoSchedulingService = require('../services/AutoSchedulingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 // POST /api/scheduling/auto-schedule
 router.post('/auto-schedule', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const { serviceType, location, date, duration, clientId, preferredProfessional } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const schedule = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.autoScheduleProfessionals({</span>
+    const { serviceType, location, date, duration, clientId, [REDACTED_TOKEN] } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+    const schedule = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN]({</span>
       serviceType,
       location,
       date,
       duration,
       clientId,
-      preferredProfessional
+      [REDACTED_TOKEN]
     });
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(schedule);</span>
   } catch (error) {
@@ -304,7 +304,7 @@ router.post('/auto-schedule', <span class="fstat-no" title="function not covered
 router.post('/optimize-route', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { professionalId, bookingIds } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const route = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.optimizeRoute(professionalId, bookingIds);</span>
+    const route = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].optimizeRoute(professionalId, bookingIds);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(route);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -315,7 +315,7 @@ router.post('/optimize-route', <span class="fstat-no" title="function not covere
 router.post('/sync-calendar', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { professionalId, schedule } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.syncWithProfessionalCalendar(professionalId, schedule);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](professionalId, schedule);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -325,7 +325,7 @@ router.post('/sync-calendar', <span class="fstat-no" title="function not covered
 // GET /api/scheduling/suggestions/:clientId
 router.get('/suggestions/:clientId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const suggestions = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.getSchedulingSuggestions(req.params.clientId);</span>
+    const suggestions = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.clientId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(suggestions);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -335,7 +335,7 @@ router.get('/suggestions/:clientId', <span class="fstat-no" title="function not 
 // GET /api/scheduling/conflicts
 router.get('/conflicts', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const conflicts = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.detectSchedulingConflicts();</span>
+    const conflicts = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.json(conflicts);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -346,7 +346,7 @@ router.get('/conflicts', <span class="fstat-no" title="function not covered" >as
 router.get('/occupancy/:professionalId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { startDate, endDate } = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const report = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.getOccupancyReport(</span>
+    const report = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getOccupancyReport(</span>
       req.params.professionalId,
       startDate,
       endDate
@@ -369,7 +369,7 @@ router.get('/staff/:staffId', <span class="fstat-no" title="function not covered
     }
 &nbsp;
     // Caso contrário, retornar um placeholder com dados mínimos
-    const profile = <span class="cstat-no" title="statement not covered" >await AutoSchedulingService.getProfessionalProfile(staffId).catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >null)</span>;</span>
+    const profile = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](staffId).catch(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >null)</span>;</span>
 <span class="cstat-no" title="statement not covered" >    if (!profile) <span class="cstat-no" title="statement not covered" >return res.status(404).json({ error: 'Profissional não encontrado' });</span></span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, profile });</span>
   } catch (error) {

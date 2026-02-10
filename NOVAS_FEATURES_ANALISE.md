@@ -51,7 +51,7 @@
 ```sql
 ALTER TABLE staff ADD COLUMN latitude DECIMAL(10,8);
 ALTER TABLE staff ADD COLUMN longitude DECIMAL(10,8);
-ALTER TABLE staff ADD COLUMN last_location_update TIMESTAMP;
+ALTER TABLE staff ADD COLUMN [REDACTED_TOKEN] TIMESTAMP;
 ```
 
 ---
@@ -141,9 +141,9 @@ Você é um assistente da Leidy Cleaner.
 // 3. Sugerir próxima data + enviar notificação
 
 // Banco: adicionar tabela
-CREATE TABLE booking_frequency_analysis (
+CREATE TABLE [REDACTED_TOKEN] (
   userId INT,
-  average_interval_days INT,
+  [REDACTED_TOKEN] INT,
   last_booking_date DATE,
   next_suggested_date DATE,
   confidence_score DECIMAL(3,2)
@@ -187,7 +187,7 @@ CREATE TABLE user_subscriptions (
   start_date DATE,
   next_billing_date DATE,
   status VARCHAR(50), // ativo, paused, cancelled
-  stripe_subscription_id VARCHAR(255),
+  [REDACTED_TOKEN] VARCHAR(255),
   FOREIGN KEY (userId) REFERENCES users(id),
   FOREIGN KEY (planId) REFERENCES subscription_plans(id)
 );
@@ -201,7 +201,7 @@ CREATE TABLE user_subscriptions (
 
 **Frontend:**
 ```jsx
-// Nova página: /pricing-subscriptions
+// Nova página: /[REDACTED_TOKEN]
 // - Mostrar 3 planos (Semanal, Quinzenal, Mensal)
 // - Desconto progressivo
 // - Botão "Assinar Agora" → Stripe checkout
@@ -230,7 +230,7 @@ const subscription = await stripe.subscriptions.create({
 **O que fazer:**
 ```javascript
 // Nova tabela
-CREATE TABLE before_after_galleries (
+CREATE TABLE [REDACTED_TOKEN] (
   id INT PRIMARY KEY,
   staffId INT,
   serviceId INT,
@@ -262,7 +262,7 @@ CREATE TABLE before_after_galleries (
 //   3. Página pública de staff (perfil)
 
 // Integração: Instagram-like "slider interativo"
-import BeforeAfter from 'react-before-after-slider-component';
+import BeforeAfter from '[REDACTED_TOKEN]';
 
 <BeforeAfter
   firstImage={{ imageUrl: beforeUrl, label: 'Antes' }}
@@ -335,7 +335,7 @@ CREATE TABLE coupons (
   expire_date TIMESTAMP,
   applicable_services TEXT, // JSON: [] = todos
   min_order_value DECIMAL(10,2) DEFAULT 0,
-  usage_limit_per_user INT DEFAULT 1,
+  [REDACTED_TOKEN] INT DEFAULT 1,
   created_by INT, // admin
   created_at TIMESTAMP
 );
@@ -405,7 +405,7 @@ const handleApplyCoupon = async (code) => {
 CREATE TABLE blog_posts (
   id INT PRIMARY KEY,
   title VARCHAR(255),
-  slug VARCHAR(255) UNIQUE, // "dicas-limpeza-banheiro"
+  slug VARCHAR(255) UNIQUE, // "[REDACTED_TOKEN]"
   excerpt VARCHAR(500),
   content LONGTEXT, // Markdown ou HTML
   author_id INT,
@@ -476,7 +476,7 @@ CREATE TABLE blog_comments (
 **O que fazer:**
 ```javascript
 // Nova tabela
-CREATE TABLE notification_preferences (
+CREATE TABLE [REDACTED_TOKEN] (
   id INT PRIMARY KEY,
   userId INT,
   email_enabled BOOLEAN DEFAULT true,
@@ -487,7 +487,7 @@ CREATE TABLE notification_preferences (
   FOREIGN KEY (userId) REFERENCES users(id)
 );
 
-// Backend: expandir NotificationsController
+// Backend: expandir [REDACTED_TOKEN]
 // POST /api/notifications/send-reminder
 // - Disparado automaticamente 2 dias antes
 // - Envia SMS (Twilio) + WhatsApp (Twilio)
@@ -502,16 +502,16 @@ const client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 const schedule = require('node-schedule');
 
 schedule.scheduleJob('0 9 * * *', async () => {
-  const bookings = await getBookingsForTomorrow(); // 2 dias depois
+  const bookings = await [REDACTED_TOKEN](); // 2 dias depois
   bookings.forEach(booking => {
-    sendWhatsAppReminder(booking.userPhone, booking);
+    [REDACTED_TOKEN](booking.userPhone, booking);
   });
 });
 ```
 
 **Frontend:**
 ```jsx
-// Novo componente: NotificationPreferences.jsx
+// Novo componente: [REDACTED_TOKEN].jsx
 // Dashboard → Aba "Configurações de Notificações"
 
 // - Toggle: Email, SMS, WhatsApp, Push

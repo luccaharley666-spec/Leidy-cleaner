@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/DatabaseOptimizationController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> DatabaseOptimizationController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -550,17 +550,17 @@
  * Endpoints para análise e otimização de banco de dados
  */
 &nbsp;
-const DatabaseOptimizationService = require('../services/DatabaseOptimizationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const logger = require('../utils/logger');
 &nbsp;
-class DatabaseOptimizationController {
+class [REDACTED_TOKEN] {
   /**
    * GET /api/db/query-report
    * Relatório de performance de queries
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async getQueryReport(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const report = <span class="cstat-no" title="statement not covered" >DatabaseOptimizationService.getQueryReport();</span>
+      const report = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].getQueryReport();</span>
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
         data: report
@@ -578,7 +578,7 @@ class DatabaseOptimizationController {
 <span class="fstat-no" title="function not covered" >  st</span>atic async getSlowQueries(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { threshold = <span class="branch-0 cbranch-no" title="branch not covered" >100 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-      const slowQueries = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.detectSlowQueries(null, parseInt(threshold));</span>
+      const slowQueries = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].detectSlowQueries(null, parseInt(threshold));</span>
       
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -602,7 +602,7 @@ class DatabaseOptimizationController {
 <span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'Query é obrigatória' });</span>
       }
 &nbsp;
-      const analysis = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.analyzeQuery(query, params || []);</span>
+      const analysis = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].analyzeQuery(query, params || []);</span>
       
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -628,7 +628,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async suggestIndices(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const suggestions = <span class="cstat-no" title="statement not covered" >DatabaseOptimizationService.suggestIndices();</span>
+      const suggestions = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].suggestIndices();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -652,7 +652,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async analyzeIndexUsage(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const analysis = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.analyzeIndexUsage(null);</span>
+      const analysis = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].analyzeIndexUsage(null);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -670,7 +670,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async validateIntegrity(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const result = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.validateDatabaseIntegrity(null);</span>
+      const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](null);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -688,7 +688,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async vacuumDatabase(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const result = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.vacuumDatabase(null);</span>
+      const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].vacuumDatabase(null);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -706,7 +706,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async optimizeTables(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const result = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.optimizeTables(null);</span>
+      const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].optimizeTables(null);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -724,7 +724,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async getTableSizes(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const sizes = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.getTableSizes(null);</span>
+      const sizes = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getTableSizes(null);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -742,11 +742,11 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async getDatabaseStats(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const report = <span class="cstat-no" title="statement not covered" >DatabaseOptimizationService.getQueryReport();</span>
-      const slowQueries = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.detectSlowQueries(null, 100);</span>
-      const indices = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.analyzeIndexUsage(null);</span>
-      const sizes = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.getTableSizes(null);</span>
-      const integrity = <span class="cstat-no" title="statement not covered" >await DatabaseOptimizationService.validateDatabaseIntegrity(null);</span>
+      const report = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].getQueryReport();</span>
+      const slowQueries = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].detectSlowQueries(null, 100);</span>
+      const indices = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].analyzeIndexUsage(null);</span>
+      const sizes = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getTableSizes(null);</span>
+      const integrity = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](null);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -772,7 +772,7 @@ class DatabaseOptimizationController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async resetStatistics(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      DatabaseOptimizationService.resetStatistics();</span>
+<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].resetStatistics();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -785,7 +785,7 @@ class DatabaseOptimizationController {
   }
 }
 &nbsp;
-module.exports = DatabaseOptimizationController;
+module.exports = [REDACTED_TOKEN];
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

@@ -140,7 +140,7 @@ export default function AdminDashboard() {
                     <div>
                       <p className="text-gray-500 dark:text-gray-400 text-sm font-semibold">RECEITA TOTAL</p>
                       <p className="text-3xl font-bold text-green-900 dark:text-green-300 mt-1">
-                        R$ {kpis.totalRevenue?.toLocaleString('pt-BR', { maximumFractionDigits: 0 }) || '0'}
+                        R$ {kpis.totalRevenue?.toLocaleString('pt-BR', { [REDACTED_TOKEN]: 0 }) || '0'}
                       </p>
                       <p className="text-green-600 dark:text-green-400 text-xs mt-2">Período: {period === 'week' ? 'Esta Semana' : period === 'month' ? 'Este Mês' : 'Este Ano'}  </p>
                     </div>

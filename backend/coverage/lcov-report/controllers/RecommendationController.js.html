@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/RecommendationController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> RecommendationController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -192,12 +192,12 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const RecommendationService = require('../services/RecommendationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 // GET /api/recommendations/:userId
 router.get('/:userId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const recommendations = <span class="cstat-no" title="statement not covered" >RecommendationService.getPersonalizedRecommendations(req.params.userId);</span>
+    const recommendations = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(recommendations);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -206,25 +206,25 @@ router.get('/:userId', <span class="fstat-no" title="function not covered" >(r</
 &nbsp;
 // GET /api/recommendations/:userId/best-time
 router.get('/:userId/best-time', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const bestTime = <span class="cstat-no" title="statement not covered" >RecommendationService.getBestTimeToBook(req.params.userId);</span>
+  const bestTime = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].getBestTimeToBook(req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(bestTime);</span>
 });
 &nbsp;
 // GET /api/recommendations/popular
 router.get('/services/popular', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const popular = <span class="cstat-no" title="statement not covered" >RecommendationService.getPopularServices();</span>
+  const popular = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].getPopularServices();</span>
 <span class="cstat-no" title="statement not covered" >  res.json(popular);</span>
 });
 &nbsp;
 // GET /api/recommendations/:userId/similar-customers
 router.get('/:userId/similar-customers', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const similar = <span class="cstat-no" title="statement not covered" >RecommendationService.findSimilarCustomers(req.params.userId);</span>
+  const similar = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(similar);</span>
 });
 &nbsp;
 // GET /api/recommendations/upsell/:serviceId
 router.get('/upsell/:serviceId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const upsell = <span class="cstat-no" title="statement not covered" >RecommendationService.getUpsellRecommendations(req.params.serviceId);</span>
+  const upsell = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN](req.params.serviceId);</span>
 <span class="cstat-no" title="statement not covered" >  res.json(upsell);</span>
 });
 &nbsp;
@@ -232,7 +232,7 @@ router.get('/upsell/:serviceId', <span class="fstat-no" title="function not cove
 router.post('/record-booking', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, serviceId, bookingId } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-<span class="cstat-no" title="statement not covered" >    RecommendationService.recordBooking(userId, serviceId, bookingId);</span>
+<span class="cstat-no" title="statement not covered" >    [REDACTED_TOKEN].recordBooking(userId, serviceId, bookingId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ recorded: true });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -241,7 +241,7 @@ router.post('/record-booking', <span class="fstat-no" title="function not covere
 &nbsp;
 // GET /api/recommendations/at-risk
 router.get('/analysis/at-risk', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-  const atRiskCustomers = <span class="cstat-no" title="statement not covered" >RecommendationService.getAtRiskCustomers();</span>
+  const atRiskCustomers = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].getAtRiskCustomers();</span>
 <span class="cstat-no" title="statement not covered" >  res.json(atRiskCustomers);</span>
 });
 &nbsp;

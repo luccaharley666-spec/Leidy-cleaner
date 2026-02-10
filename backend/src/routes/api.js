@@ -47,40 +47,40 @@ const ReviewController = require('../controllers/ReviewController');
 const AdminController = require('../controllers/AdminController');
 const StaffController = require('../controllers/StaffController');
 const PhotosController = require('../controllers/PhotosController');
-const PublicReviewsController = require('../controllers/PublicReviewsController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const ChatController = require('../controllers/ChatController');
-const DatabaseOptimizationController = require('../controllers/DatabaseOptimizationController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const CDNAssetController = require('../controllers/CDNAssetController');
 const AuthController = require('../controllers/AuthController');
-const NotificationsController = require('../controllers/NotificationsController');
-const HealthCheckController = require('../controllers/HealthCheckController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 
 // Middleware
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
 const { validateBookingData, validatePaymentData, validateReviewData } = require('../middleware/validation');
-const { limiters, logRateLimitViolation } = require('../middleware/rateLimited');
+const { limiters, [REDACTED_TOKEN] } = require('../middleware/rateLimited');
 const { validateSchema } = require('../utils/joiSchemas');
 const { bookingSchemas, reviewSchemas, paymentSchemas, userSchemas } = require('../utils/joiSchemas');
 
 // ===== HEALTH CHECKS (Públicas, sem autenticação) =====
 router.get('/health', (req, res) => {
-  HealthCheckController.getDetailedHealth(req, res);
+  [REDACTED_TOKEN].getDetailedHealth(req, res);
 });
 
 router.get('/health/live', (req, res) => {
-  HealthCheckController.getLiveness(req, res);
+  [REDACTED_TOKEN].getLiveness(req, res);
 });
 
 router.get('/health/ready', (req, res) => {
-  HealthCheckController.getReadiness(req, res);
+  [REDACTED_TOKEN].getReadiness(req, res);
 });
 
 router.get('/health/db', (req, res) => {
-  HealthCheckController.getDatabaseReady(req, res);
+  [REDACTED_TOKEN].getDatabaseReady(req, res);
 });
 
 router.get('/health/queue', (req, res) => {
-  HealthCheckController.getQueueStatus(req, res);
+  [REDACTED_TOKEN].getQueueStatus(req, res);
 });
 
 // ===== BOOKINGS =====
@@ -241,36 +241,36 @@ router.delete('/photos/:photoId', authenticateToken, (req, res) => {
 
 // ===== AVALIAÇÕES PÚBLICAS =====
 router.get('/public-reviews', (req, res) => {
-  PublicReviewsController.getPublicReviews(req, res);
+  [REDACTED_TOKEN].getPublicReviews(req, res);
 });
 
 router.get('/reviews-stats/public', (req, res) => {
-  PublicReviewsController.getReviewsStats(req, res);
+  [REDACTED_TOKEN].getReviewsStats(req, res);
 });
 
 router.get('/reviews/service/:serviceId', (req, res) => {
-  PublicReviewsController.getReviewsByService(req, res);
+  [REDACTED_TOKEN].getReviewsByService(req, res);
 });
 
 router.post('/reviews/public/:bookingId/respond', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  PublicReviewsController.respondToReview(req, res);
+  [REDACTED_TOKEN].respondToReview(req, res);
 });
 
 // ===== NOTIFICAÇÕES PUSH =====
 router.post('/notifications/subscribe', (req, res) => {
-  NotificationsController.subscribe(req, res);
+  [REDACTED_TOKEN].subscribe(req, res);
 });
 
 router.post('/notifications/unsubscribe', (req, res) => {
-  NotificationsController.unsubscribe(req, res);
+  [REDACTED_TOKEN].unsubscribe(req, res);
 });
 
 router.post('/notifications/send-test', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  NotificationsController.sendTest(req, res);
+  [REDACTED_TOKEN].sendTest(req, res);
 });
 
 router.get('/reviews/filter', (req, res) => {
-  PublicReviewsController.filterReviews(req, res);
+  [REDACTED_TOKEN].filterReviews(req, res);
 });
 
 // ===== PROFILE & COMPANY =====
@@ -313,26 +313,26 @@ router.put('/company/info', authenticateToken, authorizeRole(['admin']), (req, r
 });
 
 // ===== NEWSLETTER =====
-const NewsletterController = require('../controllers/NewsletterController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 
 router.post('/newsletter/subscribe', (req, res) => {
-  NewsletterController.subscribe(req, res);
+  [REDACTED_TOKEN].subscribe(req, res);
 });
 
 router.post('/newsletter/unsubscribe', (req, res) => {
-  NewsletterController.unsubscribe(req, res);
+  [REDACTED_TOKEN].unsubscribe(req, res);
 });
 
 router.get('/newsletter/subscribers', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  NewsletterController.getSubscribers(req, res);
+  [REDACTED_TOKEN].getSubscribers(req, res);
 });
 
 router.post('/newsletter/send-all', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  NewsletterController.sendToAll(req, res);
+  [REDACTED_TOKEN].sendToAll(req, res);
 });
 
 router.get('/newsletter/stats', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  NewsletterController.getStats(req, res);
+  [REDACTED_TOKEN].getStats(req, res);
 });
 
 // ===== 2FA (Two-Factor Authentication) =====
@@ -361,11 +361,11 @@ router.use('/chat', chatMessagesRoutes);
 
 // ===== CHAT (Encrypted Messaging) =====
 router.post('/chat/messages', authenticateToken, (req, res) => {
-  ChatController.sendEncryptedMessage(req, res);
+  ChatController.[REDACTED_TOKEN](req, res);
 });
 
 router.get('/chat/messages/:conversationId', authenticateToken, (req, res) => {
-  ChatController.getEncryptedMessages(req, res);
+  ChatController.[REDACTED_TOKEN](req, res);
 });
 
 router.post('/chat/upload-encrypted', authenticateToken, upload.single('file'), (req, res) => {
@@ -373,7 +373,7 @@ router.post('/chat/upload-encrypted', authenticateToken, upload.single('file'), 
 });
 
 router.get('/chat/download-encrypted/:fileId', authenticateToken, (req, res) => {
-  ChatController.downloadEncryptedFile(req, res);
+  ChatController.[REDACTED_TOKEN](req, res);
 });
 
 router.get('/chat/message-hash/:messageId', authenticateToken, (req, res) => {
@@ -386,47 +386,47 @@ router.delete('/chat/conversations/:conversationId', authenticateToken, (req, re
 
 // ===== DATABASE OPTIMIZATION =====
 router.get('/db/query-report', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.getQueryReport(req, res);
+  [REDACTED_TOKEN].getQueryReport(req, res);
 });
 
 router.get('/db/slow-queries', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.getSlowQueries(req, res);
+  [REDACTED_TOKEN].getSlowQueries(req, res);
 });
 
 router.post('/db/analyze-query', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.analyzeQuery(req, res);
+  [REDACTED_TOKEN].analyzeQuery(req, res);
 });
 
 router.get('/db/suggest-indices', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.suggestIndices(req, res);
+  [REDACTED_TOKEN].suggestIndices(req, res);
 });
 
 router.get('/db/index-usage', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.analyzeIndexUsage(req, res);
+  [REDACTED_TOKEN].analyzeIndexUsage(req, res);
 });
 
 router.get('/db/integrity-check', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.validateIntegrity(req, res);
+  [REDACTED_TOKEN].validateIntegrity(req, res);
 });
 
 router.post('/db/vacuum', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.vacuumDatabase(req, res);
+  [REDACTED_TOKEN].vacuumDatabase(req, res);
 });
 
 router.post('/db/optimize', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.optimizeTables(req, res);
+  [REDACTED_TOKEN].optimizeTables(req, res);
 });
 
 router.get('/db/table-sizes', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.getTableSizes(req, res);
+  [REDACTED_TOKEN].getTableSizes(req, res);
 });
 
 router.get('/db/stats', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.getDatabaseStats(req, res);
+  [REDACTED_TOKEN].getDatabaseStats(req, res);
 });
 
 router.post('/db/reset-stats', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  DatabaseOptimizationController.resetStatistics(req, res);
+  [REDACTED_TOKEN].resetStatistics(req, res);
 });
 
 // ===== CDN & ASSET OPTIMIZATION =====
@@ -463,11 +463,11 @@ router.post('/cdn/image-sitemap', authenticateToken, authorizeRole(['admin']), (
 });
 
 router.get('/cdn/image-performance/:imageId', authenticateToken, (req, res) => {
-  CDNAssetController.measureImagePerformance(req, res);
+  CDNAssetController.[REDACTED_TOKEN](req, res);
 });
 
 router.get('/cdn/optimization-report', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  CDNAssetController.getOptimizationReport(req, res);
+  CDNAssetController.[REDACTED_TOKEN](req, res);
 });
 
 // ===== PHASE 2: ADVANCED FEATURES =====
@@ -482,23 +482,23 @@ const AnalyticsController = require('../controllers/AnalyticsController');
 router.use('/analytics', authenticateToken, authorizeRole(['admin','manager','partner']), AnalyticsController);
 
 // ===== RECURRING BOOKINGS =====
-const RecurringBookingController = require('../controllers/RecurringBookingController');
-router.use('/bookings/recurring', authenticateToken, RecurringBookingController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/bookings/recurring', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== PRICE HISTORY & FORECASTING =====
-const PriceHistoryController = require('../controllers/PriceHistoryController');
-router.use('/prices', authenticateToken, PriceHistoryController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/prices', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== PERSONALIZED RECOMMENDATIONS =====
 // As rotas de recomendações são definidas mais abaixo com handlers explícitos.
 
 // ===== PAYMENT INTEGRATION (Stripe + PIX) =====
-const PaymentIntegrationController = require('../controllers/PaymentIntegrationController');
-router.use('/payments', authenticateToken, PaymentIntegrationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/payments', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== SMART PUSH NOTIFICATIONS =====
-const PushNotificationController = require('../controllers/PushNotificationController');
-router.use('/push-notifications', authenticateToken, PushNotificationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/push-notifications', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== SMS / WHATSAPP NOTIFICATIONS (Preferences & History) =====
 const NotificationService = require('../services/NotificationService');
@@ -511,29 +511,29 @@ const ReferralController = require('../controllers/ReferralController');
 router.use('/referrals', authenticateToken, ReferralController);
 
 // ===== AUTO-SCHEDULING & ROUTE OPTIMIZATION =====
-const AutoSchedulingController = require('../controllers/AutoSchedulingController');
-router.use('/scheduling', authenticateToken, authorizeRole(['admin', 'staff']), AutoSchedulingController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/scheduling', authenticateToken, authorizeRole(['admin', 'staff']), [REDACTED_TOKEN]);
 
 // ===== SEO & MARKETING =====
-const SEOMarketingController = require('../controllers/SEOMarketingController');
-router.use('/seo', SEOMarketingController);
-router.use('/marketing', authenticateToken, authorizeRole(['admin']), SEOMarketingController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/seo', [REDACTED_TOKEN]);
+router.use('/marketing', authenticateToken, authorizeRole(['admin']), [REDACTED_TOKEN]);
 
 // ===== BACKUP & DISASTER RECOVERY =====
 const BackupController = require('../controllers/BackupController');
 router.use('/backup', authenticateToken, authorizeRole(['admin']), BackupController);
 
 // ===== REVIEW IMAGES & GALLERY =====
-const ReviewImageController = require('../controllers/ReviewImageController');
-router.use('/reviews', ReviewImageController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/reviews', [REDACTED_TOKEN]);
 
 // ===== REPORTS & EXPORTS =====
 const ReportsController = require('../controllers/ReportsController');
 router.use('/reports', authenticateToken, authorizeRole(['admin']), ReportsController);
 
 // ===== SMART NOTIFICATIONS =====
-const SmartNotificationController = require('../controllers/SmartNotificationController');
-router.use('/smart-notifications', authenticateToken, SmartNotificationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/smart-notifications', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== ADMIN DASHBOARD =====
 const adminRoutes = require('./adminRoutes');
@@ -560,24 +560,24 @@ const WebhookController = require('../controllers/WebhookController');
 router.use('/webhooks', authenticateToken, WebhookController);
 
 // ===== INTEGRATIONS (Phase 3B) =====
-const IntegrationController = require('../controllers/IntegrationController');
-router.use('/integrations', authenticateToken, IntegrationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/integrations', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== ADVANCED PAYMENTS - Boleto, Apple Pay, Google Pay, PayPal, Subscriptions (Phase 3B) =====
-const AdvancedPaymentController = require('../controllers/AdvancedPaymentController');
-router.use('/payments/advanced', authenticateToken, AdvancedPaymentController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/payments/advanced', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== ADVANCED EMAIL & SMS - Templates, Campaigns, A/B Testing (Phase 3B) =====
-const AdvancedEmailController = require('../controllers/AdvancedEmailController');
-router.use('/email', authenticateToken, AdvancedEmailController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/email', authenticateToken, [REDACTED_TOKEN]);
 
 // ===== ADVANCED 2FA - Biometric, WebAuthn, Recovery Codes, Trusted Devices (Phase 3B) =====
-const Advanced2FAController = require('../controllers/Advanced2FAController');
-router.use('/2fa', Advanced2FAController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/2fa', [REDACTED_TOKEN]);
 
 // ===== STAFF AVAILABILITY - Real-time availability widget =====
-const staffAvailabilityRoutes = require('./staffAvailabilityRoutes');
-router.use('/staff', staffAvailabilityRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+router.use('/staff', [REDACTED_TOKEN]);
 
 // ===== DYNAMIC PRICING =====
 const PricingController = require('../controllers/PricingController');
@@ -585,7 +585,7 @@ router.post('/pricing/calculate', (req, res) => {
   PricingController.calculatePrice(req, res);
 });
 router.get('/pricing/simulate', (req, res) => {
-  PricingController.simulatePriceOptions(req, res);
+  PricingController.[REDACTED_TOKEN](req, res);
 });
 
 // ===== HOUR PACKAGING (Novos Endpoints Pagamento em Horas) =====
@@ -593,18 +593,18 @@ const hourPricingRoutes = require('./hourPricingRoutes');
 router.use('/pricing', hourPricingRoutes);
 
 // ===== INTELLIGENT RECOMMENDATIONS (CROSS-SELLING) =====
-const RecommendationController = require('../controllers/RecommendationController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 router.get('/recommendations/smart', (req, res) => {
-  RecommendationController.getSmartRecommendations(req, res);
+  [REDACTED_TOKEN].[REDACTED_TOKEN](req, res);
 });
 router.get('/recommendations/popular', (req, res) => {
-  RecommendationController.getPopularServices(req, res);
+  [REDACTED_TOKEN].getPopularServices(req, res);
 });
 router.get('/recommendations/upsell', (req, res) => {
-  RecommendationController.getUpsellRecommendations(req, res);
+  [REDACTED_TOKEN].[REDACTED_TOKEN](req, res);
 });
 router.get('/recommendations/at-risk', authenticateToken, authorizeRole(['admin']), (req, res) => {
-  RecommendationController.getAtRiskCustomers(req, res);
+  [REDACTED_TOKEN].getAtRiskCustomers(req, res);
 });
 
 // ===== NEW FEATURES (12 Premium Services) =====
@@ -629,8 +629,8 @@ const hourlyBookingRoutes = require('./hourlyBookingRoutes');
 router.use('/hourly', hourlyBookingRoutes);
 
 // PROFESSIONAL RATINGS (Admin)
-const professionalRatingRoutes = require('./professionalRatingRoutes');
-router.use('/professional-ratings', professionalRatingRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+router.use('/[REDACTED_TOKEN]', [REDACTED_TOKEN]);
 
 // CANCELLATIONS & REFUNDS
 const cancellationRoutes = require('./cancellationRoutes');
@@ -647,9 +647,9 @@ router.use('/pix', pixRoutes);
 
 // ===== ADMIN DASHBOARD =====
 const { getDb } = require('../db/sqlite');
-const createAdminDashboardRoutes = require('./adminDashboardRoutes');
-const adminDashboardRoutes = createAdminDashboardRoutes(getDb());
-router.use('/admin/dashboard', adminDashboardRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+const [REDACTED_TOKEN] = [REDACTED_TOKEN](getDb());
+router.use('/admin/dashboard', [REDACTED_TOKEN]);
 
 module.exports = router;
 
@@ -663,8 +663,8 @@ const couponRoutes = require('./couponRoutes');
 router.use('/coupons', couponRoutes);
 
 // RECURRING BOOKINGS
-const recurringBookingRoutes = require('./recurringBookingRoutes');
-router.use('/recurring-bookings', authenticateToken, recurringBookingRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+router.use('/recurring-bookings', authenticateToken, [REDACTED_TOKEN]);
 
 // REPORTS & PDF
 const reportRoutes = require('./reportRoutes');

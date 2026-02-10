@@ -15,7 +15,7 @@
 
 - [x] Migração inicial com 001_initial_tables.sql
 - [x] Migrações adicionais (002, 003, 004, 008)
-- [x] **Migração das 12 features**: 20260209_create_12_features_tables.sql
+- [x] **Migração das 12 features**: [REDACTED_TOKEN].sql
 - [x] Criação de **13 novas tabelas** para as features premium
 - [x] Índices de performance nas colunas mais consultadas
 - [x] Foreign keys com integridade referencial
@@ -30,7 +30,7 @@
 ✅ subscription_plans      - Planos recorrentes
 ✅ user_subscriptions      - Subscrições ativas dos usuários
 ✅ user_addresses          - Endereços com geolocalização
-✅ professional_ratings    - Avaliações internas de profissionais
+✅ [REDACTED_TOKEN]    - Avaliações internas de profissionais
 ✅ hourly_bookings         - Agendamentos por hora/minuto
 ✅ hourly_rates            - Tarifas horárias
 ✅ blog_posts              - Posts com slug e keywords
@@ -89,7 +89,7 @@
    - Feature flags
    - Comentários explicativos
 
-2. **Guia de Setup Completo** (GUIA_FINAL_SETUP_15_FEATURES.md)
+2. **Guia de Setup Completo** ([REDACTED_TOKEN].md)
    - Pré-requisitos
    - Passo a passo de instalação
    - Configuração do banco
@@ -124,12 +124,12 @@ backend/src/services/
   ✅ AddonsService.js
   ✅ SubscriptionService.js
   ✅ GeoLocationService.js
-  ✅ HourlyBookingService.js
-  ✅ ProfessionalRatingService.js
+  ✅ [REDACTED_TOKEN].js
+  ✅ [REDACTED_TOKEN].js
   ✅ CancellationService.js
   ✅ ReceiptService.js
   ✅ BlogService.js
-  ✅ PushNotificationService.js (enhanced)
+  ✅ [REDACTED_TOKEN].js (enhanced)
 ```
 
 ### Backend Routes (8 arquivos)
@@ -140,7 +140,7 @@ backend/src/routes/
   ✅ subscriptionRoutes.js
   ✅ geolocationRoutes.js
   ✅ hourlyBookingRoutes.js
-  ✅ professionalRatingRoutes.js
+  ✅ [REDACTED_TOKEN].js
   ✅ cancellationRoutes.js
   ✅ receiptRoutes.js
   ✅ api.js (updated with 8 new router.use())
@@ -149,7 +149,7 @@ backend/src/routes/
 ### Database
 ```
 database/migrations/
-  ✅ 20260209_create_12_features_tables.sql (170 linhas, 13 tabelas)
+  ✅ [REDACTED_TOKEN].sql (170 linhas, 13 tabelas)
 ```
 
 ### Frontend Components (5 arquivos)
@@ -166,8 +166,8 @@ frontend/src/components/
 ```
 Root directory
   ✅ .env.example (80 linhas com todas as vars)
-  ✅ GUIA_FINAL_SETUP_15_FEATURES.md (450 linhas)
-  ✅ IMPLEMENTACAO_15_FEATURES_COMPLETA.md (updated)
+  ✅ [REDACTED_TOKEN].md (450 linhas)
+  ✅ [REDACTED_TOKEN].md (updated)
 ```
 
 ---
@@ -267,8 +267,8 @@ GET  /api/hourly/my-bookings        - Meus agendamentos
 
 ### Professional Ratings (Qualidade)
 ```
-POST /api/professional-ratings/rate - Avaliar profissional
-GET  /api/professional-ratings/:id  - Ver avaliações
+POST /api/[REDACTED_TOKEN]/rate - Avaliar profissional
+GET  /api/[REDACTED_TOKEN]/:id  - Ver avaliações
 ```
 
 ### Cancellations (Cancelamentos)
@@ -322,8 +322,8 @@ GET  /api/blog/search               - Buscar
 
 | Arquivo | Propósito |
 |---------|----------|
-| `GUIA_FINAL_SETUP_15_FEATURES.md` | Setup completo passo a passo |
-| `IMPLEMENTACAO_15_FEATURES_COMPLETA.md` | Documentação técnica detalhada |
+| `[REDACTED_TOKEN].md` | Setup completo passo a passo |
+| `[REDACTED_TOKEN].md` | Documentação técnica detalhada |
 | `.env.example` | Variáveis de ambiente |
 | `README.md` | Overview do projeto |
 
@@ -415,10 +415,10 @@ GET  /api/blog/search               - Buscar
 ## 📞 Suporte & Documentação
 
 **Documentação Técnica**
-- [IMPLEMENTACAO_15_FEATURES_COMPLETA.md](./IMPLEMENTACAO_15_FEATURES_COMPLETA.md)
+- [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md)
 
 **Setup Guide**
-- [GUIA_FINAL_SETUP_15_FEATURES.md](./GUIA_FINAL_SETUP_15_FEATURES.md)
+- [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md)
 
 **Código Fonte**
 - Backend: `backend/src/services/` e `backend/src/routes/`

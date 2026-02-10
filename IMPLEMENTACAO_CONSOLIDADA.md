@@ -27,14 +27,14 @@
 │     • verifyPayment() - Checa status PIX (com fallback para API bancária)    │
 │     • confirmPayment() - Atualiza transação como paga                        │
 │                                                                              │
-│  ✅ PaymentIntegrationService.js (atualizado)                                │
+│  ✅ [REDACTED_TOKEN].js (atualizado)                                │
 │     • createStripePayment() - Pagamentos Stripe                              │
 │     • createPixPayment() - Gerar QR Code PIX                                 │
 │     • processWebhook() - Processa webhooks (Stripe + PIX!)                   │
 │     • requestRefund() - Reembolsos                                           │
 │     • reconcilePayments() - Reconciliação automática                         │
 │                                                                              │
-│  ✅ PaymentIntegrationService.test.js (NOVO)                                 │
+│  ✅ [REDACTED_TOKEN].test.js (NOVO)                                 │
 │     • 11 suites de testes                                                    │
 │     • Testa: Stripe, PIX, Webhooks, Refunds, Status                          │
 │                                                                              │
@@ -61,8 +61,8 @@
 │     • sendEmail() - Enviar email via Nodemailer                              │
 │     • scheduleReminders() - Agendar lembretes (2d, 1d, 1h antes)             │
 │     • sendConfirmation() - Confirmação de agendamento                        │
-│     • sendPaymentLinkWhatsApp() - Link de pagamento                          │
-│     • sendReferralWhatsApp() - Link de referência                            │
+│     • [REDACTED_TOKEN]() - Link de pagamento                          │
+│     • [REDACTED_TOKEN]() - Link de referência                            │
 │                                                                              │
 │  ✅ notificationRoutes.js (já integrado)                                      │
 │     GET  /api/notifications/preferences/:userId - Buscar preferências        │
@@ -77,16 +77,16 @@
 │     • Mocks de Twilio e Nodemailer                                           │
 │                                                                              │
 │  📊 Tabelas de Banco Criadas:                                                 │
-│     notification_preferences - Preferências do usuário                       │
+│     [REDACTED_TOKEN] - Preferências do usuário                       │
 │     notification_logs - Histórico de envios                                  │
-│     notification_templates - Templates de mensagens                          │
+│     [REDACTED_TOKEN] - Templates de mensagens                          │
 │     notification_queue - Fila de notificações agendadas                      │
 │                                                                              │
 │  🔑 Variáveis de Ambiente:                                                    │
 │     TWILIO_ACCOUNT_SID - SID da conta Twilio                                 │
 │     TWILIO_AUTH_TOKEN - Token de autenticação                                │
 │     TWILIO_PHONE_NUMBER - Número para SMS                                    │
-│     TWILIO_WHATSAPP_FROM - Número WhatsApp (whatsapp:+55...)                 │
+│     [REDACTED_TOKEN] - Número WhatsApp (whatsapp:+55...)                 │
 │                                                                              │
 │  💡 Fallback: Se Twilio não configurado, notificações vão para logs          │
 │                                                                              │
@@ -100,20 +100,20 @@
 │                                                                              │
 │     001_initial_schema.sql              - Schema inicial                     │
 │     001_initial_tables.sql              - Tabelas principais                 │
-│     001_notifications_system.sql        - Notifications (MySQL - erro)       │
-│     002_add_company_and_admin.sql       - Company & Admin                    │
+│     [REDACTED_TOKEN].sql        - Notifications (MySQL - erro)       │
+│     [REDACTED_TOKEN].sql       - Company & Admin                    │
 │     002_add_payments.sql                - Payments                           │
 │     002_chatbot_system.sql              - Chatbot                            │
 │     003_add_automation.sql              - Automation rules                   │
-│     003_add_hour_packages.sql           - Hour packages                      │
-│     004_add_newsletter_subscribers.sql  - Newsletter                         │
-│     008_add_pix_cupons_referral.sql     - PIX, coupons, referral             │
-│     20260209_create_12_features_tables.sql    - 12 features                  │
-│     20260209_create_affiliates_referrals.sql - Affiliates                    │
-│     20260209_create_payments_chat_messages.sql - Payments & Chat             │
-│     20260209_create_reviews_time_blocks_email_logs.sql - Reviews             │
+│     [REDACTED_TOKEN].sql           - Hour packages                      │
+│     [REDACTED_TOKEN].sql  - Newsletter                         │
+│     [REDACTED_TOKEN].sql     - PIX, coupons, referral             │
+│     [REDACTED_TOKEN].sql    - 12 features                  │
+│     [REDACTED_TOKEN].sql - Affiliates                    │
+│     [REDACTED_TOKEN].sql - Payments & Chat             │
+│     [REDACTED_TOKEN].sql - Reviews             │
 │     001-add-indices.sql                 - Indices (ao final)                 │
-│     010_sqlite_notifications_fix.sql    - FIX: SQLite compat (NOVO)          │
+│     [REDACTED_TOKEN].sql    - FIX: SQLite compat (NOVO)          │
 │                                                                              │
 │  📂 Banco de Dados:                                                           │
 │     Localização: ./backend_data/database.db                                  │
@@ -122,7 +122,7 @@
 │                                                                              │
 │  🏗️ Tabelas Principais:                                                       │
 │     users, bookings, services, payments, transactions                        │
-│     notification_preferences, notification_logs, notification_queue          │
+│     [REDACTED_TOKEN], notification_logs, notification_queue          │
 │     pix_transactions, coupons, referral_links                                │
 │     email_queue, chat_messages, reviews                                      │
 │                                                                              │
@@ -134,7 +134,7 @@
 │                                                                              │
 │  ✅ jest.config.js (REFORMULADO)                                             │
 │     • testMatch: src/**/__tests__/**/*.js + src/**/*.test.js                  │
-│     • testPathIgnorePatterns: /e2e/, /coverage/, /node_modules/              │
+│     • [REDACTED_TOKEN]: /e2e/, /coverage/, /node_modules/              │
 │     • maxWorkers: 50% (parallelização automática)                            │
 │     • setupFilesAfterEnv: jest.setup.js                                      │
 │                                                                              │
@@ -167,7 +167,7 @@
 │                                                                              │
 │  ✅ Novos Testes:                                                             │
 │                                                                              │
-│     PaymentIntegrationService.test.js (229 linhas)                            │
+│     [REDACTED_TOKEN].test.js (229 linhas)                            │
 │     • createStripePayment() - ✅ Testa pagamento Stripe                       │
 │     • createPixPayment() - ✅ Testa geração de QR Code                        │
 │     • processWebhook() - ✅ Testa processamento de eventos                    │
@@ -183,7 +183,7 @@
 │     • sendWhatsApp() - ✅ Testa WhatsApp com fallback                         │
 │     • scheduleReminders() - ✅ Testa agendamento                              │
 │     • sendConfirmation() - ✅ Testa confirmação                               │
-│     • sendPaymentLinkWhatsApp() - ✅ Testa link pagamento                     │
+│     • [REDACTED_TOKEN]() - ✅ Testa link pagamento                     │
 │                                                                              │
 │  📊 Cobertura de Testes:                                                      │
 │     • 50+ testes novos (PIX + Notifications)                                 │
@@ -212,7 +212,7 @@
 │  ✅ .env.example (ATUALIZADO)                                                 │
 │     • PIX: PIX_KEY, PIX_BANK_API_URL                                          │
 │     • Twilio: TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, etc.                    │
-│     • Feature flags: REACT_APP_ENABLE_NOTIFICATIONS, etc.                    │
+│     • Feature flags: [REDACTED_TOKEN], etc.                    │
 │     • Frontend: REACT_APP_API_URL, REACT_APP_TIMEOUT, etc.                   │
 │                                                                              │
 │  📖 Documentação Inline:                                                      │
@@ -228,8 +228,8 @@
 │                                                                              │
 │  CURTO PRAZO (1-2 dias):                                                     │
 │  □ Ligar feature flags em staging                                            │
-│    - REACT_APP_ENABLE_NOTIFICATIONS=true                                     │
-│    - ENABLE_PUSH_NOTIFICATIONS=true                                          │
+│    - [REDACTED_TOKEN]=true                                     │
+│    - [REDACTED_TOKEN]=true                                          │
 │  □ Configurar credenciais Twilio                                             │
 │  □ Configurar credenciais PIX/Banco                                          │
 │  □ Rodar npm run test:ci (validar testes)                                    │

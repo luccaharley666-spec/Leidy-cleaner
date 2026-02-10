@@ -82,7 +82,7 @@ export function ReviewSystem() {
     return (sum / reviews.length).toFixed(1);
   };
 
-  const getRatingDistribution = () => {
+  const [REDACTED_TOKEN] = () => {
     const distribution = { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 };
     reviews.forEach(review => {
       distribution[review.rating]++;
@@ -106,7 +106,7 @@ export function ReviewSystem() {
       <RatingOverview
         averageRating={getAverageRating()}
         totalReviews={reviews.length}
-        distribution={getRatingDistribution()}
+        distribution={[REDACTED_TOKEN]()}
       />
 
       <ReviewFilters />

@@ -15,7 +15,7 @@ class PixWebhookService {
   static async processPixWebhook(webhookData, bankSignature, bankTimestamp) {
     try {
       // Verificar assinatura do webhook para segurança
-      const isValid = this.verifyWebhookSignature(webhookData, bankSignature);
+      const isValid = this.[REDACTED_TOKEN](webhookData, bankSignature);
       if (!isValid) {
         logger.warn('Invalid webhook signature', { bankTimestamp });
         return {
@@ -87,7 +87,7 @@ class PixWebhookService {
           `UPDATE bookings 
            SET status = 'confirmed', 
                paid = 1,
-               payment_confirmed_at = datetime('now')
+               [REDACTED_TOKEN] = datetime('now')
            WHERE id = ?`,
           pixTransaction.order_id
         );
@@ -112,7 +112,7 @@ class PixWebhookService {
       return {
         success: false,
         error: 'Internal server error',
-        code: 'WEBHOOK_PROCESS_ERROR'
+        code: '[REDACTED_TOKEN]'
       };
     }
   }
@@ -120,11 +120,11 @@ class PixWebhookService {
   /**
    * Verificar assinatura HMAC-SHA256 do webhook (Banco do Brasil, Bradesco, etc)
    */
-  static verifyWebhookSignature(webhookData, bankSignature) {
+  static [REDACTED_TOKEN](webhookData, bankSignature) {
     try {
-      const webhookSecret = process.env.PIX_WEBHOOK_SECRET;
+      const webhookSecret = process.env.[REDACTED_TOKEN];
       if (!webhookSecret) {
-        logger.warn('PIX_WEBHOOK_SECRET not configured');
+        logger.warn('[REDACTED_TOKEN] not configured');
         return false;
       }
 
@@ -154,7 +154,7 @@ class PixWebhookService {
    * Validar (polling) status de PIX via API bancária em tempo real
    * Útil para evitar dependência de webhooks
    */
-  static async validatePixStatusViaAPI(pixTransactionId) {
+  static async [REDACTED_TOKEN](pixTransactionId) {
     try {
       const pixTransaction = await db.get(
         'SELECT * FROM pix_transactions WHERE id = ?',
@@ -232,7 +232,7 @@ class PixWebhookService {
             `UPDATE bookings 
              SET status = 'confirmed',
                  paid = 1,
-                 payment_confirmed_at = datetime('now')
+                 [REDACTED_TOKEN] = datetime('now')
              WHERE id = ?`,
             pixTransaction.order_id
           );
@@ -287,7 +287,7 @@ class PixWebhookService {
    * Listar transições PIX pendentes que podem estar vencendo
    * Para notificação ao cliente
    */
-  static async getExpiringPixTransactions(minutesUntilExpiry = 5) {
+  static async [REDACTED_TOKEN](minutesUntilExpiry = 5) {
     try {
       const expiringPixs = await db.all(
         `SELECT * FROM pix_transactions
@@ -315,7 +315,7 @@ class PixWebhookService {
   /**
    * Limpar PIX expirados (com retry em caso de falha)
    */
-  static async cleanExpiredPixTransactions() {
+  static async [REDACTED_TOKEN]() {
     try {
       const result = await db.run(
         `DELETE FROM pix_transactions

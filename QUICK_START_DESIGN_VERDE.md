@@ -61,7 +61,7 @@ JWT: REQUERIDO
 curl -i http://localhost:3001/health
 
 # Expected:
-# X-Content-Type-Options: nosniff
+# [REDACTED_TOKEN]: nosniff
 # X-Frame-Options: DENY
 # CSP: default-src 'self'...
 ```
@@ -152,13 +152,13 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ```bash
 # Desenvolvimento
 NODE_ENV=development
-JWT_SECRET=dev-secret-change-me
+JWT_SECRET=[REDACTED_TOKEN]
 CORS_ORIGIN=http://localhost:3000,http://localhost:3001
 DATABASE_PATH=/workspaces/mmmm/backend/backend_data/database.sqlite
 
 # Produção (obrigatório)
 NODE_ENV=production
-JWT_SECRET=seu-super-secret-seguro-aqui
+JWT_SECRET=[REDACTED_TOKEN]
 DATABASE_URL=postgresql://user:pass@host/db
 API_BASE_URL=https://api.leidycleaner.com.br
 FRONTEND_URL=https://www.leidycleaner.com.br
@@ -212,7 +212,7 @@ npm run dev
 ### "JWT Secret not configured in production"
 ```bash
 # OBRIGATÓRIO:
-export JWT_SECRET="seu-secret-aqui-32-caracteres-minimo"
+export JWT_SECRET="[REDACTED_TOKEN]"
 npm start
 ```
 
@@ -221,8 +221,8 @@ npm start
 ## 📞 Suporte
 
 ### Arquivo de Documentação
-- `IMPLEMENTACAO_DESIGN_VERDE_FINAL.md` - Documentação completa
-- `CHANGELOG_DESIGN_VERDE.md` - O que mudou
+- `[REDACTED_TOKEN].md` - Documentação completa
+- `[REDACTED_TOKEN].md` - O que mudou
 - `frontend/src/styles/designSystem.js` - Design tokens
 - `backend/src/config/envConfig.js` - Env config
 

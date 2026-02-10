@@ -244,7 +244,7 @@ nano .env
 
 ```bash
 # Instalar certbot (Ubuntu/Debian)
-sudo apt install certbot python3-certbot-nginx
+sudo apt install certbot [REDACTED_TOKEN]
 
 # Criar certificado
 sudo certbot certonly --standalone \
@@ -351,7 +351,7 @@ docker-compose restart frontend
 ## 📚 Próximas Leituras
 
 1. **Deployment Completo:** [DEPLOYMENT.md](./DEPLOYMENT.md)
-2. **Resumo de Implementação:** [FINAL_IMPLEMENTATION_SUMMARY.md](./FINAL_IMPLEMENTATION_SUMMARY.md)
+2. **Resumo de Implementação:** [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md)
 3. **Arquitetura:** [ARCHITECTURE_MAP.md](./ARCHITECTURE_MAP.md)
 4. **API Docs:** http://localhost:3001/api/docs
 

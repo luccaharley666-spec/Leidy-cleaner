@@ -83,7 +83,7 @@ class ValidationService {
   /**
    * Validar número positivo (price, duration, etc)
    */
-  static validatePositiveNumber(value, fieldName, max = Number.MAX_SAFE_INTEGER) {
+  static [REDACTED_TOKEN](value, fieldName, max = Number.MAX_SAFE_INTEGER) {
     const num = Number(value);
     if (!Number.isFinite(num) || num <= 0) {
       throw new Error(`${fieldName} deve ser um número positivo`);
@@ -97,8 +97,8 @@ class ValidationService {
   /**
    * Validar inteiro positivo (IDs, quantities)
    */
-  static validatePositiveInteger(value, fieldName, max = Number.MAX_SAFE_INTEGER) {
-    const num = this.validatePositiveNumber(value, fieldName, max);
+  static [REDACTED_TOKEN](value, fieldName, max = Number.MAX_SAFE_INTEGER) {
+    const num = this.[REDACTED_TOKEN](value, fieldName, max);
     if (!Number.isInteger(num)) {
       throw new Error(`${fieldName} deve ser um número inteiro`);
     }
@@ -109,7 +109,7 @@ class ValidationService {
    * Validar rating (1-5)
    */
   static validateRating(value) {
-    const num = this.validatePositiveInteger(value, 'Rating', 5);
+    const num = this.[REDACTED_TOKEN](value, 'Rating', 5);
     if (num < 1 || num > 5) {
       throw new Error('Rating deve ser entre 1 e 5');
     }
@@ -216,12 +216,12 @@ class ValidationService {
       userId: {
         required: true,
         type: 'number',
-        validator: (v) => this.validatePositiveInteger(v, 'userId')
+        validator: (v) => this.[REDACTED_TOKEN](v, 'userId')
       },
       serviceId: {
         required: true,
         type: 'number',
-        validator: (v) => this.validatePositiveInteger(v, 'serviceId')
+        validator: (v) => this.[REDACTED_TOKEN](v, 'serviceId')
       },
       date: {
         required: true,
@@ -240,7 +240,7 @@ class ValidationService {
         validator: (v) => this.validatePhoneBR(v)
       },
       durationHours: {
-        validator: (v) => v ? this.validatePositiveNumber(v, 'durationHours', 24) : 2
+        validator: (v) => v ? this.[REDACTED_TOKEN](v, 'durationHours', 24) : 2
       }
     };
     
@@ -255,12 +255,12 @@ class ValidationService {
       bookingId: {
         required: true,
         type: 'number',
-        validator: (v) => this.validatePositiveInteger(v, 'bookingId')
+        validator: (v) => this.[REDACTED_TOKEN](v, 'bookingId')
       },
       userId: {
         required: true,
         type: 'number',
-        validator: (v) => this.validatePositiveInteger(v, 'userId')
+        validator: (v) => this.[REDACTED_TOKEN](v, 'userId')
       },
       rating: {
         required: true,
@@ -282,11 +282,11 @@ class ValidationService {
       bookingId: {
         required: true,
         type: 'number',
-        validator: (v) => this.validatePositiveInteger(v, 'bookingId')
+        validator: (v) => this.[REDACTED_TOKEN](v, 'bookingId')
       },
       amount: {
         required: true,
-        validator: (v) => this.validatePositiveNumber(v, 'amount', 99999.99)
+        validator: (v) => this.[REDACTED_TOKEN](v, 'amount', 99999.99)
       },
       paymentMethod: {
         required: true,

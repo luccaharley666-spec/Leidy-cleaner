@@ -1,14 +1,14 @@
-const BackgroundJobScheduler = require('../services/BackgroundJobScheduler');
-const PaymentReconciliationService = require('../services/PaymentReconciliationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 
-class BackgroundJobController {
+class [REDACTED_TOKEN] {
   /**
    * GET /api/admin/background-jobs/status
    * Obter status de todos os jobs
    */
   async getJobsStatus(req, res) {
     try {
-      const status = await BackgroundJobScheduler.getJobsStatus();
+      const status = await [REDACTED_TOKEN].getJobsStatus();
       res.json({ success: true, data: status });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -21,7 +21,7 @@ class BackgroundJobController {
    */
   async getJobsStats(req, res) {
     try {
-      const stats = await BackgroundJobScheduler.getJobsStats();
+      const stats = await [REDACTED_TOKEN].getJobsStats();
       res.json({ success: true, data: stats });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -34,7 +34,7 @@ class BackgroundJobController {
    */
   async triggerReconcileNow(req, res) {
     try {
-      const result = await PaymentReconciliationService.reconcileAll();
+      const result = await [REDACTED_TOKEN].reconcileAll();
       res.json({ success: true, data: result });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -42,13 +42,13 @@ class BackgroundJobController {
   }
 
   /**
-   * GET /api/admin/background-jobs/reconciliation-history
+   * GET /api/admin/background-jobs/[REDACTED_TOKEN]
    * Obter histórico de reconciliações
    */
-  async getReconciliationHistory(req, res) {
+  async [REDACTED_TOKEN](req, res) {
     try {
       const limit = req.query.limit || 100;
-      const history = await PaymentReconciliationService.getHistory(limit);
+      const history = await [REDACTED_TOKEN].getHistory(limit);
       res.json({ success: true, data: history });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -56,12 +56,12 @@ class BackgroundJobController {
   }
 
   /**
-   * GET /api/admin/background-jobs/reconciliation-stats
+   * GET /api/admin/background-jobs/[REDACTED_TOKEN]
    * Obter estatísticas de reconciliação
    */
-  async getReconciliationStats(req, res) {
+  async [REDACTED_TOKEN](req, res) {
     try {
-      const stats = await PaymentReconciliationService.getStats();
+      const stats = await [REDACTED_TOKEN].getStats();
       res.json({ success: true, data: stats });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -74,8 +74,8 @@ class BackgroundJobController {
    */
   async startScheduler(req, res) {
     try {
-      if (!BackgroundJobScheduler.isRunning) {
-        await BackgroundJobScheduler.start();
+      if (![REDACTED_TOKEN].isRunning) {
+        await [REDACTED_TOKEN].start();
         res.json({ success: true, message: 'Scheduler iniciado' });
       } else {
         res.json({ success: false, message: 'Scheduler já está rodando' });
@@ -91,8 +91,8 @@ class BackgroundJobController {
    */
   async stopScheduler(req, res) {
     try {
-      if (BackgroundJobScheduler.isRunning) {
-        BackgroundJobScheduler.stop();
+      if ([REDACTED_TOKEN].isRunning) {
+        [REDACTED_TOKEN].stop();
         res.json({ success: true, message: 'Scheduler parado' });
       } else {
         res.json({ success: false, message: 'Scheduler já está parado' });
@@ -103,4 +103,4 @@ class BackgroundJobController {
   }
 }
 
-module.exports = new BackgroundJobController();
+module.exports = new [REDACTED_TOKEN]();

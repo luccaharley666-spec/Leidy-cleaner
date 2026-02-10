@@ -41,7 +41,7 @@ const translations = {
     residentialCleaning: 'Limpeza Residencial',
     deepCleaning: 'Limpeza Profunda',
     windowCleaning: 'Limpeza de Vidros',
-    postConstructionCleaning: 'Limpeza Pós-Obra',
+    [REDACTED_TOKEN]: 'Limpeza Pós-Obra',
     scheduleService: 'Agendar Serviço',
     serviceDetails: 'Detalhes do Serviço',
 
@@ -113,7 +113,7 @@ const translations = {
     residentialCleaning: 'Residential Cleaning',
     deepCleaning: 'Deep Cleaning',
     windowCleaning: 'Window Cleaning',
-    postConstructionCleaning: 'Post-Construction Cleaning',
+    [REDACTED_TOKEN]: 'Post-Construction Cleaning',
     scheduleService: 'Schedule Service',
     serviceDetails: 'Service Details',
 

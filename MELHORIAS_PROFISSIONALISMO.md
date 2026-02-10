@@ -131,7 +131,7 @@ const data = await apiCall('/api/bookings', {
 # Antes de deployar:
 1. Crie .env.production com valores reais
 2. Configure REACT_APP_API_URL para seu backend
-3. Defina REACT_APP_ENVIRONMENT=production
+3. Defina [REDACTED_TOKEN]=production
 4. Remova REACT_APP_DEBUG=true
 ```
 
@@ -146,7 +146,7 @@ npm run lint           # Code quality check
 ### 3. Stripe Integration (se usar pagamentos)
 ```bash
 # Configure as chaves de produção:
-NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_xxx
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 ```
 
 ---
@@ -185,7 +185,7 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_xxx
 
 Dúvidas sobre as melhorias?
 
-1. **Design:** Ver [NOVO_DESIGN_SYSTEM_2026.md](frontend/NOVO_DESIGN_SYSTEM_2026.md)
+1. **Design:** Ver [[REDACTED_TOKEN].md](frontend/[REDACTED_TOKEN].md)
 2. **API Config:** Ver [frontend/src/config/api.js](frontend/src/config/api.js)
 3. **Environment:** Ver [frontend/.env.production.example](frontend/.env.production.example)
 4. **Deployment:** Ver [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)

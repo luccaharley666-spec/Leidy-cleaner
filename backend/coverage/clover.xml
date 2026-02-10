@@ -155,7 +155,7 @@
         <line num="322" count="0" type="stmt"/>
         <line num="327" count="2" type="stmt"/>
       </file>
-      <file name="Advanced2FAController.js" path="/workspaces/por-fim/backend/src/controllers/Advanced2FAController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="114" coveredstatements="17" conditionals="37" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -272,7 +272,7 @@
         <line num="480" count="0" type="stmt"/>
         <line num="484" count="1" type="stmt"/>
       </file>
-      <file name="AdvancedEmailController.js" path="/workspaces/por-fim/backend/src/controllers/AdvancedEmailController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="134" coveredstatements="21" conditionals="44" coveredconditionals="0" methods="16" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -409,7 +409,7 @@
         <line num="600" count="0" type="stmt"/>
         <line num="604" count="1" type="stmt"/>
       </file>
-      <file name="AdvancedPaymentController.js" path="/workspaces/por-fim/backend/src/controllers/AdvancedPaymentController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="97" coveredstatements="16" conditionals="32" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -655,7 +655,7 @@
         <line num="422" count="1" type="stmt"/>
         <line num="429" count="2" type="stmt"/>
       </file>
-      <file name="AutoSchedulingController.js" path="/workspaces/por-fim/backend/src/controllers/AutoSchedulingController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="48" coveredstatements="11" conditionals="9" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -1126,7 +1126,7 @@
         <line num="321" count="0" type="stmt"/>
         <line num="326" count="2" type="stmt"/>
       </file>
-      <file name="DatabaseOptimizationController.js" path="/workspaces/por-fim/backend/src/controllers/DatabaseOptimizationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="66" coveredstatements="3" conditionals="9" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
@@ -1195,7 +1195,7 @@
         <line num="236" count="0" type="stmt"/>
         <line num="241" count="2" type="stmt"/>
       </file>
-      <file name="HealthCheckController.js" path="/workspaces/por-fim/backend/src/controllers/HealthCheckController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="31" coveredstatements="3" conditionals="18" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
@@ -1229,7 +1229,7 @@
         <line num="103" count="0" type="stmt"/>
         <line num="112" count="2" type="stmt"/>
       </file>
-      <file name="IntegrationController.js" path="/workspaces/por-fim/backend/src/controllers/IntegrationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="90" coveredstatements="15" conditionals="33" coveredconditionals="0" methods="10" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -1322,7 +1322,7 @@
         <line num="394" count="0" type="stmt"/>
         <line num="398" count="1" type="stmt"/>
       </file>
-      <file name="NewsletterController.js" path="/workspaces/por-fim/backend/src/controllers/NewsletterController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="90" coveredstatements="14" conditionals="43" coveredconditionals="6" methods="6" coveredmethods="3"/>
         <line num="6" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
@@ -1415,7 +1415,7 @@
         <line num="319" count="0" type="stmt"/>
         <line num="327" count="3" type="stmt"/>
       </file>
-      <file name="NotificationController.js" path="/workspaces/por-fim/backend/src/controllers/NotificationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="29" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="11" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
@@ -1447,7 +1447,7 @@
         <line num="128" count="0" type="stmt"/>
         <line num="133" count="2" type="stmt"/>
       </file>
-      <file name="NotificationsController.js" path="/workspaces/por-fim/backend/src/controllers/NotificationsController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="60" coveredstatements="35" conditionals="32" coveredconditionals="12" methods="13" coveredmethods="9"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
@@ -1658,7 +1658,7 @@
         <line num="285" count="0" type="stmt"/>
         <line num="293" count="2" type="stmt"/>
       </file>
-      <file name="PaymentIntegrationController.js" path="/workspaces/por-fim/backend/src/controllers/PaymentIntegrationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="46" coveredstatements="11" conditionals="3" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -1762,7 +1762,7 @@
         <line num="175" count="1" type="stmt"/>
         <line num="180" count="6" type="stmt"/>
       </file>
-      <file name="PriceHistoryController.js" path="/workspaces/por-fim/backend/src/controllers/PriceHistoryController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="32" coveredstatements="11" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -1950,7 +1950,7 @@
         <line num="188" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="193" count="3" type="stmt"/>
       </file>
-      <file name="PublicReviewsController.js" path="/workspaces/por-fim/backend/src/controllers/PublicReviewsController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="62" coveredstatements="2" conditionals="15" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="6" count="2" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
@@ -2015,7 +2015,7 @@
         <line num="268" count="0" type="stmt"/>
         <line num="273" count="2" type="stmt"/>
       </file>
-      <file name="PushNotificationController.js" path="/workspaces/por-fim/backend/src/controllers/PushNotificationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="48" coveredstatements="12" conditionals="1" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -2066,7 +2066,7 @@
         <line num="101" count="0" type="stmt"/>
         <line num="105" count="1" type="stmt"/>
       </file>
-      <file name="RecommendationController.js" path="/workspaces/por-fim/backend/src/controllers/RecommendationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="30" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -2099,7 +2099,7 @@
         <line num="58" count="0" type="stmt"/>
         <line num="61" count="1" type="stmt"/>
       </file>
-      <file name="RecurringBookingController.js" path="/workspaces/por-fim/backend/src/controllers/RecurringBookingController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="26" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -2310,7 +2310,7 @@
         <line num="191" count="0" type="stmt"/>
         <line num="196" count="2" type="stmt"/>
       </file>
-      <file name="ReviewImageController.js" path="/workspaces/por-fim/backend/src/controllers/ReviewImageController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="49" coveredstatements="14" conditionals="3" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -2362,7 +2362,7 @@
         <line num="101" count="0" type="stmt"/>
         <line num="105" count="1" type="stmt"/>
       </file>
-      <file name="SEOMarketingController.js" path="/workspaces/por-fim/backend/src/controllers/SEOMarketingController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="50" coveredstatements="12" conditionals="4" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -2449,7 +2449,7 @@
         <line num="60" count="0" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
       </file>
-      <file name="SmartNotificationController.js" path="/workspaces/por-fim/backend/src/controllers/SmartNotificationController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="49" coveredstatements="12" conditionals="2" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -2501,7 +2501,7 @@
         <line num="98" count="0" type="stmt"/>
         <line num="102" count="1" type="stmt"/>
       </file>
-      <file name="StaffAvailabilityController.js" path="/workspaces/por-fim/backend/src/controllers/StaffAvailabilityController.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/controllers/[REDACTED_TOKEN].js">
         <metrics statements="63" coveredstatements="3" conditionals="42" coveredconditionals="0" methods="14" coveredmethods="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
@@ -2744,7 +2744,7 @@
     </package>
     <package name="database.migrations">
       <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
-      <file name="002_create_chat_messages_table.js" path="/workspaces/por-fim/backend/src/database/migrations/002_create_chat_messages_table.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/database/migrations/[REDACTED_TOKEN].js">
         <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="8" count="0" type="stmt"/>
         <line num="35" count="0" type="stmt"/>
@@ -3169,7 +3169,7 @@
         <line num="123" count="0" type="stmt"/>
         <line num="127" count="0" type="stmt"/>
       </file>
-      <file name="encryptionMiddleware.js" path="/workspaces/por-fim/backend/src/middleware/encryptionMiddleware.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/middleware/[REDACTED_TOKEN].js">
         <metrics statements="32" coveredstatements="0" conditionals="24" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -4912,7 +4912,7 @@
         <line num="200" count="0" type="stmt"/>
         <line num="207" count="1" type="stmt"/>
       </file>
-      <file name="professionalRatingRoutes.js" path="/workspaces/por-fim/backend/src/routes/professionalRatingRoutes.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/routes/[REDACTED_TOKEN].js">
         <metrics statements="27" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -5011,7 +5011,7 @@
         <line num="43" count="0" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
       </file>
-      <file name="recurringBookingRoutes.js" path="/workspaces/por-fim/backend/src/routes/recurringBookingRoutes.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/routes/[REDACTED_TOKEN].js">
         <metrics statements="42" coveredstatements="10" conditionals="8" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -5242,7 +5242,7 @@
         <line num="73" count="0" type="stmt"/>
         <line num="77" count="1" type="stmt"/>
       </file>
-      <file name="staffAvailabilityRoutes.js" path="/workspaces/por-fim/backend/src/routes/staffAvailabilityRoutes.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/routes/[REDACTED_TOKEN].js">
         <metrics statements="15" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -5585,7 +5585,7 @@
         <line num="417" count="0" type="stmt"/>
         <line num="426" count="1" type="stmt"/>
       </file>
-      <file name="AdvancedEmailService.js" path="/workspaces/por-fim/backend/src/services/AdvancedEmailService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="165" coveredstatements="9" conditionals="58" coveredconditionals="0" methods="23" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -5753,7 +5753,7 @@
         <line num="459" count="0" type="stmt"/>
         <line num="464" count="1" type="stmt"/>
       </file>
-      <file name="AdvancedPaymentService.js" path="/workspaces/por-fim/backend/src/services/AdvancedPaymentService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="141" coveredstatements="6" conditionals="27" coveredconditionals="0" methods="21" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -6033,7 +6033,7 @@
         <line num="172" count="0" type="stmt"/>
         <line num="182" count="1" type="stmt"/>
       </file>
-      <file name="AutoSchedulingService.js" path="/workspaces/por-fim/backend/src/services/AutoSchedulingService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="53" coveredstatements="5" conditionals="13" coveredconditionals="0" methods="18" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
@@ -6399,7 +6399,7 @@
         <line num="202" count="0" type="stmt"/>
         <line num="207" count="0" type="stmt"/>
       </file>
-      <file name="BookingPricingService.js" path="/workspaces/por-fim/backend/src/services/BookingPricingService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="34" coveredstatements="0" conditionals="26" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -6497,7 +6497,7 @@
         <line num="241" count="0" type="stmt"/>
         <line num="246" count="1" type="stmt"/>
       </file>
-      <file name="CDNAssetOptimizerService.js" path="/workspaces/por-fim/backend/src/services/CDNAssetOptimizerService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="73" coveredstatements="7" conditionals="35" coveredconditionals="2" methods="19" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
@@ -6686,7 +6686,7 @@
         <line num="81" count="0" type="stmt"/>
         <line num="86" count="1" type="stmt"/>
       </file>
-      <file name="ChatEncryptionService.js" path="/workspaces/por-fim/backend/src/services/ChatEncryptionService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="53" coveredstatements="3" conditionals="12" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
@@ -6954,7 +6954,7 @@
         <line num="306" count="0" type="stmt"/>
         <line num="311" count="1" type="stmt"/>
       </file>
-      <file name="DatabaseOptimizationService.js" path="/workspaces/por-fim/backend/src/services/DatabaseOptimizationService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="75" coveredstatements="4" conditionals="10" coveredconditionals="0" methods="19" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
         <line num="10" count="2" type="stmt"/>
@@ -7341,7 +7341,7 @@
         <line num="201" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="205" count="2" type="stmt"/>
       </file>
-      <file name="HourPackagingService.js" path="/workspaces/por-fim/backend/src/services/HourPackagingService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="57" coveredstatements="2" conditionals="26" coveredconditionals="0" methods="14" coveredmethods="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
@@ -7401,7 +7401,7 @@
         <line num="214" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="218" count="1" type="stmt"/>
       </file>
-      <file name="HourlyBookingService.js" path="/workspaces/por-fim/backend/src/services/HourlyBookingService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="35" coveredstatements="4" conditionals="10" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -8016,7 +8016,7 @@
         <line num="397" count="0" type="stmt"/>
         <line num="402" count="1" type="stmt"/>
       </file>
-      <file name="PaymentIntegrationService.js" path="/workspaces/por-fim/backend/src/services/PaymentIntegrationService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="95" coveredstatements="68" conditionals="58" coveredconditionals="31" methods="14" coveredmethods="12"/>
         <line num="6" count="2" type="stmt"/>
         <line num="7" count="2" type="stmt"/>
@@ -8489,7 +8489,7 @@
         <line num="305" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="309" count="3" type="stmt"/>
       </file>
-      <file name="ProfessionalRatingService.js" path="/workspaces/por-fim/backend/src/services/ProfessionalRatingService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="32" coveredstatements="4" conditionals="11" coveredconditionals="0" methods="13" coveredmethods="0"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
@@ -8524,7 +8524,7 @@
         <line num="115" count="0" type="stmt"/>
         <line num="120" count="1" type="stmt"/>
       </file>
-      <file name="PushNotificationService.js" path="/workspaces/por-fim/backend/src/services/PushNotificationService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="57" coveredstatements="5" conditionals="9" coveredconditionals="0" methods="20" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
@@ -8841,7 +8841,7 @@
         <line num="134" count="0" type="stmt"/>
         <line num="139" count="1" type="stmt"/>
       </file>
-      <file name="RecommendationService.js" path="/workspaces/por-fim/backend/src/services/RecommendationService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="59" coveredstatements="3" conditionals="32" coveredconditionals="0" methods="21" coveredmethods="0"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
@@ -8903,7 +8903,7 @@
         <line num="235" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="244" count="1" type="stmt"/>
       </file>
-      <file name="RecurringBookingService.js" path="/workspaces/por-fim/backend/src/services/RecurringBookingService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="76" coveredstatements="3" conditionals="26" coveredconditionals="0" methods="11" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
@@ -9492,7 +9492,7 @@
         <line num="230" count="0" type="stmt"/>
         <line num="252" count="1" type="stmt"/>
       </file>
-      <file name="SlotRecommendationService.js" path="/workspaces/por-fim/backend/src/services/SlotRecommendationService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="53" coveredstatements="0" conditionals="36" coveredconditionals="0" methods="12" coveredmethods="0"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -9548,7 +9548,7 @@
         <line num="204" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="209" count="0" type="stmt"/>
       </file>
-      <file name="SmartNotificationService.js" path="/workspaces/por-fim/backend/src/services/SmartNotificationService.js">
+      <file name="[REDACTED_TOKEN].js" path="/workspaces/por-fim/backend/src/services/[REDACTED_TOKEN].js">
         <metrics statements="86" coveredstatements="6" conditionals="54" coveredconditionals="0" methods="25" coveredmethods="1"/>
         <line num="6" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>

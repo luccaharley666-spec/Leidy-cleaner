@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/ProfessionalRatingService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> ProfessionalRatingService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -304,7 +304,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * ProfessionalRatingService.js
+ * [REDACTED_TOKEN].js
  * Avaliação de profissional pelo admin
  */
 &nbsp;
@@ -313,7 +313,7 @@ const path = require('path');
 &nbsp;
 const DB_PATH = path.join(__dirname, '../../backend_data/database.db');
 &nbsp;
-class ProfessionalRatingService {
+class [REDACTED_TOKEN] {
   /**
    * Adicionar avaliação do profissional
    */
@@ -322,7 +322,7 @@ class ProfessionalRatingService {
       const db = <span class="cstat-no" title="statement not covered" >new sqlite3.Database(DB_PATH);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      db.run(</span>
-        `INSERT INTO professional_ratings (professional_id, admin_id, rating, feedback, created_at)
+        `INSERT INTO [REDACTED_TOKEN] (professional_id, admin_id, rating, feedback, created_at)
          VALUES (?, ?, ?, ?, datetime('now'))`,
         [professionalId, adminId, rating, feedback],
 <span class="fstat-no" title="function not covered" >        fu</span>nction (err) {
@@ -333,7 +333,7 @@ class ProfessionalRatingService {
 &nbsp;
           // Atualizar média
 <span class="cstat-no" title="statement not covered" >          db.get(</span>
-            `SELECT AVG(rating) as avg_rating FROM professional_ratings WHERE professional_id = ?`,
+            `SELECT AVG(rating) as avg_rating FROM [REDACTED_TOKEN] WHERE professional_id = ?`,
             [professionalId],
 <span class="fstat-no" title="function not covered" >            (e</span>rr, row) =&gt; {
 <span class="cstat-no" title="statement not covered" >              db.run(</span>
@@ -355,13 +355,13 @@ class ProfessionalRatingService {
   /**
    * Obter histórico de avaliações
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic getProfessionalRatings(professionalId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](professionalId) {
 <span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
       const db = <span class="cstat-no" title="statement not covered" >new sqlite3.Database(DB_PATH);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      db.all(</span>
         `SELECT pr.*, a.name as admin_name 
-         FROM professional_ratings pr
+         FROM [REDACTED_TOKEN] pr
          LEFT JOIN users a ON pr.admin_id = a.id
          WHERE pr.professional_id = ?
          ORDER BY pr.created_at DESC`,
@@ -378,7 +378,7 @@ class ProfessionalRatingService {
   /**
    * Profissionais com avaliação baixa (flag para ação)
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic getLowRatedProfessionals(minRating = <span class="branch-0 cbranch-no" title="branch not covered" >3.0)</span> {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](minRating = <span class="branch-0 cbranch-no" title="branch not covered" >3.0)</span> {
 <span class="cstat-no" title="statement not covered" >    return new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
       const db = <span class="cstat-no" title="statement not covered" >new sqlite3.Database(DB_PATH);</span>
 &nbsp;
@@ -404,7 +404,7 @@ class ProfessionalRatingService {
     const db = <span class="cstat-no" title="statement not covered" >new sqlite3.Database(DB_PATH);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    db.run(`</span>
-      CREATE TABLE IF NOT EXISTS professional_ratings (
+      CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         professional_id INTEGER NOT NULL,
         admin_id INTEGER NOT NULL,
@@ -415,14 +415,14 @@ class ProfessionalRatingService {
         FOREIGN KEY (admin_id) REFERENCES users(id)
       )
     `, <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
-<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >console.error('Erro ao criar tabela professional_ratings:', err);</span></span>
-      else <span class="cstat-no" title="statement not covered" >console.log('✅ Tabela professional_ratings criada');</span>
+<span class="cstat-no" title="statement not covered" >      if (err) <span class="cstat-no" title="statement not covered" >console.error('Erro ao criar tabela [REDACTED_TOKEN]:', err);</span></span>
+      else <span class="cstat-no" title="statement not covered" >console.log('✅ Tabela [REDACTED_TOKEN] criada');</span>
 <span class="cstat-no" title="statement not covered" >      db.close();</span>
     });
   }
 }
 &nbsp;
-module.exports = ProfessionalRatingService;
+module.exports = [REDACTED_TOKEN];
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

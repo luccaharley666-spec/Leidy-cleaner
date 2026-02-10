@@ -14,7 +14,7 @@ npm run dev
 
 ### Passo 2: Leia a Documentação
 ```
-Abra: NOVO_DESIGN_SYSTEM_2026.md
+Abra: [REDACTED_TOKEN].md
 Tempo: 10 minutos
 Aprenda: Como usar o novo design
 ```
@@ -91,8 +91,8 @@ Como usar: Copie a estrutura para suas páginas
 
 /* Secundária - Cyan (Destaque) */
 --color-secondary: #06b6d4
---color-secondary-light: #22d3ee
---color-secondary-dark: #0891b2
+--[REDACTED_TOKEN]: #22d3ee
+--[REDACTED_TOKEN]: #0891b2
 
 /* Neutros - Escala de Cinzentos */
 --color-slate-50 a --color-slate-950
@@ -263,7 +263,7 @@ xl:         /* 1280px+ - large desktop */
 
 - [ ] Testei /index-new?
 - [ ] Testei /servicos-new?
-- [ ] Li NOVO_DESIGN_SYSTEM_2026.md?
+- [ ] Li [REDACTED_TOKEN].md?
 - [ ] Sei como importar MainLayout?
 - [ ] Sei quais cores usar (.btn-primary, .badge-success)?
 - [ ] Entendo grid responsivo (grid-cols-1 md:grid-cols-2)?
@@ -313,7 +313,7 @@ xl:         /* 1280px+ - large desktop */
 ## 🎬 Próximos Passos
 
 1. ✅ Veja o novo design (`/index-new`)
-2. ✅ Leia `NOVO_DESIGN_SYSTEM_2026.md`
+2. ✅ Leia `[REDACTED_TOKEN].md`
 3. ✅ Renomeie `globals-new.css` para `globals.css`
 4. ✅ Migre suas páginas (copie o padrão de `index-new.jsx`)
 5. ✅ Teste tudo
@@ -330,7 +330,7 @@ Sobre cards:        Veja globals-new.css linhas 300-350
 Sobre forms:        Veja globals-new.css linhas 350-450
 Exemplo completo:   Veja src/pages/index-new.jsx
 Componentes:        Veja src/components/Layout/index.jsx
-Documentação:       Veja NOVO_DESIGN_SYSTEM_2026.md
+Documentação:       Veja [REDACTED_TOKEN].md
 ```
 
 ---

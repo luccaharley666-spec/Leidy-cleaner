@@ -90,7 +90,7 @@ const PushNotifications = () => {
     setNotifications(prev => prev.filter(n => n.id !== id));
   };
 
-  const getNotificationStyle = (type) => {
+  const [REDACTED_TOKEN] = (type) => {
     switch (type) {
       case 'promo':
         return 'bg-gradient-to-r from-purple-500 to-pink-500';
@@ -149,7 +149,7 @@ const PushNotifications = () => {
               initial={{ opacity: 0, x: 300, scale: 0.8 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: 300, scale: 0.8 }}
-              className={`${getNotificationStyle(notification.type)} text-white p-4 rounded-lg shadow-lg max-w-sm`}
+              className={`${[REDACTED_TOKEN](notification.type)} text-white p-4 rounded-lg shadow-lg max-w-sm`}
             >
               <div className="flex items-start gap-3">
                 <span className="text-2xl">{notification.icon}</span>

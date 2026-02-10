@@ -52,7 +52,7 @@ class NotificationService {
   async sendWhatsApp(phoneNumber, message) {
     try {
       const response = await this.twilioClient.messages.create({
-        from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
+        from: `whatsapp:${process.env.[REDACTED_TOKEN]}`,
         to: `whatsapp:${phoneNumber}`,
         body: message
       });
@@ -252,7 +252,7 @@ class NotificationService {
           await this.db.run(`
             INSERT INTO notification_logs 
             (userId, bookingId, type, status, recipient, message_template, message_content)
-            VALUES (?, ?, 'email', 'sent', ?, 'booking_confirmation', ?)
+            VALUES (?, ?, 'email', 'sent', ?, '[REDACTED_TOKEN]', ?)
           `, [userId, bookingId, booking.email, emailTemplate]);
         } catch (err) {
           console.error('Email error:', err);
@@ -279,7 +279,7 @@ Qualquer dúvida, entre em contato! 📞`;
           await this.db.run(`
             INSERT INTO notification_logs 
             (userId, bookingId, type, status, recipient, message_template, message_content)
-            VALUES (?, ?, 'whatsapp', 'sent', ?, 'booking_confirmation', ?)
+            VALUES (?, ?, 'whatsapp', 'sent', ?, '[REDACTED_TOKEN]', ?)
           `, [userId, bookingId, prefs.phone_number, whatsappTemplate]);
         } catch (err) {
           console.error('WhatsApp error:', err);
@@ -296,7 +296,7 @@ Qualquer dúvida, entre em contato! 📞`;
   async getPreferences(userId) {
     try {
       let prefs = await this.db.get(
-        'SELECT * FROM notification_preferences WHERE userId = ?',
+        'SELECT * FROM [REDACTED_TOKEN] WHERE userId = ?',
         [userId]
       );
 
@@ -339,13 +339,13 @@ Qualquer dúvida, entre em contato! 📞`;
   async updatePreferences(userId, preferences) {
     try {
       const existing = await this.db.get(
-        'SELECT id FROM notification_preferences WHERE userId = ?',
+        'SELECT id FROM [REDACTED_TOKEN] WHERE userId = ?',
         [userId]
       );
 
       if (existing) {
         await this.db.run(`
-          UPDATE notification_preferences SET
+          UPDATE [REDACTED_TOKEN] SET
             email_enabled = ?,
             sms_enabled = ?,
             whatsapp_enabled = ?,
@@ -368,7 +368,7 @@ Qualquer dúvida, entre em contato! 📞`;
         ]);
       } else {
         await this.db.run(`
-          INSERT INTO notification_preferences 
+          INSERT INTO [REDACTED_TOKEN] 
           (userId, email_enabled, sms_enabled, whatsapp_enabled, push_enabled, 
            reminder_2days, reminder_1day, reminder_1hour, phone_number)
           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
@@ -495,7 +495,7 @@ Qualquer dúvida, entre em contato! 📞`;
   /**
    * Enviar pagamento link por WhatsApp
    */
-  async sendPaymentLinkWhatsApp(phoneNumber, paymentDetails) {
+  async [REDACTED_TOKEN](phoneNumber, paymentDetails) {
     const message = `
 💳 PAGAMENTO PENDENTE
 
@@ -513,7 +513,7 @@ Qualquer dúvida: https://leidycleaner.com/contato
   /**
    * Enviar confirmação de pagamento
    */
-  async sendPaymentConfirmationWhatsApp(phoneNumber, paymentDetails) {
+  async [REDACTED_TOKEN](phoneNumber, paymentDetails) {
     const message = `
 ✅ PAGAMENTO CONFIRMADO!
 
@@ -529,7 +529,7 @@ Agendar serviço: https://leidycleaner.com/agendar
   /**
    * Enviar referral link
    */
-  async sendReferralWhatsApp(phoneNumber, referralCode, referralLink) {
+  async [REDACTED_TOKEN](phoneNumber, referralCode, referralLink) {
     const message = `
 🎁 INDIQUE E GANHE!
 
@@ -547,7 +547,7 @@ Você ganha R$ 50 por cada indicação! 💰
   /**
    * Enviar notificação de nova avaliação
    */
-  async sendReviewNotification(phoneNumber, customerName, rating) {
+  async [REDACTED_TOKEN](phoneNumber, customerName, rating) {
     const message = `
 ⭐ NOVA AVALIAÇÃO
 

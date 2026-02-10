@@ -69,8 +69,8 @@
       ]
     }
   ],
-  "prefer_related_applications": false,
-  "related_applications": [],
+  "[REDACTED_TOKEN]": false,
+  "[REDACTED_TOKEN]": [],
   "permissions": [
     "notifications",
     "geolocation"

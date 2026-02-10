@@ -99,11 +99,11 @@
 ╠════════════════════════════════════════════════════════════════════════╣
 ║                                                                        ║
 ║  📄 DOCUMENTAÇÃO (5 arquivos)                                          ║
-║     ✅ IMPLEMENTACAO_DESIGN_VERDE_FINAL.md   (400+ linhas)           ║
-║     ✅ CHANGELOG_DESIGN_VERDE.md              (300+ linhas)          ║
-║     ✅ QUICK_START_DESIGN_VERDE.md            (250+ linhas)          ║
+║     ✅ [REDACTED_TOKEN].md   (400+ linhas)           ║
+║     ✅ [REDACTED_TOKEN].md              (300+ linhas)          ║
+║     ✅ [REDACTED_TOKEN].md            (250+ linhas)          ║
 ║     ✅ ANTES_DEPOIS_VISUAL.md                 (350+ linhas)          ║
-║     ✅ APRESENTACAO_EXECUTIVA_DESIGN_VERDE.md (400+ linhas)          ║
+║     ✅ [REDACTED_TOKEN].md (400+ linhas)          ║
 ║                                                                        ║
 ║  🎨 DESIGN TOKENS (2 arquivos)                                         ║
 ║     ✅ frontend/src/styles/designSystem.js    (170+ linhas)          ║

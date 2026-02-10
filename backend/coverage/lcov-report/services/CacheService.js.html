@@ -684,14 +684,14 @@ class CacheService {
       ...this.stats,
       hitRate: `${hitRate}%`,
       storeSize: this.store.size,
-      memoryUsage: this.calculateMemoryUsage()
+      memoryUsage: this.[REDACTED_TOKEN]()
     };
   }
 &nbsp;
   /**
    * Calcular uso de memória (aproximado)
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic calculateMemoryUsage() {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN]() {
     let bytes = <span class="cstat-no" title="statement not covered" >0;</span>
 <span class="cstat-no" title="statement not covered" >    for (const [key, item] of this.store.entries()) {</span>
 <span class="cstat-no" title="statement not covered" >      bytes += key.length * 2; </span>// UTF-16

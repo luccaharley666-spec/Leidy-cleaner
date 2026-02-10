@@ -35,7 +35,7 @@
 ### 3️⃣ Quer Integrar em Outra Plataforma? (30 min)
 
 ```
-→ Leia: GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md
+→ Leia: [REDACTED_TOKEN].md
 → Tem instruções para:
    • Python/Django
    • Ruby/Rails
@@ -51,8 +51,8 @@
 
 | Guia | Para quê? |
 |------|-----------|
-| README_FINAL_EXPORTACAO.md | Entender tudo que recebeu |
-| API_REFERENCE_COMPLETA.md | Documentação técnica das APIs |
+| [REDACTED_TOKEN].md | Entender tudo que recebeu |
+| [REDACTED_TOKEN].md | Documentação técnica das APIs |
 | RESUMO_FINAL_PRONTO.md | Overview do que foi feito |
 
 ---

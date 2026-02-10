@@ -365,7 +365,7 @@ const validateCNPJ = <span class="cstat-no" title="statement not covered" ><span
 <span class="cstat-no" title="statement not covered" >  return regex.test(cnpj);</span>
 };
 &nbsp;
-const validateBookingInput = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
   const errors = <span class="cstat-no" title="statement not covered" >[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  if (!data.serviceId || data.serviceId &lt; 1) {</span>
@@ -396,7 +396,7 @@ const validateBookingInput = <span class="cstat-no" title="statement not covered
 <span class="cstat-no" title="statement not covered" >  return { valid: errors.length === 0, errors };</span>
 };
 &nbsp;
-const validatePaymentInput = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
   const errors = <span class="cstat-no" title="statement not covered" >[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  if (!data.bookingId || data.bookingId &lt; 1) {</span>
@@ -432,7 +432,7 @@ const validateReviewInput = <span class="cstat-no" title="statement not covered"
 <span class="cstat-no" title="statement not covered" >  return { valid: errors.length === 0, errors };</span>
 };
 &nbsp;
-const validateCompanyInfoInput = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {</span>
   const errors = <span class="cstat-no" title="statement not covered" >[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  if (data.cnpj &amp;&amp; !validateCNPJ(data.cnpj)) {</span>
@@ -460,10 +460,10 @@ const validateCompanyInfoInput = <span class="cstat-no" title="statement not cov
   validatePhoneNumber,
   validateCEP,
   validateCNPJ,
-  validateBookingInput,
-  validatePaymentInput,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
   validateReviewInput,
-  validateCompanyInfoInput,
+  [REDACTED_TOKEN],
 };
 &nbsp;</pre></td></tr></table></pre>
 

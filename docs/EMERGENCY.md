@@ -34,7 +34,7 @@ docker exec postgres pg_restore -U user -d limpezapro < backup_latest.sql
 ### Ação Imediata
 ```javascript
 // Ativar modo offline
-process.env.PAYMENT_OFFLINE_MODE = 'true';
+process.env.[REDACTED_TOKEN] = 'true';
 
 // Emails para clientes
 await notifyCustomers({
@@ -43,7 +43,7 @@ await notifyCustomers({
 });
 
 // Queue de pagamentos para processar depois
-await queuePaymentForRetry(booking);
+await [REDACTED_TOKEN](booking);
 ```
 
 ### Recuperação
@@ -65,7 +65,7 @@ Todos os membros da equipa não podem comparecer
 ### Ação Imediata
 ```javascript
 // Notificar cliente
-await sendUrgentNotification(booking.userId, {
+await [REDACTED_TOKEN](booking.userId, {
   type: 'TEAM_UNAVAILABLE',
   message: 'Precisamos remarcar seu agendamento',
   options: [
@@ -124,7 +124,7 @@ docker exec postgres pg_dump > forensics_backup.sql
 npm run scripts/resetAllPasswords.js
 
 # 4. Notificar usuários
-npm run scripts/notifySecurityBreach.js
+npm run scripts/[REDACTED_TOKEN].js
 
 # 5. Registrar com autoridades
 # Documentar tudo em relatório
@@ -146,14 +146,14 @@ npm run scripts/notifySecurityBreach.js
 ### Fallback
 ```javascript
 // Usar NotificationQueue como fallback
-class NotificationFallback {
+class [REDACTED_TOKEN] {
   async send(user, message) {
     // Email primário
     if (!await sendEmail(user.email, message)) {
       // SMS secundário
       if (!await sendSMS(user.phone, message)) {
         // Armazenar para envio manual
-        await storeForManualReview(user, message);
+        await [REDACTED_TOKEN](user, message);
       }
     }
   }
@@ -239,5 +239,5 @@ Fornecedores:
 ### Teste Mensal
 ```bash
 # Simular disaster recovery
-npm run scripts/disasterRecoveryTest.js
+npm run scripts/[REDACTED_TOKEN].js
 ```

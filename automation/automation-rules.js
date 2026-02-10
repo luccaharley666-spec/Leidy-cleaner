@@ -12,8 +12,8 @@ module.exports = {
       paymentStatus: 'unpaid',
     },
     actions: [
-      'send_email_confirmation',
-      'send_sms_confirmation',
+      '[REDACTED_TOKEN]',
+      '[REDACTED_TOKEN]',
       'assign_to_team',
       'schedule_reminders',
     ],
@@ -21,7 +21,7 @@ module.exports = {
   },
 
   // Lembrete 24h antes
-  reminderNotification: {
+  [REDACTED_TOKEN]: {
     trigger: 'cron_daily_10am',
     conditions: {
       bookingDate: 'tomorrow',
@@ -30,7 +30,7 @@ module.exports = {
     actions: [
       'send_email_reminder',
       'send_sms_reminder',
-      'send_push_notification',
+      '[REDACTED_TOKEN]',
       'notify_team',
     ],
     timeout: 10000,
@@ -45,9 +45,9 @@ module.exports = {
       hasReview: false,
     },
     actions: [
-      'send_thank_you_email',
-      'request_review_after_3_days',
-      'offer_rescheduling_after_14_days',
+      '[REDACTED_TOKEN]',
+      '[REDACTED_TOKEN]',
+      '[REDACTED_TOKEN]',
     ],
     timeout: 5000,
   },
@@ -60,7 +60,7 @@ module.exports = {
     },
     actions: [
       'classify_issue',
-      'attempt_automatic_resolution',
+      '[REDACTED_TOKEN]',
       'escalate_if_failed',
       'notify_admin',
     ],
@@ -91,7 +91,7 @@ module.exports = {
       date: 'available',
     },
     actions: [
-      'find_available_team_member',
+      '[REDACTED_TOKEN]',
       'assign_booking',
       'calculate_route',
       'notify_team_member',
@@ -103,7 +103,7 @@ module.exports = {
   calendarSync: {
     trigger: 'booking_created',
     actions: [
-      'sync_to_google_calendar',
+      '[REDACTED_TOKEN]',
       'sync_to_team_app',
       'send_ics_file',
     ],
@@ -111,11 +111,11 @@ module.exports = {
   },
 
   // Análise de satisfação
-  satisfactionAnalysis: {
+  [REDACTED_TOKEN]: {
     trigger: 'cron_weekly',
     actions: [
-      'calculate_average_rating',
-      'identify_problem_areas',
+      '[REDACTED_TOKEN]',
+      '[REDACTED_TOKEN]',
       'generate_report',
       'send_to_admin',
     ],
@@ -127,7 +127,7 @@ module.exports = {
     trigger: 'cron_monthly',
     actions: [
       'delete_old_logs',
-      'archive_completed_bookings',
+      '[REDACTED_TOKEN]',
       'cleanup_temp_files',
     ],
     timeout: 60000,
@@ -142,8 +142,8 @@ module.exports = {
     actions: [
       'create_next_booking',
       'maintain_pricing',
-      'keep_same_team_member',
-      'send_new_confirmation',
+      '[REDACTED_TOKEN]',
+      '[REDACTED_TOKEN]',
     ],
     timeout: 10000,
   },

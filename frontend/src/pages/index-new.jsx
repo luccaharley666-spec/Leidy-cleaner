@@ -145,7 +145,7 @@ export default function HomePage() {
               {/* Right Image/Illustration */}
               <div className="relative hidden lg:block">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
-                <div className="absolute -bottom-8 left-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                <div className="absolute -bottom-8 left-20 w-64 h-64 bg-blue-200 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob [REDACTED_TOKEN]"></div>
                 <div className="relative w-full h-96 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl shadow-2xl flex items-center justify-center text-8xl">
                   ✨
                 </div>
@@ -195,7 +195,7 @@ export default function HomePage() {
                   key={idx}
                   className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all border border-slate-100 group cursor-pointer"
                 >
-                  <div className="text-6xl mb-4 group-hover:scale-110 transition-transform">{service.icon}</div>
+                  <div className="text-6xl mb-4 group-hover:scale-110 [REDACTED_TOKEN]">{service.icon}</div>
                   <h3 className="text-lg font-bold text-slate-900 mb-2">{service.title}</h3>
                   <p className="text-slate-600 text-sm mb-4">{service.description}</p>
                   <p className="text-cyan-500 font-semibold text-sm">{service.price}</p>

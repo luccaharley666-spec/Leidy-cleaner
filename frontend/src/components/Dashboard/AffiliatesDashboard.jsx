@@ -134,7 +134,7 @@ export default function AffiliatesDashboard() {
   if (loading) {
     return (
       <div className="p-8 text-center">
-        <div className="animate-spin h-8 w-8 border-4 border-green-500 border-t-transparent rounded-full mx-auto"></div>
+        <div className="animate-spin h-8 w-8 border-4 border-green-500 [REDACTED_TOKEN] rounded-full mx-auto"></div>
         <p className="mt-4 text-gray-600">Carregando dados do painel...</p>
       </div>
     );

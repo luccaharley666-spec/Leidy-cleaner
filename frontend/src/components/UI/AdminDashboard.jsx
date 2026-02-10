@@ -288,7 +288,7 @@ function QuickActions() {
             onClick={action.action}
             className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors text-left group"
           >
-            <div className={`w-10 h-10 ${action.color} rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}>
+            <div className={`w-10 h-10 ${action.color} rounded-lg flex items-center justify-center mb-3 group-hover:scale-110 [REDACTED_TOKEN]`}>
               <action.icon className="w-5 h-5 text-white" />
             </div>
             <h4 className="font-medium text-gray-900 mb-1">{action.title}</h4>

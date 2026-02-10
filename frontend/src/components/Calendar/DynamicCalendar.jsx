@@ -12,11 +12,11 @@ export default function DynamicCalendar({ professionalId, durationHours = 2, onS
 
   useEffect(() => {
     if (professionalId) {
-      fetchCalendarAvailability()
+      [REDACTED_TOKEN]()
     }
   }, [professionalId])
 
-  const fetchCalendarAvailability = async () => {
+  const [REDACTED_TOKEN] = async () => {
     try {
       setLoading(true)
       const response = await fetch(

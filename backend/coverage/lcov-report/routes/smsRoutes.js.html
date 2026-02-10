@@ -232,7 +232,7 @@ router.post('/send-confirmation', authenticateToken, <span class="fstat-no" titl
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ success: false, error: 'bookingId e phone são obrigatórios' });</span>
     }
 &nbsp;
-    const result = <span class="cstat-no" title="statement not covered" >await SMSService.sendBookingConfirmation(bookingId, phone);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await SMSService.[REDACTED_TOKEN](bookingId, phone);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, result });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao enviar SMS:', error);</span>

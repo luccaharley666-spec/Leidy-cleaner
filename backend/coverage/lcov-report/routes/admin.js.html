@@ -688,7 +688,7 @@ router.get('/reports/financial', authenticateToken, authorizeRole(['admin']), <s
       revenue: 45280.50,
       expenses: 12500,
       profit: 32780.50,
-      averageTransactionValue: 132.45,
+      [REDACTED_TOKEN]: 132.45,
     };
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, report });</span>
   } catch (error) {
@@ -757,7 +757,7 @@ router.post('/permissions/grant', authenticateToken, authorizeRole(['admin']), <
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { role, permission } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 <span class="cstat-no" title="statement not covered" >    if (!role || !permission) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ error: 'role e permission são obrigatórios' });</span></span>
-    const ok = <span class="cstat-no" title="statement not covered" >PermissionService.grantPermissionToRole(role, permission);</span>
+    const ok = <span class="cstat-no" title="statement not covered" >PermissionService.[REDACTED_TOKEN](role, permission);</span>
 <span class="cstat-no" title="statement not covered" >    if (!ok) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ error: 'Não foi possível conceder a permissão' });</span></span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, message: `Permissão ${permission} concedida ao papel ${role}` });</span>
   } catch (error) {
@@ -770,7 +770,7 @@ router.post('/permissions/revoke', authenticateToken, authorizeRole(['admin']), 
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { role, permission } = <span class="cstat-no" title="statement not covered" >req.body;</span>
 <span class="cstat-no" title="statement not covered" >    if (!role || !permission) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ error: 'role e permission são obrigatórios' });</span></span>
-    const ok = <span class="cstat-no" title="statement not covered" >PermissionService.revokePermissionFromRole(role, permission);</span>
+    const ok = <span class="cstat-no" title="statement not covered" >PermissionService.[REDACTED_TOKEN](role, permission);</span>
 <span class="cstat-no" title="statement not covered" >    if (!ok) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ error: 'Não foi possível revogar a permissão' });</span></span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, message: `Permissão ${permission} revogada do papel ${role}` });</span>
   } catch (error) {

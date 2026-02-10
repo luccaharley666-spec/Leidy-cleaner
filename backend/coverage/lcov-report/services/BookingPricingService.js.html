@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/BookingPricingService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> BookingPricingService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -372,19 +372,19 @@
  * Integra cálculo de preço com sistema de horas pré-pagas
  */
 &nbsp;
-const HourPackagingService = <span class="cstat-no" title="statement not covered" >require('./HourPackagingService');</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" >require('./[REDACTED_TOKEN]');</span>
 const { getDb } = <span class="cstat-no" title="statement not covered" >require('../db/sqlite');</span>
 &nbsp;
-class BookingPricingService {
+class [REDACTED_TOKEN] {
   /**
    * Calcular preço final de booking com opção de usar crédito de horas
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync calculateBookingPrice(bookingData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](bookingData) {
     const { userId, durationHours, useHourCredit = <span class="branch-0 cbranch-no" title="branch not covered" >false </span>} = <span class="cstat-no" title="statement not covered" >bookingData;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // 1. Calcular preço base em horas
-      const hourPrice = <span class="cstat-no" title="statement not covered" >await HourPackagingService.calculateHourPrice({</span>
+      const hourPrice = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].calculateHourPrice({</span>
         hours: durationHours,
         userId: userId,
       });
@@ -402,7 +402,7 @@ class BookingPricingService {
       let hoursConsumed = <span class="cstat-no" title="statement not covered" >0;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      if (useHourCredit &amp;&amp; userId) {</span>
-        const credit = <span class="cstat-no" title="statement not covered" >await HourPackagingService.getUserHourCredit(userId);</span>
+        const credit = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getUserHourCredit(userId);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (credit.hasCredit &amp;&amp; credit.availableHours &gt;= durationHours) {</span>
           // Usar crédito: desconta a taxa de serviço (40%)
@@ -422,7 +422,7 @@ class BookingPricingService {
         creditInfo: hourPrice.creditInfo,
       };
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      console.error('[BookingPricingService] Error calculating price:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >      console.error('[[REDACTED_TOKEN]] Error calculating price:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: false,
         error: 'Erro ao calcular preço do agendamento',
@@ -433,7 +433,7 @@ class BookingPricingService {
   /**
    * Confirmar booking e consumir crédito se aplicável
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync confirmBookingPayment(bookingId, userId, hoursToConsume, paidWithCredits) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](bookingId, userId, hoursToConsume, paidWithCredits) {
     const db = <span class="cstat-no" title="statement not covered" >getDb();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
@@ -455,7 +455,7 @@ class BookingPricingService {
 &nbsp;
       // 2. Se pagou com crédito, consumir horas
 <span class="cstat-no" title="statement not covered" >      if (paidWithCredits &amp;&amp; hoursToConsume &gt; 0) {</span>
-<span class="cstat-no" title="statement not covered" >        await HourPackagingService.consumeHourCredit(userId, hoursToConsume);</span>
+<span class="cstat-no" title="statement not covered" >        await [REDACTED_TOKEN].consumeHourCredit(userId, hoursToConsume);</span>
       }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return {</span>
@@ -465,7 +465,7 @@ class BookingPricingService {
         hoursConsumed: hoursToConsume,
       };
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      console.error('[BookingPricingService] Error confirming payment:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >      console.error('[[REDACTED_TOKEN]] Error confirming payment:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: false,
         error: 'Erro ao confirmar pagamento do agendamento',
@@ -476,7 +476,7 @@ class BookingPricingService {
   /**
    * Gerar breakdown visual do preço para exibição
    */
-<span class="fstat-no" title="function not covered" >  ge</span>neratePriceBreakdown(hourPrice, paidWithCredits = <span class="branch-0 cbranch-no" title="branch not covered" >false)</span> {
+<span class="fstat-no" title="function not covered" >  ge</span>[REDACTED_TOKEN](hourPrice, paidWithCredits = <span class="branch-0 cbranch-no" title="branch not covered" >false)</span> {
     const { breakdown } = <span class="cstat-no" title="statement not covered" >hourPrice;</span>
 &nbsp;
     const items = <span class="cstat-no" title="statement not covered" >[</span>
@@ -518,7 +518,7 @@ class BookingPricingService {
   }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = new BookingPricingService();</span>
+<span class="cstat-no" title="statement not covered" >module.exports = new [REDACTED_TOKEN]();</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

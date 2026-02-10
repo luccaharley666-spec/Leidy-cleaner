@@ -1,14 +1,14 @@
 /**
- * PaymentIntegrationService.test.js
+ * [REDACTED_TOKEN].test.js
  * Testes para integração de pagamentos (Stripe, PIX, webhooks)
  */
 
-const PaymentIntegrationService = require('../PaymentIntegrationService');
+const [REDACTED_TOKEN] = require('../[REDACTED_TOKEN]');
 const PixService = require('../PixService');
 
 jest.mock('../PixService');
 
-describe('PaymentIntegrationService', () => {
+describe('[REDACTED_TOKEN]', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -23,7 +23,7 @@ describe('PaymentIntegrationService', () => {
         receiptEmail: 'test@example.com'
       };
 
-      const result = await PaymentIntegrationService.createStripePayment(paymentData);
+      const result = await [REDACTED_TOKEN].createStripePayment(paymentData);
 
       expect(result).toHaveProperty('id');
       expect(result.status).toBe('succeeded');
@@ -38,7 +38,7 @@ describe('PaymentIntegrationService', () => {
         metadata: { bookingId: 'booking_123' }
       };
 
-      const result = await PaymentIntegrationService.createStripePayment(paymentData);
+      const result = await [REDACTED_TOKEN].createStripePayment(paymentData);
 
       expect(result.metadata).toEqual({ bookingId: 'booking_123' });
     });
@@ -52,7 +52,7 @@ describe('PaymentIntegrationService', () => {
         orderId: 'order_pix_001'
       };
 
-      const result = await PaymentIntegrationService.createPixPayment(paymentData);
+      const result = await [REDACTED_TOKEN].createPixPayment(paymentData);
 
       expect(result).toHaveProperty('id');
       expect(result).toHaveProperty('qrCode');
@@ -67,7 +67,7 @@ describe('PaymentIntegrationService', () => {
         orderId: 'order_123'
       };
 
-      const result = await PaymentIntegrationService.createPixPayment(paymentData);
+      const result = await [REDACTED_TOKEN].createPixPayment(paymentData);
       const expiresIn = result.expiresAt - new Date();
 
       expect(expiresIn).toBeGreaterThan(3500000); // ~1 hora em ms
@@ -88,7 +88,7 @@ describe('PaymentIntegrationService', () => {
         }
       };
 
-      const result = await PaymentIntegrationService.processWebhook(event);
+      const result = await [REDACTED_TOKEN].processWebhook(event);
 
       expect(result.success).toBe(true);
     });
@@ -104,7 +104,7 @@ describe('PaymentIntegrationService', () => {
         }
       };
 
-      const result = await PaymentIntegrationService.processWebhook(event);
+      const result = await [REDACTED_TOKEN].processWebhook(event);
 
       expect(result.success).toBe(true);
     });
@@ -120,13 +120,13 @@ describe('PaymentIntegrationService', () => {
         }
       };
 
-      const result = await PaymentIntegrationService.processWebhook(event);
+      const result = await [REDACTED_TOKEN].processWebhook(event);
 
       expect(result.success).toBe(true);
     });
 
     it('deve chamar PixService.confirmPayment quando receber evento PIX', async () => {
-      PixService.confirmPayment.mockResolvedValueOnce({ success: true });
+      PixService.confirmPayment.[REDACTED_TOKEN]({ success: true });
 
       const event = {
         type: 'pix.payment_confirmed',
@@ -137,9 +137,9 @@ describe('PaymentIntegrationService', () => {
         }
       };
 
-      await PaymentIntegrationService.processWebhook(event);
+      await [REDACTED_TOKEN].processWebhook(event);
 
-      expect(PixService.confirmPayment).toHaveBeenCalledWith('pix_123', 'bank_456');
+      expect(PixService.confirmPayment).[REDACTED_TOKEN]('pix_123', 'bank_456');
     });
   });
 
@@ -152,10 +152,10 @@ describe('PaymentIntegrationService', () => {
         description: 'Refundable payment'
       };
 
-      const payment = await PaymentIntegrationService.createStripePayment(paymentData);
+      const payment = await [REDACTED_TOKEN].createStripePayment(paymentData);
 
       // Depois solicitar reembolso
-      const refund = await PaymentIntegrationService.requestRefund(payment.id, 5000);
+      const refund = await [REDACTED_TOKEN].requestRefund(payment.id, 5000);
 
       expect(refund).toHaveProperty('id');
       expect(refund.status).toBe('pending');
@@ -166,13 +166,13 @@ describe('PaymentIntegrationService', () => {
   describe('reconcilePayments', () => {
     it('deve reconciliar pagamentos pendentes', async () => {
       // Criar alguns pagamentos
-      await PaymentIntegrationService.createStripePayment({
+      await [REDACTED_TOKEN].createStripePayment({
         amount: 100,
         customerId: 'cust_1',
         description: 'Payment 1'
       });
 
-      const result = await PaymentIntegrationService.reconcilePayments();
+      const result = await [REDACTED_TOKEN].reconcilePayments();
 
       expect(result).toHaveProperty('reconciled');
       expect(result).toHaveProperty('failed');
@@ -184,19 +184,19 @@ describe('PaymentIntegrationService', () => {
     it('deve retornar histórico de pagamentos do cliente', async () => {
       // Criar alguns pagamentos
       const customerId = 'cust_history';
-      await PaymentIntegrationService.createStripePayment({
+      await [REDACTED_TOKEN].createStripePayment({
         amount: 100,
         customerId,
         description: 'Payment 1'
       });
 
-      await PaymentIntegrationService.createStripePayment({
+      await [REDACTED_TOKEN].createStripePayment({
         amount: 50,
         customerId,
         description: 'Payment 2'
       });
 
-      const history = await PaymentIntegrationService.getPaymentHistory(customerId);
+      const history = await [REDACTED_TOKEN].getPaymentHistory(customerId);
 
       expect(history.customerId).toBe(customerId);
       expect(history.payments).toBeDefined();
@@ -212,8 +212,8 @@ describe('PaymentIntegrationService', () => {
         description: 'Status test'
       };
 
-      const payment = await PaymentIntegrationService.createStripePayment(paymentData);
-      const status = await PaymentIntegrationService.getPaymentStatus(payment.id);
+      const payment = await [REDACTED_TOKEN].createStripePayment(paymentData);
+      const status = await [REDACTED_TOKEN].getPaymentStatus(payment.id);
 
       expect(status.id).toBe(payment.id);
       expect(status.status).toBe('succeeded');
@@ -222,7 +222,7 @@ describe('PaymentIntegrationService', () => {
 
     it('deve lançar erro se pagamento não encontrado', async () => {
       await expect(
-        PaymentIntegrationService.getPaymentStatus('invalid_id')
+        [REDACTED_TOKEN].getPaymentStatus('invalid_id')
       ).rejects.toThrow('Payment not found');
     });
   });

@@ -346,7 +346,7 @@ const ReportsService = require('../services/ReportsService');
 router.post('/revenue', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { startDate, endDate, format = <span class="branch-0 cbranch-no" title="branch not covered" >'pdf' </span>} = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.generateRevenueReport(startDate, endDate, format);</span>
+    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](startDate, endDate, format);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(report);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -357,7 +357,7 @@ router.post('/revenue', <span class="fstat-no" title="function not covered" >as<
 router.post('/professional', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { startDate, endDate } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.generateProfessionalReport(startDate, endDate);</span>
+    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](startDate, endDate);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(report);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -368,7 +368,7 @@ router.post('/professional', <span class="fstat-no" title="function not covered"
 router.post('/customer', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { startDate, endDate } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.generateCustomerReport(startDate, endDate);</span>
+    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](startDate, endDate);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(report);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -378,7 +378,7 @@ router.post('/customer', <span class="fstat-no" title="function not covered" >as
 // POST /api/reports/churn-analysis
 router.post('/churn-analysis', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.generateChurnAnalysisReport();</span>
+    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(report);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -388,7 +388,7 @@ router.post('/churn-analysis', <span class="fstat-no" title="function not covere
 // POST /api/reports/satisfaction
 router.post('/satisfaction', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.generateSatisfactionReport();</span>
+    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(report);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -399,7 +399,7 @@ router.post('/satisfaction', <span class="fstat-no" title="function not covered"
 router.post('/custom', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { name, filters, metrics, startDate, endDate } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.generateCustomReport({</span>
+    const report = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN]({</span>
       name,
       filters,
       metrics,
@@ -416,7 +416,7 @@ router.post('/custom', <span class="fstat-no" title="function not covered" >as</
 router.post('/schedule', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { type, frequency, recipients, format } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const schedule = <span class="cstat-no" title="statement not covered" >await ReportsService.scheduleRecurringReport({</span>
+    const schedule = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN]({</span>
       type,
       frequency,
       recipients,
@@ -454,7 +454,7 @@ router.post('/:reportId/export', <span class="fstat-no" title="function not cove
 router.post('/comparison', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { metric, period1Start, period1End, period2Start, period2End } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const comparison = <span class="cstat-no" title="statement not covered" >await ReportsService.generatePeriodComparison(</span>
+    const comparison = <span class="cstat-no" title="statement not covered" >await ReportsService.[REDACTED_TOKEN](</span>
       metric,
       period1Start,
       period1End,

@@ -71,7 +71,7 @@ class AvailabilityService {
   /**
    * Obter disponibilidade para próximos 30 dias
    */
-  static getNextAvailableDays(professionalId, durationHours = 2, days = 30) {
+  static [REDACTED_TOKEN](professionalId, durationHours = 2, days = 30) {
     return new Promise((resolve, reject) => {
       const availability = [];
       let processed = 0;

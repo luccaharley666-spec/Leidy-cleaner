@@ -1,7 +1,7 @@
 /**
  * Chat Encryption Client
  * Cliente JavaScript para criptografia end-to-end no frontend
- * Use este arquivo no frontend/src/services/ChatEncryptionClient.js
+ * Use este arquivo no frontend/src/services/[REDACTED_TOKEN].js
  */
 
 import { apiCall } from '../config/api';
@@ -9,7 +9,7 @@ import { apiCall } from '../config/api';
 /**
  * Classe para gerenciar criptografia no cliente
  */
-class ChatEncryptionClient {
+class [REDACTED_TOKEN] {
   constructor() {
     this.encryptionKey = null;
     this.userId = null;
@@ -19,7 +19,7 @@ class ChatEncryptionClient {
    * Gerar chave de criptografia (32 bytes = 256 bits)
    * Deve ser feito UMA ÚNICA VEZ por conversa e compartilhado com o outro usuário
    */
-  generateEncryptionKey() {
+  [REDACTED_TOKEN]() {
     // Simular geração (em produção usar Web Crypto API)
     const array = new Uint8Array(32);
     crypto.getRandomValues(array);
@@ -30,7 +30,7 @@ class ChatEncryptionClient {
    * Derivar chave a partir de senha (PBKDF2)
    * Útil para compartilhar conversa com senha
    */
-  async deriveKeyFromPassword(password, salt = null) {
+  async [REDACTED_TOKEN](password, salt = null) {
     if (!salt) {
       // Gerar salt aleatório
       const saltArray = new Uint8Array(16);
@@ -79,7 +79,7 @@ class ChatEncryptionClient {
    */
   storeKeyLocally(conversationId, encryptionKeyHex) {
     if (window.location.protocol !== 'https:' && process.env.NODE_ENV === 'production') {
-      // eslint-disable-next-line no-console
+      // [REDACTED_TOKEN] no-console
       console.warn('Warning: Storing encryption keys over HTTPS is recommended');
     }
 
@@ -151,7 +151,7 @@ class ChatEncryptionClient {
   /**
    ✅ NOVO: Compartilhar chave de forma segura (QR Code)
    */
-  generateQRCodeForKey(conversationId, encryptionKeyHex) {
+  [REDACTED_TOKEN](conversationId, encryptionKeyHex) {
     // Exemplo: gerar URL para QR code
     const qrData = {
       conversationId,
@@ -191,7 +191,7 @@ class ChatEncryptionClient {
   /**
    ✅ NOVO: Download de arquivo descriptografado
    */
-  async downloadEncryptedFile(fileId, encryptionKeyHex) {
+  async [REDACTED_TOKEN](fileId, encryptionKeyHex) {
     const response = await apiCall(
       `/api/chat/download-encrypted/${fileId}?encryptionKey=${encryptionKeyHex}`,
       { method: 'GET' }
@@ -203,7 +203,7 @@ class ChatEncryptionClient {
   /**
    ✅ NOVO: Enviar mensagem encriptada via API
    */
-  async sendEncryptedMessage(receiverId, message, encryptionKey) {
+  async [REDACTED_TOKEN](receiverId, message, encryptionKey) {
     return await apiCall('/api/chat/messages', {
       method: 'POST',
       body: JSON.stringify({
@@ -217,7 +217,7 @@ class ChatEncryptionClient {
   /**
    ✅ NOVO: Obter mensagens descriptografadas
    */
-  async getEncryptedMessages(conversationId, encryptionKey) {
+  async [REDACTED_TOKEN](conversationId, encryptionKey) {
     return await apiCall(
       `/api/chat/messages/${conversationId}?encryptionKey=${encryptionKey}`,
       { method: 'GET' }
@@ -248,5 +248,5 @@ class ChatEncryptionClient {
 
 // Exportar para uso no frontend
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = ChatEncryptionClient;
+  module.exports = [REDACTED_TOKEN];
 }

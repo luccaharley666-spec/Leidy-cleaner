@@ -80,7 +80,7 @@ module.exports = (db, chatbotService) => {
     try {
       const userId = req.user.id;
 
-      await db.run('DELETE FROM chatbot_conversations WHERE userId = ?', [userId]);
+      await db.run('DELETE FROM [REDACTED_TOKEN] WHERE userId = ?', [userId]);
 
       res.json({ success: true, message: 'Histórico limpo' });
     } catch (err) {

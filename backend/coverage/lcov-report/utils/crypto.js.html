@@ -159,7 +159,7 @@ function <span class="fstat-no" title="function not covered" >getKey(</span>) {
   const key = <span class="cstat-no" title="statement not covered" >process.env.SECRET_ENC_KEY || process.env.TWO_FA_ENC_KEY;</span>
 <span class="cstat-no" title="statement not covered" >  if (!key) {</span>
 <span class="cstat-no" title="statement not covered" >    logger.warn('Encryption key not set (SECRET_ENC_KEY). Using insecure dev key.');</span>
-<span class="cstat-no" title="statement not covered" >    return crypto.createHash('sha256').update('dev_secret_key_change_me').digest();</span>
+<span class="cstat-no" title="statement not covered" >    return crypto.createHash('sha256').update('[REDACTED_TOKEN]').digest();</span>
   }
 <span class="cstat-no" title="statement not covered" >  return crypto.createHash('sha256').update(key).digest();</span>
 }

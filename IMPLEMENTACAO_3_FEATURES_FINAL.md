@@ -13,7 +13,7 @@ Executadas com sucesso as 3 tarefas solicitadas ("faça os 3"):
    - Rating de 5 estrelas em cada card
    - Social proof stats (500+ clientes, 4.9/5 avaliação)
    - AOS animations com delay progressivo
-   - Tracking: `trackTestimonialClick()` ao clicar
+   - Tracking: `[REDACTED_TOKEN]()` ao clicar
 
 2. **GallerySection.jsx** `/frontend/src/components/Sections/`
    - 8 imagens de trabalhos antes/depois
@@ -65,14 +65,14 @@ Funções implementadas:
 - `trackCTAClick()` - Clique em CTA (nome + location)
 - `trackBeginCheckout()` - Início de compra
 - `trackPurchase()` - Compra completa
-- `trackPriceCalculation()` - Cálculo de preço
+- `[REDACTED_TOKEN]()` - Cálculo de preço
 - `trackFormSubmit()` - Envio de formulários
 - `trackSectionView()` - Visualização de seção
-- `trackTestimonialClick()` - Clique em testimonial
+- `[REDACTED_TOKEN]()` - Clique em testimonial
 - `trackGalleryFilter()` - Filtro na galeria
 - `trackBlogRead()` - Leitura de blog
 - `setupScrollTracking()` - Rastreamento de scroll (25%, 50%, 75%, 100%)
-- `setupSessionTracking()` - Tempo de sessão
+- `[REDACTED_TOKEN]()` - Tempo de sessão
 - `trackError()` - Exceções/erros
 - `getUTMParameters()` - Extração de UTM params
 
@@ -81,8 +81,8 @@ Funções implementadas:
 - Pronto para usar `NEXT_PUBLIC_GA_ID` .env
 
 **Implementação em Componentes:**
-- `index.jsx`: setupScrollTracking(), setupSessionTracking('index'), trackCTAClick()
-- `TestimonialsSection`: trackTestimonialClick()
+- `index.jsx`: setupScrollTracking(), [REDACTED_TOKEN]('index'), trackCTAClick()
+- `TestimonialsSection`: [REDACTED_TOKEN]()
 - `GallerySection`: trackGalleryFilter(), trackCTAClick()
 - `BlogSection`: trackFormSubmit(), trackBlogRead(), trackCTAClick()
 - Todos os botões CTA rastreados com nome + location
@@ -110,9 +110,9 @@ Funções implementadas:
 ✅ /frontend/src/pages/index.jsx
    - Importação de 3 novas seções
    - Importação de analytics functions
-   - Integração de setupScrollTracking(), setupSessionTracking()
+   - Integração de setupScrollTracking(), [REDACTED_TOKEN]()
    - Tracking em 5+ CTAs
-   - TrackPriceCalculation() integrado
+   - [REDACTED_TOKEN]() integrado
 
 ✅ /frontend/src/components/Layout/Header.jsx
    - Atualizado menu com ícones e links corretos

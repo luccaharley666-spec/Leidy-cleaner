@@ -85,7 +85,7 @@ router.get('/gallery/:serviceId', async (req, res) => {
 // GET /api/services/:serviceId/gallery/before-after
 router.get('/gallery/:serviceId/before-after', async (req, res) => {
   try {
-    const gallery = await ReviewImageService.getBeforeAfterGallery(req.params.serviceId);
+    const gallery = await ReviewImageService.[REDACTED_TOKEN](req.params.serviceId);
     res.json(gallery);
   } catch (error) {
     res.status(400).json({ error: error.message });

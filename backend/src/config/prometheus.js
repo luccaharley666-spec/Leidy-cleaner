@@ -6,7 +6,7 @@
 const promClient = require('prom-client');
 
 // Métricas padrão
-promClient.collectDefaultMetrics();
+promClient.[REDACTED_TOKEN]();
 
 /**
  * Métricas customizadas
@@ -14,7 +14,7 @@ promClient.collectDefaultMetrics();
 
 // Request latency (histograma)
 const httpRequestDuration = new promClient.Histogram({
-  name: 'http_request_duration_ms',
+  name: '[REDACTED_TOKEN]',
   help: 'Duration of HTTP requests in ms',
   labelNames: ['method', 'route', 'status'],
   buckets: [100, 200, 500, 1000, 2000, 5000]
@@ -43,14 +43,14 @@ const pixPaymentsTotal = new promClient.Counter({
 
 // PIX Payment Amount (gauge)
 const pixPaymentAmount = new promClient.Gauge({
-  name: 'pix_payment_amount_total',
+  name: '[REDACTED_TOKEN]',
   help: 'Total amount of PIX payments',
   labelNames: ['status']
 });
 
 // Webhooks (contador)
 const webhookEventsTotal = new promClient.Counter({
-  name: 'webhook_events_total',
+  name: '[REDACTED_TOKEN]',
   help: 'Total webhook events processed',
   labelNames: ['event_type', 'status']
 });
@@ -77,8 +77,8 @@ const bookingsTotal = new promClient.Counter({
 });
 
 // Database query duration
-const databaseQueryDuration = new promClient.Histogram({
-  name: 'database_query_duration_ms',
+const [REDACTED_TOKEN] = new promClient.Histogram({
+  name: '[REDACTED_TOKEN]',
   help: 'Duration of database queries',
   labelNames: ['query_type', 'table'],
   buckets: [10, 50, 100, 500, 1000]
@@ -123,7 +123,7 @@ const metrics = {
     webhookEventsTotal.labels(eventType, status).inc();
   },
 
-  recordRetryQueueSize: (operationType, status, count) => {
+  [REDACTED_TOKEN]: (operationType, status, count) => {
     retryQueueSize.labels(operationType, status).set(count);
   },
 
@@ -136,7 +136,7 @@ const metrics = {
   },
 
   recordDatabaseQuery: (queryType, table, duration) => {
-    databaseQueryDuration.labels(queryType, table).observe(duration);
+    [REDACTED_TOKEN].labels(queryType, table).observe(duration);
   }
 };
 
@@ -161,5 +161,5 @@ module.exports = {
   retryQueueSize,
   emailSentTotal,
   bookingsTotal,
-  databaseQueryDuration
+  [REDACTED_TOKEN]
 };

@@ -2,16 +2,16 @@
 -- Insere usuários, serviços e dados da empresa
 
 -- Inserir usuários com senhas hash (bcrypt)
--- Todas as senhas: Admin@123456789! (hash: $2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/tvQe)
--- staff@limpezapro.com / Staff@123456789! (hash: $2b$10$CvKS5bPdHqfvgKr8f8n5hu)
--- joao@limpezapro.com / Joao@123456789! (hash: $2b$10$P9QrHkfJqK8m7nL3Qx9Pvu)
--- maria@example.com / Maria@123456789! (hash: $2b$10$8B4k3xM7vN2jP5qR1sT4wu)
+-- Todas as senhas: Admin@123456789! (hash: $2b$10$[REDACTED_TOKEN]/tvQe)
+-- staff@limpezapro.com / Staff@123456789! (hash: $2b$10$[REDACTED_TOKEN])
+-- joao@limpezapro.com / Joao@123456789! (hash: $2b$10$[REDACTED_TOKEN])
+-- maria@example.com / Maria@123456789! (hash: $2b$10$[REDACTED_TOKEN])
 
 INSERT OR IGNORE INTO users (name, email, phone, password_hash, role, bio, created_at) VALUES
-('Admin Master', 'admin@limpezapro.com', '11 99999-0001', '$2b$10$N9qo8uLOickgx2ZMRZoMyeIjZAgcg7b3XeKeUxWdeS86E36P4/tvQe', 'admin', 'Administrador do Sistema', datetime('now')),
-('Gerente de Equipe', 'staff@limpezapro.com', '11 99999-0002', '$2b$10$CvKS5bPdHqfvgKr8f8n5huJ0qF7mL2nP9oR5tU8vW1xY2zA3bC4dE', 'staff', 'Gerenciador de Equipes', datetime('now')),
-('João Silva', 'joao@limpezapro.com', '11 99999-0003', '$2b$10$P9QrHkfJqK8m7nL3Qx9PvuP0qF7mL2nP9oR5tU8vW1xY2zA3bC4dE', 'staff', 'Membro da equipe de limpeza', datetime('now')),
-('Maria Santos', 'maria@example.com', '11 99999-0004', '$2b$10$8B4k3xM7vN2jP5qR1sT4wuP0qF7mL2nP9oR5tU8vW1xY2zA3bC4dE', 'customer', 'Cliente regulador', datetime('now'));
+('Admin Master', 'admin@limpezapro.com', '11 99999-0001', '$2b$10$[REDACTED_TOKEN]/tvQe', 'admin', 'Administrador do Sistema', datetime('now')),
+('Gerente de Equipe', 'staff@limpezapro.com', '11 99999-0002', '$2b$10$[REDACTED_TOKEN]', 'staff', 'Gerenciador de Equipes', datetime('now')),
+('João Silva', 'joao@limpezapro.com', '11 99999-0003', '$2b$10$[REDACTED_TOKEN]', 'staff', 'Membro da equipe de limpeza', datetime('now')),
+('Maria Santos', 'maria@example.com', '11 99999-0004', '$2b$10$[REDACTED_TOKEN]', 'customer', 'Cliente regulador', datetime('now'));
 
 -- Inserir serviços
 INSERT OR IGNORE INTO services (name, description, base_price, category, duration_minutes, icon, is_active) VALUES

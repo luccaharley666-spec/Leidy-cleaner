@@ -1,7 +1,7 @@
 # Progresso: Migração e Backups
 
 Arquivos adicionados:
-- `backend/scripts/migrate_sqlite_to_postgres.sh` — script usando `pgloader` (recomendado)
+- `backend/scripts/[REDACTED_TOKEN].sh` — script usando `pgloader` (recomendado)
 - `docs/POSTGRES_MIGRATION.md` — instruções passo-a-passo
 - `backend/backup/backup_postgres.sh` — pg_dump + gzip e upload S3 opcional
 - `backend/backup/restore_postgres.sh` — restauração a partir do dump

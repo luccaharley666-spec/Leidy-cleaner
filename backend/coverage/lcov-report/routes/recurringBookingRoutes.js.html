@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for routes/recurringBookingRoutes.js</title>
+    <title>Code coverage report for routes/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">routes</a> recurringBookingRoutes.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">routes</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -229,7 +229,7 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const express = require('express');
 const { authenticateToken } = require('../middleware/auth');
-const RecurringBookingService = require('../services/RecurringBookingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 const router = express.Router();
 &nbsp;
@@ -243,7 +243,7 @@ router.post('/create', authenticateToken, <span class="fstat-no" title="function
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ success: false, error: 'Parâmetros inválidos' });</span>
     }
 &nbsp;
-    const booking = <span class="cstat-no" title="statement not covered" >await RecurringBookingService.createRecurringBooking(</span>
+    const booking = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](</span>
       userId,
       professionalId,
       serviceId,
@@ -265,7 +265,7 @@ router.post('/create', authenticateToken, <span class="fstat-no" title="function
 router.get('/my-recurring', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const userId = <span class="cstat-no" title="statement not covered" >req.user.id;</span>
-    const bookings = <span class="cstat-no" title="statement not covered" >await RecurringBookingService.getUserRecurringBookings(userId);</span>
+    const bookings = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, bookings });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao listar agendamentos recorrentes:', error);</span>
@@ -277,7 +277,7 @@ router.get('/my-recurring', authenticateToken, <span class="fstat-no" title="fun
 router.post('/pause/:recurringId', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { recurringId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await RecurringBookingService.pauseRecurringBooking(recurringId);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](recurringId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, result });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao pausar agendamento:', error);</span>
@@ -289,7 +289,7 @@ router.post('/pause/:recurringId', authenticateToken, <span class="fstat-no" tit
 router.post('/resume/:recurringId', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { recurringId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await RecurringBookingService.resumeRecurringBooking(recurringId);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](recurringId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, result });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao retomar agendamento:', error);</span>
@@ -300,7 +300,7 @@ router.post('/resume/:recurringId', authenticateToken, <span class="fstat-no" ti
 // Gerar próximos agendamentos (executa via cron)
 router.post('/generate', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await RecurringBookingService.generateNextBookings();</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, result });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao gerar agendamentos:', error);</span>

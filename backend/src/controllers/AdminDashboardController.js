@@ -1,13 +1,13 @@
 /**
- * AdminDashboardController.js
+ * [REDACTED_TOKEN].js
  * Controller para endpoints do dashboard administrativo
  */
 
-const AdminDashboardService = require('../services/AdminDashboardService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 
-class AdminDashboardController {
+class [REDACTED_TOKEN] {
   constructor(db) {
-    this.dashboardService = new AdminDashboardService(db);
+    this.dashboardService = new [REDACTED_TOKEN](db);
   }
 
   /**
@@ -171,4 +171,4 @@ class AdminDashboardController {
   }
 }
 
-module.exports = AdminDashboardController;
+module.exports = [REDACTED_TOKEN];

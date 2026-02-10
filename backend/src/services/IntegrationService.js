@@ -81,7 +81,7 @@ class IntegrationService {
           { emailAddress: { address: bookingData.customerEmail }, type: 'required' },
           { emailAddress: { address: bookingData.professionalEmail }, type: 'required' }
         ],
-        reminderMinutesBeforeStart: 15
+        [REDACTED_TOKEN]: 15
       };
 
       const integration = {
@@ -106,7 +106,7 @@ class IntegrationService {
   /**
    * WhatsApp Notification
    */
-  async sendWhatsAppNotification(phoneNumber, message, templateId = null) {
+  async [REDACTED_TOKEN](phoneNumber, message, templateId = null) {
     try {
       const notification = {
         id: `whatsapp_${Date.now()}`,
@@ -130,7 +130,7 @@ class IntegrationService {
   /**
    * Slack Team Notification
    */
-  async sendSlackNotification(channelId, message, options = {}) {
+  async [REDACTED_TOKEN](channelId, message, options = {}) {
     try {
       const notification = {
         id: `slack_${Date.now()}`,
@@ -154,7 +154,7 @@ class IntegrationService {
   /**
    * Telegram Bot Notification
    */
-  async sendTelegramNotification(chatId, message, options = {}) {
+  async [REDACTED_TOKEN](chatId, message, options = {}) {
     try {
       const notification = {
         id: `telegram_${Date.now()}`,

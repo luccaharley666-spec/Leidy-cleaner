@@ -755,14 +755,14 @@ class PermissionService {
     this.roles = new Map();
     this.roleHierarchy = new Map();
     
-    this.initializeDefaultRoles();
-    this.initializeDefaultPermissions();
+    this.[REDACTED_TOKEN]();
+    this.[REDACTED_TOKEN]();
   }
 &nbsp;
   /**
    * Initialize default roles with hierarchy
    */
-  initializeDefaultRoles() {
+  [REDACTED_TOKEN]() {
     // Define role hierarchy (higher level = more permissions)
     const roles = {
       admin: {
@@ -808,7 +808,7 @@ class PermissionService {
   /**
    * Initialize default permissions
    */
-  initializeDefaultPermissions() {
+  [REDACTED_TOKEN]() {
     const permissionMap = {
       // Auth permissions
       'auth:login': ['guest', 'customer', 'staff', 'manager', 'admin'],
@@ -992,7 +992,7 @@ class PermissionService {
 <span class="cstat-no" title="statement not covered" >        result.push({</span>
           name: role,
           ...config,
-          permissions: this.getPermissionsForRole(role)
+          permissions: this.[REDACTED_TOKEN](role)
         });
       }
 <span class="cstat-no" title="statement not covered" >      return result;</span>
@@ -1027,7 +1027,7 @@ class PermissionService {
   /**
    * Revoke permission from role (dynamic)
    */
-<span class="fstat-no" title="function not covered" >  re</span>vokePermissionFromRole(role, permissionName) {
+<span class="fstat-no" title="function not covered" >  re</span>[REDACTED_TOKEN](role, permissionName) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const permission = <span class="cstat-no" title="statement not covered" >this.permissions.get(permissionName);</span>
 <span class="cstat-no" title="statement not covered" >      if (!permission) {</span>

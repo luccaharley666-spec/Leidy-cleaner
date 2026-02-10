@@ -14,7 +14,7 @@ class GeoLocationService {
    * Encontrar profissionais próximos
    * Usa fórmula Haversine para distância
    */
-  static getNearbyProfessionals(userLat, userLng, radiusKm = 5) {
+  static [REDACTED_TOKEN](userLat, userLng, radiusKm = 5) {
     return new Promise((resolve, reject) => {
       const db = new sqlite3.Database(DB_PATH);
 

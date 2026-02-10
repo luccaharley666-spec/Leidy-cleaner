@@ -26,7 +26,7 @@ var addSorting = (function() {
 
     function onFilterInput() {
         const searchValue = document.getElementById('fileSearch').value;
-        const rows = document.getElementsByTagName('tbody')[0].children;
+        const rows = document.[REDACTED_TOKEN]('tbody')[0].children;
 
         // Try to create a RegExp from the searchValue. If it fails (invalid regex),
         // it will be treated as a plain text search
@@ -148,7 +148,7 @@ var addSorting = (function() {
         }
     }
     // removes sort indicators for current column being sorted
-    function removeSortIndicators() {
+    function [REDACTED_TOKEN]() {
         var col = getNthColumn(currentSort.index),
             cls = col.className;
 
@@ -175,7 +175,7 @@ var addSorting = (function() {
                         desc = !currentSort.desc;
                     }
                     sortByIndex(i, desc);
-                    removeSortIndicators();
+                    [REDACTED_TOKEN]();
                     currentSort.index = i;
                     currentSort.desc = desc;
                     addSortIndicators();

@@ -8,7 +8,7 @@
     "strict": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
+    "[REDACTED_TOKEN]": true,
     "moduleResolution": "node"
   },
   "include": ["next.config.js", "next-env.d.ts", "**/*.jsx", "**/*.ts", "**/*.tsx"],

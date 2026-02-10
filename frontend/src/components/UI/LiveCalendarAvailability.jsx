@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 /**
  * Live Calendar Availability - Mostra disponibilidade em tempo real
  */
-export default function LiveCalendarAvailability() {
+export default function [REDACTED_TOKEN]() {
   const [currentMonth, setCurrentMonth] = useState(new Date())
   const [selectedDate, setSelectedDate] = useState(null)
   const [availability, setAvailability] = useState({})

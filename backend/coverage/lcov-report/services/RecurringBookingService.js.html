@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/RecurringBookingService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> RecurringBookingService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -538,7 +538,7 @@
 &nbsp;
 const logger = require('../utils/logger');
 &nbsp;
-class RecurringBookingService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.recurringBookings = new Map();
   }
@@ -546,7 +546,7 @@ class RecurringBookingService {
   /**
    * Criar booking recorrente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync createRecurringBooking(booking) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](booking) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const {
         userId,
@@ -575,7 +575,7 @@ class RecurringBookingService {
         time,
         notes,
         status: 'active',
-        nextOccurrence: this.calculateNextOccurrence(frequency, dayOfWeek, time),
+        nextOccurrence: this.[REDACTED_TOKEN](frequency, dayOfWeek, time),
         createdAt: new Date(),
         discount: 10 // 10% desconto para recorrentes
       };
@@ -600,7 +600,7 @@ class RecurringBookingService {
   /**
    ✅ NOVO: Calcular próxima ocorrência
    */
-<span class="fstat-no" title="function not covered" >  ca</span>lculateNextOccurrence(frequency, dayOfWeek, time) {
+<span class="fstat-no" title="function not covered" >  ca</span>[REDACTED_TOKEN](frequency, dayOfWeek, time) {
     const now = <span class="cstat-no" title="statement not covered" >new Date();</span>
     const nextDate = <span class="cstat-no" title="statement not covered" >new Date(now);</span>
 &nbsp;
@@ -709,7 +709,7 @@ class RecurringBookingService {
       };
 &nbsp;
       // Atualizar próxima ocorrência
-<span class="cstat-no" title="statement not covered" >      recurring.nextOccurrence = this.calculateNextOccurrence(</span>
+<span class="cstat-no" title="statement not covered" >      recurring.nextOccurrence = this.[REDACTED_TOKEN](</span>
         recurring.frequency,
         recurring.dayOfWeek,
         recurring.time
@@ -732,7 +732,7 @@ class RecurringBookingService {
   /**
    ✅ NOVO: Listar bookings recorrentes do usuário
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getUserRecurringBookings(userId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId) {
     const userRecurring = <span class="cstat-no" title="statement not covered" >Array.from(this.recurringBookings.values())</span>
       .filter(<span class="fstat-no" title="function not covered" >r </span>=&gt; <span class="cstat-no" title="statement not covered" >r.userId === userId)</span>;
 &nbsp;
@@ -764,7 +764,7 @@ class RecurringBookingService {
   }
 }
 &nbsp;
-module.exports = new RecurringBookingService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

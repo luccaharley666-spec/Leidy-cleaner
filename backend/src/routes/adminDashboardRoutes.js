@@ -1,5 +1,5 @@
 /**
- * AdminDashboardRoutes.js
+ * [REDACTED_TOKEN].js
  * Rotas para o dashboard administrativo
  * 
  * GET /api/admin/dashboard - Dashboard completo
@@ -11,12 +11,12 @@
  */
 
 const express = require('express');
-const AdminDashboardController = require('../controllers/AdminDashboardController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const { authenticateToken } = require('../middleware/auth');
 
-function createAdminDashboardRoutes(db) {
+function [REDACTED_TOKEN](db) {
   const router = express.Router();
-  const controller = new AdminDashboardController(db);
+  const controller = new [REDACTED_TOKEN](db);
 
   /**
    * Middleware: Verificar se é admin
@@ -82,4 +82,4 @@ function createAdminDashboardRoutes(db) {
   return router;
 }
 
-module.exports = createAdminDashboardRoutes;
+module.exports = [REDACTED_TOKEN];

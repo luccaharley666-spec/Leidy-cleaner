@@ -400,11 +400,11 @@ function <span class="fstat-no" title="function not covered" >enableCompression(
 /**
  * Middleware para adicionar headers de segurança para assets
  */
-function <span class="fstat-no" title="function not covered" >assetSecurityHeaders(</span>req, res, next) {
+function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>req, res, next) {
 <span class="cstat-no" title="statement not covered" >  res.set({</span>
-    'X-Content-Type-Options': 'nosniff',
+    '[REDACTED_TOKEN]': 'nosniff',
     'X-Frame-Options': 'DENY',
-    'Referrer-Policy': 'strict-origin-when-cross-origin'
+    'Referrer-Policy': '[REDACTED_TOKEN]'
   });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  next();</span>
@@ -481,7 +481,7 @@ function <span class="fstat-no" title="function not covered" >generateAssetETag(
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
   cdnCacheHeaders,
   enableCompression,
-  assetSecurityHeaders,
+  [REDACTED_TOKEN],
   logAssetDownload,
   serveOptimizedAsset,
   generateAssetETag

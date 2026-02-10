@@ -4,7 +4,7 @@
  */
 
 const express = require('express');
-const paymentService = require('../services/AdvancedPaymentService');
+const paymentService = require('../services/[REDACTED_TOKEN]');
 const logger = require('../utils/logger');
 
 const router = express.Router();
@@ -82,7 +82,7 @@ router.post('/apple-pay', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const payment = await paymentService.createApplePayPayment(bookingId, amount, applePayToken);
+    const payment = await paymentService.[REDACTED_TOKEN](bookingId, amount, applePayToken);
 
     res.status(201).json({ success: true, data: payment });
   } catch (error) {
@@ -123,7 +123,7 @@ router.post('/google-pay', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const payment = await paymentService.createGooglePayPayment(bookingId, amount, googlePayToken);
+    const payment = await paymentService.[REDACTED_TOKEN](bookingId, amount, googlePayToken);
 
     res.status(201).json({ success: true, data: payment });
   } catch (error) {
@@ -210,7 +210,7 @@ router.post('/paypal/:paymentId/execute', async (req, res) => {
       return res.status(400).json({ error: 'Email required' });
     }
 
-    const payment = await paymentService.executePayPalPayment(paymentId, { email });
+    const payment = await paymentService.[REDACTED_TOKEN](paymentId, { email });
 
     res.json({ success: true, data: payment });
   } catch (error) {
@@ -403,7 +403,7 @@ router.post('/subscriptions/:subscriptionId/billing', async (req, res) => {
   try {
     const { subscriptionId } = req.params;
 
-    const payment = await paymentService.processSubscriptionBilling(subscriptionId);
+    const payment = await paymentService.[REDACTED_TOKEN](subscriptionId);
 
     res.json({ success: true, data: payment });
   } catch (error) {

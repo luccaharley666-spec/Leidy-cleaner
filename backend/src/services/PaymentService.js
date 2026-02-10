@@ -9,10 +9,10 @@ class PaymentService {
   /**
    * Criar session de checkout Stripe
    */
-  static async createCheckoutSession(userId, hourPackage, totalPrice) {
+  static async [REDACTED_TOKEN](userId, hourPackage, totalPrice) {
     try {
       const session = await stripe.checkout.sessions.create({
-        payment_method_types: ['card'],
+        [REDACTED_TOKEN]: ['card'],
         mode: 'payment',
         customer_email: `user_${userId}@leidycleaner.local`,
         success_url: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -34,7 +34,7 @@ class PaymentService {
         metadata: {
           userId: userId.toString(),
           hourPackage: hourPackage.toString(),
-          type: 'hour_package_purchase'
+          type: '[REDACTED_TOKEN]'
         }
       });
 
@@ -68,12 +68,12 @@ class PaymentService {
   /**
    * Validar webhook signature
    */
-  static validateWebhookSignature(body, signature) {
+  static [REDACTED_TOKEN](body, signature) {
     try {
       const event = stripe.webhooks.constructEvent(
         body,
         signature,
-        process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test_demo'
+        process.env.[REDACTED_TOKEN] || '[REDACTED_TOKEN]'
       );
       return event;
     } catch (error) {
@@ -85,7 +85,7 @@ class PaymentService {
   /**
    * Processar pagamento completo (webhook)
    */
-  static async handlePaymentSuccess(session) {
+  static async [REDACTED_TOKEN](session) {
     try {
       return {
         success: true,
@@ -103,7 +103,7 @@ class PaymentService {
   /**
    * Criar refund
    */
-  static async createRefund(paymentIntentId, reason = 'requested_by_customer') {
+  static async createRefund(paymentIntentId, reason = '[REDACTED_TOKEN]') {
     try {
       const refund = await stripe.refunds.create({
         payment_intent: paymentIntentId,
@@ -144,7 +144,7 @@ class PaymentService {
   /**
    * Validar pagamento completo
    */
-  static async verifyPaymentComplete(sessionId) {
+  static async [REDACTED_TOKEN](sessionId) {
     try {
       const session = await stripe.checkout.sessions.retrieve(sessionId);
       return session.payment_status === 'paid';

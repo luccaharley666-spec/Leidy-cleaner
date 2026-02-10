@@ -298,7 +298,7 @@ QUADRANTES:
 ```bash
 # 1. Criar .env.local com variáveis
 REACT_APP_API_URL=https://api.seu-dominio.com
-REACT_APP_ENVIRONMENT=production
+[REDACTED_TOKEN]=production
 
 # 2. Remover localhost hardcoded (usar process.env)
 # Arquivos: AuthContext, agendar-updated, analytics-dashboard
@@ -340,10 +340,10 @@ REACT_APP_ENVIRONMENT=production
 ```env
 # Backend API
 REACT_APP_API_URL=http://localhost:3001
-REACT_APP_API_TIMEOUT=30000
+[REDACTED_TOKEN]=30000
 
 # Environment
-REACT_APP_ENVIRONMENT=development
+[REDACTED_TOKEN]=development
 REACT_APP_DEBUG=true
 ```
 
@@ -351,7 +351,7 @@ REACT_APP_DEBUG=true
 ```javascript
 export const API_CONFIG = {
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001',
-  timeout: parseInt(process.env.REACT_APP_API_TIMEOUT || '30000'),
+  timeout: parseInt(process.env.[REDACTED_TOKEN] || '30000'),
   headers: {
     'Content-Type': 'application/json'
   }

@@ -2,10 +2,10 @@
 
 /**
  * Script para atualizar senha do admin
- * Uso: node scripts/update-admin-password.js <nova_senha>
+ * Uso: node scripts/[REDACTED_TOKEN].js <nova_senha>
  * 
  * Exemplo:
- *   node scripts/update-admin-password.js "r!1QrE&McMzT2$zu"
+ *   node scripts/[REDACTED_TOKEN].js "r!1QrE&McMzT2$zu"
  * 
  * ⚠️  IMPORTANTE: Não commitar este script com senhas reais!
  */
@@ -34,7 +34,7 @@ try {
 const newPassword = process.argv[2];
 if (!newPassword) {
   console.error('❌ Erro: Senha não fornecida');
-  console.error('Uso: node scripts/update-admin-password.js <nova_senha>');
+  console.error('Uso: node scripts/[REDACTED_TOKEN].js <nova_senha>');
   process.exit(1);
 }
 

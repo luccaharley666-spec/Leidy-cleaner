@@ -10,7 +10,7 @@ Analisando seus **37 controllers** + **19 páginas React** + estrutura do SQLite
 
 ### 1️⃣ **SMART AVAILABILITY WIDGET** ✅ **JÁ CRIADO!**
 
-**Status**: Código pronto em `/backend/src/controllers/StaffAvailabilityController.js`
+**Status**: Código pronto em `/backend/src/controllers/[REDACTED_TOKEN].js`
 
 **O que faz**:
 ```
@@ -37,17 +37,17 @@ Cliente vê isso ao agendar:
 
 **Mudanças Necessárias**:
 ```
-✅ Backend: StaffAvailabilityController.js (340 linhas) - PRONTO
-✅ Routes: staffAvailabilityRoutes.js - PRONTO
-✅ Frontend: AvailableStaffWidget.jsx (280 linhas) - PRONTO
-✅ Styles: AvailableStaffWidget.module.css - PRONTO
+✅ Backend: [REDACTED_TOKEN].js (340 linhas) - PRONTO
+✅ Routes: [REDACTED_TOKEN].js - PRONTO
+✅ Frontend: [REDACTED_TOKEN].jsx (280 linhas) - PRONTO
+✅ Styles: [REDACTED_TOKEN].module.css - PRONTO
 
 PRÓXIMO PASSO:
 1. Adicionar em api.js:
-   router.use('/staff', require('./staffAvailabilityRoutes'));
+   router.use('/staff', require('./[REDACTED_TOKEN]'));
 
 2. Usar no agendar.jsx:
-   <AvailableStaffWidget date={selectedDate} time={selectedTime} serviceId={serviceId} />
+   <[REDACTED_TOKEN] date={selectedDate} time={selectedTime} serviceId={serviceId} />
 ```
 
 ---
@@ -76,7 +76,7 @@ POST /api/pricing/calculate
 
 | Arquivo | Função Atual | Nova Função |
 |---------|-------------|------------|
-| `BookingController.js` | `createBooking()` | Chamar `PricingService.calculateDynamicPrice()` antes |
+| `BookingController.js` | `createBooking()` | Chamar `PricingService.[REDACTED_TOKEN]()` antes |
 | `services` table | `base_price` FIXO | Adicionar `pricing_rules` table |
 | `checkout.jsx` | Mostra `service.price` | Mostra `booking.calculated_price` + breakdown |
 | NOVO | - | `PricingService.js` com algoritmo ARIMA |
@@ -114,7 +114,7 @@ POST /api/pricing/calculate
 | Arquivo | O Que Fazer |
 |---------|------------|
 | Database | Criar `service_affinity` table (co-occurrence de serviços) |
-| `RecommendationController.js` | Novo controller com 180 linhas |
+| `[REDACTED_TOKEN].js` | Novo controller com 180 linhas |
 | `checkout.jsx` | Modal "Adicionar Serviços" |
 | `api.js` | POST `/api/recommendations/smart` |
 
@@ -154,7 +154,7 @@ Dashboard Executivo - Agora:
    // AnalyticsService.js (NEW - 250 linhas)
    - forecastRevenue(days) → Linear regression + seasonal factors
    - getStaffPerformance() → ROI, revenue per hour, satisfaction
-   - getChurnRiskSegments() → Clientes em risco, próximos a cancelar
+   - [REDACTED_TOKEN]() → Clientes em risco, próximos a cancelar
    - predictDemand(hours=24) → Quantos agendamentos próximas 24h
    
    // AdminController.js (UPDATE)
@@ -205,9 +205,9 @@ Novo Agendamento Recebido:
 **Onde implementar**:
 
 ```javascript
-// backend/src/services/StaffOptimizationService.js (NEW - 250 linhas)
+// backend/src/services/[REDACTED_TOKEN].js (NEW - 250 linhas)
 
-class StaffOptimizationService {
+class [REDACTED_TOKEN] {
   async autoAssignOptimal(bookingId) {
     const booking = await getBooking(bookingId);
     
@@ -241,7 +241,7 @@ exports.createBooking = async (req, res) => {
   
   // NOVO!
   if (config.AUTO_ASSIGN_ENABLED) {
-    const assigned = await StaffOptimizationService.autoAssignOptimal(booking.id);
+    const assigned = await [REDACTED_TOKEN].autoAssignOptimal(booking.id);
     booking.assigned_staff = assigned;
   }
   
@@ -323,24 +323,24 @@ Características:
 ### Feature 1: Smart Availability Widget
 ```
 frontend/src/components/
-  ✅ AvailableStaffWidget.jsx (PRONTO)
-  ✅ AvailableStaffWidget.module.css (PRONTO)
+  ✅ [REDACTED_TOKEN].jsx (PRONTO)
+  ✅ [REDACTED_TOKEN].module.css (PRONTO)
 
 backend/src/
-  ✅ controllers/StaffAvailabilityController.js (PRONTO)
-  ✅ routes/staffAvailabilityRoutes.js (PRONTO)
+  ✅ controllers/[REDACTED_TOKEN].js (PRONTO)
+  ✅ routes/[REDACTED_TOKEN].js (PRONTO)
 
 pages/agendar-updated.jsx:
-  ADICIONAR: <AvailableStaffWidget date={...} time={...} />
+  ADICIONAR: <[REDACTED_TOKEN] date={...} time={...} />
 
 backend/src/routes/api.js:
-  ADICIONAR: router.use('/staff', require('./staffAvailabilityRoutes'));
+  ADICIONAR: router.use('/staff', require('./[REDACTED_TOKEN]'));
 ```
 
 ### Feature 2: Dynamic Pricing
 ```
 NEW FILES:
-  backend/src/services/DynamicPricingService.js (250 linhas)
+  backend/src/services/[REDACTED_TOKEN].js (250 linhas)
   backend/src/controllers/PricingController.js (150 linhas)
 
 MODIFY:
@@ -355,8 +355,8 @@ MODIFY:
 ### Feature 3: Cross-selling
 ```
 NEW FILES:
-  backend/src/services/RecommendationService.js (200 linhas)
-  backend/src/controllers/RecommendationController.js (180 linhas)
+  backend/src/services/[REDACTED_TOKEN].js (200 linhas)
+  backend/src/controllers/[REDACTED_TOKEN].js (180 linhas)
 
 MODIFY:
   database/schema.sql → Adicionar `service_affinity` table
@@ -377,8 +377,8 @@ MODIFY:
 ### Feature 5: Staff Optimization
 ```
 NEW FILES:
-  backend/src/services/StaffOptimizationService.js (280 linhas)
-  backend/src/controllers/AutoAssignmentController.js (150 linhas)
+  backend/src/services/[REDACTED_TOKEN].js (280 linhas)
+  backend/src/controllers/[REDACTED_TOKEN].js (150 linhas)
 
 MODIFY:
   BookingController.js → createBooking() chamar autoAssign()

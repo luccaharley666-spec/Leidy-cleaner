@@ -7,7 +7,7 @@ const CounterNumber = ({ target, unit = '', duration = 2 }) => {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const observer = new [REDACTED_TOKEN](
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
           setIsVisible(true)

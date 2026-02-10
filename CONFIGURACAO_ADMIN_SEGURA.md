@@ -56,7 +56,7 @@
 EMAIL_FROM=leidycleaner@gmail.com
 SMTP_USER=leidycleaner@gmail.com
 TWILIO_PHONE_NUMBER=+5551980303740
-TWILIO_WHATSAPP_FROM=whatsapp:+5551980303740
+[REDACTED_TOKEN]=whatsapp:+5551980303740
 PIX_KEY=51980330422
 PIX_EMAIL=leidycleaner@gmail.com
 PIX_ACCOUNT_NUMBER=000827519788-9
@@ -77,14 +77,14 @@ SMTP_PASS=<APP_PASSWORD_GERADO>
 EMAIL_PASS=<APP_PASSWORD_GERADO>
 ```
 
-#### 2. **PIX_WEBHOOK_SECRET** (para confirmação de pagamentos)
+#### 2. **[REDACTED_TOKEN]** (para confirmação de pagamentos)
 ```bash
 # Gerar SECRET seguro (use crypto ou openssl):
 openssl rand -hex 32
 
-# Resultado exemplo: abc1234def5678ghi9012jkl3456mno
+# Resultado exemplo: [REDACTED_TOKEN]
 # Adicionar em:
-PIX_WEBHOOK_SECRET=abc1234def5678ghi9012jkl3456mno
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Depois registrar MESMO SECRET no banco (nas configurações de webhook)
 ```
@@ -94,8 +94,8 @@ PIX_WEBHOOK_SECRET=abc1234def5678ghi9012jkl3456mno
 # Obter em: https://www.twilio.com/console
 # Login com credenciais Twilio
 
-TWILIO_ACCOUNT_SID=ACxxxxxxxxxxxxxxxxxxxxxx
-TWILIO_AUTH_TOKEN=yyyyyyyyyyyyyyyyyyyyyyyy
+TWILIO_ACCOUNT_SID=[REDACTED_TOKEN]
+TWILIO_AUTH_TOKEN=[REDACTED_TOKEN]
 ```
 
 #### 4. **Stripe Webhook Secret** (se usar Stripe em produção)
@@ -103,7 +103,7 @@ TWILIO_AUTH_TOKEN=yyyyyyyyyyyyyyyyyyyyyyyy
 # Obter em: https://dashboard.stripe.com/webhooks
 # Criar novo endpoint: https://sua-api.com/webhooks/stripe
 
-STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxx
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 ```
 
 #### 5. **Confirmação de Banco** (Qual banco?)
@@ -137,7 +137,7 @@ PIX_BANK_CODE=001  # Confirmar banco real
    Método: POST
    Evento: pix.transfer.in.received
    Assinatura: HMAC-SHA256
-   Secret: PIX_WEBHOOK_SECRET (mesmo valor do .env)
+   Secret: [REDACTED_TOKEN] (mesmo valor do .env)
    ```
 
 3. **Testar Webhook Localmente** (com ngrok)
@@ -154,7 +154,7 @@ PIX_BANK_CODE=001  # Confirmar banco real
 - [ ] Senha do Admin alterada (não usar `vfly2008`)
 - [ ] 2FA ativado para conta do admin
 - [ ] App Password Gmail gerado e configurado
-- [ ] PIX_WEBHOOK_SECRET gerado e salvo seguramente
+- [ ] [REDACTED_TOKEN] gerado e salvo seguramente
 - [ ] Credenciais Twilio configuradas
 - [ ] Webhook PIX registrado no banco
 - [ ] HTTPS ativado em produção
@@ -178,7 +178,7 @@ PIX_BANK_CODE=001  # Confirmar banco real
 ## ⚠️ Próximas Ações Críticas
 
 1. **Produção**: Alterar senha padrão do admin imediatamente
-2. **Segurança**: Gerar e configurar `PIX_WEBHOOK_SECRET`
+2. **Segurança**: Gerar e configurar `[REDACTED_TOKEN]`
 3. **Email**: Configurar App Password do Gmail
 4. **Banco**: Registrar webhook PIX com o banco
 5. **HTTPS**: Garantir HTTPS em produção antes de habilitar webhooks

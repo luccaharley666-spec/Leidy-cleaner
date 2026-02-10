@@ -72,10 +72,10 @@ Este diretório contém a configuração completa de integração contínua e de
 | `VERCEL_TOKEN` | Token de autenticação Vercel | https://vercel.com/account/tokens |
 | `VERCEL_ORG_ID` | ID da organização Vercel | Vercel Dashboard > Settings |
 | `VERCEL_PROJECT_ID` | ID do projeto Vercel (Prod) | Vercel Dashboard > Project Settings |
-| `VERCEL_PROJECT_ID_STAGING` | ID do projeto Vercel (Staging) | Vercel Dashboard > Project Settings |
+| `[REDACTED_TOKEN]` | ID do projeto Vercel (Staging) | Vercel Dashboard > Project Settings |
 | `RAILWAY_TOKEN` | Token de autenticação Railway | https://railway.app/account/tokens |
 | `RAILWAY_PROJECT_ID` | ID do projeto Railway (Prod) | Railway Dashboard > Project Settings |
-| `RAILWAY_PROJECT_ID_STAGING` | ID do projeto Railway (Staging) | Railway Dashboard > Project Settings |
+| `[REDACTED_TOKEN]` | ID do projeto Railway (Staging) | Railway Dashboard > Project Settings |
 | `SLACK_WEBHOOK` | Webhook URL do Slack | https://api.slack.com/apps (Incoming Webhooks) |
 
 ### Como Configurar

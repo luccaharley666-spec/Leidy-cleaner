@@ -10,7 +10,7 @@ const ReferralSystem = () => {
   useEffect(() => {
     // Gerar código de referência único
     const generateCode = () => {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      const chars = '[REDACTED_TOKEN]';
       let code = '';
       for (let i = 0; i < 8; i++) {
         code += chars.charAt(Math.floor(Math.random() * chars.length));

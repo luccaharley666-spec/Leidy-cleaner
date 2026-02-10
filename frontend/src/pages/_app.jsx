@@ -15,7 +15,7 @@ import LiveChat from '../components/UI/LiveChat'
 import PushNotifications from '../components/UI/PushNotifications'
 import PWABanner from '../components/UI/PWABanner'
 import FloatingNavTools from '../components/UI/FloatingNavTools'
-import { registerServiceWorker } from '../utils/pwa'
+import { [REDACTED_TOKEN] } from '../utils/pwa'
 import Script from 'next/script'
 import { useRouter } from 'next/router'
 import * as gtag from '../../lib/gtag'
@@ -46,7 +46,7 @@ export default function MyApp({ Component, pageProps }) {
 
     // Register PWA service worker
     try {
-      registerServiceWorker()
+      [REDACTED_TOKEN]()
     } catch (e) {
       // ignore
     }

@@ -4,7 +4,7 @@
 
 ---
 
-## ✅ PASSO 1: PIX_WEBHOOK_SECRET GERADO
+## ✅ PASSO 1: [REDACTED_TOKEN] GERADO
 
 **Comando executado:**
 ```bash
@@ -13,7 +13,7 @@ openssl rand -hex 32
 
 **Resultado:**
 ```
-50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1
+[REDACTED_TOKEN]
 ```
 
 **Status:** ✅ Atualizado em `backend/.env` (linha 54)
@@ -112,7 +112,7 @@ Titular:  Leidy Cleaner
 
 ```
 Crítico (Feito):
-  [✅] PIX_WEBHOOK_SECRET = 50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1
+  [✅] [REDACTED_TOKEN] = [REDACTED_TOKEN]
   [✅] Senha Admin = r!1QrE&McMzT2$zu (hash bcryptjs)
   [⏳] Banco = 001 (confirmar)
 
@@ -153,7 +153,7 @@ Produção:
 
 **Guardar estas informações:**
 ```
-PIX_WEBHOOK_SECRET: 50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1
+[REDACTED_TOKEN]: [REDACTED_TOKEN]
 Admin Email:        fransmalifra@gmail.com
 Admin Password:     r!1QrE&McMzT2$zu
 ```

@@ -592,7 +592,7 @@ const authorizeByRole = <span class="cstat-no" title="statement not covered" ><s
 /**
  * Authorize by permission
  */
-const authorizeByPermission = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equiredPermission) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equiredPermission) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const userRole = <span class="cstat-no" title="statement not covered" >req.user?.role;</span>
@@ -626,7 +626,7 @@ const authorizeByPermission = <span class="cstat-no" title="statement not covere
 /**
  * Authorize by multiple permissions (AND logic)
  */
-const authorizeByAllPermissions = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equiredPermissions) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equiredPermissions) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const userRole = <span class="cstat-no" title="statement not covered" >req.user?.role;</span>
@@ -660,7 +660,7 @@ const authorizeByAllPermissions = <span class="cstat-no" title="statement not co
 /**
  * Authorize by multiple permissions (OR logic)
  */
-const authorizeByAnyPermission = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equiredPermissions) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>equiredPermissions) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  return <span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const userRole = <span class="cstat-no" title="statement not covered" >req.user?.role;</span>
@@ -775,9 +775,9 @@ const auditLog = <span class="cstat-no" title="statement not covered" ><span cla
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
   authorizeByRole,
-  authorizeByPermission,
-  authorizeByAllPermissions,
-  authorizeByAnyPermission,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
   adminOnly,
   managerOrHigher,
   staffOrHigher,

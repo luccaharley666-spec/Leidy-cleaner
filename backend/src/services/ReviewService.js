@@ -121,7 +121,7 @@ class ReviewService {
   /**
    * Obter distribuição de ratings
    */
-  static getRatingDistribution(professionalId) {
+  static [REDACTED_TOKEN](professionalId) {
     return new Promise((resolve, reject) => {
       const db = new sqlite3.Database(DB_PATH);
 

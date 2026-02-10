@@ -20,8 +20,8 @@
 │    📊 Impacto: +20% conversão                                          │
 │    ⏳ Integração: 2-3 horas                                            │
 │    💰 ROI: +R$ 4k/mês                                                  │
-│    📁 Backend: StaffAvailabilityController.js (340 linhas) ✅         │
-│    📁 Frontend: AvailableStaffWidget.jsx (280 linhas) ✅              │
+│    📁 Backend: [REDACTED_TOKEN].js (340 linhas) ✅         │
+│    📁 Frontend: [REDACTED_TOKEN].jsx (280 linhas) ✅              │
 │                                                                         │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
@@ -39,7 +39,7 @@
 │    📊 Impacto: +R$ 5k/mês (+25% ticket médio)                         │
 │    ⏳ Tempo: 4-5 dias                                                  │
 │    💰 ROI: +R$ 5k/mês                                                  │
-│    📝 Mudanças: RecommendationService.js, service_affinity table      │
+│    📝 Mudanças: [REDACTED_TOKEN].js, service_affinity table      │
 │                                                                         │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                         │
@@ -57,7 +57,7 @@
 │    📊 Impacto: +15% reduce cancelamentos                              │
 │    ⏳ Tempo: 7-8 dias                                                  │
 │    💰 ROI: +R$ 7k/mês                                                  │
-│    📝 Mudanças: StaffOptimizationService.js, BookingController        │
+│    📝 Mudanças: [REDACTED_TOKEN].js, BookingController        │
 │                                                                         │
 └─────────────────────────────────────────────────────────────────────────┘
 
@@ -73,30 +73,30 @@ TOTAL ROI ESPERADO: +R$ 27.000/mês em 8 semanas
 ```
 backend/src/
 ├── controllers/
-│   └── StaffAvailabilityController.js      [340 linhas - PRONTO]
-│       └─ 6 endpoints: getAvailableStaff, getAvailabilityStatus, 
+│   └── [REDACTED_TOKEN].js      [340 linhas - PRONTO]
+│       └─ 6 endpoints: getAvailableStaff, [REDACTED_TOKEN], 
 │                       getWeeklyCalendar, setStatus, getShiftAssignments
 │
 └── routes/
-    └── staffAvailabilityRoutes.js          [50 linhas - PRONTO]
+    └── [REDACTED_TOKEN].js          [50 linhas - PRONTO]
         └─ API routes com autenticação
 
 frontend/src/
 ├── components/
-│   ├── AvailableStaffWidget.jsx            [340+ linhas - PRONTO]
+│   ├── [REDACTED_TOKEN].jsx            [340+ linhas - PRONTO]
 │   │   └─ React component com: avatares, ratings, carga, scores
 │   │
-│   └── AvailableStaffWidget.module.css     [400+ linhas - PRONTO]
+│   └── [REDACTED_TOKEN].module.css     [400+ linhas - PRONTO]
 │       └─ Responsive, mobile-first, animations
 │
 └── pages/
-    └── INTEGRACAO_STAFF_WIDGET.md          [Exemplo completo]
+    └── [REDACTED_TOKEN].md          [Exemplo completo]
         └─ Como usar no agendar-updated.jsx
 
 Documentation/
-├── ESTRATEGIA_FEATURES_AVANCADAS.md        [Roadmap 8 semanas]
-├── GUIA_FEATURES_LEGAIS_A_TER.md           [5 features + quick wins]
-└── INTEGRACAO_STAFF_WIDGET.md              [Como integrar]
+├── [REDACTED_TOKEN].md        [Roadmap 8 semanas]
+├── [REDACTED_TOKEN].md           [5 features + quick wins]
+└── [REDACTED_TOKEN].md              [Como integrar]
 ```
 
 ### 📊 Estrutura de Dados Necessária
@@ -120,7 +120,7 @@ CREATE TABLE pricing_rules (
 CREATE TABLE service_affinity (
   service_1_id INT,
   service_2_id INT,
-  co_booking_frequency DECIMAL(4,3)
+  [REDACTED_TOKEN] DECIMAL(4,3)
 );
 
 -- Analytics  
@@ -143,12 +143,12 @@ FICHEIRO                         MUDA O QUÊ?
 ────────────────────────────────────────────────────────────────
 backend/src/routes/api.js        Adicionar:
                                  router.use('/staff', 
-                                   require('./staffAvailabilityRoutes'));
+                                   require('./[REDACTED_TOKEN]'));
 
 frontend/pages/agendar.jsx        Adicionar componente:
-                                 import AvailableStaffWidget from '../components/AvailableStaffWidget';
+                                 import [REDACTED_TOKEN] from '../components/[REDACTED_TOKEN]';
                                  
-                                 <AvailableStaffWidget 
+                                 <[REDACTED_TOKEN] 
                                    date={selectedDate}
                                    time={selectedTime}
                                    serviceId={serviceId}
@@ -173,7 +173,7 @@ npm run dev → http://localhost:3000/agendar
 ```
 NOVO                        O QUÊ?
 ──────────────────────────────────────────────────────────────
-PricingService.js           class DynamicPricingService {
+PricingService.js           class [REDACTED_TOKEN] {
                               calculatePrice(serviceId, date, time, userId)
                               getTimeMultiplier(date, time)
                               getDemandScore(date, time)
@@ -204,7 +204,7 @@ components/checkout.jsx      Mostrar breakdown:
 ```
 NOVO
 ──────────────────────────────────────────────────────────────
-RecommendationService.js    Algoritmo de co-occurrence
+[REDACTED_TOKEN].js    Algoritmo de co-occurrence
                             Baseado em histórico de clientes
 
 MODIFICAR
@@ -225,7 +225,7 @@ database/schema.sql         CREATE TABLE service_affinity
 NOVO
 ──────────────────────────────────────────────────────────────
 AnalyticsService.js         forecastRevenue()
-                            getStaffProductivity()
+                            [REDACTED_TOKEN]()
                             getCustomerSegments()
 
 pages/admin/advanced-        Dashboard com:
@@ -241,7 +241,7 @@ analytics.jsx               - Gráfico de revenue 14 dias ahead
 ```
 NOVO
 ──────────────────────────────────────────────────────────────
-StaffOptimizationService.js autoAssignOptimal(bookingId)
+[REDACTED_TOKEN].js autoAssignOptimal(bookingId)
                             Scoring algorithm com:
                             - Especialização
                             - Distância
@@ -312,7 +312,7 @@ BookingController.js        createBooking():
 │           ├─ Staff ranking table                          │
 │           └─ Customer segmentation cards                  │
 │                                                            │
-│ 🔄 Day 5-7:   StaffOptimizationService planning          │
+│ 🔄 Day 5-7:   [REDACTED_TOKEN] planning          │
 │           ├─ Scoring algorithm design                     │
 │           ├─ Weights calibration                          │
 │           └─ Test data setup                              │
@@ -322,7 +322,7 @@ BookingController.js        createBooking():
 │ SEMANA 5: Staff Optimization + Automation                  │
 ├─────────────────────────────────────────────────────────────┤
 │ ✅ Day 1-4:   Implement Auto-assignment                  │
-│           ├─ StaffOptimizationService.js (280 linhas)    │
+│           ├─ [REDACTED_TOKEN].js (280 linhas)    │
 │           ├─ Scoring com 5 critérios                      │
 │           ├─ Integrar em BookingController                │
 │           └─ Testar com múltiplos cenários                │

@@ -99,14 +99,14 @@ DATABASE_URL=postgresql://user:password@db.supabase.co:5432/postgres
 SQLITE_PATH=/app/data/limpeza.db
 
 # Auth
-JWT_SECRET=sua-chave-secreta-muito-longa-aqui
+JWT_SECRET=[REDACTED_TOKEN]
 JWT_EXPIRY=24h
-REFRESH_SECRET=outro-segredo-muito-longo
+REFRESH_SECRET=[REDACTED_TOKEN]
 
 # Payments
-STRIPE_SECRET_KEY=sk_live_seu_key_aqui
-STRIPE_PUBLISHABLE_KEY=pk_live_seu_key_aqui
-STRIPE_WEBHOOK_SECRET=whsec_seu_secret_aqui
+STRIPE_SECRET_KEY=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Email
 SMTP_HOST=smtp.seu-provedor.com
@@ -132,7 +132,7 @@ SENTRY_DSN=https://seu_sentry_url
 
 ```env
 NEXT_PUBLIC_API_URL=https://seu-backend-random.railway.app
-NEXT_PUBLIC_STRIPE_KEY=pk_live_seu_key_aqui
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 NEXT_PUBLIC_GA_ID=G-seu_analytics_id
 ```
 
@@ -261,7 +261,7 @@ jobs:
 -- Índices criados
 CREATE INDEX idx_user_email ON users(email);
 CREATE INDEX idx_booking_user ON bookings(user_id);
-CREATE INDEX idx_transaction_booking ON transactions(booking_id);
+CREATE INDEX [REDACTED_TOKEN] ON transactions(booking_id);
 
 -- Replicação ativa (Supabase)
 ✅ Backup automático

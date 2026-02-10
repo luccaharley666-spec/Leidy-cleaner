@@ -64,7 +64,7 @@ Críticas eliminadas: 100% ✅
 
 ### 1️⃣ Extrair Pacote
 ```bash
-unzip leidy_export_PROD_SECURE.zip
+unzip [REDACTED_TOKEN].zip
 cd export_prod
 ```
 
@@ -88,7 +88,7 @@ cp .env.example .env.production
 
 # Editar com seus valores:
 # - JWT_SECRET (gerar com: openssl rand -hex 32)
-# - STRIPE_KEY_PRODUCTION
+# - [REDACTED_TOKEN]
 # - PIX_WEBHOOK_URL (seu domínio)
 # - DATABASE_URL (Postgres recomendado)
 # - REDIS_URL (opcional, para filas)
@@ -159,7 +159,7 @@ curl http://localhost:3001/api/pricing/default
 - [ ] Variáveis de ambiente configuradas (`.env.production`)
 - [ ] BD importada (SQLite ou PostgreSQL)
 - [ ] JWT_SECRET gerado e definido (nunca commitar)
-- [ ] STRIPE_KEY_PRODUCTION configurada
+- [ ] [REDACTED_TOKEN] configurada
 - [ ] PIX webhook registrado
 - [ ] REDIS_URL (se usar filas persistentes)
 - [ ] Azure/AWS/Heroku credenciais (se aplicável)
@@ -172,9 +172,9 @@ curl http://localhost:3001/api/pricing/default
 
 ```env
 # JWT
-JWT_SECRET=<gerar-com-openssl-rand-hex-32>
+JWT_SECRET=<[REDACTED_TOKEN]>
 JWT_EXPIRATION=24h
-REFRESH_TOKEN_EXPIRATION=7d
+[REDACTED_TOKEN]=7d
 
 # Banco de Dados
 DATABASE_URL=sqlite://./backend_data/database.sqlite
@@ -185,10 +185,10 @@ DATABASE_URL=sqlite://./backend_data/database.sqlite
 REDIS_URL=redis://127.0.0.1:6379
 
 # Pagamentos
-STRIPE_KEY_PRODUCTION=pk_live_XXX
-STRIPE_SECRET_PRODUCTION=sk_live_XXX
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
-PIX_WEBHOOK_SECRET=seu_webhook_secret
+[REDACTED_TOKEN]=seu_webhook_secret
 PIX_WEBHOOK_URL=https://seu-dominio.com/api/webhooks/pix
 
 # Email
@@ -269,7 +269,7 @@ npm start
 ### "Stripe key not found"
 ```bash
 # Verificar variáveis
-echo $STRIPE_KEY_PRODUCTION
+echo $[REDACTED_TOKEN]
 # Ou em .env.production
 grep STRIPE .env.production
 ```

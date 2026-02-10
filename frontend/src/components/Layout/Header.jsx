@@ -32,7 +32,7 @@ export default function Header() {
                   alt="Leidy Cleaner Brand" 
                   width={64} 
                   height={64} 
-                  className="object-cover group-hover:scale-110 transition-transform duration-500" 
+                  className="object-cover group-hover:scale-110 [REDACTED_TOKEN] duration-500" 
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full animate-pulse shadow-lg"></div>
@@ -54,7 +54,7 @@ export default function Header() {
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 <div className="px-4 py-2 rounded-lg text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all font-medium flex items-center gap-2 group">
-                  <span className="group-hover:scale-125 transition-transform">{link.icon}</span>
+                  <span className="group-hover:scale-125 [REDACTED_TOKEN]">{link.icon}</span>
                   {link.label}
                 </div>
               </Link>

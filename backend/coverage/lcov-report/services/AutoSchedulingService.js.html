@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/AutoSchedulingService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> AutoSchedulingService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -584,7 +584,7 @@
 &nbsp;
 const logger = require('../utils/logger');
 &nbsp;
-class AutoSchedulingService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.schedules = new Map();
     this.professionals = new Map();
@@ -594,7 +594,7 @@ class AutoSchedulingService {
   /**
    * Agendar profissionais automaticamente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync autoScheduleProfessionals(bookingRequest) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](bookingRequest) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const {
         serviceType,
@@ -602,24 +602,24 @@ class AutoSchedulingService {
         date,
         duration,
         clientId,
-        preferredProfessional = <span class="branch-0 cbranch-no" title="branch not covered" >null</span>
+        [REDACTED_TOKEN] = <span class="branch-0 cbranch-no" title="branch not covered" >null</span>
       } = <span class="cstat-no" title="statement not covered" >bookingRequest;</span>
 &nbsp;
       // Buscar profissionais disponíveis
-      const availableProfessionals = <span class="cstat-no" title="statement not covered" >this.findAvailableProfessionals(</span>
+      const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN](</span>
         serviceType,
         date,
         duration,
         location,
-        preferredProfessional
+        [REDACTED_TOKEN]
       );
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (availableProfessionals.length === 0) {</span>
+<span class="cstat-no" title="statement not covered" >      if ([REDACTED_TOKEN].length === 0) {</span>
 <span class="cstat-no" title="statement not covered" >        throw new Error('Nenhum profissional disponível');</span>
       }
 &nbsp;
       // Selecionar melhor profissional (rating + distância)
-      const selected = <span class="cstat-no" title="statement not covered" >availableProfessionals[0];</span>
+      const selected = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN][0];</span>
 &nbsp;
       const scheduleId = <span class="cstat-no" title="statement not covered" >`sched_${Date.now()}`;</span>
       const schedule = <span class="cstat-no" title="statement not covered" >{</span>
@@ -657,7 +657,7 @@ class AutoSchedulingService {
   /**
    * Encontrar profissionais disponíveis
    */
-<span class="fstat-no" title="function not covered" >  fi</span>ndAvailableProfessionals(serviceType, date, duration, location, preferredId) {
+<span class="fstat-no" title="function not covered" >  fi</span>[REDACTED_TOKEN](serviceType, date, duration, location, preferredId) {
     // Dados mockados
     const professionals = <span class="cstat-no" title="statement not covered" >[</span>
       { id: 'prof_1', name: 'João Silva', rating: 4.9, distance: 2.5, travelTime: 15 },
@@ -699,7 +699,7 @@ class AutoSchedulingService {
         professionalId,
         bookings: bookingIds,
         optimizedAt: new Date(),
-        legs: this.calculateOptimalRoute(bookingIds),
+        legs: this.[REDACTED_TOKEN](bookingIds),
         estimatedDuration: 240, // minutos
         totalDistance: 28.5 // km
       };
@@ -737,7 +737,7 @@ class AutoSchedulingService {
   /**
    * Sincronizar com calendário do profissional
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync syncWithProfessionalCalendar(professionalId, schedule) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](professionalId, schedule) {
 <span class="cstat-no" title="statement not covered" >    logger.log({</span>
       level: 'info',
       message: 'Calendar synced',
@@ -756,7 +756,7 @@ class AutoSchedulingService {
   /**
    * Obter sugestões de agendamento inteligente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getSchedulingSuggestions(clientId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientId) {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       clientId,
       suggestions: [
@@ -779,7 +779,7 @@ class AutoSchedulingService {
   /**
    * Detecção de conflitos de agendamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync detectSchedulingConflicts() {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN]() {
     const conflicts = <span class="cstat-no" title="statement not covered" >[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    this.schedules.forEach(<span class="fstat-no" title="function not covered" >(s</span>chedule, scheduleId) =&gt; {</span>
@@ -793,7 +793,7 @@ class AutoSchedulingService {
 <span class="cstat-no" title="statement not covered" >      if (conflicting.length &gt; 0) {</span>
 <span class="cstat-no" title="statement not covered" >        conflicts.push({</span>
           schedule: scheduleId,
-          conflictingSchedules: conflicting.map(<span class="fstat-no" title="function not covered" >c </span>=&gt; <span class="cstat-no" title="statement not covered" >c.id)</span>,
+          [REDACTED_TOKEN]: conflicting.map(<span class="fstat-no" title="function not covered" >c </span>=&gt; <span class="cstat-no" title="statement not covered" >c.id)</span>,
           severity: 'high'
         });
       }
@@ -824,7 +824,7 @@ class AutoSchedulingService {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       professionalId,
       period: `${days} dias`,
-      totalAvailableMinutes: totalMinutes,
+      [REDACTED_TOKEN]: totalMinutes,
       occupiedMinutes,
       occupancyRate: `${occupancyRate}%`,
       schedules: schedules.length,
@@ -833,7 +833,7 @@ class AutoSchedulingService {
   }
 }
 &nbsp;
-module.exports = new AutoSchedulingService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

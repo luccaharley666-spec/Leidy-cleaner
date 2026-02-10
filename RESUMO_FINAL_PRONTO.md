@@ -70,7 +70,7 @@ zip -r ~/leidy.zip /workspaces/acaba
 ```
 
 ### 3. Integrar em Outra Plataforma
-Seguir: `GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md`
+Seguir: `[REDACTED_TOKEN].md`
 
 - Para Python/Django
 - Para Ruby/Rails
@@ -108,12 +108,12 @@ Tudo está aqui: `/workspaces/acaba/`
 
 ### Documentação
 ```
-✅ API_REFERENCE_COMPLETA.md
-✅ GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md
-✅ README_FINAL_EXPORTACAO.md
+✅ [REDACTED_TOKEN].md
+✅ [REDACTED_TOKEN].md
+✅ [REDACTED_TOKEN].md
 ✅ ACOES_IMEDIATAS.md
 ✅ EXPORT_CHECKLIST.md
-✅ PLANO_24H_FINALIZACAO.md
+✅ [REDACTED_TOKEN].md
 ```
 
 ### Banco de Dados
@@ -171,7 +171,7 @@ Tudo está aqui: `/workspaces/acaba/`
 
 ### Próximas 2 horas
 - [ ] Copiar arquivos para seu computador
-- [ ] Se importando: Seguir GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md
+- [ ] Se importando: Seguir [REDACTED_TOKEN].md
 - [ ] Testar banco importado
 
 ### Próximos dias
@@ -253,9 +253,9 @@ Para referência rápida:
 | Arquivo | Use quando... |
 |---------|---------------|
 | ACOES_IMEDIATAS.md | Não sabe por onde começar |
-| README_FINAL_EXPORTACAO.md | Quer entender tudo |
-| API_REFERENCE_COMPLETA.md | Vai integrar APIs |
-| GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md | Vai importar em outra plataforma |
+| [REDACTED_TOKEN].md | Quer entender tudo |
+| [REDACTED_TOKEN].md | Vai integrar APIs |
+| [REDACTED_TOKEN].md | Vai importar em outra plataforma |
 | EXPORT_CHECKLIST.md | Quer saber exatamente o que copiar |
 
 ---
@@ -295,7 +295,7 @@ ls ~/meu-app/acaba/ | head -20
 ### Opção 3: Integrar agora (30 min)
 ```bash
 # Ler o guia de importação
-cat /workspaces/acaba/GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md
+cat /workspaces/acaba/[REDACTED_TOKEN].md
 ```
 
 ---

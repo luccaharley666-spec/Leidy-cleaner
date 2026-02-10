@@ -24,7 +24,7 @@
 
 ### EmailService ✅
 - Cobertura: **22.58%**
-- Testes: sendBookingConfirmation funciona
+- Testes: [REDACTED_TOKEN] funciona
 - Arquivos: `src/__tests__/EmailService.test.js`
 
 ### BookingService ✅

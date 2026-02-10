@@ -63,9 +63,9 @@ cp -r /workspaces/acaba/backend ~/leidy-export/
 cp -r /workspaces/acaba/frontend ~/leidy-export/
 
 # 4. Copiar documentação
-cp /workspaces/acaba/API_REFERENCE_COMPLETA.md ~/leidy-export/
-cp /workspaces/acaba/GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md ~/leidy-export/
-cp /workspaces/acaba/README_FINAL_EXPORTACAO.md ~/leidy-export/
+cp /workspaces/acaba/[REDACTED_TOKEN].md ~/leidy-export/
+cp /workspaces/acaba/[REDACTED_TOKEN].md ~/leidy-export/
+cp /workspaces/acaba/[REDACTED_TOKEN].md ~/leidy-export/
 
 # 5. Ver o que copiou
 ls -lh ~/leidy-export/
@@ -75,8 +75,8 @@ ls -lh ~/leidy-export/
 
 ```bash
 cd ~
-zip -r leidy-cleaner-pronto.zip leidy-export/
-ls -lh leidy-cleaner-pronto.zip   # Ver tamanho
+zip -r [REDACTED_TOKEN].zip leidy-export/
+ls -lh [REDACTED_TOKEN].zip   # Ver tamanho
 ```
 
 ### Opção C: Git (Se tem repositório)
@@ -171,8 +171,8 @@ SELECT * FROM users;
 **Nos próximos 30 minutos:**
 
 1. Confirmar tudo está exportado ✅
-2. Se importar para nova plataforma agora, seguir `GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md`
-3. Qualquer dúvida, revisar `README_FINAL_EXPORTACAO.md`
+2. Se importar para nova plataforma agora, seguir `[REDACTED_TOKEN].md`
+3. Qualquer dúvida, revisar `[REDACTED_TOKEN].md`
 
 **No seu tempo:**
 

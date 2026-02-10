@@ -4,7 +4,7 @@
  */
 
 const router = require('express').Router();
-const HourPackagingService = require('../services/HourPackagingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const PricingService = require('../services/PricingService');
 const { authenticateToken } = require('../middleware/auth');
 
@@ -14,14 +14,14 @@ const { authenticateToken } = require('../middleware/auth');
  */
 router.get('/hour-packages', (req, res) => {
   try {
-    const packages = HourPackagingService.getAvailablePackages();
+    const packages = [REDACTED_TOKEN].[REDACTED_TOKEN]();
     res.json({
       success: true,
       packages: packages,
       message: 'Packages retrieved successfully',
     });
   } catch (error) {
-    console.error('[HourPricingController] Error fetching packages:', error.message);
+    console.error('[[REDACTED_TOKEN]] Error fetching packages:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -46,7 +46,7 @@ router.post('/calculate-hours', async (req, res) => {
     }
 
     const userId = req.user?.id;
-    const result = await HourPackagingService.calculateHourPrice({
+    const result = await [REDACTED_TOKEN].calculateHourPrice({
       hours: parseFloat(hours),
       characteristics: characteristics,
       userId: userId,
@@ -61,7 +61,7 @@ router.post('/calculate-hours', async (req, res) => {
 
     res.json(result);
   } catch (error) {
-    console.error('[HourPricingController] Error calculating price:', error.message);
+    console.error('[[REDACTED_TOKEN]] Error calculating price:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -86,7 +86,7 @@ router.post('/purchase-package', authenticateToken, async (req, res) => {
       });
     }
 
-    const packages = HourPackagingService.getAvailablePackages();
+    const packages = [REDACTED_TOKEN].[REDACTED_TOKEN]();
     const selectedPackage = packages.find((p) => p.hours === packageHours);
 
     if (!selectedPackage) {
@@ -98,7 +98,7 @@ router.post('/purchase-package', authenticateToken, async (req, res) => {
 
     // Aqui você integrar com o sistema de pagamento (Stripe, PIX, etc)
     // Por enquanto, vamos simular que a compra foi bem-sucedida
-    await HourPackagingService.addUserHourCredit(userId, packageHours, 365);
+    await [REDACTED_TOKEN].addUserHourCredit(userId, packageHours, 365);
 
     res.json({
       success: true,
@@ -107,7 +107,7 @@ router.post('/purchase-package', authenticateToken, async (req, res) => {
       userId: userId,
     });
   } catch (error) {
-    console.error('[HourPricingController] Error purchasing package:', error.message);
+    console.error('[[REDACTED_TOKEN]] Error purchasing package:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -130,14 +130,14 @@ router.get('/user-hour-credit', authenticateToken, async (req, res) => {
       });
     }
 
-    const creditInfo = await HourPackagingService.getUserHourCredit(userId);
+    const creditInfo = await [REDACTED_TOKEN].getUserHourCredit(userId);
 
     res.json({
       success: true,
       creditInfo: creditInfo,
     });
   } catch (error) {
-    console.error('[HourPricingController] Error fetching credit info:', error.message);
+    console.error('[[REDACTED_TOKEN]] Error fetching credit info:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -153,7 +153,7 @@ router.get('/user-hour-credit', authenticateToken, async (req, res) => {
 router.get('/suggest-package', (req, res) => {
   try {
     const { hoursNeeded = 40 } = req.query;
-    const suggested = HourPackagingService.suggestPackage(parseFloat(hoursNeeded));
+    const suggested = [REDACTED_TOKEN].suggestPackage(parseFloat(hoursNeeded));
 
     res.json({
       success: true,
@@ -161,7 +161,7 @@ router.get('/suggest-package', (req, res) => {
       suggestedPackage: suggested,
     });
   } catch (error) {
-    console.error('[HourPricingController] Error suggesting package:', error.message);
+    console.error('[[REDACTED_TOKEN]] Error suggesting package:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -179,8 +179,8 @@ router.post('/booking-estimate', authenticateToken, async (req, res) => {
     const { durationHours = 1, useHourCredit = false } = req.body;
     const userId = req.user?.id;
 
-    const BookingPricingService = require('../services/BookingPricingService');
-    const result = await BookingPricingService.calculateBookingPrice({
+    const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
+    const result = await [REDACTED_TOKEN].[REDACTED_TOKEN]({
       userId: userId,
       durationHours: parseFloat(durationHours),
       useHourCredit: useHourCredit,
@@ -191,7 +191,7 @@ router.post('/booking-estimate', authenticateToken, async (req, res) => {
     }
 
     // Incluir breakdown visual
-    const breakdown = BookingPricingService.generatePriceBreakdown(
+    const breakdown = [REDACTED_TOKEN].[REDACTED_TOKEN](
       result.hourPrice,
       result.paidWithCredits
     );
@@ -202,7 +202,7 @@ router.post('/booking-estimate', authenticateToken, async (req, res) => {
       breakdown: breakdown,
     });
   } catch (error) {
-    console.error('[HourPricingController] Error estimating booking price:', error.message);
+    console.error('[[REDACTED_TOKEN]] Error estimating booking price:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,

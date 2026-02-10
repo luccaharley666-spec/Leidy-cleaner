@@ -24,8 +24,8 @@ const db = new sqlite3.Database(dbPath, (err) => {
   }
 
   const migrations = [
-    '20260209_create_reviews_time_blocks_email_logs.sql',
-    '20260209_create_affiliates_referrals.sql',
+    '[REDACTED_TOKEN].sql',
+    '[REDACTED_TOKEN].sql',
     '001-add-indices.sql'
   ];
 

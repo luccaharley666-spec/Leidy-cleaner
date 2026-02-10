@@ -37,7 +37,7 @@ async function processPayment(paymentMethodId, amountInReais, bookingId = null) 
       id: paymentIntent.id,
       status: paymentIntent.status,
       amount: amountInReais,
-      last4: paymentIntent.charges?.data?.[0]?.payment_method_details?.card?.last4 || null,
+      last4: paymentIntent.charges?.data?.[0]?.[REDACTED_TOKEN]?.card?.last4 || null,
       clientSecret: paymentIntent.client_secret
     };
   } catch (err) {
@@ -54,7 +54,7 @@ async function refundPayment(stripePaymentId) {
 
 function constructEvent(body, signature) {
   if (!stripe) throw new Error('Stripe not configured');
-  return stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET);
+  return stripe.webhooks.constructEvent(body, signature, process.env.[REDACTED_TOKEN]);
 }
 
 module.exports = {

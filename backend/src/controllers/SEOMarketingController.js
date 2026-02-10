@@ -29,7 +29,7 @@ router.post('/meta-tags', (req, res) => {
 router.post('/schema', (req, res) => {
   try {
     const { entityType, entityData } = req.body;
-    const schema = SEOMarketingService.generateSchemaMarkup(entityType, entityData);
+    const schema = SEOMarketingService.[REDACTED_TOKEN](entityType, entityData);
     res.json({ '@context': 'schema.org', schema });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -55,7 +55,7 @@ router.get('/sitemap', (req, res) => {
 router.post('/campaigns', async (req, res) => {
   try {
     const { name, type, targetAudience, budget, startDate, endDate, content } = req.body;
-    const campaign = await SEOMarketingService.createMarketingCampaign({
+    const campaign = await SEOMarketingService.[REDACTED_TOKEN]({
       name,
       type,
       targetAudience,

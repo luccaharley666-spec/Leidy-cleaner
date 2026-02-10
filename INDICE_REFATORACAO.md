@@ -6,8 +6,8 @@ Se você é novo nessa refatoração, comece por este arquivo e siga a ordem:
 
 1. **STATUS_FINAL.md** ← 👈 LER PRIMEIRO (Visão geral)
 2. **REFATORACAO_RESUMO.md** ← Quick start
-3. **REFATORACAO_CONCLUIDA.md** ← Instruções de teste
-4. **REFATORACAO_FETCH_CALLS.md** ← Detalhes técnicos
+3. **[REDACTED_TOKEN].md** ← Instruções de teste
+4. **[REDACTED_TOKEN].md** ← Detalhes técnicos
 5. **ARQUITETURA_VISUAL.md** ← Diagramas
 
 ---
@@ -41,7 +41,7 @@ Se você é novo nessa refatoração, comece por este arquivo e siga a ordem:
 
 ---
 
-### 🔵 REFATORACAO_CONCLUIDA.md
+### 🔵 [REDACTED_TOKEN].md
 **Quem deve ler:** QA, testadores, desenvolvedores  
 **Tempo de leitura:** 15 minutos  
 **Contém:**
@@ -55,7 +55,7 @@ Se você é novo nessa refatoração, comece por este arquivo e siga a ordem:
 
 ---
 
-### 🟣 REFATORACAO_FETCH_CALLS.md
+### 🟣 [REDACTED_TOKEN].md
 **Quem deve ler:** Desenvolvedores, revisores de código  
 **Tempo de leitura:** 20 minutos  
 **Contém:**
@@ -83,7 +83,7 @@ Se você é novo nessa refatoração, comece por este arquivo e siga a ordem:
 
 ---
 
-### 🟦 REFATORACAO_CHECKLIST.md
+### 🟦 [REDACTED_TOKEN].md
 **Quem deve ler:** QA, gerenci adores, desenvolvedores  
 **Tempo de leitura:** 10 minutos  
 **Contém:**
@@ -153,9 +153,9 @@ const result = await apiCall('/api/endpoint', {
 /workspaces/mmmm/
 ├── STATUS_FINAL.md                    ← Visão geral (COMECE AQUI)
 ├── REFATORACAO_RESUMO.md             ← Quick guide
-├── REFATORACAO_CONCLUIDA.md          ← Instruções teste
-├── REFATORACAO_FETCH_CALLS.md        ← Detalhes técnicos
-├── REFATORACAO_CHECKLIST.md          ← Checklist final
+├── [REDACTED_TOKEN].md          ← Instruções teste
+├── [REDACTED_TOKEN].md        ← Detalhes técnicos
+├── [REDACTED_TOKEN].md          ← Checklist final
 ├── ARQUITETURA_VISUAL.md             ← Diagramas
 └── INDICE_REFATORACAO.md             ← Este arquivo
 
@@ -171,9 +171,9 @@ frontend/src/
 │   ├── Dashboard/ClientDashboard.jsx  ✅ Refatorado
 │   ├── Dashboard/StaffDashboard.jsx   ✅ Refatorado
 │   ├── Dashboard/AdminPanel.jsx       ✅ Refatorado
-│   └── AvailableStaffWidget.jsx       ✅ Refatorado
+│   └── [REDACTED_TOKEN].jsx       ✅ Refatorado
 └── services/
-    └── ChatEncryptionClient.js        ✅ Refatorado (5 métodos)
+    └── [REDACTED_TOKEN].js        ✅ Refatorado (5 métodos)
 ```
 
 ---
@@ -218,11 +218,11 @@ frontend/src/
 ### Para Desenvolvedores
 1. Ver padrão: **REFATORACAO_RESUMO.md**
 2. Quick start: Procure por "Quick Start" no mesmo
-3. Exemplo: Busque seu arquivo em **REFATORACAO_FETCH_CALLS.md**
+3. Exemplo: Busque seu arquivo em **[REDACTED_TOKEN].md**
 
 ### Para QA / Testadores
-1. Instruções: **REFATORACAO_CONCLUIDA.md**
-2. Checklist: **REFATORACAO_CHECKLIST.md**
+1. Instruções: **[REDACTED_TOKEN].md**
+2. Checklist: **[REDACTED_TOKEN].md**
 3. Validar: Siga os testes em "Como Testar?"
 
 ### Para Gerenciadores
@@ -233,7 +233,7 @@ frontend/src/
 ### Para Arquitetos
 1. Overview: **STATUS_FINAL.md**
 2. Diagramas: **ARQUITETURA_VISUAL.md**
-3. Detalhes: **REFATORACAO_FETCH_CALLS.md**
+3. Detalhes: **[REDACTED_TOKEN].md**
 
 ---
 
@@ -274,7 +274,7 @@ frontend/src/
 
 **Pergunta:** Devo alterar meu fetch existente?  
 **Resposta:** Sim! O novo padrão é obrigatório  
-**Docs:** Ver REFATORACAO_FETCH_CALLS.md
+**Docs:** Ver [REDACTED_TOKEN].md
 
 **Pergunta:** Qual é o timeout?  
 **Resposta:** 30 segundos em todas as requisições  
@@ -282,7 +282,7 @@ frontend/src/
 
 **Pergunta:** Como teste local?  
 **Resposta:** `npm run dev` e verifique console  
-**Docs:** Ver REFATORACAO_CONCLUIDA.md → Testes
+**Docs:** Ver [REDACTED_TOKEN].md → Testes
 
 ---
 

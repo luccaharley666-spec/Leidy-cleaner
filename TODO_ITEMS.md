@@ -31,7 +31,7 @@ curl -X GET "http://localhost:3001/api/pix/verify/<PIX_TRANSACTION_ID>"
 
 - [ ] Adicionar `NotificationService` e rota `/api/notifications`
 - [ ] Integrar notificações com `BookingController` (ao agendar)
-- [ ] Ligar serviços via feature flags em staging (`REACT_APP_ENABLE_NOTIFICATIONS`, `ENABLE_PUSH_NOTIFICATIONS`)
+- [ ] Ligar serviços via feature flags em staging (`[REDACTED_TOKEN]`, `[REDACTED_TOKEN]`)
 
 ## Baixa prioridade / UI
 

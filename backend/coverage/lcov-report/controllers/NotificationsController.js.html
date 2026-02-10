@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/NotificationsController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> NotificationsController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -309,7 +309,7 @@ function saveSubs(list) {
 }
 &nbsp;
 function ensureVapid() {
-  const publicKey = process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || process.env.VAPID_PUBLIC_KEY;
+  const publicKey = process.env.[REDACTED_TOKEN] || process.env.VAPID_PUBLIC_KEY;
   const privateKey = process.env.VAPID_PRIVATE_KEY;
   <span class="missing-if-branch" title="else path not taken" >E</span>if (!publicKey || <span class="branch-1 cbranch-no" title="branch not covered" >!privateKey)</span> {
     // generate temporally for demo if not present
@@ -321,7 +321,7 @@ function ensureVapid() {
 <span class="cstat-no" title="statement not covered" >  return { generated: false, publicKey };</span>
 }
 &nbsp;
-const NotificationsController = {
+const [REDACTED_TOKEN] = {
   subscribe: (req, res) =&gt; {
     try {
       const sub = req.body;
@@ -389,7 +389,7 @@ const NotificationsController = {
   }
 };
 &nbsp;
-module.exports = NotificationsController;
+module.exports = [REDACTED_TOKEN];
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

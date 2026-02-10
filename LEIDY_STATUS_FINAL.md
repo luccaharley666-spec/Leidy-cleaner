@@ -85,7 +85,7 @@ npm start   ✓ (Served on :3000)
 
 ### ⏳ #2: PIX Integration (CÓDIGO PRONTO)
 ```
-PixPaymentController.js       ✓ (140 LOC)
+[REDACTED_TOKEN].js       ✓ (140 LOC)
 PixQRCodeCheckout.jsx         ✓ (340 LOC)
 Webhook handler               ✓ (Ready)
 Credenciais                   ✗ (Faltando)
@@ -99,7 +99,7 @@ Credenciais                   ✗ (Faltando)
 
 ### ⏳ #3: Stripe Live (CÓDIGO PRONTO)
 ```
-StripePaymentController.js    ✓ (159 LOC)
+[REDACTED_TOKEN].js    ✓ (159 LOC)
 CheckoutForm.jsx              ✓ (Pronto)
 Webhook handler               ✓ (Ready)
 Credenciais Live              ✗ (Faltando)
@@ -178,10 +178,10 @@ curl http://localhost:3001/api/health
 
 | Documento | Linha | Propósito |
 |-----------|-------|----------|
-| PIX_REAL_INTEGRATION_GUIDE.md | 250+ | Passo-a-passo integração PIX |
-| STRIPE_PRODUCTION_GUIDE.md | 300+ | Migração para Stripe live |
-| STATUS_5_PRIORIDADES_CRITICAS.md | 400+ | Status detalhado de cada item |
-| RESUMO_EXECUTIVO_HOJE.md | 150+ | Sumário rápido do progresso |
+| [REDACTED_TOKEN].md | 250+ | Passo-a-passo integração PIX |
+| [REDACTED_TOKEN].md | 300+ | Migração para Stripe live |
+| [REDACTED_TOKEN].md | 400+ | Status detalhado de cada item |
+| [REDACTED_TOKEN].md | 150+ | Sumário rápido do progresso |
 | seed-data.sql | 500+ | Dados de teste para BD |
 
 **Total criado:** 1.600+ linhas de documentação + código
@@ -268,12 +268,12 @@ Frontend:
 ## 🎓 Como Continuar
 
 ### If you have PIX credentials:
-1. Abrir `PIX_REAL_INTEGRATION_GUIDE.md`
+1. Abrir `[REDACTED_TOKEN].md`
 2. Seguir Steps 3-6
 3. Executar testes
 
 ### If you have Stripe credentials:
-1. Abrir `STRIPE_PRODUCTION_GUIDE.md`
+1. Abrir `[REDACTED_TOKEN].md`
 2. Seguir Steps 4-9
 3. Executar testes
 
@@ -342,6 +342,6 @@ Faltam apenas:
 **🚀 Bem vindo à fase de produção! 🎉**
 
 *Documentação completa em:*
-- `STATUS_5_PRIORIDADES_CRITICAS.md`
-- `PIX_REAL_INTEGRATION_GUIDE.md`
-- `STRIPE_PRODUCTION_GUIDE.md`
+- `[REDACTED_TOKEN].md`
+- `[REDACTED_TOKEN].md`
+- `[REDACTED_TOKEN].md`

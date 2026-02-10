@@ -47,7 +47,7 @@ class QueryCacheService {
       const slots = await db.all(`
         SELECT DISTINCT time FROM (
           SELECT DATE_TIME_PARTS(time_slot) as time
-          FROM available_time_slots
+          FROM [REDACTED_TOKEN]
           WHERE service_id = ? AND date = ? AND available = 1
         )
         WHERE time NOT IN (
@@ -287,7 +287,7 @@ class QueryCacheService {
 
     try {
       const pricing = await db.get(
-        `SELECT base_price, extra_quarter_price, staff_fee_percent, post_work_adjustment
+        `SELECT base_price, extra_quarter_price, staff_fee_percent, [REDACTED_TOKEN]
          FROM pricing WHERE service_id = ?`,
         serviceId
       );
@@ -306,7 +306,7 @@ class QueryCacheService {
   /**
    * Invalidar caches relacionados quando dados mudam
    */
-  static invalidateServiceCache(serviceId) {
+  static [REDACTED_TOKEN](serviceId) {
     CacheService.delete(`service:${serviceId}`);
     CacheService.delete('services:active:all');
     CacheService.delete(`pricing:${serviceId}`);
@@ -321,7 +321,7 @@ class QueryCacheService {
     logger.info(`Cache invalidated for user ${userId}`);
   }
 
-  static invalidateStaffCache() {
+  static [REDACTED_TOKEN]() {
     CacheService.delete('staff:active:all');
     logger.info('Staff cache invalidated');
   }

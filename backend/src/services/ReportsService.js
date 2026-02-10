@@ -14,7 +14,7 @@ class ReportsService {
   /**
    * Gerar relatório de receita
    */
-  async generateRevenueReport(startDate, endDate, format = 'pdf') {
+  async [REDACTED_TOKEN](startDate, endDate, format = 'pdf') {
     try {
       const reportId = `report_${Date.now()}`;
       const report = {
@@ -65,7 +65,7 @@ class ReportsService {
   /**
    * Gerar relatório de profissionais
    */
-  async generateProfessionalReport(startDate, endDate) {
+  async [REDACTED_TOKEN](startDate, endDate) {
     const report = {
       id: `report_prof_${Date.now()}`,
       type: 'professional',
@@ -80,7 +80,7 @@ class ReportsService {
           { name: 'Pedro Costa', bookings: 128, rating: 4.7, earnings: 18200 }
         ],
         performanceMetrics: {
-          averageBookingsPerProfessional: 31.4,
+          [REDACTED_TOKEN]: 31.4,
           averageRating: 4.65,
           totalEarnings: 1285400.00,
           utilization: 76.5
@@ -95,7 +95,7 @@ class ReportsService {
   /**
    * Gerar relatório de clientes
    */
-  async generateCustomerReport(startDate, endDate) {
+  async [REDACTED_TOKEN](startDate, endDate) {
     const report = {
       id: `report_cust_${Date.now()}`,
       type: 'customer',
@@ -114,7 +114,7 @@ class ReportsService {
           churned: 1667,
           atRisk: 1234
         },
-        customerLifetimeValue: {
+        [REDACTED_TOKEN]: {
           average: 850.00,
           median: 620.00,
           top10Percent: 12500.00
@@ -129,7 +129,7 @@ class ReportsService {
   /**
    * Gerar relatório de churn
    */
-  async generateChurnAnalysisReport() {
+  async [REDACTED_TOKEN]() {
     return {
       id: `report_churn_${Date.now()}`,
       type: 'churn_analysis',
@@ -144,7 +144,7 @@ class ReportsService {
         ],
         riskScore: 6.8,
         atRiskCustomers: 1234,
-        interventionStrategies: [
+        [REDACTED_TOKEN]: [
           'Email de reengajamento',
           'Ofertas especiais',
           'Análise de satisfação'
@@ -156,9 +156,9 @@ class ReportsService {
   /**
    * Gerar relatório de satisfação
    */
-  async generateSatisfactionReport() {
+  async [REDACTED_TOKEN]() {
     return {
-      id: `report_satisfaction_${Date.now()}`,
+      id: `[REDACTED_TOKEN]${Date.now()}`,
       type: 'satisfaction',
       generatedAt: new Date(),
       data: {
@@ -184,7 +184,7 @@ class ReportsService {
   /**
    * Agendar relatório recorrente
    */
-  async scheduleRecurringReport(config) {
+  async [REDACTED_TOKEN](config) {
     const schedule = {
       id: `schedule_${Date.now()}`,
       type: config.type,
@@ -217,7 +217,7 @@ class ReportsService {
     const formats = {
       pdf: 'application/pdf',
       csv: 'text/csv',
-      xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      xlsx: 'application/vnd.[REDACTED_TOKEN].spreadsheetml.sheet',
       json: 'application/json'
     };
 
@@ -234,7 +234,7 @@ class ReportsService {
   /**
    * Gerar relatório customizado
    */
-  async generateCustomReport(config) {
+  async [REDACTED_TOKEN](config) {
     const {
       name,
       filters = {},
@@ -285,7 +285,7 @@ class ReportsService {
   /**
    ✅ NOVO: Gerar comparativo de períodos
    */
-  async generatePeriodComparison(metric, period1Start, period1End, period2Start, period2End) {
+  async [REDACTED_TOKEN](metric, period1Start, period1End, period2Start, period2End) {
     return {
       metric,
       period1: {

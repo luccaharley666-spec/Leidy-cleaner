@@ -63,13 +63,13 @@ if [ ! -f "/workspaces/vamos/.env" ]; then
     info "Criando arquivo .env..."
     cat > /workspaces/vamos/.env << 'EOF'
 # JWT
-JWT_SECRET=seu-secret-desenvolvimento
+JWT_SECRET=[REDACTED_TOKEN]
 JWT_REFRESH_SECRET=seu-refresh-secret
 
 # Twilio (opcional)
 TWILIO_SID=seu-twilio-sid
 TWILIO_TOKEN=seu-twilio-token
-TWILIO_WHATSAPP_NUMBER=+55xx999999999
+[REDACTED_TOKEN]=+55xx999999999
 
 # Banco
 DATABASE_URL=sqlite:///backend_data/database.sqlite

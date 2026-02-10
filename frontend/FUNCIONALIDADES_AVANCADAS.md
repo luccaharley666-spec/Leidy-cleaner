@@ -127,7 +127,7 @@ function AdminPage() {
 
 ### 1. Instalar Dependências
 ```bash
-npm install react-datepicker date-fns react-calendar-heatmap react-hot-toast react-confetti @headlessui/react @heroicons/react
+npm install react-datepicker date-fns [REDACTED_TOKEN] react-hot-toast react-confetti @headlessui/react @heroicons/react
 ```
 
 ### 2. Configurar Providers

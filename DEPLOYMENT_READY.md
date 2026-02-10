@@ -33,7 +33,7 @@
 │ TWILIO_ACCOUNT_SID=AC...                   # Twilio SID                      │
 │ TWILIO_AUTH_TOKEN=your_token               # Twilio Token                    │
 │ TWILIO_PHONE_NUMBER=+55...                 # Seu número SMS                  │
-│ TWILIO_WHATSAPP_FROM=whatsapp:+55...       # Seu WhatsApp                    │
+│ [REDACTED_TOKEN]=whatsapp:+55...       # Seu WhatsApp                    │
 │ SMTP_HOST=smtp.gmail.com (ou seu email)    # Email SMTP                      │
 │ SMTP_USER=seu_email@domain.com             # Email do servidor               │
 │ NODE_ENV=production                        # Ambiente                        │

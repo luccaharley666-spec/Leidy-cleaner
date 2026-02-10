@@ -822,7 +822,7 @@ class QueryCacheService {
       const slots = <span class="cstat-no" title="statement not covered" >await db.all(`</span>
         SELECT DISTINCT time FROM (
           SELECT DATE_TIME_PARTS(time_slot) as time
-          FROM available_time_slots
+          FROM [REDACTED_TOKEN]
           WHERE service_id = ? AND date = ? AND available = 1
         )
         WHERE time NOT IN (
@@ -1062,7 +1062,7 @@ class QueryCacheService {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const pricing = <span class="cstat-no" title="statement not covered" >await db.get(</span>
-        `SELECT base_price, extra_quarter_price, staff_fee_percent, post_work_adjustment
+        `SELECT base_price, extra_quarter_price, staff_fee_percent, [REDACTED_TOKEN]
          FROM pricing WHERE service_id = ?`,
         serviceId
       );
@@ -1081,7 +1081,7 @@ class QueryCacheService {
   /**
    * Invalidar caches relacionados quando dados mudam
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic invalidateServiceCache(serviceId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](serviceId) {
 <span class="cstat-no" title="statement not covered" >    CacheService.delete(`service:${serviceId}`);</span>
 <span class="cstat-no" title="statement not covered" >    CacheService.delete('services:active:all');</span>
 <span class="cstat-no" title="statement not covered" >    CacheService.delete(`pricing:${serviceId}`);</span>
@@ -1096,7 +1096,7 @@ class QueryCacheService {
 <span class="cstat-no" title="statement not covered" >    logger.info(`Cache invalidated for user ${userId}`);</span>
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  st</span>atic invalidateStaffCache() {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    CacheService.delete('staff:active:all');</span>
 <span class="cstat-no" title="statement not covered" >    logger.info('Staff cache invalidated');</span>
   }

@@ -56,7 +56,7 @@ class PixService {
       return { 
         success: false, 
         error: 'Erro ao gerar QR Code PIX',
-        code: 'PIX_GENERATION_FAILED'
+        code: '[REDACTED_TOKEN]'
       };
     }
   }
@@ -176,7 +176,7 @@ class PixService {
     let payload = '000201';
     
     // Merchant Account Information
-    const merchantAccount = this.buildMerchantAccountInfo(pixKey);
+    const merchantAccount = this.[REDACTED_TOKEN](pixKey);
     payload += '26' + String(merchantAccount.length).padStart(2, '0') + merchantAccount;
     
     // Merchant Category Code (limpeza doméstica = 7230)
@@ -203,7 +203,7 @@ class PixService {
     payload += '60' + String(city.length).padStart(2, '0') + city;
     
     // Additional Data Field
-    const additionalData = this.buildAdditionalDataField(description, orderId);
+    const additionalData = this.[REDACTED_TOKEN](description, orderId);
     payload += '62' + String(additionalData.length).padStart(2, '0') + additionalData;
     
     // CRC16
@@ -216,7 +216,7 @@ class PixService {
   /**
    * Construir Merchant Account Information (ID 26)
    */
-  static buildMerchantAccountInfo(pixKey) {
+  static [REDACTED_TOKEN](pixKey) {
     // GUI
     let mai = '0014br.gov.bcb.pix';
     
@@ -229,7 +229,7 @@ class PixService {
   /**
    * Construir Additional Data Field (ID 62)
    */
-  static buildAdditionalDataField(description, orderId) {
+  static [REDACTED_TOKEN](description, orderId) {
     let adf = '';
     
     // Reference Label (ID do pedido)

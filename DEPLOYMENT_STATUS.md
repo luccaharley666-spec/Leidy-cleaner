@@ -108,7 +108,7 @@ Whitelist: ${process.env.CORS_ORIGIN || 'http://localhost:3000'}
 
 ### Backend
 - `src/services/PricingService.js` - Dynamic pricing logic
-- `src/services/RecommendationService.js` - Cross-selling
+- `src/services/[REDACTED_TOKEN].js` - Cross-selling
 - `src/controllers/PricingController.js` - NEW
 - `src/routes/api.js` - 8 novos endpoints
 - `src/index.js` - Rate limiting + security headers

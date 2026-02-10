@@ -7,7 +7,7 @@
 const { getDb } = require('../db/sqlite');
 const logger = require('../utils/logger');
 
-class StaffAvailabilityController {
+class [REDACTED_TOKEN] {
   /**
    * GET /api/staff/available
    * Retorna lista de staff disponíveis com scores de alocação
@@ -56,7 +56,7 @@ class StaffAvailabilityController {
             ROUND(100 - (COUNT(DISTINCT CASE 
               WHEN b.booking_date LIKE ? AND b.status IN ('confirmed', 'in_progress')
               THEN b.id 
-            END) * 15), 0) as availability_percent,
+            END) * 15), 0) as [REDACTED_TOKEN],
             
             -- Custo estimado (base price + surge)
             ROUND((
@@ -72,8 +72,8 @@ class StaffAvailabilityController {
           WHERE s.role = 'staff' 
           AND s.active = 1
           GROUP BY s.id
-          HAVING availability_percent > 0
-          ORDER BY availability_percent DESC, avg_rating DESC
+          HAVING [REDACTED_TOKEN] > 0
+          ORDER BY [REDACTED_TOKEN] DESC, avg_rating DESC
           LIMIT 10
         `, 
         [
@@ -91,7 +91,7 @@ class StaffAvailabilityController {
 
       // Calcular scores e adicionar recomendação
       const staffWithScores = availableStaff.map((staff, index) => {
-        const availabilityScore = staff.availability_percent;
+        const availabilityScore = staff.[REDACTED_TOKEN];
         const ratingScore = (staff.avg_rating / 5) * 100;
         const loadScore = (1 - (staff.bookings_today / 6)) * 100; // 6 = max bookings/day
         const experienceScore = Math.min((staff.total_completed / 50) * 100, 100);
@@ -143,7 +143,7 @@ class StaffAvailabilityController {
    * GET /api/staff/availability-status
    * Status em tempo real (para WebSocket)
    */
-  async getAvailabilityStatus(req, res) {
+  async [REDACTED_TOKEN](req, res) {
     try {
       const { staffId } = req.params;
       const db = await getDb();
@@ -229,7 +229,7 @@ class StaffAvailabilityController {
             d.date,
             STRFTIME('%w', d.date) as day_of_week,
             COUNT(CASE WHEN b.status IN ('confirmed', 'in_progress') THEN 1 END) as bookings_count,
-            ROUND(100 - (COUNT(CASE WHEN b.status IN ('confirmed', 'in_progress') THEN 1 END) * 15), 0) as availability_percent,
+            ROUND(100 - (COUNT(CASE WHEN b.status IN ('confirmed', 'in_progress') THEN 1 END) * 15), 0) as [REDACTED_TOKEN],
             GROUP_CONCAT(
               JSON_OBJECT(
                 'id', b.id,
@@ -357,4 +357,4 @@ class StaffAvailabilityController {
   }
 }
 
-module.exports = new StaffAvailabilityController();
+module.exports = new [REDACTED_TOKEN]();

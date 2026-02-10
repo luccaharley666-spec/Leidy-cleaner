@@ -12,7 +12,7 @@ class AffiliateService {
   /**
    * Criar código de referência único
    */
-  static generateReferralCode(userId) {
+  static [REDACTED_TOKEN](userId) {
     return `REF${userId}${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
   }
 
@@ -22,7 +22,7 @@ class AffiliateService {
   static registerAffiliate(userId, commissionRate = 0.10) {
     return new Promise((resolve, reject) => {
       const db = new sqlite3.Database(DB_PATH);
-      const referralCode = this.generateReferralCode(userId);
+      const referralCode = this.[REDACTED_TOKEN](userId);
 
       db.run(
         `INSERT INTO affiliates (user_id, referral_code, commission_rate, total_referrals, total_earnings, status)
@@ -169,7 +169,7 @@ class AffiliateService {
 
           // Criar requisição de saque
           db.run(
-            `INSERT INTO affiliate_withdrawals (user_id, amount, status, requested_at)
+            `INSERT INTO [REDACTED_TOKEN] (user_id, amount, status, requested_at)
              VALUES (?, ?, 'pending', datetime('now'))`,
             [userId, amount],
             function(err) {
@@ -198,7 +198,7 @@ class AffiliateService {
       const db = new sqlite3.Database(DB_PATH);
 
       db.run(
-        `UPDATE affiliate_withdrawals SET status = 'approved', approved_at = datetime('now')
+        `UPDATE [REDACTED_TOKEN] SET status = 'approved', approved_at = datetime('now')
          WHERE id = ?`,
         [withdrawalId],
         function(err) {
@@ -259,7 +259,7 @@ class AffiliateService {
 
     // Tabela de saques
     db.run(`
-      CREATE TABLE IF NOT EXISTS affiliate_withdrawals (
+      CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         user_id INTEGER NOT NULL,
         amount DECIMAL(10, 2) NOT NULL,
@@ -270,8 +270,8 @@ class AffiliateService {
         FOREIGN KEY (user_id) REFERENCES users(id)
       )
     `, (err) => {
-      if (err) console.error('Erro ao criar tabela affiliate_withdrawals:', err);
-      else console.log('✅ Tabela affiliate_withdrawals criada');
+      if (err) console.error('Erro ao criar tabela [REDACTED_TOKEN]:', err);
+      else console.log('✅ Tabela [REDACTED_TOKEN] criada');
       db.close();
     });
   }

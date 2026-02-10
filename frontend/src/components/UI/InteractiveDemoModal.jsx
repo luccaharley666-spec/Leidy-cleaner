@@ -7,7 +7,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 
-export default function InteractiveDemoModal({ isOpen, onClose }) {
+export default function [REDACTED_TOKEN]({ isOpen, onClose }) {
   const [currentSlide, setCurrentSlide] = useState(0)
 
   const slides = [

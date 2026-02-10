@@ -86,7 +86,7 @@ module.exports = {
         },
       },
       spacing: {
-        'safe-bottom': 'max(1rem, env(safe-area-inset-bottom))',
+        'safe-bottom': 'max(1rem, env([REDACTED_TOKEN]))',
         'safe-top': 'max(1rem, env(safe-area-inset-top))',
       },
       fontSize: {

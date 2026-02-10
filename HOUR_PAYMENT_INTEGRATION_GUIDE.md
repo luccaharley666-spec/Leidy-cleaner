@@ -201,7 +201,7 @@ Página completa de compra com calculadora + resumo + checkout.
 
 ## 💾 Database Schema (Migrations)
 
-Executar SQL em `database/migrations/003_add_hour_packages.sql`:
+Executar SQL em `database/migrations/[REDACTED_TOKEN].sql`:
 
 ```sql
 -- Tabela de pacotes
@@ -284,9 +284,9 @@ Se precisar customizar, editar arquivo:
 
 ```json
 {
-  "serviceFeePercentage": 40,
+  "[REDACTED_TOKEN]": 40,
   "postWorkPercentage": 20,
-  "organizationPercentage": 10,
+  "[REDACTED_TOKEN]": 10,
   "productFee": 30,
   "minimumPrice": 0,
   "maximumDiscount": 0.3

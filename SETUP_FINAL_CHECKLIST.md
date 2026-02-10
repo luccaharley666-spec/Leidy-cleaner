@@ -11,7 +11,7 @@
 ### 1. Autenticação & Segurança
 - [x] JWT_SECRET gerada (64 caracteres hex)
   ```
-  af9e30fdd9b6cb9f101f210caa8ef8a1065fae9c6d7727783412508c11c0e8bd
+  [REDACTED_TOKEN]
   ```
 
 ### 2. Configuração Produção
@@ -62,7 +62,7 @@
   - Node system metrics
 
 ### 6. Documentação
-- [x] `PRODUCTION_SETUP_GUIDE.md` (500+ linhas)
+- [x] `[REDACTED_TOKEN].md` (500+ linhas)
   - 12 passos detalhados
   - Comandos prontos para copiar/colar
   - Validação em cada etapa
@@ -83,7 +83,7 @@
 | Sentry Script | ✅ Pronto | scripts/setup-sentry.sh |
 | Docker Compose | ✅ Completo | docker-compose.full.yml |
 | Prometheus | ✅ Config | deploy/prometheus.yml |
-| Documentação | ✅ Completa | PRODUCTION_SETUP_GUIDE.md |
+| Documentação | ✅ Completa | [REDACTED_TOKEN].md |
 
 ---
 
@@ -216,12 +216,12 @@ curl https://seu-dominio.com/api/health
 
 ## 📚 Documentação Criada
 
-1. **PRODUCTION_SETUP_GUIDE.md** (Principal)
+1. **[REDACTED_TOKEN].md** (Principal)
    - 12 passos detalhados
    - Todos os comandos prontos
    - Troubleshooting extenso
 
-2. **ANALISE_COMPLETA_ESTADO.md**
+2. **[REDACTED_TOKEN].md**
    - Stack técnico detalhado
    - Inventário de depêndencias
    - Vulnerabilidades remediadas

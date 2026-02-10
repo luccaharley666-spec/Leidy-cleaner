@@ -55,7 +55,7 @@
          • Retry logic
        
        Comando para validar:
-       $ npm run test:ci  # PaymentIntegrationService tests
+       $ npm run test:ci  # [REDACTED_TOKEN] tests
        
        Status atual: Estrutura existe, verificação falta
        Próxima ação: Adicionar HMAC validation
@@ -203,7 +203,7 @@
    ⚠️ Credenciais reais só em produção
       → Use teste durante desenvolvimento (sk_test_xxx)
       → Staging: Use teste também
-      → Produção: Aí usa as reais (sk_live_xxx)
+      → Produção: Aí usa as reais ([REDACTED_TOKEN])
 
 
 ═══════════════════════════════════════════════════════════════════════════════

@@ -6,7 +6,7 @@
 const logger = require('../utils/logger');
 const crypto = require('crypto');
 
-class AdvancedPaymentService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.payments = new Map();
     this.subscriptions = new Map();
@@ -18,7 +18,7 @@ class AdvancedPaymentService {
    */
   async createBoletoPayment(bookingId, amount, dueDate) {
     try {
-      const boletoNumber = this._generateBoletoNumber();
+      const boletoNumber = this.[REDACTED_TOKEN]();
       const barcode = this._generateBarcode();
 
       const payment = {
@@ -51,7 +51,7 @@ class AdvancedPaymentService {
   /**
    * Create Apple Pay payment
    */
-  async createApplePayPayment(bookingId, amount, applePayToken) {
+  async [REDACTED_TOKEN](bookingId, amount, applePayToken) {
     try {
       const payment = {
         id: crypto.randomUUID(),
@@ -83,7 +83,7 @@ class AdvancedPaymentService {
   /**
    * Create Google Pay payment
    */
-  async createGooglePayPayment(bookingId, amount, googlePayToken) {
+  async [REDACTED_TOKEN](bookingId, amount, googlePayToken) {
     try {
       const payment = {
         id: crypto.randomUUID(),
@@ -139,7 +139,7 @@ class AdvancedPaymentService {
   /**
    * Execute PayPal payment
    */
-  async executePayPalPayment(paymentId, payerDetails) {
+  async [REDACTED_TOKEN](paymentId, payerDetails) {
     try {
       const payment = this.payments.get(paymentId);
       if (!payment) throw new Error('Payment not found');
@@ -172,7 +172,7 @@ class AdvancedPaymentService {
         status: 'active',
         createdAt: new Date(),
         currentPeriodStart: new Date(),
-        currentPeriodEnd: this._calculateNextPeriodEnd(interval),
+        currentPeriodEnd: this.[REDACTED_TOKEN](interval),
         payments: []
       };
 
@@ -227,7 +227,7 @@ class AdvancedPaymentService {
   /**
    * Process subscription billing
    */
-  async processSubscriptionBilling(subscriptionId) {
+  async [REDACTED_TOKEN](subscriptionId) {
     try {
       const subscription = this.subscriptions.get(subscriptionId);
       if (!subscription) throw new Error('Subscription not found');
@@ -244,7 +244,7 @@ class AdvancedPaymentService {
 
       subscription.payments.push(payment);
       subscription.currentPeriodStart = subscription.currentPeriodEnd;
-      subscription.currentPeriodEnd = this._calculateNextPeriodEnd(subscription.interval);
+      subscription.currentPeriodEnd = this.[REDACTED_TOKEN](subscription.interval);
 
       logger.info(`Subscription billing processed: ${subscriptionId}`);
       return payment;
@@ -335,7 +335,7 @@ class AdvancedPaymentService {
   /**
    * Get customer subscriptions
    */
-  async getCustomerSubscriptions(customerId) {
+  async [REDACTED_TOKEN](customerId) {
     try {
       const subs = [];
       for (const [, sub] of this.subscriptions.entries()) {
@@ -353,7 +353,7 @@ class AdvancedPaymentService {
   /**
    * Helper: Generate Boleto number
    */
-  _generateBoletoNumber() {
+  [REDACTED_TOKEN]() {
     return `${Math.random().toString().slice(2, 27)}.${Math.random().toString().slice(2, 7)} ${Math.random().toString().slice(2, 6)}.${Math.random().toString().slice(2, 7)}`;
   }
 
@@ -367,7 +367,7 @@ class AdvancedPaymentService {
   /**
    * Helper: Calculate next period end
    */
-  _calculateNextPeriodEnd(interval) {
+  [REDACTED_TOKEN](interval) {
     const now = new Date();
     const next = new Date(now);
 
@@ -410,4 +410,4 @@ class AdvancedPaymentService {
   }
 }
 
-module.exports = new AdvancedPaymentService();
+module.exports = new [REDACTED_TOKEN]();

@@ -287,7 +287,7 @@ test.describe('Phase 3B: Advanced Features', () => {
         data: {
           bookingId: 'booking-123',
           amount: 500.00,
-          googlePayToken: 'google_pay_token_xyz'
+          googlePayToken: '[REDACTED_TOKEN]'
         }
       });
 
@@ -645,7 +645,7 @@ test.describe('Phase 3B: Advanced Features', () => {
         headers: { Authorization: `Bearer ${authToken}` },
         data: {
           userId: 'user-123',
-          deviceFingerprint: 'device-fingerprint-xyz',
+          deviceFingerprint: '[REDACTED_TOKEN]',
           deviceInfo: {
             deviceName: 'iPhone 14 Pro',
             deviceOS: 'iOS 17',

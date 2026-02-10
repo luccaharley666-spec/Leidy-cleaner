@@ -247,7 +247,7 @@ router.get('/revenue', authenticateToken, <span class="fstat-no" title="function
 // Agendamentos por serviço
 router.get('/services', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const data = <span class="cstat-no" title="statement not covered" >await AnalyticsService.getBookingsByService();</span>
+    const data = <span class="cstat-no" title="statement not covered" >await AnalyticsService.[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, data });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao obter dados por serviço:', error);</span>
@@ -271,7 +271,7 @@ router.get('/top-professionals', authenticateToken, <span class="fstat-no" title
 router.get('/conversion', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const days = <span class="cstat-no" title="statement not covered" >parseInt(req.query.days) || 30;</span>
-    const data = <span class="cstat-no" title="statement not covered" >await AnalyticsService.getConversionMetrics(days);</span>
+    const data = <span class="cstat-no" title="statement not covered" >await AnalyticsService.[REDACTED_TOKEN](days);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, data });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao obter conversão:', error);</span>
@@ -282,7 +282,7 @@ router.get('/conversion', authenticateToken, <span class="fstat-no" title="funct
 // Análise de clientes
 router.get('/customers', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const data = <span class="cstat-no" title="statement not covered" >await AnalyticsService.getCustomerAnalytics();</span>
+    const data = <span class="cstat-no" title="statement not covered" >await AnalyticsService.[REDACTED_TOKEN]();</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, data });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao obter análise de clientes:', error);</span>

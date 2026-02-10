@@ -36,10 +36,10 @@ Banco de Dados (em /tmp/leidy_export/):
   data_summary.txt              → Resumo de dados
 
 Documentação:
-  API_REFERENCE_COMPLETA.md                    → Todos os endpoints
-  GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md          → Como importar
-  PLANO_24H_FINALIZACAO.md                     → O que foi feito
-  STATUS_5_PRIORIDADES_CRITICAS.md             → Status técnico
+  [REDACTED_TOKEN].md                    → Todos os endpoints
+  [REDACTED_TOKEN].md          → Como importar
+  [REDACTED_TOKEN].md                     → O que foi feito
+  [REDACTED_TOKEN].md             → Status técnico
 ```
 
 ---
@@ -90,7 +90,7 @@ cp /workspaces/acaba/backend/backend_data/database.sqlite ./meu_banco.sqlite
 
 ```bash
 # Do seu computador local:
-scp -r user@server:/workspaces/acaba/ ./leidy-cleaner-exportado/
+scp -r user@server:/workspaces/acaba/ ./[REDACTED_TOKEN]/
 
 # Ou apenas específico:
 scp user@server:/tmp/leidy_export/* ./leidy-db/
@@ -103,7 +103,7 @@ scp -r user@server:/workspaces/acaba/frontend/ ./
 ```bash
 # Criar ZIP com tudo
 cd /workspaces
-zip -r leidy-cleaner-completo.zip acaba/ tmp/leidy_export/
+zip -r [REDACTED_TOKEN].zip acaba/ tmp/leidy_export/
 
 # Depois baixar
 # Via interface de download da sua IDE
@@ -126,11 +126,11 @@ git clone https://github.com/seu-usuario/acaba.git
 ```bash
 # Criar imagem com sistema completo
 docker build -t leidy-cleaner:latest -f Dockerfile.backend .
-docker build -t leidy-cleaner-frontend:latest -f Dockerfile.frontend .
+docker build -t [REDACTED_TOKEN]:latest -f Dockerfile.frontend .
 
 # Depois rodar em qualquer lugar
 docker run -p 3001:3001 leidy-cleaner:latest
-docker run -p 3000:3000 leidy-cleaner-frontend:latest
+docker run -p 3000:3000 [REDACTED_TOKEN]:latest
 ```
 
 ---
@@ -169,7 +169,7 @@ acaba/
 ### Se vai para Python/Django
 ```
 1. Copiar database.sqlite
-2. Instalar django-sqlite-to-orm tools
+2. Instalar [REDACTED_TOKEN] tools
 3. Auto-gerar models do schema
 4. Importar dados com manage.py
 ```
@@ -177,7 +177,7 @@ acaba/
 ### Se vai para Ruby/Rails
 ```
 1. Copiar database.sqlite
-2. Usar gem 'active_record_import'
+2. Usar gem '[REDACTED_TOKEN]'
 3. rake db:migrate
 4. rake db:seed com dados
 ```
@@ -263,10 +263,10 @@ Antes de usar em produção:
 | O que? | Onde? |
 |--------|-------|
 | Como começar | QUICK_START_2MIN.md |
-| Endpoints da API | API_REFERENCE_COMPLETA.md |
-| Importar em outra plataforma | GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md |
-| Status técnico | STATUS_5_PRIORIDADES_CRITICAS.md |
-| O que foi feito | PLANO_24H_FINALIZACAO.md |
+| Endpoints da API | [REDACTED_TOKEN].md |
+| Importar em outra plataforma | [REDACTED_TOKEN].md |
+| Status técnico | [REDACTED_TOKEN].md |
+| O que foi feito | [REDACTED_TOKEN].md |
 
 ---
 
@@ -338,7 +338,7 @@ Antes de usar em produção:
 ## 🆘 Se Tiver Problemas
 
 ### Banco não importa
-→ Veja `GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md`
+→ Veja `[REDACTED_TOKEN].md`
 
 ### API não responde
 → Verifique se backend está rodando (`npm start`)

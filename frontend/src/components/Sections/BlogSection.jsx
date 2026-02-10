@@ -156,7 +156,7 @@ export default function BlogSection() {
             onSubmit={(e) => {
               e.preventDefault();
               const email = e.target[0].value;
-              trackFormSubmit('newsletter_subscription', { email });
+              trackFormSubmit('[REDACTED_TOKEN]', { email });
             }}
             className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
           >

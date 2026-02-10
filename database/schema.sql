@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS company_info (
   state VARCHAR(50),
   postal_code VARCHAR(20),
   business_hours_open TIME,
-  business_hours_close TIME,
+  [REDACTED_TOKEN] TIME,
   payment_terms TEXT,
   return_policy TEXT,
   privacy_policy TEXT,
@@ -185,10 +185,10 @@ CREATE TABLE IF NOT EXISTS recurring_bookings (
 
 -- Índices para Performance
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
-CREATE INDEX IF NOT EXISTS idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
 CREATE INDEX IF NOT EXISTS idx_bookings_date ON bookings(booking_date);
 CREATE INDEX IF NOT EXISTS idx_reviews_booking ON reviews(booking_id);
-CREATE INDEX IF NOT EXISTS idx_transactions_booking_id ON transactions(booking_id);
-CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
-CREATE INDEX IF NOT EXISTS idx_audit_log_admin_id ON audit_log(admin_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON transactions(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notifications(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON audit_log(admin_id);

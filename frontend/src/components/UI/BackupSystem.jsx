@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CloudIcon, ArrowDownTrayIcon, ArrowUpTrayIcon, ClockIcon, CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { CloudIcon, ArrowDownTrayIcon, ArrowUpTrayIcon, ClockIcon, CheckCircleIcon, [REDACTED_TOKEN] } from '@heroicons/react/24/outline';
 
 const BackupSystem = () => {
   const [backups, setBackups] = useState([]);
@@ -18,7 +18,7 @@ const BackupSystem = () => {
     const mockBackups = [
       {
         id: 1,
-        name: 'backup_2024_01_20_full',
+        name: '[REDACTED_TOKEN]',
         type: 'full',
         size: '2.4 GB',
         createdAt: '2024-01-20T10:00:00',
@@ -27,7 +27,7 @@ const BackupSystem = () => {
       },
       {
         id: 2,
-        name: 'backup_2024_01_19_incremental',
+        name: '[REDACTED_TOKEN]',
         type: 'incremental',
         size: '156 MB',
         createdAt: '2024-01-19T10:00:00',
@@ -36,7 +36,7 @@ const BackupSystem = () => {
       },
       {
         id: 3,
-        name: 'backup_2024_01_18_full',
+        name: '[REDACTED_TOKEN]',
         type: 'full',
         size: '2.1 GB',
         createdAt: '2024-01-18T10:00:00',
@@ -45,7 +45,7 @@ const BackupSystem = () => {
       },
       {
         id: 4,
-        name: 'backup_2024_01_17_incremental',
+        name: '[REDACTED_TOKEN]',
         type: 'incremental',
         size: '89 MB',
         createdAt: '2024-01-17T10:00:00',
@@ -87,7 +87,7 @@ const BackupSystem = () => {
     }, 2000);
   };
 
-  const handleDownloadBackup = (backupId) => {
+  const [REDACTED_TOKEN] = (backupId) => {
     // Simular download
     alert(`Download do backup ${backupId} iniciado!`);
   };
@@ -117,7 +117,7 @@ const BackupSystem = () => {
     switch (status) {
       case 'completed': return <CheckCircleIcon className="w-4 h-4" />;
       case 'in_progress': return <ClockIcon className="w-4 h-4 animate-spin" />;
-      case 'failed': return <ExclamationTriangleIcon className="w-4 h-4" />;
+      case 'failed': return <[REDACTED_TOKEN] className="w-4 h-4" />;
       default: return <ClockIcon className="w-4 h-4" />;
     }
   };
@@ -289,7 +289,7 @@ const BackupSystem = () => {
                   {backup.status === 'completed' && (
                     <>
                       <button
-                        onClick={() => handleDownloadBackup(backup.id)}
+                        onClick={() => [REDACTED_TOKEN](backup.id)}
                         className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 transition-colors flex items-center gap-1"
                       >
                         <ArrowDownTrayIcon className="w-4 h-4" />

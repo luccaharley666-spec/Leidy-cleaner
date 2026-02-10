@@ -1,5 +1,5 @@
 
-> leidy-cleaner-frontend@1.0.0 dev
+> [REDACTED_TOKEN]@1.0.0 dev
 > next dev
 
 Attention: Next.js now collects completely anonymous telemetry regarding usage.
@@ -21,7 +21,7 @@ Error:
     :          [31;1m`-- [31;1mprevious definition of `React` here[0m[0m
  [2m 2[0m | import Header from '../components/Layout/Header'
  [2m 3[0m | import Footer from '../components/Layout/Footer'
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
  [2m 7[0m |   return (
@@ -37,7 +37,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -59,7 +59,7 @@ Error:
     : [31;1m       ^^^|^^[0m
     :           [31;1m`-- [31;1mprevious definition of `Header` here[0m[0m
  [2m 3[0m | import Footer from '../components/Layout/Footer'
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
  [2m 7[0m |   return (
@@ -75,7 +75,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -99,7 +99,7 @@ Error:
  [2m 3[0m | import Footer from '../components/Layout/Footer'
     : [31;1m       ^^^|^^[0m
     :           [31;1m`-- [31;1mprevious definition of `Footer` here[0m[0m
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
  [2m 7[0m |   return (
@@ -115,7 +115,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -136,7 +136,7 @@ Error:
   [31mx[0m the name `Home` is defined multiple times
     ,-[[36;1;4m/workspaces/vamos/frontend/src/pages/index.jsx[0m:3:1]
  [2m 3[0m | import Footer from '../components/Layout/Footer'
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
     : [31;1m                        ^^|^[0m
@@ -154,7 +154,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -177,7 +177,7 @@ Error:
   [31mx[0m the name `default` is exported multiple times
      ,-[[36;1;4m/workspaces/vamos/frontend/src/pages/index.jsx[0m:3:1]
  [2m  3[0m |     import Footer from '../components/Layout/Footer'
- [2m  4[0m |     import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m  4[0m |     import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m  5[0m |     
  [2m  6[0m | [31;1m,[0m[31;1m-[0m[31;1m>[0m export default function Home(){
  [2m  7[0m | [31;1m|[0m     return (
@@ -193,7 +193,7 @@ Error:
  [2m 17[0m | [31;1m|[0m               </div>
  [2m 18[0m | [31;1m|[0m             </div>
  [2m 19[0m | [31;1m|[0m             <div>
- [2m 20[0m | [31;1m|[0m               <PersonalizationPanel />
+ [2m 20[0m | [31;1m|[0m               <[REDACTED_TOKEN] />
  [2m 21[0m | [31;1m|[0m             </div>
  [2m 22[0m | [31;1m|[0m           </div>
  [2m 23[0m | [31;1m|[0m         </main>
@@ -326,7 +326,7 @@ Error:
     :          [31;1m`-- [31;1mprevious definition of `React` here[0m[0m
  [2m 2[0m | import Header from '../components/Layout/Header'
  [2m 3[0m | import Footer from '../components/Layout/Footer'
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
  [2m 7[0m |   return (
@@ -342,7 +342,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -364,7 +364,7 @@ Error:
     : [31;1m       ^^^|^^[0m
     :           [31;1m`-- [31;1mprevious definition of `Header` here[0m[0m
  [2m 3[0m | import Footer from '../components/Layout/Footer'
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
  [2m 7[0m |   return (
@@ -380,7 +380,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -404,7 +404,7 @@ Error:
  [2m 3[0m | import Footer from '../components/Layout/Footer'
     : [31;1m       ^^^|^^[0m
     :           [31;1m`-- [31;1mprevious definition of `Footer` here[0m[0m
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
  [2m 7[0m |   return (
@@ -420,7 +420,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -441,7 +441,7 @@ Error:
   [31mx[0m the name `Home` is defined multiple times
     ,-[[36;1;4m/workspaces/vamos/frontend/src/pages/index.jsx[0m:3:1]
  [2m 3[0m | import Footer from '../components/Layout/Footer'
- [2m 4[0m | import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m 4[0m | import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m 5[0m | 
  [2m 6[0m | export default function Home(){
     : [31;1m                        ^^|^[0m
@@ -459,7 +459,7 @@ Error:
  [2m17[0m |             </div>
  [2m18[0m |           </div>
  [2m19[0m |           <div>
- [2m20[0m |             <PersonalizationPanel />
+ [2m20[0m |             <[REDACTED_TOKEN] />
  [2m21[0m |           </div>
  [2m22[0m |         </div>
  [2m23[0m |       </main>
@@ -482,7 +482,7 @@ Error:
   [31mx[0m the name `default` is exported multiple times
      ,-[[36;1;4m/workspaces/vamos/frontend/src/pages/index.jsx[0m:3:1]
  [2m  3[0m |     import Footer from '../components/Layout/Footer'
- [2m  4[0m |     import PersonalizationPanel from '../components/UI/PersonalizationPanel'
+ [2m  4[0m |     import [REDACTED_TOKEN] from '../components/UI/[REDACTED_TOKEN]'
  [2m  5[0m |     
  [2m  6[0m | [31;1m,[0m[31;1m-[0m[31;1m>[0m export default function Home(){
  [2m  7[0m | [31;1m|[0m     return (
@@ -498,7 +498,7 @@ Error:
  [2m 17[0m | [31;1m|[0m               </div>
  [2m 18[0m | [31;1m|[0m             </div>
  [2m 19[0m | [31;1m|[0m             <div>
- [2m 20[0m | [31;1m|[0m               <PersonalizationPanel />
+ [2m 20[0m | [31;1m|[0m               <[REDACTED_TOKEN] />
  [2m 21[0m | [31;1m|[0m             </div>
  [2m 22[0m | [31;1m|[0m           </div>
  [2m 23[0m | [31;1m|[0m         </main>

@@ -118,12 +118,12 @@ Caixa de informação destacada.
 
 ### UI Components (`components/Common/UIComponents.jsx`)
 
-#### NotificationContainer
+#### [REDACTED_TOKEN]
 Sistema de notificações toast.
 ```jsx
 const { notifications, success, error } = useNotification();
 success('Operação realizada com sucesso!');
-<NotificationContainer notifications={notifications} />
+<[REDACTED_TOKEN] notifications={notifications} />
 ```
 
 #### Modal

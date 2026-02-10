@@ -1,11 +1,11 @@
 /**
- * PixPaymentController.js
+ * [REDACTED_TOKEN].js
  * Controllers para endpoints PIX
  */
 
 const PixPaymentService = require('../services/PixPaymentService');
 
-class PixPaymentController {
+class [REDACTED_TOKEN] {
   constructor(db) {
     this.pixService = new PixPaymentService(db);
   }
@@ -159,4 +159,4 @@ class PixPaymentController {
   }
 }
 
-module.exports = PixPaymentController;
+module.exports = [REDACTED_TOKEN];

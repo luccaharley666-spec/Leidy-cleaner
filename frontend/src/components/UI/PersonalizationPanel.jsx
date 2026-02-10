@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { ThemeContext } from '../../context/ThemeContext';
 
-export default function PersonalizationPanel() {
+export default function [REDACTED_TOKEN]() {
   const { accent, setAccent, fontScale, setFontScale } = useContext(ThemeContext);
   const [r, g, b] = accent;
 

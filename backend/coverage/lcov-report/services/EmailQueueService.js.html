@@ -1283,7 +1283,7 @@ try {
     redis: {
       host: process.env.REDIS_HOST || 'localhost',
       port: process.env.REDIS_PORT || 6379,
-      maxRetriesPerRequest: null,
+      [REDACTED_TOKEN]: null,
       enableReadyCheck: false,
       enableOfflineQueue: false,
     },
@@ -1328,28 +1328,28 @@ class EmailQueueService {
    */
   setupProcessors() {
     // Processor para emails de confirmação de agendamento
-    this.queue.process('booking-confirmation', 10, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
-<span class="cstat-no" title="statement not covered" >      return this.processBookingConfirmation(job);</span>
+    this.queue.process('[REDACTED_TOKEN]', 10, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
+<span class="cstat-no" title="statement not covered" >      return this.[REDACTED_TOKEN](job);</span>
     });
 &nbsp;
     // Processor para lembrança de agendamento
     this.queue.process('booking-reminder', 5, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
-<span class="cstat-no" title="statement not covered" >      return this.processBookingReminder(job);</span>
+<span class="cstat-no" title="statement not covered" >      return this.[REDACTED_TOKEN](job);</span>
     });
 &nbsp;
     // Processor para email de pagamento
-    this.queue.process('payment-confirmation', 10, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
-<span class="cstat-no" title="statement not covered" >      return this.processPaymentConfirmation(job);</span>
+    this.queue.process('[REDACTED_TOKEN]', 10, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
+<span class="cstat-no" title="statement not covered" >      return this.[REDACTED_TOKEN](job);</span>
     });
 &nbsp;
     // Processor para email de reembolso
     this.queue.process('refund-notification', 5, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
-<span class="cstat-no" title="statement not covered" >      return this.processRefundNotification(job);</span>
+<span class="cstat-no" title="statement not covered" >      return this.[REDACTED_TOKEN](job);</span>
     });
 &nbsp;
     // Processor para email de avaliação
     this.queue.process('review-notification', 5, <span class="fstat-no" title="function not covered" >as</span>ync (job) =&gt; {
-<span class="cstat-no" title="statement not covered" >      return this.processReviewNotification(job);</span>
+<span class="cstat-no" title="statement not covered" >      return this.[REDACTED_TOKEN](job);</span>
     });
 &nbsp;
     // Processor genérico para outros emails
@@ -1395,7 +1395,7 @@ class EmailQueueService {
       });
 &nbsp;
       // AQUI: Alertar admin sobre falha persistente
-<span class="cstat-no" title="statement not covered" >      this.notifyAdminEmailFailure(job, err);</span>
+<span class="cstat-no" title="statement not covered" >      this.[REDACTED_TOKEN](job, err);</span>
     });
 &nbsp;
     // Quando um job é retentado
@@ -1414,12 +1414,12 @@ class EmailQueueService {
   /**
    * Enfileirar email de confirmação de agendamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync enqueueBookingConfirmation(clientEmail, clientName, bookingData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, bookingData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const job = <span class="cstat-no" title="statement not covered" >await this.queue.add(</span>
-        'booking-confirmation',
+        '[REDACTED_TOKEN]',
         {
-          type: 'booking-confirmation',
+          type: '[REDACTED_TOKEN]',
           to: clientEmail,
           clientName,
           bookingData,
@@ -1447,7 +1447,7 @@ class EmailQueueService {
   /**
    * Enfileirar lembrança de agendamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync enqueueBookingReminder(clientEmail, clientName, bookingData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, bookingData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const job = <span class="cstat-no" title="statement not covered" >await this.queue.add(</span>
         'booking-reminder',
@@ -1481,12 +1481,12 @@ class EmailQueueService {
   /**
    * Enfileirar confirmação de pagamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync enqueuePaymentConfirmation(clientEmail, clientName, paymentData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, paymentData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const job = <span class="cstat-no" title="statement not covered" >await this.queue.add(</span>
-        'payment-confirmation',
+        '[REDACTED_TOKEN]',
         {
-          type: 'payment-confirmation',
+          type: '[REDACTED_TOKEN]',
           to: clientEmail,
           clientName,
           paymentData,
@@ -1508,7 +1508,7 @@ class EmailQueueService {
   /**
    * Enfileirar notificação de reembolso
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync enqueueRefundNotification(clientEmail, clientName, refundData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, refundData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const job = <span class="cstat-no" title="statement not covered" >await this.queue.add(</span>
         'refund-notification',
@@ -1537,7 +1537,7 @@ class EmailQueueService {
   /**
    * Enfileirar notificação de avaliação
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync enqueueReviewNotification(clientEmail, clientName, reviewData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, reviewData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const job = <span class="cstat-no" title="statement not covered" >await this.queue.add(</span>
         'review-notification',
@@ -1595,11 +1595,11 @@ class EmailQueueService {
    * Processadores de jobs
    */
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync processBookingConfirmation(job) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](job) {
     const { to, clientName, bookingData } = <span class="cstat-no" title="statement not covered" >job.data;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
-<span class="cstat-no" title="statement not covered" >      await this.emailService.sendBookingConfirmation(to, clientName, bookingData);</span>
+<span class="cstat-no" title="statement not covered" >      await this.emailService.[REDACTED_TOKEN](to, clientName, bookingData);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: true,
         processedAt: new Date().toISOString(),
@@ -1615,7 +1615,7 @@ class EmailQueueService {
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync processBookingReminder(job) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](job) {
     const { to, clientName, bookingData } = <span class="cstat-no" title="statement not covered" >job.data;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
@@ -1634,12 +1634,12 @@ class EmailQueueService {
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync processPaymentConfirmation(job) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](job) {
     const { to, clientName, paymentData } = <span class="cstat-no" title="statement not covered" >job.data;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Implementar método no EmailService depois
-<span class="cstat-no" title="statement not covered" >      await this.emailService.sendPaymentConfirmation(to, clientName, paymentData);</span>
+<span class="cstat-no" title="statement not covered" >      await this.emailService.[REDACTED_TOKEN](to, clientName, paymentData);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: true,
         processedAt: new Date().toISOString(),
@@ -1653,12 +1653,12 @@ class EmailQueueService {
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync processRefundNotification(job) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](job) {
     const { to, clientName, refundData } = <span class="cstat-no" title="statement not covered" >job.data;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Implementar método no EmailService depois
-<span class="cstat-no" title="statement not covered" >      await this.emailService.sendRefundNotification(to, clientName, refundData);</span>
+<span class="cstat-no" title="statement not covered" >      await this.emailService.[REDACTED_TOKEN](to, clientName, refundData);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: true,
         processedAt: new Date().toISOString(),
@@ -1672,7 +1672,7 @@ class EmailQueueService {
     }
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync processReviewNotification(job) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](job) {
     const { to, clientName, reviewData } = <span class="cstat-no" title="statement not covered" >job.data;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
@@ -1713,7 +1713,7 @@ class EmailQueueService {
   /**
    * Notificar admin sobre falha persistente de email
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync notifyAdminEmailFailure(job, error) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](job, error) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // ✅ Aqui você pode:
       // 1. Enviar email ao admin

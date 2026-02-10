@@ -422,7 +422,7 @@ class AutomationService {
   /**
    * Executar automações de agendamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync executeBookingAutomations(booking) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](booking) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      logger.info(`Iniciando automações para agendamento ${booking.id}`);</span>
 &nbsp;
@@ -498,7 +498,7 @@ class AutomationService {
 <span class="fstat-no" title="function not covered" >  as</span>ync sendConfirmations(booking) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Notificação para cliente
-      // await NotificationService.sendBookingConfirmation(booking.id);
+      // await NotificationService.[REDACTED_TOKEN](booking.id);
       
       // Notificação para equipa
       // await NotificationService.notifyTeam(booking.id);
@@ -536,7 +536,7 @@ class AutomationService {
 <span class="cstat-no" title="statement not covered" >      logger.info(`Iniciando follow-up para agendamento ${bookingId}`);</span>
 &nbsp;
       // Enviar solicitação de avaliação
-      // await NotificationService.sendFollowUpNotification(bookingId);
+      // await NotificationService.[REDACTED_TOKEN](bookingId);
 &nbsp;
       // Agendar follow-up posterior
       // await SchedulerService.schedule('follow-up-2weeks', bookingId, 14 * 24 * 60 * 60 * 1000);
@@ -551,7 +551,7 @@ class AutomationService {
   /**
    * Resolver problemas automaticamente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync handleIssueAutomatically(issue) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](issue) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      logger.info(`Tratando problema: ${issue.type}`);</span>
 &nbsp;
@@ -563,12 +563,12 @@ class AutomationService {
 &nbsp;
       case 'quality_complaint':
         // Reclamação de qualidade
-        // await this.handleQualityComplaint(issue.bookingId);
+        // await this.[REDACTED_TOKEN](issue.bookingId);
 <span class="cstat-no" title="statement not covered" >        break;</span>
 &nbsp;
       case 'team_unavailable':
         // Equipa não disponível
-        // await this.handleTeamUnavailable(issue.bookingId);
+        // await this.[REDACTED_TOKEN](issue.bookingId);
 <span class="cstat-no" title="statement not covered" >        break;</span>
 &nbsp;
       default:

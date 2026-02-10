@@ -62,7 +62,7 @@ echo ""
 if ! command -v certbot &> /dev/null; then
   log "📦 Instalando Certbot..."
   apt-get update
-  apt-get install -y certbot python3-certbot-nginx
+  apt-get install -y certbot [REDACTED_TOKEN]
   log "✅ Certbot instalado"
 else
   log "✅ Certbot já instalado"
@@ -78,7 +78,7 @@ certbot certonly \
   -m "$EMAIL" \
   --agree-tos \
   --non-interactive \
-  --preferred-challenges http \
+  --[REDACTED_TOKEN] http \
   || error "Erro ao gerar certificado"
 log "✅ Certificado criado em: $CERT_DIR"
 echo ""
@@ -119,10 +119,10 @@ echo ""
 
 # Security headers
 log "🔒 Recomendações de segurança:"
-echo "  1. HSTS: Adicionar 'add_header Strict-Transport-Security \"max-age=31536000; includeSubDomains\" always;'"
-echo "  2. CSP: add_header Content-Security-Policy \"default-src 'self'; script-src 'self' 'unsafe-inline';\""
+echo "  1. HSTS: Adicionar 'add_header [REDACTED_TOKEN] \"max-age=31536000; includeSubDomains\" always;'"
+echo "  2. CSP: add_header [REDACTED_TOKEN] \"default-src 'self'; script-src 'self' 'unsafe-inline';\""
 echo "  3. X-Frame-Options: add_header X-Frame-Options \"SAMEORIGIN\";"
-echo "  4. X-Content-Type-Options: add_header X-Content-Type-Options \"nosniff\";"
+echo "  4. [REDACTED_TOKEN]: add_header [REDACTED_TOKEN] \"nosniff\";"
 echo ""
 
 # Final summary

@@ -10,7 +10,7 @@ class ReferralService {
   /**
    * Gerar link de referência para um usuário
    */
-  static async generateReferralLink(userId) {
+  static async [REDACTED_TOKEN](userId) {
     try {
       // Verificar se já tem link
       const referralLink = await db.get(
@@ -33,7 +33,7 @@ class ReferralService {
 
       if (existing) {
         // Retry recursivo (muito raro)
-        return this.generateReferralLink(userId);
+        return this.[REDACTED_TOKEN](userId);
       }
 
       // Criar link de referência
@@ -60,7 +60,7 @@ class ReferralService {
   /**
    * Processa nova signup com código de referência
    */
-  static async processReferralSignup(newUserId, referralCode) {
+  static async [REDACTED_TOKEN](newUserId, referralCode) {
     try {
       // Buscar link de referência
       const referralLink = await db.get(
@@ -107,7 +107,7 @@ class ReferralService {
   /**
    * Confirmar reward quando novo usuário faz primeiro payment
    */
-  static async confirmReferralReward(newUserId) {
+  static async [REDACTED_TOKEN](newUserId) {
     try {
       // Buscar signup referral
       const signup = await db.get(
@@ -264,7 +264,7 @@ class ReferralService {
           conversionRate: `${((completedSignups / Math.max(totalSignups, 1)) * 100).toFixed(1)}%`,
           totalRewardsGiven: totalRewards || 0,
           activeReferrers,
-          avgRewardPerReferrer: activeReferrers > 0 ? Math.round((totalRewards || 0) / activeReferrers) : 0
+          [REDACTED_TOKEN]: activeReferrers > 0 ? Math.round((totalRewards || 0) / activeReferrers) : 0
         }
       };
     } catch (err) {

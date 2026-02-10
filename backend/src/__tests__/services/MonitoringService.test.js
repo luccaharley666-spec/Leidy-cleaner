@@ -119,7 +119,7 @@ describe('MonitoringService', () => {
 
     test('should return empty for missing metrics', async () => {
       if (typeof MonitoringService.getMetrics === 'function') {
-        db.all.mockImplementationOnce((sql, params, callback) => {
+        db.all.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, []);
         });
         
@@ -299,7 +299,7 @@ describe('MonitoringService', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run.mockImplementationOnce((sql, params, callback) => {
+      db.run.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Database error'));
       });
       
@@ -310,7 +310,7 @@ describe('MonitoringService', () => {
     });
 
     test('should handle retrieval errors', async () => {
-      db.all.mockImplementationOnce((sql, params, callback) => {
+      db.all.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Retrieval error'));
       });
       

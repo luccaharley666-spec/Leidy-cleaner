@@ -6,7 +6,7 @@
 import React, { useState, useContext } from 'react';
 import Head from 'next/head';
 import { AuthContext } from '@/context/AuthContext';
-import NotificationPreferences from '@/components/NotificationPreferences';
+import [REDACTED_TOKEN] from '@/components/[REDACTED_TOKEN]';
 
 export default function NotificationsPage() {
   const { user } = useContext(AuthContext);
@@ -61,7 +61,7 @@ export default function NotificationsPage() {
 
           {/* Tab Content */}
           <div>
-            {activeTab === 'preferences' && <NotificationPreferences />}
+            {activeTab === 'preferences' && <[REDACTED_TOKEN] />}
 
             {activeTab === 'help' && (
               <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow">

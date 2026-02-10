@@ -339,7 +339,7 @@ describe('CompanyService', () => {
         email: 'test@company.com',
         phone: '11999999999',
         business_hours_open: '09:00',
-        business_hours_close: '18:00'
+        [REDACTED_TOKEN]: '18:00'
       };
       
       try {
@@ -355,7 +355,7 @@ describe('CompanyService', () => {
         email: 'test@company.com',
         phone: '11999999999',
         business_hours_open: '25:00',
-        business_hours_close: 'closed'
+        [REDACTED_TOKEN]: 'closed'
       };
       
       try {

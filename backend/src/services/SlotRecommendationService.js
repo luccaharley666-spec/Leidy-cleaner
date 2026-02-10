@@ -1,12 +1,12 @@
 /**
- * SlotRecommendationService.js
+ * [REDACTED_TOKEN].js
  * Recomenda horários e staff baseado em rating, disponibilidade e preferências
  */
 
 const db = require('../db');
 const logger = require('../utils/logger');
 
-class SlotRecommendationService {
+class [REDACTED_TOKEN] {
   /**
    * Recomendar slots para um serviço
    * Retorna os 5 melhores horários ordenados por: rating > preferência de horário > disponibilidade
@@ -114,7 +114,7 @@ class SlotRecommendationService {
    * Recomendar serviços complementares
    * Se agendou limpeza profunda, sugerir higiene de sofá, etc
    */
-  static async recommendComplementary(serviceId) {
+  static async [REDACTED_TOKEN](serviceId) {
     try {
       const service = await db.get('SELECT category FROM services WHERE id = ?', serviceId);
 
@@ -206,4 +206,4 @@ class SlotRecommendationService {
   }
 }
 
-module.exports = SlotRecommendationService;
+module.exports = [REDACTED_TOKEN];

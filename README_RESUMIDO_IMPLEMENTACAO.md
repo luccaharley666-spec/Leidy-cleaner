@@ -70,7 +70,7 @@ ngrok http 3001
 
 **Terminal 3 - Testar Webhook:**
 ```bash
-PIX_WEBHOOK_SECRET=test-secret node test-pix-webhook.js
+[REDACTED_TOKEN]=test-secret node test-pix-webhook.js
 ```
 
 #### Setup Produção (Com Banco Real):
@@ -81,7 +81,7 @@ PIX_WEBHOOK_SECRET=test-secret node test-pix-webhook.js
    PIX_KEY=seu-email@pix.com
    PIX_BANK_API_URL=https://api.banco.com.br/v1
    PIX_BANK_API_KEY=sua-chave-api-123
-   PIX_WEBHOOK_SECRET=super-secret-key-production
+   [REDACTED_TOKEN]=[REDACTED_TOKEN]
    ```
 
 2. **Registrar Webhook no Banco:**
@@ -89,7 +89,7 @@ PIX_WEBHOOK_SECRET=test-secret node test-pix-webhook.js
    URL: https://sua-api.com/webhooks/pix
    Método: POST
    Assinatura: HMAC-SHA256
-   Secret: PIX_WEBHOOK_SECRET
+   Secret: [REDACTED_TOKEN]
    ```
 
 3. **Criar Tabela no Banco:**
@@ -115,7 +115,7 @@ PIX_WEBHOOK_SECRET=test-secret node test-pix-webhook.js
 ```
 /frontend/src/pages/admin-dashboard.jsx (289 linhas)
 /backend/src/services/PixWebhookService.js (280 linhas)
-/backend/src/controllers/PixWebhookController.js (180 linhas)
+/backend/src/controllers/[REDACTED_TOKEN].js (180 linhas)
 /backend/src/routes/pixWebhook.routes.js (50 linhas)
 /test-pix-webhook.js (script de teste)
 ```
@@ -144,9 +144,9 @@ PIX_WEBHOOK_SECRET=test-secret node test-pix-webhook.js
 
 | Documento | Descrição |
 |-----------|-----------|
-| `PIX_IMPLEMENTATION_GUIDE.md` | Guia detalhado PIX com setup completo |
-| `IMPLEMENTACAO_3_FEATURES_COMPLETO.md` | Documentação técnica das 3 features |
-| `README_RESUMIDO_IMPLEMENTACAO.md` | Este arquivo |
+| `[REDACTED_TOKEN].md` | Guia detalhado PIX com setup completo |
+| `[REDACTED_TOKEN].md` | Documentação técnica das 3 features |
+| `[REDACTED_TOKEN].md` | Este arquivo |
 
 ---
 
@@ -177,7 +177,7 @@ http://localhost:3000/admin-dashboard
 node test-pix-webhook.js
 
 # Com dados customizados
-PIX_WEBHOOK_SECRET=seu-secret node test-pix-webhook.js
+[REDACTED_TOKEN]=seu-secret node test-pix-webhook.js
 
 # Verificar log
 - Webhook processado com sucesso
@@ -282,8 +282,8 @@ POST /webhooks/pix/cleanup        → Limpar expirados (ADMIN)
 
 Dúvidas ou problemas?
 
-1. Verificar **PIX_IMPLEMENTATION_GUIDE.md** para detalhes PIX
-2. Verificar **IMPLEMENTACAO_3_FEATURES_COMPLETO.md** para tech details
+1. Verificar **[REDACTED_TOKEN].md** para detalhes PIX
+2. Verificar **[REDACTED_TOKEN].md** para tech details
 3. Verificar logs em `/backend/logs/` para erros
 4. Testar webhook local com `node test-pix-webhook.js`
 

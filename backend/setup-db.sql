@@ -128,10 +128,10 @@ CREATE TABLE IF NOT EXISTS chat_messages (
 -- Índices para performance
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
-CREATE INDEX IF NOT EXISTS idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
-CREATE INDEX IF NOT EXISTS idx_transactions_user_id ON transactions(user_id);
-CREATE INDEX IF NOT EXISTS idx_notifications_user_id ON notifications(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON transactions(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notifications(user_id);
 
 -- =====================================================
 -- DADOS INICIAIS DE TESTE
@@ -144,7 +144,7 @@ VALUES (
   'Admin',
   'admin@leidycleaner.com.br',
   '5551999999999',
-  '$2b$12$qQ8jIgJnEQsNdMp0f/cPROVS1nLbVLlVLRx7eSPVpWi.mGfAkEQke',
+  '$2b$12$qQ8jIgJnEQsNdMp0f/[REDACTED_TOKEN].mGfAkEQke',
   'admin',
   1,
   CURRENT_TIMESTAMP
@@ -164,7 +164,7 @@ VALUES (
   'Cliente Teste',
   'cliente@test.com',
   '5551988888888',
-  '$2b$12$UjL6L5Wk1nRW5xXp1n5gvuQU5eZGq7TG7EJvJmL7Hp8YYGVHb1Hmi',
+  '$2b$12$[REDACTED_TOKEN]',
   'customer',
   1,
   CURRENT_TIMESTAMP

@@ -5,13 +5,13 @@
 
 const express = require('express');
 const router = express.Router();
-const RecurringBookingService = require('../services/RecurringBookingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 
 // POST /api/bookings/recurring
 router.post('/recurring', (req, res) => {
   try {
     const { userId, serviceId, frequency, dayOfWeek, time, startDate, notes } = req.body;
-    const booking = RecurringBookingService.createRecurringBooking({
+    const booking = [REDACTED_TOKEN].[REDACTED_TOKEN]({
       userId,
       serviceId,
       frequency,
@@ -28,32 +28,32 @@ router.post('/recurring', (req, res) => {
 
 // GET /api/bookings/recurring/:userId
 router.get('/recurring/:userId', (req, res) => {
-  const bookings = RecurringBookingService.getUserRecurringBookings(req.params.userId);
+  const bookings = [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);
   res.json(bookings);
 });
 
 // PUT /api/bookings/recurring/:bookingId/pause
 router.put('/recurring/:bookingId/pause', (req, res) => {
   const { resumeUntil } = req.body;
-  const booking = RecurringBookingService.pauseRecurring(req.params.bookingId, resumeUntil);
+  const booking = [REDACTED_TOKEN].pauseRecurring(req.params.bookingId, resumeUntil);
   res.json(booking);
 });
 
 // PUT /api/bookings/recurring/:bookingId/resume
 router.put('/recurring/:bookingId/resume', (req, res) => {
-  const booking = RecurringBookingService.resumeRecurring(req.params.bookingId);
+  const booking = [REDACTED_TOKEN].resumeRecurring(req.params.bookingId);
   res.json(booking);
 });
 
 // DELETE /api/bookings/recurring/:bookingId
 router.delete('/recurring/:bookingId', (req, res) => {
-  const result = RecurringBookingService.cancelRecurring(req.params.bookingId);
+  const result = [REDACTED_TOKEN].cancelRecurring(req.params.bookingId);
   res.json(result);
 });
 
 // PUT /api/bookings/recurring/:bookingId
 router.put('/recurring/:bookingId', (req, res) => {
-  const updated = RecurringBookingService.updateRecurring(req.params.bookingId, req.body);
+  const updated = [REDACTED_TOKEN].updateRecurring(req.params.bookingId, req.body);
   res.json(updated);
 });
 

@@ -3,22 +3,22 @@
  * Funções auxiliares de notificação
  */
 
-const NotificationController = require('../controllers/NotificationController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const logger = require('./logger');
 
 class NotificationService {
   /**
    * Enviar notificação de confirmação de agendamento
    */
-  static async notifyBookingConfirmation(bookingId) {
-    return NotificationController.sendBookingConfirmation(bookingId);
+  static async [REDACTED_TOKEN](bookingId) {
+    return [REDACTED_TOKEN].[REDACTED_TOKEN](bookingId);
   }
 
   /**
    * Enviar lembretes programados
    */
   static async notifyReminders() {
-    return NotificationController.sendReminderNotifications();
+    return [REDACTED_TOKEN].[REDACTED_TOKEN]();
   }
 
   /**
@@ -34,14 +34,14 @@ class NotificationService {
    * Notificar equipa
    */
   static async notifyTeam(bookingId) {
-    return NotificationController.notifyTeam(bookingId);
+    return [REDACTED_TOKEN].notifyTeam(bookingId);
   }
 
   /**
    * Enviar follow-up
    */
   static async sendFollowUp(bookingId) {
-    return NotificationController.sendFollowUpNotification(bookingId);
+    return [REDACTED_TOKEN].[REDACTED_TOKEN](bookingId);
   }
 }
 

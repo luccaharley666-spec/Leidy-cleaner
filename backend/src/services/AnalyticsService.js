@@ -95,7 +95,7 @@ class AnalyticsService {
   /**
    ✅ NOVO: Customer Lifetime Value (CLV)
    */
-  async getCustomerLifetimeValue(userId) {
+  async [REDACTED_TOKEN](userId) {
     const userBookings = this.metrics.bookings.filter(b => b.userId === userId);
     const totalSpent = userBookings.reduce((sum, b) => sum + (b.price || 0), 0);
     const bookingCount = userBookings.length;
@@ -128,14 +128,14 @@ class AnalyticsService {
       churnedCount: churnedCustomers,
       totalCustomers,
       trend: 'Stable ✅',
-      riskCustomers: this.identifyAtRiskCustomers()
+      riskCustomers: this.[REDACTED_TOKEN]()
     };
   }
 
   /**
    ✅ NOVO: Identificar clientes em risco
    */
-  identifyAtRiskCustomers() {
+  [REDACTED_TOKEN]() {
     const thirtyDaysAgo = new Date();
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
 
@@ -154,7 +154,7 @@ class AnalyticsService {
       if (lastBooking.timestamp < thirtyDaysAgo && bookings.length > 1) {
         atRisk.push({
           userId,
-          daysSinceLastBooking: Math.floor(
+          [REDACTED_TOKEN]: Math.floor(
             (new Date() - lastBooking.timestamp) / (1000 * 60 * 60 * 24)
           ),
           totalSpent: bookings.reduce((s, b) => s + (b.price || 0), 0)

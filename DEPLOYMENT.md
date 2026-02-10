@@ -64,15 +64,15 @@ DATABASE_URL=postgres://user:password@postgres:5432/limpeza_pro
 
 # Redis
 REDIS_URL=redis://redis:6379
-REDIS_PASSWORD=seu-senha-redis-segura
+REDIS_PASSWORD=[REDACTED_TOKEN]
 
 # JWT Secrets (GERE NOVOS!)
 JWT_SECRET=$(openssl rand -base64 32)
 JWT_REFRESH_SECRET=$(openssl rand -base64 32)
 
 # Integrations
-STRIPE_SECRET_KEY=sk_live_seu_stripe_key
-STRIPE_PUBLISHABLE_KEY=pk_live_seu_stripe_key
+STRIPE_SECRET_KEY=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Email (Nodemailer)
 SMTP_HOST=smtp.seu-provedor.com
@@ -81,22 +81,22 @@ SMTP_USER=seu-email@seu-dominio.com
 SMTP_PASS=sua-senha-email
 
 # Social Login
-NEXT_PUBLIC_GOOGLE_CLIENT_ID=seu-google-client-id
-NEXT_PUBLIC_FACEBOOK_APP_ID=seu-facebook-app-id
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=seu-facebook-app-id
 
 # Sentry (Erro tracking)
 SENTRY_DSN=sua-sentry-dsn
 
 # New Relic (Monitoramento)
-NEW_RELIC_LICENSE_KEY=seu-new-relic-key
+[REDACTED_TOKEN]=seu-new-relic-key
 NEW_RELIC_APP_NAME=limpeza-pro-prod
 
 # CORS
 CORS_ORIGIN=https://seu-dominio.com
 
 # Storage (S3 ou local)
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
+[REDACTED_TOKEN]=
+[REDACTED_TOKEN]=
 AWS_S3_BUCKET=
 EOF
 ```
@@ -178,7 +178,7 @@ http {
 
   log_format main '$remote_addr - $remote_user [$time_local] "$request" '
                   '$status $body_bytes_sent "$http_referer" '
-                  '"$http_user_agent" "$http_x_forwarded_for"';
+                  '"$http_user_agent" "$[REDACTED_TOKEN]"';
 
   access_log /var/log/nginx/access.log main;
 
@@ -187,7 +187,7 @@ http {
   tcp_nodelay on;
   keepalive_timeout 65;
   types_hash_max_size 2048;
-  client_max_body_size 20M;
+  [REDACTED_TOKEN] 20M;
 
   # Gzip compression
   gzip on;
@@ -222,12 +222,12 @@ http {
     ssl_certificate_key /etc/nginx/certs/privkey.pem;
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_ciphers HIGH:!aNULL:!MD5;
-    ssl_prefer_server_ciphers on;
+    [REDACTED_TOKEN] on;
 
     # Security headers
-    add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+    add_header [REDACTED_TOKEN] "max-age=31536000; includeSubDomains" always;
     add_header X-Frame-Options "SAMEORIGIN" always;
-    add_header X-Content-Type-Options "nosniff" always;
+    add_header [REDACTED_TOKEN] "nosniff" always;
     add_header X-XSS-Protection "1; mode=block" always;
 
     # API
@@ -236,7 +236,7 @@ http {
       proxy_pass http://backend;
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-For $[REDACTED_TOKEN];
       proxy_set_header X-Forwarded-Proto $scheme;
     }
 
@@ -246,7 +246,7 @@ http {
       proxy_pass http://backend;
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-For $[REDACTED_TOKEN];
       proxy_set_header X-Forwarded-Proto $scheme;
     }
 
@@ -255,7 +255,7 @@ http {
       proxy_pass http://frontend;
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;
-      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header X-Forwarded-For $[REDACTED_TOKEN];
       proxy_set_header X-Forwarded-Proto $scheme;
 
       # Next.js specific
@@ -276,7 +276,7 @@ http {
 
 ```bash
 # Instalar certbot
-sudo apt-get install certbot python3-certbot-nginx -y
+sudo apt-get install certbot [REDACTED_TOKEN] -y
 
 # Gerar certificado
 sudo certbot certonly --standalone -d seu-dominio.com -d www.seu-dominio.com

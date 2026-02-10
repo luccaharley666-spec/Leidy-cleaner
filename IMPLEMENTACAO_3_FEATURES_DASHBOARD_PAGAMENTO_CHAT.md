@@ -96,7 +96,7 @@ GET   /api/payments/stats              → Estatísticas (admin)
 ```bash
 STRIPE_SECRET_KEY=sk_test_...
 STRIPE_KEY=pk_test_...  (frontend)
-REACT_APP_STRIPE_KEY=pk_test_...
+[REDACTED_TOKEN]=pk_test_...
 ```
 
 ### Uso
@@ -129,7 +129,7 @@ import CheckoutModal from './components/Checkout/CheckoutModal';
 - **Frontend:** `frontend/src/components/Chat/ChatComponent.jsx`
 - **Backend Routes:** `backend/src/routes/chatMessagesRoutes.js`
 - **Backend Service:** `backend/src/services/ChatService.js` (já existe)
-- **Database Migration:** `20260209_create_payments_chat_messages.sql`
+- **Database Migration:** `[REDACTED_TOKEN].sql`
 
 ### Features
 - 💬 **Mensagens em Tempo Real**
@@ -200,7 +200,7 @@ import ChatComponent from './components/Chat/ChatComponent';
 
 ## 📊 Migração Aplicada
 
-Nova migração: `20260209_create_payments_chat_messages.sql`
+Nova migração: `[REDACTED_TOKEN].sql`
 
 Tabelas criadas:
 - `payments` (4 índices)
@@ -262,7 +262,7 @@ Tabelas criadas:
 - ✅ `api.js` (adicionadas 3 route registrations)
 
 ### Database (1 migração)
-- ✅ `20260209_create_payments_chat_messages.sql`
+- ✅ `[REDACTED_TOKEN].sql`
 
 ---
 

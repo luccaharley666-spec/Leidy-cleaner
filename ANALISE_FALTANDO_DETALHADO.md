@@ -9,8 +9,8 @@ Status: **50% Funcional | 50% Incompleto**
 
 ### 1️⃣ Secrets/Chaves Não Geradas
 ```
-⚠️  PIX_WEBHOOK_SECRET
-    Atual: "ADICIONAR_SECRET_SEGURO_AQUI" (PLACEHOLDER!)
+⚠️  [REDACTED_TOKEN]
+    Atual: "[REDACTED_TOKEN]" (PLACEHOLDER!)
     Precisa: openssl rand -hex 32
     Impacto: ❌ Webhook PIX não funciona sem isso
 
@@ -19,8 +19,8 @@ Status: **50% Funcional | 50% Incompleto**
     Precisa: Google App Password gerado
     Impacto: ❌ Emails não saem
 
-⚠️  STRIPE_WEBHOOK_SECRET
-    Atual: "whsec_test_1234567890test" (teste)
+⚠️  [REDACTED_TOKEN]
+    Atual: "[REDACTED_TOKEN]" (teste)
     Precisa: Webhook secret de produção
     Impacto: ⚠️  Funciona em dev, morre em produção
 
@@ -32,7 +32,7 @@ Status: **50% Funcional | 50% Incompleto**
 
 **Ação Imediata:**
 ```bash
-# 1. Gerar PIX_WEBHOOK_SECRET
+# 1. Gerar [REDACTED_TOKEN]
 openssl rand -hex 32
 # Resultado: colar em backend/.env
 
@@ -81,7 +81,7 @@ const mockSalesData = [{ month: 'Jan', sales: 4000 }, ...]
 ```
 ✅ Código implementado:
    - PixWebhookService.js (342 LOC)
-   - PixWebhookController.js (221 LOC)
+   - [REDACTED_TOKEN].js (221 LOC)
    - 6 endpoints criados
 
 ❌ MAS:
@@ -93,11 +93,11 @@ const mockSalesData = [{ month: 'Jan', sales: 4000 }, ...]
 
 **Próximos Passos:**
 ```
-1. Preencher PIX_WEBHOOK_SECRET (veja #1 acima)
+1. Preencher [REDACTED_TOKEN] (veja #1 acima)
 2. Contatar banco:
    "Preciso registrar webhook para notificações de pagamento PIX"
    URL: https://sua-api.com/webhooks/pix
-   Secret: <PIX_WEBHOOK_SECRET>
+   Secret: <[REDACTED_TOKEN]>
    
 3. Testar webhook:
    - Ngrok: ngrok http 3001
@@ -122,11 +122,11 @@ Falta:
 
 Exemplo do que precisa:
 ```
-<PaymentConfirmationScreen>
+<[REDACTED_TOKEN]>
   <PIXQRCode value={pixBrCode} />
   <PaymentStatus status="waiting" />
   <Timer seconds={600} />  {/* 10 minutos */}
-</PaymentConfirmationScreen>
+</[REDACTED_TOKEN]>
 ```
 
 ---
@@ -265,7 +265,7 @@ Checklist:
 
 ### HOJE (Crítico)
 ```
-[ ] Gerar PIX_WEBHOOK_SECRET (openssl rand -hex 32)
+[ ] Gerar [REDACTED_TOKEN] (openssl rand -hex 32)
 [ ] Gerar Google App Password (para SMTP_PASS)
 [ ] Preencher Twilio Account SID + Auth Token
 [ ] Testar email com novo SMTP_PASS
@@ -350,7 +350,7 @@ Checklist:
 ### Dia 1 (Hoje) - Secrets & Configuração
 ```bash
 # Terminal 1: Gerar secrets
-openssl rand -hex 32  # PIX_WEBHOOK_SECRET
+openssl rand -hex 32  # [REDACTED_TOKEN]
 # → Google App Password (manual)
 # → Twilio SID + Token (manual)
 
@@ -385,7 +385,7 @@ curl http://localhost:3001/health
 
 ## 📞 PRÓXIMA AÇÃO
 
-**Abra:** [PROXIMOS_PASSOS_IMEDIATOS.md](PROXIMOS_PASSOS_IMEDIATOS.md)
+**Abra:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
 **Siga:** Os 3 passos críticos (45 minutos)
 

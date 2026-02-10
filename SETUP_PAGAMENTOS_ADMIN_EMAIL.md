@@ -25,11 +25,11 @@ Implementadas as 3 features principais:
 # Stripe
 STRIPE_PUBLIC_KEY=pk_test_XXXXXXX
 STRIPE_SECRET_KEY=sk_test_XXXXXXX
-STRIPE_WEBHOOK_SECRET=whsec_test_XXXXXXX
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # URLs
 NEXT_PUBLIC_API_URL=http://localhost:3000
-NEXT_PUBLIC_STRIPE_PUBLIC_KEY=pk_test_XXXXXXX
+[REDACTED_TOKEN]=pk_test_XXXXXXX
 ```
 
 ### 1.2 Instalar Dependências
@@ -161,7 +161,7 @@ npm install nodemailer
 #### 1️⃣ Confirmação de Booking
 ```javascript
 // Automático ao confirmar booking
-EmailService.sendBookingConfirmation(booking, user)
+EmailService.[REDACTED_TOKEN](booking, user)
 // Inclui: data, hora, endereço, duração, preço
 ```
 
@@ -175,7 +175,7 @@ EmailService.sendReminder(booking, user)
 #### 3️⃣ Confirmação de Pagamento
 ```javascript
 // Automático após pagamento confirmado (webhook)
-EmailService.sendPaymentConfirmation(transaction, user)
+EmailService.[REDACTED_TOKEN](transaction, user)
 // Inclui: número de horas, preço, data
 ```
 
@@ -222,7 +222,7 @@ await EmailService.sendMail(
 ### Frontend
 
 ```
-✅ frontend/src/components/Payments/StripeCheckoutButton.jsx (NEW)
+✅ frontend/src/components/Payments/[REDACTED_TOKEN].jsx (NEW)
    - Botão de checkout com Stripe
 
 ✅ frontend/src/pages/checkout/success.jsx (NEW)
@@ -270,7 +270,7 @@ tail -f /tmp/backend.log | grep -i email
 ```
 User clica "Comprar Horas"
   ↓
-Frontend carrega StripeCheckoutButton
+Frontend carrega [REDACTED_TOKEN]
   ↓
 User clica "Ir para Pagamento"
   ↓

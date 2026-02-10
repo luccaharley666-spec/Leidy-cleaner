@@ -67,19 +67,19 @@ describe('PixPaymentService', () => {
   describe('validateSignature', () => {
     test('should validate correct HMAC signature', () => {
       const crypto = require('crypto');
-      const secret = 'test-secret-key-32bytes-long!!!';
+      const secret = '[REDACTED_TOKEN]!!!';
       const body = JSON.stringify({ data: 'test' });
       const signature = crypto
         .createHmac('sha256', secret)
         .update(body)
         .digest('hex');
       
-      const isValid = PixPaymentService.validateSignatureRaw(body, signature, secret);
+      const isValid = PixPaymentService.[REDACTED_TOKEN](body, signature, secret);
       expect(isValid).toBe(true);
     });
 
     test('should reject invalid signature', () => {
-      const isValid = PixPaymentService.validateSignatureRaw(
+      const isValid = PixPaymentService.[REDACTED_TOKEN](
         'body',
         'invalid-sig',
         'secret'
@@ -130,7 +130,7 @@ describe('PixPaymentService', () => {
 describe('EmailService', () => {
   beforeEach(() => jest.clearAllMocks());
 
-  describe('sendBookingConfirmation', () => {
+  describe('[REDACTED_TOKEN]', () => {
     test('should send confirmation email with booking details', async () => {
       const email = 'user@example.com';
       const booking = {
@@ -140,7 +140,7 @@ describe('EmailService', () => {
         time: '10:00'
       };
       
-      const result = await EmailService.sendBookingConfirmation(email, booking);
+      const result = await EmailService.[REDACTED_TOKEN](email, booking);
       
       expect(result.success).toBe(true);
       expect(result.messageId).toBeDefined();
@@ -149,7 +149,7 @@ describe('EmailService', () => {
     test('should handle missing SMTP credentials gracefully', async () => {
       process.env.SMTP_HOST = '';
       
-      const result = await EmailService.sendBookingConfirmation('test@test.com', {});
+      const result = await EmailService.[REDACTED_TOKEN]('test@test.com', {});
       
       expect(result.warning).toBe('SMTP not configured');
     });
@@ -158,14 +158,14 @@ describe('EmailService', () => {
       const email = 'user@example.com';
       const booking = { id: 1, service: 'Limpeza', date: '2026-02-15' };
       
-      const result = await EmailService.sendBookingConfirmation(email, booking);
+      const result = await EmailService.[REDACTED_TOKEN](email, booking);
       
       expect(result.html).toContain('Limpeza');
       expect(result.html).toContain('2026-02-15');
     });
   });
 
-  describe('sendPaymentConfirmation', () => {
+  describe('[REDACTED_TOKEN]', () => {
     test('should send payment confirmation with transaction details', async () => {
       const payment = {
         transactionId: uuidv4(),
@@ -173,7 +173,7 @@ describe('EmailService', () => {
         paidAt: new Date().toISOString()
       };
       
-      const result = await EmailService.sendPaymentConfirmation('user@example.com', payment);
+      const result = await EmailService.[REDACTED_TOKEN]('user@example.com', payment);
       
       expect(result.success).toBe(true);
     });
@@ -219,9 +219,9 @@ describe('RetryQueueService', () => {
 
   describe('calculateDelay', () => {
     test('should calculate exponential backoff: 2^n * 1000ms', () => {
-      expect(RetryQueueService.calculateDelay(1)).toBeGreaterThanOrEqual(1000);
-      expect(RetryQueueService.calculateDelay(2)).toBeGreaterThanOrEqual(2000);
-      expect(RetryQueueService.calculateDelay(3)).toBeGreaterThanOrEqual(4000);
+      expect(RetryQueueService.calculateDelay(1)).[REDACTED_TOKEN](1000);
+      expect(RetryQueueService.calculateDelay(2)).[REDACTED_TOKEN](2000);
+      expect(RetryQueueService.calculateDelay(3)).[REDACTED_TOKEN](4000);
     });
 
     test('should cap max delay at 60 seconds', () => {
@@ -248,7 +248,7 @@ describe('RetryQueueService', () => {
       
       const processed = await RetryQueueService.processQueue();
       
-      expect(processed.total).toBeGreaterThanOrEqual(0);
+      expect(processed.total).[REDACTED_TOKEN](0);
     });
 
     test('should not exceed max retries', async () => {
@@ -268,7 +268,7 @@ describe('RetryQueueService', () => {
 
 describe('Service Integration Tests', () => {
   test('Email + Retry: should retry failed email delivery', async () => {
-    const emailResult = await EmailService.sendBookingConfirmation(
+    const emailResult = await EmailService.[REDACTED_TOKEN](
       'test@example.com',
       { id: 1 }
     );
@@ -292,7 +292,7 @@ describe('Service Integration Tests', () => {
       userId: 1
     });
     
-    const result = await EmailService.sendPaymentConfirmation(
+    const result = await EmailService.[REDACTED_TOKEN](
       'user@example.com',
       payment
     );

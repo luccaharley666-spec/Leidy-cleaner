@@ -245,7 +245,7 @@ Verificar:
 
 ### Tipos de Animações Usadas
 
-1. **Scroll Triggered** (AOS + IntersectionObserver)
+1. **Scroll Triggered** (AOS + [REDACTED_TOKEN])
    - Fade-up ao entrar na viewport
    - Stagger effect em listas
 

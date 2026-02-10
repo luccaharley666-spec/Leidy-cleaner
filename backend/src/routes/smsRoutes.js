@@ -13,7 +13,7 @@ router.post('/send-confirmation', authenticateToken, async (req, res) => {
       return res.status(400).json({ success: false, error: 'bookingId e phone são obrigatórios' });
     }
 
-    const result = await SMSService.sendBookingConfirmation(bookingId, phone);
+    const result = await SMSService.[REDACTED_TOKEN](bookingId, phone);
     res.json({ success: true, result });
   } catch (error) {
     console.error('Erro ao enviar SMS:', error);

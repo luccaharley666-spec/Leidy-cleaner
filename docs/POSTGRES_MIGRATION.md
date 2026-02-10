@@ -13,7 +13,7 @@ Passos rápidos
    ```
 2. Rodar migração com `pgloader`:
    ```bash
-   ./backend/scripts/migrate_sqlite_to_postgres.sh ./backend_data/database.db postgres://user:pass@host:5432/dbname
+   ./backend/scripts/[REDACTED_TOKEN].sh ./backend_data/database.db postgres://user:pass@host:5432/dbname
    ```
 3. Verificar tabelas e índices no PostgreSQL:
    ```bash

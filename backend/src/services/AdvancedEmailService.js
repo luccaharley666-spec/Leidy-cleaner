@@ -6,7 +6,7 @@
 const logger = require('../utils/logger');
 const crypto = require('crypto');
 
-class AdvancedEmailService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.templates = new Map();
     this.campaigns = new Map();
@@ -461,4 +461,4 @@ class AdvancedEmailService {
   }
 }
 
-module.exports = new AdvancedEmailService();
+module.exports = new [REDACTED_TOKEN]();

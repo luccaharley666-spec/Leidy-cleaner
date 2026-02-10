@@ -19,7 +19,7 @@ NC='\033[0m'
 BACKUP_DIR="${BACKUP_DIR:-./backups}"
 DB_URL="${DATABASE_URL:-postgresql://localhost/limpeza_pro}"
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
-RETENTION_DAYS="${BACKUP_RETENTION_DAYS:-30}"
+RETENTION_DAYS="${[REDACTED_TOKEN]:-30}"
 AWS_S3_BUCKET="${AWS_S3_BUCKET:-limpeza-pro-backups}"
 
 # Log functions

@@ -14,9 +14,9 @@ SQLite (já aplicados nas migrations):
 SQL exemplo (executar com sqlite3):
 
 ```sql
-CREATE INDEX IF NOT EXISTS idx_time_blocks_prof_date ON time_blocks(professional_id, date);
-CREATE INDEX IF NOT EXISTS idx_reviews_professional_id ON reviews(professional_id);
-CREATE INDEX IF NOT EXISTS idx_affiliates_referral_code ON affiliates(referral_code);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON time_blocks(professional_id, date);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON reviews(professional_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON affiliates(referral_code);
 CREATE INDEX IF NOT EXISTS idx_email_logs_to ON email_logs(to_email);
 ```
 
@@ -62,7 +62,7 @@ Os backups criados por `scripts/backup-db.sh` já são compactados (`.gz`). Use 
 Se adicionar colunas de filtro frequente, crie índices apropriados e monitore o custo:
 
 ```sql
-CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_bookings_user_date ON bookings(user_id, date);
+CREATE INDEX CONCURRENTLY IF NOT EXISTS [REDACTED_TOKEN] ON bookings(user_id, date);
 ```
 
 (Para SQLite `CONCURRENTLY` não existe; no PostgreSQL use com cuidado.)
@@ -78,7 +78,7 @@ CREATE INDEX CONCURRENTLY IF NOT EXISTS idx_bookings_user_date ON bookings(user_
 ## Procedimento de emergência (restore rápido)
 
 1. Parar o serviço backend
-2. Restaurar backup mais recente: `cp backups/db_backup_YYYYMMDD_HHMMSS.sqlite.gz /tmp && gunzip /tmp/db_backup... && mv /tmp/db_backup... /path/to/backend_data/database.db`
+2. Restaurar backup mais recente: `cp backups/[REDACTED_TOKEN].sqlite.gz /tmp && gunzip /tmp/db_backup... && mv /tmp/db_backup... /path/to/backend_data/database.db`
 3. Reiniciar o backend
 
 ---

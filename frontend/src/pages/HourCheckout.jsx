@@ -9,7 +9,7 @@ import HourCalculator from '../components/Pricing/HourCalculator';
 const HourCheckout = () => {
   const [selectedPackage, setSelectedPackage] = useState(null);
   const [priceData, setPriceData] = useState(null);
-  const [processingPayment, setProcessingPayment] = useState(false);
+  const [processingPayment, [REDACTED_TOKEN]] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('pix');
   const [userCredit, setUserCredit] = useState(null);
 
@@ -40,14 +40,14 @@ const HourCheckout = () => {
     setPriceData(result);
   };
 
-  const handlePurchasePackage = async () => {
+  const [REDACTED_TOKEN] = async () => {
     if (!priceData || !priceData.hours) {
       alert('Selecione uma quantidade de horas válida');
       return;
     }
 
     try {
-      setProcessingPayment(true);
+      [REDACTED_TOKEN](true);
 
       // 1. Iniciar compra do pacote
       const purchaseResponse = await fetch('/api/pricing/purchase-package', {
@@ -104,7 +104,7 @@ const HourCheckout = () => {
       console.error('Erro ao processar pagamento:', err);
       alert('Erro ao processar pagamento');
     } finally {
-      setProcessingPayment(false);
+      [REDACTED_TOKEN](false);
     }
   };
 
@@ -204,7 +204,7 @@ const HourCheckout = () => {
 
                   {/* Botão de Compra */}
                   <button
-                    onClick={handlePurchasePackage}
+                    onClick={[REDACTED_TOKEN]}
                     disabled={processingPayment}
                     className={`w-full py-3 px-4 rounded-lg font-bold text-white transition ${
                       processingPayment

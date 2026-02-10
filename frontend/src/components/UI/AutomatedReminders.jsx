@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { BellIcon, ClockIcon, CheckCircleIcon, XCircleIcon, EnvelopeIcon, ChatBubbleLeftRightIcon } from '@heroicons/react/24/outline';
+import { BellIcon, ClockIcon, CheckCircleIcon, XCircleIcon, EnvelopeIcon, [REDACTED_TOKEN] } from '@heroicons/react/24/outline';
 
 const AutomatedReminders = ({ clientId }) => {
   const [reminders, setReminders] = useState([]);
@@ -52,7 +52,7 @@ const AutomatedReminders = ({ clientId }) => {
     setReminders(mockReminders);
   }, [clientId]);
 
-  const getReminderTypeColor = (type) => {
+  const [REDACTED_TOKEN] = (type) => {
     switch (type) {
       case 'upcoming_service': return 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400';
       case 'service_completed': return 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400';
@@ -82,7 +82,7 @@ const AutomatedReminders = ({ clientId }) => {
     }
   };
 
-  const handleSettingsChange = (channel, enabled) => {
+  const [REDACTED_TOKEN] = (channel, enabled) => {
     setSettings(prev => ({
       ...prev,
       [channel]: enabled
@@ -117,8 +117,8 @@ const AutomatedReminders = ({ clientId }) => {
               <input
                 type="checkbox"
                 checked={enabled}
-                onChange={(e) => handleSettingsChange(channel, e.target.checked)}
-                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+                onChange={(e) => [REDACTED_TOKEN](channel, e.target.checked)}
+                className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:[REDACTED_TOKEN] focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
               />
               <div className="flex items-center gap-2">
                 <span className="text-lg">
@@ -155,7 +155,7 @@ const AutomatedReminders = ({ clientId }) => {
           >
             <div className="flex items-start justify-between mb-4">
               <div className="flex items-start gap-3">
-                <div className={`p-2 rounded-lg ${getReminderTypeColor(reminder.type)}`}>
+                <div className={`p-2 rounded-lg ${[REDACTED_TOKEN](reminder.type)}`}>
                   {getReminderTypeIcon(reminder.type)}
                 </div>
                 <div className="flex-1">

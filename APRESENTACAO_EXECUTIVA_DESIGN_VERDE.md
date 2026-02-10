@@ -168,9 +168,9 @@ BACKEND (Express/Node)
 
 ```
 📦 Documentação Raiz
-├── IMPLEMENTACAO_DESIGN_VERDE_FINAL.md    ← Completa
-├── CHANGELOG_DESIGN_VERDE.md               ← O que mudou
-├── QUICK_START_DESIGN_VERDE.md             ← Como começar em 5min
+├── [REDACTED_TOKEN].md    ← Completa
+├── [REDACTED_TOKEN].md               ← O que mudou
+├── [REDACTED_TOKEN].md             ← Como começar em 5min
 ├── ANTES_DEPOIS_VISUAL.md                  ← Comparação visual
 └── (Este arquivo)                          ← Executiva
 
@@ -323,9 +323,9 @@ Deploy em staging → QA approval → Produção
 
 ## 📞 Contato & Suporte
 
-- **Documentação Técnica**: `/IMPLEMENTACAO_DESIGN_VERDE_FINAL.md`
-- **Quick Start**: `/QUICK_START_DESIGN_VERDE.md`
-- **Changelog**: `/CHANGELOG_DESIGN_VERDE.md`
+- **Documentação Técnica**: `/[REDACTED_TOKEN].md`
+- **Quick Start**: `/[REDACTED_TOKEN].md`
+- **Changelog**: `/[REDACTED_TOKEN].md`
 - **Código**: `frontend/src/` e `backend/src/`
 
 ---

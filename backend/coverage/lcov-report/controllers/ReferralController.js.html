@@ -224,7 +224,7 @@ const ReferralService = require('../services/ReferralService');
 router.post('/generate-code', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const code = <span class="cstat-no" title="statement not covered" >await ReferralService.generateReferralCode(userId);</span>
+    const code = <span class="cstat-no" title="statement not covered" >await ReferralService.[REDACTED_TOKEN](userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(code);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -245,7 +245,7 @@ router.post('/apply-code', <span class="fstat-no" title="function not covered" >
 // POST /api/referrals/:referralId/confirm
 router.post('/:referralId/confirm', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const reward = <span class="cstat-no" title="statement not covered" >await ReferralService.confirmReferralReward(req.params.referralId);</span>
+    const reward = <span class="cstat-no" title="statement not covered" >await ReferralService.[REDACTED_TOKEN](req.params.referralId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(reward);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -266,7 +266,7 @@ router.get('/stats/:userId', <span class="fstat-no" title="function not covered"
 router.get('/leaderboard', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { limit = <span class="branch-0 cbranch-no" title="branch not covered" >10 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const leaderboard = <span class="cstat-no" title="statement not covered" >await ReferralService.getReferralLeaderboard(parseInt(limit));</span>
+    const leaderboard = <span class="cstat-no" title="statement not covered" >await ReferralService.[REDACTED_TOKEN](parseInt(limit));</span>
 <span class="cstat-no" title="statement not covered" >    res.json(leaderboard);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -277,7 +277,7 @@ router.get('/leaderboard', <span class="fstat-no" title="function not covered" >
 router.post('/validate-code', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { code } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const validation = <span class="cstat-no" title="statement not covered" >await ReferralService.validateReferralCode(code);</span>
+    const validation = <span class="cstat-no" title="statement not covered" >await ReferralService.[REDACTED_TOKEN](code);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(validation);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>

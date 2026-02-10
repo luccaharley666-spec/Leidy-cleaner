@@ -3,7 +3,7 @@
 -- =====================================================
 
 -- Conversation logs
-CREATE TABLE IF NOT EXISTS chatbot_conversations (
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userId INT NOT NULL,
   user_message LONGTEXT,

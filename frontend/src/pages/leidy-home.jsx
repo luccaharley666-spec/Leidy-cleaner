@@ -29,7 +29,7 @@ export default function LeidyHome() {
       <section 
         className="hero pt-32 pb-20 text-white text-center bg-cover bg-center relative"
         style={{
-          backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+          backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.9)), url('https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
@@ -134,7 +134,7 @@ export default function LeidyHome() {
             
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                 alt="Equipe Leidy Cleaner"
                 className="w-full h-auto object-cover"
               />

@@ -45,7 +45,7 @@ test.describe('Fluxo Completo de Agendamento', () => {
     await page.selectOption('[data-testid=duration-select]', '2');
 
     // Submeter formulário
-    await page.click('[data-testid=submit-booking-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
 
     // Esperar confirmação
     await page.waitForSelector('[data-testid=booking-success]', { timeout: 5000 });
@@ -67,7 +67,7 @@ test.describe('Fluxo Completo de Agendamento', () => {
     await page.fill('[data-testid=time-input]', '10:00');
     await page.fill('[data-testid=address-input]', 'Rua das Flores, 123');
     await page.fill('[data-testid=phone-input]', '(11) 98765-4321');
-    await page.click('[data-testid=submit-booking-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
 
     // Aguardar página de pagamento
     await page.waitForURL(/.*payment.*/);
@@ -106,7 +106,7 @@ test.describe('Fluxo Completo de Agendamento', () => {
     await page.fill('[data-testid=time-input]', '10:00');
     await page.fill('[data-testid=address-input]', 'Rua das Flores, 123');
     await page.fill('[data-testid=phone-input]', '(11) 98765-4321');
-    await page.click('[data-testid=submit-booking-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
 
     // Ir para pagamento
     await page.waitForURL(/.*payment.*/);
@@ -141,7 +141,7 @@ test.describe('Fluxo Completo de Agendamento', () => {
     await page.click('[data-testid=new-booking-button]');
 
     // Tentar submeter sem preencher nada
-    await page.click('[data-testid=submit-booking-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
 
     // Verificar mensagens de erro
     await expect(page.locator('[data-testid=service-error]')).toBeVisible();

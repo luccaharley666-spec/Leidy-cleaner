@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/StaffAvailabilityController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> StaffAvailabilityController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -792,7 +792,7 @@
 const { getDb } = require('../db/sqlite');
 const logger = require('../utils/logger');
 &nbsp;
-class StaffAvailabilityController {
+class [REDACTED_TOKEN] {
   /**
    * GET /api/staff/available
    * Retorna lista de staff disponíveis com scores de alocação
@@ -841,7 +841,7 @@ class StaffAvailabilityController {
             ROUND(100 - (COUNT(DISTINCT CASE 
               WHEN b.booking_date LIKE ? AND b.status IN ('confirmed', 'in_progress')
               THEN b.id 
-            END) * 15), 0) as availability_percent,
+            END) * 15), 0) as [REDACTED_TOKEN],
             
             -- Custo estimado (base price + surge)
             ROUND((
@@ -857,8 +857,8 @@ class StaffAvailabilityController {
           WHERE s.role = 'staff' 
           AND s.active = 1
           GROUP BY s.id
-          HAVING availability_percent &gt; 0
-          ORDER BY availability_percent DESC, avg_rating DESC
+          HAVING [REDACTED_TOKEN] &gt; 0
+          ORDER BY [REDACTED_TOKEN] DESC, avg_rating DESC
           LIMIT 10
         `, 
         [
@@ -876,7 +876,7 @@ class StaffAvailabilityController {
 &nbsp;
       // Calcular scores e adicionar recomendação
       const staffWithScores = <span class="cstat-no" title="statement not covered" >availableStaff.map(<span class="fstat-no" title="function not covered" >(s</span>taff, index) =&gt; {</span>
-        const availabilityScore = <span class="cstat-no" title="statement not covered" >staff.availability_percent;</span>
+        const availabilityScore = <span class="cstat-no" title="statement not covered" >staff.[REDACTED_TOKEN];</span>
         const ratingScore = <span class="cstat-no" title="statement not covered" >(staff.avg_rating / 5) * 100;</span>
         const loadScore = <span class="cstat-no" title="statement not covered" >(1 - (staff.bookings_today / 6)) * 100;</span> // 6 = max bookings/day
         const experienceScore = <span class="cstat-no" title="statement not covered" >Math.min((staff.total_completed / 50) * 100, 100);</span>
@@ -928,7 +928,7 @@ class StaffAvailabilityController {
    * GET /api/staff/availability-status
    * Status em tempo real (para WebSocket)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getAvailabilityStatus(req, res) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { staffId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
       const db = <span class="cstat-no" title="statement not covered" >await getDb();</span>
@@ -1014,7 +1014,7 @@ class StaffAvailabilityController {
             d.date,
             STRFTIME('%w', d.date) as day_of_week,
             COUNT(CASE WHEN b.status IN ('confirmed', 'in_progress') THEN 1 END) as bookings_count,
-            ROUND(100 - (COUNT(CASE WHEN b.status IN ('confirmed', 'in_progress') THEN 1 END) * 15), 0) as availability_percent,
+            ROUND(100 - (COUNT(CASE WHEN b.status IN ('confirmed', 'in_progress') THEN 1 END) * 15), 0) as [REDACTED_TOKEN],
             GROUP_CONCAT(
               JSON_OBJECT(
                 'id', b.id,
@@ -1142,7 +1142,7 @@ class StaffAvailabilityController {
   }
 }
 &nbsp;
-module.exports = new StaffAvailabilityController();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

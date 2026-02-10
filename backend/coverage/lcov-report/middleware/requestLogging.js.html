@@ -213,7 +213,7 @@ const { v4: uuidv4 } = require('uuid');
  * Middleware para logging de requisições
  * Registra: método, path, status code, duração, user ID
  */
-const requestLoggingMiddleware = (req, res, next) =&gt; {
+const [REDACTED_TOKEN] = (req, res, next) =&gt; {
   // Gerar request ID único
   req.id = req.headers['x-request-id'] || uuidv4();
   req.startTime = Date.now();
@@ -269,7 +269,7 @@ const requestLoggingMiddleware = (req, res, next) =&gt; {
   next();
 };
 &nbsp;
-module.exports = requestLoggingMiddleware;
+module.exports = [REDACTED_TOKEN];
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

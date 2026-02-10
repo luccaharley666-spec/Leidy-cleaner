@@ -18,8 +18,8 @@ Refatorar fetch calls críticos para usar `apiCall` centralizada com timeout de 
 ✅ ClientDashboard.jsx      - Sem erros
 ✅ StaffDashboard.jsx       - Sem erros
 ✅ AdminPanel.jsx           - Sem erros
-✅ AvailableStaffWidget.jsx - 1 warning negligenciável (React unused)
-✅ ChatEncryptionClient.js  - Sem erros
+✅ [REDACTED_TOKEN].jsx - 1 warning negligenciável (React unused)
+✅ [REDACTED_TOKEN].js  - Sem erros
 ```
 
 ---
@@ -74,7 +74,7 @@ Refatorar fetch calls críticos para usar `apiCall` centralizada com timeout de 
   - Status: ✅ Refatorado
 
 ### Notifications (CRÍTICO)
-- [x] **PushManager.registerAndSubscribe()** - Agora com timeout
+- [x] **PushManager.[REDACTED_TOKEN]()** - Agora com timeout
   - Endpoint: `/api/notifications/subscribe`
   - Timeout: 30s
   - Status: ✅ Refatorado
@@ -129,33 +129,33 @@ Refatorar fetch calls críticos para usar `apiCall` centralizada com timeout de 
   - Status: ✅ Refatorado
 
 ### Availability
-- [x] **AvailableStaffWidget.fetchAvailableStaff()** - Agora com timeout
+- [x] **[REDACTED_TOKEN].fetchAvailableStaff()** - Agora com timeout
   - Endpoint: `/api/staff/available`
   - Timeout: 30s
   - Status: ✅ Refatorado
 
 ### Encryption Service (5 métodos)
-- [x] **ChatEncryptionClient.uploadEncryptedFile()** - Agora com timeout
+- [x] **[REDACTED_TOKEN].uploadEncryptedFile()** - Agora com timeout
   - Endpoint: `/api/chat/upload-encrypted`
   - Timeout: 30s
   - Status: ✅ Refatorado
 
-- [x] **ChatEncryptionClient.downloadEncryptedFile()** - Agora com timeout
+- [x] **[REDACTED_TOKEN].[REDACTED_TOKEN]()** - Agora com timeout
   - Endpoint: `/api/chat/download-encrypted/${fileId}`
   - Timeout: 30s
   - Status: ✅ Refatorado
 
-- [x] **ChatEncryptionClient.sendEncryptedMessage()** - Agora com timeout
+- [x] **[REDACTED_TOKEN].[REDACTED_TOKEN]()** - Agora com timeout
   - Endpoint: `/api/chat/messages`
   - Timeout: 30s
   - Status: ✅ Refatorado
 
-- [x] **ChatEncryptionClient.getEncryptedMessages()** - Agora com timeout
+- [x] **[REDACTED_TOKEN].[REDACTED_TOKEN]()** - Agora com timeout
   - Endpoint: `/api/chat/messages/${conversationId}`
   - Timeout: 30s
   - Status: ✅ Refatorado
 
-- [x] **ChatEncryptionClient.deleteConversation()** - Agora com timeout
+- [x] **[REDACTED_TOKEN].deleteConversation()** - Agora com timeout
   - Endpoint: `/api/chat/conversations/${conversationId}`
   - Timeout: 30s
   - Status: ✅ Refatorado
@@ -168,7 +168,7 @@ Refatorar fetch calls críticos para usar `apiCall` centralizada com timeout de 
 ```bash
 npm run test -- src/context/AuthContext.jsx
 npm run test -- src/components/Payments/CheckoutForm.jsx
-npm run test -- src/services/ChatEncryptionClient.js
+npm run test -- src/services/[REDACTED_TOKEN].js
 ```
 
 ### 2. Testes de Integração
@@ -237,20 +237,20 @@ app.get('/api/admin/dashboard', async (req, res) => {
 ## 📚 Documentação Gerada
 
 ### Arquivos Criados
-- [x] `REFATORACAO_FETCH_CALLS.md` - Detalhes completos de cada refatoração
-- [x] `REFATORACAO_CONCLUIDA.md` - Instruções de teste e guia de uso
-- [x] `REFATORACAO_CHECKLIST.md` - Este arquivo (verificação final)
+- [x] `[REDACTED_TOKEN].md` - Detalhes completos de cada refatoração
+- [x] `[REDACTED_TOKEN].md` - Instruções de teste e guia de uso
+- [x] `[REDACTED_TOKEN].md` - Este arquivo (verificação final)
 
 ### Como Consultar
 ```bash
 # Ver detalhes de cada refatoração
-cat /workspaces/mmmm/REFATORACAO_FETCH_CALLS.md
+cat /workspaces/mmmm/[REDACTED_TOKEN].md
 
 # Ver instruções de teste
-cat /workspaces/mmmm/REFATORACAO_CONCLUIDA.md
+cat /workspaces/mmmm/[REDACTED_TOKEN].md
 
 # Ver checklist final
-cat /workspaces/mmmm/REFATORACAO_CHECKLIST.md
+cat /workspaces/mmmm/[REDACTED_TOKEN].md
 ```
 
 ---

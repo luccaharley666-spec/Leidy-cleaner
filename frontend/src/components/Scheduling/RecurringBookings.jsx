@@ -5,7 +5,7 @@ function RecurringBookings({ onRecurringChange }) {
   const [isRecurring, setIsRecurring] = useState(false);
   const [frequency, setFrequency] = useState('weekly');
   const [repetitions, setRepetitions] = useState(4);
-  const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [discountPercentage, [REDACTED_TOKEN]] = useState(0);
   const { addToast } = useToast();
 
   const frequencyOptions = [
@@ -14,7 +14,7 @@ function RecurringBookings({ onRecurringChange }) {
     { value: 'monthly', label: 'Mensal', discount: 10 },
   ];
 
-  const handleToggleRecurring = () => {
+  const [REDACTED_TOKEN] = () => {
     const newState = !isRecurring;
     setIsRecurring(newState);
 
@@ -24,18 +24,18 @@ function RecurringBookings({ onRecurringChange }) {
       addToast('Modo recorrente desativado', 'info');
       setFrequency('weekly');
       setRepetitions(4);
-      setDiscountPercentage(0);
+      [REDACTED_TOKEN](0);
     }
   };
 
-  const handleFrequencyChange = (value) => {
+  const [REDACTED_TOKEN] = (value) => {
     setFrequency(value);
     const option = frequencyOptions.find(o => o.value === value);
-    setDiscountPercentage(option?.discount || 0);
+    [REDACTED_TOKEN](option?.discount || 0);
     addToast(`Frequência alterada para ${option?.label}`, 'info');
   };
 
-  const handleRepetitionsChange = (e) => {
+  const [REDACTED_TOKEN] = (e) => {
     const value = Math.min(Math.max(2, parseInt(e.target.value)), 52);
     setRepetitions(value);
   };
@@ -58,7 +58,7 @@ function RecurringBookings({ onRecurringChange }) {
     return endDate.toLocaleDateString('pt-BR');
   };
 
-  const handleSaveRecurringConfig = () => {
+  const [REDACTED_TOKEN] = () => {
     if (onRecurringChange) {
       onRecurringChange({
         isRecurring,
@@ -82,7 +82,7 @@ function RecurringBookings({ onRecurringChange }) {
 
         {/* Toggle Switch */}
         <button
-          onClick={handleToggleRecurring}
+          onClick={[REDACTED_TOKEN]}
           className={`relative inline-flex h-8 w-16 rounded-full transition-colors ${
             isRecurring ? 'bg-green-600' : 'bg-gray-300'
           }`}
@@ -90,7 +90,7 @@ function RecurringBookings({ onRecurringChange }) {
           aria-checked={isRecurring}
         >
           <span
-            className={`inline-block h-6 w-6 transform rounded-full bg-white shadow-lg transition-transform mt-1 ml-1 ${
+            className={`inline-block h-6 w-6 transform rounded-full bg-white shadow-lg [REDACTED_TOKEN] mt-1 ml-1 ${
               isRecurring ? 'translate-x-8' : ''
             }`}
           />
@@ -109,7 +109,7 @@ function RecurringBookings({ onRecurringChange }) {
               {frequencyOptions.map((option) => (
                 <button
                   key={option.value}
-                  onClick={() => handleFrequencyChange(option.value)}
+                  onClick={() => [REDACTED_TOKEN](option.value)}
                   className={`p-4 rounded-lg border-2 transition font-semibold ${
                     frequency === option.value
                       ? 'border-blue-600 bg-blue-50 text-blue-900'
@@ -134,7 +134,7 @@ function RecurringBookings({ onRecurringChange }) {
                 min="2"
                 max="52"
                 value={repetitions}
-                onChange={handleRepetitionsChange}
+                onChange={[REDACTED_TOKEN]}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
               />
               <div className="flex items-center gap-4">
@@ -149,7 +149,7 @@ function RecurringBookings({ onRecurringChange }) {
                   min="2"
                   max="52"
                   value={repetitions}
-                  onChange={(e) => handleRepetitionsChange(e)}
+                  onChange={(e) => [REDACTED_TOKEN](e)}
                   className="flex-1 px-3 py-2 border border-gray-300 rounded-lg text-center font-semibold focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button
@@ -221,7 +221,7 @@ function RecurringBookings({ onRecurringChange }) {
       {/* Botão de Ação */}
       <div className="flex gap-3">
         <button
-          onClick={handleSaveRecurringConfig}
+          onClick={[REDACTED_TOKEN]}
           disabled={!isRecurring}
           className="flex-1 px-6 py-3 bg-blue-600 text-white font-bold rounded-lg hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed"
         >

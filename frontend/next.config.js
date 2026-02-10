@@ -34,12 +34,12 @@ const nextConfig = {
             value: 'DENY',
           },
           {
-            key: 'X-Content-Type-Options',
+            key: '[REDACTED_TOKEN]',
             value: 'nosniff',
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
+            value: '[REDACTED_TOKEN]',
           },
           {
             key: 'Permissions-Policy',
@@ -52,7 +52,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=300, s-maxage=600, stale-while-revalidate=86400',
+            value: 'public, max-age=300, s-maxage=600, [REDACTED_TOKEN]=86400',
           },
         ],
       },
@@ -92,9 +92,9 @@ const nextConfig = {
 
     // Add bundle analyzer in development
     if (!dev && process.env.ANALYZE === 'true') {
-      const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+      const { [REDACTED_TOKEN] } = require('[REDACTED_TOKEN]');
       config.plugins.push(
-        new BundleAnalyzerPlugin({
+        new [REDACTED_TOKEN]({
           analyzerMode: 'static',
           openAnalyzer: false,
         })

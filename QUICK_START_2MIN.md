@@ -89,7 +89,7 @@ curl -X POST http://localhost:3001/api/payments/stripe/create-session \
 ```
 
 ### Option B: Ativar pagamentos reais
-Veja: [`PIX_REAL_INTEGRATION_GUIDE.md`](PIX_REAL_INTEGRATION_GUIDE.md) ou [`STRIPE_PRODUCTION_GUIDE.md`](STRIPE_PRODUCTION_GUIDE.md)
+Veja: [`[REDACTED_TOKEN].md`]([REDACTED_TOKEN].md) ou [`[REDACTED_TOKEN].md`]([REDACTED_TOKEN].md)
 
 ---
 
@@ -109,10 +109,10 @@ Veja: [`PIX_REAL_INTEGRATION_GUIDE.md`](PIX_REAL_INTEGRATION_GUIDE.md) ou [`STRI
 | Doc | Assunto |
 |-----|---------|
 | [`LEIDY_STATUS_FINAL.md`](LEIDY_STATUS_FINAL.md) | Status visual e bonito |
-| [`STATUS_5_PRIORIDADES_CRITICAS.md`](STATUS_5_PRIORIDADES_CRITICAS.md) | Detalhes de cada prioridade |
-| [`PIX_REAL_INTEGRATION_GUIDE.md`](PIX_REAL_INTEGRATION_GUIDE.md) | Como integrar PIX |
-| [`STRIPE_PRODUCTION_GUIDE.md`](STRIPE_PRODUCTION_GUIDE.md) | Como integrar Stripe |
-| [`RESUMO_EXECUTIVO_HOJE.md`](RESUMO_EXECUTIVO_HOJE.md) | Resumo do que foi feito |
+| [`[REDACTED_TOKEN].md`]([REDACTED_TOKEN].md) | Detalhes de cada prioridade |
+| [`[REDACTED_TOKEN].md`]([REDACTED_TOKEN].md) | Como integrar PIX |
+| [`[REDACTED_TOKEN].md`]([REDACTED_TOKEN].md) | Como integrar Stripe |
+| [`[REDACTED_TOKEN].md`]([REDACTED_TOKEN].md) | Resumo do que foi feito |
 
 ---
 
@@ -173,8 +173,8 @@ Status: 75% Production Ready 🚀
 
 👉 Escolha uma opção:
 
-1. **Quer integrar PIX?** → Leia `PIX_REAL_INTEGRATION_GUIDE.md`
-2. **Quer integrar Stripe?** → Leia `STRIPE_PRODUCTION_GUIDE.md`
+1. **Quer integrar PIX?** → Leia `[REDACTED_TOKEN].md`
+2. **Quer integrar Stripe?** → Leia `[REDACTED_TOKEN].md`
 3. **Quer fazer deploy?** → Leia `DEPLOYMENT_GUIDE.md`
 4. **Quer apenas testar?** → Continue com os usuários acima
 

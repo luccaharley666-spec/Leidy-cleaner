@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/SlotRecommendationService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> SlotRecommendationService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -482,14 +482,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
- * SlotRecommendationService.js
+ * [REDACTED_TOKEN].js
  * Recomenda horários e staff baseado em rating, disponibilidade e preferências
  */
 &nbsp;
 const db = <span class="cstat-no" title="statement not covered" >require('../db');</span>
 const logger = <span class="cstat-no" title="statement not covered" >require('../utils/logger');</span>
 &nbsp;
-class SlotRecommendationService {
+class [REDACTED_TOKEN] {
   /**
    * Recomendar slots para um serviço
    * Retorna os 5 melhores horários ordenados por: rating &gt; preferência de horário &gt; disponibilidade
@@ -597,7 +597,7 @@ class SlotRecommendationService {
    * Recomendar serviços complementares
    * Se agendou limpeza profunda, sugerir higiene de sofá, etc
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async recommendComplementary(serviceId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](serviceId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const service = <span class="cstat-no" title="statement not covered" >await db.get('SELECT category FROM services WHERE id = ?', serviceId);</span>
 &nbsp;
@@ -689,7 +689,7 @@ class SlotRecommendationService {
   }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = SlotRecommendationService;</span>
+<span class="cstat-no" title="statement not covered" >module.exports = [REDACTED_TOKEN];</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

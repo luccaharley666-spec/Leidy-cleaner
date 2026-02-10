@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS payments (
   user_id INTEGER NOT NULL,
   amount REAL NOT NULL,
   method VARCHAR(20) DEFAULT 'card',
-  stripe_payment_intent_id VARCHAR(255),
+  [REDACTED_TOKEN] VARCHAR(255),
   status VARCHAR(20) DEFAULT 'pending',
   refund_id VARCHAR(255),
   created_at DATETIME DEFAULT (datetime('now')),
@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS payments (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);
-CREATE INDEX IF NOT EXISTS idx_payments_booking_id ON payments(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(booking_id);
 CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
 
 CREATE TABLE IF NOT EXISTS chat_messages (
@@ -33,6 +33,6 @@ CREATE TABLE IF NOT EXISTS chat_messages (
   FOREIGN KEY (recipient_id) REFERENCES users(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_chat_messages_booking_id ON chat_messages(booking_id);
-CREATE INDEX IF NOT EXISTS idx_chat_messages_sender_id ON chat_messages(sender_id);
-CREATE INDEX IF NOT EXISTS idx_chat_messages_recipient_id ON chat_messages(recipient_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(sender_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(recipient_id);

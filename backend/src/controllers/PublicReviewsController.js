@@ -5,7 +5,7 @@
 
 const db = require('../db');
 
-class PublicReviewsController {
+class [REDACTED_TOKEN] {
   /**
    * Buscar avaliações públicas (para página de depoimentos)
    */
@@ -270,4 +270,4 @@ class PublicReviewsController {
   }
 }
 
-module.exports = new PublicReviewsController();
+module.exports = new [REDACTED_TOKEN]();

@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   base_price DECIMAL(10, 2),
   extra_quarter_hours DECIMAL(10, 2) DEFAULT 0,
   staff_fee DECIMAL(10, 2) DEFAULT 0,
-  post_work_adjustment DECIMAL(10, 2) DEFAULT 0,
+  [REDACTED_TOKEN] DECIMAL(10, 2) DEFAULT 0,
   final_price DECIMAL(10, 2),
   is_post_work INTEGER DEFAULT 0,
   has_extra_quarter INTEGER DEFAULT 0,
@@ -166,18 +166,18 @@ CREATE TABLE IF NOT EXISTS recurring_bookings (
 CREATE INDEX IF NOT EXISTS idx_bookings_user ON bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_date ON bookings(date);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
-CREATE INDEX IF NOT EXISTS idx_bookings_service ON bookings(service_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON bookings(service_id);
 CREATE INDEX IF NOT EXISTS idx_reviews_booking ON reviews(booking_id);
-CREATE INDEX IF NOT EXISTS idx_transactions_booking ON transactions(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON transactions(booking_id);
 `;
 
 const seedData = `
 -- Usuários
 INSERT OR IGNORE INTO users (id, name, email, phone, password_hash, role) VALUES
-(1, 'Admin User', 'admin@test.com', '(51) 98030-3740', 'hashed_password_here', 'admin'),
-(2, 'Leidy Silva', 'leidy@test.com', '(51) 99999-9999', 'hashed_password_here', 'staff'),
-(3, 'Maria Santos', 'maria@test.com', '(51) 88888-8888', 'hashed_password_here', 'staff'),
-(4, 'João Cliente', 'joao@example.com', '(51) 99999-1111', 'hashed_password_here', 'customer');
+(1, 'Admin User', 'admin@test.com', '(51) 98030-3740', '[REDACTED_TOKEN]', 'admin'),
+(2, 'Leidy Silva', 'leidy@test.com', '(51) 99999-9999', '[REDACTED_TOKEN]', 'staff'),
+(3, 'Maria Santos', 'maria@test.com', '(51) 88888-8888', '[REDACTED_TOKEN]', 'staff'),
+(4, 'João Cliente', 'joao@example.com', '(51) 99999-1111', '[REDACTED_TOKEN]', 'customer');
 
 -- Serviços
 INSERT OR IGNORE INTO services (id, name, description, price, base_price, icon, duration_minutes, category) VALUES

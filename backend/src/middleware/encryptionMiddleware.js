@@ -3,13 +3,13 @@
  * Middleware para facilitar criptografia/descriptografia de mensagens
  */
 
-const ChatEncryptionService = require('../services/ChatEncryptionService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const logger = require('../utils/logger');
 
 /**
- * Middleware para auto-descriptografar mensagens antes do handler
+ * Middleware para [REDACTED_TOKEN] mensagens antes do handler
  */
-function encryptionMiddleware(req, res, next) {
+function [REDACTED_TOKEN](req, res, next) {
   // Armazenar método original
   const originalJson = res.json;
 
@@ -17,7 +17,7 @@ function encryptionMiddleware(req, res, next) {
   res.json = function(data) {
     // Se tem dados de mensagem criptografada, descriptografar
     if (data && data.messages && Array.isArray(data.messages)) {
-      // Auto-descriptografar se chave disponível
+      // [REDACTED_TOKEN] se chave disponível
       data.messages = data.messages.map(msg => {
         if (msg.encryptedMessage && !msg.decrypted) {
           return msg; // Deixar como está para cliente descriptografar
@@ -36,7 +36,7 @@ function encryptionMiddleware(req, res, next) {
 /**
  * Middleware para validar chave de criptografia
  */
-function validateEncryptionKey(req, res, next) {
+function [REDACTED_TOKEN](req, res, next) {
   // Procurar chave em: body, query, headers
   const keyLocation = req.body?.encryptionKey || 
                       req.query?.encryptionKey || 
@@ -68,7 +68,7 @@ function logCryptoOperation(req, res, next) {
 
   res.json = function(data) {
     if (data.success) {
-      ChatEncryptionService.logCryptoOperation(
+      [REDACTED_TOKEN].logCryptoOperation(
         req.user?.id,
         `${req.method} ${req.path}`.toLowerCase(),
         true
@@ -107,7 +107,7 @@ function cryptoRateLimit(req, res, next) {
 /**
  * Middleware para garantir HTTPS em produção
  */
-function requireHttpsForCrypto(req, res, next) {
+function [REDACTED_TOKEN](req, res, next) {
   if (process.env.NODE_ENV === 'production' && req.protocol !== 'https') {
     return res.status(403).json({
       error: 'HTTPS é obrigatório para operações criptográficas'
@@ -117,9 +117,9 @@ function requireHttpsForCrypto(req, res, next) {
 }
 
 module.exports = {
-  encryptionMiddleware,
-  validateEncryptionKey,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
   logCryptoOperation,
   cryptoRateLimit,
-  requireHttpsForCrypto
+  [REDACTED_TOKEN]
 };

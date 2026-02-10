@@ -278,8 +278,8 @@ const jwt = require('jsonwebtoken');
 const logger = require('../utils/logger');
 &nbsp;
 // Use environment variables or defaults for dev
-const JWT_SECRET = process.env.JWT_SECRET || <span class="branch-1 cbranch-no" title="branch not covered" >'dev_jwt_secret_key_minimum_32_chars_long_987654';</span>
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || <span class="branch-1 cbranch-no" title="branch not covered" >'dev_refresh_secret_key_minimum_32_chars_long_987';</span>
+const JWT_SECRET = process.env.JWT_SECRET || <span class="branch-1 cbranch-no" title="branch not covered" >'[REDACTED_TOKEN]';</span>
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || <span class="branch-1 cbranch-no" title="branch not covered" >'[REDACTED_TOKEN]';</span>
 &nbsp;
 // Warning if not set in production
 <span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NODE_ENV === 'production' &amp;&amp; (<span class="branch-1 cbranch-no" title="branch not covered" >!process.env.JWT_SECRET </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >!process.env.JWT_REFRESH_SECRET)</span>) {
@@ -297,7 +297,7 @@ const generateToken = <span class="fstat-no" title="function not covered" >(u</s
 };
 &nbsp;
 // ✅ CORRIGIDO: Gerar refresh token
-const generateRefreshToken = <span class="fstat-no" title="function not covered" >(u</span>serId) =&gt; {
+const [REDACTED_TOKEN] = <span class="fstat-no" title="function not covered" >(u</span>serId) =&gt; {
 <span class="cstat-no" title="statement not covered" >  return jwt.sign(</span>
     { userId },
     JWT_REFRESH_SECRET,
@@ -365,7 +365,7 @@ module.exports = {
   authenticateToken,
   authorizeRole,
   generateToken,     // ✅ NOVO
-  generateRefreshToken, // ✅ NOVO
+  [REDACTED_TOKEN], // ✅ NOVO
   requireRole, // compat
 };
 &nbsp;

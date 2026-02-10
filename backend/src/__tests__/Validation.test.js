@@ -168,7 +168,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
       expect(next).not.toHaveBeenCalled();
     });
 
@@ -183,7 +183,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject without address', () => {
@@ -197,7 +197,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with past date', () => {
@@ -212,7 +212,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject Sunday booking', () => {
@@ -232,7 +232,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should accept valid email when provided', () => {
@@ -264,7 +264,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should accept valid phone when provided', () => {
@@ -296,7 +296,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should accept valid CEP when provided', () => {
@@ -328,7 +328,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should return multiple errors', () => {
@@ -339,7 +339,7 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
       expect(res.json).toHaveBeenCalled();
       const callArg = res.json.mock.calls[0][0];
       expect(callArg.errors.length).toBeGreaterThan(1);
@@ -373,7 +373,7 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject without amount', () => {
@@ -387,7 +387,7 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with zero amount', () => {
@@ -402,7 +402,7 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with negative amount', () => {
@@ -417,7 +417,7 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject without paymentMethod', () => {
@@ -431,7 +431,7 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
   });
 
@@ -462,7 +462,7 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with rating below 1', () => {
@@ -477,7 +477,7 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with rating above 5', () => {
@@ -492,7 +492,7 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should accept rating 1', () => {
@@ -536,7 +536,7 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with empty comment', () => {
@@ -551,7 +551,7 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
 
     test('should reject with only spaces as comment', () => {
@@ -566,7 +566,7 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status).toHaveBeenCalledWith(400);
+      expect(res.status).[REDACTED_TOKEN](400);
     });
   });
 

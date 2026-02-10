@@ -1,4 +1,4 @@
-/* AvailableStaffWidget.module.css */
+/* [REDACTED_TOKEN].module.css */
 
 .container {
   width: 100%;
@@ -247,7 +247,7 @@
 /* Staff Metrics */
 .staffMetrics {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  [REDACTED_TOKEN]: repeat(auto-fit, minmax(120px, 1fr));
   gap: 12px;
 }
 
@@ -404,7 +404,7 @@
   }
 
   .staffMetrics {
-    grid-template-columns: repeat(2, 1fr);
+    [REDACTED_TOKEN]: repeat(2, 1fr);
   }
 
   .staffHeader {
@@ -435,15 +435,15 @@
   width: 8px;
 }
 
-.staffList::-webkit-scrollbar-track {
+.staffList::-[REDACTED_TOKEN] {
   background: #f0f0f0;
 }
 
-.staffList::-webkit-scrollbar-thumb {
+.staffList::-[REDACTED_TOKEN] {
   background: #d1d5db;
   border-radius: 4px;
 }
 
-.staffList::-webkit-scrollbar-thumb:hover {
+.staffList::-[REDACTED_TOKEN]:hover {
   background: #9ca3af;
 }

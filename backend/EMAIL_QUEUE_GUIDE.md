@@ -16,8 +16,8 @@ Uma **fila de emails confiável com retry automático** usando Bull + Redis.
 
 2. **EmailService Expandido** (`backend/src/services/EmailService.js`)
    - Novos métodos adicionados:
-     - `sendPaymentConfirmation()` - Confirmação de pagamento
-     - `sendRefundNotification()` - Notificação de reembolso
+     - `[REDACTED_TOKEN]()` - Confirmação de pagamento
+     - `[REDACTED_TOKEN]()` - Notificação de reembolso
      - `sendReviewRequest()` - Solicitação de avaliação
      - `sendGenericEmail()` - Email genérico personalizável
 
@@ -79,7 +79,7 @@ defaultJobOptions: {
 const newBooking = await db.get('SELECT * FROM bookings WHERE id = ?', result.lastID);
 
 // Enfileirar email (não bloqueia)
-await EmailQueueService.enqueueBookingConfirmation(
+await EmailQueueService.[REDACTED_TOKEN](
   user.email,
   user.name,
   {
@@ -162,7 +162,7 @@ npm run queue:worker:watch
   level: 'info',
   message: 'Email enviado com sucesso',
   jobId: 'booking-123-1707...'.
-  type: 'booking-confirmation',
+  type: '[REDACTED_TOKEN]',
   to: 'cliente@example.com',
   timestamp: '2026-02-05T10:30:00.000Z'
 }
@@ -172,7 +172,7 @@ npm run queue:worker:watch
   level: 'error',
   message: 'Email falhou após retries',
   jobId: 'booking-123-1707...',
-  type: 'booking-confirmation',
+  type: '[REDACTED_TOKEN]',
   to: 'cliente@example.com',
   attempts: 3,
   error: 'Connection timeout',
@@ -227,7 +227,7 @@ v=spf1 include:gmail.com ~all
 // ✅ Usar IDs e buscar dados novamente
 
 // ✅ Correto
-await EmailQueueService.enqueuePaymentConfirmation(
+await EmailQueueService.[REDACTED_TOKEN](
   email,
   name,
   {

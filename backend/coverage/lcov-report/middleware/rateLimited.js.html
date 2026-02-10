@@ -361,7 +361,7 @@ const limiters = {
     maxRequests: 5,
     keyGenerator: <span class="fstat-no" title="function not covered" >(r</span>eq) =&gt; <span class="cstat-no" title="statement not covered" >req.user?.id || req.ip,</span>
     message: 'Máximo 5 agendamentos por minuto. Tente novamente em breve.',
-    skipSuccessfulRequests: false,
+    [REDACTED_TOKEN]: false,
     skipFailedRequests: false
   }),
 &nbsp;
@@ -373,7 +373,7 @@ const limiters = {
     maxRequests: 5,
     keyGenerator: <span class="fstat-no" title="function not covered" >(r</span>eq) =&gt; <span class="cstat-no" title="statement not covered" >req.body?.email || req.ip,</span>
     message: 'Muitas tentativas de login. Tente novamente em 15 minutos.',
-    skipSuccessfulRequests: true, // Não contar sucessos
+    [REDACTED_TOKEN]: true, // Não contar sucessos
     skipFailedRequests: false
   }),
 &nbsp;
@@ -385,7 +385,7 @@ const limiters = {
     maxRequests: 2,
     keyGenerator: <span class="fstat-no" title="function not covered" >(r</span>eq) =&gt; <span class="cstat-no" title="statement not covered" >req.user?.id || req.ip,</span>
     message: 'Máximo 2 pagamentos por minuto.',
-    skipSuccessfulRequests: false,
+    [REDACTED_TOKEN]: false,
     skipFailedRequests: false
   }),
 &nbsp;
@@ -397,7 +397,7 @@ const limiters = {
     maxRequests: 3,
     keyGenerator: (req) =&gt; req.user?.id || req.ip,
     message: 'Máximo 3 reembolsos por hora.',
-    skipSuccessfulRequests: false,
+    [REDACTED_TOKEN]: false,
     skipFailedRequests: false
   }),
 &nbsp;
@@ -409,7 +409,7 @@ const limiters = {
     maxRequests: 10,
     keyGenerator: <span class="fstat-no" title="function not covered" >(r</span>eq) =&gt; <span class="cstat-no" title="statement not covered" >req.ip,</span>
     message: 'Máximo 10 registros por hora. Tente novamente mais tarde.',
-    skipSuccessfulRequests: false,
+    [REDACTED_TOKEN]: false,
     skipFailedRequests: false
   }),
 &nbsp;
@@ -421,7 +421,7 @@ const limiters = {
     maxRequests: 3,
     keyGenerator: <span class="fstat-no" title="function not covered" >(r</span>eq) =&gt; <span class="cstat-no" title="statement not covered" >req.user?.id || req.ip,</span>
     message: 'Máximo 3 avaliações por hora.',
-    skipSuccessfulRequests: false,
+    [REDACTED_TOKEN]: false,
     skipFailedRequests: false
   }),
 &nbsp;
@@ -433,7 +433,7 @@ const limiters = {
     maxRequests: 5,
     keyGenerator: <span class="fstat-no" title="function not covered" >(r</span>eq) =&gt; <span class="cstat-no" title="statement not covered" >req.user?.id || req.ip,</span>
     message: 'Máximo 5 uploads por 10 minutos.',
-    skipSuccessfulRequests: false,
+    [REDACTED_TOKEN]: false,
     skipFailedRequests: false
   }),
 &nbsp;
@@ -461,8 +461,8 @@ const limiters = {
 /**
  * Hook para logar violações de rate limit
  */
-function <span class="fstat-no" title="function not covered" >logRateLimitViolation(</span>req, res, next) {
-  const rateLimitHeader = <span class="cstat-no" title="statement not covered" >res.getHeader('X-RateLimit-Remaining');</span>
+function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>req, res, next) {
+  const rateLimitHeader = <span class="cstat-no" title="statement not covered" >res.getHeader('[REDACTED_TOKEN]');</span>
   
 <span class="cstat-no" title="statement not covered" >  if (rateLimitHeader &amp;&amp; parseInt(rateLimitHeader) &lt; 2) {</span>
 <span class="cstat-no" title="statement not covered" >    logger.warn('⚠️ Rate limit approaching', {</span>
@@ -478,7 +478,7 @@ function <span class="fstat-no" title="function not covered" >logRateLimitViolat
 &nbsp;
 module.exports = {
   limiters,
-  logRateLimitViolation
+  [REDACTED_TOKEN]
 };
 &nbsp;</pre></td></tr></table></pre>
 

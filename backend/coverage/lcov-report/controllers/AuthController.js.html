@@ -964,8 +964,8 @@ function <span class="fstat-no" title="function not covered" >validateCNPJ(</spa
 }
 &nbsp;
 // Use environment variables or defaults for dev
-const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_key_minimum_32_chars_long_987654';
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'dev_refresh_secret_key_minimum_32_chars_long_987';
+const JWT_SECRET = process.env.JWT_SECRET || '[REDACTED_TOKEN]';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || '[REDACTED_TOKEN]';
 const BCRYPT_ROUNDS = 12; // ✅ CORRIGIDO: Rounds consistentes (12 é recomendado)
 &nbsp;
 <span class="missing-if-branch" title="if path not taken" >I</span>if (process.env.NODE_ENV === 'production' &amp;&amp; (<span class="branch-1 cbranch-no" title="branch not covered" >!process.env.JWT_SECRET </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >!process.env.JWT_REFRESH_SECRET)</span>) {

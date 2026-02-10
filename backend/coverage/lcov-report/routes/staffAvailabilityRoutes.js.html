@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for routes/staffAvailabilityRoutes.js</title>
+    <title>Code coverage report for routes/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">routes</a> staffAvailabilityRoutes.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">routes</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -148,32 +148,32 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const StaffAvailabilityController = require('../controllers/StaffAvailabilityController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
 &nbsp;
 // ===== PUBLIC ENDPOINTS (sem autenticação) =====
 // Clientes veem staff disponível durante agendamento
 router.get('/available', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  StaffAvailabilityController.getAvailableStaff(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getAvailableStaff(req, res);</span>
 });
 &nbsp;
 router.get('/:staffId/availability-status', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  StaffAvailabilityController.getAvailabilityStatus(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 router.get('/shift-assignments/suggestions', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  StaffAvailabilityController.getShiftAssignments(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getShiftAssignments(req, res);</span>
 });
 &nbsp;
 // ===== AUTHENTICATED ENDPOINTS (staff only) =====
 // Ver seu próprio calendário
 router.get('/:staffId/calendar', authenticateToken, authorizeRole(['staff', 'admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  StaffAvailabilityController.getWeeklyCalendar(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getWeeklyCalendar(req, res);</span>
 });
 &nbsp;
 // Mudar seu status (available/busy/offline)
 router.post('/:staffId/set-status', authenticateToken, authorizeRole(['staff']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  StaffAvailabilityController.setStatus(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].setStatus(req, res);</span>
 });
 &nbsp;
 module.exports = router;

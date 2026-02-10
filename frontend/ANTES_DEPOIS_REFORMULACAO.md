@@ -446,7 +446,7 @@ http://localhost:3000/servicos-new    # Services nova
 
 ## 🎓 Guias Inclusos
 
-1. **NOVO_DESIGN_SYSTEM_2026.md** - Este documento
+1. **[REDACTED_TOKEN].md** - Este documento
 2. **Pages criadas:**
    - `/index-new` - Landing page
    - `/servicos-new` - Services page

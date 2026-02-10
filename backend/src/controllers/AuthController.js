@@ -41,8 +41,8 @@ function validateCNPJ(cnpj) {
 }
 
 // Use environment variables or defaults for dev
-const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_key_minimum_32_chars_long_987654';
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'dev_refresh_secret_key_minimum_32_chars_long_987';
+const JWT_SECRET = process.env.JWT_SECRET || '[REDACTED_TOKEN]';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || '[REDACTED_TOKEN]';
 const BCRYPT_ROUNDS = 12; // ✅ CORRIGIDO: Rounds consistentes (12 é recomendado)
 
 if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET)) {

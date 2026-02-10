@@ -19,7 +19,7 @@ echo ""
 # PIX Integration
 echo "💳 SISTEMA DE PAGAMENTO PIX"
 echo "   ✅ PixService - Gera QR Code, verifica pagamentos, confirma"
-echo "   ✅ PaymentIntegrationService - Processa webhooks PIX"
+echo "   ✅ [REDACTED_TOKEN] - Processa webhooks PIX"
 echo "   ✅ API Bancária - Integrado com fallback local"
 echo "   ✅ Testes - 30+ testes para PIX webhook"
 echo "   ✅ Endpoint - POST /api/payments/webhook"
@@ -56,7 +56,7 @@ echo ""
 # Environment
 echo "🔑 AMBIENTE & CONFIGURAÇÃO"
 echo "   ✅ .env.example - Completo (PIX, Twilio, feature flags)"
-echo "   ✅ Feature Flags - REACT_APP_ENABLE_NOTIFICATIONS, etc"
+echo "   ✅ Feature Flags - [REDACTED_TOKEN], etc"
 echo "   ✅ .env.test - Para testes locais"
 echo "   ✅ jest.env.js - DATABASE_URL, NODE_ENV, LOG_LEVEL"
 echo ""
@@ -65,15 +65,15 @@ echo ""
 echo "📚 DOCUMENTAÇÃO"
 echo "   ✅ TESTING_STRATEGY.md - 172 linhas (como testar tudo)"
 echo "   ✅ TODO_ITEMS.md - 73 linhas (comandos prontos)"
-echo "   ✅ IMPLEMENTACAO_CONSOLIDADA.md - Resumo visual completo"
+echo "   ✅ [REDACTED_TOKEN].md - Resumo visual completo"
 echo "   ✅ JSDoc - Todos os Services com comentários"
 echo ""
 
 # Architecture
 echo "🏗️ ARQUITETURA"
-echo "   ✅ Services - PixService, PaymentIntegrationService, NotificationService"
+echo "   ✅ Services - PixService, [REDACTED_TOKEN], NotificationService"
 echo "   ✅ Routes - /api/payments, /api/notifications (separados)"
-echo "   ✅ Controllers - PaymentController, NotificationController"
+echo "   ✅ Controllers - PaymentController, [REDACTED_TOKEN]"
 echo "   ✅ Patterns - Repository, Service, Controller (clean code)"
 echo ""
 
@@ -106,6 +106,6 @@ echo ""
 echo "📖 Para detalhes, veja:"
 echo "   • backend/TESTING_STRATEGY.md"
 echo "   • TODO_ITEMS.md"
-echo "   • IMPLEMENTACAO_CONSOLIDADA.md"
+echo "   • [REDACTED_TOKEN].md"
 echo ""
 echo "════════════════════════════════════════════════════════════════════════════════════"

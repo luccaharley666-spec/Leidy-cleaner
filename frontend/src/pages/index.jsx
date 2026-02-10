@@ -10,7 +10,7 @@ import GallerySection from '../components/Sections/GallerySection'
 import BlogSection from '../components/Sections/BlogSection'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
-import { trackCTAClick, trackPriceCalculation, trackSectionView, setupScrollTracking, setupSessionTracking } from '../utils/analytics'
+import { trackCTAClick, [REDACTED_TOKEN], trackSectionView, setupScrollTracking, [REDACTED_TOKEN] } from '../utils/analytics'
 
 export default function Home() {
   const [selectedHours, setSelectedHours] = useState(40);
@@ -27,15 +27,15 @@ export default function Home() {
 
     // Setup analytics tracking
     setupScrollTracking();
-    setupSessionTracking('index');
+    [REDACTED_TOKEN]('index');
 
     // Track initial section views
     trackSectionView('hero');
   }, [])
 
-  const handleCalculatePrice = (result) => {
+  const [REDACTED_TOKEN] = (result) => {
     setPriceEstimate(result);
-    trackPriceCalculation(result.hours, result.totalPrice, result.characteristics);
+    [REDACTED_TOKEN](result.hours, result.totalPrice, result.characteristics);
   };
 
   const handleCtaClick = (ctaName, location) => {
@@ -105,7 +105,7 @@ export default function Home() {
             {/* Background decorativo */}
             <div className="absolute inset-0 -z-10">
               <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-br from-green-200 to-emerald-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-              <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-emerald-200 to-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+              <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-br from-emerald-200 to-teal-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob [REDACTED_TOKEN]"></div>
             </div>
 
             <div className="container mx-auto max-w-7xl">
@@ -154,7 +154,7 @@ export default function Home() {
 
                 {/* Calculadora */}
                 <div data-aos="fade-left" className="lg:ml-4">
-                  <HourCalculator onCalculate={handleCalculatePrice} />
+                  <HourCalculator onCalculate={[REDACTED_TOKEN]} />
                 </div>
               </div>
             </div>

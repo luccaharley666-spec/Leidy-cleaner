@@ -13,10 +13,10 @@
     "biweekly_frequency": 0.9,
     "monthly_frequency": 0.95,
     "first_time_customer": 0.9,
-    "advance_booking_7days": 0.95,
-    "advance_booking_14days": 0.92,
-    "multiple_services_3plus": 0.9,
-    "multiple_services_5plus": 0.85
+    "[REDACTED_TOKEN]": 0.95,
+    "[REDACTED_TOKEN]": 0.92,
+    "[REDACTED_TOKEN]": 0.9,
+    "[REDACTED_TOKEN]": 0.85
   },
   "addons": {
     "window_cleaning": 30,
@@ -31,7 +31,7 @@
   },
   "minimumPrice": 80,
   "maximumDiscount": 0.3,
-  "serviceFeePercentage": 5,
+  "[REDACTED_TOKEN]": 5,
   "taxPercentage": 0,
   "discountRules": [
     {

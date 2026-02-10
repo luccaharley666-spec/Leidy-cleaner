@@ -6,12 +6,12 @@
   "scripts": {
     "start": "node src/index.js",
     "dev": "nodemon src/index.js",
-    "test": "jest --testPathIgnorePatterns=e2e",
-    "test:unit": "jest --testPathIgnorePatterns=e2e --testPathPattern=src",
-    "test:integration": "jest --testPathPattern=integration --testPathIgnorePatterns=e2e",
-    "test:coverage": "jest --coverage --testPathIgnorePatterns=e2e",
-    "test:watch": "jest --watch --testPathIgnorePatterns=e2e",
-    "test:ci": "jest --ci --coverage --maxWorkers=2 --testPathIgnorePatterns=e2e",
+    "test": "jest --[REDACTED_TOKEN]=e2e",
+    "test:unit": "jest --[REDACTED_TOKEN]=e2e --testPathPattern=src",
+    "test:integration": "jest --testPathPattern=integration --[REDACTED_TOKEN]=e2e",
+    "test:coverage": "jest --coverage --[REDACTED_TOKEN]=e2e",
+    "test:watch": "jest --watch --[REDACTED_TOKEN]=e2e",
+    "test:ci": "jest --ci --coverage --maxWorkers=2 --[REDACTED_TOKEN]=e2e",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "migrate": "node src/db/runMigrations.js",
@@ -29,13 +29,13 @@
     "invoices:cleanup": "node -e \"const InvoiceService = require('./backend/src/services/InvoiceService.js'); InvoiceService.deleteOldInvoices(30).then(() => process.exit(0))\"",
     "invoices:stats": "node -e \"const InvoiceService = require('./backend/src/services/InvoiceService.js'); console.log(JSON.stringify(InvoiceService.getStats(), null, 2))\"",
     "crypto:generate-key": "node -e \"const crypto = require('crypto'); console.log('Chave 256-bit (hex):', crypto.randomBytes(32).toString('hex'))\"",
-    "crypto:audit": "node -e \"const ChatEncryptionService = require('./backend/src/services/ChatEncryptionService.js'); console.log(ChatEncryptionService)\"",
-    "migration:chat": "node src/database/migrations/002_create_chat_messages_table.js",
-    "db:report": "node -e \"const DatabaseOptimizationService = require('./backend/src/services/DatabaseOptimizationService.js'); console.log(JSON.stringify(DatabaseOptimizationService.getQueryReport(), null, 2))\"",
-    "db:slow-queries": "node -e \"const DatabaseOptimizationService = require('./backend/src/services/DatabaseOptimizationService.js'); DatabaseOptimizationService.detectSlowQueries(null, 100).then(q => console.log(JSON.stringify(q, null, 2))).then(() => process.exit(0))\"",
-    "db:indices": "node -e \"const DatabaseOptimizationService = require('./backend/src/services/DatabaseOptimizationService.js'); console.log(JSON.stringify(DatabaseOptimizationService.suggestIndices(), null, 2))\"",
-    "cdn:report": "node -e \"const CDNAssetOptimizerService = require('./backend/src/services/CDNAssetOptimizerService.js'); console.log(JSON.stringify(CDNAssetOptimizerService.generateOptimizationReport(), null, 2))\"",
-    "cdn:savings": "node -e \"const CDNAssetOptimizerService = require('./backend/src/services/CDNAssetOptimizerService.js'); console.log(JSON.stringify(CDNAssetOptimizerService.calculateBandwidthSavings(), null, 2))\""
+    "crypto:audit": "node -e \"const [REDACTED_TOKEN] = require('./backend/src/services/[REDACTED_TOKEN].js'); console.log([REDACTED_TOKEN])\"",
+    "migration:chat": "node src/database/migrations/[REDACTED_TOKEN].js",
+    "db:report": "node -e \"const [REDACTED_TOKEN] = require('./backend/src/services/[REDACTED_TOKEN].js'); console.log(JSON.stringify([REDACTED_TOKEN].getQueryReport(), null, 2))\"",
+    "db:slow-queries": "node -e \"const [REDACTED_TOKEN] = require('./backend/src/services/[REDACTED_TOKEN].js'); [REDACTED_TOKEN].detectSlowQueries(null, 100).then(q => console.log(JSON.stringify(q, null, 2))).then(() => process.exit(0))\"",
+    "db:indices": "node -e \"const [REDACTED_TOKEN] = require('./backend/src/services/[REDACTED_TOKEN].js'); console.log(JSON.stringify([REDACTED_TOKEN].suggestIndices(), null, 2))\"",
+    "cdn:report": "node -e \"const [REDACTED_TOKEN] = require('./backend/src/services/[REDACTED_TOKEN].js'); console.log(JSON.stringify([REDACTED_TOKEN].[REDACTED_TOKEN](), null, 2))\"",
+    "cdn:savings": "node -e \"const [REDACTED_TOKEN] = require('./backend/src/services/[REDACTED_TOKEN].js'); console.log(JSON.stringify([REDACTED_TOKEN].[REDACTED_TOKEN](), null, 2))\""
   },
   "dependencies": {
     "@sentry/node": "^7.84.0",
@@ -74,7 +74,7 @@
     "twilio": "^5.12.1",
     "web-push": "^3.5.0",
     "winston": "^3.19.0",
-    "winston-daily-rotate-file": "^5.0.0",
+    "[REDACTED_TOKEN]": "^5.0.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {

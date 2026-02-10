@@ -65,7 +65,7 @@ export default function BenefitsGrid() {
               <div className={`absolute inset-0 bg-gradient-to-br ${benefit.color} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity}`}></div>
 
               {/* Icon */}
-              <div className="text-5xl mb-4 group-hover:scale-110 transition-transform">
+              <div className="text-5xl mb-4 group-hover:scale-110 [REDACTED_TOKEN]">
                 {benefit.icon}
               </div>
 

@@ -377,7 +377,7 @@ python3 scripts/sqlite_to_postgres.py backend/backend_data/database.sqlite /tmp/
 
 ### Status: ⏳ PRECISA SER RECRIADO
 
-O export `leidy_export_PROD_SECURE.zip` foi criado mas depois deletado.
+O export `[REDACTED_TOKEN].zip` foi criado mas depois deletado.
 
 **O que será incluído:**
 ```
@@ -457,7 +457,7 @@ O export `leidy_export_PROD_SECURE.zip` foi criado mas depois deletado.
 1. **Recriar Export**
    ```bash
    cd /workspaces/acaba
-   zip -r /tmp/leidy_export_PROD_SECURE.zip . \
+   zip -r /tmp/[REDACTED_TOKEN].zip . \
      --exclude 'node_modules/*' '.git/*' '.next/*' \
      'backend_data/*' '*.log'
    ```

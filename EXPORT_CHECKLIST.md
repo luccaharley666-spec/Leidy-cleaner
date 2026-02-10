@@ -52,7 +52,7 @@ cp /workspaces/acaba/frontend/package.json ~/leidy-essencial/frontend-package.js
 ```bash
 # Method 1: ZIP de tudo
 cd /workspaces
-zip -r leidy-cleaner-completo.zip acaba/
+zip -r [REDACTED_TOKEN].zip acaba/
 
 # Method 2: ZIP apenas essencial
 cd /workspaces/acaba
@@ -99,7 +99,7 @@ Se tiver que escolher SÓ entre tudo: **ESTES**
 ✅ backend/.env                 (Config)
 ✅ frontend/src                 (Código React)
 ✅ frontend/.next               (Build otimizado)
-✅ API_REFERENCE_COMPLETA.md    (Documentação)
+✅ [REDACTED_TOKEN].md    (Documentação)
 ✅ GUIA_IMPORTACAO_*.md         (Como importar)
 ```
 
@@ -133,11 +133,11 @@ leidy-exportado/
     │   ├── package.json
     │   └── next.config.js
     │
-    ├── API_REFERENCE_COMPLETA.md ⭐
-    ├── GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md ⭐
-    ├── README_FINAL_EXPORTACAO.md ⭐
+    ├── [REDACTED_TOKEN].md ⭐
+    ├── [REDACTED_TOKEN].md ⭐
+    ├── [REDACTED_TOKEN].md ⭐
     ├── ACOES_IMEDIATAS.md ⭐
-    ├── PLANO_24H_FINALIZACAO.md
+    ├── [REDACTED_TOKEN].md
     ├── Dockerfile.backend
     ├── Dockerfile.frontend
     └── docker-compose.yml
@@ -169,8 +169,8 @@ du -sh ~/leidy-exportado/acaba/
 scp -r seu_usuario@servidor:~/leidy-exportado ./leidy-cleaner
 
 # 2. Se fez ZIP:
-scp seu_usuario@servidor:/workspaces/leidy-cleaner-completo.zip ./
-unzip leidy-cleaner-completo.zip
+scp seu_usuario@servidor:/workspaces/[REDACTED_TOKEN].zip ./
+unzip [REDACTED_TOKEN].zip
 
 # 3. Se apenas essencial:
 scp -r seu_usuario@servidor:/workspaces/acaba/backend/backend_data/ ./dados
@@ -214,8 +214,8 @@ cd ../frontend && npm install
 sqlite3 backend/backend_data/database.sqlite ".tables"
 
 # 3. Ler documentação
-cat API_REFERENCE_COMPLETA.md
-cat GUIA_IMPORTACAO_OUTRA_PLATAFORMA.md
+cat [REDACTED_TOKEN].md
+cat [REDACTED_TOKEN].md
 ```
 
 ---

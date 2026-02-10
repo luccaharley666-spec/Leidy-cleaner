@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/SmartNotificationController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> SmartNotificationController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -274,13 +274,13 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const SmartNotificationService = require('../services/SmartNotificationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 // POST /api/smart-notifications/send
 router.post('/send', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, message } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const notification = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.sendSmartNotification(userId, message);</span>
+    const notification = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](userId, message);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(notification);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -291,7 +291,7 @@ router.post('/send', <span class="fstat-no" title="function not covered" >as</sp
 router.post('/preferences/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const preferences = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.setUserPreferences(req.params.userId, preferences);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].setUserPreferences(req.params.userId, preferences);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -301,7 +301,7 @@ router.post('/preferences/:userId', <span class="fstat-no" title="function not c
 // GET /api/smart-notifications/preferences/:userId
 router.get('/preferences/:userId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const preferences = <span class="cstat-no" title="statement not covered" >SmartNotificationService.getUserPreferences(req.params.userId);</span>
+    const preferences = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].getUserPreferences(req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(preferences);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -312,7 +312,7 @@ router.get('/preferences/:userId', <span class="fstat-no" title="function not co
 router.post('/ab-tests', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { name, messageA, messageB } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const test = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.createABTest({</span>
+    const test = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].createABTest({</span>
       name,
       messageA,
       messageB
@@ -327,7 +327,7 @@ router.post('/ab-tests', <span class="fstat-no" title="function not covered" >as
 router.post('/:notificationId/interact', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { action = <span class="branch-0 cbranch-no" title="branch not covered" >'opened' </span>} = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const interaction = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.recordNotificationInteraction(</span>
+    const interaction = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](</span>
       req.params.notificationId,
       action
     );
@@ -341,7 +341,7 @@ router.post('/:notificationId/interact', <span class="fstat-no" title="function 
 router.get('/metrics/engagement', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { timeWindow = <span class="branch-0 cbranch-no" title="branch not covered" >7 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const metrics = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.getEngagementMetrics(parseInt(timeWindow));</span>
+    const metrics = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](parseInt(timeWindow));</span>
 <span class="cstat-no" title="statement not covered" >    res.json(metrics);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -351,7 +351,7 @@ router.get('/metrics/engagement', <span class="fstat-no" title="function not cov
 // GET /api/smart-notifications/:userId/optimal-time
 router.get('/:userId/optimal-time', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const optimization = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.optimizeSendTime(req.params.userId);</span>
+    const optimization = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].optimizeSendTime(req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(optimization);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -361,7 +361,7 @@ router.get('/:userId/optimal-time', <span class="fstat-no" title="function not c
 // GET /api/smart-notifications/ab-tests/:testId/results
 router.get('/ab-tests/:testId/results', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const results = <span class="cstat-no" title="statement not covered" >await SmartNotificationService.getABTestResults(req.params.testId);</span>
+    const results = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getABTestResults(req.params.testId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(results);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>

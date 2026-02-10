@@ -36,8 +36,8 @@ describe('EmailService', () => {
       expect(emailService.transporter).toBeDefined();
     });
 
-    test('should have sendBookingConfirmation method', () => {
-      expect(typeof emailService.sendBookingConfirmation).toBe('function');
+    test('should have [REDACTED_TOKEN] method', () => {
+      expect(typeof emailService.[REDACTED_TOKEN]).toBe('function');
     });
 
     test('should have sendReminder method', () => {
@@ -64,7 +64,7 @@ describe('EmailService', () => {
         price: 150
       };
       
-      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, clientName, bookingData);
       
       expect(emailService.transporter.sendMail).toHaveBeenCalled();
     });
@@ -74,7 +74,7 @@ describe('EmailService', () => {
       const clientName = 'Test User';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, clientName, bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.to).toBe(clientEmail);
@@ -93,7 +93,7 @@ describe('EmailService', () => {
         services: ['cleaning']
       };
       
-      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, clientName, bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.html || callArgs.text).toContain('Rua Teste');
@@ -104,7 +104,7 @@ describe('EmailService', () => {
       const clientName = 'Test User';
       const bookingData = { id: '1', date: '2024-12-25', time: '09:00', address: 'Rua Teste, 123', durationHours: 1, finalPrice: 100, services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, clientName, bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.subject).toContain('Agendamento');
@@ -112,7 +112,7 @@ describe('EmailService', () => {
 
     test('should handle null email gracefully', async () => {
       try {
-        await emailService.sendBookingConfirmation(null, 'Test', { id: '1' });
+        await emailService.[REDACTED_TOKEN](null, 'Test', { id: '1' });
       } catch (e) {
         expect(e).toBeDefined();
       }
@@ -120,7 +120,7 @@ describe('EmailService', () => {
 
     test('should handle null booking data gracefully', async () => {
       try {
-        await emailService.sendBookingConfirmation('test@example.com', 'Test', null);
+        await emailService.[REDACTED_TOKEN]('test@example.com', 'Test', null);
       } catch (e) {
         expect(e).toBeDefined();
       }
@@ -159,7 +159,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.html).toBeDefined();
@@ -169,7 +169,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       const html = callArgs.html;
@@ -180,7 +180,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.html).toContain('style');
@@ -274,7 +274,7 @@ describe('EmailService', () => {
       emailService.transporter = mockTransporter;
       
       try {
-        await emailService.sendBookingConfirmation('test@example.com', 'Test', { id: '1' });
+        await emailService.[REDACTED_TOKEN]('test@example.com', 'Test', { id: '1' });
       } catch (e) {
         expect(e).toBeDefined();
       }
@@ -282,7 +282,7 @@ describe('EmailService', () => {
 
     test('should handle invalid email addresses', async () => {
       try {
-        await emailService.sendBookingConfirmation('invalid-email', 'Test', { id: '1' });
+        await emailService.[REDACTED_TOKEN]('invalid-email', 'Test', { id: '1' });
       } catch (e) {
         // May throw or validate
       }
@@ -297,7 +297,7 @@ describe('EmailService', () => {
       emailService.transporter = mockTransporter;
       
       try {
-        await emailService.sendBookingConfirmation('test@example.com', 'Test', { id: '1' });
+        await emailService.[REDACTED_TOKEN]('test@example.com', 'Test', { id: '1' });
       } catch (e) {
         expect(e).toBeDefined();
       }
@@ -310,7 +310,7 @@ describe('EmailService', () => {
       const clientName = 'João Silva';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, clientName, bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.html || callArgs.text).toContain('João');
@@ -320,7 +320,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.html).toContain('Leidy');
@@ -330,7 +330,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.from).toBeDefined();
@@ -340,7 +340,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
       expect(callArgs.html).toContain('button');
@@ -352,7 +352,7 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
+      await emailService.[REDACTED_TOKEN](clientEmail, 'Test', bookingData);
       
       expect(emailService.transporter.sendMail).toHaveBeenCalled();
     });

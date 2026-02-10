@@ -6,7 +6,7 @@ class TwilioService {
     this.accountSid = process.env.TWILIO_ACCOUNT_SID;
     this.authToken = process.env.TWILIO_AUTH_TOKEN;
     this.phoneNumber = process.env.TWILIO_PHONE_NUMBER;
-    this.whatsappFrom = process.env.TWILIO_WHATSAPP_FROM;
+    this.whatsappFrom = process.env.[REDACTED_TOKEN];
 
     this.initializeClient();
   }
@@ -68,7 +68,7 @@ class TwilioService {
     }
   }
 
-  async sendBookingConfirmation(phoneNumber, bookingDetails, channel = 'sms') {
+  async [REDACTED_TOKEN](phoneNumber, bookingDetails, channel = 'sms') {
     const { bookingId, serviceName, date, time, address, finalPrice } = bookingDetails;
 
     const message = `
@@ -91,7 +91,7 @@ Acompanhe em: ${process.env.APP_URL || 'https://app.example.com'}
     }
   }
 
-  async sendPaymentConfirmation(phoneNumber, paymentDetails, channel = 'sms') {
+  async [REDACTED_TOKEN](phoneNumber, paymentDetails, channel = 'sms') {
     const { bookingId, amount, method, transactionId } = paymentDetails;
 
     const message = `
@@ -136,7 +136,7 @@ Estamos preparados para atender você!
     }
   }
 
-  async sendRescheduleNotification(phoneNumber, oldBooking, newBooking, channel = 'sms') {
+  async [REDACTED_TOKEN](phoneNumber, oldBooking, newBooking, channel = 'sms') {
     const message = `
 🔄 Leidy Cleaner - Agendamento Reagendado
 

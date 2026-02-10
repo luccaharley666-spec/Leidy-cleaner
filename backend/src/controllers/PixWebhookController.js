@@ -1,5 +1,5 @@
 /**
- * PixWebhookController.js - Receber e processar webhooks PIX de pagamentos
+ * [REDACTED_TOKEN].js - Receber e processar webhooks PIX de pagamentos
  * Endpoints para integração com bancos que enviam confirmações de pagamento
  */
 
@@ -7,7 +7,7 @@ const logger = require('../utils/logger');
 const PixWebhookService = require('../services/PixWebhookService');
 const PixService = require('../services/PixService');
 
-class PixWebhookController {
+class [REDACTED_TOKEN] {
   /**
    * POST /api/webhooks/pix
    * Receber webhook de pagamento PIX confirmado
@@ -83,7 +83,7 @@ class PixWebhookController {
     try {
       const { pixTransactionId } = req.params;
 
-      const result = await PixWebhookService.validatePixStatusViaAPI(pixTransactionId);
+      const result = await PixWebhookService.[REDACTED_TOKEN](pixTransactionId);
 
       if (!result.success) {
         return res.status(404).json(result);
@@ -150,7 +150,7 @@ class PixWebhookController {
     try {
       const minutesUntilExpiry = req.query.minutes || 5;
 
-      const result = await PixWebhookService.getExpiringPixTransactions(
+      const result = await PixWebhookService.[REDACTED_TOKEN](
         parseInt(minutesUntilExpiry)
       );
 
@@ -175,7 +175,7 @@ class PixWebhookController {
    */
   static async cleanupExpiredPixs(req, res) {
     try {
-      const result = await PixWebhookService.cleanExpiredPixTransactions();
+      const result = await PixWebhookService.[REDACTED_TOKEN]();
 
       if (!result.success) {
         return res.status(500).json(result);
@@ -218,4 +218,4 @@ class PixWebhookController {
   }
 }
 
-module.exports = PixWebhookController;
+module.exports = [REDACTED_TOKEN];

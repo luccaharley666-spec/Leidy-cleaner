@@ -147,7 +147,7 @@ const {google} = require('googleapis');
 const calendar = google.calendar('v3');
 
 const auth = new google.auth.GoogleAuth({
-  keyFile: process.env.GOOGLE_SERVICE_ACCOUNT_KEY,
+  keyFile: process.env.[REDACTED_TOKEN],
   scopes: ['https://www.googleapis.com/auth/calendar']
 });
 ```
@@ -189,7 +189,7 @@ const openai = new OpenAIApi(new Configuration({
 ### Uso
 ```javascript
 // Gerar resposta de chatbot
-const response = await openai.createChatCompletion({
+const response = await openai.[REDACTED_TOKEN]({
   model: 'gpt-3.5-turbo',
   messages: [
     { role: 'user', content: userMessage }

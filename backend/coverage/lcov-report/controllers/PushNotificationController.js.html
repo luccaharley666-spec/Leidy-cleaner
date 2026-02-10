@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/PushNotificationController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> PushNotificationController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -280,13 +280,13 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const PushNotificationService = require('../services/PushNotificationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 // POST /api/notifications/subscribe
 router.post('/subscribe', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, subscription } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const sub = <span class="cstat-no" title="statement not covered" >await PushNotificationService.registerSubscription(userId, subscription);</span>
+    const sub = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](userId, subscription);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(sub);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -297,7 +297,7 @@ router.post('/subscribe', <span class="fstat-no" title="function not covered" >a
 router.post('/send', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, title, body, icon, badge, tag, requireInteraction } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const notification = <span class="cstat-no" title="statement not covered" >await PushNotificationService.sendPushNotification(userId, {</span>
+    const notification = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](userId, {</span>
       title,
       body,
       icon,
@@ -315,7 +315,7 @@ router.post('/send', <span class="fstat-no" title="function not covered" >as</sp
 router.post('/broadcast', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userIds, title, body, icon } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await PushNotificationService.broadcastNotification(userIds, {</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](userIds, {</span>
       title,
       body,
       icon
@@ -330,7 +330,7 @@ router.post('/broadcast', <span class="fstat-no" title="function not covered" >a
 router.get('/history/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { limit = <span class="branch-0 cbranch-no" title="branch not covered" >50 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const history = <span class="cstat-no" title="statement not covered" >await PushNotificationService.getNotificationHistory(req.params.userId, parseInt(limit));</span>
+    const history = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId, parseInt(limit));</span>
 <span class="cstat-no" title="statement not covered" >    res.json(history);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -340,7 +340,7 @@ router.get('/history/:userId', <span class="fstat-no" title="function not covere
 // GET /api/notifications/preferences/:userId
 router.get('/preferences/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const preferences = <span class="cstat-no" title="statement not covered" >await PushNotificationService.getNotificationPreferences(req.params.userId);</span>
+    const preferences = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(preferences);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -350,7 +350,7 @@ router.get('/preferences/:userId', <span class="fstat-no" title="function not co
 // PUT /api/notifications/preferences/:userId
 router.put('/preferences/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await PushNotificationService.updateNotificationPreferences(req.params.userId, req.body);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId, req.body);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -360,7 +360,7 @@ router.put('/preferences/:userId', <span class="fstat-no" title="function not co
 // DELETE /api/notifications/unsubscribe/:subscriptionId
 router.delete('/unsubscribe/:subscriptionId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await PushNotificationService.unsubscribeDevice(req.params.subscriptionId);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].unsubscribeDevice(req.params.subscriptionId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -370,7 +370,7 @@ router.delete('/unsubscribe/:subscriptionId', <span class="fstat-no" title="func
 // GET /api/notifications/stats
 router.get('/stats', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const stats = <span class="cstat-no" title="statement not covered" >await PushNotificationService.getDeliveryStats();</span>
+    const stats = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getDeliveryStats();</span>
 <span class="cstat-no" title="statement not covered" >    res.json(stats);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>

@@ -1,6 +1,6 @@
 const express = require('express');
 const { authenticateToken } = require('../middleware/auth');
-const ProfessionalRatingService = require('../services/ProfessionalRatingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.post('/rate', authenticateToken, async (req, res) => {
     const { professionalId, rating, feedback } = req.body;
     const adminId = req.user.id;
 
-    const result = await ProfessionalRatingService.rateProfessional(
+    const result = await [REDACTED_TOKEN].rateProfessional(
       professionalId,
       adminId,
       rating,
@@ -34,7 +34,7 @@ router.get('/:professionalId', async (req, res) => {
   try {
     const { professionalId } = req.params;
 
-    const ratings = await ProfessionalRatingService.getProfessionalRatings(professionalId);
+    const ratings = await [REDACTED_TOKEN].[REDACTED_TOKEN](professionalId);
     res.json({ success: true, ratings });
   } catch (error) {
     console.error('Erro ao obter avaliações:', error);
@@ -47,7 +47,7 @@ router.get('/low-rated/:minRating', async (req, res) => {
   try {
     const { minRating } = req.params;
 
-    const professionals = await ProfessionalRatingService.getLowRatedProfessionals(
+    const professionals = await [REDACTED_TOKEN].[REDACTED_TOKEN](
       parseInt(minRating)
     );
 

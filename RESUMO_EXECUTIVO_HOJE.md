@@ -22,13 +22,13 @@
 - Status: **OPERACIONAL** ✅
 
 ### 📄 CRÍTICO #2: PIX Integration
-- Criado guia completo: `PIX_REAL_INTEGRATION_GUIDE.md` (250+ linhas)
+- Criado guia completo: `[REDACTED_TOKEN].md` (250+ linhas)
 - Explicação passo-a-passo para integrar com Efi Gateways
 - Código backend pronto, precisa apenas de credenciais
 - Status: **CÓDIGO PRONTO, AGUARDANDO INTEGRAÇÃO** ⏳
 
 ### 📄 CRÍTICO #3: Stripe Production
-- Criado guia completo: `STRIPE_PRODUCTION_GUIDE.md` (300+ linhas)
+- Criado guia completo: `[REDACTED_TOKEN].md` (300+ linhas)
 - Explicação passo-a-passo para migrar para produção
 - Código backend/frontend pronto, precisa credenciais live
 - Status: **CÓDIGO PRONTO, AGUARDANDO CREDENCIAIS** ⏳
@@ -112,9 +112,9 @@ sqlite3> .quit
 
 ## 🔗 Documentação Criada
 
-1. **PIX_REAL_INTEGRATION_GUIDE.md** - Guia completo de integração PIX
-2. **STRIPE_PRODUCTION_GUIDE.md** - Guia completo de migração Stripe
-3. **STATUS_5_PRIORIDADES_CRITICAS.md** - Status detalhado de cada prioridade
+1. **[REDACTED_TOKEN].md** - Guia completo de integração PIX
+2. **[REDACTED_TOKEN].md** - Guia completo de migração Stripe
+3. **[REDACTED_TOKEN].md** - Status detalhado de cada prioridade
 
 ---
 
@@ -122,9 +122,9 @@ sqlite3> .quit
 
 **Criados:**
 - `/backend/seed-data.sql` - Dados de teste
-- `/PIX_REAL_INTEGRATION_GUIDE.md` - Guia PIX
-- `/STRIPE_PRODUCTION_GUIDE.md` - Guia Stripe
-- `/STATUS_5_PRIORIDADES_CRITICAS.md` - Status final
+- `/[REDACTED_TOKEN].md` - Guia PIX
+- `/[REDACTED_TOKEN].md` - Guia Stripe
+- `/[REDACTED_TOKEN].md` - Status final
 
 **Modificados:**
 - `/frontend/src/pages/admin-dashboard.jsx` - Corrigido erro de sintaxe e imports
@@ -190,4 +190,4 @@ cp /backend/backend_data/database.sqlite /backend/database.backup.sqlite
 
 ---
 
-**Documentação:** Para detalhes completos, consulte `STATUS_5_PRIORIDADES_CRITICAS.md`
+**Documentação:** Para detalhes completos, consulte `[REDACTED_TOKEN].md`

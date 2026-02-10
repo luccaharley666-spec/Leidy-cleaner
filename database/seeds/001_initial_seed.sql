@@ -10,9 +10,9 @@ VALUES (
   'Admin Master',
   'admin@limpezapro.com',
   '+55 (11) 98000-0001',
-  '$2b$12$abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234', -- bcrypt hash - CHANGE IN PRODUCTION
+  '$2b$12$[REDACTED_TOKEN]', -- bcrypt hash - CHANGE IN PRODUCTION
   'admin',
-  '$2b$12$1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd1234abcd', -- bcrypt hash for admin panel - CHANGE IN PRODUCTION
+  '$2b$12$[REDACTED_TOKEN]', -- bcrypt hash for admin panel - CHANGE IN PRODUCTION
   true,
   datetime('now')
 );
@@ -24,7 +24,7 @@ VALUES (
   'Gerente de Equipe',
   'staff@limpezapro.com',
   '+55 (11) 98000-0002',
-  '$2b$12$efgh5678efgh5678efgh5678efgh5678efgh5678efgh5678efgh5678', -- bcrypt hash - CHANGE IN PRODUCTION
+  '$2b$12$[REDACTED_TOKEN]', -- bcrypt hash - CHANGE IN PRODUCTION
   'staff',
   true,
   datetime('now')
@@ -54,7 +54,7 @@ UPDATE company_info SET
   
   -- Business Hours
   business_hours_open = '08:00:00',
-  business_hours_close = '18:00:00',
+  [REDACTED_TOKEN] = '18:00:00',
   
   -- Policies
   payment_terms = '50% adiantado, 50% no dia do serviço',
@@ -71,7 +71,7 @@ VALUES (
   'João da Limpeza',
   'joao@limpezapro.com',
   '+55 (11) 99000-0001',
-  '$2b$12$ijkl9012ijkl9012ijkl9012ijkl9012ijkl9012ijkl9012ijkl9012', -- password: Joao@123456
+  '$2b$12$[REDACTED_TOKEN]', -- password: Joao@123456
   'staff',
   '/uploads/avatars/joao-default.jpg',
   'Profissional experiente em limpeza residencial e comercial',
@@ -86,7 +86,7 @@ VALUES (
   'Maria Silva',
   'maria@example.com',
   '+55 (11) 99111-1111',
-  '$2b$12$mnop3456mnop3456mnop3456mnop3456mnop3456mnop3456mnop3456', -- password: Maria@123456
+  '$2b$12$[REDACTED_TOKEN]', -- password: Maria@123456
   'customer',
   true,
   datetime('now')

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { useIntersectionObserver } from '../utils/performance';
+import { LazyLoadImage } from '[REDACTED_TOKEN]';
+import { [REDACTED_TOKEN] } from '../utils/performance';
 import { LoadingSpinner } from './LoadingSpinner';
 
 export function OptimizedImage({
@@ -17,7 +17,7 @@ export function OptimizedImage({
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const { ref, hasIntersected } = useIntersectionObserver({ threshold });
+  const { ref, hasIntersected } = [REDACTED_TOKEN]({ threshold });
 
   const handleLoad = () => {
     setIsLoaded(true);

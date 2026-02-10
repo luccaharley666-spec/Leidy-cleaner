@@ -1,8 +1,8 @@
 import React from 'react';
 
-// MapEmbed: if NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY provided, uses Google Maps embed with address, otherwise shows a Leaflet static map fallback.
+// MapEmbed: if [REDACTED_TOKEN] provided, uses Google Maps embed with address, otherwise shows a Leaflet static map fallback.
 function MapEmbed({ address, lat, lng, zoom = 14, height = 300 }) {
-  const key = process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_KEY;
+  const key = process.env.[REDACTED_TOKEN];
 
   if (key && address) {
     const src = `https://www.google.com/maps/embed/v1/place?key=${key}&q=${encodeURIComponent(address)}`;

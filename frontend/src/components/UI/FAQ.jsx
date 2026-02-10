@@ -72,7 +72,7 @@ const FAQ = () => {
               <span className="text-lg font-semibold text-gray-900 dark:text-white">
                 {faq.question}
               </span>
-              <span className={`text-2xl transition-transform ${openItems.has(index) ? 'rotate-180' : ''}`}>
+              <span className={`text-2xl [REDACTED_TOKEN] ${openItems.has(index) ? 'rotate-180' : ''}`}>
                 ▼
               </span>
             </button>

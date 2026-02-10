@@ -1,9 +1,9 @@
-describe('NotificationsController', () => {
+describe('[REDACTED_TOKEN]', () => {
   afterEach(() => {
     jest.resetModules();
     jest.clearAllMocks();
     delete process.env.VAPID_PRIVATE_KEY;
-    delete process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY;
+    delete process.env.[REDACTED_TOKEN];
     delete process.env.VAPID_PUBLIC_KEY;
   });
 
@@ -11,29 +11,29 @@ describe('NotificationsController', () => {
     jest.resetModules();
     jest.doMock('fs', () => ({ existsSync: () => true, writeFileSync: jest.fn(), readFileSync: () => '[]', mkdirSync: jest.fn() }));
     jest.doMock('web-push', () => ({ generateVAPIDKeys: jest.fn(() => ({ publicKey: 'p', privateKey: 's' })), setVapidDetails: jest.fn(), sendNotification: jest.fn() }));
-    const NotificationsController = require('../../controllers/NotificationsController');
+    const [REDACTED_TOKEN] = require('../../controllers/[REDACTED_TOKEN]');
 
     const req = { body: null };
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
-    await NotificationsController.subscribe(req, res);
+    await [REDACTED_TOKEN].subscribe(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.status).[REDACTED_TOKEN](400);
   });
 
   test('sendTest returns 400 when no subscriptions', async () => {
     jest.resetModules();
     jest.doMock('fs', () => ({ existsSync: () => true, writeFileSync: jest.fn(), readFileSync: () => '[]', mkdirSync: jest.fn() }));
     jest.doMock('web-push', () => ({ generateVAPIDKeys: jest.fn(() => ({ publicKey: 'p', privateKey: 's' })), setVapidDetails: jest.fn(), sendNotification: jest.fn() }));
-    const NotificationsController = require('../../controllers/NotificationsController');
+    const [REDACTED_TOKEN] = require('../../controllers/[REDACTED_TOKEN]');
 
     const req = {};
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
-    await NotificationsController.sendTest(req, res);
+    await [REDACTED_TOKEN].sendTest(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(400);
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: 'Nenhuma subscription registrada' }));
+    expect(res.status).[REDACTED_TOKEN](400);
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ error: 'Nenhuma subscription registrada' }));
   });
 
   test('sendTest with a subscription sends notification and returns sent count', async () => {
@@ -52,19 +52,19 @@ describe('NotificationsController', () => {
 
     jest.doMock('fs', () => mockFs);
     jest.doMock('web-push', () => mockWeb);
-    const NotificationsController = require('../../controllers/NotificationsController');
+    const [REDACTED_TOKEN] = require('../../controllers/[REDACTED_TOKEN]');
 
     const req = {};
     const res = { json: jest.fn(), status: jest.fn().mockReturnThis() };
 
-    await NotificationsController.sendTest(req, res);
+    await [REDACTED_TOKEN].sendTest(req, res);
 
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ success: true, sent: 1, total: 1 }));
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ success: true, sent: 1, total: 1 }));
     expect(mockFs.writeFileSync).toHaveBeenCalled();
   });
 });
 /**
- * NotificationsController Integration Tests
+ * [REDACTED_TOKEN] Integration Tests
  * Testa gerenciamento de notificações
  */
 
@@ -82,9 +82,9 @@ jest.mock('../../utils/logger', () => ({
   debug: jest.fn()
 }));
 
-const NotificationsController = require('../../controllers/NotificationsController');
+const [REDACTED_TOKEN] = require('../../controllers/[REDACTED_TOKEN]');
 
-describe('NotificationsController', () => {
+describe('[REDACTED_TOKEN]', () => {
   let req, res;
 
   beforeEach(() => {
@@ -105,36 +105,36 @@ describe('NotificationsController', () => {
 
   describe('Controller Structure', () => {
     test('should have getNotifications method', () => {
-      expect(typeof NotificationsController.getNotifications === 'function' || NotificationsController.getNotifications === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].getNotifications === 'function' || [REDACTED_TOKEN].getNotifications === undefined).toBe(true);
     });
 
     test('should have sendNotification method', () => {
-      expect(typeof NotificationsController.sendNotification === 'function' || NotificationsController.sendNotification === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].sendNotification === 'function' || [REDACTED_TOKEN].sendNotification === undefined).toBe(true);
     });
 
     test('should have markAsRead method', () => {
-      expect(typeof NotificationsController.markAsRead === 'function' || NotificationsController.markAsRead === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].markAsRead === 'function' || [REDACTED_TOKEN].markAsRead === undefined).toBe(true);
     });
 
     test('should have deleteNotification method', () => {
-      expect(typeof NotificationsController.deleteNotification === 'function' || NotificationsController.deleteNotification === undefined).toBe(true);
+      expect(typeof [REDACTED_TOKEN].deleteNotification === 'function' || [REDACTED_TOKEN].deleteNotification === undefined).toBe(true);
     });
   });
 
   describe('Get Notifications', () => {
     test('should get user notifications', async () => {
-      if (typeof NotificationsController.getNotifications === 'function') {
-        await NotificationsController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json).toHaveBeenCalled();
       }
     });
 
     test('should filter unread notifications', async () => {
-      if (typeof NotificationsController.getNotifications === 'function') {
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
         req.query = { unread: 'true' };
         
-        await NotificationsController.getNotifications(req, res);
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -143,24 +143,24 @@ describe('NotificationsController', () => {
 
   describe('Send Notification', () => {
     test('should send notification', async () => {
-      if (typeof NotificationsController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           type: 'booking_confirmed',
           message: 'Your booking was confirmed'
         };
         
-        await NotificationsController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }
     });
 
     test('should validate required fields', async () => {
-      if (typeof NotificationsController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = { message: 'Test' };
         
-        await NotificationsController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }
@@ -169,20 +169,20 @@ describe('NotificationsController', () => {
 
   describe('Mark As Read', () => {
     test('should mark notification as read', async () => {
-      if (typeof NotificationsController.markAsRead === 'function') {
+      if (typeof [REDACTED_TOKEN].markAsRead === 'function') {
         req.params.notificationId = '1';
         
-        await NotificationsController.markAsRead(req, res);
+        await [REDACTED_TOKEN].markAsRead(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should handle invalid notification', async () => {
-      if (typeof NotificationsController.markAsRead === 'function') {
+      if (typeof [REDACTED_TOKEN].markAsRead === 'function') {
         req.params.notificationId = 'invalid';
         
-        await NotificationsController.markAsRead(req, res);
+        await [REDACTED_TOKEN].markAsRead(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -191,10 +191,10 @@ describe('NotificationsController', () => {
 
   describe('Delete Notification', () => {
     test('should delete notification', async () => {
-      if (typeof NotificationsController.deleteNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].deleteNotification === 'function') {
         req.params.notificationId = '1';
         
-        await NotificationsController.deleteNotification(req, res);
+        await [REDACTED_TOKEN].deleteNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -203,8 +203,8 @@ describe('NotificationsController', () => {
 
   describe('Error Handling', () => {
     test('should handle service errors', async () => {
-      if (typeof NotificationsController.getNotifications === 'function') {
-        await NotificationsController.getNotifications(req, res);
+      if (typeof [REDACTED_TOKEN].getNotifications === 'function') {
+        await [REDACTED_TOKEN].getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -213,42 +213,42 @@ describe('NotificationsController', () => {
 
   describe('Notification Types', () => {
     test('should handle booking confirmation notifications', async () => {
-      if (typeof NotificationsController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           type: 'booking_confirmed',
           bookingId: '123'
         };
         
-        await NotificationsController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }
     });
 
     test('should handle cancellation notifications', async () => {
-      if (typeof NotificationsController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           type: 'booking_cancelled',
           bookingId: '123'
         };
         
-        await NotificationsController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }
     });
 
     test('should handle reminder notifications', async () => {
-      if (typeof NotificationsController.sendNotification === 'function') {
+      if (typeof [REDACTED_TOKEN].sendNotification === 'function') {
         req.body = {
           userId: '1',
           type: 'booking_reminder',
           bookingId: '123'
         };
         
-        await NotificationsController.sendNotification(req, res);
+        await [REDACTED_TOKEN].sendNotification(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }

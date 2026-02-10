@@ -92,7 +92,7 @@ export function NotificationSystem() {
         }}
       />
 
-      <NotificationDropdown
+      <[REDACTED_TOKEN]
         notifications={notifications}
         onMarkAsRead={markAsRead}
         onRemove={removeNotification}
@@ -107,7 +107,7 @@ export function NotificationSystem() {
   );
 }
 
-function NotificationDropdown({
+function [REDACTED_TOKEN]({
   notifications,
   onMarkAsRead,
   onRemove,

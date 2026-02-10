@@ -140,25 +140,25 @@ backend/src/
     ├── PixService.js ............................... (185 LOC)
     ├── CouponService.js ............................ (220 LOC)
     ├── ReferralService.js .......................... (200 LOC)
-    └── SlotRecommendationService.js ................ (180 LOC)
+    └── [REDACTED_TOKEN].js ................ (180 LOC)
 
 database/
 └── migrations/
-    └── 008_add_pix_cupons_referral.sql ............ (100+ LOC)
+    └── [REDACTED_TOKEN].sql ............ (100+ LOC)
 
 public/
 ├── manifest.json .................................. (JSON config)
 ├── service-worker.js ............................... (140 LOC)
 ├── offline.html .................................... (180 LOC)
 ├── termos-servico.html ............................. (240 LOC)
-└── politica-privacidade.html ....................... (260 LOC)
+└── [REDACTED_TOKEN].html ....................... (260 LOC)
 
 Documentation/
-├── RELATORIO_EXECUTIVO_FINAL.md ................... (469 linhas)
+├── [REDACTED_TOKEN].md ................... (469 linhas)
 ├── SESSAO_FINAL_RESUMO.md .......................... (372 linhas)
-├── IMPLEMENTACAO_FINAL_FEATURES.md ................ (525 linhas)
-├── ARQUITETURA_VISUAL_COMPLETA.md ................. (497 linhas)
-├── COMECE_AQUI_INDICE_COMPLETO.md ................. (378 linhas)
+├── [REDACTED_TOKEN].md ................ (525 linhas)
+├── [REDACTED_TOKEN].md ................. (497 linhas)
+├── [REDACTED_TOKEN].md ................. (378 linhas)
 └── test-implementation.sh .......................... (validation)
 
 TOTAL: 17 arquivos | 2,660+ LOC | 2,241 linhas doc
@@ -233,7 +233,7 @@ cd /workspaces/vamos
 cd backend && npm install speakeasy brcode && cd ..
 
 # 2. Run migrations
-npm run db:migrate 008_add_pix_cupons_referral.sql
+npm run db:migrate [REDACTED_TOKEN].sql
 
 # 3. Start
 npm start
@@ -283,19 +283,19 @@ Monitorar após deployment:
 ## 🎓 Documentação Incluída
 
 ```
-1. COMECE_AQUI_INDICE_COMPLETO.md ⭐ START HERE
+1. [REDACTED_TOKEN].md ⭐ START HERE
    └─ Guia de navegação para toda documentação
 
-2. RELATORIO_EXECUTIVO_FINAL.md
+2. [REDACTED_TOKEN].md
    └─ Resumo executivo (15 min read)
 
 3. SESSAO_FINAL_RESUMO.md
    └─ Detalhe de cada feature (20 min read)
 
-4. IMPLEMENTACAO_FINAL_FEATURES.md
+4. [REDACTED_TOKEN].md
    └─ Especificação técnica completa (40 min read)
 
-5. ARQUITETURA_VISUAL_COMPLETA.md
+5. [REDACTED_TOKEN].md
    └─ Diagramas + flows + database schema
 
 6. Existing Docs (README, DEPLOYMENT, etc)
@@ -403,10 +403,10 @@ Potencial de mercado: R$ 750k+/ano
 
 Se precisar de ajuda:
 
-1. **Dúvida técnica**: Ver [COMECE_AQUI_INDICE_COMPLETO.md](COMECE_AQUI_INDICE_COMPLETO.md)
+1. **Dúvida técnica**: Ver [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 2. **Como fazer deploy**: Ver [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
 3. **Erro no build**: `npm install speakeasy brcode` + `npm run db:migrate`
-4. **Integrar PIX com banco**: Ver [IMPLEMENTACAO_FINAL_FEATURES.md#próximos-passos](IMPLEMENTACAO_FINAL_FEATURES.md#próximos-passos)
+4. **Integrar PIX com banco**: Ver [[REDACTED_TOKEN].md#próximos-passos]([REDACTED_TOKEN].md#próximos-passos)
 
 ---
 

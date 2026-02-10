@@ -132,7 +132,7 @@ test.describe('PIX Payment Flow E2E', () => {
     // Simulate receiving a webhook from the bank
     const crypto = require('crypto');
     const timestamp = Math.floor(Date.now() / 1000).toString();
-    const secret = process.env.PIX_WEBHOOK_SECRET || 'test-secret';
+    const secret = process.env.[REDACTED_TOKEN] || 'test-secret';
     
     const payload = {
       transaction_id: paymentId,
@@ -213,7 +213,7 @@ test.describe('PIX Payment Flow E2E', () => {
     // Resend the same webhook
     const crypto = require('crypto');
     const timestamp = Math.floor(Date.now() / 1000).toString();
-    const secret = process.env.PIX_WEBHOOK_SECRET || 'test-secret';
+    const secret = process.env.[REDACTED_TOKEN] || 'test-secret';
     
     const payload = {
       transaction_id: paymentId,
@@ -263,7 +263,7 @@ test.describe('PIX Payment Flow E2E', () => {
 
     const response = await request.post(`${BASE_URL}/api/pix/webhooks`, {
       headers: {
-        'x-signature': 'invalid-signature-12345',
+        'x-signature': '[REDACTED_TOKEN]',
         'x-timestamp': timestamp,
         'Content-Type': 'application/json',
       },
@@ -277,7 +277,7 @@ test.describe('PIX Payment Flow E2E', () => {
   test('12. Test webhook timestamp validation (stale timestamp)', async ({ request }) => {
     const crypto = require('crypto');
     const staleTimestamp = (Math.floor(Date.now() / 1000) - 600).toString(); // 10 min ago
-    const secret = process.env.PIX_WEBHOOK_SECRET || 'test-secret';
+    const secret = process.env.[REDACTED_TOKEN] || 'test-secret';
     
     const payload = {
       transaction_id: 'test-txn',

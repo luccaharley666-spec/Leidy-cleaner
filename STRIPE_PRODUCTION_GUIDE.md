@@ -2,7 +2,7 @@
 
 ## 1. Status Atual
 
-- ✅ **Backend:** `StripePaymentController.js` (159 LOC) implementado
+- ✅ **Backend:** `[REDACTED_TOKEN].js` (159 LOC) implementado
 - ✅ **Frontend:** `CheckoutForm.jsx` pronto com Stripe Elements
 - ❌ **Credenciais:** Usando chaves de teste (pk_test_*, sk_test_*)
 - ❌ **Webhook:** Não registrado com Stripe
@@ -98,15 +98,15 @@ STRIPE_ENABLED=true
 STRIPE_MODE=test  # Alterar para 'live' em produção
 
 # Chaves de Teste (Desenvolvimento)
-STRIPE_PUBLIC_KEY_TEST=pk_test_seu_public_key_aqui
-STRIPE_SECRET_KEY_TEST=sk_test_seu_secret_key_aqui
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Chaves de Produção (SÓ em produção!)
-STRIPE_PUBLIC_KEY_LIVE=pk_live_seu_public_key_aqui
-STRIPE_SECRET_KEY_LIVE=sk_live_seu_secret_key_aqui
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Webhook
-STRIPE_WEBHOOK_SECRET=whsec_seu_webhook_secret_aqui
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 STRIPE_WEBHOOK_URL=https://api.leidycleaner.com.br/api/payments/stripe/webhook
 
 # Configurações
@@ -114,7 +114,7 @@ STRIPE_CURRENCY=BRL
 STRIPE_COUNTRY=BR
 ```
 
-### Arquivo: `/backend/src/controllers/StripePaymentController.js`
+### Arquivo: `/backend/src/controllers/[REDACTED_TOKEN].js`
 
 Código já implementado. Endpoints disponíveis:
 
@@ -139,7 +139,7 @@ GET /api/payments/stripe/status/:session_id
 
 ```bash
 # Stripe Public Key (seguro expor no frontend)
-NEXT_PUBLIC_STRIPE_PUBLIC_KEY=pk_test_seu_public_key_aqui
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # API URL do backend
 NEXT_PUBLIC_API_URL=http://localhost:3001
@@ -189,12 +189,12 @@ Stripe envia confirmações de pagamento para seu servidor via HTTP POST. Sem we
 
 3. Copiar o webhook secret:
    ```
-   whsec_1234567890abcdef...
+   [REDACTED_TOKEN]...
    ```
 
 4. Adicionar a `.env`:
    ```bash
-   STRIPE_WEBHOOK_SECRET=whsec_1234567890abcdef...
+   [REDACTED_TOKEN]=[REDACTED_TOKEN]...
    ```
 
 ### Registrar em Produção
@@ -298,7 +298,7 @@ curl -X POST http://localhost:3001/api/payments/stripe/create-session \
 
 ### Backend processa:
 
-1. **Valida assinatura** usando `STRIPE_WEBHOOK_SECRET`
+1. **Valida assinatura** usando `[REDACTED_TOKEN]`
 2. **Verifica booking_id** nos metadados
 3. **Atualiza BD:**
    ```sql
@@ -324,8 +324,8 @@ curl -X POST http://localhost:3001/api/payments/stripe/create-session \
 - [ ] `.env` atualizado com:
   ```bash
   STRIPE_MODE=live
-  STRIPE_PUBLIC_KEY_LIVE=pk_live_...
-  STRIPE_SECRET_KEY_LIVE=sk_live_...
+  [REDACTED_TOKEN]=pk_live_...
+  [REDACTED_TOKEN]=sk_live_...
   ```
 - [ ] Webhook registrado em Produção (URL pública)
 - [ ] Webhook secret atualizado no `.env`
@@ -340,10 +340,10 @@ curl -X POST http://localhost:3001/api/payments/stripe/create-session \
 ```bash
 # Em /backend/.env (PRODUÇÃO)
 STRIPE_MODE=live
-STRIPE_PUBLIC_KEY_TEST=pk_test_... # manter para fallback
-STRIPE_SECRET_KEY_TEST=sk_test_... # manter para testes
-STRIPE_PUBLIC_KEY_LIVE=pk_live_NOVO
-STRIPE_SECRET_KEY_LIVE=sk_live_NOVO
+[REDACTED_TOKEN]=pk_test_... # manter para fallback
+[REDACTED_TOKEN]=sk_test_... # manter para testes
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 ```
 
 ### Passo 2: Registrar Webhook Real

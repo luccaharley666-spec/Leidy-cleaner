@@ -128,7 +128,7 @@ sqlite3 -json /workspaces/acaba/backend/backend_data/database.sqlite \
 | juliana.costa@email.com | AdminPassword123!@# | Customer |
 | roberto.alves@email.com | AdminPassword123!@# | Customer |
 
-**Todas as senhas tem hash** (bcrypt): `$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu`
+**Todas as senhas tem hash** (bcrypt): `$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]`
 
 ### Serviços Inclusos
 

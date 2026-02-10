@@ -390,10 +390,10 @@ class PaymentService {
   /**
    * Criar session de checkout Stripe
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async createCheckoutSession(userId, hourPackage, totalPrice) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](userId, hourPackage, totalPrice) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const session = <span class="cstat-no" title="statement not covered" >await stripe.checkout.sessions.create({</span>
-        payment_method_types: ['card'],
+        [REDACTED_TOKEN]: ['card'],
         mode: 'payment',
         customer_email: `user_${userId}@leidycleaner.local`,
         success_url: `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000'}/checkout/success?session_id={CHECKOUT_SESSION_ID}`,
@@ -415,7 +415,7 @@ class PaymentService {
         metadata: {
           userId: userId.toString(),
           hourPackage: hourPackage.toString(),
-          type: 'hour_package_purchase'
+          type: '[REDACTED_TOKEN]'
         }
       });
 &nbsp;
@@ -449,12 +449,12 @@ class PaymentService {
   /**
    * Validar webhook signature
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic validateWebhookSignature(body, signature) {
+<span class="fstat-no" title="function not covered" >  st</span>atic [REDACTED_TOKEN](body, signature) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const event = <span class="cstat-no" title="statement not covered" >stripe.webhooks.constructEvent(</span>
         body,
         signature,
-        process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test_demo'
+        process.env.[REDACTED_TOKEN] || '[REDACTED_TOKEN]'
       );
 <span class="cstat-no" title="statement not covered" >      return event;</span>
     } catch (error) {
@@ -466,7 +466,7 @@ class PaymentService {
   /**
    * Processar pagamento completo (webhook)
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async handlePaymentSuccess(session) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](session) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: true,
@@ -484,7 +484,7 @@ class PaymentService {
   /**
    * Criar refund
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async createRefund(paymentIntentId, reason = <span class="branch-0 cbranch-no" title="branch not covered" >'requested_by_customer')</span> {
+<span class="fstat-no" title="function not covered" >  st</span>atic async createRefund(paymentIntentId, reason = <span class="branch-0 cbranch-no" title="branch not covered" >'[REDACTED_TOKEN]')</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const refund = <span class="cstat-no" title="statement not covered" >await stripe.refunds.create({</span>
         payment_intent: paymentIntentId,
@@ -525,7 +525,7 @@ class PaymentService {
   /**
    * Validar pagamento completo
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async verifyPaymentComplete(sessionId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](sessionId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const session = <span class="cstat-no" title="statement not covered" >await stripe.checkout.sessions.retrieve(sessionId);</span>
 <span class="cstat-no" title="statement not covered" >      return session.payment_status === 'paid';</span>

@@ -12,7 +12,7 @@
 
 **Ação:** Integrada imagem da marca como favicon do navegador
 
-**Arquivo:** `/workspaces/mmmm/7509de66-b366-439d-a86a-13ea31ebe121.jpeg` → `/frontend/public/icon-brand.jpg`
+**Arquivo:** `/workspaces/mmmm/[REDACTED_TOKEN].jpeg` → `/frontend/public/icon-brand.jpg`
 
 **Implementação em:**
 ```jsx
@@ -155,7 +155,7 @@ npm run dev
 ### 3. **Dark Mode Compatível**
 ```css
 /* Automático via CSS */
-@media (prefers-color-scheme: dark) {
+@media ([REDACTED_TOKEN]: dark) {
   Cores escuras mantêm harmonia com marca
 }
 ```

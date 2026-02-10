@@ -114,9 +114,9 @@ git push origin main  # Trigger CI/CD
 ## 🎓 Recursos para Aprendizado
 
 ### Documentação Criada
-- [MONITORING_AND_CI_CD.md](./MONITORING_AND_CI_CD.md) — Setup de Sentry, Playwright, GitHub Actions
-- [PIX_IMPLEMENTACAO_RESUMO_FINAL.md](./PIX_IMPLEMENTACAO_RESUMO_FINAL.md) — PIX payment flow
-- [IMPLEMENTACAO_COMPLETA.md](./IMPLEMENTACAO_COMPLETA.md) — Overview geral do sistema
+- [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md) — Setup de Sentry, Playwright, GitHub Actions
+- [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md) — PIX payment flow
+- [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md) — Overview geral do sistema
 
 ### Referências Externas
 - [Sentry Best Practices](https://docs.sentry.io/product/best-practices/)

@@ -33,7 +33,7 @@ Content-Type: application/json
 
 ```
 Algoritmo: HMAC-SHA256
-Secret: 50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1
+Secret: [REDACTED_TOKEN]
 Header: x-webhook-signature
 ```
 
@@ -62,7 +62,7 @@ x-webhook-signature: abc123def456...
 4. Informar:
    - ✅ URL: `https://api.seu-dominio.com/api/pix/webhooks`
    - ✅ Eventos: PIX Recebido, PIX Confirmado, PIX Devolvido
-   - ✅ Secret HMAC: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
+   - ✅ Secret HMAC: `[REDACTED_TOKEN]`
 5. Testar conexão
 6. Ativar webhook
 
@@ -83,7 +83,7 @@ x-webhook-signature: abc123def456...
    - ✅ URL Endpoint: `https://api.seu-dominio.com/api/pix/webhooks`
    - ✅ Tipo: Recebimento de PIX
    - ✅ Autenticação: HMAC-SHA256
-   - ✅ Secret: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
+   - ✅ Secret: `[REDACTED_TOKEN]`
 5. Teste: enviar payload de teste
 6. Confirmar
 
@@ -104,7 +104,7 @@ x-webhook-signature: abc123def456...
    - ✅ URL: `https://api.seu-dominio.com/api/pix/webhooks`
    - ✅ Eventos: Pagamento Recebido
    - ✅ Certificado MTLS: (se solicitado)
-   - ✅ Secret: `50c3f219f2391f7e677c506259e2f646d0041d1`
+   - ✅ Secret: `[REDACTED_TOKEN]`
 5. Validar IP whitelist
 6. Salvar
 
@@ -125,7 +125,7 @@ x-webhook-signature: abc123def456...
    - ✅ Endpoint: `https://api.seu-dominio.com/api/pix/webhooks`
    - ✅ Protocolo: HTTPS POST
    - ✅ Autenticação: HMAC
-   - ✅ Chave Secreta: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
+   - ✅ Chave Secreta: `[REDACTED_TOKEN]`
 5. Ativar
 
 **Documentação**: https://www.caixa.gov.br/api
@@ -145,7 +145,7 @@ x-webhook-signature: abc123def456...
    - ✅ URL: `https://api.seu-dominio.com/api/pix/webhooks`
    - ✅ Método: POST
    - ✅ Autenticação: HMAC-SHA256
-   - ✅ Secret: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
+   - ✅ Secret: `[REDACTED_TOKEN]`
 5. Testar
 6. Confirmar
 
@@ -172,8 +172,8 @@ x-webhook-signature: abc123def456...
 
 ```bash
 # 1. Gerar assinatura HMAC
-SECRET="50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1"
-BODY='{"id":"test-transaction-001","status":"confirmed","amount":150.00}'
+SECRET="[REDACTED_TOKEN]"
+BODY='{"id":"[REDACTED_TOKEN]","status":"confirmed","amount":150.00}'
 
 # Gerar HMAC em Linux/Mac
 SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -hmac "$SECRET" -hex | cut -d' ' -f2)
@@ -204,7 +204,7 @@ curl -X POST http://localhost:3001/api/pix/webhooks \
 3. **Body (raw JSON)**:
    ```json
    {
-     "id": "550e8400-e29b-41d4-a716-446655440000",
+     "id": "[REDACTED_TOKEN]",
      "status": "confirmed",
      "amount": 150.00,
      "receivedAt": "2026-02-09T16:26:30Z"
@@ -213,7 +213,7 @@ curl -X POST http://localhost:3001/api/pix/webhooks \
 
 4. **Pre-request Script** (gerar assinatura):
    ```javascript
-   const secret = "50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1";
+   const secret = "[REDACTED_TOKEN]";
    const body = JSON.stringify(pm.request.body.raw);
    
    const hash = CryptoJS.HmacSHA256(body, secret).toString();
@@ -244,7 +244,7 @@ curl -X POST http://localhost:3001/api/pix/webhooks \
 
 - [x] Agência confirmada: 0435
 - [x] Conta confirmada: 000827519788-9
-- [x] Backend implementado (PixPaymentService, PixPaymentController)
+- [x] Backend implementado (PixPaymentService, [REDACTED_TOKEN])
 - [x] Endpoints criados (5 rotas PIX)
 - [x] Database migrado (tabela payments atualizada)
 - [x] Frontend integrado (PixQRCodeCheckout, checkout.jsx)

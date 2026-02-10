@@ -87,13 +87,13 @@ await apiCall(`/api/staff/${userId}/dashboard`, { method: 'GET' })
 await apiCall('/api/admin/dashboard', { method: 'GET' })
 ```
 
-### 🔟 **AvailableStaffWidget.jsx**
+### 🔟 **[REDACTED_TOKEN].jsx**
 ```javascript
 // Widget de disponibilidade com timeout
 await apiCall(`/api/staff/available?${params.toString()}`, { method: 'GET' })
 ```
 
-### 1️⃣1️⃣ **ChatEncryptionClient.js** (5 refactors)
+### 1️⃣1️⃣ **[REDACTED_TOKEN].js** (5 refactors)
 ```javascript
 // Todos os métodos de criptografia agora usam apiCall:
 await apiCall('/api/chat/upload-encrypted', {...})
@@ -153,12 +153,12 @@ npm run build
 
 Todos os arquivos de documentação estão em `/workspaces/mmmm/`:
 
-1. **REFATORACAO_FETCH_CALLS.md** - Detalhes técnicos de cada refatoração
-2. **REFATORACAO_CONCLUIDA.md** - Instruções de teste e guia
-3. **REFATORACAO_CHECKLIST.md** - Checklist de verificação
+1. **[REDACTED_TOKEN].md** - Detalhes técnicos de cada refatoração
+2. **[REDACTED_TOKEN].md** - Instruções de teste e guia
+3. **[REDACTED_TOKEN].md** - Checklist de verificação
 4. **ARQUITETURA_VISUAL.md** - Diagramas visuais
 
-👉 **Começar por aqui:** `REFATORACAO_CONCLUIDA.md`
+👉 **Começar por aqui:** `[REDACTED_TOKEN].md`
 
 ---
 

@@ -21,8 +21,8 @@ function StaffDashboard() {
         const userId = localStorage.getItem('userId');
         const data = await apiCall(`/api/staff/${userId}/dashboard`, { method: 'GET' });
         setStaffStats(data.stats);
-        setUpcomingBookings(data.upcomingBookings || generateMockUpcoming());
-        setEarningsChart(data.earningsChart || generateMockEarnings());
+        setUpcomingBookings(data.upcomingBookings || [REDACTED_TOKEN]());
+        setEarningsChart(data.earningsChart || [REDACTED_TOKEN]());
         
         setLoading(false);
       } catch (error) {
@@ -34,8 +34,8 @@ function StaffDashboard() {
           rating: 4.9,
           streak: 12,
         });
-        setUpcomingBookings(generateMockUpcoming());
-        setEarningsChart(generateMockEarnings());
+        setUpcomingBookings([REDACTED_TOKEN]());
+        setEarningsChart([REDACTED_TOKEN]());
         setLoading(false);
       }
     };
@@ -43,13 +43,13 @@ function StaffDashboard() {
     fetchStaffStats();
   }, []);
 
-  const generateMockUpcoming = () => [
+  const [REDACTED_TOKEN] = () => [
     { id: 1, client: 'Maria Silva', service: 'Limpeza Residencial', date: '2026-02-01', time: '09:00', address: 'Rua A, 123', status: 'confirmado' },
     { id: 2, client: 'João Santos', service: 'Limpeza Comercial', date: '2026-02-01', time: '14:00', address: 'Av. B, 456', status: 'confirmado' },
     { id: 3, client: 'Ana Costa', service: 'Limpeza Residencial', date: '2026-02-02', time: '10:00', address: 'Rua C, 789', status: 'pendente' },
   ];
 
-  const generateMockEarnings = () => [
+  const [REDACTED_TOKEN] = () => [
     { day: 'Seg', earnings: 450 },
     { day: 'Ter', earnings: 520 },
     { day: 'Qua', earnings: 380 },

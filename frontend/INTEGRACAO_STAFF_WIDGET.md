@@ -1,5 +1,5 @@
 /**
- * EXEMPLO DE INTEGRAÇÃO: AvailableStaffWidget em agendar-updated.jsx
+ * EXEMPLO DE INTEGRAÇÃO: [REDACTED_TOKEN] em agendar-updated.jsx
  * 
  * Este arquivo mostra COMO integrar o componente novo na página existente
  * Copie e cole a seção relevante na sua página de agendamento
@@ -7,11 +7,11 @@
 
 import React, { useState, useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
-import AvailableStaffWidget from '../components/AvailableStaffWidget';
+import [REDACTED_TOKEN] from '../components/[REDACTED_TOKEN]';
 import apiCall from '../config/api';
 import styles from '../styles/agendar.module.css';
 
-export default function AgendarUpdatedWithStaffWidget() {
+export default function [REDACTED_TOKEN]() {
   const { user, token, userId } = useContext(AuthContext);
   
   // Estados do formulário
@@ -182,13 +182,13 @@ export default function AgendarUpdatedWithStaffWidget() {
           </div>
         )}
 
-        {/* STEP 3: NOVO! Selecionar Profissional (AvailableStaffWidget) */}
+        {/* STEP 3: NOVO! Selecionar Profissional ([REDACTED_TOKEN]) */}
         {currentStep === 3 && selectedService && selectedDate && selectedTime && (
           <div className={styles.step}>
             <h2>Qual profissional você prefere?</h2>
             
             {/* Componente novo aqui! */}
-            <AvailableStaffWidget
+            <[REDACTED_TOKEN]
               date={selectedDate}
               time={selectedTime}
               serviceId={selectedService.id}

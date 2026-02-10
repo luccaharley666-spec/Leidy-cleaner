@@ -1452,40 +1452,40 @@ const ReviewController = require('../controllers/ReviewController');
 const AdminController = require('../controllers/AdminController');
 const StaffController = require('../controllers/StaffController');
 const PhotosController = require('../controllers/PhotosController');
-const PublicReviewsController = require('../controllers/PublicReviewsController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const ChatController = require('../controllers/ChatController');
-const DatabaseOptimizationController = require('../controllers/DatabaseOptimizationController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const CDNAssetController = require('../controllers/CDNAssetController');
 const AuthController = require('../controllers/AuthController');
-const NotificationsController = require('../controllers/NotificationsController');
-const HealthCheckController = require('../controllers/HealthCheckController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 &nbsp;
 // Middleware
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
 const { validateBookingData, validatePaymentData, validateReviewData } = require('../middleware/validation');
-const { limiters, logRateLimitViolation } = require('../middleware/rateLimited');
+const { limiters, [REDACTED_TOKEN] } = require('../middleware/rateLimited');
 const { validateSchema } = require('../utils/joiSchemas');
 const { bookingSchemas, reviewSchemas, paymentSchemas, userSchemas } = require('../utils/joiSchemas');
 &nbsp;
 // ===== HEALTH CHECKS (Públicas, sem autenticação) =====
 router.get('/health', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  HealthCheckController.getDetailedHealth(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getDetailedHealth(req, res);</span>
 });
 &nbsp;
 router.get('/health/live', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  HealthCheckController.getLiveness(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getLiveness(req, res);</span>
 });
 &nbsp;
 router.get('/health/ready', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  HealthCheckController.getReadiness(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getReadiness(req, res);</span>
 });
 &nbsp;
 router.get('/health/db', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  HealthCheckController.getDatabaseReady(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getDatabaseReady(req, res);</span>
 });
 &nbsp;
 router.get('/health/queue', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  HealthCheckController.getQueueStatus(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getQueueStatus(req, res);</span>
 });
 &nbsp;
 // ===== BOOKINGS =====
@@ -1646,36 +1646,36 @@ router.delete('/photos/:photoId', authenticateToken, <span class="fstat-no" titl
 &nbsp;
 // ===== AVALIAÇÕES PÚBLICAS =====
 router.get('/public-reviews', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  PublicReviewsController.getPublicReviews(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getPublicReviews(req, res);</span>
 });
 &nbsp;
 router.get('/reviews-stats/public', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  PublicReviewsController.getReviewsStats(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getReviewsStats(req, res);</span>
 });
 &nbsp;
 router.get('/reviews/service/:serviceId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  PublicReviewsController.getReviewsByService(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getReviewsByService(req, res);</span>
 });
 &nbsp;
 router.post('/reviews/public/:bookingId/respond', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  PublicReviewsController.respondToReview(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].respondToReview(req, res);</span>
 });
 &nbsp;
 // ===== NOTIFICAÇÕES PUSH =====
 router.post('/notifications/subscribe', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NotificationsController.subscribe(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].subscribe(req, res);</span>
 });
 &nbsp;
 router.post('/notifications/unsubscribe', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NotificationsController.unsubscribe(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].unsubscribe(req, res);</span>
 });
 &nbsp;
 router.post('/notifications/send-test', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NotificationsController.sendTest(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].sendTest(req, res);</span>
 });
 &nbsp;
 router.get('/reviews/filter', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  PublicReviewsController.filterReviews(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].filterReviews(req, res);</span>
 });
 &nbsp;
 // ===== PROFILE &amp; COMPANY =====
@@ -1718,26 +1718,26 @@ router.put('/company/info', authenticateToken, authorizeRole(['admin']), <span c
 });
 &nbsp;
 // ===== NEWSLETTER =====
-const NewsletterController = require('../controllers/NewsletterController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 &nbsp;
 router.post('/newsletter/subscribe', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NewsletterController.subscribe(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].subscribe(req, res);</span>
 });
 &nbsp;
 router.post('/newsletter/unsubscribe', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NewsletterController.unsubscribe(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].unsubscribe(req, res);</span>
 });
 &nbsp;
 router.get('/newsletter/subscribers', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NewsletterController.getSubscribers(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getSubscribers(req, res);</span>
 });
 &nbsp;
 router.post('/newsletter/send-all', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NewsletterController.sendToAll(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].sendToAll(req, res);</span>
 });
 &nbsp;
 router.get('/newsletter/stats', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  NewsletterController.getStats(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getStats(req, res);</span>
 });
 &nbsp;
 // ===== 2FA (Two-Factor Authentication) =====
@@ -1766,11 +1766,11 @@ router.use('/chat', chatMessagesRoutes);
 &nbsp;
 // ===== CHAT (Encrypted Messaging) =====
 router.post('/chat/messages', authenticateToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  ChatController.sendEncryptedMessage(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  ChatController.[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 router.get('/chat/messages/:conversationId', authenticateToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  ChatController.getEncryptedMessages(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  ChatController.[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 router.post('/chat/upload-encrypted', authenticateToken, upload.single('file'), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
@@ -1778,7 +1778,7 @@ router.post('/chat/upload-encrypted', authenticateToken, upload.single('file'), 
 });
 &nbsp;
 router.get('/chat/download-encrypted/:fileId', authenticateToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  ChatController.downloadEncryptedFile(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  ChatController.[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 router.get('/chat/message-hash/:messageId', authenticateToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
@@ -1791,47 +1791,47 @@ router.delete('/chat/conversations/:conversationId', authenticateToken, <span cl
 &nbsp;
 // ===== DATABASE OPTIMIZATION =====
 router.get('/db/query-report', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.getQueryReport(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getQueryReport(req, res);</span>
 });
 &nbsp;
 router.get('/db/slow-queries', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.getSlowQueries(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getSlowQueries(req, res);</span>
 });
 &nbsp;
 router.post('/db/analyze-query', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.analyzeQuery(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].analyzeQuery(req, res);</span>
 });
 &nbsp;
 router.get('/db/suggest-indices', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.suggestIndices(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].suggestIndices(req, res);</span>
 });
 &nbsp;
 router.get('/db/index-usage', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.analyzeIndexUsage(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].analyzeIndexUsage(req, res);</span>
 });
 &nbsp;
 router.get('/db/integrity-check', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.validateIntegrity(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].validateIntegrity(req, res);</span>
 });
 &nbsp;
 router.post('/db/vacuum', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.vacuumDatabase(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].vacuumDatabase(req, res);</span>
 });
 &nbsp;
 router.post('/db/optimize', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.optimizeTables(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].optimizeTables(req, res);</span>
 });
 &nbsp;
 router.get('/db/table-sizes', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.getTableSizes(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getTableSizes(req, res);</span>
 });
 &nbsp;
 router.get('/db/stats', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.getDatabaseStats(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getDatabaseStats(req, res);</span>
 });
 &nbsp;
 router.post('/db/reset-stats', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  DatabaseOptimizationController.resetStatistics(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].resetStatistics(req, res);</span>
 });
 &nbsp;
 // ===== CDN &amp; ASSET OPTIMIZATION =====
@@ -1868,11 +1868,11 @@ router.post('/cdn/image-sitemap', authenticateToken, authorizeRole(['admin']), <
 });
 &nbsp;
 router.get('/cdn/image-performance/:imageId', authenticateToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  CDNAssetController.measureImagePerformance(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  CDNAssetController.[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 router.get('/cdn/optimization-report', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  CDNAssetController.getOptimizationReport(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  CDNAssetController.[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 // ===== PHASE 2: ADVANCED FEATURES =====
@@ -1887,23 +1887,23 @@ const AnalyticsController = require('../controllers/AnalyticsController');
 router.use('/analytics', authenticateToken, authorizeRole(['admin','manager','partner']), AnalyticsController);
 &nbsp;
 // ===== RECURRING BOOKINGS =====
-const RecurringBookingController = require('../controllers/RecurringBookingController');
-router.use('/bookings/recurring', authenticateToken, RecurringBookingController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/bookings/recurring', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== PRICE HISTORY &amp; FORECASTING =====
-const PriceHistoryController = require('../controllers/PriceHistoryController');
-router.use('/prices', authenticateToken, PriceHistoryController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/prices', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== PERSONALIZED RECOMMENDATIONS =====
 // As rotas de recomendações são definidas mais abaixo com handlers explícitos.
 &nbsp;
 // ===== PAYMENT INTEGRATION (Stripe + PIX) =====
-const PaymentIntegrationController = require('../controllers/PaymentIntegrationController');
-router.use('/payments', authenticateToken, PaymentIntegrationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/payments', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== SMART PUSH NOTIFICATIONS =====
-const PushNotificationController = require('../controllers/PushNotificationController');
-router.use('/push-notifications', authenticateToken, PushNotificationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/push-notifications', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== SMS / WHATSAPP NOTIFICATIONS (Preferences &amp; History) =====
 const NotificationService = require('../services/NotificationService');
@@ -1916,29 +1916,29 @@ const ReferralController = require('../controllers/ReferralController');
 router.use('/referrals', authenticateToken, ReferralController);
 &nbsp;
 // ===== AUTO-SCHEDULING &amp; ROUTE OPTIMIZATION =====
-const AutoSchedulingController = require('../controllers/AutoSchedulingController');
-router.use('/scheduling', authenticateToken, authorizeRole(['admin', 'staff']), AutoSchedulingController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/scheduling', authenticateToken, authorizeRole(['admin', 'staff']), [REDACTED_TOKEN]);
 &nbsp;
 // ===== SEO &amp; MARKETING =====
-const SEOMarketingController = require('../controllers/SEOMarketingController');
-router.use('/seo', SEOMarketingController);
-router.use('/marketing', authenticateToken, authorizeRole(['admin']), SEOMarketingController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/seo', [REDACTED_TOKEN]);
+router.use('/marketing', authenticateToken, authorizeRole(['admin']), [REDACTED_TOKEN]);
 &nbsp;
 // ===== BACKUP &amp; DISASTER RECOVERY =====
 const BackupController = require('../controllers/BackupController');
 router.use('/backup', authenticateToken, authorizeRole(['admin']), BackupController);
 &nbsp;
 // ===== REVIEW IMAGES &amp; GALLERY =====
-const ReviewImageController = require('../controllers/ReviewImageController');
-router.use('/reviews', ReviewImageController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/reviews', [REDACTED_TOKEN]);
 &nbsp;
 // ===== REPORTS &amp; EXPORTS =====
 const ReportsController = require('../controllers/ReportsController');
 router.use('/reports', authenticateToken, authorizeRole(['admin']), ReportsController);
 &nbsp;
 // ===== SMART NOTIFICATIONS =====
-const SmartNotificationController = require('../controllers/SmartNotificationController');
-router.use('/smart-notifications', authenticateToken, SmartNotificationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/smart-notifications', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== ADMIN DASHBOARD =====
 const adminRoutes = require('./adminRoutes');
@@ -1961,24 +1961,24 @@ const WebhookController = require('../controllers/WebhookController');
 router.use('/webhooks', authenticateToken, WebhookController);
 &nbsp;
 // ===== INTEGRATIONS (Phase 3B) =====
-const IntegrationController = require('../controllers/IntegrationController');
-router.use('/integrations', authenticateToken, IntegrationController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/integrations', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== ADVANCED PAYMENTS - Boleto, Apple Pay, Google Pay, PayPal, Subscriptions (Phase 3B) =====
-const AdvancedPaymentController = require('../controllers/AdvancedPaymentController');
-router.use('/payments/advanced', authenticateToken, AdvancedPaymentController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/payments/advanced', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== ADVANCED EMAIL &amp; SMS - Templates, Campaigns, A/B Testing (Phase 3B) =====
-const AdvancedEmailController = require('../controllers/AdvancedEmailController');
-router.use('/email', authenticateToken, AdvancedEmailController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/email', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // ===== ADVANCED 2FA - Biometric, WebAuthn, Recovery Codes, Trusted Devices (Phase 3B) =====
-const Advanced2FAController = require('../controllers/Advanced2FAController');
-router.use('/2fa', Advanced2FAController);
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
+router.use('/2fa', [REDACTED_TOKEN]);
 &nbsp;
 // ===== STAFF AVAILABILITY - Real-time availability widget =====
-const staffAvailabilityRoutes = require('./staffAvailabilityRoutes');
-router.use('/staff', staffAvailabilityRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+router.use('/staff', [REDACTED_TOKEN]);
 &nbsp;
 // ===== BULL BOARD (fila dashboard) =====
 const bullBoardRoutes = require('./bullBoard');
@@ -1990,7 +1990,7 @@ router.post('/pricing/calculate', <span class="fstat-no" title="function not cov
 <span class="cstat-no" title="statement not covered" >  PricingController.calculatePrice(req, res);</span>
 });
 router.get('/pricing/simulate', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  PricingController.simulatePriceOptions(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  PricingController.[REDACTED_TOKEN](req, res);</span>
 });
 &nbsp;
 // ===== HOUR PACKAGING (Novos Endpoints Pagamento em Horas) =====
@@ -1998,18 +1998,18 @@ const hourPricingRoutes = require('./hourPricingRoutes');
 router.use('/pricing', hourPricingRoutes);
 &nbsp;
 // ===== INTELLIGENT RECOMMENDATIONS (CROSS-SELLING) =====
-const RecommendationController = require('../controllers/RecommendationController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 router.get('/recommendations/smart', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  RecommendationController.getSmartRecommendations(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].[REDACTED_TOKEN](req, res);</span>
 });
 router.get('/recommendations/popular', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  RecommendationController.getPopularServices(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getPopularServices(req, res);</span>
 });
 router.get('/recommendations/upsell', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  RecommendationController.getUpsellRecommendations(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].[REDACTED_TOKEN](req, res);</span>
 });
 router.get('/recommendations/at-risk', authenticateToken, authorizeRole(['admin']), <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  RecommendationController.getAtRiskCustomers(req, res);</span>
+<span class="cstat-no" title="statement not covered" >  [REDACTED_TOKEN].getAtRiskCustomers(req, res);</span>
 });
 &nbsp;
 // ===== NEW FEATURES (12 Premium Services) =====
@@ -2034,8 +2034,8 @@ const hourlyBookingRoutes = require('./hourlyBookingRoutes');
 router.use('/hourly', hourlyBookingRoutes);
 &nbsp;
 // PROFESSIONAL RATINGS (Admin)
-const professionalRatingRoutes = require('./professionalRatingRoutes');
-router.use('/professional-ratings', professionalRatingRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+router.use('/[REDACTED_TOKEN]', [REDACTED_TOKEN]);
 &nbsp;
 // CANCELLATIONS &amp; REFUNDS
 const cancellationRoutes = require('./cancellationRoutes');
@@ -2057,8 +2057,8 @@ const couponRoutes = require('./couponRoutes');
 router.use('/coupons', couponRoutes);
 &nbsp;
 // RECURRING BOOKINGS
-const recurringBookingRoutes = require('./recurringBookingRoutes');
-router.use('/recurring-bookings', authenticateToken, recurringBookingRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+router.use('/recurring-bookings', authenticateToken, [REDACTED_TOKEN]);
 &nbsp;
 // REPORTS &amp; PDF
 const reportRoutes = require('./reportRoutes');

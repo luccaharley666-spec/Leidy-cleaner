@@ -297,7 +297,7 @@ xl:grid-cols-4       (large desktop, 1280px+)
                               │ Borders: #374151    │
                               └──────────────────────┘
 
-Implementação: CSS Variables (@media prefers-color-scheme)
+Implementação: CSS Variables (@media [REDACTED_TOKEN])
 ```
 
 ---

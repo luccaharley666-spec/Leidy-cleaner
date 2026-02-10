@@ -3,7 +3,7 @@
  * Registra o service worker para offline support
  */
 
-export const registerServiceWorker = () => {
+export const [REDACTED_TOKEN] = () => {
   if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
     window.addEventListener('load', () => {
       navigator.serviceWorker
@@ -29,7 +29,7 @@ export const isOnline = () => {
 /**
  * Listen para mudanças de status online/offline
  */
-export const onlineStatusListener = (callback) => {
+export const [REDACTED_TOKEN] = (callback) => {
   if (typeof window === 'undefined') return;
 
   window.addEventListener('online', () => callback(true));

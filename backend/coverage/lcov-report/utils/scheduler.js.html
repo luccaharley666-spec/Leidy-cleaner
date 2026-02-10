@@ -347,7 +347,7 @@ class Scheduler {
     // Verificar agendamentos próximos a cada hora
 <span class="cstat-no" title="statement not covered" >    cron.schedule('0 * * * *', <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      logger.info('Executando: verificação de agendamentos');</span>
-<span class="cstat-no" title="statement not covered" >      await this.checkUpcomingBookings();</span>
+<span class="cstat-no" title="statement not covered" >      await this.[REDACTED_TOKEN]();</span>
     });
 &nbsp;
     // Follow-up automático a cada 6 horas
@@ -365,7 +365,7 @@ class Scheduler {
     // Gerar relatórios mensais
 <span class="cstat-no" title="statement not covered" >    cron.schedule('0 0 1 * *', <span class="fstat-no" title="function not covered" >as</span>ync () =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >      logger.info('Executando: geração de relatórios');</span>
-<span class="cstat-no" title="statement not covered" >      await this.generateMonthlyReports();</span>
+<span class="cstat-no" title="statement not covered" >      await this.[REDACTED_TOKEN]();</span>
     });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    logger.info('Scheduler inicializado com sucesso');</span>
@@ -374,16 +374,16 @@ class Scheduler {
   /**
    * Verificar agendamentos próximos
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async checkUpcomingBookings() {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
       // const bookings = await BookingService.findByDate(tomorrow);
       // for (const booking of bookings) {
-      //   await AutomationService.executeBookingAutomations(booking);
+      //   await AutomationService.[REDACTED_TOKEN](booking);
       // }
 <span class="cstat-no" title="statement not covered" >      logger.info('Verificação concluída');</span>
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      logger.error('Erro em checkUpcomingBookings:', error);</span>
+<span class="cstat-no" title="statement not covered" >      logger.error('Erro em [REDACTED_TOKEN]:', error);</span>
     }
   }
 &nbsp;
@@ -420,13 +420,13 @@ class Scheduler {
   /**
    * Gerar relatórios mensais
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async generateMonthlyReports() {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      // const report = await ReportService.generateMonthlyReport();
+      // const report = await ReportService.[REDACTED_TOKEN]();
       // await EmailService.sendToAdmin(report);
 <span class="cstat-no" title="statement not covered" >      logger.info('Relatórios gerados');</span>
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      logger.error('Erro em generateMonthlyReports:', error);</span>
+<span class="cstat-no" title="statement not covered" >      logger.error('Erro em [REDACTED_TOKEN]:', error);</span>
     }
   }
 &nbsp;

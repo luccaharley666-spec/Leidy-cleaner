@@ -52,7 +52,7 @@ const router = express.Router();
 router.post('/google', async (req, res) => {
   try {
     const googleProfile = req.body;
-    const result = await OAuthService.handleGoogleCallback(googleProfile);
+    const result = await OAuthService.[REDACTED_TOKEN](googleProfile);
 
     res.status(200).json({
       success: true,
@@ -97,7 +97,7 @@ router.post('/google', async (req, res) => {
 router.post('/facebook', async (req, res) => {
   try {
     const facebookProfile = req.body;
-    const result = await OAuthService.handleFacebookCallback(facebookProfile);
+    const result = await OAuthService.[REDACTED_TOKEN](facebookProfile);
 
     res.status(200).json({
       success: true,
@@ -140,7 +140,7 @@ router.post('/facebook', async (req, res) => {
 router.post('/whatsapp', async (req, res) => {
   try {
     const whatsappProfile = req.body;
-    const result = await OAuthService.handleWhatsAppCallback(whatsappProfile);
+    const result = await OAuthService.[REDACTED_TOKEN](whatsappProfile);
 
     res.status(200).json({
       success: true,

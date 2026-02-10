@@ -1,7 +1,7 @@
 -- SQLite-compatible migration to create notification tables
 PRAGMA foreign_keys = ON;
 
-CREATE TABLE IF NOT EXISTS notification_preferences (
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   userId INTEGER NOT NULL UNIQUE,
   email_enabled INTEGER DEFAULT 1,
@@ -11,14 +11,14 @@ CREATE TABLE IF NOT EXISTS notification_preferences (
   reminder_2days INTEGER DEFAULT 1,
   reminder_1day INTEGER DEFAULT 1,
   reminder_1hour INTEGER DEFAULT 0,
-  notification_template TEXT DEFAULT 'standard',
+  [REDACTED_TOKEN] TEXT DEFAULT 'standard',
   phone_number TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE
 );
 
-CREATE INDEX IF NOT EXISTS idx_notification_preferences_userId ON notification_preferences(userId);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON [REDACTED_TOKEN](userId);
 
 CREATE TABLE IF NOT EXISTS notification_logs (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -36,12 +36,12 @@ CREATE TABLE IF NOT EXISTS notification_logs (
   FOREIGN KEY (bookingId) REFERENCES bookings(id) ON DELETE CASCADE
 );
 
-CREATE INDEX IF NOT EXISTS idx_notification_logs_userId ON notification_logs(userId);
-CREATE INDEX IF NOT EXISTS idx_notification_logs_bookingId ON notification_logs(bookingId);
-CREATE INDEX IF NOT EXISTS idx_notification_logs_type ON notification_logs(type);
-CREATE INDEX IF NOT EXISTS idx_notification_logs_sent_at ON notification_logs(sent_at);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notification_logs(userId);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notification_logs(bookingId);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notification_logs(type);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notification_logs(sent_at);
 
-CREATE TABLE IF NOT EXISTS notification_templates (
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT UNIQUE,
   type TEXT,
@@ -69,9 +69,9 @@ CREATE TABLE IF NOT EXISTS notification_queue (
   FOREIGN KEY (bookingId) REFERENCES bookings(id) ON DELETE CASCADE
 );
 
-CREATE INDEX IF NOT EXISTS idx_notification_queue_scheduled_send_time ON notification_queue(scheduled_send_time);
-CREATE INDEX IF NOT EXISTS idx_notification_queue_status ON notification_queue(status);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notification_queue(scheduled_send_time);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON notification_queue(status);
 
 -- Optional: insert basic templates if not present
-INSERT OR IGNORE INTO notification_templates (name, type, subject, body, variables, is_active) VALUES
-('booking_confirmation_email','email','Agendamento Confirmado - {{serviceName}}','Olá {{userName}},\n\nSeu agendamento foi confirmado!\n','["userName","serviceName","bookingDate","bookingTime","location","bookingId"]',1);
+INSERT OR IGNORE INTO [REDACTED_TOKEN] (name, type, subject, body, variables, is_active) VALUES
+('[REDACTED_TOKEN]','email','Agendamento Confirmado - {{serviceName}}','Olá {{userName}},\n\nSeu agendamento foi confirmado!\n','["userName","serviceName","bookingDate","bookingTime","location","bookingId"]',1);

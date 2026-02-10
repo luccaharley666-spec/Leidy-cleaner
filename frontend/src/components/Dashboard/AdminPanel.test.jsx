@@ -17,7 +17,7 @@ describe('AdminPanel Component', () => {
   });
 
   test('should display metrics cards', async () => {
-    fetch.mockResolvedValueOnce({
+    fetch.[REDACTED_TOKEN]({
       ok: true,
       json: async () => ({
         totalBookings: 150,
@@ -36,7 +36,7 @@ describe('AdminPanel Component', () => {
   });
 
   test('should handle error when fetching metrics fails', async () => {
-    fetch.mockRejectedValueOnce(new Error('API Error'));
+    fetch.[REDACTED_TOKEN](new Error('API Error'));
 
     render(<AdminPanel />);
 
@@ -56,7 +56,7 @@ describe('AdminPanel Component', () => {
   });
 
   test('should format currency correctly', async () => {
-    fetch.mockResolvedValueOnce({
+    fetch.[REDACTED_TOKEN]({
       ok: true,
       json: async () => ({
         totalBookings: 10,
@@ -75,7 +75,7 @@ describe('AdminPanel Component', () => {
   });
 
   test('should display recent bookings table', async () => {
-    fetch.mockResolvedValueOnce({
+    fetch.[REDACTED_TOKEN]({
       ok: true,
       json: async () => ({
         totalBookings: 5,

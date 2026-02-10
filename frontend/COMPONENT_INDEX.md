@@ -157,14 +157,14 @@ Placeholder para nenhum dado.
 
 #### Exported Components
 
-##### `<NotificationContainer />`
+##### `<[REDACTED_TOKEN] />`
 Sistema de toast notifications.
 ```jsx
 import { useNotification } from '@/hooks/useDashboard';
 
 const { notifications, success, error, warning } = useNotification();
 
-<NotificationContainer notifications={notifications} />
+<[REDACTED_TOKEN] notifications={notifications} />
 
 // Usar em componente:
 success('Operação realizada!');

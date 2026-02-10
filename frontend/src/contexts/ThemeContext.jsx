@@ -13,7 +13,7 @@ export function ThemeProvider({ children }) {
     if (savedTheme) {
       setIsDark(savedTheme === 'dark');
       applyTheme(savedTheme === 'dark');
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    } else if (window.matchMedia && window.matchMedia('([REDACTED_TOKEN]: dark)').matches) {
       setIsDark(true);
       applyTheme(true);
     } else {

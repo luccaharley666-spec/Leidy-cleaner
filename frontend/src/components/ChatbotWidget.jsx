@@ -150,7 +150,7 @@ export default function ChatbotWidget() {
     content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     content = content.replace(/\n/g, '<br/>');
 
-    return <div dangerouslySetInnerHTML={{ __html: content }} />;
+    return <div [REDACTED_TOKEN]={{ __html: content }} />;
   };
 
   if (!isOpen) {
@@ -266,7 +266,7 @@ export default function ChatbotWidget() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             disabled={loading || escalated}
-            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 disabled:opacity-50"
+            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white [REDACTED_TOKEN] dark:[REDACTED_TOKEN] disabled:opacity-50"
           />
           <button
             type="submit"

@@ -27,7 +27,7 @@ A aplicação foi completamente redesenhada com um novo design system moderno qu
 --color-bg-tertiary: #f3f4f6;      /* Cinza claro */
 
 --color-text: #111827;             /* Texto preto/escuro */
---color-text-secondary: #6b7280;   /* Texto cinzento */
+--[REDACTED_TOKEN]: #6b7280;   /* Texto cinzento */
 --color-text-tertiary: #9ca3af;    /* Texto cinzento claro */
 
 --color-border: #e5e7eb;           /* Bordas cinzas claras */
@@ -46,7 +46,7 @@ A aplicação foi completamente redesenhada com um novo design system moderno qu
 --color-bg-tertiary: #334155;      /* Cinza médio */
 
 --color-text: #f8fafc;             /* Branco */
---color-text-secondary: #cbd5e1;   /* Cinza claro */
+--[REDACTED_TOKEN]: #cbd5e1;   /* Cinza claro */
 --color-text-tertiary: #94a3b8;    /* Cinza médio */
 
 --color-border: #475569;           /* Bordas cinzas escuras */
@@ -217,7 +217,7 @@ A aplicação detecta automaticamente a preferência de tema do SO:
 ```javascript
 // Se o usuário ativar "Tema Escuro" no sistema,
 // a app muda automaticamente (se em modo Auto)
-window.matchMedia('(prefers-color-scheme: dark)').matches
+window.matchMedia('([REDACTED_TOKEN]: dark)').matches
 ```
 
 ### Modo Alto Contraste
@@ -236,7 +236,7 @@ Para usuários com baixa visão:
 Para usuários com doenças vestibulares:
 
 ```css
-@media (prefers-reduced-motion: reduce) {
+@media ([REDACTED_TOKEN]: reduce) {
   * {
     animation: none !important;
     transition: none !important;
@@ -343,7 +343,7 @@ Para iPhones com notch:
 ```css
 body {
   padding-top: max(1rem, env(safe-area-inset-top));
-  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  padding-bottom: max(1rem, env([REDACTED_TOKEN]));
 }
 ```
 
@@ -384,7 +384,7 @@ location.reload();
 ### Detectar Dark Mode do Sistema
 
 ```javascript
-const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+const prefersDark = window.matchMedia('([REDACTED_TOKEN]: dark)').matches;
 console.log('Usuário prefere dark mode:', prefersDark);
 ```
 

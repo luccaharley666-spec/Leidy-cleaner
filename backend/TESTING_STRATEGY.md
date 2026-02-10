@@ -68,7 +68,7 @@ npm run e2e:report
 
 ### jest.config.js
 
-- **testPathIgnorePatterns**: Ignora `e2e/*` para que Playwright não interfira
+- **[REDACTED_TOKEN]**: Ignora `e2e/*` para que Playwright não interfira
 - **testMatch**: Procura por testes dentro de `src/` apenas
 - **setupFilesAfterEnv**: Configuração pós-setup em `jest.setup.js`
 - **maxWorkers**: Paralleliza com 50% dos workers disponíveis
@@ -94,7 +94,7 @@ Arquivo `.env` específico para testes (se necessário carregá-lo explicitament
 
 ## Novos Testes Adicionados
 
-### 1. PaymentIntegrationService.test.js
+### 1. [REDACTED_TOKEN].test.js
 
 - Testa criação de pagamentos Stripe
 - Testa criação de QR Codes PIX

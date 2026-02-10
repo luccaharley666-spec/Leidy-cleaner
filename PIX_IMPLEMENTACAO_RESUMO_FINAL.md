@@ -13,7 +13,7 @@
 | Componente | Arquivo | LOC | Status |
 |-----------|---------|-----|--------|
 | **Serviço PIX** | PixPaymentService.js | 380 | ✅ |
-| **Controller PIX** | PixPaymentController.js | 140 | ✅ |
+| **Controller PIX** | [REDACTED_TOKEN].js | 140 | ✅ |
 | **Rotas PIX** | pixRoutes.js | 80 | ✅ |
 | **Componente QRCode** | PixQRCodeCheckout.jsx | 340 | ✅ |
 | **Página Checkout** | checkout.jsx | 280 | ✅ |
@@ -151,18 +151,18 @@ Response (200):
   - confirmed_at (DATETIME)
   - expires_at (DATETIME)
   - user_id (FK)
-  - payment_confirmed_at (DATETIME)
+  - [REDACTED_TOKEN] (DATETIME)
 
 - ✅ 6 índices para performance:
-  - idx_payments_transaction_id
-  - idx_payments_user_id
-  - idx_payments_booking_id
+  - [REDACTED_TOKEN]
+  - [REDACTED_TOKEN]
+  - [REDACTED_TOKEN]
   - idx_payments_status
   - idx_payments_method
-  - idx_payments_created_at
+  - [REDACTED_TOKEN]
 
 ### Segurança
-- ✅ HMAC-SHA256: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
+- ✅ HMAC-SHA256: `[REDACTED_TOKEN]`
 - ✅ JWT Auth para rotas privadas
 - ✅ Webhook sem auth (validado por HMAC)
 - ✅ UUIDs únicos para transações
@@ -215,13 +215,13 @@ Response (200):
 
 ### Secret
 ```
-PIX_WEBHOOK_SECRET = 50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1
+[REDACTED_TOKEN] = [REDACTED_TOKEN]
 ```
 
 ### Validação
 ```javascript
 const crypto = require('crypto');
-const secret = process.env.PIX_WEBHOOK_SECRET;
+const secret = process.env.[REDACTED_TOKEN];
 
 // Banco envia:
 const body = '{"id":"uuid","status":"confirmed",...}';
@@ -242,20 +242,20 @@ if (bodyHash !== receivedSignature) {
 
 ## 📚 Documentação Criada
 
-1. **IMPLEMENTACAO_PIX_CHECKOUT_COMPLETA.md**
+1. **[REDACTED_TOKEN].md**
    - Frontend implementation
    - Component details
    - Integration guide
    - Testing instructions
 
-2. **IMPLEMENTACAO_PIX_BACKEND_COMPLETA.md**
+2. **[REDACTED_TOKEN].md**
    - Backend implementation
    - Service layer
    - API endpoints
    - Database schema
    - Testing guide
 
-3. **GUIA_REGISTRO_WEBHOOK_PIX.md**
+3. **[REDACTED_TOKEN].md**
    - Bank registration steps
    - All major banks (BB, Bradesco, Itaú, Caixa, Santander)
    - Webhook format
@@ -311,8 +311,8 @@ curl -X POST http://localhost:3000/api/pix/webhooks \
 ### Imediato (Hoje)
 - [ ] Registrar webhook com banco
   - URL: `https://seu-dominio.com/api/pix/webhooks`
-  - Secret: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
-  - Ver: GUIA_REGISTRO_WEBHOOK_PIX.md
+  - Secret: `[REDACTED_TOKEN]`
+  - Ver: [REDACTED_TOKEN].md
 
 ### Esta Semana
 - [ ] Testar com simulador do banco
@@ -359,7 +359,7 @@ curl -X POST http://localhost:3000/api/pix/webhooks \
 
 **Criados**:
 - `/backend/src/services/PixPaymentService.js` (380 LOC)
-- `/backend/src/controllers/PixPaymentController.js` (140 LOC)
+- `/backend/src/controllers/[REDACTED_TOKEN].js` (140 LOC)
 - `/backend/src/routes/pixRoutes.js` (80 LOC)
 - `/backend/src/middleware/webhookMiddleware.js`
 - `/backend/src/db/migrations/migratePixPayments.js`
@@ -456,4 +456,4 @@ curl -X POST http://localhost:3000/api/pix/webhooks \
 
 **Status Final**: 🟢 **BACKEND + FRONTEND COMPLETOS - AGUARDANDO WEBHOOK REGISTRATION**
 
-Próximo: Registrar webhook com banco usando dados em GUIA_REGISTRO_WEBHOOK_PIX.md
+Próximo: Registrar webhook com banco usando dados em [REDACTED_TOKEN].md

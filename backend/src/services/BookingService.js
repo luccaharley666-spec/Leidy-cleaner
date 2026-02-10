@@ -37,8 +37,8 @@ class BookingService {
         photos: bookingData.photos || [],
         cep: bookingData.cep || null,
         location: bookingData.location || null,
-        cancellationPolicy: JSON.stringify(this.getDefaultCancellationPolicy()),
-        achievements: JSON.stringify(this.checkAchievementsForUser(bookingData.userId))
+        cancellationPolicy: JSON.stringify(this.[REDACTED_TOKEN]()),
+        achievements: JSON.stringify(this.[REDACTED_TOKEN](bookingData.userId))
       };
 
       // Persistir em SQLite
@@ -84,10 +84,10 @@ class BookingService {
   /**
    * Política padrão de cancelamento (percentual ou taxa fixa)
    */
-  getDefaultCancellationPolicy() {
+  [REDACTED_TOKEN]() {
     return {
-      clientPenaltyPercent: 20, // percentual cobrado do cliente em cancelamento em menos de 24h
-      providerPenaltyPercent: 0, // percentual cobrado ao prestador (aplicado em casos de no-show)
+      [REDACTED_TOKEN]: 20, // percentual cobrado do cliente em cancelamento em menos de 24h
+      [REDACTED_TOKEN]: 0, // percentual cobrado ao prestador (aplicado em casos de no-show)
       freeCancelHours: 48 // cancelamento gratuito até X horas antes
     };
   }
@@ -96,14 +96,14 @@ class BookingService {
    * Calcular penalidade de cancelamento
    * cancelBy: 'client' | 'provider'
    */
-  calculateCancellationPenalty(booking, cancelBy = 'client', hoursBefore = 0) {
-    const policy = booking.cancellationPolicy || this.getDefaultCancellationPolicy();
+  [REDACTED_TOKEN](booking, cancelBy = 'client', hoursBefore = 0) {
+    const policy = booking.cancellationPolicy || this.[REDACTED_TOKEN]();
     if (hoursBefore >= policy.freeCancelHours) return 0;
     if (cancelBy === 'client') {
-      return Math.round((booking.finalPrice || 0) * (policy.clientPenaltyPercent / 100) * 100) / 100;
+      return Math.round((booking.finalPrice || 0) * (policy.[REDACTED_TOKEN] / 100) * 100) / 100;
     }
     if (cancelBy === 'provider') {
-      return Math.round((booking.finalPrice || 0) * (policy.providerPenaltyPercent / 100) * 100) / 100;
+      return Math.round((booking.finalPrice || 0) * (policy.[REDACTED_TOKEN] / 100) * 100) / 100;
     }
     return 0;
   }
@@ -111,7 +111,7 @@ class BookingService {
   /**
    * Verificar e retornar conquistas (mock)
    */
-  checkAchievementsForUser(userId) {
+  [REDACTED_TOKEN](userId) {
     // Implementação simples: no primeiro agendamento retorna conquista "Primeiro Agendamento".
     // Em produção, isso deve consultar contagem real no banco de dados.
     if (!userId) return [];
@@ -205,7 +205,7 @@ class BookingService {
       // const booking = await db.bookings.findById(bookingId);
       
       // Encontrar membro da equipa disponível
-      // const availableTeamMember = await this.findAvailableTeamMember(
+      // const availableTeamMember = await this.[REDACTED_TOKEN](
       //   booking.date,
       //   booking.location
       // );
@@ -229,7 +229,7 @@ class BookingService {
   /**
    * Encontrar membro da equipa disponível
    */
-  async findAvailableTeamMember(date, location) {
+  async [REDACTED_TOKEN](date, location) {
     try {
       // Implementar lógica de busca otimizada
       // 1. Buscar membros próximos da localização

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { RecurringScheduler } from '../components/UI/RecurringScheduler';
-import AvailableStaffWidget from '../components/AvailableStaffWidget';
+import [REDACTED_TOKEN] from '../components/[REDACTED_TOKEN]';
 import { apiCall } from '../config/api';
 import toast from 'react-hot-toast';
 
@@ -244,7 +244,7 @@ export default function Agendar() {
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
                         👥 Profissionais Disponíveis
                       </h3>
-                      <AvailableStaffWidget
+                      <[REDACTED_TOKEN]
                         date={selectedDate}
                         time={selectedTime}
                         serviceId={selectedServices[0]?.id}

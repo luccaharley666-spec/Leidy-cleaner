@@ -42,7 +42,7 @@ const AddonsSelector = ({ bookingId, token, onTotalChange }) => {
     }
   };
 
-  const handleQuantityChange = (addonId, newQuantity) => {
+  const [REDACTED_TOKEN] = (addonId, newQuantity) => {
     if (newQuantity <= 0) {
       handleAddOnClick(addons.find((a) => a.id === addonId));
       return;
@@ -117,7 +117,7 @@ const AddonsSelector = ({ bookingId, token, onTotalChange }) => {
                       <button
                         className="qty-btn"
                         onClick={() =>
-                          handleQuantityChange(addon.id, selected.quantity - 1)
+                          [REDACTED_TOKEN](addon.id, selected.quantity - 1)
                         }
                       >
                         −
@@ -127,14 +127,14 @@ const AddonsSelector = ({ bookingId, token, onTotalChange }) => {
                         min="1"
                         value={selected.quantity}
                         onChange={(e) =>
-                          handleQuantityChange(addon.id, parseInt(e.target.value) || 1)
+                          [REDACTED_TOKEN](addon.id, parseInt(e.target.value) || 1)
                         }
                         className="qty-input"
                       />
                       <button
                         className="qty-btn"
                         onClick={() =>
-                          handleQuantityChange(addon.id, selected.quantity + 1)
+                          [REDACTED_TOKEN](addon.id, selected.quantity + 1)
                         }
                       >
                         +

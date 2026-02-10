@@ -43,10 +43,10 @@
 
 ### 📚 Documentação
 ```
-✅ NOVO_DESIGN_SYSTEM_2026.md (300+ linhas)
+✅ [REDACTED_TOKEN].md (300+ linhas)
    └─ Guia completo do novo design
 
-✅ ANTES_DEPOIS_REFORMULACAO.md (350+ linhas)
+✅ [REDACTED_TOKEN].md (350+ linhas)
    └─ Comparação visual antes/depois
 ```
 
@@ -73,8 +73,8 @@
 ### Documentação
 | Arquivo | Linhas | Status | Propósito |
 |---------|--------|--------|-----------|
-| NOVO_DESIGN_SYSTEM_2026.md | 300+ | ✅ Complete | Guia de uso |
-| ANTES_DEPOIS_REFORMULACAO.md | 350+ | ✅ Complete | Comparação visual |
+| [REDACTED_TOKEN].md | 300+ | ✅ Complete | Guia de uso |
+| [REDACTED_TOKEN].md | 350+ | ✅ Complete | Comparação visual |
 
 ---
 
@@ -130,7 +130,7 @@
     - Keyframes definidas
 
 11. DARK MODE SUPPORT
-    - @media prefers-color-scheme
+    - @media [REDACTED_TOKEN]
 ```
 
 ### Layout/index.jsx (Componentes)
@@ -411,8 +411,8 @@ export default function NovaPage() {
 
 | O que procuro... | Onde está... | Arquivo |
 |------------------|--------------|---------|
-| Como usar novo design | NOVO_DESIGN_SYSTEM_2026.md | ← Leia isso primeiro |
-| Comparação antes/depois | ANTES_DEPOIS_REFORMULACAO.md | ← Para visão geral |
+| Como usar novo design | [REDACTED_TOKEN].md | ← Leia isso primeiro |
+| Comparação antes/depois | [REDACTED_TOKEN].md | ← Para visão geral |
 | Componentes de layout | src/components/Layout/index.jsx | ← Importe daqui |
 | Novo CSS | src/styles/globals-new.css | ← Renomear para globals.css |
 | Landing page exemplo | src/pages/index-new.jsx | ← Copie o padrão |
@@ -428,7 +428,7 @@ export default function NovaPage() {
 
 Antes de usar em produção:
 
-- [ ] Leu NOVO_DESIGN_SYSTEM_2026.md?
+- [ ] Leu [REDACTED_TOKEN].md?
 - [ ] Testou /index-new no navegador?
 - [ ] Testou /servicos-new no navegador?
 - [ ] Verificou responsividade mobile?
@@ -442,7 +442,7 @@ Antes de usar em produção:
 ## 🚀 Está Pronto Para Começar!
 
 **Arquivo que deve LER PRIMEIRO:**
-→ [NOVO_DESIGN_SYSTEM_2026.md](./NOVO_DESIGN_SYSTEM_2026.md)
+→ [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md)
 
 **Então TESTE:**
 → `/index-new` (landing page)

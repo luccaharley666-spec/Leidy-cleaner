@@ -8,15 +8,15 @@ jest.mock('../utils/logger', () => ({
   warn: jest.fn(),
 }));
 
-jest.mock('../controllers/NotificationController', () => ({
-  sendBookingConfirmation: jest.fn().mockResolvedValue({ success: true }),
-  sendReminderNotifications: jest.fn().mockResolvedValue({ success: true }),
+jest.mock('../controllers/[REDACTED_TOKEN]', () => ({
+  [REDACTED_TOKEN]: jest.fn().mockResolvedValue({ success: true }),
+  [REDACTED_TOKEN]: jest.fn().mockResolvedValue({ success: true }),
   notifyTeam: jest.fn().mockResolvedValue({ success: true }),
-  sendFollowUpNotification: jest.fn().mockResolvedValue({ success: true })
+  [REDACTED_TOKEN]: jest.fn().mockResolvedValue({ success: true })
 }));
 
 const NotificationService = require('../utils/notifications');
-const NotificationController = require('../controllers/NotificationController');
+const [REDACTED_TOKEN] = require('../controllers/[REDACTED_TOKEN]');
 const logger = require('../utils/logger');
 
 describe('NotificationService', () => {
@@ -24,46 +24,46 @@ describe('NotificationService', () => {
     jest.clearAllMocks();
   });
 
-  describe('notifyBookingConfirmation', () => {
+  describe('[REDACTED_TOKEN]', () => {
     test('should be a static function', () => {
-      expect(typeof NotificationService.notifyBookingConfirmation).toBe('function');
+      expect(typeof NotificationService.[REDACTED_TOKEN]).toBe('function');
     });
 
-    test('should call NotificationController.sendBookingConfirmation', async () => {
+    test('should call [REDACTED_TOKEN].[REDACTED_TOKEN]', async () => {
       const bookingId = 123;
-      await NotificationService.notifyBookingConfirmation(bookingId);
+      await NotificationService.[REDACTED_TOKEN](bookingId);
 
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenCalledWith(bookingId);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](bookingId);
     });
 
     test('should return result from controller', async () => {
       const bookingId = 456;
-      const result = await NotificationService.notifyBookingConfirmation(bookingId);
+      const result = await NotificationService.[REDACTED_TOKEN](bookingId);
 
       expect(result).toEqual({ success: true });
     });
 
     test('should return a promise', () => {
-      const result = NotificationService.notifyBookingConfirmation(123);
+      const result = NotificationService.[REDACTED_TOKEN](123);
       expect(result instanceof Promise).toBe(true);
     });
 
     test('should handle multiple calls independently', async () => {
-      await NotificationService.notifyBookingConfirmation(1);
-      await NotificationService.notifyBookingConfirmation(2);
+      await NotificationService.[REDACTED_TOKEN](1);
+      await NotificationService.[REDACTED_TOKEN](2);
 
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenCalledTimes(2);
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenNthCalledWith(1, 1);
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenNthCalledWith(2, 2);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](2);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](1, 1);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](2, 2);
     });
 
     test('should accept different booking IDs', async () => {
       const bookingIds = [100, 200, 300];
       for (const id of bookingIds) {
-        await NotificationService.notifyBookingConfirmation(id);
+        await NotificationService.[REDACTED_TOKEN](id);
       }
 
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenCalledTimes(3);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](3);
     });
   });
 
@@ -72,10 +72,10 @@ describe('NotificationService', () => {
       expect(typeof NotificationService.notifyReminders).toBe('function');
     });
 
-    test('should call NotificationController.sendReminderNotifications', async () => {
+    test('should call [REDACTED_TOKEN].[REDACTED_TOKEN]', async () => {
       await NotificationService.notifyReminders();
 
-      expect(NotificationController.sendReminderNotifications).toHaveBeenCalled();
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).toHaveBeenCalled();
     });
 
     test('should return result from controller', async () => {
@@ -92,7 +92,7 @@ describe('NotificationService', () => {
     test('should not require arguments', async () => {
       await NotificationService.notifyReminders();
 
-      expect(NotificationController.sendReminderNotifications).toHaveBeenCalledWith();
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN]();
     });
 
     test('should be callable multiple times', async () => {
@@ -100,7 +100,7 @@ describe('NotificationService', () => {
       await NotificationService.notifyReminders();
       await NotificationService.notifyReminders();
 
-      expect(NotificationController.sendReminderNotifications).toHaveBeenCalledTimes(3);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](3);
     });
   });
 
@@ -117,8 +117,8 @@ describe('NotificationService', () => {
 
       await NotificationService.notifyIssue(issue);
 
-      expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('database_error'));
-      expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('Connection failed'));
+      expect(logger.warn).[REDACTED_TOKEN](expect.stringContaining('database_error'));
+      expect(logger.warn).[REDACTED_TOKEN](expect.stringContaining('Connection failed'));
     });
 
     test('should return true', async () => {
@@ -141,7 +141,7 @@ describe('NotificationService', () => {
         await NotificationService.notifyIssue(issue);
       }
 
-      expect(logger.warn).toHaveBeenCalledTimes(4);
+      expect(logger.warn).[REDACTED_TOKEN](4);
     });
 
     test('should format issue message correctly', async () => {
@@ -162,11 +162,11 @@ describe('NotificationService', () => {
       expect(typeof NotificationService.notifyTeam).toBe('function');
     });
 
-    test('should call NotificationController.notifyTeam', async () => {
+    test('should call [REDACTED_TOKEN].notifyTeam', async () => {
       const bookingId = 789;
       await NotificationService.notifyTeam(bookingId);
 
-      expect(NotificationController.notifyTeam).toHaveBeenCalledWith(bookingId);
+      expect([REDACTED_TOKEN].notifyTeam).[REDACTED_TOKEN](bookingId);
     });
 
     test('should return result from controller', async () => {
@@ -184,7 +184,7 @@ describe('NotificationService', () => {
       const bookingId = 999;
       await NotificationService.notifyTeam(bookingId);
 
-      expect(NotificationController.notifyTeam).toHaveBeenCalledWith(999);
+      expect([REDACTED_TOKEN].notifyTeam).[REDACTED_TOKEN](999);
     });
 
     test('should handle multiple bookings', async () => {
@@ -194,7 +194,7 @@ describe('NotificationService', () => {
         await NotificationService.notifyTeam(id);
       }
 
-      expect(NotificationController.notifyTeam).toHaveBeenCalledTimes(5);
+      expect([REDACTED_TOKEN].notifyTeam).[REDACTED_TOKEN](5);
     });
   });
 
@@ -203,11 +203,11 @@ describe('NotificationService', () => {
       expect(typeof NotificationService.sendFollowUp).toBe('function');
     });
 
-    test('should call NotificationController.sendFollowUpNotification', async () => {
+    test('should call [REDACTED_TOKEN].[REDACTED_TOKEN]', async () => {
       const bookingId = 555;
       await NotificationService.sendFollowUp(bookingId);
 
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenCalledWith(bookingId);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](bookingId);
     });
 
     test('should return result from controller', async () => {
@@ -225,7 +225,7 @@ describe('NotificationService', () => {
       const bookingId = 777;
       await NotificationService.sendFollowUp(bookingId);
 
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenCalledWith(777);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](777);
     });
 
     test('should handle sequential follow-ups', async () => {
@@ -235,10 +235,10 @@ describe('NotificationService', () => {
         await NotificationService.sendFollowUp(id);
       }
 
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenCalledTimes(3);
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenNthCalledWith(1, 100);
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenNthCalledWith(2, 200);
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenNthCalledWith(3, 300);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](3);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](1, 100);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](2, 200);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](3, 300);
     });
   });
 
@@ -249,7 +249,7 @@ describe('NotificationService', () => {
     });
 
     test('should export all required methods', () => {
-      expect(NotificationService.notifyBookingConfirmation).toBeDefined();
+      expect(NotificationService.[REDACTED_TOKEN]).toBeDefined();
       expect(NotificationService.notifyReminders).toBeDefined();
       expect(NotificationService.notifyIssue).toBeDefined();
       expect(NotificationService.notifyTeam).toBeDefined();
@@ -259,16 +259,16 @@ describe('NotificationService', () => {
     test('should have exactly 5 static methods', () => {
       const methods = Object.getOwnPropertyNames(NotificationService.prototype)
         .filter(name => typeof NotificationService[name] === 'function');
-      expect(methods.length).toBeGreaterThanOrEqual(0);
+      expect(methods.length).[REDACTED_TOKEN](0);
     });
   });
 
   describe('Error Handling', () => {
     test('should handle errors from controller gracefully', async () => {
-      NotificationController.sendBookingConfirmation.mockRejectedValueOnce(new Error('Connection failed'));
+      [REDACTED_TOKEN].[REDACTED_TOKEN].[REDACTED_TOKEN](new Error('Connection failed'));
 
       try {
-        await NotificationService.notifyBookingConfirmation(123);
+        await NotificationService.[REDACTED_TOKEN](123);
       } catch (error) {
         expect(error.message).toBe('Connection failed');
       }
@@ -276,7 +276,7 @@ describe('NotificationService', () => {
 
     test('should propagate controller errors', async () => {
       const testError = new Error('Test error');
-      NotificationController.sendReminderNotifications.mockRejectedValueOnce(testError);
+      [REDACTED_TOKEN].[REDACTED_TOKEN].[REDACTED_TOKEN](testError);
 
       await expect(NotificationService.notifyReminders()).rejects.toThrow('Test error');
     });
@@ -286,22 +286,22 @@ describe('NotificationService', () => {
     test('should work with all methods together', async () => {
       const bookingId = 123;
 
-      await NotificationService.notifyBookingConfirmation(bookingId);
+      await NotificationService.[REDACTED_TOKEN](bookingId);
       await NotificationService.notifyTeam(bookingId);
       await NotificationService.sendFollowUp(bookingId);
 
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenCalledWith(bookingId);
-      expect(NotificationController.notifyTeam).toHaveBeenCalledWith(bookingId);
-      expect(NotificationController.sendFollowUpNotification).toHaveBeenCalledWith(bookingId);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](bookingId);
+      expect([REDACTED_TOKEN].notifyTeam).[REDACTED_TOKEN](bookingId);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](bookingId);
     });
 
     test('should log issue separate from other notifications', async () => {
       const issue = { type: 'error', message: 'test' };
       await NotificationService.notifyIssue(issue);
-      await NotificationService.notifyBookingConfirmation(1);
+      await NotificationService.[REDACTED_TOKEN](1);
 
-      expect(logger.warn).toHaveBeenCalledTimes(1);
-      expect(NotificationController.sendBookingConfirmation).toHaveBeenCalledTimes(1);
+      expect(logger.warn).[REDACTED_TOKEN](1);
+      expect([REDACTED_TOKEN].[REDACTED_TOKEN]).[REDACTED_TOKEN](1);
     });
   });
 });

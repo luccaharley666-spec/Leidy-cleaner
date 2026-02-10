@@ -3,7 +3,7 @@
 -- =====================================================
 
 -- Tabela de preferências de notificação do usuário
-CREATE TABLE IF NOT EXISTS notification_preferences (
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INT AUTO_INCREMENT PRIMARY KEY,
   userId INT NOT NULL UNIQUE,
   email_enabled BOOLEAN DEFAULT true,
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS notification_preferences (
   reminder_2days BOOLEAN DEFAULT true,
   reminder_1day BOOLEAN DEFAULT true,
   reminder_1hour BOOLEAN DEFAULT false,
-  notification_template VARCHAR(50) DEFAULT 'standard',
+  [REDACTED_TOKEN] VARCHAR(50) DEFAULT 'standard',
   phone_number VARCHAR(20),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS notification_logs (
 );
 
 -- Tabela de templates de mensagens
-CREATE TABLE IF NOT EXISTS notification_templates (
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100) UNIQUE,
   type VARCHAR(50), -- 'sms', 'whatsapp', 'email'
@@ -70,25 +70,25 @@ CREATE TABLE IF NOT EXISTS notification_queue (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (userId) REFERENCES users(id) ON DELETE CASCADE,
   FOREIGN KEY (bookingId) REFERENCES bookings(id) ON DELETE CASCADE,
-  INDEX idx_scheduled_send_time (scheduled_send_time),
+  INDEX [REDACTED_TOKEN] (scheduled_send_time),
   INDEX idx_status (status)
 );
 
 -- Inserts de templates padrão
-INSERT INTO notification_templates (name, type, subject, body, variables, is_active) VALUES
-('booking_confirmation_email', 'email', 'Agendamento Confirmado - {{serviceName}}', 
+INSERT INTO [REDACTED_TOKEN] (name, type, subject, body, variables, is_active) VALUES
+('[REDACTED_TOKEN]', 'email', 'Agendamento Confirmado - {{serviceName}}', 
 'Olá {{userName}},\n\nSeu agendamento foi confirmado!\n\nServiço: {{serviceName}}\nData: {{bookingDate}}\nHora: {{bookingTime}}\nLocal: {{location}}\n\nCódigo do Agendamento: #{{bookingId}}\n\nQualquer dúvida, entre em contato!\n\nLeidy Cleaner',
 '["userName", "serviceName", "bookingDate", "bookingTime", "location", "bookingId"]', true),
 
-('booking_reminder_2days', 'whatsapp', NULL,
+('[REDACTED_TOKEN]', 'whatsapp', NULL,
 '👋 Olá {{userName}}! Lembrando seu agendamento de {{serviceName}} em 2 dias:\n📅 {{bookingDate}} às {{bookingTime}}\n📍 {{location}}\n\nCódigo: #{{bookingId}}\n✓ Confirmar | 📅 Reagendar | 📞 Suporte',
 '["userName", "serviceName", "bookingDate", "bookingTime", "location", "bookingId"]', true),
 
-('booking_reminder_1day', 'sms', NULL,
+('[REDACTED_TOKEN]', 'sms', NULL,
 'Leidy Cleaner: Agende de {{serviceName}} amanhã ({{bookingTime}}) no endereço {{location}}. Código: #{{bookingId}}. Confirme aqui: [link]',
 '["serviceName", "bookingTime", "location", "bookingId"]', true),
 
-('booking_reminder_1hour', 'whatsapp', NULL,
+('[REDACTED_TOKEN]', 'whatsapp', NULL,
 '⏰ Falta 1 hora! {{firstName}}, estamos chegando em breve.\n🏠 Endereço: {{location}}\n\nEstou a caminho! Qualquer dúvida: [tel]',
 '["firstName", "location"]', true),
 

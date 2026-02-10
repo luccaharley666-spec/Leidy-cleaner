@@ -18,7 +18,7 @@ test.describe('Reviews & Ratings', () => {
     
     // Verificar que tem lista de reviews
     const reviewCount = await page.locator('[data-testid=review-item]').count();
-    expect(reviewCount).toBeGreaterThanOrEqual(0);
+    expect(reviewCount).[REDACTED_TOKEN](0);
   });
 
   test('deve filtrar reviews por rating', async ({ page }) => {
@@ -63,7 +63,7 @@ test.describe('Reviews & Ratings', () => {
     await page.fill('[data-testid=review-comment]', 'Serviço excelente!');
     
     // Submeter
-    await page.click('[data-testid=submit-review-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
     
     // Esperar sucesso
     await page.waitForSelector('[data-testid=review-success]', { timeout: 5000 });
@@ -75,7 +75,7 @@ test.describe('Reviews & Ratings', () => {
     await page.click('[data-testid=write-review-button] >> nth=0');
     
     // Tentar submeter sem rating
-    await page.click('[data-testid=submit-review-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
     
     // Verificar erro
     await expect(page.locator('[data-testid=rating-error]')).toBeVisible();
@@ -94,7 +94,7 @@ test.describe('Reviews & Ratings', () => {
     await page.goto('/admin/reviews');
     
     // Filtrar por pending
-    await page.selectOption('[data-testid=review-status-filter]', 'pending');
+    await page.selectOption('[data-testid=[REDACTED_TOKEN]]', 'pending');
     
     // Esperar filtro
     await page.waitForTimeout(500);
@@ -116,11 +116,11 @@ test.describe('Reviews & Ratings', () => {
 
     // Ir para reviews pendentes
     await page.goto('/admin/reviews');
-    await page.selectOption('[data-testid=review-status-filter]', 'pending');
+    await page.selectOption('[data-testid=[REDACTED_TOKEN]]', 'pending');
     await page.waitForTimeout(500);
 
     // Clicar em aprovar primeira review
-    await page.click('[data-testid=approve-review-button] >> nth=0');
+    await page.click('[data-testid=[REDACTED_TOKEN]] >> nth=0');
     
     // Confirmar ação
     await page.click('[data-testid=confirm-approve]');

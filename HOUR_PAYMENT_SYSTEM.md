@@ -211,9 +211,9 @@ As taxas podem ser centralizadas em `automation/pricing-matrix.json`:
 
 ```json
 {
-  "serviceFeePercentage": 40,
+  "[REDACTED_TOKEN]": 40,
   "postWorkPercentage": 20,
-  "organizationPercentage": 10,
+  "[REDACTED_TOKEN]": 10,
   "productFee": 30,
   "minimumPrice": 0,
   "maximumDiscount": 0.3

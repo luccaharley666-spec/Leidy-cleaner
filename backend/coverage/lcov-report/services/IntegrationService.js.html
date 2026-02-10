@@ -712,7 +712,7 @@ class IntegrationService {
           { emailAddress: { address: bookingData.customerEmail }, type: 'required' },
           { emailAddress: { address: bookingData.professionalEmail }, type: 'required' }
         ],
-        reminderMinutesBeforeStart: 15
+        [REDACTED_TOKEN]: 15
       };
 &nbsp;
       const integration = <span class="cstat-no" title="statement not covered" >{</span>
@@ -737,7 +737,7 @@ class IntegrationService {
   /**
    * WhatsApp Notification
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendWhatsAppNotification(phoneNumber, message, templateId = <span class="branch-0 cbranch-no" title="branch not covered" >null)</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](phoneNumber, message, templateId = <span class="branch-0 cbranch-no" title="branch not covered" >null)</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const notification = <span class="cstat-no" title="statement not covered" >{</span>
         id: `whatsapp_${Date.now()}`,
@@ -761,7 +761,7 @@ class IntegrationService {
   /**
    * Slack Team Notification
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendSlackNotification(channelId, message, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](channelId, message, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const notification = <span class="cstat-no" title="statement not covered" >{</span>
         id: `slack_${Date.now()}`,
@@ -785,7 +785,7 @@ class IntegrationService {
   /**
    * Telegram Bot Notification
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendTelegramNotification(chatId, message, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](chatId, message, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const notification = <span class="cstat-no" title="statement not covered" >{</span>
         id: `telegram_${Date.now()}`,

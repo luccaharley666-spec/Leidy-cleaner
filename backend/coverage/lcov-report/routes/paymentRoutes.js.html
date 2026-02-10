@@ -484,7 +484,7 @@
 const express = require('express');
 const router = express.Router();
 const PaymentService = require('../services/PaymentService');
-const HourPackagingService = require('../services/HourPackagingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const { authenticateToken } = require('../middleware/auth');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
@@ -502,7 +502,7 @@ router.post('/create-checkout', authenticateToken, <span class="fstat-no" title=
     const userId = <span class="cstat-no" title="statement not covered" >req.user.id;</span>
 &nbsp;
     // Validar pacote
-    const packages = <span class="cstat-no" title="statement not covered" >HourPackagingService.getAvailablePackages();</span>
+    const packages = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN].[REDACTED_TOKEN]();</span>
     const selectedPackage = <span class="cstat-no" title="statement not covered" >packages.find(<span class="fstat-no" title="function not covered" >p </span>=&gt; <span class="cstat-no" title="statement not covered" >p.hours === parseInt(hourPackage))</span>;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (!selectedPackage) {</span>
@@ -513,7 +513,7 @@ router.post('/create-checkout', authenticateToken, <span class="fstat-no" title=
     }
 &nbsp;
     // Criar sessão Stripe
-    const checkout = <span class="cstat-no" title="statement not covered" >await PaymentService.createCheckoutSession(</span>
+    const checkout = <span class="cstat-no" title="statement not covered" >await PaymentService.[REDACTED_TOKEN](</span>
       userId,
       hourPackage,
       selectedPackage.totalPrice
@@ -566,7 +566,7 @@ router.get('/session/:sessionId', <span class="fstat-no" title="function not cov
 router.post('/webhook', express.raw({ type: 'application/json' }), <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const signature = <span class="cstat-no" title="statement not covered" >req.headers['stripe-signature'];</span>
-    const event = <span class="cstat-no" title="statement not covered" >PaymentService.validateWebhookSignature(req.body, signature);</span>
+    const event = <span class="cstat-no" title="statement not covered" >PaymentService.[REDACTED_TOKEN](req.body, signature);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    console.log('🔔 Webhook Stripe recebido:', event.type);</span>
 &nbsp;
@@ -575,7 +575,7 @@ router.post('/webhook', express.raw({ type: 'application/json' }), <span class="
       const session = <span class="cstat-no" title="statement not covered" >event.data.object;</span>
 &nbsp;
       // Validar se realmente foi pago
-      const isPaid = <span class="cstat-no" title="statement not covered" >await PaymentService.verifyPaymentComplete(session.id);</span>
+      const isPaid = <span class="cstat-no" title="statement not covered" >await PaymentService.[REDACTED_TOKEN](session.id);</span>
 <span class="cstat-no" title="statement not covered" >      if (!isPaid) {</span>
 <span class="cstat-no" title="statement not covered" >        console.log('❌ Pagamento não confirmado ainda');</span>
 <span class="cstat-no" title="statement not covered" >        return res.status(200).json({ received: true });</span>
@@ -586,7 +586,7 @@ router.post('/webhook', express.raw({ type: 'application/json' }), <span class="
       const amount = <span class="cstat-no" title="statement not covered" >session.amount_total / 100;</span>
 &nbsp;
       // Adicionar crédito de horas ao usuário
-<span class="cstat-no" title="statement not covered" >      await HourPackagingService.addUserHourCredit(</span>
+<span class="cstat-no" title="statement not covered" >      await [REDACTED_TOKEN].addUserHourCredit(</span>
         userId,
         hourPackage,
         `Compra de ${hourPackage}h - Transação Stripe ${session.id}`,
@@ -671,7 +671,7 @@ router.post('/refund', authenticateToken, <span class="fstat-no" title="function
     // Criar refund
     const refund = <span class="cstat-no" title="statement not covered" >await PaymentService.createRefund(</span>
       session.payment_intent,
-      reason || 'requested_by_customer'
+      reason || '[REDACTED_TOKEN]'
     );
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    res.json(refund);</span>

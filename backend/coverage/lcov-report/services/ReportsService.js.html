@@ -699,7 +699,7 @@ class ReportsService {
   /**
    * Gerar relatório de receita
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateRevenueReport(startDate, endDate, format = <span class="branch-0 cbranch-no" title="branch not covered" >'pdf')</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](startDate, endDate, format = <span class="branch-0 cbranch-no" title="branch not covered" >'pdf')</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const reportId = <span class="cstat-no" title="statement not covered" >`report_${Date.now()}`;</span>
       const report = <span class="cstat-no" title="statement not covered" >{</span>
@@ -750,7 +750,7 @@ class ReportsService {
   /**
    * Gerar relatório de profissionais
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateProfessionalReport(startDate, endDate) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](startDate, endDate) {
     const report = <span class="cstat-no" title="statement not covered" >{</span>
       id: `report_prof_${Date.now()}`,
       type: 'professional',
@@ -765,7 +765,7 @@ class ReportsService {
           { name: 'Pedro Costa', bookings: 128, rating: 4.7, earnings: 18200 }
         ],
         performanceMetrics: {
-          averageBookingsPerProfessional: 31.4,
+          [REDACTED_TOKEN]: 31.4,
           averageRating: 4.65,
           totalEarnings: 1285400.00,
           utilization: 76.5
@@ -780,7 +780,7 @@ class ReportsService {
   /**
    * Gerar relatório de clientes
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateCustomerReport(startDate, endDate) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](startDate, endDate) {
     const report = <span class="cstat-no" title="statement not covered" >{</span>
       id: `report_cust_${Date.now()}`,
       type: 'customer',
@@ -799,7 +799,7 @@ class ReportsService {
           churned: 1667,
           atRisk: 1234
         },
-        customerLifetimeValue: {
+        [REDACTED_TOKEN]: {
           average: 850.00,
           median: 620.00,
           top10Percent: 12500.00
@@ -814,7 +814,7 @@ class ReportsService {
   /**
    * Gerar relatório de churn
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateChurnAnalysisReport() {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       id: `report_churn_${Date.now()}`,
       type: 'churn_analysis',
@@ -829,7 +829,7 @@ class ReportsService {
         ],
         riskScore: 6.8,
         atRiskCustomers: 1234,
-        interventionStrategies: [
+        [REDACTED_TOKEN]: [
           'Email de reengajamento',
           'Ofertas especiais',
           'Análise de satisfação'
@@ -841,9 +841,9 @@ class ReportsService {
   /**
    * Gerar relatório de satisfação
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateSatisfactionReport() {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    return {</span>
-      id: `report_satisfaction_${Date.now()}`,
+      id: `[REDACTED_TOKEN]${Date.now()}`,
       type: 'satisfaction',
       generatedAt: new Date(),
       data: {
@@ -869,7 +869,7 @@ class ReportsService {
   /**
    * Agendar relatório recorrente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync scheduleRecurringReport(config) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](config) {
     const schedule = <span class="cstat-no" title="statement not covered" >{</span>
       id: `schedule_${Date.now()}`,
       type: config.type,
@@ -902,7 +902,7 @@ class ReportsService {
     const formats = <span class="cstat-no" title="statement not covered" >{</span>
       pdf: 'application/pdf',
       csv: 'text/csv',
-      xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+      xlsx: 'application/vnd.[REDACTED_TOKEN].spreadsheetml.sheet',
       json: 'application/json'
     };
 &nbsp;
@@ -919,7 +919,7 @@ class ReportsService {
   /**
    * Gerar relatório customizado
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateCustomReport(config) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](config) {
     const {
       name,
       filters = <span class="branch-0 cbranch-no" title="branch not covered" >{},</span>
@@ -970,7 +970,7 @@ class ReportsService {
   /**
    ✅ NOVO: Gerar comparativo de períodos
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generatePeriodComparison(metric, period1Start, period1End, period2Start, period2End) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](metric, period1Start, period1End, period2Start, period2End) {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       metric,
       period1: {

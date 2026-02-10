@@ -25,13 +25,13 @@ function ChatComponent({ bookingId, userId, userName = 'Você' }) {
     const fetchMessages = async () => {
       try {
         const data = await apiCall(`/api/chat/${bookingId}`, { method: 'GET' });
-        setMessages(data.messages || generateMockMessages());
+        setMessages(data.messages || [REDACTED_TOKEN]());
         setLoading(false);
 
         // Simular conexão com WebSocket
         simulateWebSocket();
       } catch (error) {
-        setMessages(generateMockMessages());
+        setMessages([REDACTED_TOKEN]());
         setLoading(false);
         simulateWebSocket();
       }
@@ -40,7 +40,7 @@ function ChatComponent({ bookingId, userId, userName = 'Você' }) {
     fetchMessages();
   }, [bookingId]);
 
-  const generateMockMessages = () => [
+  const [REDACTED_TOKEN] = () => [
     {
       id: 1,
       sender: 'staff',

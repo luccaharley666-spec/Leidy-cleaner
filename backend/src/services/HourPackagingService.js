@@ -6,13 +6,13 @@
 
 const { getDb } = require('../db/sqlite');
 
-class HourPackagingService {
+class [REDACTED_TOKEN] {
   /**
    * Gerar lista de pacotes disponíveis
    * 40h (primeira), depois +20h cada
    * Sem máximo fixo, mas calculamos até um razoável (420h = 10 pacotes)
    */
-  getAvailablePackages() {
+  [REDACTED_TOKEN]() {
     const packages = [];
     for (let i = 40; i <= 420; i += 20) {
       const pricePerHour = this.getPricePerHour(i);
@@ -146,7 +146,7 @@ class HourPackagingService {
         usedHours: credit.used_hours,
       };
     } catch (error) {
-      console.error('[HourPackagingService] Erro ao buscar crédito:', error.message);
+      console.error('[[REDACTED_TOKEN]] Erro ao buscar crédito:', error.message);
       return { hasCredit: false, availableHours: 0 };
     }
   }
@@ -208,11 +208,11 @@ class HourPackagingService {
    * Ex: se pede 50h, sugere pacote de 60h
    */
   suggestPackage(requestedHours) {
-    const packages = this.getAvailablePackages();
+    const packages = this.[REDACTED_TOKEN]();
     // Encontrar o primeiro pacote que atende às horas solicitadas
     const suggested = packages.find((pkg) => pkg.hours >= requestedHours);
     return suggested || packages[packages.length - 1]; // fallback para maior
   }
 }
 
-module.exports = new HourPackagingService();
+module.exports = new [REDACTED_TOKEN]();

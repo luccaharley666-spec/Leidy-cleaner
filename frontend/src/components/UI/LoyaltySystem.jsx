@@ -9,7 +9,7 @@ const LoyaltyContext = createContext();
 export function LoyaltyProvider({ children }) {
   const [userPoints, setUserPoints] = useState(0);
   const [userLevel, setUserLevel] = useState('Bronze');
-  const [completedServices, setCompletedServices] = useState(0);
+  const [completedServices, [REDACTED_TOKEN]] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const { addNotification } = useNotifications();
 
@@ -19,7 +19,7 @@ export function LoyaltyProvider({ children }) {
     if (saved) {
       const data = JSON.parse(saved);
       setUserPoints(data.points || 0);
-      setCompletedServices(data.services || 0);
+      [REDACTED_TOKEN](data.services || 0);
       setUserLevel(calculateLevel(data.points || 0));
     }
   }, []);
@@ -36,7 +36,7 @@ export function LoyaltyProvider({ children }) {
     const newLevel = calculateLevel(newPoints);
 
     setUserPoints(newPoints);
-    setCompletedServices(prev => prev + 1);
+    [REDACTED_TOKEN](prev => prev + 1);
 
     // Verificar se subiu de nível
     if (newLevel !== userLevel) {

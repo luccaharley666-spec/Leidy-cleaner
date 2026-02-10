@@ -8,7 +8,7 @@ function getKey() {
   const key = process.env.SECRET_ENC_KEY || process.env.TWO_FA_ENC_KEY;
   if (!key) {
     logger.warn('Encryption key not set (SECRET_ENC_KEY). Using insecure dev key.');
-    return crypto.createHash('sha256').update('dev_secret_key_change_me').digest();
+    return crypto.createHash('sha256').update('[REDACTED_TOKEN]').digest();
   }
   return crypto.createHash('sha256').update(key).digest();
 }

@@ -215,7 +215,7 @@ router.get('/services', <span class="fstat-no" title="function not covered" >(r<
 // GET /api/search/autocomplete
 router.get('/autocomplete', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
   const { query } = <span class="cstat-no" title="statement not covered" >req.query;</span>
-  const suggestions = <span class="cstat-no" title="statement not covered" >SearchService.getAutocompleteSuggestions(query || '');</span>
+  const suggestions = <span class="cstat-no" title="statement not covered" >SearchService.[REDACTED_TOKEN](query || '');</span>
 <span class="cstat-no" title="statement not covered" >  res.json({ suggestions });</span>
 });
 &nbsp;

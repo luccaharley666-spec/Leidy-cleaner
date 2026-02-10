@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/DatabaseOptimizationService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> DatabaseOptimizationService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -744,7 +744,7 @@
 &nbsp;
 const logger = require('../utils/logger');
 &nbsp;
-class DatabaseOptimizationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.queryStats = new Map();
     this.slowQueryThreshold = 100; // ms
@@ -912,7 +912,7 @@ class DatabaseOptimizationService {
           column: 'email'
         },
         {
-          name: 'idx_bookings_user_id',
+          name: '[REDACTED_TOKEN]',
           table: 'bookings',
           unique: false,
           seq: 0,
@@ -934,7 +934,7 @@ class DatabaseOptimizationService {
   /**
    ✅ NOVO: Validar integridade de banco
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync validateDatabaseIntegrity(db) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](db) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // SQLite PRAGMA integrity_check;
       // Simular resposta
@@ -1038,7 +1038,7 @@ class DatabaseOptimizationService {
   /**
    ✅ NOVO: Backup incrementar
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync createIncrementalBackup(db, backupPath) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](db, backupPath) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      logger.log({</span>
         level: 'info',
@@ -1073,7 +1073,7 @@ class DatabaseOptimizationService {
   }
 }
 &nbsp;
-module.exports = new DatabaseOptimizationService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

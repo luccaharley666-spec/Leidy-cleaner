@@ -59,7 +59,7 @@ test_file "backend/src/routes/twoFactorRoutes.js" "2FA Routes"
 test_file "backend/src/services/PixService.js" "PIX Service"
 test_file "backend/src/services/CouponService.js" "Coupon Service"
 test_file "backend/src/services/ReferralService.js" "Referral Service"
-test_file "backend/src/services/SlotRecommendationService.js" "Slot Recommendation Service"
+test_file "backend/src/services/[REDACTED_TOKEN].js" "Slot Recommendation Service"
 
 # Admin & Blog
 test_file "backend/src/routes/adminRoutes.js" "Admin Dashboard Routes"
@@ -71,11 +71,11 @@ test_file "public/service-worker.js" "Service Worker"
 test_file "public/offline.html" "Offline Fallback Page"
 
 # Database
-test_file "database/migrations/008_add_pix_cupons_referral.sql" "Database Migration"
+test_file "database/migrations/[REDACTED_TOKEN].sql" "Database Migration"
 
 # Legal
 test_file "public/termos-servico.html" "Terms of Service"
-test_file "public/politica-privacidade.html" "Privacy Policy (LGPD)"
+test_file "public/[REDACTED_TOKEN].html" "Privacy Policy (LGPD)"
 
 echo ""
 echo "🔍 VALIDANDO CONTEÚDO"
@@ -91,21 +91,21 @@ test_exists "POST /api/auth/2fa/confirm" "backend/src/routes/twoFactorRoutes.js"
 test_exists "generateQRCode" "backend/src/services/PixService.js" "PIX QR code generation"
 test_exists "verifyPayment" "backend/src/services/PixService.js" "PIX verification"
 test_exists "confirmPayment" "backend/src/services/PixService.js" "PIX payment confirmation"
-test_exists "pix_transactions" "database/migrations/008_add_pix_cupons_referral.sql" "PIX table na DB"
+test_exists "pix_transactions" "database/migrations/[REDACTED_TOKEN].sql" "PIX table na DB"
 
 # Coupon validations
 test_exists "validateCoupon" "backend/src/services/CouponService.js" "Coupon validation"
 test_exists "applyCoupon" "backend/src/services/CouponService.js" "Coupon application"
-test_exists "coupons" "database/migrations/008_add_pix_cupons_referral.sql" "Coupon table"
+test_exists "coupons" "database/migrations/[REDACTED_TOKEN].sql" "Coupon table"
 
 # Referral validations
-test_exists "generateReferralLink" "backend/src/services/ReferralService.js" "Referral link generation"
-test_exists "processReferralSignup" "backend/src/services/ReferralService.js" "Referral signup"
-test_exists "confirmReferralReward" "backend/src/services/ReferralService.js" "Referral reward"
+test_exists "[REDACTED_TOKEN]" "backend/src/services/ReferralService.js" "Referral link generation"
+test_exists "[REDACTED_TOKEN]" "backend/src/services/ReferralService.js" "Referral signup"
+test_exists "[REDACTED_TOKEN]" "backend/src/services/ReferralService.js" "Referral reward"
 
 # Slot Recommendation
-test_exists "recommendSlots" "backend/src/services/SlotRecommendationService.js" "Slot recommendation"
-test_exists "recommendComplementary" "backend/src/services/SlotRecommendationService.js" "Complementary services"
+test_exists "recommendSlots" "backend/src/services/[REDACTED_TOKEN].js" "Slot recommendation"
+test_exists "[REDACTED_TOKEN]" "backend/src/services/[REDACTED_TOKEN].js" "Complementary services"
 
 # Admin validations
 test_exists "POST /api/admin/teams" "backend/src/routes/adminRoutes.js" "Admin teams CRUD"
@@ -115,7 +115,7 @@ test_exists "GET /api/admin/dashboard" "backend/src/routes/adminRoutes.js" "Admi
 # Blog validations
 test_exists "GET /api/blog" "backend/src/routes/blogRoutes.js" "Blog list endpoint"
 test_exists "POST /api/blog" "backend/src/routes/blogRoutes.js" "Blog create endpoint"
-test_exists "blog_posts" "database/migrations/008_add_pix_cupons_referral.sql" "Blog table"
+test_exists "blog_posts" "database/migrations/[REDACTED_TOKEN].sql" "Blog table"
 
 # PWA validations
 test_exists "\"display\": \"standalone\"" "public/manifest.json" "PWA standalone mode"
@@ -128,7 +128,7 @@ test_exists "adminRoutes" "backend/src/routes/api.js" "Admin routes registered"
 test_exists "blogRoutes" "backend/src/routes/api.js" "Blog routes registered"
 
 # Legal compliance
-test_exists "LGPD" "public/politica-privacidade.html" "LGPD compliance mentioned"
+test_exists "LGPD" "public/[REDACTED_TOKEN].html" "LGPD compliance mentioned"
 test_exists "24h full" "public/termos-servico.html" "Refund policy documented"
 
 echo ""

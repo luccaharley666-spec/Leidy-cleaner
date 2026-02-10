@@ -1064,7 +1064,7 @@
  */
 &nbsp;
 const { getDb } = require('../db/sqlite'); // ✅ Usar pool centralizado
-const { calculateBookingPrice, calculateLoyaltyBonus } = require('../utils/priceCalculator');
+const { [REDACTED_TOKEN], [REDACTED_TOKEN] } = require('../utils/priceCalculator');
 const ValidationService = require('../services/ValidationService');
 const CacheService = require('../services/CacheService');
 const QueryCacheService = require('../services/QueryCacheService');
@@ -1158,11 +1158,11 @@ class BookingController {
         status: 'pending'
       };
 &nbsp;
-      const priceCalc = <span class="cstat-no" title="statement not covered" >calculateBookingPrice(booking, service);</span>
+      const priceCalc = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN](booking, service);</span>
 <span class="cstat-no" title="statement not covered" >      booking.base_price = priceCalc.basePrice;</span>
 <span class="cstat-no" title="statement not covered" >      booking.extra_quarter_hours = priceCalc.extraQuarter;</span>
 <span class="cstat-no" title="statement not covered" >      booking.staff_fee = priceCalc.staffFee;</span>
-<span class="cstat-no" title="statement not covered" >      booking.post_work_adjustment = priceCalc.postWorkAdjustment;</span>
+<span class="cstat-no" title="statement not covered" >      booking.[REDACTED_TOKEN] = priceCalc.postWorkAdjustment;</span>
 <span class="cstat-no" title="statement not covered" >      booking.final_price = priceCalc.finalPrice;</span>
 &nbsp;
       // ✅ Aplicar bônus de fidelidade
@@ -1175,12 +1175,12 @@ class BookingController {
       const result = <span class="cstat-no" title="statement not covered" >await db.run(`INSERT INTO bookings (</span>
           user_id, service_id, date, time, duration_hours,
           address, phone, base_price, extra_quarter_hours,
-          staff_fee, post_work_adjustment, final_price,
+          staff_fee, [REDACTED_TOKEN], final_price,
           is_post_work, has_extra_quarter, status, notes
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, validated.userId, validated.serviceId, validated.date, validated.time, 
       validated.durationHours, validated.address, validated.phone,
       booking.base_price, booking.extra_quarter_hours,
-      booking.staff_fee, booking.post_work_adjustment, booking.final_price,
+      booking.staff_fee, booking.[REDACTED_TOKEN], booking.final_price,
       booking.is_post_work, booking.has_extra_quarter, 'pending', sanitizedNotes);
 &nbsp;
       // ✅ Invalidar cache
@@ -1201,7 +1201,7 @@ class BookingController {
       // ✅ Enfileirar email de confirmação (assíncrono - não bloqueia resposta)
 <span class="cstat-no" title="statement not covered" >      if (user.email) {</span>
 <span class="cstat-no" title="statement not covered" >        try {</span>
-<span class="cstat-no" title="statement not covered" >          await EmailQueueService.enqueueBookingConfirmation(</span>
+<span class="cstat-no" title="statement not covered" >          await EmailQueueService.[REDACTED_TOKEN](</span>
             user.email,
             user.name || user.full_name,
             {
@@ -1248,7 +1248,7 @@ class BookingController {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      res.status(500).json({</span>
         error: 'Erro ao criar agendamento',
-        code: 'BOOKING_CREATE_ERROR'
+        code: '[REDACTED_TOKEN]'
       });
 <span class="cstat-no" title="statement not covered" >        logger.error('Error creating booking', { </span>
           error: error.message,
@@ -1494,7 +1494,7 @@ class BookingController {
 <span class="cstat-no" title="statement not covered" >        return res.status(404).json({ error: 'Usuário não encontrado' });</span>
       }
 &nbsp;
-      const loyaltyCalc = <span class="cstat-no" title="statement not covered" >calculateLoyaltyBonus(user);</span>
+      const loyaltyCalc = <span class="cstat-no" title="statement not covered" >[REDACTED_TOKEN](user);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      await db.close();</span>
 <span class="cstat-no" title="statement not covered" >      res.json({</span>
@@ -1518,7 +1518,7 @@ class BookingController {
   /**
    * Criar agendamento recorrente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync createRecurringBooking(req, res) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](req, res) {
     const db = <span class="cstat-no" title="statement not covered" >await getDb();</span>
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const { userId } = <span class="cstat-no" title="statement not covered" >req.user;</span>

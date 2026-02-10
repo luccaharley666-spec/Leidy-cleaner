@@ -92,8 +92,8 @@ curl -X PUT http://localhost:3001/api/auth/change-password \
 -- Comando: node -e "const bcrypt = require('bcrypt'); bcrypt.hash('NovaS enha@2025', 12, (err, hash) => console.log(hash));"
 
 UPDATE users SET
-  password_hash = '$2b$12$NOVO_HASH_BCRYPT_AQUI',
-  admin_password_hash = '$2b$12$NOVO_HASH_BCRYPT_AQUI'
+  password_hash = '$2b$12$[REDACTED_TOKEN]',
+  admin_password_hash = '$2b$12$[REDACTED_TOKEN]'
 WHERE id = 1;
 ```
 
@@ -161,8 +161,8 @@ curl -X POST http://localhost:3001/api/avatar/upload \
 #   "message": "Avatar atualizado com sucesso",
 #   "data": {
 #     "userId": 3,
-#     "avatar_url": "/uploads/avatars/user-3-1706814000000.jpg",
-#     "file_name": "user-3-1706814000000.jpg",
+#     "avatar_url": "/uploads/avatars/[REDACTED_TOKEN].jpg",
+#     "file_name": "[REDACTED_TOKEN].jpg",
 #     "file_size": 45678
 #   }
 # }
@@ -197,7 +197,7 @@ curl -X GET http://localhost:3001/api/profile/3 \
 #     "name": "João da Limpeza",
 #     "phone": "+55 (11) 99000-0001",
 #     "bio": "Profissional experiente...",
-#     "avatar_url": "/uploads/avatars/user-3-1706814000000.jpg",
+#     "avatar_url": "/uploads/avatars/[REDACTED_TOKEN].jpg",
 #     "role": "staff",
 #     "social_links": {...}
 #   }
@@ -212,7 +212,7 @@ curl -X GET http://localhost:3001/api/profile/3 \
 ```html
 <div class="user-profile">
   <img 
-    src="/uploads/avatars/user-3-1706814000000.jpg" 
+    src="/uploads/avatars/[REDACTED_TOKEN].jpg" 
     alt="João da Limpeza"
     class="avatar"
     width="100"

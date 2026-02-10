@@ -11,7 +11,7 @@ const ReportsService = require('../services/ReportsService');
 router.post('/revenue', async (req, res) => {
   try {
     const { startDate, endDate, format = 'pdf' } = req.body;
-    const report = await ReportsService.generateRevenueReport(startDate, endDate, format);
+    const report = await ReportsService.[REDACTED_TOKEN](startDate, endDate, format);
     res.status(201).json(report);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -22,7 +22,7 @@ router.post('/revenue', async (req, res) => {
 router.post('/professional', async (req, res) => {
   try {
     const { startDate, endDate } = req.body;
-    const report = await ReportsService.generateProfessionalReport(startDate, endDate);
+    const report = await ReportsService.[REDACTED_TOKEN](startDate, endDate);
     res.status(201).json(report);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -33,7 +33,7 @@ router.post('/professional', async (req, res) => {
 router.post('/customer', async (req, res) => {
   try {
     const { startDate, endDate } = req.body;
-    const report = await ReportsService.generateCustomerReport(startDate, endDate);
+    const report = await ReportsService.[REDACTED_TOKEN](startDate, endDate);
     res.status(201).json(report);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -43,7 +43,7 @@ router.post('/customer', async (req, res) => {
 // POST /api/reports/churn-analysis
 router.post('/churn-analysis', async (req, res) => {
   try {
-    const report = await ReportsService.generateChurnAnalysisReport();
+    const report = await ReportsService.[REDACTED_TOKEN]();
     res.status(201).json(report);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -53,7 +53,7 @@ router.post('/churn-analysis', async (req, res) => {
 // POST /api/reports/satisfaction
 router.post('/satisfaction', async (req, res) => {
   try {
-    const report = await ReportsService.generateSatisfactionReport();
+    const report = await ReportsService.[REDACTED_TOKEN]();
     res.status(201).json(report);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -64,7 +64,7 @@ router.post('/satisfaction', async (req, res) => {
 router.post('/custom', async (req, res) => {
   try {
     const { name, filters, metrics, startDate, endDate } = req.body;
-    const report = await ReportsService.generateCustomReport({
+    const report = await ReportsService.[REDACTED_TOKEN]({
       name,
       filters,
       metrics,
@@ -81,7 +81,7 @@ router.post('/custom', async (req, res) => {
 router.post('/schedule', async (req, res) => {
   try {
     const { type, frequency, recipients, format } = req.body;
-    const schedule = await ReportsService.scheduleRecurringReport({
+    const schedule = await ReportsService.[REDACTED_TOKEN]({
       type,
       frequency,
       recipients,
@@ -119,7 +119,7 @@ router.post('/:reportId/export', async (req, res) => {
 router.post('/comparison', async (req, res) => {
   try {
     const { metric, period1Start, period1End, period2Start, period2End } = req.body;
-    const comparison = await ReportsService.generatePeriodComparison(
+    const comparison = await ReportsService.[REDACTED_TOKEN](
       metric,
       period1Start,
       period1End,

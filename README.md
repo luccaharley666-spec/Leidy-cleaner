@@ -53,7 +53,7 @@ Ver [docs/DEPLOY.md](docs/DEPLOY.md) para instruções de deploy em Vercel + Rai
 - ✅ **Autenticação**: JWT 24h + Refresh tokens
 - ✅ **Password Hashing**: Bcrypt com salt rounds 12
 - ✅ **CSRF Protection**: Cookie-based tokens
-- ✅ **XSS Prevention**: Sanitização HTML + Content-Security-Policy
+- ✅ **XSS Prevention**: Sanitização HTML + [REDACTED_TOKEN]
 - ✅ **Rate Limiting**: 100 req/15min por IP
 - ✅ **SQL Injection Prevention**: Prepared statements
 

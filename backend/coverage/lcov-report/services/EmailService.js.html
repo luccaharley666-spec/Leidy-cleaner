@@ -1149,7 +1149,7 @@ class EmailService {
   /**
    * Enviar confirmação de agendamento
    */
-  async sendBookingConfirmation(clientEmail, clientName, bookingData) {
+  async [REDACTED_TOKEN](clientEmail, clientName, bookingData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -1385,7 +1385,7 @@ class EmailService {
   /**
    * Enviar email de boas-vindas para newsletter
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendNewsletterWelcome(email, name = <span class="branch-0 cbranch-no" title="branch not covered" >'Leitor')</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](email, name = <span class="branch-0 cbranch-no" title="branch not covered" >'Leitor')</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const mailOptions = <span class="cstat-no" title="statement not covered" >{</span>
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -1499,7 +1499,7 @@ class EmailService {
   /**
    * Enviar confirmação de pagamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendPaymentConfirmation(clientEmail, clientName, paymentData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, paymentData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const mailOptions = <span class="cstat-no" title="statement not covered" >{</span>
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -1563,7 +1563,7 @@ class EmailService {
   /**
    * Enviar notificação de reembolso
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendRefundNotification(clientEmail, clientName, refundData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](clientEmail, clientName, refundData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const mailOptions = <span class="cstat-no" title="statement not covered" >{</span>
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',

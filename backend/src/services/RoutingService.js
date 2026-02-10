@@ -10,7 +10,7 @@ class RoutingService {
   async optimizeRoute(bookings) {
     try {
       // Implementar algoritmo de otimização (ex: TSP - Traveling Salesman Problem)
-      const optimizedBookings = this.calculateOptimalPath(bookings);
+      const optimizedBookings = this.[REDACTED_TOKEN](bookings);
       return optimizedBookings;
     } catch (error) {
       throw error;
@@ -20,7 +20,7 @@ class RoutingService {
   /**
    * Calcular caminho otimal
    */
-  calculateOptimalPath(bookings) {
+  [REDACTED_TOKEN](bookings) {
     // Implementar algoritmo de otimização
     // 1. Calcular matriz de distâncias
     // 2. Aplicar algoritmo de otimização
@@ -77,7 +77,7 @@ class RoutingService {
   /**
    * Verificar tempo suficiente entre compromissos
    */
-  hasEnoughTimeBetween(booking1, booking2, minimumGapMinutes = 30) {
+  [REDACTED_TOKEN](booking1, booking2, minimumGapMinutes = 30) {
     const endTime1 = new Date(booking1.date.getTime() + 2 * 60 * 60 * 1000);
     const startTime2 = new Date(booking2.date);
     const gapMinutes = (startTime2 - endTime1) / (60 * 1000);
@@ -87,7 +87,7 @@ class RoutingService {
   /**
    * Notificar equipe sobre rota
    */
-  async notifyTeamAboutRoute(teamMemberId, itinerary) {
+  async [REDACTED_TOKEN](teamMemberId, itinerary) {
     try {
       // Enviar itinerário para app da equipa
       // await NotificationService.sendToTeamMember(teamMemberId, {

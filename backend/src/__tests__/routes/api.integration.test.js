@@ -37,7 +37,7 @@ describe('API Routes - Structure', () => {
       verifyEmail: jest.fn((req, res) => res.json({ success: true })),
     }));
 
-    jest.mock('../../controllers/NotificationsController', () => ({
+    jest.mock('../../controllers/[REDACTED_TOKEN]', () => ({
       getNotifications: jest.fn((req, res) => res.json({ notifications: [] })),
       markAsRead: jest.fn((req, res) => res.json({ success: true })),
     }));
@@ -54,7 +54,7 @@ describe('API Routes - Structure', () => {
       getStaff: jest.fn((req, res) => res.json({ staff: [] })),
     }));
 
-    jest.mock('../../controllers/PublicReviewsController', () => ({
+    jest.mock('../../controllers/[REDACTED_TOKEN]', () => ({
       getPublicReviews: jest.fn((req, res) => res.json({ reviews: [] })),
     }));
 

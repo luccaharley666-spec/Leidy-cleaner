@@ -23,7 +23,7 @@ export default function HeroSectionGreen() {
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob" />
         
         {/* Blob teal inferior */}
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-200 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob [REDACTED_TOKEN]" />
         
         {/* Linha decorativa */}
         <div className="absolute top-1/3 right-10 w-1 h-40 bg-gradient-to-b from-primary-500 to-transparent opacity-30" />
@@ -59,13 +59,13 @@ export default function HeroSectionGreen() {
               <Link href="/agendar">
                 <a className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-primary-500 to-primary-600 text-white font-semibold rounded-xl hover:from-primary-600 hover:to-primary-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 group">
                   Agendar Agora
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 [REDACTED_TOKEN]" />
                 </a>
               </Link>
               <Link href="#servicos">
                 <a className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border-2 border-primary-500 text-primary-600 font-semibold rounded-xl hover:bg-primary-50 transition-all duration-300 shadow-md hover:shadow-lg group">
                   Ver Serviços
-                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="w-5 h-5 group-hover:translate-x-1 [REDACTED_TOKEN]" />
                 </a>
               </Link>
             </div>
@@ -166,7 +166,7 @@ export default function HeroSectionGreen() {
           animation: blob 7s infinite;
         }
 
-        .animation-delay-2000 {
+        .[REDACTED_TOKEN] {
           animation-delay: 2s;
         }
 

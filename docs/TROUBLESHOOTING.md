@@ -76,7 +76,7 @@ npm ls multer
 const corsOptions = {
   origin: ['http://localhost:3000', 'http://localhost:3001'],
   credentials: true,
-  optionsSuccessStatus: 200
+  [REDACTED_TOKEN]: 200
 };
 
 app.use(cors(corsOptions));
@@ -112,7 +112,7 @@ chmod 755 backend/uploads/avatars/
 sqlite3 backend_data/limpeza.db "SELECT id, avatar_url FROM users;"
 
 # 4. Testar URL manualmente no navegador
-# http://localhost:3001/uploads/avatars/user-3-1706814000000.jpg
+# http://localhost:3001/uploads/avatars/[REDACTED_TOKEN].jpg
 ```
 
 ---
@@ -153,7 +153,7 @@ npm start # Uma vez
 
 sqlite3 backend_data/limpeza.db
 .read database/schema.sql
-.read database/migrations/002_add_company_and_admin.sql
+.read database/migrations/[REDACTED_TOKEN].sql
 .read database/seeds/001_initial_seed.sql
 .quit
 ```

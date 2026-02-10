@@ -31,5 +31,5 @@ ALTER TABLE bookings ADD COLUMN hours_used DECIMAL(10, 2);
 ALTER TABLE bookings ADD COLUMN paid_with_credits BOOLEAN DEFAULT 0;
 
 -- Índices para Performance
-CREATE INDEX IF NOT EXISTS idx_user_hour_credits_user_id ON user_hour_credits(user_id);
-CREATE INDEX IF NOT EXISTS idx_hour_packages_active ON hour_packages(is_active);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON user_hour_credits(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON hour_packages(is_active);

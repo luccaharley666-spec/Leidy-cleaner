@@ -175,7 +175,7 @@ export default function CTANewsletter() {
                           onChange={(e) => setEmail(e.target.value)}
                           placeholder="seu@email.com"
                           required
-                          className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-600 focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition"
+                          className="w-full px-6 py-4 rounded-xl border-2 border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-900 text-gray-900 dark:text-white [REDACTED_TOKEN] dark:[REDACTED_TOKEN] focus:outline-none focus:border-blue-500 dark:focus:border-cyan-500 transition"
                         />
                       </motion.div>
 

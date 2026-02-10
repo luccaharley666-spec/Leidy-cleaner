@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/NewsletterController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> NewsletterController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -726,7 +726,7 @@ const { getDb } = require('../db/sqlite');
 const EmailService = require('../services/EmailService');
 const logger = require('../utils/logger');
 &nbsp;
-class NewsletterController {
+class [REDACTED_TOKEN] {
   /**
    * Inscrever email na newsletter
    * POST /api/newsletter/subscribe
@@ -754,7 +754,7 @@ class NewsletterController {
       // Verificar se já existe
       const db = <span class="cstat-no" title="statement not covered" >await getDb();</span>
       const existing = <span class="cstat-no" title="statement not covered" >await db.get(</span>
-        'SELECT id FROM newsletter_subscribers WHERE email = ?',
+        'SELECT id FROM [REDACTED_TOKEN] WHERE email = ?',
         email
       );
 &nbsp;
@@ -770,7 +770,7 @@ class NewsletterController {
       const subscribedAt = <span class="cstat-no" title="statement not covered" >new Date().toISOString();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      await db.run(</span>
-        `INSERT INTO newsletter_subscribers (id, email, name, status, subscribedAt, unsubscribedAt)
+        `INSERT INTO [REDACTED_TOKEN] (id, email, name, status, subscribedAt, unsubscribedAt)
          VALUES (?, ?, ?, ?, ?, ?)`,
         id,
         email.toLowerCase(),
@@ -783,7 +783,7 @@ class NewsletterController {
       // Enviar email de confirmação
 <span class="cstat-no" title="statement not covered" >      try {</span>
         const emailService = <span class="cstat-no" title="statement not covered" >new EmailService();</span>
-<span class="cstat-no" title="statement not covered" >        await emailService.sendNewsletterWelcome(email, name);</span>
+<span class="cstat-no" title="statement not covered" >        await emailService.[REDACTED_TOKEN](email, name);</span>
 <span class="cstat-no" title="statement not covered" >        logger.info(`Newsletter subscription: ${email}`);</span>
       } catch (emailError) {
 <span class="cstat-no" title="statement not covered" >        logger.warn(`Email envio falhou mas inscrição foi salva: ${email}`, emailError);</span>
@@ -828,7 +828,7 @@ class NewsletterController {
       
       // Verificar se existe
       const subscriber = <span class="cstat-no" title="statement not covered" >await db.get(</span>
-        'SELECT id FROM newsletter_subscribers WHERE email = ?',
+        'SELECT id FROM [REDACTED_TOKEN] WHERE email = ?',
         email.toLowerCase()
       );
 &nbsp;
@@ -842,7 +842,7 @@ class NewsletterController {
       // Atualizar status
       const unsubscribedAt = <span class="cstat-no" title="statement not covered" >new Date().toISOString();</span>
 <span class="cstat-no" title="statement not covered" >      await db.run(</span>
-        'UPDATE newsletter_subscribers SET status = ?, unsubscribedAt = ? WHERE email = ?',
+        'UPDATE [REDACTED_TOKEN] SET status = ?, unsubscribedAt = ? WHERE email = ?',
         'unsubscribed',
         unsubscribedAt,
         email.toLowerCase()
@@ -883,7 +883,7 @@ class NewsletterController {
       
       const offset = <span class="cstat-no" title="statement not covered" >(page - 1) * limit;</span>
       
-      let query = <span class="cstat-no" title="statement not covered" >'SELECT * FROM newsletter_subscribers';</span>
+      let query = <span class="cstat-no" title="statement not covered" >'SELECT * FROM [REDACTED_TOKEN]';</span>
       const params = <span class="cstat-no" title="statement not covered" >[];</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      if (status &amp;&amp; status !== 'all') {</span>
@@ -897,7 +897,7 @@ class NewsletterController {
       const subscribers = <span class="cstat-no" title="statement not covered" >await db.all(query, params);</span>
 &nbsp;
       // Contar total
-      let countQuery = <span class="cstat-no" title="statement not covered" >'SELECT COUNT(*) as total FROM newsletter_subscribers';</span>
+      let countQuery = <span class="cstat-no" title="statement not covered" >'SELECT COUNT(*) as total FROM [REDACTED_TOKEN]';</span>
 <span class="cstat-no" title="statement not covered" >      if (status &amp;&amp; status !== 'all') {</span>
 <span class="cstat-no" title="statement not covered" >        countQuery += ' WHERE status = ?';</span>
       }
@@ -944,7 +944,7 @@ class NewsletterController {
       
       // Obter todos os inscritos ativos
       const subscribers = <span class="cstat-no" title="statement not covered" >await db.all(</span>
-        'SELECT email, name FROM newsletter_subscribers WHERE status = ? ORDER BY subscribedAt DESC',
+        'SELECT email, name FROM [REDACTED_TOKEN] WHERE status = ? ORDER BY subscribedAt DESC',
         'active'
       );
 &nbsp;
@@ -1005,21 +1005,21 @@ class NewsletterController {
       const db = <span class="cstat-no" title="statement not covered" >await getDb();</span>
 &nbsp;
       const totalActive = <span class="cstat-no" title="statement not covered" >await db.get(</span>
-        'SELECT COUNT(*) as count FROM newsletter_subscribers WHERE status = ?',
+        'SELECT COUNT(*) as count FROM [REDACTED_TOKEN] WHERE status = ?',
         'active'
       );
 &nbsp;
       const totalUnsubscribed = <span class="cstat-no" title="statement not covered" >await db.get(</span>
-        'SELECT COUNT(*) as count FROM newsletter_subscribers WHERE status = ?',
+        'SELECT COUNT(*) as count FROM [REDACTED_TOKEN] WHERE status = ?',
         'unsubscribed'
       );
 &nbsp;
       const totalAll = <span class="cstat-no" title="statement not covered" >await db.get(</span>
-        'SELECT COUNT(*) as count FROM newsletter_subscribers'
+        'SELECT COUNT(*) as count FROM [REDACTED_TOKEN]'
       );
 &nbsp;
       const recentSubscribers = <span class="cstat-no" title="statement not covered" >await db.all(</span>
-        'SELECT email, name, subscribedAt FROM newsletter_subscribers WHERE status = ? ORDER BY subscribedAt DESC LIMIT 10',
+        'SELECT email, name, subscribedAt FROM [REDACTED_TOKEN] WHERE status = ? ORDER BY subscribedAt DESC LIMIT 10',
         'active'
       );
 &nbsp;
@@ -1043,7 +1043,7 @@ class NewsletterController {
   }
 }
 &nbsp;
-module.exports = NewsletterController;
+module.exports = [REDACTED_TOKEN];
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

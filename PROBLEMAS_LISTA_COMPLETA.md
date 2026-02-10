@@ -18,16 +18,16 @@
 - Impacto: Log não estruturado, sem correlação de requestId
 - Solução: Usar `logger` em vez de `console.*`
 
-### 4. **TODO comentário não implementado em PaymentReconciliationService**
-- Arquivo: `backend/src/services/PaymentReconciliationService.js:142`
+### 4. **TODO comentário não implementado em [REDACTED_TOKEN]**
+- Arquivo: `backend/src/services/[REDACTED_TOKEN].js:142`
 - Código: `// TODO: Implementar chamada real à API do banco`
 - Impacto: `checkBankStatus()` usa simulated mock, não real API
 - Solução: Integrar com API real do banco
 
-### 5. **BackgroundJobScheduler tem TODO não implementado**
-- Arquivo: `backend/src/services/BackgroundJobScheduler.js:176`
+### 5. **[REDACTED_TOKEN] tem TODO não implementado**
+- Arquivo: `backend/src/services/[REDACTED_TOKEN].js:176`
 - Código: `// TODO: Implementar lógica de envio de notificações pendentes`
-- Impacto: Job `send_pending_notifications` não faz nada real
+- Impacto: Job `[REDACTED_TOKEN]` não faz nada real
 - Solução: Implementar integração com NotificationService
 
 ---
@@ -76,12 +76,12 @@
 - Serviços, Controllers, Middlewares usam `console.*` diretamente
 - Devem usar: `const logger = require('../utils/logger'); logger.info()...`
 - Arquivos afetados:
-  - AdminDashboardService (5x console.error)
+  - [REDACTED_TOKEN] (5x console.error)
   - PixPaymentService (6x console.error/log)
   - TwilioService (4x console.log/error)
   - RetryQueueService (9x console.log/error)
-  - PaymentReconciliationService (12x console.log/error)
-  - BackgroundJobScheduler (8x console.log/error)
+  - [REDACTED_TOKEN] (12x console.log/error)
+  - [REDACTED_TOKEN] (8x console.log/error)
   - Muitos outros...
 
 ### 13. **Duplicado: Múltiplos arquivos swagger**
@@ -92,14 +92,14 @@
 - Solução: Manter apenas `swagger.js`, deletar duplicados
 
 ### 14. **Duplicado: Múltiplos TwoFactor services**
-- `backend/src/services/TwoFactorAuthService.js` (novo)
+- `backend/src/services/[REDACTED_TOKEN].js` (novo)
 - `backend/src/services/TwoFactorService.js` (antigo)
 - `backend/src/middleware/twoFactorAuth.js` (middleware duplicado)
-- Solução: Consolidar em TwoFactorAuthService, deletar duplicados
+- Solução: Consolidar em [REDACTED_TOKEN], deletar duplicados
 
 ### 15. **Error Handler não implementado em todas rotas**
 - Problema: Muitas rotas têm `try/catch` manual com `res.status(500).json()`
-- Exemplo: `backend/src/controllers/PixPaymentController.js` línies 35, 62, 103...
+- Exemplo: `backend/src/controllers/[REDACTED_TOKEN].js` línies 35, 62, 103...
 - Solução: Usar `asyncHandler()` wrapper para centralizar erros
 
 ### 16. **Middleware ordering em index.js**

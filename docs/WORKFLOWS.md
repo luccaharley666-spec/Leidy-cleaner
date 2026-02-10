@@ -112,7 +112,7 @@
 0 0 * * 1 /scripts/cleanupOldData.js
 
 # Gerar relatórios mensais no 1º dia do mês
-0 0 1 * * /scripts/generateMonthlyReports.js
+0 0 1 * * /scripts/[REDACTED_TOKEN].js
 ```
 
 ## 7. Integração com Serviços Externos
@@ -143,17 +143,17 @@
 
 ```yaml
 automation_rules:
-  booking_confirmation:
+  [REDACTED_TOKEN]:
     trigger: new_booking
     conditions:
       - status == 'pending'
       - payment_status == 'unpaid'
     actions:
-      - send_email: booking_confirmation
+      - send_email: [REDACTED_TOKEN]
       - send_sms: reminder_48h
       - assign_to_team: auto_assign
   
-  pre_service_notification:
+  [REDACTED_TOKEN]:
     trigger: 24h_before_service
     conditions:
       - status == 'confirmed'
@@ -163,11 +163,11 @@ automation_rules:
       - send_details: cleaning_team
       - check_availability: team
   
-  post_service_followup:
+  [REDACTED_TOKEN]:
     trigger: service_completed
     conditions:
       - status == 'completed'
-      - days_since_completion == 1
+      - [REDACTED_TOKEN] == 1
     actions:
       - send_thank_you: client
       - request_review: 3_days_later

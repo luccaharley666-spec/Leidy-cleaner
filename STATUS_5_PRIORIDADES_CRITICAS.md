@@ -38,7 +38,7 @@ npm start        # Produção
 ### Status: **CÓDIGO PRONTO, PRECISA INTEGRAÇÃO** 🔄
 
 **O que foi feito:**
-- `PixPaymentController.js` implementado (140 LOC)
+- `[REDACTED_TOKEN].js` implementado (140 LOC)
 - 5 endpoints prontos:
   - POST /api/payments/pix/create (gera QR Code)
   - GET /api/payments/pix/status/:id (verifica pagamento)
@@ -58,7 +58,7 @@ npm start        # Produção
 3. Obter credenciais:
    - `PIX_CLIENT_ID`
    - `PIX_CLIENT_SECRET`
-   - `PIX_WEBHOOK_SECRET`
+   - `[REDACTED_TOKEN]`
 
 4. Atualizar `/backend/.env`:
    ```bash
@@ -71,7 +71,7 @@ npm start        # Produção
 5. Registrar webhook em:
    Dashboard Efi → Webhooks → Adicionar
 
-**Documentação completa:** [PIX_REAL_INTEGRATION_GUIDE.md](PIX_REAL_INTEGRATION_GUIDE.md)
+**Documentação completa:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
 ---
 
@@ -80,7 +80,7 @@ npm start        # Produção
 ### Status: **CÓDIGO PRONTO, CREDENCIAIS NECESSÁRIAS** 🔄
 
 **O que foi feito:**
-- `StripePaymentController.js` implementado (159 LOC)
+- `[REDACTED_TOKEN].js` implementado (159 LOC)
 - 3 endpoints prontos:
   - POST /api/payments/stripe/create-session (cria checkout)
   - GET /api/payments/stripe/status/:id (verifica pagamento)
@@ -105,8 +105,8 @@ npm start        # Produção
 4. Atualizar `/backend/.env`:
    ```bash
    STRIPE_MODE=live
-   STRIPE_PUBLIC_KEY_LIVE=pk_live_...
-   STRIPE_SECRET_KEY_LIVE=sk_live_...
+   [REDACTED_TOKEN]=pk_live_...
+   [REDACTED_TOKEN]=sk_live_...
    ```
 
 5. Registrar webhook:
@@ -115,7 +115,7 @@ npm start        # Produção
 
 6. Testar com valor pequeno (R$ 0.01)
 
-**Documentação completa:** [STRIPE_PRODUCTION_GUIDE.md](STRIPE_PRODUCTION_GUIDE.md)
+**Documentação completa:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
 ---
 
@@ -187,7 +187,7 @@ sqlite3 /backend/backend_data/database.sqlite "SELECT COUNT(*) as total_bookings
 2. Copiar `LICENSE_KEY`
 3. Adicionar a `/backend/.env`:
    ```bash
-   NEW_RELIC_LICENSE_KEY=seu_license_key
+   [REDACTED_TOKEN]=seu_license_key
    NEW_RELIC_APP_NAME=leidy-cleaner-api
    ```
 4. Reiniciar backend para APM ativar
@@ -378,10 +378,10 @@ sqlite3> .dump users   # Exportar dados
 - NewRelic: https://newrelic.com/
 
 **Documentação Interna:**
-- [PIX_REAL_INTEGRATION_GUIDE.md](PIX_REAL_INTEGRATION_GUIDE.md)
-- [STRIPE_PRODUCTION_GUIDE.md](STRIPE_PRODUCTION_GUIDE.md)
+- [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
+- [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 - [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
-- [MONITORING_AND_CI_CD.md](MONITORING_AND_CI_CD.md)
+- [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
 ---
 

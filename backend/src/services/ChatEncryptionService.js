@@ -7,7 +7,7 @@
 const crypto = require('crypto');
 const logger = require('../utils/logger');
 
-class ChatEncryptionService {
+class [REDACTED_TOKEN] {
   /**
    * Derivar chave a partir de senha com PBKDF2
    */
@@ -161,7 +161,7 @@ class ChatEncryptionService {
   /**
    ✅ NOVO: Verificar integridade de mensagem
    */
-  static verifyMessageIntegrity(message, hash, algorithm = 'sha256') {
+  static [REDACTED_TOKEN](message, hash, algorithm = 'sha256') {
     const computedHash = this.hashMessage(message, algorithm);
     return computedHash === hash;
   }
@@ -188,4 +188,4 @@ class ChatEncryptionService {
   }
 }
 
-module.exports = ChatEncryptionService;
+module.exports = [REDACTED_TOKEN];

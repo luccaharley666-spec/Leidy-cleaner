@@ -7,7 +7,7 @@ class GoogleCalendarSync {
   /**
    * Sincronizar agendamento com calendário
    */
-  async syncBookingToCalendar(booking) {
+  async [REDACTED_TOKEN](booking) {
     try {
       // Implementar com google-auth-library e google-calendar-api
       // const calendar = google.calendar({version: 'v3'});

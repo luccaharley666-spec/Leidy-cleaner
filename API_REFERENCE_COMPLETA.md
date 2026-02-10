@@ -514,7 +514,7 @@ Conexão WebSocket para chat em tempo real
 
 - **Login:** 5 tentativas por 15 minutos
 - **Geral:** 100 requisições por 15 minutos
-- **Header:** `X-RateLimit-Remaining`
+- **Header:** `[REDACTED_TOKEN]`
 
 ---
 

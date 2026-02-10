@@ -54,7 +54,7 @@ export default function Sobre() {
             
             <div className="rounded-lg overflow-hidden shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/[REDACTED_TOKEN]?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                 alt="Equipe Leidy Cleaner"
                 className="w-full h-auto object-cover"
               />

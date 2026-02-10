@@ -31,7 +31,7 @@
 
 ### 4. **Webhook Stripe - Segurança**
 - ✅ **Implementado**
-- **Arquivo:** `backend/src/services/PaymentIntegrationService.js`
+- **Arquivo:** `backend/src/services/[REDACTED_TOKEN].js`
 - **Novo:** Validação HMAC-SHA256 adicionada
 - **Função:** `stripe.webhooks.constructEvent(event, signature, secret)`
 

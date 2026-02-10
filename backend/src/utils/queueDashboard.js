@@ -14,11 +14,11 @@ const logger = require('../utils/logger');
  * @param {express.Application} app - Aplicação Express
  * @param {string} basePath - Caminho base (não utilizado)
  */
-function setupEmailQueueDashboard(app, basePath = '/queues') {
+function [REDACTED_TOKEN](app, basePath = '/queues') {
   logger.info('⚠️ Dashboard de filas foi removido por razões de segurança. Use /api/health para monitorar filas.');
   return null;
 }
 
 module.exports = {
-  setupEmailQueueDashboard,
+  [REDACTED_TOKEN],
 };

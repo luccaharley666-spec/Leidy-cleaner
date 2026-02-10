@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS company_info (
   
   -- Business hours
   business_hours_open TIME,
-  business_hours_close TIME,
+  [REDACTED_TOKEN] TIME,
   
   -- Settings
   payment_terms TEXT,
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS file_uploads (
 CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_audit_log_admin ON audit_log(admin_id);
-CREATE INDEX IF NOT EXISTS idx_file_uploads_user ON file_uploads(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON file_uploads(user_id);
 
 -- 6. Initial company info (update with your details)
 INSERT OR REPLACE INTO company_info (id, name, email, phone) VALUES (

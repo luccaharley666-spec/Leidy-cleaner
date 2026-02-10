@@ -7,8 +7,8 @@ const jwt = require('jsonwebtoken');
 const logger = require('../utils/logger');
 
 // Use environment variables or defaults for dev
-const JWT_SECRET = process.env.JWT_SECRET || 'dev_jwt_secret_key_minimum_32_chars_long_987654';
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'dev_refresh_secret_key_minimum_32_chars_long_987';
+const JWT_SECRET = process.env.JWT_SECRET || '[REDACTED_TOKEN]';
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || '[REDACTED_TOKEN]';
 
 // Warning if not set in production
 if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET)) {
@@ -26,7 +26,7 @@ const generateToken = (userId, role = 'customer') => {
 };
 
 // ✅ CORRIGIDO: Gerar refresh token
-const generateRefreshToken = (userId) => {
+const [REDACTED_TOKEN] = (userId) => {
   return jwt.sign(
     { userId },
     JWT_REFRESH_SECRET,
@@ -94,7 +94,7 @@ module.exports = {
   authenticateToken,
   authorizeRole,
   generateToken,     // ✅ NOVO
-  generateRefreshToken, // ✅ NOVO
+  [REDACTED_TOKEN], // ✅ NOVO
   requireRole, // compat
 };
 

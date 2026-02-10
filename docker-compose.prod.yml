@@ -10,7 +10,7 @@ services:
       POSTGRES_DB: ${POSTGRES_DB:-leidy}
     volumes:
       - pgdata:/var/lib/postgresql/data
-      - ./backend/setup-db.sql:/docker-entrypoint-initdb.d/setup-db.sql:ro
+      - ./backend/setup-db.sql:/[REDACTED_TOKEN].d/setup-db.sql:ro
 
   backend:
     build:

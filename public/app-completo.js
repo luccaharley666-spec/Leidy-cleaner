@@ -607,7 +607,7 @@ async function loadBookingPhotos() {
     gallery.innerHTML = photos.map(p => `
       <div class="gallery-item">
         <img src="${p.url}" alt="Foto">
-        <div class="gallery-item-overlay">
+        <div class="[REDACTED_TOKEN]">
           <button onclick="deletePhoto(${p.id})">Deletar</button>
         </div>
       </div>

@@ -268,7 +268,7 @@ BRF:23
 BRH:2
 end_of_record
 TN:
-SF:src/controllers/Advanced2FAController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:36,(anonymous_0)
 FN:77,(anonymous_1)
 FN:117,(anonymous_2)
@@ -452,7 +452,7 @@ BRF:37
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/AdvancedEmailController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:38,(anonymous_0)
 FN:69,(anonymous_1)
 FN:103,(anonymous_2)
@@ -671,7 +671,7 @@ BRF:44
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/AdvancedPaymentController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:36,(anonymous_0)
 FN:77,(anonymous_1)
 FN:118,(anonymous_2)
@@ -1093,7 +1093,7 @@ BRF:66
 BRH:31
 end_of_record
 TN:
-SF:src/controllers/AutoSchedulingController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:29,(anonymous_1)
 FN:40,(anonymous_2)
@@ -1821,7 +1821,7 @@ BRF:23
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/DatabaseOptimizationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:14,(anonymous_0)
 FN:31,(anonymous_1)
 FN:50,(anonymous_2)
@@ -1927,7 +1927,7 @@ BRF:9
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/HealthCheckController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:14,(anonymous_0)
 FN:36,(anonymous_1)
 FN:56,(anonymous_2)
@@ -1995,7 +1995,7 @@ BRF:18
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/IntegrationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:36,(anonymous_0)
 FN:77,(anonymous_1)
 FN:118,(anonymous_2)
@@ -2147,7 +2147,7 @@ BRF:33
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/NewsletterController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:15,(anonymous_0)
 FN:97,(anonymous_1)
 FN:150,(anonymous_2)
@@ -2301,7 +2301,7 @@ BRF:43
 BRH:6
 end_of_record
 TN:
-SF:src/controllers/NotificationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:10,(anonymous_0)
 FN:34,(anonymous_1)
 FN:55,(anonymous_2)
@@ -2353,7 +2353,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/NotificationsController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:7,ensureFile
 FN:13,loadSubs
 FN:23,saveSubs
@@ -2712,7 +2712,7 @@ BRF:41
 BRH:6
 end_of_record
 TN:
-SF:src/controllers/PaymentIntegrationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:27,(anonymous_1)
 FN:42,(anonymous_2)
@@ -2869,7 +2869,7 @@ BRF:12
 BRH:8
 end_of_record
 TN:
-SF:src/controllers/PriceHistoryController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:22,(anonymous_1)
 FN:29,(anonymous_2)
@@ -3248,7 +3248,7 @@ BRF:38
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/PublicReviewsController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:12,(anonymous_0)
 FN:68,(anonymous_1)
 FN:126,(anonymous_2)
@@ -3344,7 +3344,7 @@ BRF:15
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/PushNotificationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:22,(anonymous_1)
 FN:40,(anonymous_2)
@@ -3418,7 +3418,7 @@ BRF:1
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/RecommendationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:21,(anonymous_1)
 FN:27,(anonymous_2)
@@ -3471,7 +3471,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/RecurringBookingController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:30,(anonymous_1)
 FN:36,(anonymous_2)
@@ -3792,7 +3792,7 @@ BRF:27
 BRH:8
 end_of_record
 TN:
-SF:src/controllers/ReviewImageController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:16,(anonymous_0)
 FN:26,(anonymous_1)
 FN:44,(anonymous_2)
@@ -3869,7 +3869,7 @@ BRF:3
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/SEOMarketingController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:29,(anonymous_1)
 FN:40,(anonymous_2)
@@ -4006,7 +4006,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/SmartNotificationController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:22,(anonymous_1)
 FN:33,(anonymous_2)
@@ -4082,7 +4082,7 @@ BRF:2
 BRH:0
 end_of_record
 TN:
-SF:src/controllers/StaffAvailabilityController.js
+SF:src/controllers/[REDACTED_TOKEN].js
 FN:15,(anonymous_0)
 FN:29,(anonymous_1)
 FN:86,(anonymous_2)
@@ -4488,7 +4488,7 @@ BRF:14
 BRH:0
 end_of_record
 TN:
-SF:src/database/migrations/002_create_chat_messages_table.js
+SF:src/database/migrations/[REDACTED_TOKEN].js
 FN:101,(anonymous_0)
 FNF:1
 FNH:0
@@ -5065,7 +5065,7 @@ TN:
 SF:src/middleware/cdnMiddleware.js
 FN:11,cdnCacheHeaders
 FN:41,enableCompression
-FN:56,assetSecurityHeaders
+FN:56,[REDACTED_TOKEN]
 FN:69,logAssetDownload
 FN:72,(anonymous_4)
 FN:92,serveOptimizedAsset
@@ -5075,7 +5075,7 @@ FNF:8
 FNH:0
 FNDA:0,cdnCacheHeaders
 FNDA:0,enableCompression
-FNDA:0,assetSecurityHeaders
+FNDA:0,[REDACTED_TOKEN]
 FNDA:0,logAssetDownload
 FNDA:0,(anonymous_4)
 FNDA:0,serveOptimizedAsset
@@ -5194,7 +5194,7 @@ BRH:6
 end_of_record
 TN:
 SF:src/middleware/databaseMiddleware.js
-FN:12,queryTrackingMiddleware
+FN:12,[REDACTED_TOKEN]
 FN:13,(anonymous_1)
 FN:21,(anonymous_2)
 FN:23,(anonymous_3)
@@ -5203,14 +5203,14 @@ FN:35,(anonymous_5)
 FN:45,(anonymous_6)
 FN:47,(anonymous_7)
 FN:63,logPreparedQueries
-FN:77,queryCacheMiddleware
+FN:77,[REDACTED_TOKEN]
 FN:78,(anonymous_10)
 FN:93,(anonymous_11)
-FN:106,connectionPoolMonitor
+FN:106,[REDACTED_TOKEN]
 FN:107,(anonymous_13)
 FNF:14
 FNH:0
-FNDA:0,queryTrackingMiddleware
+FNDA:0,[REDACTED_TOKEN]
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
 FNDA:0,(anonymous_3)
@@ -5219,10 +5219,10 @@ FNDA:0,(anonymous_5)
 FNDA:0,(anonymous_6)
 FNDA:0,(anonymous_7)
 FNDA:0,logPreparedQueries
-FNDA:0,queryCacheMiddleware
+FNDA:0,[REDACTED_TOKEN]
 FNDA:0,(anonymous_10)
 FNDA:0,(anonymous_11)
-FNDA:0,connectionPoolMonitor
+FNDA:0,[REDACTED_TOKEN]
 FNDA:0,(anonymous_13)
 DA:6,0
 DA:7,0
@@ -5307,25 +5307,25 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:src/middleware/encryptionMiddleware.js
-FN:12,encryptionMiddleware
+SF:src/middleware/[REDACTED_TOKEN].js
+FN:12,[REDACTED_TOKEN]
 FN:17,(anonymous_1)
 FN:21,(anonymous_2)
-FN:39,validateEncryptionKey
+FN:39,[REDACTED_TOKEN]
 FN:66,logCryptoOperation
 FN:69,(anonymous_5)
 FN:87,cryptoRateLimit
-FN:110,requireHttpsForCrypto
+FN:110,[REDACTED_TOKEN]
 FNF:8
 FNH:0
-FNDA:0,encryptionMiddleware
+FNDA:0,[REDACTED_TOKEN]
 FNDA:0,(anonymous_1)
 FNDA:0,(anonymous_2)
-FNDA:0,validateEncryptionKey
+FNDA:0,[REDACTED_TOKEN]
 FNDA:0,logCryptoOperation
 FNDA:0,(anonymous_5)
 FNDA:0,cryptoRateLimit
-FNDA:0,requireHttpsForCrypto
+FNDA:0,[REDACTED_TOKEN]
 DA:6,0
 DA:7,0
 DA:14,0
@@ -5457,7 +5457,7 @@ FN:79,(anonymous_5)
 FN:91,(anonymous_6)
 FN:103,(anonymous_7)
 FN:113,(anonymous_8)
-FN:121,logRateLimitViolation
+FN:121,[REDACTED_TOKEN]
 FNF:10
 FNH:1
 FNDA:0,(anonymous_0)
@@ -5469,7 +5469,7 @@ FNDA:0,(anonymous_5)
 FNDA:0,(anonymous_6)
 FNDA:0,(anonymous_7)
 FNDA:0,(anonymous_8)
-FNDA:0,logRateLimitViolation
+FNDA:0,[REDACTED_TOKEN]
 DA:6,2
 DA:7,2
 DA:12,2
@@ -8313,7 +8313,7 @@ BRF:16
 BRH:0
 end_of_record
 TN:
-SF:src/routes/professionalRatingRoutes.js
+SF:src/routes/[REDACTED_TOKEN].js
 FN:8,(anonymous_0)
 FN:33,(anonymous_1)
 FN:46,(anonymous_2)
@@ -8478,7 +8478,7 @@ BRF:6
 BRH:0
 end_of_record
 TN:
-SF:src/routes/recurringBookingRoutes.js
+SF:src/routes/[REDACTED_TOKEN].js
 FN:8,(anonymous_0)
 FN:36,(anonymous_1)
 FN:48,(anonymous_2)
@@ -8823,7 +8823,7 @@ BRF:4
 BRH:0
 end_of_record
 TN:
-SF:src/routes/staffAvailabilityRoutes.js
+SF:src/routes/[REDACTED_TOKEN].js
 FN:15,(anonymous_0)
 FN:19,(anonymous_1)
 FN:23,(anonymous_2)
@@ -9401,7 +9401,7 @@ BRF:62
 BRH:0
 end_of_record
 TN:
-SF:src/services/AdvancedEmailService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:10,(anonymous_0)
 FN:22,(anonymous_1)
 FN:48,(anonymous_2)
@@ -9679,7 +9679,7 @@ BRF:58
 BRH:0
 end_of_record
 TN:
-SF:src/services/AdvancedPaymentService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:10,(anonymous_0)
 FN:19,(anonymous_1)
 FN:54,(anonymous_2)
@@ -10211,7 +10211,7 @@ BRF:34
 BRH:0
 end_of_record
 TN:
-SF:src/services/AutoSchedulingService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:9,(anonymous_0)
 FN:18,(anonymous_1)
 FN:81,(anonymous_2)
@@ -10912,7 +10912,7 @@ BRF:22
 BRH:0
 end_of_record
 TN:
-SF:src/services/BookingPricingService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:13,(anonymous_0)
 FN:67,(anonymous_1)
 FN:72,(anonymous_2)
@@ -11150,7 +11150,7 @@ BRF:66
 BRH:31
 end_of_record
 TN:
-SF:src/services/CDNAssetOptimizerService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:11,(anonymous_0)
 FN:25,(anonymous_1)
 FN:38,(anonymous_2)
@@ -11535,7 +11535,7 @@ BRF:8
 BRH:0
 end_of_record
 TN:
-SF:src/services/ChatEncryptionService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:14,(anonymous_0)
 FN:22,(anonymous_1)
 FN:52,(anonymous_2)
@@ -12040,7 +12040,7 @@ BRF:69
 BRH:0
 end_of_record
 TN:
-SF:src/services/DatabaseOptimizationService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:9,(anonymous_0)
 FN:20,(anonymous_1)
 FN:50,(anonymous_2)
@@ -12754,7 +12754,7 @@ BRF:40
 BRH:0
 end_of_record
 TN:
-SF:src/services/HourPackagingService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:15,(anonymous_0)
 FN:35,(anonymous_1)
 FN:47,(anonymous_2)
@@ -12874,7 +12874,7 @@ BRF:26
 BRH:0
 end_of_record
 TN:
-SF:src/services/HourlyBookingService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:15,(anonymous_0)
 FN:16,(anonymous_1)
 FN:28,(anonymous_2)
@@ -13918,7 +13918,7 @@ BRF:29
 BRH:0
 end_of_record
 TN:
-SF:src/services/PaymentIntegrationService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:10,(anonymous_0)
 FN:18,(anonymous_1)
 FN:63,(anonymous_2)
@@ -14833,7 +14833,7 @@ BRF:102
 BRH:61
 end_of_record
 TN:
-SF:src/services/ProfessionalRatingService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:15,(anonymous_0)
 FN:16,(anonymous_1)
 FN:23,(anonymous_2)
@@ -14911,7 +14911,7 @@ BRF:11
 BRH:0
 end_of_record
 TN:
-SF:src/services/PushNotificationService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:9,(anonymous_0)
 FN:18,(anonymous_1)
 FN:51,(anonymous_2)
@@ -15496,7 +15496,7 @@ BRF:10
 BRH:0
 end_of_record
 TN:
-SF:src/services/RecommendationService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:18,(anonymous_0)
 FN:23,(anonymous_1)
 FN:40,(anonymous_2)
@@ -15638,7 +15638,7 @@ BRF:32
 BRH:0
 end_of_record
 TN:
-SF:src/services/RecurringBookingService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:9,(anonymous_0)
 FN:16,(anonymous_1)
 FN:70,(anonymous_2)
@@ -16758,7 +16758,7 @@ BRF:27
 BRH:0
 end_of_record
 TN:
-SF:src/services/SlotRecommendationService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:14,(anonymous_0)
 FN:58,(anonymous_1)
 FN:74,(anonymous_2)
@@ -16880,7 +16880,7 @@ BRF:36
 BRH:0
 end_of_record
 TN:
-SF:src/services/SmartNotificationService.js
+SF:src/services/[REDACTED_TOKEN].js
 FN:9,(anonymous_0)
 FN:19,(anonymous_1)
 FN:63,(anonymous_2)
@@ -18138,14 +18138,14 @@ BRH:0
 end_of_record
 TN:
 SF:src/utils/priceCalculator.js
-FN:12,calculateBookingPrice
-FN:83,calculateLoyaltyBonus
-FN:109,generatePriceSummary
+FN:12,[REDACTED_TOKEN]
+FN:83,[REDACTED_TOKEN]
+FN:109,[REDACTED_TOKEN]
 FNF:3
 FNH:3
-FNDA:31,calculateBookingPrice
-FNDA:10,calculateLoyaltyBonus
-FNDA:11,generatePriceSummary
+FNDA:31,[REDACTED_TOKEN]
+FNDA:10,[REDACTED_TOKEN]
+FNDA:11,[REDACTED_TOKEN]
 DA:13,31
 DA:16,31
 DA:17,31
@@ -18241,10 +18241,10 @@ BRH:34
 end_of_record
 TN:
 SF:src/utils/queueDashboard.js
-FN:26,setupEmailQueueDashboard
+FN:26,[REDACTED_TOKEN]
 FNF:1
 FNH:1
-FNDA:1,setupEmailQueueDashboard
+FNDA:1,[REDACTED_TOKEN]
 DA:10,1
 DA:11,1
 DA:12,1

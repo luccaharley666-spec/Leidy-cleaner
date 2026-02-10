@@ -230,7 +230,7 @@ async function <span class="fstat-no" title="function not covered" >processPayme
       id: paymentIntent.id,
       status: paymentIntent.status,
       amount: amountInReais,
-      last4: paymentIntent.charges?.data?.[0]?.payment_method_details?.card?.last4 || null,
+      last4: paymentIntent.charges?.data?.[0]?.[REDACTED_TOKEN]?.card?.last4 || null,
       clientSecret: paymentIntent.client_secret
     };
   } catch (err) {
@@ -247,7 +247,7 @@ async function <span class="fstat-no" title="function not covered" >refundPaymen
 &nbsp;
 function <span class="fstat-no" title="function not covered" >constructEvent(</span>body, signature) {
 <span class="cstat-no" title="statement not covered" >  if (!stripe) <span class="cstat-no" title="statement not covered" >throw new Error('Stripe not configured');</span></span>
-<span class="cstat-no" title="statement not covered" >  return stripe.webhooks.constructEvent(body, signature, process.env.STRIPE_WEBHOOK_SECRET);</span>
+<span class="cstat-no" title="statement not covered" >  return stripe.webhooks.constructEvent(body, signature, process.env.[REDACTED_TOKEN]);</span>
 }
 &nbsp;
 module.exports = {

@@ -358,7 +358,7 @@ function <span class="fstat-no" title="function not covered" >initializePool(</s
       ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
       max: 20,
       idleTimeoutMillis: 30000,
-      connectionTimeoutMillis: 2000,
+      [REDACTED_TOKEN]: 2000,
     });
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    pool.on('error', <span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {</span>

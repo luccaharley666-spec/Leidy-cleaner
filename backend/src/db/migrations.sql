@@ -45,11 +45,11 @@ CREATE TABLE IF NOT EXISTS services (
   
   -- Preço por hora (primeira hora)
   base_price DECIMAL(10,2) DEFAULT 40.00,
-  additional_hour_price DECIMAL(10,2) DEFAULT 20.00,
+  [REDACTED_TOKEN] DECIMAL(10,2) DEFAULT 20.00,
   
   -- Ajustes de preço
-  staff_fee_percentage DECIMAL(5,2) DEFAULT 40.00,
-  post_work_multiplier DECIMAL(3,2) DEFAULT 1.50,
+  [REDACTED_TOKEN] DECIMAL(5,2) DEFAULT 40.00,
+  [REDACTED_TOKEN] DECIMAL(3,2) DEFAULT 1.50,
   
   duration INTEGER DEFAULT 60,
   category TEXT,
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS bookings (
   base_price DECIMAL(10,2),
   staff_fee DECIMAL(10,2) DEFAULT 0.00,
   extra_quarter_hours DECIMAL(5,2) DEFAULT 0.00,
-  post_work_adjustment DECIMAL(10,2) DEFAULT 0.00,
+  [REDACTED_TOKEN] DECIMAL(10,2) DEFAULT 0.00,
   final_price DECIMAL(10,2),
   
   -- Status e Avaliação
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS payments (
   confirmed_at DATETIME,
   expires_at DATETIME,
   user_id INTEGER,
-  payment_confirmed_at DATETIME,
+  [REDACTED_TOKEN] DATETIME,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (booking_id) REFERENCES bookings(id),
@@ -116,12 +116,12 @@ CREATE TABLE IF NOT EXISTS payments (
 );
 
 -- ÍNDICES para performance nas queries de PIX
-CREATE INDEX IF NOT EXISTS idx_payments_transaction_id ON payments(transaction_id);
-CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);
-CREATE INDEX IF NOT EXISTS idx_payments_booking_id ON payments(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(transaction_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(booking_id);
 CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
 CREATE INDEX IF NOT EXISTS idx_payments_method ON payments(method);
-CREATE INDEX IF NOT EXISTS idx_payments_created_at ON payments(created_at);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(created_at);
 
 -- TABELA: loyalty_history (rastreamento de bônus)
 CREATE TABLE IF NOT EXISTS loyalty_history (
@@ -153,18 +153,18 @@ CREATE TABLE IF NOT EXISTS recurring_bookings (
 );
 
 -- ÍNDICES PARA PERFORMANCE
-CREATE INDEX IF NOT EXISTS idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON bookings(user_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
 CREATE INDEX IF NOT EXISTS idx_bookings_date ON bookings(date);
 CREATE INDEX IF NOT EXISTS idx_bookings_rating ON bookings(rating);
-CREATE INDEX IF NOT EXISTS idx_payments_booking_id ON payments(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON payments(booking_id);
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
 CREATE INDEX IF NOT EXISTS idx_loyalty_user ON loyalty_history(user_id);
 CREATE INDEX IF NOT EXISTS idx_recurring_user ON recurring_bookings(user_id);
 
 -- SEED: Serviços padrão (com novo sistema de preços)
-INSERT OR IGNORE INTO services (name, description, base_price, additional_hour_price, staff_fee_percentage, post_work_multiplier, duration, category) VALUES
+INSERT OR IGNORE INTO services (name, description, base_price, [REDACTED_TOKEN], [REDACTED_TOKEN], [REDACTED_TOKEN], duration, category) VALUES
 ('Limpeza Básica', 'Limpeza geral da residência', 40.00, 20.00, 40.00, 1.50, 120, 'residencial'),
 ('Limpeza Profunda', 'Limpeza completa com detalhes', 40.00, 20.00, 40.00, 1.50, 180, 'residencial'),
 ('Limpeza Pós-Reforma', 'Limpeza especializada pós-obra', 40.00, 20.00, 40.00, 2.00, 240, 'comercial'),
@@ -197,7 +197,7 @@ CREATE TABLE IF NOT EXISTS webhook_events (
   received_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_webhook_events_event_id ON webhook_events(event_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON webhook_events(event_id);
 
 -- TABELA: booking_photos (fotos antes/depois)
 CREATE TABLE IF NOT EXISTS booking_photos (
@@ -213,7 +213,7 @@ CREATE TABLE IF NOT EXISTS booking_photos (
 CREATE INDEX IF NOT EXISTS idx_chat_booking_id ON chat_messages(booking_id);
 CREATE INDEX IF NOT EXISTS idx_chat_user_id ON chat_messages(user_id);
 CREATE INDEX IF NOT EXISTS idx_chat_created_at ON chat_messages(created_at);
-CREATE INDEX IF NOT EXISTS idx_photos_booking_id ON booking_photos(booking_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON booking_photos(booking_id);
 CREATE INDEX IF NOT EXISTS idx_photos_type ON booking_photos(photo_type);
 
 -- ADICIONAR CAMPOS AO BOOKINGS PARA REPOSTAS ADMIN
@@ -243,9 +243,9 @@ CREATE TABLE IF NOT EXISTS webhook_retries (
 );
 
 -- ÍNDICES PARA FILA DE RETENTATIVAS
-CREATE INDEX IF NOT EXISTS idx_webhook_retries_status ON webhook_retries(status);
-CREATE INDEX IF NOT EXISTS idx_webhook_retries_operation_id ON webhook_retries(operation_id);
-CREATE INDEX IF NOT EXISTS idx_webhook_retries_next_retry ON webhook_retries(next_retry_at);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON webhook_retries(status);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON webhook_retries(operation_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON webhook_retries(next_retry_at);
 
 -- TABELA: background_jobs (jobs agendados para reconciliation, limpeza, etc)
 CREATE TABLE IF NOT EXISTS background_jobs (
@@ -264,17 +264,17 @@ CREATE TABLE IF NOT EXISTS background_jobs (
 );
 
 -- ÍNDICES PARA BACKGROUND JOBS
-CREATE INDEX IF NOT EXISTS idx_background_jobs_status ON background_jobs(status);
-CREATE INDEX IF NOT EXISTS idx_background_jobs_type ON background_jobs(job_type);
-CREATE INDEX IF NOT EXISTS idx_background_jobs_next_run ON background_jobs(next_run_at);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON background_jobs(status);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON background_jobs(job_type);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON background_jobs(next_run_at);
 
--- TABELA: payment_reconciliation (auditoria de reconciliação)
-CREATE TABLE IF NOT EXISTS payment_reconciliation (
+-- TABELA: [REDACTED_TOKEN] (auditoria de reconciliação)
+CREATE TABLE IF NOT EXISTS [REDACTED_TOKEN] (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   transaction_id TEXT NOT NULL UNIQUE,
   booking_id INTEGER,
   payment_id INTEGER,
-  pix_status_from_bank TEXT,
+  [REDACTED_TOKEN] TEXT,
   status_in_system TEXT,
   reconciled BOOLEAN DEFAULT 0,
   reconciled_at DATETIME,
@@ -285,6 +285,6 @@ CREATE TABLE IF NOT EXISTS payment_reconciliation (
 );
 
 -- ÍNDICES PARA RECONCILIATION
-CREATE INDEX IF NOT EXISTS idx_payment_reconciliation_transaction_id ON payment_reconciliation(transaction_id);
-CREATE INDEX IF NOT EXISTS idx_payment_reconciliation_reconciled ON payment_reconciliation(reconciled);
-CREATE INDEX IF NOT EXISTS idx_payment_reconciliation_checked_at ON payment_reconciliation(checked_at);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON [REDACTED_TOKEN](transaction_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON [REDACTED_TOKEN](reconciled);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON [REDACTED_TOKEN](checked_at);

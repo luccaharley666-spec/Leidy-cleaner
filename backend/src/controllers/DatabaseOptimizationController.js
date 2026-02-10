@@ -3,17 +3,17 @@
  * Endpoints para análise e otimização de banco de dados
  */
 
-const DatabaseOptimizationService = require('../services/DatabaseOptimizationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 const logger = require('../utils/logger');
 
-class DatabaseOptimizationController {
+class [REDACTED_TOKEN] {
   /**
    * GET /api/db/query-report
    * Relatório de performance de queries
    */
   static async getQueryReport(req, res) {
     try {
-      const report = DatabaseOptimizationService.getQueryReport();
+      const report = [REDACTED_TOKEN].getQueryReport();
       return res.json({
         success: true,
         data: report
@@ -31,7 +31,7 @@ class DatabaseOptimizationController {
   static async getSlowQueries(req, res) {
     try {
       const { threshold = 100 } = req.query;
-      const slowQueries = await DatabaseOptimizationService.detectSlowQueries(null, parseInt(threshold));
+      const slowQueries = await [REDACTED_TOKEN].detectSlowQueries(null, parseInt(threshold));
       
       return res.json({
         success: true,
@@ -55,7 +55,7 @@ class DatabaseOptimizationController {
         return res.status(400).json({ error: 'Query é obrigatória' });
       }
 
-      const analysis = await DatabaseOptimizationService.analyzeQuery(query, params || []);
+      const analysis = await [REDACTED_TOKEN].analyzeQuery(query, params || []);
       
       return res.json({
         success: true,
@@ -81,7 +81,7 @@ class DatabaseOptimizationController {
    */
   static async suggestIndices(req, res) {
     try {
-      const suggestions = DatabaseOptimizationService.suggestIndices();
+      const suggestions = [REDACTED_TOKEN].suggestIndices();
 
       return res.json({
         success: true,
@@ -105,7 +105,7 @@ class DatabaseOptimizationController {
    */
   static async analyzeIndexUsage(req, res) {
     try {
-      const analysis = await DatabaseOptimizationService.analyzeIndexUsage(null);
+      const analysis = await [REDACTED_TOKEN].analyzeIndexUsage(null);
 
       return res.json({
         success: true,
@@ -123,7 +123,7 @@ class DatabaseOptimizationController {
    */
   static async validateIntegrity(req, res) {
     try {
-      const result = await DatabaseOptimizationService.validateDatabaseIntegrity(null);
+      const result = await [REDACTED_TOKEN].[REDACTED_TOKEN](null);
 
       return res.json({
         success: true,
@@ -141,7 +141,7 @@ class DatabaseOptimizationController {
    */
   static async vacuumDatabase(req, res) {
     try {
-      const result = await DatabaseOptimizationService.vacuumDatabase(null);
+      const result = await [REDACTED_TOKEN].vacuumDatabase(null);
 
       return res.json({
         success: true,
@@ -159,7 +159,7 @@ class DatabaseOptimizationController {
    */
   static async optimizeTables(req, res) {
     try {
-      const result = await DatabaseOptimizationService.optimizeTables(null);
+      const result = await [REDACTED_TOKEN].optimizeTables(null);
 
       return res.json({
         success: true,
@@ -177,7 +177,7 @@ class DatabaseOptimizationController {
    */
   static async getTableSizes(req, res) {
     try {
-      const sizes = await DatabaseOptimizationService.getTableSizes(null);
+      const sizes = await [REDACTED_TOKEN].getTableSizes(null);
 
       return res.json({
         success: true,
@@ -195,11 +195,11 @@ class DatabaseOptimizationController {
    */
   static async getDatabaseStats(req, res) {
     try {
-      const report = DatabaseOptimizationService.getQueryReport();
-      const slowQueries = await DatabaseOptimizationService.detectSlowQueries(null, 100);
-      const indices = await DatabaseOptimizationService.analyzeIndexUsage(null);
-      const sizes = await DatabaseOptimizationService.getTableSizes(null);
-      const integrity = await DatabaseOptimizationService.validateDatabaseIntegrity(null);
+      const report = [REDACTED_TOKEN].getQueryReport();
+      const slowQueries = await [REDACTED_TOKEN].detectSlowQueries(null, 100);
+      const indices = await [REDACTED_TOKEN].analyzeIndexUsage(null);
+      const sizes = await [REDACTED_TOKEN].getTableSizes(null);
+      const integrity = await [REDACTED_TOKEN].[REDACTED_TOKEN](null);
 
       return res.json({
         success: true,
@@ -225,7 +225,7 @@ class DatabaseOptimizationController {
    */
   static async resetStatistics(req, res) {
     try {
-      DatabaseOptimizationService.resetStatistics();
+      [REDACTED_TOKEN].resetStatistics();
 
       return res.json({
         success: true,
@@ -238,4 +238,4 @@ class DatabaseOptimizationController {
   }
 }
 
-module.exports = DatabaseOptimizationController;
+module.exports = [REDACTED_TOKEN];

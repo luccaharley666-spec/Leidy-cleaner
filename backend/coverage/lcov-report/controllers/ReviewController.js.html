@@ -498,7 +498,7 @@ class ReviewController {
 <span class="cstat-no" title="statement not covered" >      try {</span>
         const user = <span class="cstat-no" title="statement not covered" >await db.get('SELECT email, name, full_name FROM users WHERE id = ?', userId);</span>
 <span class="cstat-no" title="statement not covered" >        if (user &amp;&amp; user.email) {</span>
-<span class="cstat-no" title="statement not covered" >          await EmailQueueService.enqueueReviewNotification(</span>
+<span class="cstat-no" title="statement not covered" >          await EmailQueueService.[REDACTED_TOKEN](</span>
             user.email,
             user.name || user.full_name,
             {

@@ -20,7 +20,7 @@ npm install @sentry/node newrelic
 ```bash
 # .env.production
 SENTRY_DSN=https://your-key@sentry.io/your-project-id
-NEW_RELIC_LICENSE_KEY=your-license-key
+[REDACTED_TOKEN]=your-license-key
 NEW_RELIC_APP_NAME=limpeza-pro-backend
 NODE_ENV=production
 ```
@@ -179,7 +179,7 @@ services:
   backend:
     environment:
       - SENTRY_DSN=${SENTRY_DSN}
-      - NEW_RELIC_LICENSE_KEY=${NEW_RELIC_LICENSE_KEY}
+      - [REDACTED_TOKEN]=${[REDACTED_TOKEN]}
       - NEW_RELIC_APP_NAME=limpeza-pro-backend
       - NODE_ENV=production
 ```
@@ -215,7 +215,7 @@ services:
 ```bash
 # Settings > Secrets
 SENTRY_DSN=https://...
-NEW_RELIC_LICENSE_KEY=...
+[REDACTED_TOKEN]=...
 ```
 
 ### 2. CI/CD Pipeline
@@ -252,7 +252,7 @@ npm install @sentry/react @sentry/nextjs
 import * as Sentry from "@sentry/nextjs";
 
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: process.env.[REDACTED_TOKEN],
   environment: process.env.NODE_ENV,
 });
 ```
@@ -269,7 +269,7 @@ Sentry.init({
 
 ### Métricas NewRelic não aparecem
 
-1. Verifique se `NEW_RELIC_LICENSE_KEY` está correto
+1. Verifique se `[REDACTED_TOKEN]` está correto
 2. Aguarde 5-10 minutos para primeira agregação
 3. Verifique se `NEW_RELIC_APP_NAME` está único
 

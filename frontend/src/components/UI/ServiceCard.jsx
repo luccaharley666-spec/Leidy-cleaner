@@ -28,12 +28,12 @@ export const ServiceCard = ({
         const progress = (currentTime - startTime) / duration
         if (progress < 1) {
           setDisplayPrice(Math.floor(start + (end - start) * progress))
-          requestAnimationFrame(animate)
+          [REDACTED_TOKEN](animate)
         } else {
           setDisplayPrice(end)
         }
       }
-      requestAnimationFrame(animate)
+      [REDACTED_TOKEN](animate)
     }
   }, [basePrice])
 

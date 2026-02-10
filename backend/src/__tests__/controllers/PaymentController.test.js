@@ -115,7 +115,7 @@ describe('PaymentController', () => {
     });
 
     test('should handle payment errors', async () => {
-      db.get.mockImplementationOnce((sql, params, callback) => {
+      db.get.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Payment error'));
       });
       
@@ -248,7 +248,7 @@ describe('PaymentController', () => {
 
     test('should handle refund errors', async () => {
       if (typeof PaymentController.refundPayment === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(new Error('Refund error'));
         });
         
@@ -283,7 +283,7 @@ describe('PaymentController', () => {
 
     test('should handle missing payment', async () => {
       if (typeof PaymentController.checkPaymentStatus === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, null);
         });
         
@@ -386,7 +386,7 @@ describe('PaymentController', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run.mockImplementationOnce((sql, params, callback) => {
+      db.run.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Database error'));
       });
       
@@ -402,7 +402,7 @@ describe('PaymentController', () => {
     });
 
     test('should return appropriate error messages', async () => {
-      db.get.mockImplementationOnce((sql, params, callback) => {
+      db.get.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Not found'));
       });
       
@@ -418,7 +418,7 @@ describe('PaymentController', () => {
     });
 
     test('should not expose sensitive error details', async () => {
-      db.run.mockImplementationOnce((sql, params, callback) => {
+      db.run.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Database connection string exposed'));
       });
       

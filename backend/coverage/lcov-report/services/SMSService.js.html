@@ -298,7 +298,7 @@ class SMSService {
   /**
    * Enviar SMS de confirmação
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendBookingConfirmationSMS(phone, clientName, bookingData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](phone, clientName, bookingData) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const message = <span class="cstat-no" title="statement not covered" >await this.client.messages.create({</span>
         body: `✅ ${clientName}, seu agendamento foi confirmado! 📅 ${new Date(bookingData.date).toLocaleDateString('pt-BR')} às ${bookingData.time}. Local: ${bookingData.address.substring(0, 30)}... Valor: R$ ${parseFloat(bookingData.finalPrice).toFixed(2)}`,
@@ -316,7 +316,7 @@ class SMSService {
   /**
    * Enviar SMS de lembrança (1 hora antes)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendBookingReminderSMS(phone, clientName, time, address) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](phone, clientName, time, address) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const message = <span class="cstat-no" title="statement not covered" >await this.client.messages.create({</span>
         body: `⏰ ${clientName}, lembrança! Seu agendamento é em 1 HORA (${time}). Local: ${address.substring(0, 40)}... Se não puder comparecer, avise logo!`,
@@ -334,7 +334,7 @@ class SMSService {
   /**
    * Enviar SMS para funcionária (novo agendamento)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendStaffNotificationSMS(phone, clientName, date, time, address, duration) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](phone, clientName, date, time, address, duration) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const message = <span class="cstat-no" title="statement not covered" >await this.client.messages.create({</span>
         body: `📌 Novo agendamento! Cliente: ${clientName}, Data: ${new Date(date).toLocaleDateString('pt-BR')}, Hora: ${time}, Duração: ${duration}h, Local: ${address.substring(0, 30)}...`,
@@ -352,7 +352,7 @@ class SMSService {
   /**
    * Enviar SMS de bônus desbloqueado
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendBonusUnlockedSMS(phone, clientName, bonusAmount) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](phone, clientName, bonusAmount) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const message = <span class="cstat-no" title="statement not covered" >await this.client.messages.create({</span>
         body: `🎉 ${clientName}, parabéns! Você desbloqueou R$ ${bonusAmount.toFixed(2)} de bônus! Use no próximo agendamento. 🎁`,

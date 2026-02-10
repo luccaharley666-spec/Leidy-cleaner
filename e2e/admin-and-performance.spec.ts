@@ -38,7 +38,7 @@ test.describe('Admin Dashboard', () => {
     await page.click('[data-testid=booking-row] >> nth=0');
     
     // Verificar detalhes
-    await expect(page.locator('[data-testid=booking-detail-modal]')).toBeVisible();
+    await expect(page.locator('[data-testid=[REDACTED_TOKEN]]')).toBeVisible();
     await expect(page.locator('[data-testid=booking-id]')).toBeVisible();
     await expect(page.locator('[data-testid=booking-customer]')).toBeVisible();
     await expect(page.locator('[data-testid=booking-status]')).toBeVisible();

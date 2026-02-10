@@ -20,7 +20,7 @@ class EmailService {
   /**
    * Enviar confirmação de agendamento
    */
-  async sendBookingConfirmation(clientEmail, clientName, bookingData) {
+  async [REDACTED_TOKEN](clientEmail, clientName, bookingData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -256,7 +256,7 @@ class EmailService {
   /**
    * Enviar email de boas-vindas para newsletter
    */
-  async sendNewsletterWelcome(email, name = 'Leitor') {
+  async [REDACTED_TOKEN](email, name = 'Leitor') {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -370,7 +370,7 @@ class EmailService {
   /**
    * Enviar confirmação de pagamento
    */
-  async sendPaymentConfirmation(clientEmail, clientName, paymentData) {
+  async [REDACTED_TOKEN](clientEmail, clientName, paymentData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -434,7 +434,7 @@ class EmailService {
   /**
    * Enviar notificação de reembolso
    */
-  async sendRefundNotification(clientEmail, clientName, refundData) {
+  async [REDACTED_TOKEN](clientEmail, clientName, refundData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',

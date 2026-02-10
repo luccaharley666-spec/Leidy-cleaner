@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/RecommendationService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> RecommendationService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -560,7 +560,7 @@
 const { getDb } = require('../db/sqlite');
 const logger = require('../utils/logger');
 &nbsp;
-class RecommendationService {
+class [REDACTED_TOKEN] {
   /**
    * Recomendar serviços correlatos
    * Baseado em:
@@ -568,7 +568,7 @@ class RecommendationService {
    * 2. Popularidade regional
    * 3. Histórico do cliente
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getSmartRecommendations(userId, currentServiceId, limit = <span class="branch-0 cbranch-no" title="branch not covered" >3)</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, currentServiceId, limit = <span class="branch-0 cbranch-no" title="branch not covered" >3)</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const db = <span class="cstat-no" title="statement not covered" >await getDb();</span>
 &nbsp;
@@ -600,7 +600,7 @@ class RecommendationService {
       // 2. Se usuário é conhecido, recomendação personalizada
       let personalizedRecs = <span class="cstat-no" title="statement not covered" >[];</span>
 <span class="cstat-no" title="statement not covered" >      if (userId) {</span>
-<span class="cstat-no" title="statement not covered" >        personalizedRecs = await this.getPersonalizedRecommendations(db, userId, currentServiceId, limit);</span>
+<span class="cstat-no" title="statement not covered" >        personalizedRecs = await this.[REDACTED_TOKEN](db, userId, currentServiceId, limit);</span>
       }
 &nbsp;
       // 3. Combinar e deduplicas
@@ -624,7 +624,7 @@ class RecommendationService {
   /**
    * Recomendações personalizadas por usuário
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getPersonalizedRecommendations(db, userId, currentServiceId, limit) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](db, userId, currentServiceId, limit) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const userHistory = <span class="cstat-no" title="statement not covered" >await new Promise(<span class="fstat-no" title="function not covered" >(r</span>esolve, reject) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        db.all(</span>
@@ -775,7 +775,7 @@ class RecommendationService {
   /**
    * Upsell recommendations
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getUpsellRecommendations(userId, currentServiceId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, currentServiceId) {
     const complementary = <span class="cstat-no" title="statement not covered" >{</span>
       'limpeza-residencial': ['higienização', 'deodoração', 'organização'],
       'limpeza-comercial': ['conservação', 'manutenção', 'higienização'],
@@ -794,7 +794,7 @@ class RecommendationService {
   }
 }
 &nbsp;
-module.exports = new RecommendationService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

@@ -607,7 +607,7 @@ ${i + 1}. ${b.serviceName} em ${new Date(b.date).toLocaleDateString('pt-BR')}`;
 <span class="fstat-no" title="function not covered" >  as</span>ync logConversation(userId, userMessage, botResponse) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      await this.db.run(`</span>
-        INSERT INTO chatbot_conversations (userId, user_message, bot_response)
+        INSERT INTO [REDACTED_TOKEN] (userId, user_message, bot_response)
         VALUES (?, ?, ?)
       `, [userId, userMessage, botResponse]);
     } catch (err) {
@@ -621,7 +621,7 @@ ${i + 1}. ${b.serviceName} em ${new Date(b.date).toLocaleDateString('pt-BR')}`;
 <span class="fstat-no" title="function not covered" >  as</span>ync getHistory(userId, limit = <span class="branch-0 cbranch-no" title="branch not covered" >10)</span> {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      return await this.db.all(`</span>
-        SELECT * FROM chatbot_conversations
+        SELECT * FROM [REDACTED_TOKEN]
         WHERE userId = ?
         ORDER BY created_at DESC
         LIMIT ?

@@ -34,6 +34,6 @@ pngquant --quality=65-80 --force --output public/favicon-32x32.png public/favico
 ```
 
 Se você não tiver ImageMagick no ambiente, use um gerador online como
-- https://realfavicongenerator.net/
+- https://[REDACTED_TOKEN].net/
 
 Coloque os arquivos gerados em `frontend/public/` e os links em `src/pages/_document.jsx` já foram adicionados.

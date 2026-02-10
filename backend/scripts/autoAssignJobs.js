@@ -20,7 +20,7 @@ async function autoAssignJobs() {
     //   await BookingService.autoAssignBooking(booking.id);
     //   
     //   // Executar automações
-    //   await AutomationService.executeBookingAutomations(booking);
+    //   await AutomationService.[REDACTED_TOKEN](booking);
     // }
 
     console.log('Distribuição concluída!');

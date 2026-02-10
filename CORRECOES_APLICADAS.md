@@ -34,8 +34,8 @@
   ✅ 3. WEBHOOK STRIPE SEM HMAC VALIDATION
      ├─ Problema: Webhooks não validam assinatura (segurança crítica)
      ├─ Solução: 
-     │  • PaymentIntegrationService.processWebhook() - adicionado params: signature, rawBody
-     │  • PaymentIntegrationController - extrai stripe-signature header
+     │  • [REDACTED_TOKEN].processWebhook() - adicionado params: signature, rawBody
+     │  • [REDACTED_TOKEN] - extrai stripe-signature header
      │  • Implementado: stripe.webhooks.constructEvent() com HMAC-SHA256
      │  • Segurança: Bloqueia em produção se signature inválida
      │  • Dev: Permite com warning para facilitar testing
@@ -89,7 +89,7 @@
   - MOTIVO: Não suportados nesta versão do Winston
   - Impacto: Logs ainda funcionam normalmente
 
-  Arquivo: backend/src/services/PaymentIntegrationService.js
+  Arquivo: backend/src/services/[REDACTED_TOKEN].js
   ─────────────────────────────────────────────────────────
   - ADICIONADO: Parâmetros opcionais signature, rawBody
   - ADICIONADO: Validação via stripe.webhooks.constructEvent()
@@ -98,7 +98,7 @@
   - Método completo:
     async processWebhook(event, signature = null, rawBody = null)
 
-  Arquivo: backend/src/controllers/PaymentIntegrationController.js
+  Arquivo: backend/src/controllers/[REDACTED_TOKEN].js
   ──────────────────────────────────────────────────────────────
   - ADICIONADO: Extrair header 'stripe-signature' from req.headers
   - ADICIONADO: Preparar rawBody (req.rawBody ou stringify)
@@ -112,9 +112,9 @@
   • NODE_ENV=development
   • DATABASE_LOCAL=./backend_data/database.db
   • DATABASE_URL=sqlite:./backend_data/database.db
-  • JWT_SECRET=dev_super_secret_key...
+  • JWT_SECRET=[REDACTED_TOKEN]...
   • EMAIL, SMTP, TWILIO configurados
-  • STRIPE_SECRET_KEY + STRIPE_WEBHOOK_SECRET
+  • STRIPE_SECRET_KEY + [REDACTED_TOKEN]
   • PIX_KEY + PIX_BANK_API_URL
   • REDIS_ENABLED=false
   • LOG_LEVEL=info
@@ -122,9 +122,9 @@
   Arquivo: frontend/.env.local (NOVO)
   ───────────────────────────────────
   • REACT_APP_API_URL=http://localhost:3000
-  • REACT_APP_API_TIMEOUT=30000
+  • [REDACTED_TOKEN]=30000
   • Feature flags: ✅ TODAS ENABLED
-  • REACT_APP_STRIPE_PUBLIC_KEY (teste)
+  • [REDACTED_TOKEN] (teste)
 
   Arquivo: backend/babel.config.js (Criado antes)
   ────────────────────────────────────────────
@@ -146,7 +146,7 @@
   ✅ SUITES PASSANDO (35):
   • Validation.test.js
   • CompanyService.test.js
-  • NotificationController.test.js
+  • [REDACTED_TOKEN].test.js
   • middleware.test.js
   • EmailTemplates.test.js
   • priceCalculator.test.js
@@ -155,7 +155,7 @@
   
   ❌ SUITES FALHANDO (8):
   • BookingController.test.js - Timeout (mock db issues)
-  • PaymentIntegrationService.test.js - Mock issues
+  • [REDACTED_TOKEN].test.js - Mock issues
   • NotificationService.test.js - Mock issues
   • PixService.test.js - Mock issues
   • jwt-authentication.test.js - Mock issues

@@ -47,7 +47,7 @@ export class TestHelpers {
     await page.fill('[data-testid=phone-input]', phone);
     await page.selectOption('[data-testid=duration-select]', duration);
 
-    await page.click('[data-testid=submit-booking-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
     await page.waitForSelector('[data-testid=booking-success]', { timeout: 5000 });
 
     return {
@@ -105,7 +105,7 @@ export class TestHelpers {
     await page.fill('[data-testid=review-comment]', comment);
     
     // Submeter
-    await page.click('[data-testid=submit-review-button]');
+    await page.click('[data-testid=[REDACTED_TOKEN]]');
     
     // Esperar sucesso
     await page.waitForSelector('[data-testid=review-success]', { timeout: 5000 });

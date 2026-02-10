@@ -23,10 +23,10 @@ Implementamos com sucesso 5 features de alto impacto para monetização e experi
 ### 3️⃣ SMS + WHATSAPP NOTIFICATIONS
 - ✅ Aprimorado: NotificationService.js (4 novos métodos)
 - 💬 Métodos:
-  - sendPaymentLinkWhatsApp()
-  - sendPaymentConfirmationWhatsApp()
-  - sendReferralWhatsApp()
-  - sendReviewNotification()
+  - [REDACTED_TOKEN]()
+  - [REDACTED_TOKEN]()
+  - [REDACTED_TOKEN]()
+  - [REDACTED_TOKEN]()
 - 📊 Impacto: +50% engagement rate
 
 ### 4️⃣ FILA DE EMAILS COM BULL
@@ -127,10 +127,10 @@ GET    /api/affiliates/link
 
 ### Notificações WhatsApp (via SMS+WhatsApp Service)
 ```
-- sendPaymentLinkWhatsApp
-- sendPaymentConfirmationWhatsApp
-- sendReferralWhatsApp
-- sendReviewNotification
+- [REDACTED_TOKEN]
+- [REDACTED_TOKEN]
+- [REDACTED_TOKEN]
+- [REDACTED_TOKEN]
 ```
 
 ## 💾 TABELAS DO BANCO DE DADOS
@@ -185,7 +185,7 @@ CREATE TABLE referrals (
   created_at DATETIME
 )
 
-CREATE TABLE affiliate_withdrawals (
+CREATE TABLE [REDACTED_TOKEN] (
   id INTEGER PRIMARY KEY,
   user_id INTEGER,
   amount DECIMAL,

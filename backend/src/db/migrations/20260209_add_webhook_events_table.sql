@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS webhook_events (
   received_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE INDEX IF NOT EXISTS idx_webhook_events_event_id ON webhook_events(event_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON webhook_events(event_id);

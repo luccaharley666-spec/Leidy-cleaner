@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/CDNAssetOptimizerService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> CDNAssetOptimizerService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -770,7 +770,7 @@ const logger = require('../utils/logger');
 const fs = require('fs').promises;
 const path = require('path');
 &nbsp;
-class CDNAssetOptimizerService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.cdnUrl = process.env.CDN_URL || 'https://cdn.example.com';
     this.assetCache = new Map();
@@ -798,7 +798,7 @@ class CDNAssetOptimizerService {
    ✅ NOVO: Gerar URL otimizada para imagem
    * Suporta width, height, format (webp, jpeg, png), quality
    */
-<span class="fstat-no" title="function not covered" >  ge</span>nerateOptimizedImageUrl(imagePath, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+<span class="fstat-no" title="function not covered" >  ge</span>[REDACTED_TOKEN](imagePath, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
     const {
       width,
       height,
@@ -830,7 +830,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar srcset para responsive images
    */
-<span class="fstat-no" title="function not covered" >  ge</span>nerateResponsiveImageSet(imagePath, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+<span class="fstat-no" title="function not covered" >  ge</span>[REDACTED_TOKEN](imagePath, options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
     const sizes = <span class="cstat-no" title="statement not covered" >[320, 640, 1024, 1920];</span>
     const qualityBySize = <span class="cstat-no" title="statement not covered" >{</span>
       320: 70,  // Mobile
@@ -841,7 +841,7 @@ class CDNAssetOptimizerService {
 &nbsp;
     const srcset = <span class="cstat-no" title="statement not covered" >sizes</span>
       .map(<span class="fstat-no" title="function not covered" >si</span>ze =&gt; {
-        const url = <span class="cstat-no" title="statement not covered" >this.generateOptimizedImageUrl(imagePath, {</span>
+        const url = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN](imagePath, {</span>
           width: size,
           quality: qualityBySize[size],
           format: 'webp'
@@ -853,7 +853,7 @@ class CDNAssetOptimizerService {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       srcset,
       sizes: '(max-width: 320px) 100vw, (max-width: 640px) 100vw, (max-width: 1024px) 100vw, 100vw',
-      defaultSrc: this.generateOptimizedImageUrl(imagePath, { quality: 80 })
+      defaultSrc: this.[REDACTED_TOKEN](imagePath, { quality: 80 })
     };
   }
 &nbsp;
@@ -862,7 +862,7 @@ class CDNAssetOptimizerService {
    */
 <span class="fstat-no" title="function not covered" >  ge</span>nerateLQIPUrl(imagePath) {
     // Gerar versão ultra-comprimida para placeholder
-<span class="cstat-no" title="statement not covered" >    return this.generateOptimizedImageUrl(imagePath, {</span>
+<span class="cstat-no" title="statement not covered" >    return this.[REDACTED_TOKEN](imagePath, {</span>
       width: 50,
       height: 50,
       quality: 20,
@@ -873,7 +873,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Calcular economia de banda
    */
-<span class="fstat-no" title="function not covered" >  ca</span>lculateBandwidthSavings() {
+<span class="fstat-no" title="function not covered" >  ca</span>[REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    if (this.compressionStats.filesProcessed === 0) {</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         savings: 0,
@@ -899,8 +899,8 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar tag HTML com lazy loading
    */
-<span class="fstat-no" title="function not covered" >  ge</span>nerateLazyLoadImageTag(imagePath, alt = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
-    const responsive = <span class="cstat-no" title="statement not covered" >this.generateResponsiveImageSet(imagePath, options);</span>
+<span class="fstat-no" title="function not covered" >  ge</span>[REDACTED_TOKEN](imagePath, alt = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> options = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+    const responsive = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN](imagePath, options);</span>
     const lqip = <span class="cstat-no" title="statement not covered" >this.generateLQIPUrl(imagePath);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    return `</span>
@@ -923,7 +923,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar manifesto de assets
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateAssetManifest(publicPath) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](publicPath) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const manifest = <span class="cstat-no" title="statement not covered" >{</span>
         version: '1.0.0',
@@ -947,7 +947,7 @@ class CDNAssetOptimizerService {
               path: `/${file}`,
               size: stat.size,
               mtime: stat.mtime,
-              optimizedUrl: this.generateOptimizedImageUrl(`/${file}`, {
+              optimizedUrl: this.[REDACTED_TOKEN](`/${file}`, {
                 format: 'webp',
                 quality: 80
               })
@@ -971,7 +971,7 @@ class CDNAssetOptimizerService {
 <span class="fstat-no" title="function not covered" >  ge</span>tCacheHeaders(fileType) {
     const headers = <span class="cstat-no" title="statement not covered" >{</span>
       'Cache-Control': 'public, max-age=31536000, immutable',
-      'X-Content-Type-Options': 'nosniff'
+      '[REDACTED_TOKEN]': 'nosniff'
     };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    if (fileType === 'image') {</span>
@@ -1007,7 +1007,7 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar sitemap de imagens (para SEO)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync generateImageSitemap(assets) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](assets) {
     const urls = <span class="cstat-no" title="statement not covered" >assets</span>
       .filter(<span class="fstat-no" title="function not covered" >as</span>set =&gt; <span class="cstat-no" title="statement not covered" >asset.type === 'image')</span>
       .map(<span class="fstat-no" title="function not covered" >as</span>set =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
@@ -1036,12 +1036,12 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Medir performance de imagem
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync measureImagePerformance(imageUrl) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](imageUrl) {
 <span class="cstat-no" title="statement not covered" >    return {</span>
       url: imageUrl,
       metrics: {
-        largestContentfulPaint: 'depends on user connection',
-        cumulativeLayoutShift: 'depends on image dimensions',
+        [REDACTED_TOKEN]: 'depends on user connection',
+        [REDACTED_TOKEN]: 'depends on image dimensions',
         firstInputDelay: 'not affected if lazy-loaded',
         recommendations: [
           'Use responsive images with srcset',
@@ -1084,9 +1084,9 @@ class CDNAssetOptimizerService {
   /**
    ✅ NOVO: Gerar report de otimização
    */
-<span class="fstat-no" title="function not covered" >  ge</span>nerateOptimizationReport() {
+<span class="fstat-no" title="function not covered" >  ge</span>[REDACTED_TOKEN]() {
 <span class="cstat-no" title="statement not covered" >    return {</span>
-      bandwidthSavings: this.calculateBandwidthSavings(),
+      bandwidthSavings: this.[REDACTED_TOKEN](),
       cachePolicy: this.generateCachePolicy(),
       recommendations: [
         'Use WebP format with JPEG fallback',
@@ -1109,7 +1109,7 @@ class CDNAssetOptimizerService {
   }
 }
 &nbsp;
-module.exports = new CDNAssetOptimizerService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

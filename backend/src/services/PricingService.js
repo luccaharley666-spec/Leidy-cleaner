@@ -18,7 +18,7 @@ class PricingService {
    * Calcular preço dinâmico completo
    * Leva em conta: data, hora, cliente, histórico, etc
    */
-  async calculateDynamicPrice(data) {
+  async [REDACTED_TOKEN](data) {
     try {
       let basePrice = data.basePrice || 0;
 
@@ -29,12 +29,12 @@ class PricingService {
 
       // 2. Multiplicador por metragem
       if (data.metragem) {
-        basePrice += data.metragem * this.getPricePerSquareMeter();
+        basePrice += data.metragem * this.[REDACTED_TOKEN]();
       }
 
       // 3. Multiplicador por tipo de limpeza
       if (data.cleaningType) {
-        basePrice *= this.getCleaningTypeMultiplier(data.cleaningType);
+        basePrice *= this.[REDACTED_TOKEN](data.cleaningType);
       }
 
       // 4. Multiplicador de data/hora (SURGE PRICING)
@@ -43,12 +43,12 @@ class PricingService {
 
       // 5. Multiplicador de frequência
       if (data.frequency) {
-        basePrice *= this.getFrequencyMultiplier(data.frequency);
+        basePrice *= this.[REDACTED_TOKEN](data.frequency);
       }
 
       // 6. Multiplicador de urgência
       if (data.urgency) {
-        basePrice *= this.getUrgencyMultiplier(data.urgency);
+        basePrice *= this.[REDACTED_TOKEN](data.urgency);
       }
 
       // 7. Desconto por lealdade (cliente recorrente)
@@ -60,8 +60,8 @@ class PricingService {
       basePrice -= discount;
 
       // 9. Adicionar taxa de serviço (configurável via pricing-matrix.json)
-      const serviceFeePercentage = (pricingMatrix.serviceFeePercentage || 5) / 100;
-      const serviceFee = basePrice * serviceFeePercentage;
+      const [REDACTED_TOKEN] = (pricingMatrix.[REDACTED_TOKEN] || 5) / 100;
+      const serviceFee = basePrice * [REDACTED_TOKEN];
       basePrice += serviceFee;
 
       // 10. Garantir preço mínimo (configurável)
@@ -74,19 +74,19 @@ class PricingService {
 
       // `loyaltyDiscount` é percentual; `discount` é valor absoluto sobre subtotal
       const subtotal = data.basePrice || (data.services ? data.services.reduce((s, x) => s + (x.basePrice || 0), 0) : 0);
-      const discountPercentFromAbsolute = subtotal > 0 ? (discount / subtotal) : 0;
-      const combinedPercent = loyaltyDiscount + discountPercentFromAbsolute;
+      const [REDACTED_TOKEN] = subtotal > 0 ? (discount / subtotal) : 0;
+      const combinedPercent = loyaltyDiscount + [REDACTED_TOKEN];
 
-      let appliedAbsoluteDiscount = discount;
+      let [REDACTED_TOKEN] = discount;
       if (combinedPercent > maximumDiscount) {
         // limitar desconto absoluto para não ultrapassar o teto
-        const allowedAbsolutePercent = Math.max(0, maximumDiscount - loyaltyDiscount);
-        appliedAbsoluteDiscount = Math.round((subtotal * allowedAbsolutePercent) * 100) / 100;
+        const [REDACTED_TOKEN] = Math.max(0, maximumDiscount - loyaltyDiscount);
+        [REDACTED_TOKEN] = Math.round((subtotal * [REDACTED_TOKEN]) * 100) / 100;
       }
 
       // Recalcular preço final (re-aplicar service fee and min were already applied above)
       // Note: loyalty already multiplicative applied above; we subtracted discount earlier, but
-      // ensure we use the capped `appliedAbsoluteDiscount` for breakdown clarity.
+      // ensure we use the capped `[REDACTED_TOKEN]` for breakdown clarity.
 
       // finalPrice já foi calculado em `basePrice` (com loyalty + serviceFee + min),
       // porém `discount` foi subtraído antes de serviceFee in previous steps — keep consistency
@@ -96,13 +96,13 @@ class PricingService {
         basePrice: data.basePrice || subtotal,
         surgeMultiplier: surgeMultiplier,
         loyaltyDiscount: loyaltyDiscount,
-        totalDiscount: appliedAbsoluteDiscount,
+        totalDiscount: [REDACTED_TOKEN],
         serviceFee: Math.round(serviceFee * 100) / 100,
         breakdown: {
           base: subtotal,
           surge: surgeMultiplier !== 1 ? `+${Math.round((surgeMultiplier - 1) * 100)}%` : '+0%',
           loyalty: loyaltyDiscount !== 0 ? `-${Math.round(loyaltyDiscount * 100)}%` : '0%',
-          discounts: appliedAbsoluteDiscount,
+          discounts: [REDACTED_TOKEN],
           serviceFee: Math.round(serviceFee * 100) / 100
         }
       };
@@ -184,14 +184,14 @@ class PricingService {
   /**
    * Preço por metro quadrado
    */
-  getPricePerSquareMeter() {
+  [REDACTED_TOKEN]() {
     return 0.5; // R$ 0.50 por m²
   }
 
   /**
    * Multiplicador por tipo de limpeza
    */
-  getCleaningTypeMultiplier(type) {
+  [REDACTED_TOKEN](type) {
     const multipliers = {
       standard: 1.0,
       deep: 1.5,
@@ -206,7 +206,7 @@ class PricingService {
   /**
    * Multiplicador por frequência
    */
-  getFrequencyMultiplier(frequency) {
+  [REDACTED_TOKEN](frequency) {
     const multipliers = {
       once: 1.0,
       weekly: 0.8,
@@ -219,7 +219,7 @@ class PricingService {
   /**
    * Multiplicador por urgência
    */
-  getUrgencyMultiplier(urgency) {
+  [REDACTED_TOKEN](urgency) {
     const multipliers = {
       normal: 1.0,
       express: 1.3,
@@ -268,25 +268,25 @@ class PricingService {
   /**
    * Simular múltiplas opções de preço
    */
-  async simulatePriceOptions(data) {
+  async [REDACTED_TOKEN](data) {
     const options = {};
     
     // Normal
-    options.normal = await this.calculateDynamicPrice({
+    options.normal = await this.[REDACTED_TOKEN]({
       ...data,
       urgency: 'normal',
       frequency: 'once'
     });
 
     // Express
-    options.express = await this.calculateDynamicPrice({
+    options.express = await this.[REDACTED_TOKEN]({
       ...data,
       urgency: 'express',
       frequency: 'once'
     });
 
     // Recorrente (desconto)
-    options.weekly = await this.calculateDynamicPrice({
+    options.weekly = await this.[REDACTED_TOKEN]({
       ...data,
       frequency: 'weekly'
     });
@@ -299,7 +299,7 @@ class PricingService {
    * Retorna apenas o `finalPrice` numérico para testes e código antigo.
    */
   async calculatePrice(data) {
-    const result = await this.calculateDynamicPrice(data);
+    const result = await this.[REDACTED_TOKEN](data);
     if (result && typeof result.finalPrice === 'number') return result.finalPrice;
     // fallback: try to coerce if structure changed
     return Number(result) || 0;

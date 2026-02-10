@@ -14,7 +14,7 @@
 1. **`.env.example`** - Template de variáveis de ambiente
    ```env
    REACT_APP_API_URL=http://localhost:3001
-   REACT_APP_API_TIMEOUT=30000
+   [REDACTED_TOKEN]=30000
    ```
 
 2. **`src/config/api.js`** - Arquivo centralizado de config + helper functions
@@ -185,7 +185,7 @@ cp frontend/.env.example frontend/.env.local
 
 # Editar .env.local com URLs do seu servidor
 REACT_APP_API_URL=https://api.seu-dominio.com
-REACT_APP_API_TIMEOUT=30000
+[REDACTED_TOKEN]=30000
 ```
 
 ### 2. Usar apiCall() em Componentes

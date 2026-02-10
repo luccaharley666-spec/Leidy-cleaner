@@ -48,10 +48,10 @@ const jsonFormat = combine(
 // ✅ NOVO: Tentar usar daily-rotate-file se disponível
 let rotateFile;
 try {
-  rotateFile = require('winston-daily-rotate-file');
+  rotateFile = require('[REDACTED_TOKEN]');
 } catch (e) {
   rotateFile = null;
-  console.warn('⚠️ winston-daily-rotate-file não instalado, usando arquivo simples');
+  console.warn('⚠️ [REDACTED_TOKEN] não instalado, usando arquivo simples');
 }
 
 // ✅ NOVO: Configurar transports

@@ -89,7 +89,7 @@ Status: **IMPLEMENTADAS E COMMITED** (Commit: 91d5402)
 - **Rota**: `backend/src/routes/geolocationRoutes.js`
 - **Banco**: `user_addresses` (latitude, longitude)
 - **Métodos**:
-  - `getNearbyProfessionals(userLat, userLng, radiusKm)` - Profissionais próximos (Haversine)
+  - `[REDACTED_TOKEN](userLat, userLng, radiusKm)` - Profissionais próximos (Haversine)
   - `geocodeAddress(address)` - Codificar endereço (Google Maps API)
   - `updateUserLocation(userId, lat, lng)` - Atualizar localização
   - `saveClientAddress(userId, address, lat, lng)` - Salvar endereço
@@ -102,13 +102,13 @@ Status: **IMPLEMENTADAS E COMMITED** (Commit: 91d5402)
 - **Tecnologia**: Google Maps Geocoding API + Haversine formula
 
 #### **Feature 8: Hourly/Minute Booking** ⏰
-- **Arquivo**: `backend/src/services/HourlyBookingService.js`
+- **Arquivo**: `backend/src/services/[REDACTED_TOKEN].js`
 - **Rota**: `backend/src/routes/hourlyBookingRoutes.js`
 - **Banco**: `hourly_bookings`, `hourly_rates`
 - **Métodos**:
   - `createHourlyBooking(userId, professionalId, date, startTime, durationHours)` - Criar
   - `checkAvailability(professionalId, date, startTime, endTime)` - Verificar disponibilidade
-  - `getProfessionalRates(professionalId)` - Tarifas do profissional
+  - `[REDACTED_TOKEN](professionalId)` - Tarifas do profissional
 - **Endpoints**:
   - `POST /hourly/create` - Criar agendamento
   - `GET /hourly/availability/:professionalId?date=...&startTime=...&endTime=...` - Disponibilidade
@@ -117,17 +117,17 @@ Status: **IMPLEMENTADAS E COMMITED** (Commit: 91d5402)
 - **Precisão**: Minutos (cálculo automático de duração)
 
 #### **Feature 9: Professional Admin Ratings** ⭐
-- **Arquivo**: `backend/src/services/ProfessionalRatingService.js`
-- **Rota**: `backend/src/routes/professionalRatingRoutes.js`
-- **Banco**: `professional_ratings` (admin_id, rating, feedback)
+- **Arquivo**: `backend/src/services/[REDACTED_TOKEN].js`
+- **Rota**: `backend/src/routes/[REDACTED_TOKEN].js`
+- **Banco**: `[REDACTED_TOKEN]` (admin_id, rating, feedback)
 - **Métodos**:
   - `rateProfessional(professionalId, adminId, rating, feedback)` - Avaliar profissional
-  - `getProfessionalRatings(professionalId)` - Obter avaliações
-  - `getLowRatedProfessionals(minRating)` - Profissionais com baixa nota (intervenção)
+  - `[REDACTED_TOKEN](professionalId)` - Obter avaliações
+  - `[REDACTED_TOKEN](minRating)` - Profissionais com baixa nota (intervenção)
 - **Endpoints**:
-  - `POST /professional-ratings/rate` - Avaliar (admin only)
-  - `GET /professional-ratings/:professionalId` - Ver avaliações
-  - `GET /professional-ratings/low-rated/:minRating` - Flagged profissionais
+  - `POST /[REDACTED_TOKEN]/rate` - Avaliar (admin only)
+  - `GET /[REDACTED_TOKEN]/:professionalId` - Ver avaliações
+  - `GET /[REDACTED_TOKEN]/low-rated/:minRating` - Flagged profissionais
 - **Uso**: Controle de qualidade interno
 
 #### **Feature 10: Cancellations & Refunds** ❌
@@ -136,7 +136,7 @@ Status: **IMPLEMENTADAS E COMMITED** (Commit: 91d5402)
 - **Banco**: `cancellations` (reason, refund_amount, timestamp)
 - **Métodos**:
   - `cancelBooking(bookingId, userId, reason, refundAmount)` - Cancelar e processar reembolso
-  - `getCancellationStats()` - Estatísticas de cancelamento por reason
+  - `[REDACTED_TOKEN]()` - Estatísticas de cancelamento por reason
 - **Endpoints**:
   - `POST /cancellations/cancel` - Cancelar agendamento
   - `GET /cancellations/stats` - Ver estatísticas
@@ -154,12 +154,12 @@ Status: **IMPLEMENTADAS E COMMITED** (Commit: 91d5402)
 - **Output**: `/uploads/*.pdf` + Email delivery
 
 #### **Feature 12: Web Push Notifications** 🔔
-- **Arquivo**: `backend/src/services/PushNotificationService.js` (PRÉ-EXISTENTE)
+- **Arquivo**: `backend/src/services/[REDACTED_TOKEN].js` (PRÉ-EXISTENTE)
 - **Banco**: `push_subscriptions`
 - **Métodos**:
-  - `registerSubscription(userId, subscription)` - Registrar device
+  - `[REDACTED_TOKEN](userId, subscription)` - Registrar device
   - `sendNotification(userId, title, body)` - Enviar único
-  - `broadcastNotification(title, body, userIds)` - Enviar em massa
+  - `[REDACTED_TOKEN](title, body, userIds)` - Enviar em massa
 - **Endpoints**: Vinculadas a notificações gerais
 - **Tecnologia**: Web Push API + VAPID keys
 
@@ -240,7 +240,7 @@ module.exports = router;
 6. `subscription_plans` - Planos recorrentes
 7. `user_subscriptions` - Subscrições ativas
 8. `user_addresses` - Endereços com coordenadas
-9. `professional_ratings` - Avaliações internas
+9. `[REDACTED_TOKEN]` - Avaliações internas
 10. `hourly_bookings` - Agendamentos flexíveis
 11. `hourly_rates` - Tarifas por hora
 12. `blog_posts` - Posts com slug e keywords
@@ -272,8 +272,8 @@ module.exports = router;
 - `backend/src/services/AddonsService.js` (200 linhas)
 - `backend/src/services/SubscriptionService.js` (260 linhas)
 - `backend/src/services/GeoLocationService.js` (220 linhas)
-- `backend/src/services/HourlyBookingService.js` (280 linhas)
-- `backend/src/services/ProfessionalRatingService.js` (200 linhas)
+- `backend/src/services/[REDACTED_TOKEN].js` (280 linhas)
+- `backend/src/services/[REDACTED_TOKEN].js` (200 linhas)
 - `backend/src/services/CancellationService.js` (160 linhas)
 - `backend/src/services/ReceiptService.js` (180 linhas)
 - `backend/src/services/BlogService.js` (330 linhas)
@@ -285,12 +285,12 @@ module.exports = router;
 - `backend/src/routes/subscriptionRoutes.js` (65 linhas)
 - `backend/src/routes/geolocationRoutes.js` (85 linhas)
 - `backend/src/routes/hourlyBookingRoutes.js` (75 linhas)
-- `backend/src/routes/professionalRatingRoutes.js` (55 linhas)
+- `backend/src/routes/[REDACTED_TOKEN].js` (55 linhas)
 - `backend/src/routes/cancellationRoutes.js` (35 linhas)
 - `backend/src/routes/receiptRoutes.js` (45 linhas)
 
 ### Database
-- `database/migrations/20260209_create_12_features_tables.sql` (170 linhas)
+- `database/migrations/[REDACTED_TOKEN].sql` (170 linhas)
 
 ### Configuration
 - `backend/src/routes/api.js` (UPDATED - registrou 8 novas rotas)
@@ -316,7 +316,7 @@ module.exports = router;
 
 ### Imediatos
 1. ✅ Criar componentes React para:
-   - LoyaltyPointsDashboard
+   - [REDACTED_TOKEN]
    - AddonsSelector modal
    - SubscriptionPicker
    - GeoMap viewer
@@ -327,9 +327,9 @@ module.exports = router;
    GOOGLE_MAPS_API_KEY=xxx
    VAPID_PUBLIC_KEY=xxx
    VAPID_PRIVATE_KEY=xxx
-   STRIPE_PRICE_ID_BRONZE=xxx
-   STRIPE_PRICE_ID_SILVER=xxx
-   STRIPE_PRICE_ID_GOLD=xxx
+   [REDACTED_TOKEN]=xxx
+   [REDACTED_TOKEN]=xxx
+   [REDACTED_TOKEN]=xxx
    ```
 
 3. ✅ Executar migrações:

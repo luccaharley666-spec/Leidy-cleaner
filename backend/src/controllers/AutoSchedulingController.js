@@ -5,19 +5,19 @@
 
 const express = require('express');
 const router = express.Router();
-const AutoSchedulingService = require('../services/AutoSchedulingService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 
 // POST /api/scheduling/auto-schedule
 router.post('/auto-schedule', async (req, res) => {
   try {
-    const { serviceType, location, date, duration, clientId, preferredProfessional } = req.body;
-    const schedule = await AutoSchedulingService.autoScheduleProfessionals({
+    const { serviceType, location, date, duration, clientId, [REDACTED_TOKEN] } = req.body;
+    const schedule = await [REDACTED_TOKEN].[REDACTED_TOKEN]({
       serviceType,
       location,
       date,
       duration,
       clientId,
-      preferredProfessional
+      [REDACTED_TOKEN]
     });
     res.status(201).json(schedule);
   } catch (error) {
@@ -29,7 +29,7 @@ router.post('/auto-schedule', async (req, res) => {
 router.post('/optimize-route', async (req, res) => {
   try {
     const { professionalId, bookingIds } = req.body;
-    const route = await AutoSchedulingService.optimizeRoute(professionalId, bookingIds);
+    const route = await [REDACTED_TOKEN].optimizeRoute(professionalId, bookingIds);
     res.json(route);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -40,7 +40,7 @@ router.post('/optimize-route', async (req, res) => {
 router.post('/sync-calendar', async (req, res) => {
   try {
     const { professionalId, schedule } = req.body;
-    const result = await AutoSchedulingService.syncWithProfessionalCalendar(professionalId, schedule);
+    const result = await [REDACTED_TOKEN].[REDACTED_TOKEN](professionalId, schedule);
     res.json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -50,7 +50,7 @@ router.post('/sync-calendar', async (req, res) => {
 // GET /api/scheduling/suggestions/:clientId
 router.get('/suggestions/:clientId', async (req, res) => {
   try {
-    const suggestions = await AutoSchedulingService.getSchedulingSuggestions(req.params.clientId);
+    const suggestions = await [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.clientId);
     res.json(suggestions);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -60,7 +60,7 @@ router.get('/suggestions/:clientId', async (req, res) => {
 // GET /api/scheduling/conflicts
 router.get('/conflicts', async (req, res) => {
   try {
-    const conflicts = await AutoSchedulingService.detectSchedulingConflicts();
+    const conflicts = await [REDACTED_TOKEN].[REDACTED_TOKEN]();
     res.json(conflicts);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -71,7 +71,7 @@ router.get('/conflicts', async (req, res) => {
 router.get('/occupancy/:professionalId', async (req, res) => {
   try {
     const { startDate, endDate } = req.query;
-    const report = await AutoSchedulingService.getOccupancyReport(
+    const report = await [REDACTED_TOKEN].getOccupancyReport(
       req.params.professionalId,
       startDate,
       endDate
@@ -94,7 +94,7 @@ router.get('/staff/:staffId', async (req, res) => {
     }
 
     // Caso contrário, retornar um placeholder com dados mínimos
-    const profile = await AutoSchedulingService.getProfessionalProfile(staffId).catch(() => null);
+    const profile = await [REDACTED_TOKEN].[REDACTED_TOKEN](staffId).catch(() => null);
     if (!profile) return res.status(404).json({ error: 'Profissional não encontrado' });
     res.json({ success: true, profile });
   } catch (error) {

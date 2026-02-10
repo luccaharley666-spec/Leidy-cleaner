@@ -32,7 +32,7 @@ const validateCNPJ = (cnpj) => {
   return regex.test(cnpj);
 };
 
-const validateBookingInput = (data) => {
+const [REDACTED_TOKEN] = (data) => {
   const errors = [];
 
   if (!data.serviceId || data.serviceId < 1) {
@@ -63,7 +63,7 @@ const validateBookingInput = (data) => {
   return { valid: errors.length === 0, errors };
 };
 
-const validatePaymentInput = (data) => {
+const [REDACTED_TOKEN] = (data) => {
   const errors = [];
 
   if (!data.bookingId || data.bookingId < 1) {
@@ -99,7 +99,7 @@ const validateReviewInput = (data) => {
   return { valid: errors.length === 0, errors };
 };
 
-const validateCompanyInfoInput = (data) => {
+const [REDACTED_TOKEN] = (data) => {
   const errors = [];
 
   if (data.cnpj && !validateCNPJ(data.cnpj)) {
@@ -127,8 +127,8 @@ module.exports = {
   validatePhoneNumber,
   validateCEP,
   validateCNPJ,
-  validateBookingInput,
-  validatePaymentInput,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
   validateReviewInput,
-  validateCompanyInfoInput,
+  [REDACTED_TOKEN],
 };

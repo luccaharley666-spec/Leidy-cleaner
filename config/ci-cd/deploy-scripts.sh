@@ -15,7 +15,7 @@ docker-compose build
 
 # Migrate banco de dados
 echo "🗄️  Executando migrations..."
-docker-compose exec -T postgres psql -U user -d limpezapro -f /docker-entrypoint-initdb.d/2-migrations/*.sql
+docker-compose exec -T postgres psql -U user -d limpezapro -f /[REDACTED_TOKEN].d/2-migrations/*.sql
 
 # Restart dos containers
 echo "🔄 Reiniciando containers..."

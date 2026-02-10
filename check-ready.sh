@@ -42,10 +42,10 @@ fi
 # Verificar Services
 SERVICES=(
   "PixService"
-  "PaymentIntegrationService"
+  "[REDACTED_TOKEN]"
   "NotificationService"
   "EmailQueueService"
-  "ChatEncryptionService"
+  "[REDACTED_TOKEN]"
 )
 
 echo -e "   ${GREEN}✅${NC} Services implementados:"
@@ -155,7 +155,7 @@ DOCS=(
   "DEPLOYMENT_READY.md"
   "backend/TESTING_STRATEGY.md"
   "TODO_ITEMS.md"
-  "IMPLEMENTACAO_CONSOLIDADA.md"
+  "[REDACTED_TOKEN].md"
   ".env.example"
   "docker-compose.yml"
 )
@@ -200,7 +200,7 @@ if [ -d "database/migrations" ]; then
 fi
 
 # Services implementados
-if [ -f "backend/src/services/PixService.js" ] && [ -f "backend/src/services/PaymentIntegrationService.js" ]; then
+if [ -f "backend/src/services/PixService.js" ] && [ -f "backend/src/services/[REDACTED_TOKEN].js" ]; then
   echo -e "   ${GREEN}✅${NC} Serviços de pagamento (PIX)"
   ((STATUS_OK++))
 fi
@@ -276,6 +276,6 @@ echo ""
 echo "📚 Para mais informações:"
 echo "   • DEPLOYMENT_READY.md - Guia completo de deploy"
 echo "   • backend/TESTING_STRATEGY.md - Estratégia de testes"
-echo "   • IMPLEMENTACAO_CONSOLIDADA.md - Status técnico completo"
+echo "   • [REDACTED_TOKEN].md - Status técnico completo"
 echo ""
 echo "════════════════════════════════════════════════════════════════════════════════"

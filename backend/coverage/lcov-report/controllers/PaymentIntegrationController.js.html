@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/PaymentIntegrationController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> PaymentIntegrationController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -266,13 +266,13 @@
 &nbsp;
 const express = require('express');
 const router = express.Router();
-const PaymentIntegrationService = require('../services/PaymentIntegrationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 &nbsp;
 // POST /api/payments/stripe
 router.post('/stripe', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { amount, customerId, description, receiptEmail } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const charge = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.createStripePayment({</span>
+    const charge = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].createStripePayment({</span>
       amount,
       customerId,
       description,
@@ -288,7 +288,7 @@ router.post('/stripe', <span class="fstat-no" title="function not covered" >as</
 router.post('/pix', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { amount, customerId, orderId } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const payment = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.createPixPayment({</span>
+    const payment = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].createPixPayment({</span>
       amount,
       customerId,
       orderId
@@ -306,7 +306,7 @@ router.post('/webhook', <span class="fstat-no" title="function not covered" >as<
     const signature = <span class="cstat-no" title="statement not covered" >req.headers['stripe-signature'];</span>
     const rawBody = <span class="cstat-no" title="statement not covered" >req.rawBody || JSON.stringify(req.body);</span>
     
-    const result = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.processWebhook(req.body, signature, rawBody);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].processWebhook(req.body, signature, rawBody);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Webhook error:', error);</span>
@@ -318,7 +318,7 @@ router.post('/webhook', <span class="fstat-no" title="function not covered" >as<
 router.post('/:chargeId/refund', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { amount } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const refund = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.requestRefund(req.params.chargeId, amount);</span>
+    const refund = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].requestRefund(req.params.chargeId, amount);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(refund);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -328,7 +328,7 @@ router.post('/:chargeId/refund', <span class="fstat-no" title="function not cove
 // GET /api/payments/:chargeId
 router.get('/:chargeId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const status = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.getPaymentStatus(req.params.chargeId);</span>
+    const status = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getPaymentStatus(req.params.chargeId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(status);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(404).json({ error: error.message });</span>
@@ -339,7 +339,7 @@ router.get('/:chargeId', <span class="fstat-no" title="function not covered" >as
 router.get('/customer/:customerId/history', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { limit = <span class="branch-0 cbranch-no" title="branch not covered" >20 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const history = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.getPaymentHistory(req.params.customerId, parseInt(limit));</span>
+    const history = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].getPaymentHistory(req.params.customerId, parseInt(limit));</span>
 <span class="cstat-no" title="statement not covered" >    res.json(history);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -349,7 +349,7 @@ router.get('/customer/:customerId/history', <span class="fstat-no" title="functi
 // POST /api/payments/reconcile
 router.post('/reconcile', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await PaymentIntegrationService.reconcilePayments();</span>
+    const result = <span class="cstat-no" title="statement not covered" >await [REDACTED_TOKEN].reconcilePayments();</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>

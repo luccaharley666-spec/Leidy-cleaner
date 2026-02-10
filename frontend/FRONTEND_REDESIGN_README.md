@@ -30,7 +30,7 @@
 
 #### UI Components (9 componentes)
 ```
-✅ NotificationContainer - sistema toast
+✅ [REDACTED_TOKEN] - sistema toast
 ✅ Modal - diálogos com actions
 ✅ Tooltip - dicas ao hover
 ✅ Dropdown - menu dropdown
@@ -77,7 +77,7 @@
 ## 🚀 Começar Rápido
 
 ### Opção 1: Copiar Exemplos Prontos
-Vá para [QUICK_START_EXAMPLES.md](./QUICK_START_EXAMPLES.md) e copy & paste qualquer exemplo!
+Vá para [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md) e copy & paste qualquer exemplo!
 
 ### Opção 2: Páginas Existentes
 Adaptar suas páginas atuais:
@@ -117,7 +117,7 @@ frontend/
 ├── DESIGN_SYSTEM.md                   ← Paleta, tipografia, tokens
 ├── COMPONENT_INDEX.md                 ← Índice completo componentes
 ├── MIGRATION_GUIDE.md                 ← Como migrar páginas
-└── QUICK_START_EXAMPLES.md            ← 6 exemplos prontos
+└── [REDACTED_TOKEN].md            ← 6 exemplos prontos
 ```
 
 ---
@@ -263,7 +263,7 @@ Em `globals.css`:
 | [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) | Sistema de cores, tipografia, tokens | Quando precisa entender cores/spacing |
 | [COMPONENT_INDEX.md](./COMPONENT_INDEX.md) | Índice completo com signatures | Quando precisa API detalhada |
 | [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md) | Como migrar páginas antigas | Quando quer refatorar página |
-| [QUICK_START_EXAMPLES.md](./QUICK_START_EXAMPLES.md) | 6 exemplos prontos copy&paste | Quando quer começar rápido |
+| [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md) | 6 exemplos prontos copy&paste | Quando quer começar rápido |
 
 ---
 
@@ -356,7 +356,7 @@ Usar classes Tailwind:
 
 ## 🚀 Próximo? Escolha Sua Aventura:
 
-→ **Quer começar rápido?** Vá para [QUICK_START_EXAMPLES.md](./QUICK_START_EXAMPLES.md)  
+→ **Quer começar rápido?** Vá para [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md)  
 → **Precisa referência completa?** Vá para [COMPONENT_INDEX.md](./COMPONENT_INDEX.md)  
 → **Vai refatorar página existente?** Vá para [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md)  
 → **Quer entender tokens?** Vá para [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md)  

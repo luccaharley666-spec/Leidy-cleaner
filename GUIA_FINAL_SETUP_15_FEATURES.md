@@ -102,10 +102,10 @@ Você deve ver:
 addons                      loyalty_points              push_subscriptions
 blog_posts                  loyalty_rewards             referral_links
 booking_addons              newsletter_sends            referral_signups
-bookings                    newsletter_subscribers      services
+bookings                    [REDACTED_TOKEN]      services
 cancellations               notifications               subscription_plans
 company_info                pix_transactions            transactions
-coupon_uses                 professional_ratings        user_addresses
+coupon_uses                 [REDACTED_TOKEN]        user_addresses
 coupons                     push_subscriptions          user_hour_credits
 file_uploads                referral_signups            user_subscriptions
 hour_packages               services                    users
@@ -131,7 +131,7 @@ BASE_URL=http://localhost:3001
 DATABASE_PATH=./backend_data/database.db
 
 # JWT (Gerar com: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))")
-JWT_SECRET=seu-secret-aqui-32-caracteres-minimo
+JWT_SECRET=[REDACTED_TOKEN]
 JWT_EXPIRES_IN=7d
 
 # ============ PAYMENTS (Stripe) ============
@@ -139,12 +139,12 @@ JWT_EXPIRES_IN=7d
 
 STRIPE_PUBLIC_KEY=pk_test_...
 STRIPE_SECRET_KEY=sk_test_...
-STRIPE_WEBHOOK_SECRET=whsec_...
+[REDACTED_TOKEN]=whsec_...
 
 # Subscription Plans (create in Stripe Dashboard)
-STRIPE_PRICE_ID_BRONZE=price_...
-STRIPE_PRICE_ID_SILVER=price_...
-STRIPE_PRICE_ID_GOLD=price_...
+[REDACTED_TOKEN]=price_...
+[REDACTED_TOKEN]=price_...
+[REDACTED_TOKEN]=price_...
 
 # ============ EMAIL (Nodemailer) ============
 # Gmail: https://myaccount.google.com/apppasswords
@@ -168,11 +168,11 @@ VAPID_PRIVATE_KEY=...
 VAPID_SUBJECT=mailto:seu-email@example.com
 
 # ============ FEATURE FLAGS ============
-ENABLE_LOYALTY_SYSTEM=true
-ENABLE_ADDONS_MARKETPLACE=true
-ENABLE_SUBSCRIPTIONS=true
+[REDACTED_TOKEN]=true
+[REDACTED_TOKEN]=true
+[REDACTED_TOKEN]=true
 ENABLE_GEOLOCATION=true
-ENABLE_HOURLY_BOOKING=true
+[REDACTED_TOKEN]=true
 ENABLE_BLOG=true
 ```
 
@@ -272,9 +272,9 @@ GET  /api/hourly/my-bookings           - Meus agendamentos
 
 ### 6️⃣ Professional Ratings - Controle de Qualidade
 ```
-POST /api/professional-ratings/rate    - Avaliar profissional (admin)
-GET  /api/professional-ratings/:id     - Ver avaliações
-GET  /api/professional-ratings/low-rated/:minRating - Profissionais com baixa nota
+POST /api/[REDACTED_TOKEN]/rate    - Avaliar profissional (admin)
+GET  /api/[REDACTED_TOKEN]/:id     - Ver avaliações
+GET  /api/[REDACTED_TOKEN]/low-rated/:minRating - Profissionais com baixa nota
 ```
 
 ### 7️⃣ Cancellations - Cancelamentos
@@ -330,7 +330,7 @@ function App() {
       <AddonsSelector bookingId={1} token={token} onTotalChange={(total) => console.log(total)} />
       <SubscriptionPlans userId={userId} token={token} onSuccess={() => console.log('Subscrição ativa')} />
       <BlogViewer token={token} />
-      <GeoMap userId={userId} token={token} onProfessionalSelect={(prof) => console.log(prof)} />
+      <GeoMap userId={userId} token={token} [REDACTED_TOKEN]={(prof) => console.log(prof)} />
     </div>
   );
 }
@@ -533,7 +533,7 @@ F12 → Console
 
 ## 📞 Suporte
 
-`Documentação completa: [IMPLEMENTACAO_15_FEATURES_COMPLETA.md](./IMPLEMENTACAO_15_FEATURES_COMPLETA.md)`  
+`Documentação completa: [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md)`  
 `Código: [backend/src/services/](./backend/src/services/)`  
 `Componentes: [frontend/src/components/](./frontend/src/components/)`
 

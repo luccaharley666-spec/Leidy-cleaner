@@ -163,14 +163,14 @@ class CacheService {
       ...this.stats,
       hitRate: `${hitRate}%`,
       storeSize: this.store.size,
-      memoryUsage: this.calculateMemoryUsage()
+      memoryUsage: this.[REDACTED_TOKEN]()
     };
   }
 
   /**
    * Calcular uso de memória (aproximado)
    */
-  static calculateMemoryUsage() {
+  static [REDACTED_TOKEN]() {
     let bytes = 0;
     for (const [key, item] of this.store.entries()) {
       bytes += key.length * 2; // UTF-16

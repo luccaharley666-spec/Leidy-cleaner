@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS affiliates (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_affiliates_user_id ON affiliates(user_id);
-CREATE INDEX IF NOT EXISTS idx_affiliates_referral_code ON affiliates(referral_code);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON affiliates(user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON affiliates(referral_code);
 
 CREATE TABLE IF NOT EXISTS referrals (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,5 +29,5 @@ CREATE TABLE IF NOT EXISTS referrals (
   FOREIGN KEY (referred_user_id) REFERENCES users(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_referrals_affiliate_user_id ON referrals(affiliate_user_id);
-CREATE INDEX IF NOT EXISTS idx_referrals_referred_user_id ON referrals(referred_user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON referrals(affiliate_user_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON referrals(referred_user_id);

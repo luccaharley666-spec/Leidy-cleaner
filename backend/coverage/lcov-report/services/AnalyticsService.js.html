@@ -524,7 +524,7 @@ class AnalyticsService {
   /**
    ✅ NOVO: Customer Lifetime Value (CLV)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getCustomerLifetimeValue(userId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId) {
     const userBookings = <span class="cstat-no" title="statement not covered" >this.metrics.bookings.filter(<span class="fstat-no" title="function not covered" >b </span>=&gt; <span class="cstat-no" title="statement not covered" >b.userId === userId)</span>;</span>
     const totalSpent = <span class="cstat-no" title="statement not covered" >userBookings.reduce(<span class="fstat-no" title="function not covered" >(s</span>um, b) =&gt; <span class="cstat-no" title="statement not covered" >sum + (b.price || 0),</span> 0);</span>
     const bookingCount = <span class="cstat-no" title="statement not covered" >userBookings.length;</span>
@@ -557,14 +557,14 @@ class AnalyticsService {
       churnedCount: churnedCustomers,
       totalCustomers,
       trend: 'Stable ✅',
-      riskCustomers: this.identifyAtRiskCustomers()
+      riskCustomers: this.[REDACTED_TOKEN]()
     };
   }
 &nbsp;
   /**
    ✅ NOVO: Identificar clientes em risco
    */
-<span class="fstat-no" title="function not covered" >  id</span>entifyAtRiskCustomers() {
+<span class="fstat-no" title="function not covered" >  id</span>[REDACTED_TOKEN]() {
     const thirtyDaysAgo = <span class="cstat-no" title="statement not covered" >new Date();</span>
 <span class="cstat-no" title="statement not covered" >    thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);</span>
 &nbsp;
@@ -583,7 +583,7 @@ class AnalyticsService {
 <span class="cstat-no" title="statement not covered" >      if (lastBooking.timestamp &lt; thirtyDaysAgo &amp;&amp; bookings.length &gt; 1) {</span>
 <span class="cstat-no" title="statement not covered" >        atRisk.push({</span>
           userId,
-          daysSinceLastBooking: Math.floor(
+          [REDACTED_TOKEN]: Math.floor(
             (new Date() - lastBooking.timestamp) / (1000 * 60 * 60 * 24)
           ),
           totalSpent: bookings.reduce(<span class="fstat-no" title="function not covered" >(s</span>, b) =&gt; <span class="cstat-no" title="statement not covered" >s + (b.price || 0),</span> 0)

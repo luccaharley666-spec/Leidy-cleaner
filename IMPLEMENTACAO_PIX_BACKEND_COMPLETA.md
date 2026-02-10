@@ -20,7 +20,7 @@ Serviço de lógica de negócio para gerenciar pagamentos PIX
 - `validateSignature(body, signature, secret)` - Validar HMAC-SHA256
 - `expirePayment(transactionId)` - Marcar pagamento como expirado
 - `getUserPayments(userId)` - Histórico de pagamentos do usuário
-- `notifyPaymentConfirmed(payment)` - Disparar notificações (email, SMS)
+- `[REDACTED_TOKEN](payment)` - Disparar notificações (email, SMS)
 
 **Features**:
 - ✅ Geração de IDs únicos com UUID v4
@@ -31,7 +31,7 @@ Serviço de lógica de negócio para gerenciar pagamentos PIX
 - ✅ Armazenamento completo em banco de dados
 - ✅ Tratamento robusto de erros
 
-### 2. **PixPaymentController.js** (140 LOC)
+### 2. **[REDACTED_TOKEN].js** (140 LOC)
 Controladores HTTP para endpoints
 
 **Endpoints**:
@@ -74,16 +74,16 @@ Atualização da tabela `payments` com campos PIX
 - `confirmed_at DATETIME` - Quando o pagamento foi confirmado
 - `expires_at DATETIME` - Quando o QR Code expira
 - `user_id INTEGER` - ID do usuário que fez o pagamento
-- `payment_confirmed_at DATETIME` - Timestamp de confirmação
+- `[REDACTED_TOKEN] DATETIME` - Timestamp de confirmação
 - Status estendido: `waiting`, `received`, `confirmed`, `expired`, `processing`
 
 **Índices Criados**:
-- `idx_payments_transaction_id` - Busca rápida por transaction_id
-- `idx_payments_user_id` - Busca rápida por usuário
-- `idx_payments_booking_id` - Busca rápida por agendamento
+- `[REDACTED_TOKEN]` - Busca rápida por transaction_id
+- `[REDACTED_TOKEN]` - Busca rápida por usuário
+- `[REDACTED_TOKEN]` - Busca rápida por agendamento
 - `idx_payments_status` - Busca rápida por status
 - `idx_payments_method` - Busca rápida por método
-- `idx_payments_created_at` - Ordenação por data
+- `[REDACTED_TOKEN]` - Ordenação por data
 
 ### 5. **Integração com api.js**
 Foram adicionadas as linhas:
@@ -117,8 +117,8 @@ Content-Type: application/json
 {
   "success": true,
   "data": {
-    "id": "550e8400-e29b-41d4-a716-446655440000",
-    "transactionId": "550e8400-e29b-41d4-a716-446655440000",
+    "id": "[REDACTED_TOKEN]",
+    "transactionId": "[REDACTED_TOKEN]",
     "qrCode": "data:image/png;base64,iVBORw0KGgo...",
     "brCode": "00020126360014br.gov.bcb.pix0136...",
     "expiresAt": "2026-02-09T16:35:00.000Z",
@@ -136,7 +136,7 @@ Obter status do pagamento (para polling)
 
 **Request**:
 ```bash
-GET /api/pix/status/550e8400-e29b-41d4-a716-446655440000
+GET /api/pix/status/[REDACTED_TOKEN]
 Authorization: Bearer {token}
 ```
 
@@ -145,7 +145,7 @@ Authorization: Bearer {token}
 {
   "success": true,
   "data": {
-    "id": "550e8400-e29b-41d4-a716-446655440000",
+    "id": "[REDACTED_TOKEN]",
     "bookingId": 123,
     "amount": 150.00,
     "status": "confirmed",
@@ -178,8 +178,8 @@ Content-Type: application/json
 x-webhook-signature: {HMAC-SHA256}
 
 {
-  "id": "550e8400-e29b-41d4-a716-446655440000",
-  "transactionId": "550e8400-e29b-41d4-a716-446655440000",
+  "id": "[REDACTED_TOKEN]",
+  "transactionId": "[REDACTED_TOKEN]",
   "status": "confirmed",
   "amount": 150.00,
   "bankTransactionId": "BK123456789",
@@ -197,7 +197,7 @@ x-webhook-signature: {HMAC-SHA256}
 
 **Fluxo**:
 1. Banco envia webhook com assinatura HMAC-SHA256
-2. Backend valida assinatura usando `PIX_WEBHOOK_SECRET`
+2. Backend valida assinatura usando `[REDACTED_TOKEN]`
 3. Atualiza status do pagamento em `payments` table
 4. Se `status = confirmed`, atualiza `bookings.status → confirmed`
 5. Dispara notificações (email, SMS)
@@ -210,7 +210,7 @@ Expirar/cancelar um pagamento PIX
 
 **Request**:
 ```bash
-POST /api/pix/expire/550e8400-e29b-41d4-a716-446655440000
+POST /api/pix/expire/[REDACTED_TOKEN]
 Authorization: Bearer {token}
 ```
 
@@ -220,7 +220,7 @@ Authorization: Bearer {token}
   "success": true,
   "message": "Pagamento expirado",
   "data": {
-    "transactionId": "550e8400-e29b-41d4-a716-446655440000"
+    "transactionId": "[REDACTED_TOKEN]"
   }
 }
 ```
@@ -243,7 +243,7 @@ Authorization: Bearer {token}
   "data": [
     {
       "id": 1,
-      "transaction_id": "550e8400-e29b-41d4-a716-446655440000",
+      "transaction_id": "[REDACTED_TOKEN]",
       "booking_id": 123,
       "amount": 150.00,
       "status": "confirmed",
@@ -265,7 +265,7 @@ Authorization: Bearer {token}
 
 ### Secret HMAC-SHA256
 ```
-PIX_WEBHOOK_SECRET = 50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1
+[REDACTED_TOKEN] = [REDACTED_TOKEN]
 ```
 
 ### Validação de Assinatura
@@ -276,7 +276,7 @@ const crypto = require('crypto');
 // Header: x-webhook-signature = HMAC-SHA256(body, secret)
 
 // Backend valida:
-const secret = process.env.PIX_WEBHOOK_SECRET;
+const secret = process.env.[REDACTED_TOKEN];
 const hash = crypto
   .createHmac('sha256', secret)
   .update(JSON.stringify(webhookBody))
@@ -308,7 +308,7 @@ x-bank-timestamp: {ISO 8601 datetime}
    POST /api/pix/create
    { bookingId: 123, amount: 150 }
    
-2. BACKEND (PixPaymentController)
+2. BACKEND ([REDACTED_TOKEN])
    ↓
    - Gera transaction_id (UUID)
    - Gera QR Code (base64)
@@ -366,7 +366,7 @@ curl -X GET http://localhost:3001/api/pix/status/TRANSACTION_ID \
 **Simular Webhook**:
 ```bash
 #!/bin/bash
-SECRET="50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1"
+SECRET="[REDACTED_TOKEN]"
 BODY='{"id":"TRANSACTION_ID","status":"confirmed","amount":150.00}'
 
 SIGNATURE=$(echo -n "$BODY" | openssl dgst -sha256 -hmac "$SECRET" -hex | cut -d" " -f2)
@@ -435,7 +435,7 @@ describe('PIX Payment Flow', () => {
 ### Hoje
 - [ ] Registrar webhook com Banco Bradesco / BB / Itaú
   - URL: `https://seu-dominio.com/api/pix/webhooks`
-  - Secret: `50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1`
+  - Secret: `[REDACTED_TOKEN]`
   - Método: POST
   - Auth: HMAC-SHA256
   
@@ -456,15 +456,15 @@ describe('PIX Payment Flow', () => {
 
 **Arquivos Relacionados**:
 - Backend: `/backend/src/services/PixPaymentService.js`
-- Backend: `/backend/src/controllers/PixPaymentController.js`
+- Backend: `/backend/src/controllers/[REDACTED_TOKEN].js`
 - Backend: `/backend/src/routes/pixRoutes.js`
 - Frontend: `/frontend/src/components/Payment/PixQRCodeCheckout.jsx`
 - Frontend: `/frontend/src/pages/checkout.jsx`
 - Database: `/backend/src/db/migrations.sql`
 
 **Documentação Complementar**:
-- [IMPLEMENTACAO_PIX_CHECKOUT_COMPLETA.md](./IMPLEMENTACAO_PIX_CHECKOUT_COMPLETA.md) - Frontend
-- [Guia PIX BC](https://www.bcb.gov.br/estabilidadefinanceira/pix) - Documentação oficial
+- [[REDACTED_TOKEN].md](./[REDACTED_TOKEN].md) - Frontend
+- [Guia PIX BC](https://www.bcb.gov.br/[REDACTED_TOKEN]/pix) - Documentação oficial
 
 ---
 

@@ -11,10 +11,10 @@
 
 #### Banco de Dados
 ```sql
-CREATE TABLE booking_frequency_analysis (
+CREATE TABLE [REDACTED_TOKEN] (
   id INT PRIMARY KEY,
   userId INT,
-  average_interval_days INT,
+  [REDACTED_TOKEN] INT,
   last_booking_date DATE,
   next_suggested_date DATE,
   confidence_score DECIMAL(3,2),
@@ -22,7 +22,7 @@ CREATE TABLE booking_frequency_analysis (
 );
 ```
 
-#### Backend - Novo Controller: `PredictionController.js`
+#### Backend - Novo Controller: `[REDACTED_TOKEN].js`
 ```javascript
 exports.getNextSuggestion = async (userId) => {
   // 1. Pegar últimos 3 agendamentos do usuário
@@ -73,7 +73,7 @@ exports.getNextSuggestion = async (userId) => {
 
 #### Banco de Dados
 ```sql
-CREATE TABLE before_after_galleries (
+CREATE TABLE [REDACTED_TOKEN] (
   id INT PRIMARY KEY,
   staffId INT,
   serviceId INT,
@@ -105,7 +105,7 @@ exports.uploadBeforeAfter = async (req, res) => {
   const afterUrl = await uploadToS3(after);
   
   await db.run(`
-    INSERT INTO before_after_galleries 
+    INSERT INTO [REDACTED_TOKEN] 
     (staffId, serviceId, before_image_url, after_image_url, caption)
     VALUES (?, ?, ?, ?, ?)
   `, [staffId, serviceId, beforeUrl, afterUrl, caption]);
@@ -117,7 +117,7 @@ exports.uploadBeforeAfter = async (req, res) => {
 #### Frontend - Component
 ```jsx
 // BeforeAfterSlider.jsx
-import BeforeAfter from 'react-before-after-slider-component';
+import BeforeAfter from '[REDACTED_TOKEN]';
 
 <BeforeAfter
   firstImage={{ imageUrl: beforeUrl }}
@@ -133,9 +133,9 @@ import BeforeAfter from 'react-before-after-slider-component';
 ```sql
 ALTER TABLE staff ADD COLUMN latitude DECIMAL(10,8);
 ALTER TABLE staff ADD COLUMN longitude DECIMAL(10,8);
-ALTER TABLE staff ADD COLUMN last_location_update TIMESTAMP;
+ALTER TABLE staff ADD COLUMN [REDACTED_TOKEN] TIMESTAMP;
 
-CREATE TABLE staff_location_history (
+CREATE TABLE [REDACTED_TOKEN] (
   id INT PRIMARY KEY,
   staffId INT,
   latitude DECIMAL(10,8),
@@ -288,7 +288,7 @@ import * as ImagePicker from 'expo-image-picker';
 import * as Notifications from 'expo-notifications';
 
 // Local Storage
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@[REDACTED_TOKEN]/async-storage';
 ```
 
 ---
@@ -462,7 +462,7 @@ expo init leidy-mobile
 TWILIO_ACCOUNT_SID=
 TWILIO_AUTH_TOKEN=
 TWILIO_PHONE_NUMBER=
-TWILIO_WHATSAPP_NUMBER=
+[REDACTED_TOKEN]=
 
 # Chatbot IA
 OPENAI_API_KEY=
@@ -472,8 +472,8 @@ OPENAI_MODEL=gpt-4-turbo
 GOOGLE_MAPS_API_KEY=
 
 # Uploads
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
+[REDACTED_TOKEN]=
+[REDACTED_TOKEN]=
 AWS_S3_BUCKET=
 ```
 

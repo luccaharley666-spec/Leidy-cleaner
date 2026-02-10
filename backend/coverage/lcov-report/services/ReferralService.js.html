@@ -629,7 +629,7 @@ class ReferralService {
   /**
    * Gerar link de referência para um usuário
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async generateReferralLink(userId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](userId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Verificar se já tem link
       const referralLink = <span class="cstat-no" title="statement not covered" >await db.get(</span>
@@ -652,7 +652,7 @@ class ReferralService {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      if (existing) {</span>
         // Retry recursivo (muito raro)
-<span class="cstat-no" title="statement not covered" >        return this.generateReferralLink(userId);</span>
+<span class="cstat-no" title="statement not covered" >        return this.[REDACTED_TOKEN](userId);</span>
       }
 &nbsp;
       // Criar link de referência
@@ -679,7 +679,7 @@ class ReferralService {
   /**
    * Processa nova signup com código de referência
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async processReferralSignup(newUserId, referralCode) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](newUserId, referralCode) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Buscar link de referência
       const referralLink = <span class="cstat-no" title="statement not covered" >await db.get(</span>
@@ -726,7 +726,7 @@ class ReferralService {
   /**
    * Confirmar reward quando novo usuário faz primeiro payment
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async confirmReferralReward(newUserId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](newUserId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // Buscar signup referral
       const signup = <span class="cstat-no" title="statement not covered" >await db.get(</span>
@@ -883,7 +883,7 @@ class ReferralService {
           conversionRate: `${((completedSignups / Math.max(totalSignups, 1)) * 100).toFixed(1)}%`,
           totalRewardsGiven: totalRewards || 0,
           activeReferrers,
-          avgRewardPerReferrer: activeReferrers &gt; 0 ? Math.round((totalRewards || 0) / activeReferrers) : 0
+          [REDACTED_TOKEN]: activeReferrers &gt; 0 ? Math.round((totalRewards || 0) / activeReferrers) : 0
         }
       };
     } catch (err) {

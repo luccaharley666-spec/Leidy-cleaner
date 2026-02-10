@@ -186,7 +186,7 @@ describe('Profile Routes', () => {
   describe('Route Structure', () => {
     test('should have at least 7 routes defined', () => {
       const routes = profileRouter.stack.filter(layer => layer.route);
-      expect(routes.length).toBeGreaterThanOrEqual(7);
+      expect(routes.length).[REDACTED_TOKEN](7);
     });
 
     test('all profile routes should use ProfileController', () => {
@@ -229,7 +229,7 @@ describe('Profile Routes', () => {
         layer.route && 'get' in layer.route.methods
       );
       
-      expect(getRoutes.length).toBeGreaterThanOrEqual(4);
+      expect(getRoutes.length).[REDACTED_TOKEN](4);
     });
 
     test('PUT routes should exist for update endpoints', () => {
@@ -237,7 +237,7 @@ describe('Profile Routes', () => {
         layer.route && 'put' in layer.route.methods
       );
       
-      expect(putRoutes.length).toBeGreaterThanOrEqual(2);
+      expect(putRoutes.length).[REDACTED_TOKEN](2);
     });
 
     test('POST routes should exist for upload endpoints', () => {
@@ -245,7 +245,7 @@ describe('Profile Routes', () => {
         layer.route && 'post' in layer.route.methods
       );
       
-      expect(postRoutes.length).toBeGreaterThanOrEqual(1);
+      expect(postRoutes.length).[REDACTED_TOKEN](1);
     });
 
     test('DELETE routes should exist for delete endpoints', () => {
@@ -253,7 +253,7 @@ describe('Profile Routes', () => {
         layer.route && 'delete' in layer.route.methods
       );
       
-      expect(deleteRoutes.length).toBeGreaterThanOrEqual(1);
+      expect(deleteRoutes.length).[REDACTED_TOKEN](1);
     });
   });
 

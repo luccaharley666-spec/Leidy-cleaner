@@ -7,5 +7,5 @@ module.exports = {
     if (typeof fn === 'function') return fn();
     return null;
   },
-  getBrowserTimingHeader: function () { return ''; },
+  [REDACTED_TOKEN]: function () { return ''; },
 };

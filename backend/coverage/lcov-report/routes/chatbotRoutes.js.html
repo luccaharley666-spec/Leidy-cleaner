@@ -457,7 +457,7 @@ const { authenticateToken } = <span class="cstat-no" title="statement not covere
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const userId = <span class="cstat-no" title="statement not covered" >req.user.id;</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      await db.run('DELETE FROM chatbot_conversations WHERE userId = ?', [userId]);</span>
+<span class="cstat-no" title="statement not covered" >      await db.run('DELETE FROM [REDACTED_TOKEN] WHERE userId = ?', [userId]);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      res.json({ success: true, message: 'Histórico limpo' });</span>
     } catch (err) {

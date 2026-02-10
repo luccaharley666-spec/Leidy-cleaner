@@ -145,7 +145,7 @@ router.get('/reports/financial', authenticateToken, authorizeRole(['admin']), (r
       revenue: 45280.50,
       expenses: 12500,
       profit: 32780.50,
-      averageTransactionValue: 132.45,
+      [REDACTED_TOKEN]: 132.45,
     };
     res.json({ success: true, report });
   } catch (error) {
@@ -214,7 +214,7 @@ router.post('/permissions/grant', authenticateToken, authorizeRole(['admin']), (
   try {
     const { role, permission } = req.body;
     if (!role || !permission) return res.status(400).json({ error: 'role e permission são obrigatórios' });
-    const ok = PermissionService.grantPermissionToRole(role, permission);
+    const ok = PermissionService.[REDACTED_TOKEN](role, permission);
     if (!ok) return res.status(400).json({ error: 'Não foi possível conceder a permissão' });
     res.json({ success: true, message: `Permissão ${permission} concedida ao papel ${role}` });
   } catch (error) {
@@ -227,7 +227,7 @@ router.post('/permissions/revoke', authenticateToken, authorizeRole(['admin']), 
   try {
     const { role, permission } = req.body;
     if (!role || !permission) return res.status(400).json({ error: 'role e permission são obrigatórios' });
-    const ok = PermissionService.revokePermissionFromRole(role, permission);
+    const ok = PermissionService.[REDACTED_TOKEN](role, permission);
     if (!ok) return res.status(400).json({ error: 'Não foi possível revogar a permissão' });
     res.json({ success: true, message: `Permissão ${permission} revogada do papel ${role}` });
   } catch (error) {

@@ -29,13 +29,13 @@
 backend/src/
 ├── controllers/ (43 arquivos)
 │   ├── AuthController.js ✅
-│   ├── PixPaymentController.js ✅
+│   ├── [REDACTED_TOKEN].js ✅
 │   ├── BookingController.js ✅
 │   ├── AdminController.js ✅
 │   ├── ChatController.js ✅
 │   ├── ReviewController.js ✅
 │   ├── PaymentController.js ✅
-│   ├── AdminDashboardController.js ✅
+│   ├── [REDACTED_TOKEN].js ✅
 │   ├── AnalyticsController.js ✅
 │   ├── PricingController.js ✅
 │   └── 33 outros...
@@ -47,7 +47,7 @@ backend/src/
 │   ├── AuthService.js ✅
 │   ├── ChatService.js ✅
 │   ├── EmailQueueService.js ✅
-│   ├── HourPackagingService.js ✅
+│   ├── [REDACTED_TOKEN].js ✅
 │   ├── PricingService.js ✅
 │   ├── NotificationService.js ✅
 │   ├── AnalyticsService.js ✅
@@ -106,7 +106,7 @@ frontend/src/
 │   ├── Payment/
 │   │   ├── PixQRCodeCheckout.jsx ✅
 │   │   ├── CheckoutForm.jsx ✅
-│   │   └── StripeCheckoutButton.jsx ✅
+│   │   └── [REDACTED_TOKEN].jsx ✅
 │   │
 │   ├── Chat/ (chat em tempo real)
 │   ├── Calendar/ (calendário inteligente)
@@ -124,7 +124,7 @@ frontend/src/
 │
 ├── services/
 │   ├── api.js (chamadas HTTP com timeout)
-│   └── ChatEncryptionClient.js
+│   └── [REDACTED_TOKEN].js
 │
 └── styles/
     ├── globals.css (Tailwind)
@@ -344,7 +344,7 @@ Webpack - Bundling
    - Código pronto mas mock apenas
    - Precisa registrar webhook no banco
    - **Impacto**: Pagamentos não funcionam de verdade
-   - **Docs**: `/GUIA_REGISTRO_WEBHOOK_PIX.md`
+   - **Docs**: `/[REDACTED_TOKEN].md`
 
 2. **Credenciais de produção não configuradas**
    - Stripe: apenas mock key

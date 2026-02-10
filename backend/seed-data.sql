@@ -17,7 +17,7 @@ VALUES (
   'Administrador',
   'admin@leidycleaner.com.br',
   '5551999999999',
-  '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu',
+  '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]',
   'admin',
   1,
   '2026-01-01 10:00:00'
@@ -30,7 +30,7 @@ VALUES (
   'Maria Silva',
   'maria@leidycleaner.com.br',
   '5551987654321',
-  '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu',
+  '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]',
   'manager',
   1,
   '2026-01-05 09:30:00'
@@ -43,7 +43,7 @@ VALUES (
   'João Limpador',
   'joao@leidycleaner.com.br',
   '5551988888888',
-  '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu',
+  '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]',
   'staff',
   1,
   '2026-01-10 08:00:00'
@@ -56,7 +56,7 @@ VALUES (
   'Ana Costa',
   'ana@leidycleaner.com.br',
   '5551977777777',
-  '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu',
+  '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]',
   'staff',
   1,
   '2026-01-15 07:45:00'
@@ -65,11 +65,11 @@ VALUES (
 -- Clientes
 INSERT OR IGNORE INTO users (id, name, email, phone, password_hash, role, is_active, created_at)
 VALUES
-  (10, 'Carlos Oliveira', 'carlos.oliveira@email.com', '5551999888777', '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu', 'customer', 1, '2026-01-20 14:00:00'),
-  (11, 'Beatriz Santos', 'beatriz.santos@email.com', '5551999777666', '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu', 'customer', 1, '2026-01-22 15:30:00'),
-  (12, 'Felipe Mendes', 'felipe.mendes@email.com', '5551999666555', '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu', 'customer', 1, '2026-01-25 11:00:00'),
-  (13, 'Juliana Costa', 'juliana.costa@email.com', '5551999555444', '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu', 'customer', 1, '2026-01-28 16:45:00'),
-  (14, 'Roberto Alves', 'roberto.alves@email.com', '5551999444333', '$2b$12$xw64XQOPvNixKRHUrLc2U.ewt.hCy.qc2jaiLd7x7jkmZFng2qdiu', 'customer', 1, '2026-02-01 09:15:00');
+  (10, 'Carlos Oliveira', 'carlos.oliveira@email.com', '5551999888777', '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]', 'customer', 1, '2026-01-20 14:00:00'),
+  (11, 'Beatriz Santos', 'beatriz.santos@email.com', '5551999777666', '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]', 'customer', 1, '2026-01-22 15:30:00'),
+  (12, 'Felipe Mendes', 'felipe.mendes@email.com', '5551999666555', '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]', 'customer', 1, '2026-01-25 11:00:00'),
+  (13, 'Juliana Costa', 'juliana.costa@email.com', '5551999555444', '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]', 'customer', 1, '2026-01-28 16:45:00'),
+  (14, 'Roberto Alves', 'roberto.alves@email.com', '5551999444333', '$2b$12$[REDACTED_TOKEN].ewt.hCy.[REDACTED_TOKEN]', 'customer', 1, '2026-02-01 09:15:00');
 
 -- ===== SERVIÇOS =====
 

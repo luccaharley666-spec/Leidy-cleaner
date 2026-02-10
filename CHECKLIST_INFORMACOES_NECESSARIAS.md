@@ -26,36 +26,36 @@
 
 #### 2. **Dados Bancários Completos**
 ```
-[ ] Titular da Conta: ___________________________
-[ ] CPF/CNPJ do Titular: ___________________________
-[ ] Tipo de Conta (Corrente/Poupança): ___________________________
+[ ] Titular da Conta: [REDACTED_TOKEN]
+[ ] CPF/CNPJ do Titular: [REDACTED_TOKEN]
+[ ] Tipo de Conta (Corrente/Poupança): [REDACTED_TOKEN]
 [ ] Conta está ativa e libera transferências: Sim [ ] Não [ ]
 ```
 
 #### 3. **Credenciais Twilio (para SMS/WhatsApp)**
 ```
-[ ] Account SID: ___________________________
-[ ] Auth Token: ___________________________
+[ ] Account SID: [REDACTED_TOKEN]
+[ ] Auth Token: [REDACTED_TOKEN]
 [ ] Account ativo: Sim [ ] Não [ ]
-[ ] Saldo disponível: R$ ___________________________
-[ ] Número confirmado: +55 51 98030-3740 ___________________________
+[ ] Saldo disponível: R$ [REDACTED_TOKEN]
+[ ] Número confirmado: +55 51 98030-3740 [REDACTED_TOKEN]
 ```
 
 #### 4. **Google/Gmail (para Email)**
 ```
 [ ] Autorizar acesso em: https://myaccount.google.com/apppasswords
 [ ] Gerar app password para "Mail"
-[ ] App Password gerado: ___________________________
+[ ] App Password gerado: [REDACTED_TOKEN]
 [ ] 2FA habilitado no Gmail: Sim [ ] Não [ ]
 ```
 
 #### 5. **Banco - Integração PIX**
 ```
 [ ] Registrou webhook na instituição bancária: Sim [ ] Não [ ]
-[ ] URL do webhook: https://sua-api.com/webhooks/pix ___________________________
+[ ] URL do webhook: https://sua-api.com/webhooks/pix [REDACTED_TOKEN]
 [ ] Assinatura HMAC-SHA256 habilitada: Sim [ ] Não [ ]
 [ ] Teste de webhook realizado: Sim [ ] Não [ ]
-[ ] Banco enviará notificações por qual método: ___________________________
+[ ] Banco enviará notificações por qual método: [REDACTED_TOKEN]
 ```
 
 #### 6. **Infraestrutura/Hosting**
@@ -63,9 +63,9 @@
 [ ] Servidor: AWS [ ] Heroku [ ] Vercel [ ] DigitalOcean [ ] Outro: _____
 [ ] Banco de Dados: SQLite [ ] PostgreSQL [ ] MySQL [ ] Outro: _____
 [ ] Redis: Sim [ ] Não [ ]
-[ ] Domínio: ___________________________
+[ ] Domínio: [REDACTED_TOKEN]
 [ ] SSL/HTTPS: Sim [ ] Não [ ]
-[ ] IP para whitelist: ___________________________
+[ ] IP para whitelist: [REDACTED_TOKEN]
 ```
 
 #### 7. **Segurança**
@@ -73,7 +73,7 @@
 [ ] Senha admin será alterada no primeiro login: Sim [ ] Não [ ]
 [ ] 2FA será implementado: Sim [ ] Não [ ]
 [ ] Rotina de backup configurada: Sim [ ] Não [ ]
-[ ] Logs de segurança enviados para: ___________________________
+[ ] Logs de segurança enviados para: [REDACTED_TOKEN]
 [ ] Monitoramento de erros ativo: Sim [ ] Não [ ]
 ```
 
@@ -99,7 +99,7 @@ PIX_ACCOUNT_AGENCY=0435 ✅
 # Acessar: https://myaccount.google.com/apppasswords
 # Copiar para SMTP_PASS e EMAIL_PASS
 
-# 2. Gerar PIX_WEBHOOK_SECRET
+# 2. Gerar [REDACTED_TOKEN]
 openssl rand -hex 32
 # Guardar em lugar seguro
 
@@ -110,7 +110,7 @@ openssl rand -hex 32
 # 4. Registrar Webhook com Banco
 # Escolher qual banco (Banco do Brasil, Bradesco, etc)
 # Registrar URL: https://sua-api.com/webhooks/pix
-# Usar HMAC-SHA256 com PIX_WEBHOOK_SECRET
+# Usar HMAC-SHA256 com [REDACTED_TOKEN]
 ```
 
 ### Fase 3: PRODUÇÃO - Deploy
@@ -120,7 +120,7 @@ cp backend/.env.production.example backend/.env.production
 
 # 2. Verificar:
 NODE_ENV=production
-STRIPE_SECRET_KEY=sk_live_xxx (se usar Stripe)
+STRIPE_SECRET_KEY=[REDACTED_TOKEN] (se usar Stripe)
 DATABASE_URL=postgresql://... (se usar PG)
 REDIS_URL=redis://... (se usar Redis)
 
@@ -158,13 +158,13 @@ npm start
 - [ ] Nova senha: `<FORÇA MÍNIMA 12 CHARS, MAIÚSCULA, NÚMERO, SÍMBOLO>`
 - [ ] GARANTIR que apenas você conhece a nova senha
 
-### 2. **Gerar PIX_WEBHOOK_SECRET**
+### 2. **Gerar [REDACTED_TOKEN]**
 ```bash
 # Executar:
 openssl rand -hex 32
 
 # Resultado exemplo: 
-# f7d3c8e1b9a4c2f6e5d8a1b4c7f0e3d6a9b2c5e8f1d4a7b0c3e6f9a2b5d8
+# [REDACTED_TOKEN]
 
 # GUARDAR EM LUGAR SEGURO (senha.txt, 1Password, etc)
 # Será necessário para registrar webhook no banco
@@ -183,7 +183,7 @@ openssl rand -hex 32
 
 ## 📞 Contatos Rápidos Documentados
 
-**Arquivo**: `CONFIGURACAO_ADMIN_SEGURA.md`
+**Arquivo**: `[REDACTED_TOKEN].md`
 
 | Info | Valor | Status |
 |------|-------|--------|
@@ -201,7 +201,7 @@ openssl rand -hex 32
 
 **Esta semana:**
 - [ ] Responder perguntas do Fase 2
-- [ ] Gerar PIX_WEBHOOK_SECRET
+- [ ] Gerar [REDACTED_TOKEN]
 - [ ] Alterar senha admin
 
 **Próxima semana:**

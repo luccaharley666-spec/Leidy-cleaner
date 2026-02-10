@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS reviews (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_reviews_professional_id ON reviews(professional_id);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON reviews(professional_id);
 CREATE INDEX IF NOT EXISTS idx_reviews_user_id ON reviews(user_id);
 
 CREATE TABLE IF NOT EXISTS time_blocks (
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS time_blocks (
   FOREIGN KEY (professional_id) REFERENCES users(id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_time_blocks_prof_date ON time_blocks(professional_id, date);
+CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON time_blocks(professional_id, date);
 
 CREATE TABLE IF NOT EXISTS email_logs (
   id INTEGER PRIMARY KEY AUTOINCREMENT,

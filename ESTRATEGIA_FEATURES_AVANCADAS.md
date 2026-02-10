@@ -56,7 +56,7 @@ BACKEND (novo controller):
        • ID, nome, foto, rating médio
        • bookings_today (carga atual)
        • next_free_slot (próximo horário disponível)
-       • estimated_price_multiplier (rush pricing)
+       • [REDACTED_TOKEN] (rush pricing)
        • confidence_score (probabilidade de cumprir prazo)
 
 REAL-TIME UPDATES:
@@ -67,7 +67,7 @@ REAL-TIME UPDATES:
     • Completa um serviço
 
 FRONTEND:
-  - Componente `AvailableStaffWidget.jsx`
+  - Componente `[REDACTED_TOKEN].jsx`
     • Avatar, nome, estrelas
     • Barra de carga "3/5 agendamentos hoje"
     • Próximo slot disponível em VERDE
@@ -76,7 +76,7 @@ FRONTEND:
 
 **Código Chave**:
 ```javascript
-// backend/src/controllers/StaffAvailabilityController.js
+// backend/src/controllers/[REDACTED_TOKEN].js
 exports.getAvailableStaff = async (req, res) => {
   const { date, time, serviceId, duration = 2 } = req.query;
   
@@ -88,13 +88,13 @@ exports.getAvailableStaff = async (req, res) => {
       COUNT(CASE WHEN b.date = ? AND b.status IN ('confirmed','in_progress') THEN 1 END) as bookings_today,
       b.time as next_booking_time,
       (3600 * (? + 0.5)) * (1 + COUNT(b.id) * 0.15) as estimated_price,
-      ROUND(100 - (COUNT(b.id) * 20), 0) as availability_percent
+      ROUND(100 - (COUNT(b.id) * 20), 0) as [REDACTED_TOKEN]
     FROM users s
     LEFT JOIN bookings b ON b.staff_id = s.id
     WHERE s.role = 'staff' AND s.is_active = 1
     GROUP BY s.id
-    HAVING availability_percent > 0
-    ORDER BY availability_percent DESC, avg_rating DESC
+    HAVING [REDACTED_TOKEN] > 0
+    ORDER BY [REDACTED_TOKEN] DESC, avg_rating DESC
   `, [date, duration]);
   
   res.json(available);
@@ -137,7 +137,7 @@ CREATE TABLE demand_metrics (
   created_at TIMESTAMP
 );
 
-CREATE TABLE customer_loyalty_pricing (
+CREATE TABLE [REDACTED_TOKEN] (
   id INT PRIMARY KEY,
   user_id INT,
   lifetime_bookings INT,
@@ -150,16 +150,16 @@ CREATE TABLE customer_loyalty_pricing (
 
 **Backend Service**:
 ```javascript
-// backend/src/services/DynamicPricingService.js
+// backend/src/services/[REDACTED_TOKEN].js
 
-class DynamicPricingService {
+class [REDACTED_TOKEN] {
   
   async calculatePrice(serviceId, date, time, userId) {
     let basePrice = await this.getBasePrice(serviceId);
     let multiplier = 1.0;
     
     // 1. Surge Pricing (demand-based)
-    const demandScore = await this.calculateDemandScore(date, time);
+    const demandScore = await this.[REDACTED_TOKEN](date, time);
     multiplier *= (1 + demandScore * 0.30); // até +30%
     
     // 2. Time-based Pricing
@@ -182,7 +182,7 @@ class DynamicPricingService {
     return Math.round(basePrice * multiplier * 100) / 100;
   }
   
-  calculateDemandScore(date, time) {
+  [REDACTED_TOKEN](date, time) {
     // Se 85% dos staff ocupado naquele horário = score 0.85
     // Retorna entre 0 e 1
   }
@@ -291,7 +291,7 @@ CREATE TABLE service_affinity (
   id INT PRIMARY KEY,
   service_1_id INT,
   service_2_id INT,
-  co_booking_frequency DECIMAL(4,3), -- 0.75 = 75% dos clientes que fazem 1 também fazem 2
+  [REDACTED_TOKEN] DECIMAL(4,3), -- 0.75 = 75% dos clientes que fazem 1 também fazem 2
   avg_revenue_lift DECIMAL(10,2),
   confidence_score DECIMAL(4,2),
   created_at TIMESTAMP
@@ -300,21 +300,21 @@ CREATE TABLE service_affinity (
 
 **Backend**:
 ```javascript
-// backend/src/controllers/RecommendationController.js
+// backend/src/controllers/[REDACTED_TOKEN].js
 
-exports.getSmartRecommendations = async (req, res) => {
+exports.[REDACTED_TOKEN] = async (req, res) => {
   const { serviceId, userId, bookingHistoryIds = [] } = req.body;
   
   // 1. Serviços complementares (co-occurrence)
   const complementary = await db.all(`
     SELECT 
       s.*, 
-      sa.co_booking_frequency,
+      sa.[REDACTED_TOKEN],
       sa.avg_revenue_lift
     FROM service_affinity sa
     JOIN services s ON s.id = sa.service_2_id
     WHERE sa.service_1_id = ? AND sa.confidence_score > 0.7
-    ORDER BY sa.co_booking_frequency DESC
+    ORDER BY sa.[REDACTED_TOKEN] DESC
     LIMIT 3
   `, [serviceId]);
   
@@ -322,7 +322,7 @@ exports.getSmartRecommendations = async (req, res) => {
   const customerPattern = await db.all(`
     SELECT 
       s.id, s.name, 
-      COUNT(*) as times_selected_by_similar,
+      COUNT(*) as [REDACTED_TOKEN],
       AVG(b.rating) as avg_rating
     FROM services s
     JOIN bookings b ON b.service_id = s.id
@@ -338,7 +338,7 @@ exports.getSmartRecommendations = async (req, res) => {
     )
     AND s.id NOT IN (?) -- já tem esse
     GROUP BY s.id
-    ORDER BY times_selected_by_similar DESC
+    ORDER BY [REDACTED_TOKEN] DESC
     LIMIT 3
   `, [userCity, priceMin, priceMax, serviceId]);
   
@@ -368,7 +368,7 @@ exports.getSmartRecommendations = async (req, res) => {
 
 **Frontend**:
 ```jsx
-// components/SmartRecommendations.jsx
+// components/[REDACTED_TOKEN].jsx
 <RecommendationPanel>
   <Title>✨ Serviços Recomendados para você</Title>
   
@@ -431,9 +431,9 @@ CREATE TABLE revenue_forecast (
 
 **Backend Service**:
 ```javascript
-// backend/src/services/PredictiveAnalyticsService.js
+// backend/src/services/[REDACTED_TOKEN].js
 
-class PredictiveAnalyticsService {
+class [REDACTED_TOKEN] {
   
   async forecastRevenue(days = 30) {
     // 1. Recolher histórico (últimos 6 meses)
@@ -443,7 +443,7 @@ class PredictiveAnalyticsService {
     const trend = this.calculateTrend(history);
     
     // 3. Calcular seasonality (qua vs seg)
-    const seasonalFactors = this.calculateSeasonality(history);
+    const seasonalFactors = this.[REDACTED_TOKEN](history);
     
     // 4. Forecast com modelo ARIMA simples
     const forecast = [];
@@ -469,7 +469,7 @@ class PredictiveAnalyticsService {
     return forecast;
   }
   
-  async getStaffProductivity() {
+  async [REDACTED_TOKEN]() {
     // Quem produz mais por hora?
     return await db.all(`
       SELECT 
@@ -586,9 +586,9 @@ class PredictiveAnalyticsService {
 
 **Backend Service**:
 ```javascript
-// backend/src/services/StaffOptimizationService.js
+// backend/src/services/[REDACTED_TOKEN].js
 
-class StaffOptimizationService {
+class [REDACTED_TOKEN] {
   
   async autoAssignBooking(bookingId) {
     const booking = await db.get(

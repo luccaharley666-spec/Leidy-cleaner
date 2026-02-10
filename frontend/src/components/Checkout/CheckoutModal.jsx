@@ -20,7 +20,7 @@ export default function CheckoutModal({ bookingId, amount, onSuccess, onClose })
     script.src = 'https://js.stripe.com/v3/';
     script.async = true;
     script.onload = () => {
-      const stripeInstance = window.Stripe(process.env.REACT_APP_STRIPE_KEY);
+      const stripeInstance = window.Stripe(process.env.[REDACTED_TOKEN]);
       setStripe(stripeInstance);
     };
     document.body.appendChild(script);

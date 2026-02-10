@@ -13,15 +13,15 @@
   
   /* Cores secundárias - Complementares */
   --color-secondary: #06b6d4;
-  --color-secondary-light: #22d3ee;
-  --color-secondary-dark: #0891b2;
+  --[REDACTED_TOKEN]: #22d3ee;
+  --[REDACTED_TOKEN]: #0891b2;
   
   /* Fundo e texto */
   --color-bg: #f8f6fc;
   --color-bg-secondary: #f3f0fa;
   --color-bg-tertiary: #ede9fe;
   --color-text: #1e1b4b;
-  --color-text-secondary: #52525b;
+  --[REDACTED_TOKEN]: #52525b;
   --color-text-tertiary: #a1a1aa;
   
   /* Bordas */
@@ -51,7 +51,7 @@
   /* Transitions */
   --transition-base: all 0.3s ease;
   --transition-colors: color, background-color, border-color 0.3s ease;
-  --transition-transform: transform 0.3s ease;
+  --[REDACTED_TOKEN]: transform 0.3s ease;
   
   /* Typography */
   --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
@@ -59,9 +59,9 @@
   
   /* Safe area */
   --safe-area-inset-top: env(safe-area-inset-top, 0);
-  --safe-area-inset-right: env(safe-area-inset-right, 0);
-  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0);
-  --safe-area-inset-left: env(safe-area-inset-left, 0);
+  --[REDACTED_TOKEN]: env([REDACTED_TOKEN], 0);
+  --[REDACTED_TOKEN]: env([REDACTED_TOKEN], 0);
+  --[REDACTED_TOKEN]: env([REDACTED_TOKEN], 0);
 }
   --color-error: #ef4444;
   --color-info: #3b82f6;
@@ -100,9 +100,9 @@
   
   /* Safe area (para notch/etc) */
   --safe-area-inset-top: env(safe-area-inset-top, 0);
-  --safe-area-inset-right: env(safe-area-inset-right, 0);
-  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0);
-  --safe-area-inset-left: env(safe-area-inset-left, 0);
+  --[REDACTED_TOKEN]: env([REDACTED_TOKEN], 0);
+  --[REDACTED_TOKEN]: env([REDACTED_TOKEN], 0);
+  --[REDACTED_TOKEN]: env([REDACTED_TOKEN], 0);
 }
 
 /* ============================================
@@ -116,7 +116,7 @@ html.dark {
   --color-bg-secondary: #1e293b;
   --color-bg-tertiary: #334155;
   --color-text: #f8fafc;
-  --color-text-secondary: #cbd5e1;
+  --[REDACTED_TOKEN]: #cbd5e1;
   --color-text-tertiary: #94a3b8;
   
   --color-border: #64748b;
@@ -129,8 +129,8 @@ html.dark {
   
   /* Cores secundárias mantém o ciano */
   --color-secondary: #22d3ee;
-  --color-secondary-light: #67e8f9;
-  --color-secondary-dark: #06b6d4;
+  --[REDACTED_TOKEN]: #67e8f9;
+  --[REDACTED_TOKEN]: #06b6d4;
 }
 
 /* ============================================
@@ -144,7 +144,7 @@ html.dark {
   --color-bg: #ffffff;
   --color-bg-secondary: #f5f5f5;
   --color-text: #000000;
-  --color-text-secondary: #333333;
+  --[REDACTED_TOKEN]: #333333;
   --color-text-tertiary: #666666;
   
   --color-border: #000000;
@@ -165,8 +165,8 @@ html.dark {
 
 html {
   scroll-behavior: smooth;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  -[REDACTED_TOKEN]: antialiased;
+  -[REDACTED_TOKEN]: grayscale;
 }
 
 body {
@@ -179,9 +179,9 @@ body {
   
   /* Suporte para notch em iPhones */
   padding-top: var(--safe-area-inset-top);
-  padding-right: var(--safe-area-inset-right);
-  padding-bottom: var(--safe-area-inset-bottom);
-  padding-left: var(--safe-area-inset-left);
+  padding-right: var(--[REDACTED_TOKEN]);
+  padding-bottom: var(--[REDACTED_TOKEN]);
+  padding-left: var(--[REDACTED_TOKEN]);
 }
 
 /* ============================================
@@ -226,7 +226,7 @@ h6 {
 }
 
 p {
-  color: var(--color-text-secondary);
+  color: var(--[REDACTED_TOKEN]);
   margin-bottom: 1em;
 }
 
@@ -282,7 +282,7 @@ button, input[type="button"], input[type="submit"] {
 
 .btn-secondary:hover {
   background-color: var(--color-bg-tertiary);
-  border-color: var(--color-text-secondary);
+  border-color: var(--[REDACTED_TOKEN]);
 }
 
 /* Outline */
@@ -397,7 +397,7 @@ label {
 
 .card-subtitle {
   font-size: 0.875rem;
-  color: var(--color-text-secondary);
+  color: var(--[REDACTED_TOKEN]);
   margin-top: 0.25rem;
 }
 
@@ -421,20 +421,20 @@ label {
   gap: 1.5rem;
 }
 
-.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
-.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-1 { [REDACTED_TOKEN]: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { [REDACTED_TOKEN]: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { [REDACTED_TOKEN]: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { [REDACTED_TOKEN]: repeat(4, minmax(0, 1fr)); }
 
 @media (max-width: 768px) {
-  .grid-cols-2 { grid-template-columns: 1fr; }
-  .grid-cols-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .grid-cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-cols-2 { [REDACTED_TOKEN]: 1fr; }
+  .grid-cols-3 { [REDACTED_TOKEN]: repeat(2, minmax(0, 1fr)); }
+  .grid-cols-4 { [REDACTED_TOKEN]: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 480px) {
-  .grid-cols-3 { grid-template-columns: 1fr; }
-  .grid-cols-4 { grid-template-columns: 1fr; }
+  .grid-cols-3 { [REDACTED_TOKEN]: 1fr; }
+  .grid-cols-4 { [REDACTED_TOKEN]: 1fr; }
 }
 
 /* Flexbox utilities */
@@ -502,7 +502,7 @@ label {
    ♿ ACESSIBILIDADE
    ============================================ */
 
-@media (prefers-reduced-motion: reduce) {
+@media ([REDACTED_TOKEN]: reduce) {
   * {
     animation: none !important;
     transition: none !important;

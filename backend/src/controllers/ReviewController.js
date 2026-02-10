@@ -41,7 +41,7 @@ class ReviewController {
       try {
         const user = await db.get('SELECT email, name, full_name FROM users WHERE id = ?', userId);
         if (user && user.email) {
-          await EmailQueueService.enqueueReviewNotification(
+          await EmailQueueService.[REDACTED_TOKEN](
             user.email,
             user.name || user.full_name,
             {

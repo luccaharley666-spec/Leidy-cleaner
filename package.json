@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dossantosferreirafranceschjoao-source/mmmm.git"
+    "url": "git+https://github.com/[REDACTED_TOKEN]/mmmm.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/dossantosferreirafranceschjoao-source/mmmm/issues"
+    "url": "https://github.com/[REDACTED_TOKEN]/mmmm/issues"
   },
-  "homepage": "https://github.com/dossantosferreirafranceschjoao-source/mmmm#readme",
+  "homepage": "https://github.com/[REDACTED_TOKEN]/mmmm#readme",
   "devDependencies": {
     "@playwright/test": "^1.58.2",
     "playwright": "^1.58.2"

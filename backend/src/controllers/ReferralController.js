@@ -11,7 +11,7 @@ const ReferralService = require('../services/ReferralService');
 router.post('/generate-code', async (req, res) => {
   try {
     const { userId } = req.body;
-    const code = await ReferralService.generateReferralCode(userId);
+    const code = await ReferralService.[REDACTED_TOKEN](userId);
     res.status(201).json(code);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -32,7 +32,7 @@ router.post('/apply-code', async (req, res) => {
 // POST /api/referrals/:referralId/confirm
 router.post('/:referralId/confirm', async (req, res) => {
   try {
-    const reward = await ReferralService.confirmReferralReward(req.params.referralId);
+    const reward = await ReferralService.[REDACTED_TOKEN](req.params.referralId);
     res.json(reward);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -53,7 +53,7 @@ router.get('/stats/:userId', async (req, res) => {
 router.get('/leaderboard', async (req, res) => {
   try {
     const { limit = 10 } = req.query;
-    const leaderboard = await ReferralService.getReferralLeaderboard(parseInt(limit));
+    const leaderboard = await ReferralService.[REDACTED_TOKEN](parseInt(limit));
     res.json(leaderboard);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -64,7 +64,7 @@ router.get('/leaderboard', async (req, res) => {
 router.post('/validate-code', async (req, res) => {
   try {
     const { code } = req.body;
-    const validation = await ReferralService.validateReferralCode(code);
+    const validation = await ReferralService.[REDACTED_TOKEN](code);
     res.json(validation);
   } catch (error) {
     res.status(400).json({ error: error.message });

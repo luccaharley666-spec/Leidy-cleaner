@@ -25,7 +25,7 @@
 - [ ] Aprovação recebida (2-3 dias úteis)
 - [ ] `PIX_CLIENT_ID` obtido
 - [ ] `PIX_CLIENT_SECRET` obtido  
-- [ ] `PIX_WEBHOOK_SECRET` obtido
+- [ ] `[REDACTED_TOKEN]` obtido
 - [ ] Atualizado em `/backend/.env`
 - [ ] Webhook registrado na dashboard
 
@@ -34,7 +34,7 @@
 - [ ] Onboarding completo (2-3 dias)
 - [ ] `pk_live_...` obtido
 - [ ] `sk_live_...` obtido
-- [ ] `STRIPE_WEBHOOK_SECRET` obtido
+- [ ] `[REDACTED_TOKEN]` obtido
 - [ ] Atualizado em `/backend/.env`
 - [ ] Webhook registrado na dashboard
 

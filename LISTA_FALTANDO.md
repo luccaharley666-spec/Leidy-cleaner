@@ -90,7 +90,7 @@
 
 ┌─ 3. STRIPE WEBHOOKS (IMPORTANTE) ────────────────────────────────────────┐
 │                                                                              │
-│  ⚠️ Implementado: Estrutura de PaymentIntegrationService.processWebhook()    │
+│  ⚠️ Implementado: Estrutura de [REDACTED_TOKEN].processWebhook()    │
 │     • Testa: type === 'payment_intent.succeeded'                            │
 │     • Falha: Não valida assinatura do webhook (HMAC-SHA256)                  │
 │                                                                              │
@@ -203,7 +203,7 @@
 ┌─ 8. TESTES UNITÁRIOS & E2E (✅ ESTRUTURA, ⏳ VALIDAÇÃO) ────────────────────┐
 │                                                                              │
 │  ✅ Implementado:                                                            │
-│     • PaymentIntegrationService.test.js - 230 linhas, 11 suites              │
+│     • [REDACTED_TOKEN].test.js - 230 linhas, 11 suites              │
 │     • NotificationService.test.js - 234 linhas, 10 suites                    │
 │     • 50+ testes para novo código                                           │
 │     • Jest config refatorado (e2e separado)                                 │
@@ -226,7 +226,7 @@
 │     • DEPLOYMENT_READY.md - Guia passo-a-passo de deploy                     │
 │     • TESTING_STRATEGY.md - Estratégia de testes (172 linhas)                │
 │     • TODO_ITEMS.md - Checklist (desatualizado, mas ref)                     │
-│     • IMPLEMENTACAO_CONSOLIDADA.md - Status técnico                          │
+│     • [REDACTED_TOKEN].md - Status técnico                          │
 │     • 20+ arquivos .md com detalhes                                          │
 │                                                                              │
 │  ⏳ Pendente (Atualização):                                                   │
@@ -250,13 +250,13 @@
 │     • Health check endpoint - /api/health                                    │
 │                                                                              │
 │  ❌ Pendente (Configuração real):                                            │
-│     • NEW_RELIC_LICENSE_KEY - Não configurada (development mode)             │
+│     • [REDACTED_TOKEN] - Não configurada (development mode)             │
 │     • SENTRY_DSN - Não configurada                                           │
 │     • Uptime monitoring - Não ativo                                          │
 │     • Alertas - Não configurados                                             │
 │                                                                              │
 │  ⏳ Próximo passo (depois de deploy):                                         │
-│     • Se for produção: Configurar NEW_RELIC_LICENSE_KEY                      │
+│     • Se for produção: Configurar [REDACTED_TOKEN]                      │
 │     • Se for produção: Configurar SENTRY_DSN                                 │
 │     • Opcional: Adicionar Datadog ou Prometheus                              │
 │                                                                              │

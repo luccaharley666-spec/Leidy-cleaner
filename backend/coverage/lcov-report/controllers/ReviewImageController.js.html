@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for controllers/ReviewImageController.js</title>
+    <title>Code coverage report for controllers/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> ReviewImageController.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">controllers</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -360,7 +360,7 @@ router.get('/gallery/:serviceId', <span class="fstat-no" title="function not cov
 // GET /api/services/:serviceId/gallery/before-after
 router.get('/gallery/:serviceId/before-after', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const gallery = <span class="cstat-no" title="statement not covered" >await ReviewImageService.getBeforeAfterGallery(req.params.serviceId);</span>
+    const gallery = <span class="cstat-no" title="statement not covered" >await ReviewImageService.[REDACTED_TOKEN](req.params.serviceId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(gallery);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>

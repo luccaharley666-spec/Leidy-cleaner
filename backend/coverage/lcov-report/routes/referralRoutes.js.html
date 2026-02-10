@@ -312,7 +312,7 @@ router.post('/withdraw', authenticateToken, <span class="fstat-no" title="functi
 <span class="cstat-no" title="statement not covered" >      return res.status(400).json({ success: false, error: 'Valor inválido' });</span>
     }
 &nbsp;
-    const result = <span class="cstat-no" title="statement not covered" >await ReferralService.withdrawReferralEarnings(userId, amount);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await ReferralService.[REDACTED_TOKEN](userId, amount);</span>
 <span class="cstat-no" title="statement not covered" >    res.json({ success: true, result });</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    console.error('Erro ao sacar ganhos:', error);</span>

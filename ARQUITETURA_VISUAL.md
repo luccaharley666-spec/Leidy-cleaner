@@ -339,14 +339,14 @@ DEPOIS (Centralizado):
 │     ├─ Reviews.jsx - 2 refactors               │
 │     ├─ ChatComponent.jsx - 2 refactors         │
 │     ├─ AdminPanel.jsx - 1 refactor             │
-│     └─ AvailableStaffWidget.jsx - 1 refactor   │
+│     └─ [REDACTED_TOKEN].jsx - 1 refactor   │
 │                                                  │
 │  ✅ Fase 5: Refatoração de Dashboards          │
 │     ├─ ClientDashboard.jsx - 1 refactor        │
 │     └─ StaffDashboard.jsx - 1 refactor         │
 │                                                  │
 │  ✅ Fase 6: Refatoração de Services            │
-│     └─ ChatEncryptionClient.js - 5 refactors   │
+│     └─ [REDACTED_TOKEN].js - 5 refactors   │
 │                                                  │
 │  ✅ Fase 7: Validação                          │
 │     ├─ Verificar compilação ← 11 arquivos OK   │
@@ -354,9 +354,9 @@ DEPOIS (Centralizado):
 │     └─ Verificar endpoints ← Todos corretos    │
 │                                                  │
 │  ✅ Fase 8: Documentação                       │
-│     ├─ REFATORACAO_FETCH_CALLS.md             │
-│     ├─ REFATORACAO_CONCLUIDA.md               │
-│     ├─ REFATORACAO_CHECKLIST.md               │
+│     ├─ [REDACTED_TOKEN].md             │
+│     ├─ [REDACTED_TOKEN].md               │
+│     ├─ [REDACTED_TOKEN].md               │
 │     └─ ARQUITETURA_VISUAL.md (este arquivo)   │
 │                                                  │
 │  RESULTADO: 18 refactors, 0 erros críticos    │

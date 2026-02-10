@@ -45,7 +45,7 @@ class CompanyService {
       state,
       postal_code,
       business_hours_open,
-      business_hours_close,
+      [REDACTED_TOKEN],
       payment_terms,
       return_policy,
       privacy_policy
@@ -71,7 +71,7 @@ class CompanyService {
           state = ?,
           postal_code = ?,
           business_hours_open = ?,
-          business_hours_close = ?,
+          [REDACTED_TOKEN] = ?,
           payment_terms = ?,
           return_policy = ?,
           privacy_policy = ?,
@@ -97,7 +97,7 @@ class CompanyService {
         state,
         postal_code,
         business_hours_open,
-        business_hours_close,
+        [REDACTED_TOKEN],
         payment_terms,
         return_policy,
         privacy_policy
@@ -159,7 +159,7 @@ class CompanyService {
           state,
           postal_code,
           business_hours_open,
-          business_hours_close,
+          [REDACTED_TOKEN],
           payment_terms,
           return_policy,
           privacy_policy

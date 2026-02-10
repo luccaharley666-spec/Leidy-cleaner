@@ -3,7 +3,7 @@
 ## 1. Visão Geral da Integração
 
 ### Status Atual
-- ✅ **Backend:** Código de PIX implementado em `PixPaymentController.js` (140 LOC)
+- ✅ **Backend:** Código de PIX implementado em `[REDACTED_TOKEN].js` (140 LOC)
 - ✅ **Frontend:** Componente `PixQRCodeCheckout.jsx` pronto (340 LOC)
 - ❌ **Webhook:** Não registrado com banco / provedor de pagamento
 - ❌ **Credentials:** Usando valores mock em `.env`
@@ -71,12 +71,12 @@ Depois de obter credenciais, atualizar `/backend/.env`:
 # PIX via Provedor (Efi/ExpertPay)
 PIX_PROVIDER=efi_gateways
 PIX_CLIENT_ID=seu_client_id_aqui
-PIX_CLIENT_SECRET=seu_client_secret_aqui
+PIX_CLIENT_SECRET=[REDACTED_TOKEN]
 PIX_ACCOUNT_ID=seu_account_id_aqui
 
 # Webhook - URL pública onde o banco vai enviar confirmações
 PIX_WEBHOOK_URL=https://api.leidycleaner.com.br/api/payments/pix/webhook
-PIX_WEBHOOK_SECRET=seu_webhook_secret_aqui
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # PIX Direto (Banco) - Alternativa
 PIX_DIRECT_KEY=seu_pix_key (cpf, cnpj, email ou aleatória)
@@ -87,7 +87,7 @@ PIX_RECEIVER_ORG_ID=seu_org_id_no_banco
 
 ## 3. Implementação Backend
 
-### Arquivo: `/backend/src/controllers/PixPaymentController.js`
+### Arquivo: `/backend/src/controllers/[REDACTED_TOKEN].js`
 
 **Status:** 95% pronto, faltam apenas credenciais de produção
 
@@ -272,7 +272,7 @@ curl http://localhost:3001/api/payments/pix/status/pix_test_123
 3. **Segurança**
    - Ativar "Assinatura de Webhook"
    - Copiar o `Webhook Secret`
-   - Adicionar a `.env`: `PIX_WEBHOOK_SECRET=seu_secret`
+   - Adicionar a `.env`: `[REDACTED_TOKEN]=seu_secret`
 
 4. **Teste**
    - Dashboard oferece botão "Enviar Teste"
@@ -292,8 +292,8 @@ PIX_PROVIDER=efi_gateways  # ou 'async', 'asaas', 'braspag'
 
 # Efi Gateways (ExpertPay)
 PIX_CLIENT_ID=your_client_id_here
-PIX_CLIENT_SECRET=your_client_secret_here
-PIX_WEBHOOK_SECRET=your_webhook_secret_here
+PIX_CLIENT_SECRET=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 PIX_WEBHOOK_URL=https://api.leidycleaner.com.br/api/payments/pix/webhook
 
 # PIX Direto (Banco)
@@ -304,7 +304,7 @@ PIX_KEY_RANDOM=false  # Usar chave aleatória?
 
 # Timers
 PIX_EXPIRY_MINUTES=10  # Quanto tempo até expirar
-PIX_POLLING_INTERVAL=30  # Segundos entre verificações
+[REDACTED_TOKEN]=30  # Segundos entre verificações
 ```
 
 ---
@@ -351,7 +351,7 @@ curl -X POST http://localhost:3001/api/payments/pix/retry \
 |----------|---------|
 | Webhook não recebido | Verificar URL pública, firewall, registrar no provedor |
 | QR Code inválido | Validar credenciais, valores de amount |
-| Assinatura inválida | Verificar PIX_WEBHOOK_SECRET correto |
+| Assinatura inválida | Verificar [REDACTED_TOKEN] correto |
 | Transação não atualizada | Checar logs de webhook, validações |
 | Expiry muito curto | Aumentar `PIX_EXPIRY_MINUTES` |
 
@@ -376,7 +376,7 @@ curl -X POST http://localhost:3001/api/payments/pix/retry \
 - Telefone: +55 47 3131-0000
 
 **Stripe (Alternativa):**
-- Já está configurado em `SripePaymentController.js`
+- Já está configurado em `[REDACTED_TOKEN].js`
 - Apenas precisa de credenciais reais
 
 **Boleto:**

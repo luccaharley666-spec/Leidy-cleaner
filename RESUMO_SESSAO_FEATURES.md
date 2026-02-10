@@ -20,16 +20,16 @@
 - Banco de dados: 5 tabelas (preferences, logs, templates, queue)
 - Backend: NotificationService.js com Twilio
 - Rotas: GET/PUT preferences, histórico, teste
-- Frontend: NotificationPreferences.jsx + página /notifications
+- Frontend: [REDACTED_TOKEN].jsx + página /notifications
 - Automação: node-schedule para enviar lembretes 2d, 1d, 1h antes
 - **Impacto**: -90% no-shows, +35% retenção
 
 **Arquivos criados:**
 ```
-✅ database/migrations/001_notifications_system.sql
+✅ database/migrations/[REDACTED_TOKEN].sql
 ✅ backend/src/services/NotificationService.js
 ✅ backend/src/routes/notificationRoutes.js
-✅ frontend/src/components/NotificationPreferences.jsx
+✅ frontend/src/components/[REDACTED_TOKEN].jsx
 ✅ frontend/src/pages/notifications.jsx
 ```
 
@@ -112,14 +112,14 @@ src/routes/
   ✅ chatbotRoutes.js - POST message, escalation
 
 database/migrations/
-  ✅ 001_notifications_system.sql - 5 tabelas
+  ✅ [REDACTED_TOKEN].sql - 5 tabelas
   ✅ 002_chatbot_system.sql - 4 tabelas
 ```
 
 ### Frontend
 ```
 src/components/
-  ✅ NotificationPreferences.jsx - Gerenciador de prefs
+  ✅ [REDACTED_TOKEN].jsx - Gerenciador de prefs
   ✅ ChatbotWidget.jsx - Widget flutuante
 
 src/pages/
@@ -233,12 +233,12 @@ import ChatbotWidget from '@/components/ChatbotWidget';
 ## 📦 Checklist de Integração
 
 ### Notificações
-- [ ] Executar migration 001_notifications_system.sql
+- [ ] Executar migration [REDACTED_TOKEN].sql
 - [ ] Adicionar NotificationService ao backend
 - [ ] Adicionar rota /api/notifications
 - [ ] Integrar com BookingController (ao agendar)
 - [ ] Testar com número real (Twilio sandbox)
-- [ ] Adicionar NotificationPreferences ao dashboard
+- [ ] Adicionar [REDACTED_TOKEN] ao dashboard
 - [ ] Configurar TWILIO env vars
 
 ### Chatbot
@@ -292,9 +292,9 @@ import ChatbotWidget from '@/components/ChatbotWidget';
 
 ```
 ✅ CRITICOS_CORRIGIDOS.md - Relatório técnico dos 3 críticos
-✅ GUIA_CRITICOS_RAPIDO.md - Quick reference
-✅ NOVAS_FEATURES_ANALISE.md - Análise das 10 features
-✅ IMPLEMENTACAO_6_FEATURES.md - Guia de código para 6 features (NOVO)
+✅ [REDACTED_TOKEN].md - Quick reference
+✅ [REDACTED_TOKEN].md - Análise das 10 features
+✅ [REDACTED_TOKEN].md - Guia de código para 6 features (NOVO)
 ✅ README.md - Documentação principal
 ✅ DEPLOYMENT.md - Como fazer deploy
 ```

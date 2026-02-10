@@ -254,7 +254,7 @@ describe('ReviewController', () => {
 
     test('should handle missing review', async () => {
       if (typeof ReviewController.deleteReview === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, null);
         });
         
@@ -268,7 +268,7 @@ describe('ReviewController', () => {
 
     test('should prevent unauthorized deletion', async () => {
       if (typeof ReviewController.deleteReview === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, { id: 1, userId: '2' });
         });
         
@@ -304,7 +304,7 @@ describe('ReviewController', () => {
 
     test('should handle no reviews', async () => {
       if (typeof ReviewController.getAverageRating === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, null);
         });
         
@@ -320,7 +320,7 @@ describe('ReviewController', () => {
   describe('Review Validation', () => {
     test('should prevent duplicate reviews', async () => {
       if (typeof ReviewController.createReview === 'function') {
-        db.get.mockImplementationOnce((sql, params, callback) => {
+        db.get.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(null, { id: 1 });
         });
         
@@ -367,7 +367,7 @@ describe('ReviewController', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run.mockImplementationOnce((sql, params, callback) => {
+      db.run.[REDACTED_TOKEN]((sql, params, callback) => {
         callback(new Error('Database error'));
       });
       
@@ -386,7 +386,7 @@ describe('ReviewController', () => {
 
     test('should return appropriate error messages', async () => {
       if (typeof ReviewController.getReviews === 'function') {
-        db.all.mockImplementationOnce((sql, params, callback) => {
+        db.all.[REDACTED_TOKEN]((sql, params, callback) => {
           callback(new Error('Not found'));
         });
         

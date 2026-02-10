@@ -44,7 +44,7 @@ public class JwtTokenProvider {
             .compact();
     }
     
-    public String generateRefreshToken(Long userId) {
+    public String [REDACTED_TOKEN](Long userId) {
         return Jwts.builder()
             .subject(String.valueOf(userId))
             .issuedAt(new Date())
@@ -77,7 +77,7 @@ public class JwtTokenProvider {
 }
 ```
 
-### Arquivo: `src/main/java/com/leidycleaner/security/JwtAuthenticationFilter.java`
+### Arquivo: `src/main/java/com/leidycleaner/security/[REDACTED_TOKEN].java`
 
 ```java
 package com.leidycleaner.security;
@@ -87,15 +87,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.authentication.[REDACTED_TOKEN];
+import org.springframework.security.core.context.[REDACTED_TOKEN];
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.OncePerRequestFilter;
+import org.springframework.web.filter.[REDACTED_TOKEN];
 
 import java.io.IOException;
 
 @Component
-public class JwtAuthenticationFilter extends OncePerRequestFilter {
+public class [REDACTED_TOKEN] extends [REDACTED_TOKEN] {
     
     @Autowired
     private JwtTokenProvider tokenProvider;
@@ -107,21 +107,21 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         FilterChain filterChain
     ) throws ServletException, IOException {
         
-        String token = extractTokenFromRequest(request);
+        String token = [REDACTED_TOKEN](request);
         
         if (token != null && tokenProvider.validateToken(token)) {
             Long userId = tokenProvider.getUserIdFromToken(token);
             
-            UsernamePasswordAuthenticationToken auth =
-                new UsernamePasswordAuthenticationToken(userId, null);
+            [REDACTED_TOKEN] auth =
+                new [REDACTED_TOKEN](userId, null);
             
-            SecurityContextHolder.getContext().setAuthentication(auth);
+            [REDACTED_TOKEN].getContext().setAuthentication(auth);
         }
         
         filterChain.doFilter(request, response);
     }
     
-    private String extractTokenFromRequest(HttpServletRequest request) {
+    private String [REDACTED_TOKEN](HttpServletRequest request) {
         String bearerToken = request.getHeader("Authorization");
         if (bearerToken != null && bearerToken.startsWith("Bearer ")) {
             return bearerToken.substring(7);
@@ -136,18 +136,18 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 ```java
 package com.leidycleaner.config;
 
-import com.leidycleaner.security.JwtAuthenticationFilter;
+import com.leidycleaner.security.[REDACTED_TOKEN];
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.[REDACTED_TOKEN];
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.[REDACTED_TOKEN];
 import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.CorsConfigurationSource;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.web.cors.[REDACTED_TOKEN];
+import org.springframework.web.cors.[REDACTED_TOKEN];
+import org.springframework.security.config.http.[REDACTED_TOKEN];
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 import java.util.Arrays;
@@ -156,32 +156,32 @@ import java.util.Arrays;
 public class SecurityConfig {
     
     @Autowired
-    private JwtAuthenticationFilter jwtAuthenticationFilter;
+    private [REDACTED_TOKEN] [REDACTED_TOKEN];
     
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(12);
+        return new [REDACTED_TOKEN](12);
     }
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            .authorizeHttpRequests(auth -> auth
+            .sessionManagement(session -> session.[REDACTED_TOKEN]([REDACTED_TOKEN].STATELESS))
+            .[REDACTED_TOKEN](auth -> auth
                 .requestMatchers("/api/auth/**").permitAll()
                 .requestMatchers("/api/health").permitAll()
                 .requestMatchers("/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated()
             )
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+            .cors(cors -> cors.configurationSource([REDACTED_TOKEN]()))
+            .addFilterBefore([REDACTED_TOKEN], [REDACTED_TOKEN].class);
         
         return http.build();
     }
     
     @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
+    public [REDACTED_TOKEN] [REDACTED_TOKEN]() {
         CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(Arrays.asList(
             "http://localhost:3000",
@@ -192,8 +192,8 @@ public class SecurityConfig {
         configuration.setAllowedHeaders(Arrays.asList("*"));
         configuration.setAllowCredentials(true);
         
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        [REDACTED_TOKEN] source = new [REDACTED_TOKEN]();
+        source.[REDACTED_TOKEN]("/**", configuration);
         return source;
     }
 }
@@ -462,21 +462,21 @@ public class BookingService {
 
 ## 🎯 Application Entrypoint
 
-### `src/main/java/com/leidycleaner/LeidyCleanerApiApplication.java`
+### `src/main/java/com/leidycleaner/[REDACTED_TOKEN].java`
 
 ```java
 package com.leidycleaner;
 
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.[REDACTED_TOKEN];
 import org.springframework.context.annotation.ComponentScan;
 
-@SpringBootApplication
+@[REDACTED_TOKEN]
 @ComponentScan(basePackages = "com.leidycleaner")
-public class LeidyCleanerApiApplication {
+public class [REDACTED_TOKEN] {
 
     public static void main(String[] args) {
-        SpringApplication.run(LeidyCleanerApiApplication.class, args);
+        SpringApplication.run([REDACTED_TOKEN].class, args);
     }
 }
 ```
@@ -547,7 +547,7 @@ public class AuthServiceTest {
     }
     
     @Test
-    public void testLogin_InvalidPassword() {
+    public void [REDACTED_TOKEN]() {
         // Arrange
         User user = User.builder()
             .email("test@example.com")

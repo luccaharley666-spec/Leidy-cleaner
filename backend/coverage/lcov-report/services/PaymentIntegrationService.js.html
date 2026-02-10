@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/PaymentIntegrationService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> PaymentIntegrationService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -669,7 +669,7 @@
 const logger = require('../utils/logger');
 const PixService = require('./PixService');
 &nbsp;
-class PaymentIntegrationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.transactions = new Map();
     this.webhooks = [];
@@ -767,7 +767,7 @@ class PaymentIntegrationService {
           const validatedEvent = <span class="cstat-no" title="statement not covered" >stripe.webhooks.constructEvent(</span>
             rawBody instanceof Buffer ? rawBody : Buffer.from(rawBody),
             signature,
-            process.env.STRIPE_WEBHOOK_SECRET || 'whsec_test_demo'
+            process.env.[REDACTED_TOKEN] || '[REDACTED_TOKEN]'
           );
           // Se validação passou, usar o evento validado
 <span class="cstat-no" title="statement not covered" >          Object.assign(event, validatedEvent);</span>
@@ -909,7 +909,7 @@ class PaymentIntegrationService {
   /**
    ✅ NOVO: Vincular pagamento com fatura PDF
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync linkPaymentToInvoice(chargeId, invoicePath) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](chargeId, invoicePath) {
     const charge = <span class="cstat-no" title="statement not covered" >this.transactions.get(chargeId);</span>
 <span class="cstat-no" title="statement not covered" >    if (charge) {</span>
 <span class="cstat-no" title="statement not covered" >      charge.invoicePath = invoicePath;</span>
@@ -959,7 +959,7 @@ class PaymentIntegrationService {
   }
 }
 &nbsp;
-module.exports = new PaymentIntegrationService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

@@ -22,37 +22,37 @@
 - **Melhor para:** Entender o que funciona agora
 - **Link:** [LEIDY_STATUS_FINAL.md](LEIDY_STATUS_FINAL.md)
 
-### 3. **STATUS_5_PRIORIDADES_CRITICAS.md** ⭐ DETALHADO
+### 3. **[REDACTED_TOKEN].md** ⭐ DETALHADO
 - **Tempo:** 15 minutos
 - **O quê:** Detalhamento completo de cada prioridade
 - **Melhor para:** Entender próximos passos em detalhes
-- **Link:** [STATUS_5_PRIORIDADES_CRITICAS.md](STATUS_5_PRIORIDADES_CRITICAS.md)
+- **Link:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
-### 4. **RESUMO_EXECUTIVO_HOJE.md**
+### 4. **[REDACTED_TOKEN].md**
 - **Tempo:** 10 minutos
 - **O quê:** O que foi feito nesta sessão
 - **Melhor para:** Entender o progresso desta sessão
-- **Link:** [RESUMO_EXECUTIVO_HOJE.md](RESUMO_EXECUTIVO_HOJE.md)
+- **Link:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
 ---
 
 ## 💳 INTEGRAÇÕES DE PAGAMENTO
 
-### 5. **PIX_REAL_INTEGRATION_GUIDE.md** 🏦 PIX
+### 5. **[REDACTED_TOKEN].md** 🏦 PIX
 - **Tempo:** 20 minutos
 - **O quê:** Guia completo passo-a-passo para integrar PIX
 - **Melhor para:** Você quer adicionar PIX ao sistema
 - **Pré-requisito:** Ter CNPJ da empresa
 - **Tempo de implementação:** 2-3 dias (dependendo da aprovação do banco)
-- **Link:** [PIX_REAL_INTEGRATION_GUIDE.md](PIX_REAL_INTEGRATION_GUIDE.md)
+- **Link:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
-### 6. **STRIPE_PRODUCTION_GUIDE.md** 💳 STRIPE
+### 6. **[REDACTED_TOKEN].md** 💳 STRIPE
 - **Tempo:** 20 minutos
 - **O quê:** Guia completo para migrar Stripe de test para live
 - **Melhor para:** Você quer usar Stripe em produção
 - **Pré-requisito:** Nenhum (Stripe é rápido)
 - **Tempo de implementação:** 1-2 dias (incluindo onboarding)
-- **Link:** [STRIPE_PRODUCTION_GUIDE.md](STRIPE_PRODUCTION_GUIDE.md)
+- **Link:** [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 
 ---
 
@@ -77,12 +77,12 @@
 
 ### 🎯 "Quero Entender o Status"
 1. Leia [LEIDY_STATUS_FINAL.md](LEIDY_STATUS_FINAL.md) (5 min)
-2. Leia [RESUMO_EXECUTIVO_HOJE.md](RESUMO_EXECUTIVO_HOJE.md) (10 min)
-3. Leia [STATUS_5_PRIORIDADES_CRITICAS.md](STATUS_5_PRIORIDADES_CRITICAS.md) (15 min)
+2. Leia [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md) (10 min)
+3. Leia [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md) (15 min)
 4. **Tempo total:** 30 minutos
 
 ### 🎯 "Quero Integrar PIX"
-1. Leia [PIX_REAL_INTEGRATION_GUIDE.md](PIX_REAL_INTEGRATION_GUIDE.md) (20 min)
+1. Leia [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md) (20 min)
 2. Crie conta Efi Gateways (2-3 dias)
 3. Obtenha credenciais (1 hora)
 4. Atualize `.env` (5 min)
@@ -90,7 +90,7 @@
 6. **Tempo total:** 2-3 dias (+ espera de aprovação)
 
 ### 🎯 "Quero Integrar Stripe"
-1. Leia [STRIPE_PRODUCTION_GUIDE.md](STRIPE_PRODUCTION_GUIDE.md) (20 min)
+1. Leia [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md) (20 min)
 2. Crie conta Stripe (5 min)
 3. Complete onboarding (2-3 dias)
 4. Obtenha credenciais live (1 hora)
@@ -114,7 +114,7 @@
 | QUICK_START | 2 min | Baixa | Todos | 🔴 AGORA |
 | LEIDY_STATUS_FINAL | 5 min | Baixa | Todos | 🟠 HOJE |
 | RESUMO_EXECUTIVO | 10 min | Baixa | PM/CEO | 🟠 HOJE |
-| STATUS_5_PRIORIDADES | 15 min | Média | Devs | 🟡 ESTA SEMANA |
+| [REDACTED_TOKEN] | 15 min | Média | Devs | 🟡 ESTA SEMANA |
 | PIX_GUIDE | 20 min | Alta | Backend Dev | 🟡 ESTA SEMANA |
 | STRIPE_GUIDE | 20 min | Alta | Backend Dev | 🟡 ESTA SEMANA |
 | DEPLOY_CHECKLIST | 10 min | Média | DevOps/PM | 🟡 ESTA SEMANA |
@@ -125,7 +125,7 @@
 
 Os documentos abaixo já existiam no projeto:
 - `DEPLOYMENT_GUIDE.md` - Guide de deploy tradicional
-- `MONITORING_AND_CI_CD.md` - Monitoramento e pipelines
+- `[REDACTED_TOKEN].md` - Monitoramento e pipelines
 - `docker-compose.yml` - Compose para rodar tudo
 - `Dockerfile.backend` - Container do backend
 - `Dockerfile.frontend` - Container do frontend
@@ -140,10 +140,10 @@ DAY 1:
 ├─ Leia QUICK_START (2 min) ← COMECE AQUI
 ├─ Teste o sistema (15 min)
 ├─ Leia LEIDY_STATUS_FINAL (5 min)
-└─ Leia RESUMO_EXECUTIVO_HOJE (10 min)
+└─ Leia [REDACTED_TOKEN] (10 min)
 
 DAY 2-3:
-├─ Leia STATUS_5_PRIORIDADES (15 min)
+├─ Leia [REDACTED_TOKEN] (15 min)
 ├─ Escolha PIX ou Stripe
 └─ Leia o guia da sua escolha (20 min)
 
@@ -178,7 +178,7 @@ R: Ambos os guias (PIX e Stripe) têm seções de teste.
 R: Sim, leia [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md).
 
 **P: Como faço monitoramento?**
-R: Leia [MONITORING_AND_CI_CD.md](MONITORING_AND_CI_CD.md).
+R: Leia [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md).
 
 ---
 

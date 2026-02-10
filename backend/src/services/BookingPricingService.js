@@ -3,19 +3,19 @@
  * Integra cálculo de preço com sistema de horas pré-pagas
  */
 
-const HourPackagingService = require('./HourPackagingService');
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
 const { getDb } = require('../db/sqlite');
 
-class BookingPricingService {
+class [REDACTED_TOKEN] {
   /**
    * Calcular preço final de booking com opção de usar crédito de horas
    */
-  async calculateBookingPrice(bookingData) {
+  async [REDACTED_TOKEN](bookingData) {
     const { userId, durationHours, useHourCredit = false } = bookingData;
 
     try {
       // 1. Calcular preço base em horas
-      const hourPrice = await HourPackagingService.calculateHourPrice({
+      const hourPrice = await [REDACTED_TOKEN].calculateHourPrice({
         hours: durationHours,
         userId: userId,
       });
@@ -33,7 +33,7 @@ class BookingPricingService {
       let hoursConsumed = 0;
 
       if (useHourCredit && userId) {
-        const credit = await HourPackagingService.getUserHourCredit(userId);
+        const credit = await [REDACTED_TOKEN].getUserHourCredit(userId);
 
         if (credit.hasCredit && credit.availableHours >= durationHours) {
           // Usar crédito: desconta a taxa de serviço (40%)
@@ -53,7 +53,7 @@ class BookingPricingService {
         creditInfo: hourPrice.creditInfo,
       };
     } catch (error) {
-      console.error('[BookingPricingService] Error calculating price:', error.message);
+      console.error('[[REDACTED_TOKEN]] Error calculating price:', error.message);
       return {
         success: false,
         error: 'Erro ao calcular preço do agendamento',
@@ -64,7 +64,7 @@ class BookingPricingService {
   /**
    * Confirmar booking e consumir crédito se aplicável
    */
-  async confirmBookingPayment(bookingId, userId, hoursToConsume, paidWithCredits) {
+  async [REDACTED_TOKEN](bookingId, userId, hoursToConsume, paidWithCredits) {
     const db = getDb();
 
     try {
@@ -86,7 +86,7 @@ class BookingPricingService {
 
       // 2. Se pagou com crédito, consumir horas
       if (paidWithCredits && hoursToConsume > 0) {
-        await HourPackagingService.consumeHourCredit(userId, hoursToConsume);
+        await [REDACTED_TOKEN].consumeHourCredit(userId, hoursToConsume);
       }
 
       return {
@@ -96,7 +96,7 @@ class BookingPricingService {
         hoursConsumed: hoursToConsume,
       };
     } catch (error) {
-      console.error('[BookingPricingService] Error confirming payment:', error.message);
+      console.error('[[REDACTED_TOKEN]] Error confirming payment:', error.message);
       return {
         success: false,
         error: 'Erro ao confirmar pagamento do agendamento',
@@ -107,7 +107,7 @@ class BookingPricingService {
   /**
    * Gerar breakdown visual do preço para exibição
    */
-  generatePriceBreakdown(hourPrice, paidWithCredits = false) {
+  [REDACTED_TOKEN](hourPrice, paidWithCredits = false) {
     const { breakdown } = hourPrice;
 
     const items = [
@@ -149,4 +149,4 @@ class BookingPricingService {
   }
 }
 
-module.exports = new BookingPricingService();
+module.exports = new [REDACTED_TOKEN]();

@@ -676,7 +676,7 @@ class PaymentController {
         logger.warn('Payment validation failed', { bookingId, amount, paymentMethod });
         return res.status(400).json({ 
           error: 'Invalid payment data provided',
-          code: 'INVALID_PAYMENT_DATA'
+          code: '[REDACTED_TOKEN]'
         });
       }
 &nbsp;
@@ -731,7 +731,7 @@ class PaymentController {
 <span class="cstat-no" title="statement not covered" >          logger.error('PIX generation failed', { bookingId: sanitizedBookingId, error: paymentResult.error });</span>
 <span class="cstat-no" title="statement not covered" >          return res.status(402).json({ </span>
             error: 'PIX generation failed',
-            code: 'PIX_GENERATION_FAILED'
+            code: '[REDACTED_TOKEN]'
           });
         }
 &nbsp;
@@ -853,7 +853,7 @@ class PaymentController {
 <span class="cstat-no" title="statement not covered" >      logger.error('PIX verification error', error);</span>
 <span class="cstat-no" title="statement not covered" >      res.status(500).json({ </span>
         error: 'Internal server error',
-        code: 'PIX_VERIFICATION_ERROR'
+        code: '[REDACTED_TOKEN]'
       });
     }
   }
@@ -887,7 +887,7 @@ class PaymentController {
 <span class="cstat-no" title="statement not covered" >      logger.error('Payment history error', error);</span>
 <span class="cstat-no" title="statement not covered" >      res.status(500).json({ </span>
         error: 'Internal server error',
-        code: 'PAYMENT_HISTORY_ERROR'
+        code: '[REDACTED_TOKEN]'
       });
     }
   }

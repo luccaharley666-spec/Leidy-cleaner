@@ -8,9 +8,9 @@
 
 ## 📋 TRABALHO REALIZADO
 
-### 1️⃣  Backend - AdminDashboardService.js ✅
+### 1️⃣  Backend - [REDACTED_TOKEN].js ✅
 
-**Arquivo**: `/backend/src/services/AdminDashboardService.js` (650 LOC)
+**Arquivo**: `/backend/src/services/[REDACTED_TOKEN].js` (650 LOC)
 
 **Funcionalidades implementadas:**
 - ✅ `getKPIs(period)` - Calcula 4 KPIs principais:
@@ -44,9 +44,9 @@
 
 ---
 
-### 2️⃣ Backend - AdminDashboardController.js ✅
+### 2️⃣ Backend - [REDACTED_TOKEN].js ✅
 
-**Arquivo**: `/backend/src/controllers/AdminDashboardController.js` (190 LOC)
+**Arquivo**: `/backend/src/controllers/[REDACTED_TOKEN].js` (190 LOC)
 
 **6 Endpoints criados:**
 
@@ -69,9 +69,9 @@ GET    /api/admin/dashboard/revenue // Receita mensal
 
 ---
 
-### 3️⃣ Backend - AdminDashboardRoutes.js ✅
+### 3️⃣ Backend - [REDACTED_TOKEN].js ✅
 
-**Arquivo**: `/backend/src/routes/adminDashboardRoutes.js` (80 LOC)
+**Arquivo**: `/backend/src/routes/[REDACTED_TOKEN].js` (80 LOC)
 
 **Features:**
 - ✅ Router Express modular (factory function)
@@ -81,9 +81,9 @@ GET    /api/admin/dashboard/revenue // Receita mensal
 
 **Integração ao api.js:**
 ```javascript
-const createAdminDashboardRoutes = require('./adminDashboardRoutes');
-const adminDashboardRoutes = createAdminDashboardRoutes(getDb());
-router.use('/api/admin/dashboard', adminDashboardRoutes);
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
+const [REDACTED_TOKEN] = [REDACTED_TOKEN](getDb());
+router.use('/api/admin/dashboard', [REDACTED_TOKEN]);
 ```
 
 ---
@@ -180,11 +180,11 @@ curl http://localhost:3001/api/admin/dashboard/sales?period=week \
 ```
 backend/src/
   ├── services/
-  │   └── AdminDashboardService.js        ✅ (650 LOC)
+  │   └── [REDACTED_TOKEN].js        ✅ (650 LOC)
   ├── controllers/
-  │   └── AdminDashboardController.js     ✅ (190 LOC)
+  │   └── [REDACTED_TOKEN].js     ✅ (190 LOC)
   └── routes/
-      ├── adminDashboardRoutes.js         ✅ (80 LOC)
+      ├── [REDACTED_TOKEN].js         ✅ (80 LOC)
       └── api.js                          ✅ (modificado, +15 LOC)
 
 frontend/src/pages/
@@ -202,18 +202,18 @@ Frontend Request
   ↓
 GET /api/admin/dashboard?period=month
   ↓
-Express Router (adminDashboardRoutes)
+Express Router ([REDACTED_TOKEN])
   ↓
 Middleware: authenticateToken + requireAdmin
   ↓
-AdminDashboardController.getDashboard()
+[REDACTED_TOKEN].getDashboard()
   ↓
 Promise.all() →
-  ├── AdminDashboardService.getKPIs()
-  ├── AdminDashboardService.getSalesData()
-  ├── AdminDashboardService.getServiceData()
-  ├── AdminDashboardService.getRecentBookings()
-  └── AdminDashboardService.getMonthlyRevenue()
+  ├── [REDACTED_TOKEN].getKPIs()
+  ├── [REDACTED_TOKEN].getSalesData()
+  ├── [REDACTED_TOKEN].getServiceData()
+  ├── [REDACTED_TOKEN].getRecentBookings()
+  └── [REDACTED_TOKEN].getMonthlyRevenue()
   ↓
 SQL Queries (aggregated data from bookings table)
   ↓

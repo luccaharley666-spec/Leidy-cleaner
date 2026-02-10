@@ -78,7 +78,7 @@ export default function FeaturesGridGreen() {
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
 
                 {/* Ícone com gradiente */}
-                <div className={`relative inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                <div className={`relative inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl mb-6 group-hover:scale-110 [REDACTED_TOKEN] duration-300`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
 

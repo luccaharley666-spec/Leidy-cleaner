@@ -152,7 +152,7 @@ export default function AdvancedFAQ() {
                   <h3 className="text-left text-lg font-semibold text-gray-900 dark:text-white">
                     {faq.question}
                   </h3>
-                  <div className={`text-2xl transition-transform ${expandedId === faq.id ? 'rotate-180' : ''}`}>
+                  <div className={`text-2xl [REDACTED_TOKEN] ${expandedId === faq.id ? 'rotate-180' : ''}`}>
                     ▼
                   </div>
                 </button>

@@ -11,7 +11,7 @@ const crypto = require('crypto');
 const http = require('http');
 
 // Configuração
-const WEBHOOK_SECRET = process.env.PIX_WEBHOOK_SECRET || 'test-secret-key-123';
+const WEBHOOK_SECRET = process.env.[REDACTED_TOKEN] || 'test-secret-key-123';
 const BACKEND_URL = 'http://localhost:3001';
 const WEBHOOK_PATH = '/webhooks/pix';
 

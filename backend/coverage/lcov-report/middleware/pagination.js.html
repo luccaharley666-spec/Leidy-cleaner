@@ -182,7 +182,7 @@
  * Adiciona suporte a paginação em endpoints de lista
  */
 &nbsp;
-const paginationMiddleware = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(r</span>eq, res, next) =&gt; {</span>
   // Parse limit (max 100 items per page)
   const limit = <span class="cstat-no" title="statement not covered" >Math.min(parseInt(req.query.limit) || 20, 100);</span>
 &nbsp;
@@ -213,7 +213,7 @@ const paginationMiddleware = <span class="cstat-no" title="statement not covered
  * @param {Number} total - Total de itens na base
  * @param {Object} pagination - Objeto de paginação do middleware
  */
-const formatPaginatedResponse = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata, total, pagination) =&gt; {</span>
+const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >(d</span>ata, total, pagination) =&gt; {</span>
   const totalPages = <span class="cstat-no" title="statement not covered" >Math.ceil(total / pagination.limit);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  return {</span>
@@ -231,8 +231,8 @@ const formatPaginatedResponse = <span class="cstat-no" title="statement not cove
 };
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
-  paginationMiddleware,
-  formatPaginatedResponse,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
 };
 &nbsp;</pre></td></tr></table></pre>
 

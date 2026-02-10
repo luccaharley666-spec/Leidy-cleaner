@@ -38,7 +38,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: '${{ matrix.working-directory }}/package-lock.json'
+          [REDACTED_TOKEN]: '${{ matrix.working-directory }}/package-lock.json'
 
       - name: 📦 Install dependencies
         working-directory: ${{ matrix.working-directory }}
@@ -87,7 +87,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          cache-dependency-path: '${{ matrix.working-directory }}/package-lock.json'
+          [REDACTED_TOKEN]: '${{ matrix.working-directory }}/package-lock.json'
 
       - name: 📦 Install dependencies
         working-directory: ${{ matrix.working-directory }}
@@ -133,7 +133,7 @@ jobs:
           NODE_ENV: test
           PORT: 3000
           DATABASE_URL: sqlite:./test.db
-          PIX_WEBHOOK_SECRET: test-webhook-secret-123
+          [REDACTED_TOKEN]: [REDACTED_TOKEN]
 
       - name: ⏳ Wait for backend to be ready
         run: |
@@ -154,7 +154,7 @@ jobs:
         env:
           E2E_BASE_URL: http://localhost:3000
           DATABASE_URL: sqlite:./test.db
-          PIX_WEBHOOK_SECRET: test-webhook-secret-123
+          [REDACTED_TOKEN]: [REDACTED_TOKEN]
         continue-on-error: true
 
       - name: 📊 Upload Playwright report
@@ -221,7 +221,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
           cache: 'npm'
-          cache-dependency-path: '${{ matrix.working-directory }}/package-lock.json'
+          [REDACTED_TOKEN]: '${{ matrix.working-directory }}/package-lock.json'
 
       - name: 📦 Install dependencies
         working-directory: ${{ matrix.working-directory }}
@@ -271,7 +271,7 @@ jobs:
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID_STAGING }}
+          VERCEL_PROJECT_ID: ${{ secrets.[REDACTED_TOKEN] }}
         run: |
           npm install -g vercel@latest
           vercel --token $VERCEL_TOKEN --yes
@@ -284,7 +284,7 @@ jobs:
       - name: 🚀 Deploy Backend to Railway (Staging)
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-          RAILWAY_PROJECT_ID: ${{ secrets.RAILWAY_PROJECT_ID_STAGING }}
+          RAILWAY_PROJECT_ID: ${{ secrets.[REDACTED_TOKEN] }}
         run: |
           npm install -g @railway/cli@latest
           railway deploy --token $RAILWAY_TOKEN
@@ -363,7 +363,7 @@ jobs:
         if: always()
         with:
           script: |
-            github.rest.repos.createDeploymentStatus({
+            github.rest.repos.[REDACTED_TOKEN]({
               owner: context.repo.owner,
               repo: context.repo.repo,
               deployment_id: ${{ steps.deployment.outputs.result }},

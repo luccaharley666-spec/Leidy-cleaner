@@ -1,13 +1,13 @@
 const { v4: uuidv4 } = require('uuid');
 const db = require('../db');
-const PaymentReconciliationService = require('./PaymentReconciliationService');
+const [REDACTED_TOKEN] = require('./[REDACTED_TOKEN]');
 const RetryQueueService = require('./RetryQueueService');
 
 /**
- * BackgroundJobScheduler
+ * [REDACTED_TOKEN]
  * Gerencia jobs de background: reconciliação, limpeza, notificações, etc
  */
-class BackgroundJobScheduler {
+class [REDACTED_TOKEN] {
   constructor() {
     this.jobs = new Map();
     this.isRunning = false;
@@ -26,10 +26,10 @@ class BackgroundJobScheduler {
     console.log('🚀 Iniciando Background Job Scheduler');
 
     // Registrar jobs padrão
-    this.registerJob('reconcile_payments', this.jobReconcilePayments.bind(this), '*/15 * * * *'); // A cada 15 min
-    this.registerJob('process_webhook_queue', this.jobProcessWebhookQueue.bind(this), '*/5 * * * *');  // A cada 5 min
+    this.registerJob('reconcile_payments', this.[REDACTED_TOKEN].bind(this), '*/15 * * * *'); // A cada 15 min
+    this.registerJob('[REDACTED_TOKEN]', this.[REDACTED_TOKEN].bind(this), '*/5 * * * *');  // A cada 5 min
     this.registerJob('cleanup_old_events', this.jobCleanupOldEvents.bind(this), '0 3 * * *');         // 3 AM diariamente
-    this.registerJob('send_pending_notifications', this.jobSendNotifications.bind(this), '*/10 * * * *'); // A cada 10 min
+    this.registerJob('[REDACTED_TOKEN]', this.[REDACTED_TOKEN].bind(this), '*/10 * * * *'); // A cada 10 min
 
     // Iniciar processamento
     this.processJobs();
@@ -133,14 +133,14 @@ class BackgroundJobScheduler {
   /**
    * Job: Reconciliar pagamentos PIX
    */
-  async jobReconcilePayments() {
-    return PaymentReconciliationService.reconcileAll();
+  async [REDACTED_TOKEN]() {
+    return [REDACTED_TOKEN].reconcileAll();
   }
 
   /**
    * Job: Processar fila de retentativas de webhooks
    */
-  async jobProcessWebhookQueue() {
+  async [REDACTED_TOKEN]() {
     return RetryQueueService.processQueue();
   }
 
@@ -149,18 +149,18 @@ class BackgroundJobScheduler {
    */
   async jobCleanupOldEvents() {
     try {
-      const deletedWebhookEvents = await db.run(
+      const [REDACTED_TOKEN] = await db.run(
         `DELETE FROM webhook_events WHERE received_at < datetime('now', '-30 days')`
       );
 
-      const deletedReconciliation = await db.run(
-        `DELETE FROM payment_reconciliation WHERE checked_at < datetime('now', '-30 days')`
+      const [REDACTED_TOKEN] = await db.run(
+        `DELETE FROM [REDACTED_TOKEN] WHERE checked_at < datetime('now', '-30 days')`
       );
 
       return {
         success: true,
-        deletedWebhookEvents: deletedWebhookEvents.changes || 0,
-        deletedReconciliation: deletedReconciliation.changes || 0,
+        [REDACTED_TOKEN]: [REDACTED_TOKEN].changes || 0,
+        [REDACTED_TOKEN]: [REDACTED_TOKEN].changes || 0,
         timestamp: new Date().toISOString()
       };
     } catch (error) {
@@ -171,7 +171,7 @@ class BackgroundJobScheduler {
   /**
    * Job: Enviar notificações pendentes
    */
-  async jobSendNotifications() {
+  async [REDACTED_TOKEN]() {
     try {
       const logger = require('../utils/logger');
       const EmailService = require('./EmailService');
@@ -220,7 +220,7 @@ class BackgroundJobScheduler {
       logger.info('Background job: notifications sent', { sent, failed, total: notifications.length });
       return { success: true, notificationsSent: sent, failed };
     } catch (error) {
-      logger.error('Error in jobSendNotifications:', error.message);
+      logger.error('Error in [REDACTED_TOKEN]:', error.message);
       return { success: false, error: error.message };
     }
   }
@@ -264,4 +264,4 @@ class BackgroundJobScheduler {
   }
 }
 
-module.exports = new BackgroundJobScheduler();
+module.exports = new [REDACTED_TOKEN]();

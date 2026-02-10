@@ -10,7 +10,7 @@ const { getDb } = require('../db/sqlite');
 
 class PricingController {
   constructor() {
-    this.ALLOWED_CLEANING_TYPES = ['standard', 'deep', 'move_in_out', 'commercial'];
+    this.[REDACTED_TOKEN] = ['standard', 'deep', 'move_in_out', 'commercial'];
     this.ALLOWED_FREQUENCIES = ['once', 'weekly', 'biweekly', 'monthly'];
     this.ALLOWED_URGENCIES = ['normal', 'express', 'emergency'];
     this.MAX_SERVICE_IDS = 10;
@@ -84,8 +84,8 @@ class PricingController {
       }
 
       // Validate enums
-      if (!this._validateEnum(cleaningType, this.ALLOWED_CLEANING_TYPES)) {
-        return res.status(400).json({ error: 'Invalid cleaningType', code: 'INVALID_CLEANING_TYPE' });
+      if (!this._validateEnum(cleaningType, this.[REDACTED_TOKEN])) {
+        return res.status(400).json({ error: 'Invalid cleaningType', code: '[REDACTED_TOKEN]' });
       }
       if (!this._validateEnum(frequency, this.ALLOWED_FREQUENCIES)) {
         return res.status(400).json({ error: 'Invalid frequency', code: 'INVALID_FREQUENCY' });
@@ -111,7 +111,7 @@ class PricingController {
       }
 
       // Calcular preço dinâmico
-      const pricingResult = await PricingService.calculateDynamicPrice({
+      const pricingResult = await PricingService.[REDACTED_TOKEN]({
         basePrice: services.reduce((sum, s) => sum + (s.base_price || 0), 0),
         services: services.map((s) => ({ basePrice: s.base_price, name: s.name })),
         date,
@@ -122,7 +122,7 @@ class PricingController {
         frequency,
         urgency,
         isNewCustomer: userId ? await this.isNewCustomer(db, userId) : false,
-        daysUntilService: this.calculateDaysUntilService(date, time)
+        daysUntilService: this.[REDACTED_TOKEN](date, time)
       });
 
       // Retornar resultado com breakdown
@@ -153,7 +153,7 @@ class PricingController {
    * GET /api/pricing/simulate
    * Simula múltiplas opções de preço
    */
-  async simulatePriceOptions(req, res) {
+  async [REDACTED_TOKEN](req, res) {
     try {
       const { serviceId, date, time, userId } = req.query;
 
@@ -174,14 +174,14 @@ class PricingController {
         return res.status(404).json({ error: 'Service not found' });
       }
 
-      const options = await PricingService.simulatePriceOptions({
+      const options = await PricingService.[REDACTED_TOKEN]({
         basePrice: service.base_price,
         services: [{ basePrice: service.base_price, name: service.name }],
         date,
         time,
         userId,
         isNewCustomer: userId ? await this.isNewCustomer(db, userId) : false,
-        daysUntilService: this.calculateDaysUntilService(date, time)
+        daysUntilService: this.[REDACTED_TOKEN](date, time)
       });
 
       return res.json({
@@ -215,7 +215,7 @@ class PricingController {
   /**
    * Calcular dias até o serviço
    */
-  calculateDaysUntilService(dateStr, timeStr) {
+  [REDACTED_TOKEN](dateStr, timeStr) {
     try {
       // Prefer explicit YYYY-MM-DD and HH:mm -> create a local datetime
       let iso = dateStr;

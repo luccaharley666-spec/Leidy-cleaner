@@ -64,7 +64,7 @@ Implementação bem-sucedida de **3 features de alto impacto** para a plataforma
 
 **Entrega**:
 - PixWebhookService com processamento seguro
-- PixWebhookController com 6 endpoints
+- [REDACTED_TOKEN] com 6 endpoints
 - Assinatura HMAC-SHA256 com timingsafe compare
 - Validação de valores (amount check)
 - Suporte a polling via API bancária
@@ -72,7 +72,7 @@ Implementação bem-sucedida de **3 features de alto impacto** para a plataforma
 
 **Arquivos**:
 - `/backend/src/services/PixWebhookService.js` (342 linhas)
-- `/backend/src/controllers/PixWebhookController.js` (221 linhas)
+- `/backend/src/controllers/[REDACTED_TOKEN].js` (221 linhas)
 - `/backend/src/routes/pixWebhook.routes.js` (45 linhas)
 
 **Impacto**:
@@ -169,17 +169,17 @@ Implementação bem-sucedida de **3 features de alto impacto** para a plataforma
 
 ## 📚 Documentação Entregue
 
-1. **README_RESUMIDO_IMPLEMENTACAO.md**
+1. **[REDACTED_TOKEN].md**
    - Quick start das 3 features
    - Instruções de uso
    - Troubleshooting
 
-2. **IMPLEMENTACAO_3_FEATURES_COMPLETO.md**
+2. **[REDACTED_TOKEN].md**
    - Documentação técnica detalhada
    - Arquitetura de cada feature
    - Diagrama de fluxos
 
-3. **PIX_IMPLEMENTATION_GUIDE.md**
+3. **[REDACTED_TOKEN].md**
    - Setup PIX com bancos reais
    - Integração Banco do Brasil, Bradesco, Itaú, Caixa
    - Exemplos de código

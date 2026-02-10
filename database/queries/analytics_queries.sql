@@ -5,7 +5,7 @@ SELECT
   DATE_TRUNC('month', b.created_at) as month,
   SUM(b.total_price) as total_revenue,
   COUNT(*) as total_bookings,
-  AVG(b.total_price) as average_booking_value
+  AVG(b.total_price) as [REDACTED_TOKEN]
 FROM bookings b
 WHERE b.status = 'completed' AND b.payment_status = 'paid'
 GROUP BY DATE_TRUNC('month', b.created_at)
@@ -56,6 +56,6 @@ SELECT
   COUNT(CASE WHEN b.status = 'completed' THEN 1 END) as completed,
   COUNT(CASE WHEN b.status = 'cancelled' THEN 1 END) as cancelled,
   ROUND(100.0 * COUNT(CASE WHEN b.status = 'completed' THEN 1 END) / COUNT(*), 2) as completion_rate,
-  AVG(r.rating) as average_satisfaction
+  AVG(r.rating) as [REDACTED_TOKEN]
 FROM bookings b
 LEFT JOIN reviews r ON b.id = r.booking_id;

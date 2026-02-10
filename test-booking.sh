@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6OTk5LCJlbWFpbCI6InRlc3RlQGV4YW1wbGUuY29tIiwicm9sZSI6ImNsaWVudCIsIm5hbWUiOiJUZXN0ZSBVc2VyIiwiaWF0IjoxNzcwNTkxMTMzLCJleHAiOjE3NzA2Nzc1MzN9.NaZH29Th2svbyFniTxvpodzLLab9SfO6TXG29NMsvrk"
+TOKEN="[REDACTED_TOKEN].[REDACTED_TOKEN].[REDACTED_TOKEN]"
 
 echo "1. Testing Booking Creation..."
 RESPONSE=$(curl -s -X POST http://localhost:3001/api/bookings \

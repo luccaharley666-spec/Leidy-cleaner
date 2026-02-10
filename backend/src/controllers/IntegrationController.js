@@ -123,7 +123,7 @@ router.post('/whatsapp/send', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const result = await integrationService.sendWhatsAppNotification(phoneNumber, message, templateId);
+    const result = await integrationService.[REDACTED_TOKEN](phoneNumber, message, templateId);
 
     res.status(201).json({ success: true, data: result });
   } catch (error) {
@@ -164,7 +164,7 @@ router.post('/slack/send', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const result = await integrationService.sendSlackNotification(channelId, message, blocks);
+    const result = await integrationService.[REDACTED_TOKEN](channelId, message, blocks);
 
     res.status(201).json({ success: true, data: result });
   } catch (error) {
@@ -205,7 +205,7 @@ router.post('/telegram/send', async (req, res) => {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
-    const result = await integrationService.sendTelegramNotification(chatId, message, parseMode);
+    const result = await integrationService.[REDACTED_TOKEN](chatId, message, parseMode);
 
     res.status(201).json({ success: true, data: result });
   } catch (error) {

@@ -24,7 +24,7 @@ router.get('/services', (req, res) => {
 // GET /api/search/autocomplete
 router.get('/autocomplete', (req, res) => {
   const { query } = req.query;
-  const suggestions = SearchService.getAutocompleteSuggestions(query || '');
+  const suggestions = SearchService.[REDACTED_TOKEN](query || '');
   res.json({ suggestions });
 });
 

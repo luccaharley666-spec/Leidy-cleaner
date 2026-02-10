@@ -5,12 +5,12 @@
 
 const express = require('express');
 const router = express.Router();
-const RecommendationService = require('../services/RecommendationService');
+const [REDACTED_TOKEN] = require('../services/[REDACTED_TOKEN]');
 
 // GET /api/recommendations/:userId
 router.get('/:userId', (req, res) => {
   try {
-    const recommendations = RecommendationService.getPersonalizedRecommendations(req.params.userId);
+    const recommendations = [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);
     res.json(recommendations);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -19,25 +19,25 @@ router.get('/:userId', (req, res) => {
 
 // GET /api/recommendations/:userId/best-time
 router.get('/:userId/best-time', (req, res) => {
-  const bestTime = RecommendationService.getBestTimeToBook(req.params.userId);
+  const bestTime = [REDACTED_TOKEN].getBestTimeToBook(req.params.userId);
   res.json(bestTime);
 });
 
 // GET /api/recommendations/popular
 router.get('/services/popular', (req, res) => {
-  const popular = RecommendationService.getPopularServices();
+  const popular = [REDACTED_TOKEN].getPopularServices();
   res.json(popular);
 });
 
 // GET /api/recommendations/:userId/similar-customers
 router.get('/:userId/similar-customers', (req, res) => {
-  const similar = RecommendationService.findSimilarCustomers(req.params.userId);
+  const similar = [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.userId);
   res.json(similar);
 });
 
 // GET /api/recommendations/upsell/:serviceId
 router.get('/upsell/:serviceId', (req, res) => {
-  const upsell = RecommendationService.getUpsellRecommendations(req.params.serviceId);
+  const upsell = [REDACTED_TOKEN].[REDACTED_TOKEN](req.params.serviceId);
   res.json(upsell);
 });
 
@@ -45,7 +45,7 @@ router.get('/upsell/:serviceId', (req, res) => {
 router.post('/record-booking', (req, res) => {
   try {
     const { userId, serviceId, bookingId } = req.body;
-    RecommendationService.recordBooking(userId, serviceId, bookingId);
+    [REDACTED_TOKEN].recordBooking(userId, serviceId, bookingId);
     res.json({ recorded: true });
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -54,7 +54,7 @@ router.post('/record-booking', (req, res) => {
 
 // GET /api/recommendations/at-risk
 router.get('/analysis/at-risk', (req, res) => {
-  const atRiskCustomers = RecommendationService.getAtRiskCustomers();
+  const atRiskCustomers = [REDACTED_TOKEN].getAtRiskCustomers();
   res.json(atRiskCustomers);
 });
 

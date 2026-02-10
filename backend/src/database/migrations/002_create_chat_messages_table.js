@@ -3,9 +3,9 @@
  * Para criptografia end-to-end de mensagens privadas
  */
 
-// Migration 002_create_chat_messages_table.js
+// Migration [REDACTED_TOKEN].js
 
-const createChatMessagesTable = `
+const [REDACTED_TOKEN] = `
   CREATE TABLE IF NOT EXISTS chat_messages (
     id TEXT PRIMARY KEY,
     conversation_id TEXT NOT NULL,
@@ -25,14 +25,14 @@ const createChatMessagesTable = `
     FOREIGN KEY (conversation_id) REFERENCES conversations(id) ON DELETE CASCADE
   );
 
-  CREATE INDEX IF NOT EXISTS idx_chat_messages_conversation ON chat_messages(conversation_id);
-  CREATE INDEX IF NOT EXISTS idx_chat_messages_sender ON chat_messages(sender_id);
-  CREATE INDEX IF NOT EXISTS idx_chat_messages_receiver ON chat_messages(receiver_id);
-  CREATE INDEX IF NOT EXISTS idx_chat_messages_created ON chat_messages(created_at DESC);
-  CREATE INDEX IF NOT EXISTS idx_chat_messages_unread ON chat_messages(receiver_id, is_read);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(conversation_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(sender_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(receiver_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(created_at DESC);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON chat_messages(receiver_id, is_read);
 `;
 
-const createConversationsTable = `
+const [REDACTED_TOKEN] = `
   CREATE TABLE IF NOT EXISTS conversations (
     id TEXT PRIMARY KEY,
     user1_id TEXT NOT NULL,
@@ -46,11 +46,11 @@ const createConversationsTable = `
     FOREIGN KEY (user2_id) REFERENCES users(id) ON DELETE CASCADE
   );
 
-  CREATE INDEX IF NOT EXISTS idx_conversations_users ON conversations(user1_id, user2_id);
-  CREATE INDEX IF NOT EXISTS idx_conversations_last_msg ON conversations(last_message_at DESC);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON conversations(user1_id, user2_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON conversations(last_message_at DESC);
 `;
 
-const createEncryptedFilesTable = `
+const [REDACTED_TOKEN] = `
   CREATE TABLE IF NOT EXISTS encrypted_files (
     id TEXT PRIMARY KEY,
     conversation_id TEXT NOT NULL,
@@ -69,11 +69,11 @@ const createEncryptedFilesTable = `
     FOREIGN KEY (uploader_id) REFERENCES users(id) ON DELETE CASCADE
   );
 
-  CREATE INDEX IF NOT EXISTS idx_encrypted_files_conversation ON encrypted_files(conversation_id);
-  CREATE INDEX IF NOT EXISTS idx_encrypted_files_uploader ON encrypted_files(uploader_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON encrypted_files(conversation_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON encrypted_files(uploader_id);
 `;
 
-const createCryptoAuditTable = `
+const [REDACTED_TOKEN] = `
   CREATE TABLE IF NOT EXISTS crypto_audit_log (
     id TEXT PRIMARY KEY,
     user_id TEXT NOT NULL,
@@ -88,22 +88,22 @@ const createCryptoAuditTable = `
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
   );
 
-  CREATE INDEX IF NOT EXISTS idx_crypto_audit_user ON crypto_audit_log(user_id);
-  CREATE INDEX IF NOT EXISTS idx_crypto_audit_operation ON crypto_audit_log(operation);
-  CREATE INDEX IF NOT EXISTS idx_crypto_audit_created ON crypto_audit_log(created_at DESC);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON crypto_audit_log(user_id);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON crypto_audit_log(operation);
+  CREATE INDEX IF NOT EXISTS [REDACTED_TOKEN] ON crypto_audit_log(created_at DESC);
 `;
 
 module.exports = {
-  createChatMessagesTable,
-  createConversationsTable,
-  createEncryptedFilesTable,
-  createCryptoAuditTable,
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
+  [REDACTED_TOKEN],
   runMigrations: async (db) => {
     try {
-      await db.exec(createConversationsTable);
-      await db.exec(createChatMessagesTable);
-      await db.exec(createEncryptedFilesTable);
-      await db.exec(createCryptoAuditTable);
+      await db.exec([REDACTED_TOKEN]);
+      await db.exec([REDACTED_TOKEN]);
+      await db.exec([REDACTED_TOKEN]);
+      await db.exec([REDACTED_TOKEN]);
     } catch (error) {
       console.error('❌ Chat migration failed:', error);
       throw error;

@@ -21,7 +21,7 @@ NC='\033[0m' # No Color
 BASE_URL="http://localhost:3000"
 ADMIN_EMAIL="fransmalifra@gmail.com"
 ADMIN_PASS="r!1QrE&McMzT2\$zu"
-SECRET="50c3f219f2391f7e677c066980b0df2051f5642efc75f606259e2f646d0041d1"
+SECRET="[REDACTED_TOKEN]"
 
 echo -e "${BLUE}==========================================${NC}"
 echo -e "${BLUE}  PIX Endpoints Test Suite${NC}"
@@ -132,14 +132,14 @@ echo -e "${YELLOW}[5/5] Consultando status (depois de webhook)...${NC}"
 # Pequeno delay para garantir que a DB foi atualizada
 sleep 1
 
-STATUS_RESPONSE_AFTER=$(curl -s -X GET "$BASE_URL/api/pix/status/$TRANSACTION_ID" \
+[REDACTED_TOKEN]=$(curl -s -X GET "$BASE_URL/api/pix/status/$TRANSACTION_ID" \
   -H "Authorization: Bearer $TOKEN")
 
-STATUS_AFTER=$(echo "$STATUS_RESPONSE_AFTER" | grep -o '"status":"[^"]*' | cut -d'"' -f4)
+STATUS_AFTER=$(echo "$[REDACTED_TOKEN]" | grep -o '"status":"[^"]*' | cut -d'"' -f4)
 
 if [ "$STATUS_AFTER" = "confirmed" ]; then
   echo -e "${GREEN}✅ Status atualizado para confirmed${NC}"
-  echo -e "   Response: $STATUS_RESPONSE_AFTER\n"
+  echo -e "   Response: $[REDACTED_TOKEN]"
 elif [ "$STATUS_AFTER" = "waiting" ]; then
   echo -e "${YELLOW}⚠️  Status ainda é 'waiting'${NC}"
   echo -e "   (Webhook pode não ter sido processado corretamente)\n"

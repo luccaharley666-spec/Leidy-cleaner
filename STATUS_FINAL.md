@@ -83,12 +83,12 @@
   - **Timeout:** 30s
 
 ### Widgets & Services
-- [x] `/src/components/AvailableStaffWidget.jsx`
+- [x] `/src/components/[REDACTED_TOKEN].jsx`
   - **Mudança:** 1 fetch call
   - **Status:** ✅ Refatorado
   - **Timeout:** 30s
 
-- [x] `/src/services/ChatEncryptionClient.js`
+- [x] `/src/services/[REDACTED_TOKEN].js`
   - **Mudanças:** 5 fetch calls (upload, download, send, get, delete)
   - **Status:** ✅ Refatorado
   - **Timeout:** 30s
@@ -137,15 +137,15 @@ Todos os arquivos estão em `/workspaces/mmmm/`:
    - Sumário executivo rápido
    - Quick start guide
 
-2. **REFATORACAO_FETCH_CALLS.md**
+2. **[REDACTED_TOKEN].md**
    - Detalhes técnicos completos
    - 11 refatorações listadas
 
-3. **REFATORACAO_CONCLUIDA.md**
+3. **[REDACTED_TOKEN].md**
    - Instruções de teste
    - Casos de teste
 
-4. **REFATORACAO_CHECKLIST.md**
+4. **[REDACTED_TOKEN].md**
    - Verificação final
    - Estatísticas
 
@@ -232,7 +232,7 @@ npm run dev
 - [ ] Dashboard client (ClientDashboard)
 - [ ] Dashboard staff (StaffDashboard)
 - [ ] Dashboard admin (AdminPanel)
-- [ ] Staff widget (AvailableStaffWidget)
+- [ ] Staff widget ([REDACTED_TOKEN])
 
 ### 4. Teste de Timeout (Opcional)
 ```javascript

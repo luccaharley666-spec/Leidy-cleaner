@@ -4,11 +4,11 @@
 -- 1. Insert Demo Users (if not exists)
 INSERT OR IGNORE INTO users (id, name, email, phone, password_hash, role, is_active, created_at)
 VALUES 
-  (1, 'Admin Leidy', 'admin@leidy.com', '11999999999', '$2b$10$abcd1234567890abcd1234567890abcd1234567890abcd1234567890', 'admin', 1, datetime('now')),
-  (2, 'Maria Silva', 'maria@leidy.com', '11988888888', '$2b$10$efgh9876543210efgh9876543210efgh9876543210efgh9876543210', 'staff', 1, datetime('now')),
-  (3, 'João Cliente', 'joao@email.com', '11985555555', '$2b$10$ijkl5432109876ijkl5432109876ijkl5432109876ijkl5432109876', 'customer', 1, datetime('now')),
-  (4, 'Ana Santos', 'ana@email.com', '11984444444', '$2b$10$mnop1098765432mnop1098765432mnop1098765432mnop1098765432', 'customer', 1, datetime('now')),
-  (5, 'Carlos Costa', 'carlos@email.com', '11983333333', '$2b$10$qrst6543210987qrst6543210987qrst6543210987qrst6543210987', 'customer', 1, datetime('now'));
+  (1, 'Admin Leidy', 'admin@leidy.com', '11999999999', '$2b$10$[REDACTED_TOKEN]', 'admin', 1, datetime('now')),
+  (2, 'Maria Silva', 'maria@leidy.com', '11988888888', '$2b$10$[REDACTED_TOKEN]', 'staff', 1, datetime('now')),
+  (3, 'João Cliente', 'joao@email.com', '11985555555', '$2b$10$[REDACTED_TOKEN]', 'customer', 1, datetime('now')),
+  (4, 'Ana Santos', 'ana@email.com', '11984444444', '$2b$10$[REDACTED_TOKEN]', 'customer', 1, datetime('now')),
+  (5, 'Carlos Costa', 'carlos@email.com', '11983333333', '$2b$10$[REDACTED_TOKEN]', 'customer', 1, datetime('now'));
 
 -- 2. Insert Demo Services (if not exists)
 INSERT OR IGNORE INTO services (id, name, description, base_price, category, duration_minutes, is_active)

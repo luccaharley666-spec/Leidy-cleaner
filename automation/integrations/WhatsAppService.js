@@ -19,7 +19,7 @@ class WhatsAppService {
         
         const result = await twilio.messages.create({
           body: message,
-          from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
+          from: `whatsapp:${process.env.[REDACTED_TOKEN]}`,
           to: `whatsapp:${phoneNumber}`
         });
         
@@ -40,7 +40,7 @@ class WhatsAppService {
   /**
    * Enviar confirmação de agendamento
    */
-  async sendBookingConfirmation(booking, user) {
+  async [REDACTED_TOKEN](booking, user) {
     const message = `
 Olá ${user.name}! 🎉
 

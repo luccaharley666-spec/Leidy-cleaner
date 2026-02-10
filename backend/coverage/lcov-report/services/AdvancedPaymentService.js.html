@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/AdvancedPaymentService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> AdvancedPaymentService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -897,7 +897,7 @@
 const logger = require('../utils/logger');
 const crypto = require('crypto');
 &nbsp;
-class AdvancedPaymentService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.payments = new Map();
     this.subscriptions = new Map();
@@ -909,7 +909,7 @@ class AdvancedPaymentService {
    */
 <span class="fstat-no" title="function not covered" >  as</span>ync createBoletoPayment(bookingId, amount, dueDate) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const boletoNumber = <span class="cstat-no" title="statement not covered" >this._generateBoletoNumber();</span>
+      const boletoNumber = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN]();</span>
       const barcode = <span class="cstat-no" title="statement not covered" >this._generateBarcode();</span>
 &nbsp;
       const payment = <span class="cstat-no" title="statement not covered" >{</span>
@@ -942,7 +942,7 @@ class AdvancedPaymentService {
   /**
    * Create Apple Pay payment
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync createApplePayPayment(bookingId, amount, applePayToken) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](bookingId, amount, applePayToken) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const payment = <span class="cstat-no" title="statement not covered" >{</span>
         id: crypto.randomUUID(),
@@ -974,7 +974,7 @@ class AdvancedPaymentService {
   /**
    * Create Google Pay payment
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync createGooglePayPayment(bookingId, amount, googlePayToken) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](bookingId, amount, googlePayToken) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const payment = <span class="cstat-no" title="statement not covered" >{</span>
         id: crypto.randomUUID(),
@@ -1030,7 +1030,7 @@ class AdvancedPaymentService {
   /**
    * Execute PayPal payment
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync executePayPalPayment(paymentId, payerDetails) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](paymentId, payerDetails) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const payment = <span class="cstat-no" title="statement not covered" >this.payments.get(paymentId);</span>
 <span class="cstat-no" title="statement not covered" >      if (!payment) <span class="cstat-no" title="statement not covered" >throw new Error('Payment not found');</span></span>
@@ -1063,7 +1063,7 @@ class AdvancedPaymentService {
         status: 'active',
         createdAt: new Date(),
         currentPeriodStart: new Date(),
-        currentPeriodEnd: this._calculateNextPeriodEnd(interval),
+        currentPeriodEnd: this.[REDACTED_TOKEN](interval),
         payments: []
       };
 &nbsp;
@@ -1118,7 +1118,7 @@ class AdvancedPaymentService {
   /**
    * Process subscription billing
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync processSubscriptionBilling(subscriptionId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](subscriptionId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const subscription = <span class="cstat-no" title="statement not covered" >this.subscriptions.get(subscriptionId);</span>
 <span class="cstat-no" title="statement not covered" >      if (!subscription) <span class="cstat-no" title="statement not covered" >throw new Error('Subscription not found');</span></span>
@@ -1135,7 +1135,7 @@ class AdvancedPaymentService {
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      subscription.payments.push(payment);</span>
 <span class="cstat-no" title="statement not covered" >      subscription.currentPeriodStart = subscription.currentPeriodEnd;</span>
-<span class="cstat-no" title="statement not covered" >      subscription.currentPeriodEnd = this._calculateNextPeriodEnd(subscription.interval);</span>
+<span class="cstat-no" title="statement not covered" >      subscription.currentPeriodEnd = this.[REDACTED_TOKEN](subscription.interval);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      logger.info(`Subscription billing processed: ${subscriptionId}`);</span>
 <span class="cstat-no" title="statement not covered" >      return payment;</span>
@@ -1226,7 +1226,7 @@ class AdvancedPaymentService {
   /**
    * Get customer subscriptions
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getCustomerSubscriptions(customerId) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](customerId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const subs = <span class="cstat-no" title="statement not covered" >[];</span>
 <span class="cstat-no" title="statement not covered" >      for (const [, sub] of this.subscriptions.entries()) {</span>
@@ -1258,7 +1258,7 @@ class AdvancedPaymentService {
   /**
    * Helper: Calculate next period end
    */
-<span class="fstat-no" title="function not covered" >  _c</span>alculateNextPeriodEnd(interval) {
+<span class="fstat-no" title="function not covered" >  _c</span>[REDACTED_TOKEN](interval) {
     const now = <span class="cstat-no" title="statement not covered" >new Date();</span>
     const next = <span class="cstat-no" title="statement not covered" >new Date(now);</span>
 &nbsp;
@@ -1301,7 +1301,7 @@ class AdvancedPaymentService {
   }
 }
 &nbsp;
-module.exports = new AdvancedPaymentService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

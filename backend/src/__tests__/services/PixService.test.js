@@ -18,7 +18,7 @@ describe('PixService', () => {
 
   describe('generateQRCode', () => {
     it('deve gerar QR code PIX com sucesso', async () => {
-      const mockPixId = '123e4567-e89b-12d3-a456-426614174000';
+      const mockPixId = '[REDACTED_TOKEN]';
       jest.spyOn(require('crypto'), 'randomUUID').mockReturnValue(mockPixId);
 
       db.run.mockResolvedValue();
@@ -29,7 +29,7 @@ describe('PixService', () => {
       expect(result.pixTransactionId).toBe(mockPixId);
       expect(result.amount).toBe(150.00);
       expect(result.brCode).toMatch(/^000201/);
-      expect(db.run).toHaveBeenCalledWith(
+      expect(db.run).[REDACTED_TOKEN](
         expect.stringContaining('INSERT INTO pix_transactions'),
         mockPixId, 150.00, 'order123', expect.any(String)
       );
@@ -86,7 +86,7 @@ describe('PixService', () => {
         merchantName: 'NOME MUITO LONGO PARA TESTAR TRUNCAMENTO',
         merchantCity: 'CIDADE MUITO LONGA PARA TESTAR',
         description: 'DESCRICAO MUITO LONGA PARA TESTAR TRUNCAMENTO',
-        orderId: 'ORDER_ID_MUITO_LONGO_PARA_TESTAR_TRUNCAMENTO'
+        orderId: '[REDACTED_TOKEN]'
       };
 
       const brCode = PixService.generateBRCode(data);
@@ -100,7 +100,7 @@ describe('PixService', () => {
 
   describe('calculateCRC16', () => {
     it('deve calcular CRC16 corretamente', () => {
-      const testData = '00020126580014br.gov.bcb.pix0136teste@pix.com520400005303986540510.005802BR5913LIMPEZA PRO6008SAO PAULO62070503***6304';
+      const testData = '00020126580014br.gov.bcb.pix0136teste@pix.[REDACTED_TOKEN].005802BR5913LIMPEZA PRO6008SAO PAULO62070503***6304';
       const crc = PixService.calculateCRC16(testData);
 
       expect(crc).toMatch(/^[A-F0-9]{4}$/);
@@ -173,7 +173,7 @@ describe('PixService', () => {
 
       expect(result.success).toBe(true);
       expect(result.message).toBe('Pagamento PIX confirmado');
-      expect(db.run).toHaveBeenCalledTimes(2); // Update PIX + Update booking
+      expect(db.run).[REDACTED_TOKEN](2); // Update PIX + Update booking
     });
 
     it('deve lidar com PIX não encontrado', async () => {
@@ -186,30 +186,30 @@ describe('PixService', () => {
     });
   });
 
-  describe('buildMerchantAccountInfo', () => {
+  describe('[REDACTED_TOKEN]', () => {
     it('deve construir MAI corretamente', () => {
       const pixKey = 'teste@pix.com';
-      const mai = PixService.buildMerchantAccountInfo(pixKey);
+      const mai = PixService.[REDACTED_TOKEN](pixKey);
 
       expect(mai).toBe('0014br.gov.bcb.pix0113teste@pix.com');
     });
   });
 
-  describe('buildAdditionalDataField', () => {
+  describe('[REDACTED_TOKEN]', () => {
     it('deve construir ADF com referência e descrição', () => {
-      const adf = PixService.buildAdditionalDataField('Teste descrição', 'REF123');
+      const adf = PixService.[REDACTED_TOKEN]('Teste descrição', 'REF123');
 
       expect(adf).toBe('0506REF1239915Teste descrição');
     });
 
     it('deve construir ADF apenas com referência', () => {
-      const adf = PixService.buildAdditionalDataField('', 'REF123');
+      const adf = PixService.[REDACTED_TOKEN]('', 'REF123');
 
       expect(adf).toBe('0506REF123');
     });
 
     it('deve construir ADF apenas com descrição', () => {
-      const adf = PixService.buildAdditionalDataField('Descrição', '');
+      const adf = PixService.[REDACTED_TOKEN]('Descrição', '');
 
       expect(adf).toBe('9909Descrição');
     });

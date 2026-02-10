@@ -38,10 +38,10 @@
 - [x] `/src/components/Dashboard/ClientDashboard.jsx` - Client dashboard
 - [x] `/src/components/Dashboard/StaffDashboard.jsx` - Staff dashboard
 - [x] `/src/components/Dashboard/AdminPanel.jsx` - Admin dashboard
-- [x] `/src/components/AvailableStaffWidget.jsx` - Staff availability
+- [x] `/src/components/[REDACTED_TOKEN].jsx` - Staff availability
 
 ### ✅ Services
-- [x] `/src/services/ChatEncryptionClient.js` - Encryption service (5 métodos)
+- [x] `/src/services/[REDACTED_TOKEN].js` - Encryption service (5 métodos)
 
 ---
 
@@ -114,7 +114,7 @@ npm run dev
 - [ ] Dashboard Client (ClientDashboard)
 - [ ] Dashboard Staff (StaffDashboard)
 - [ ] Admin Dashboard (AdminPanel)
-- [ ] Staff Widget (AvailableStaffWidget)
+- [ ] Staff Widget ([REDACTED_TOKEN])
 
 ---
 
@@ -209,8 +209,8 @@ const data = await apiCall('/api/novo', { method: 'POST', body: JSON.stringify(.
 ✅ ClientDashboard.jsx (1 mudança)
 ✅ StaffDashboard.jsx (1 mudança)
 ✅ AdminPanel.jsx (1 mudança)
-✅ AvailableStaffWidget.jsx (1 mudança)
-✅ ChatEncryptionClient.js (5 mudanças)
+✅ [REDACTED_TOKEN].jsx (1 mudança)
+✅ [REDACTED_TOKEN].js (5 mudanças)
 ```
 
 ### Total de Refatorações: 18

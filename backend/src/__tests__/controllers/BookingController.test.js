@@ -15,7 +15,7 @@ describe('BookingController', () => {
 
     await BookingController.createBooking(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.status).[REDACTED_TOKEN](400);
     expect(res.json).toHaveBeenCalled();
   });
 
@@ -35,8 +35,8 @@ describe('BookingController', () => {
 
     await BookingController.createBooking(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(404);
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: 'Serviço não encontrado' }));
+    expect(res.status).[REDACTED_TOKEN](404);
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ error: 'Serviço não encontrado' }));
   });
 
   test.skip('rateBooking returns 400 for invalid rating', async () => {
@@ -50,7 +50,7 @@ describe('BookingController', () => {
 
     await BookingController.rateBooking(req, res);
 
-    expect(res.status).toHaveBeenCalledWith(400);
+    expect(res.status).[REDACTED_TOKEN](400);
   }, 60000);
 
   test.skip('rateBooking 5-star updates streak and returns loyalty status', async () => {
@@ -75,7 +75,7 @@ describe('BookingController', () => {
 
     await BookingController.rateBooking(req, res);
 
-    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ success: true }));
+    expect(res.json).[REDACTED_TOKEN](expect.objectContaining({ success: true }));
     const callArg = res.json.mock.calls[0][0];
     expect(callArg.loyaltyStatus).toBeDefined();
     expect(callArg.loyaltyStatus.streak).toBe(10);
@@ -93,7 +93,7 @@ jest.mock('../../services/BookingService', () => ({
 }));
 
 jest.mock('../../services/EmailService', () => ({
-  sendBookingConfirmation: jest.fn(() => Promise.resolve(true)),
+  [REDACTED_TOKEN]: jest.fn(() => Promise.resolve(true)),
   sendCancellation: jest.fn(() => Promise.resolve(true))
 }));
 

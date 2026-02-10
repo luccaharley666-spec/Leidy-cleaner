@@ -117,26 +117,26 @@
    - Atualiza DB com status 'paid'
    - Marca booking como confirmado
 
-2. **`verifyWebhookSignature(webhookData, bankSignature)`**
+2. **`[REDACTED_TOKEN](webhookData, bankSignature)`**
    - Computa HMAC-SHA256
    - Comparação timingsafe (contra timing attacks)
    - Retorna boolean validação
 
-3. **`validatePixStatusViaAPI(pixTransactionId)`**
+3. **`[REDACTED_TOKEN](pixTransactionId)`**
    - Polling via `PIX_BANK_API_URL`
    - Suporta múltiplos bancos
    - Fallback se API não configurada
    - Atualiza status local
 
-4. **`getExpiringPixTransactions(minutesUntilExpiry)`**
+4. **`[REDACTED_TOKEN](minutesUntilExpiry)`**
    - Lista PIXs próximos de vencer
    - Útil para notificação ao cliente
 
-5. **`cleanExpiredPixTransactions()`**
+5. **`[REDACTED_TOKEN]()`**
    - Delete PIXs expirados
    - Executável via cron
 
-#### PixWebhookController.js (180 linhas)
+#### [REDACTED_TOKEN].js (180 linhas)
 
 **6 Endpoints Implementados:**
 
@@ -193,10 +193,10 @@ module.exports = router;
 ```
 ✅ /frontend/src/pages/admin-dashboard.jsx (372 linhas)
 ✅ /backend/src/services/PixWebhookService.js (280 linhas)
-✅ /backend/src/controllers/PixWebhookController.js (180 linhas)
+✅ /backend/src/controllers/[REDACTED_TOKEN].js (180 linhas)
 ✅ /backend/src/routes/pixWebhook.routes.js (50 linhas)
-✅ /PIX_IMPLEMENTATION_GUIDE.md (Documentação)
-✅ /IMPLEMENTACAO_3_FEATURES_COMPLETO.md (Este arquivo)
+✅ /[REDACTED_TOKEN].md (Documentação)
+✅ /[REDACTED_TOKEN].md (Este arquivo)
 ```
 
 ### Modificados (2 arquivos):
@@ -253,7 +253,7 @@ Todos os componentes aplicam tema:
 - Novo Webhook
 - URL: https://xxxxx.ngrok.io/webhooks/pix
 - Evento: pix.transfer.in.received
-- Assinar com: PIX_WEBHOOK_SECRET
+- Assinar com: [REDACTED_TOKEN]
 
 # Teste webhook:
 curl -X POST http://localhost:3001/webhooks/pix \
@@ -272,11 +272,11 @@ curl -X POST http://localhost:3001/webhooks/pix \
 PIX_KEY=seu-email@pix.com
 PIX_BANK_API_URL=https://api.bank.com/v1
 PIX_BANK_API_KEY=sua-api-key-123
-PIX_WEBHOOK_SECRET=super-secret-key-123456
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Frontend .env.local
-NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
-NEXT_PUBLIC_PIX_ENABLED=true
+[REDACTED_TOKEN]=http://localhost:3001
+[REDACTED_TOKEN]=true
 ```
 
 ---
@@ -339,8 +339,8 @@ NEXT_PUBLIC_PIX_ENABLED=true
 
 ## 📝 Documentação Disponível
 
-1. **PIX_IMPLEMENTATION_GUIDE.md** - Setup completo PIX com bancos reais
-2. **IMPLEMENTACAO_3_FEATURES_COMPLETO.md** - Este documento
+1. **[REDACTED_TOKEN].md** - Setup completo PIX com bancos reais
+2. **[REDACTED_TOKEN].md** - Este documento
 3. **Código documentado** - Comentários inline em todos os arquivos principais
 
 ---
@@ -358,7 +358,7 @@ NEXT_PUBLIC_PIX_ENABLED=true
 **Para usar PIX:**
 - Criar tabela `pix_transactions` no DB
 - Registrar webhook com banco
-- Configurar `PIX_WEBHOOK_SECRET` em .env
+- Configurar `[REDACTED_TOKEN]` em .env
 - Testar com ngrok localmente
 
 ---
@@ -369,7 +369,7 @@ NEXT_PUBLIC_PIX_ENABLED=true
 |----------|---------|
 | Dark mode não persiste | Verificar localStorage enabled no navegador |
 | Gráficos não aparecem | Instalar recharts: `npm install recharts` |
-| Webhook retorna 401 | Verificar `PIX_WEBHOOK_SECRET` (deve ser igual nos 2 lados) |
+| Webhook retorna 401 | Verificar `[REDACTED_TOKEN]` (deve ser igual nos 2 lados) |
 | Rejeita webhook | Validar HMAC-SHA256 assinatura |
 | PIX não encontrado no DB | Criar tabela `pix_transactions` |
 

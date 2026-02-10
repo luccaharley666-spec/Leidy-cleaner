@@ -614,7 +614,7 @@ class InvoiceService {
   /**
    * Gerar invoice PDF para agendamento
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async generateBookingInvoice(bookingId) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](bookingId) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
 <span class="cstat-no" title="statement not covered" >      this.initializeDir();</span>
 &nbsp;
@@ -738,9 +738,9 @@ class InvoiceService {
   /**
    * Gerar invoice e enviar por email
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async generateAndEmailInvoice(bookingId, userEmail) {
+<span class="fstat-no" title="function not covered" >  st</span>atic async [REDACTED_TOKEN](bookingId, userEmail) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const invoice = <span class="cstat-no" title="statement not covered" >await this.generateBookingInvoice(bookingId);</span>
+      const invoice = <span class="cstat-no" title="statement not covered" >await this.[REDACTED_TOKEN](bookingId);</span>
 &nbsp;
       // Enfileirar envio de email com anexo
 <span class="cstat-no" title="statement not covered" >      await EmailQueueService.enqueueInvoiceEmail(userEmail, {</span>

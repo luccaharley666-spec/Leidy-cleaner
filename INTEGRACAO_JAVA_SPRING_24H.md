@@ -30,7 +30,7 @@ spring boot new --name leidycleaner --type gradle
 mvn archetype:generate \
   -DgroupId=com.leidycleaner \
   -DartifactId=leidycleaner-api \
-  -DarchetypeArtifactId=maven-archetype-quickstart
+  -[REDACTED_TOKEN]=[REDACTED_TOKEN]
 
 # Opção 3: Direto (recomendado - mais rápido)
 git clone https://github.com/spring-projects/spring-boot/
@@ -56,7 +56,7 @@ cd spring-boot
 
     <parent>
         <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
+        <artifactId>[REDACTED_TOKEN]</artifactId>
         <version>3.2.0</version>
     </parent>
 
@@ -64,13 +64,13 @@ cd spring-boot
         <!-- Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <artifactId>[REDACTED_TOKEN]</artifactId>
         </dependency>
 
         <!-- JPA/Hibernate -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>[REDACTED_TOKEN]</artifactId>
         </dependency>
 
         <!-- SQLite -->
@@ -83,7 +83,7 @@ cd spring-boot
         <!-- Security/JWT -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
+            <artifactId>[REDACTED_TOKEN]</artifactId>
         </dependency>
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
@@ -106,7 +106,7 @@ cd spring-boot
         <!-- BCrypt -->
         <dependency>
             <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-crypto</artifactId>
+            <artifactId>[REDACTED_TOKEN]</artifactId>
         </dependency>
 
         <!-- Lombok (reduz boilerplate) -->
@@ -119,7 +119,7 @@ cd spring-boot
         <!-- Testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
+            <artifactId>[REDACTED_TOKEN]</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -128,7 +128,7 @@ cd spring-boot
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <artifactId>[REDACTED_TOKEN]</artifactId>
             </plugin>
         </plugins>
     </build>
@@ -140,7 +140,7 @@ cd spring-boot
 plugins {
     id 'java'
     id 'org.springframework.boot' version '3.2.0'
-    id 'io.spring.dependency-management' version '1.1.4'
+    id 'io.spring.[REDACTED_TOKEN]' version '1.1.4'
 }
 
 group = 'com.leidycleaner'
@@ -152,16 +152,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:[REDACTED_TOKEN]'
+    implementation 'org.springframework.boot:[REDACTED_TOKEN]'
     implementation 'org.xerial:sqlite-jdbc:3.44.0.0'
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:[REDACTED_TOKEN]'
     implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.3'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.3'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:[REDACTED_TOKEN]'
 }
 
 tasks.named('test') {
@@ -182,7 +182,7 @@ spring.jpa.database-platform=org.hibernate.community.dialect.SQLiteDialect
 spring.jpa.hibernate.ddl-auto=validate
 
 # JWT
-app.jwt.secret=sua_chave_secreta_super_segura_aqui_pelo_menos_32_caracteres
+app.jwt.secret=[REDACTED_TOKEN]
 app.jwt.expiration=86400000
 
 # CORS
@@ -489,7 +489,7 @@ public class AuthService {
         }
         
         String accessToken = jwtTokenProvider.generateAccessToken(user.getId());
-        String refreshToken = jwtTokenProvider.generateRefreshToken(user.getId());
+        String refreshToken = jwtTokenProvider.[REDACTED_TOKEN](user.getId());
         
         UserDTO userDTO = UserDTO.builder()
             .id(user.getId())
@@ -720,7 +720,7 @@ Importar arquivo de requests:
 
 ### Passo 1: Adicionar tratamento de erros
 
-**Arquivo: `src/main/java/com/leidycleaner/exception/GlobalExceptionHandler.java`**
+**Arquivo: `src/main/java/com/leidycleaner/exception/[REDACTED_TOKEN].java`**
 
 ```java
 package com.leidycleaner.exception;
@@ -728,13 +728,13 @@ package com.leidycleaner.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.[REDACTED_TOKEN];
 
-@RestControllerAdvice
-public class GlobalExceptionHandler {
+@[REDACTED_TOKEN]
+public class [REDACTED_TOKEN] {
     
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<?> handleRuntimeException(RuntimeException e) {
+    public ResponseEntity<?> [REDACTED_TOKEN](RuntimeException e) {
         ErrorResponse error = new ErrorResponse("error", e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(error);
     }
@@ -757,7 +757,7 @@ public class GlobalExceptionHandler {
 <!-- Adicionar ao pom.xml -->
 <dependency>
     <groupId>org.springdoc</groupId>
-    <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+    <artifactId>[REDACTED_TOKEN]</artifactId>
     <version>2.0.0</version>
 </dependency>
 ```
@@ -837,14 +837,14 @@ leidycleaner-api/
 │   │   │   ├── security/
 │   │   │   │   └── JwtTokenProvider.java
 │   │   │   ├── exception/
-│   │   │   │   └── GlobalExceptionHandler.java
-│   │   │   └── LeidyCleanerApiApplication.java
+│   │   │   │   └── [REDACTED_TOKEN].java
+│   │   │   └── [REDACTED_TOKEN].java
 │   │   └── resources/
 │   │       ├── application.properties
 │   │       └── application-prod.properties
 │   └── test/
 │       └── java/com/leidycleaner/
-│           └── LeidyCleanerApiApplicationTests.java
+│           └── [REDACTED_TOKEN].java
 ├── pom.xml (ou build.gradle)
 ├── leidycleaner.sqlite
 └── README.md

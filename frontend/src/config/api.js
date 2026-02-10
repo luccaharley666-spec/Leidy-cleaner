@@ -5,8 +5,8 @@
 
 export const API_CONFIG = {
   baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001',
-  timeout: parseInt(process.env.NEXT_PUBLIC_API_TIMEOUT || '30000'),
-  environment: process.env.NEXT_PUBLIC_ENVIRONMENT || 'development',
+  timeout: parseInt(process.env.[REDACTED_TOKEN] || '30000'),
+  environment: process.env.[REDACTED_TOKEN] || 'development',
   debug: process.env.NEXT_PUBLIC_DEBUG === 'true'
 };
 

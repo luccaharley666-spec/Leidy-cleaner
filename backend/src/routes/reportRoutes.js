@@ -25,7 +25,7 @@ router.get('/bookings/:period', authenticateToken, async (req, res) => {
     const { period } = req.params;
     const userId = req.user.id;
 
-    const pdfPath = await ReportsService.generateBookingsReport(userId, period);
+    const pdfPath = await ReportsService.[REDACTED_TOKEN](userId, period);
     
     res.download(pdfPath, `bookings-${period}.pdf`);
   } catch (error) {
@@ -39,7 +39,7 @@ router.get('/revenue/:period', authenticateToken, authorizeRole(['admin']), asyn
   try {
     const { period } = req.params;
 
-    const pdfPath = await ReportsService.generateRevenueReport(period);
+    const pdfPath = await ReportsService.[REDACTED_TOKEN](period);
     
     res.download(pdfPath, `revenue-${period}.pdf`);
   } catch (error) {
@@ -53,7 +53,7 @@ router.get('/performance/:period', authenticateToken, authorizeRole(['admin']), 
   try {
     const { period } = req.params;
 
-    const pdfPath = await ReportsService.generatePerformanceReport(period);
+    const pdfPath = await ReportsService.[REDACTED_TOKEN](period);
     
     res.download(pdfPath, `performance-${period}.pdf`);
   } catch (error) {

@@ -6,16 +6,16 @@ import { CalendarIcon, ClockIcon, BellIcon, ArrowPathIcon } from '@heroicons/rea
 import { useNotifications } from './NotificationSystem';
 
 export function RecurringScheduler() {
-  const [scheduledServices, setScheduledServices] = useState([]);
+  const [scheduledServices, [REDACTED_TOKEN]] = useState([]);
   const [showScheduler, setShowScheduler] = useState(false);
   const { addNotification } = useNotifications();
 
   useEffect(() => {
     // Carregar agendamentos do localStorage
-    const saved = localStorage.getItem('leidy-recurring-services');
+    const saved = localStorage.getItem('[REDACTED_TOKEN]');
     if (saved) {
       const services = JSON.parse(saved);
-      setScheduledServices(services);
+      [REDACTED_TOKEN](services);
       setupReminders(services);
     }
   }, []);
@@ -52,9 +52,9 @@ export function RecurringScheduler() {
     };
 
     const updatedServices = [...scheduledServices, newService];
-    setScheduledServices(updatedServices);
+    [REDACTED_TOKEN](updatedServices);
 
-    localStorage.setItem('leidy-recurring-services', JSON.stringify(updatedServices));
+    localStorage.setItem('[REDACTED_TOKEN]', JSON.stringify(updatedServices));
     setupReminders([newService]);
 
     addNotification({
@@ -113,8 +113,8 @@ export function RecurringScheduler() {
     }
 
     const updatedServices = scheduledServices.filter(s => s.id !== id);
-    setScheduledServices(updatedServices);
-    localStorage.setItem('leidy-recurring-services', JSON.stringify(updatedServices));
+    [REDACTED_TOKEN](updatedServices);
+    localStorage.setItem('[REDACTED_TOKEN]', JSON.stringify(updatedServices));
   };
 
   return (
@@ -130,7 +130,7 @@ export function RecurringScheduler() {
         </button>
       </div>
 
-      <RecurringServicesList
+      <[REDACTED_TOKEN]
         services={scheduledServices}
         onRemove={removeService}
       />
@@ -145,7 +145,7 @@ export function RecurringScheduler() {
   );
 }
 
-function RecurringServicesList({ services, onRemove }) {
+function [REDACTED_TOKEN]({ services, onRemove }) {
   if (services.length === 0) {
     return (
       <div className="text-center py-12 text-gray-500">

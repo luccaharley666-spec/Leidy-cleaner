@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for services/SmartNotificationService.js</title>
+    <title>Code coverage report for services/[REDACTED_TOKEN].js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> SmartNotificationService.js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">services</a> [REDACTED_TOKEN].js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -750,7 +750,7 @@
 &nbsp;
 const logger = require('../utils/logger');
 &nbsp;
-class SmartNotificationService {
+class [REDACTED_TOKEN] {
   constructor() {
     this.notifications = new Map();
     this.userPreferences = new Map();
@@ -761,11 +761,11 @@ class SmartNotificationService {
   /**
    * Enviar notificação inteligente (melhor canal + melhor timing)
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync sendSmartNotification(userId, message) {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](userId, message) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const preferences = <span class="cstat-no" title="statement not covered" >this.getUserPreferences(userId);</span>
-      const optimalChannel = <span class="cstat-no" title="statement not covered" >this.determineOptimalChannel(userId, preferences);</span>
-      const optimalTime = <span class="cstat-no" title="statement not covered" >this.calculateOptimalSendTime(userId);</span>
+      const optimalChannel = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN](userId, preferences);</span>
+      const optimalTime = <span class="cstat-no" title="statement not covered" >this.[REDACTED_TOKEN](userId);</span>
 &nbsp;
       const notificationId = <span class="cstat-no" title="statement not covered" >`notif_smart_${Date.now()}`;</span>
       const notification = <span class="cstat-no" title="statement not covered" >{</span>
@@ -805,7 +805,7 @@ class SmartNotificationService {
   /**
    * Determinar melhor canal para o usuário
    */
-<span class="fstat-no" title="function not covered" >  de</span>termineOptimalChannel(userId, preferences) {
+<span class="fstat-no" title="function not covered" >  de</span>[REDACTED_TOKEN](userId, preferences) {
     const weights = <span class="cstat-no" title="statement not covered" >{</span>
       push: 0.4,
       email: 0.3,
@@ -825,7 +825,7 @@ class SmartNotificationService {
   /**
    * Calcular melhor hora para enviar notificação
    */
-<span class="fstat-no" title="function not covered" >  ca</span>lculateOptimalSendTime(userId) {
+<span class="fstat-no" title="function not covered" >  ca</span>[REDACTED_TOKEN](userId) {
     // Análise de histórico: quando o usuário mais interage
     const userHistory = <span class="cstat-no" title="statement not covered" >this.notificationLog.filter(<span class="fstat-no" title="function not covered" >n </span>=&gt; <span class="cstat-no" title="statement not covered" >n.userId === userId)</span>;</span>
 &nbsp;
@@ -977,7 +977,7 @@ class SmartNotificationService {
   /**
    ✅ NOVO: Registrar interação de notificação
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync recordNotificationInteraction(notificationId, action = <span class="branch-0 cbranch-no" title="branch not covered" >'opened')</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](notificationId, action = <span class="branch-0 cbranch-no" title="branch not covered" >'opened')</span> {
     const notification = <span class="cstat-no" title="statement not covered" >this.notifications.get(notificationId);</span>
 <span class="cstat-no" title="statement not covered" >    if (!notification) <span class="cstat-no" title="statement not covered" >return;</span></span>
 &nbsp;
@@ -1008,7 +1008,7 @@ class SmartNotificationService {
   /**
    * Obter métricas de engajamento
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync getEngagementMetrics(timeWindow = <span class="branch-0 cbranch-no" title="branch not covered" >7)</span> {
+<span class="fstat-no" title="function not covered" >  as</span>ync [REDACTED_TOKEN](timeWindow = <span class="branch-0 cbranch-no" title="branch not covered" >7)</span> {
     const recentNotifs = <span class="cstat-no" title="statement not covered" >this.notificationLog.filter(<span class="fstat-no" title="function not covered" >n </span>=&gt;</span>
 <span class="cstat-no" title="statement not covered" >      new Date() - new Date(n.timestamp) &lt; timeWindow * 24 * 60 * 60 * 1000</span>
     );
@@ -1082,7 +1082,7 @@ class SmartNotificationService {
   }
 }
 &nbsp;
-module.exports = new SmartNotificationService();
+module.exports = new [REDACTED_TOKEN]();
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

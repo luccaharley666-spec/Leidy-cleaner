@@ -34,11 +34,11 @@ nano .env.production
 
 **Variáveis OBRIGATÓRIAS:**
 ```env
-JWT_SECRET=af9e30fdd9b6cb9f101f210caa8ef8a1065fae9c6d7727783412508c11c0e8bd
+JWT_SECRET=[REDACTED_TOKEN]
 DATABASE_URL=postgresql://usuario:senha@postgres:5432/seu_banco
 REDIS_URL=redis://:senha@redis:6379
-STRIPE_KEY_PRODUCTION=pk_live_xxx
-STRIPE_SECRET_PRODUCTION=sk_live_xxx
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 SENTRY_DSN=https://xxx@sentry.io/xxx
 ```
 
@@ -73,7 +73,7 @@ sleep 10
 # Executar migrations
 docker-compose -f docker-compose.full.yml exec postgres psql \
   -U postgres -d limpeza_pro \
-  -f /docker-entrypoint-initdb.d/01-init.sql
+  -f /[REDACTED_TOKEN].d/01-init.sql
 ```
 
 ---
@@ -233,8 +233,8 @@ REDIS_PASSWORD=$(openssl rand -hex 16)
 
 # App
 JWT_SECRET=$(openssl rand -hex 32)
-STRIPE_KEY_PRODUCTION=pk_live_xxx
-STRIPE_SECRET_PRODUCTION=sk_live_xxx
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
+[REDACTED_TOKEN]=[REDACTED_TOKEN]
 SENTRY_DSN=https://xxx@sentry.io/xxx
 
 # URLs
@@ -384,10 +384,10 @@ aws secretsmanager create-secret \
 
 ```bash
 # HSTS Header (já em nginx.conf)
-add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
+add_header [REDACTED_TOKEN] "max-age=31536000; includeSubDomains" always;
 
 # CSP Header
-add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline';" always;
+add_header [REDACTED_TOKEN] "default-src 'self'; script-src 'self' 'unsafe-inline';" always;
 
 # X-Frame-Options
 add_header X-Frame-Options "SAMEORIGIN" always;
@@ -500,7 +500,7 @@ docker-compose logs redis
 
 - **Documentação:** Ver [EXPORT_INSTRUCTIONS.md](EXPORT_INSTRUCTIONS.md)
 - **Segurança:** Ver [SECURITY_FIXES.md](SECURITY_FIXES.md)
-- **Análise:** Ver [ANALISE_COMPLETA_ESTADO.md](ANALISE_COMPLETA_ESTADO.md)
+- **Análise:** Ver [[REDACTED_TOKEN].md]([REDACTED_TOKEN].md)
 - **Issues:** https://github.com/seu-repo/issues
 
 ---

@@ -16,10 +16,10 @@ mkdir -p "$(dirname "$DB")"
 
 # Apply the new feature migrations (SQLite compatible)
 echo "   - Criando tabelas de reviews, time_blocks, email_logs..."
-sqlite3 "$DB" < ./database/migrations/20260209_create_reviews_time_blocks_email_logs.sql 2>/dev/null || echo "   ⚠️  Algumas tabelas já existem (OK)"
+sqlite3 "$DB" < ./database/migrations/[REDACTED_TOKEN].sql 2>/dev/null || echo "   ⚠️  Algumas tabelas já existem (OK)"
 
 echo "   - Criando tabelas de affiliates, referrals..."
-sqlite3 "$DB" < ./database/migrations/20260209_create_affiliates_referrals.sql 2>/dev/null || echo "   ⚠️  Algumas tabelas já existem (OK)"
+sqlite3 "$DB" < ./database/migrations/[REDACTED_TOKEN].sql 2>/dev/null || echo "   ⚠️  Algumas tabelas já existem (OK)"
 
 echo "   - Adicionando índices..."
 sqlite3 "$DB" < ./database/migrations/001-add-indices.sql 2>/dev/null || echo "   ⚠️  Alguns índices já existem (OK)"

@@ -5,7 +5,7 @@
  */
 
 const { getDb } = require('../db/sqlite'); // ✅ Usar pool centralizado
-const { calculateBookingPrice, calculateLoyaltyBonus } = require('../utils/priceCalculator');
+const { [REDACTED_TOKEN], [REDACTED_TOKEN] } = require('../utils/priceCalculator');
 const ValidationService = require('../services/ValidationService');
 const CacheService = require('../services/CacheService');
 const QueryCacheService = require('../services/QueryCacheService');
@@ -99,11 +99,11 @@ class BookingController {
         status: 'pending'
       };
 
-      const priceCalc = calculateBookingPrice(booking, service);
+      const priceCalc = [REDACTED_TOKEN](booking, service);
       booking.base_price = priceCalc.basePrice;
       booking.extra_quarter_hours = priceCalc.extraQuarter;
       booking.staff_fee = priceCalc.staffFee;
-      booking.post_work_adjustment = priceCalc.postWorkAdjustment;
+      booking.[REDACTED_TOKEN] = priceCalc.postWorkAdjustment;
       booking.final_price = priceCalc.finalPrice;
 
       // ✅ Aplicar bônus de fidelidade
@@ -116,12 +116,12 @@ class BookingController {
       const result = await db.run(`INSERT INTO bookings (
           user_id, service_id, date, time, duration_hours,
           address, phone, base_price, extra_quarter_hours,
-          staff_fee, post_work_adjustment, final_price,
+          staff_fee, [REDACTED_TOKEN], final_price,
           is_post_work, has_extra_quarter, status, notes
         ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, validated.userId, validated.serviceId, validated.date, validated.time, 
       validated.durationHours, validated.address, validated.phone,
       booking.base_price, booking.extra_quarter_hours,
-      booking.staff_fee, booking.post_work_adjustment, booking.final_price,
+      booking.staff_fee, booking.[REDACTED_TOKEN], booking.final_price,
       booking.is_post_work, booking.has_extra_quarter, 'pending', sanitizedNotes);
 
       // ✅ Invalidar cache
@@ -142,7 +142,7 @@ class BookingController {
       // ✅ Enfileirar email de confirmação (assíncrono - não bloqueia resposta)
       if (user.email) {
         try {
-          await EmailQueueService.enqueueBookingConfirmation(
+          await EmailQueueService.[REDACTED_TOKEN](
             user.email,
             user.name || user.full_name,
             {
@@ -189,7 +189,7 @@ class BookingController {
 
       res.status(500).json({
         error: 'Erro ao criar agendamento',
-        code: 'BOOKING_CREATE_ERROR'
+        code: '[REDACTED_TOKEN]'
       });
         logger.error('Error creating booking', { 
           error: error.message,
@@ -435,7 +435,7 @@ class BookingController {
         return res.status(404).json({ error: 'Usuário não encontrado' });
       }
 
-      const loyaltyCalc = calculateLoyaltyBonus(user);
+      const loyaltyCalc = [REDACTED_TOKEN](user);
 
       await db.close();
       res.json({
@@ -459,7 +459,7 @@ class BookingController {
   /**
    * Criar agendamento recorrente
    */
-  async createRecurringBooking(req, res) {
+  async [REDACTED_TOKEN](req, res) {
     const db = await getDb();
     try {
       const { userId } = req.user;
