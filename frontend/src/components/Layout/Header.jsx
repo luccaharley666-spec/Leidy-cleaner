@@ -28,7 +28,7 @@ export default function Header() {
               {/* Brand Image - Circular with Border */}
               <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-2xl overflow-hidden border-2 border-slate-300 dark:border-slate-600 hover:border-cyan-500 transition-all">
                 <Image 
-                  src="/icon-brand.jpg" 
+                  src="/logo-leidy.svg" 
                   alt="Leidy Cleaner Brand" 
                   width={64} 
                   height={64} 
