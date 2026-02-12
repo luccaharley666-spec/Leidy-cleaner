@@ -12,8 +12,8 @@ class PermissionService {
     this.roles = new Map();
     this.roleHierarchy = new Map();
     
-    // this.__PLACEHOLDER();
-    // this.__PLACEHOLDER();
+    // this.initializeRoles();
+    // this.initializePermissions();
   }
 
   /**
@@ -249,7 +249,7 @@ class PermissionService {
         result.push({
           name: role,
           ...config,
-          permissions: this.__PLACEHOLDER(role)
+          permissions: this.getPermissionsForRole(role)
         });
       }
       return result;

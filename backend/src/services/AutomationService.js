@@ -9,7 +9,7 @@ class AutomationService {
   /**
    * Executar automações de agendamento
    */
-  async PLACEHOLDER(booking) {
+  async sendConfirmationNotification(booking) {
     try {
       logger.info(`Iniciando automações para agendamento ${booking.id}`);
 
@@ -85,7 +85,7 @@ class AutomationService {
   async sendConfirmations(booking) {
     try {
       // Notificação para cliente
-      // await NotificationService.__PLACEHOLDER(booking.id);
+      // await NotificationService.sendBookingConfirmation(booking.id);
       
       // Notificação para equipa
       // await NotificationService.notifyTeam(booking.id);
@@ -123,7 +123,7 @@ class AutomationService {
       logger.info(`Iniciando follow-up para agendamento ${bookingId}`);
 
       // Enviar solicitação de avaliação
-      // await NotificationService.__PLACEHOLDER(bookingId);
+      // await NotificationService.sendRatingRequest(bookingId);
 
       // Agendar follow-up posterior
       // await SchedulerService.schedule('follow-up-2weeks', bookingId, 14 * 24 * 60 * 60 * 1000);
@@ -138,7 +138,7 @@ class AutomationService {
   /**
    * Resolver problemas automaticamente
    */
-  async PLACEHOLDER(issue) {
+  async handleBookingIssue(issue) {
     try {
       logger.info(`Tratando problema: ${issue.type}`);
 
@@ -150,12 +150,12 @@ class AutomationService {
 
       case 'quality_complaint':
         // Reclamação de qualidade
-        // await this.__PLACEHOLDER(issue.bookingId);
+        // await this.escalateQualityComplaint(issue.bookingId);
         break;
 
       case 'team_unavailable':
         // Equipa não disponível
-        // await this.__PLACEHOLDER(issue.bookingId);
+        // await this.reassignBooking(issue.bookingId);
         break;
 
       default:

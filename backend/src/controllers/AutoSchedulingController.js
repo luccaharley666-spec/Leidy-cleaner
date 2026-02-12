@@ -5,13 +5,13 @@
 
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const AutoSchedulingService = require('../services/AutoSchedulingService');
 
 // POST /api/scheduling/auto-schedule
 router.post('/auto-schedule', async (req, res) => {
   try {
     const { serviceType, location, date, duration, clientId, PLACEHOLDER } = req.body;
-    const schedule = await PLACEHOLDER.__PLACEHOLDER({
+    const schedule = await AutoSchedulingService.createAutoSchedule({
       serviceType,
       location,
       date,
@@ -38,7 +38,7 @@ router.post('/optimize-route', async (req, res) => {
 router.post('/sync-calendar', async (req, res) => {
   try {
     const { professionalId, schedule } = req.body;
-    const result = await PLACEHOLDER.__PLACEHOLDER(professionalId, schedule);
+    const result = await AutoSchedulingService.syncCalendar(professionalId, schedule);
     res.json(result);
   } catch (error) {
     res.status(400).json({ error: error.message });

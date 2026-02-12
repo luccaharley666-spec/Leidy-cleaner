@@ -6,7 +6,7 @@ class TwilioService {
     this.accountSid = process.env.TWILIO_ACCOUNT_SID;
     this.authToken = process.env.TWILIO_AUTH_TOKEN;
     this.phoneNumber = process.env.TWILIO_PHONE_NUMBER;
-    this.whatsappFrom = process.env.__PLACEHOLDER;
+    this.whatsappFrom = process.env.TWILIO_WHATSAPP_NUMBER;
 
     this.initializeClient();
   }

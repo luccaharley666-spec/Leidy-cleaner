@@ -39,7 +39,7 @@ router.get('/conversion', (req, res) => {
 
 // GET /api/analytics/clv
 router.get('/clv', (req, res) => {
-  const clvData = AnalyticsService.__PLACEHOLDER();
+  const clvData = AnalyticsService.getCustomerLifetimeValue();
   res.json(clvData);
 });
 
@@ -51,7 +51,7 @@ router.get('/churn', (req, res) => {
 
 // GET /api/analytics/at-risk-customers
 router.get('/at-risk-customers', (req, res) => {
-  const atRisk = AnalyticsService.__PLACEHOLDER();
+  const atRisk = AnalyticsService.getRiskCustomers();
   res.json(atRisk);
 });
 

@@ -5,13 +5,13 @@
 
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const SmartNotificationService = require('../services/SmartNotificationService');
 
 // POST /api/smart-notifications/send
 router.post('/send', async (req, res) => {
   try {
     const { userId, message } = req.body;
-    const notification = await PLACEHOLDER.__PLACEHOLDER(userId, message);
+    const notification = await SmartNotificationService.sendNotification(userId, message);
     res.status(201).json(notification);
   } catch (error) {
     res.status(400).json({ error: error.message });

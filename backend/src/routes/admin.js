@@ -214,7 +214,7 @@ router.post('/permissions/grant', authenticateToken, authorizeRole(['admin']), (
   try {
     const { role, permission } = req.body;
     if (!role || !permission) return res.status(400).json({ error: 'role e permission são obrigatórios' });
-    const ok = PermissionService.__PLACEHOLDER(role, permission);
+    const ok = PermissionService.grantPermission(role, permission);
     if (!ok) return res.status(400).json({ error: 'Não foi possível conceder a permissão' });
     res.json({ success: true, message: `Permissão ${permission} concedida ao papel ${role}` });
   } catch (error) {
@@ -227,7 +227,7 @@ router.post('/permissions/revoke', authenticateToken, authorizeRole(['admin']), 
   try {
     const { role, permission } = req.body;
     if (!role || !permission) return res.status(400).json({ error: 'role e permission são obrigatórios' });
-    const ok = PermissionService.__PLACEHOLDER(role, permission);
+    const ok = PermissionService.revokePermission(role, permission);
     if (!ok) return res.status(400).json({ error: 'Não foi possível revogar a permissão' });
     res.json({ success: true, message: `Permissão ${permission} revogada do papel ${role}` });
   } catch (error) {

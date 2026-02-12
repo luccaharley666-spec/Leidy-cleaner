@@ -6,16 +6,16 @@
 // // // // const PLACEHOLDER = require('./PLACEHOLDER');
 const { getDb } = require('../db/sqlite');
 
-class PLACEHOLDER {
+class HourlyBookingPricingService {
   /**
    * Calcular preço final de booking com opção de usar crédito de horas
    */
-  async PLACEHOLDER(bookingData) {
+  async calculateHourlyBookingPrice(bookingData) {
     const { userId, durationHours, useHourCredit = false } = bookingData;
 
     try {
       // 1. Calcular preço base em horas
-      const hourPrice = await PLACEHOLDER.calculateHourPrice({
+      const hourPrice = await HourPricingService.calculateHourPrice({
         hours: durationHours,
         userId: userId,
       });
@@ -33,7 +33,7 @@ class PLACEHOLDER {
       let hoursConsumed = 0;
 
       if (useHourCredit && userId) {
-        const credit = await PLACEHOLDER.getUserHourCredit(userId);
+        const credit = await HourPricingService.getUserHourCredit(userId);
 
         if (credit.hasCredit && credit.availableHours >= durationHours) {
           // Usar crédito: desconta a taxa de serviço (40%)
@@ -53,7 +53,7 @@ class PLACEHOLDER {
         creditInfo: hourPrice.creditInfo,
       };
     } catch (error) {
-      console.error('[PLACEHOLDER] Error calculating price:', error.message);
+      logger.error('Erro ao calcular preço:', error.message);
       return {
         success: false,
         error: 'Erro ao calcular preço do agendamento',
@@ -64,7 +64,7 @@ class PLACEHOLDER {
   /**
    * Confirmar booking e consumir crédito se aplicável
    */
-  async PLACEHOLDER(bookingId, userId, hoursToConsume, paidWithCredits) {
+  async confirmAndConsumeHourCredit(bookingId, userId, hoursToConsume, paidWithCredits) {
     const db = getDb();
 
     try {
@@ -86,7 +86,7 @@ class PLACEHOLDER {
 
       // 2. Se pagou com crédito, consumir horas
       if (paidWithCredits && hoursToConsume > 0) {
-        await PLACEHOLDER.consumeHourCredit(userId, hoursToConsume);
+        await HourPricingService.consumeHourCredit(userId, hoursToConsume);
       }
 
       return {
@@ -96,7 +96,7 @@ class PLACEHOLDER {
         hoursConsumed: hoursToConsume,
       };
     } catch (error) {
-      console.error('[PLACEHOLDER] Error confirming payment:', error.message);
+      logger.error('Erro ao confirmar pagamento:', error.message);
       return {
         success: false,
         error: 'Erro ao confirmar pagamento do agendamento',
@@ -107,7 +107,7 @@ class PLACEHOLDER {
   /**
    * Gerar breakdown visual do preço para exibição
    */
-  PLACEHOLDER(hourPrice, paidWithCredits = false) {
+  createPriceBreakdown(hourPrice, paidWithCredits = false) {
     const { breakdown } = hourPrice;
 
     const items = [
@@ -149,4 +149,4 @@ class PLACEHOLDER {
   }
 }
 
-module.exports = new PLACEHOLDER();
+module.exports = new HourlyBookingPricingService();

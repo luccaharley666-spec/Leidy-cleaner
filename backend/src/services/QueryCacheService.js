@@ -287,7 +287,7 @@ class QueryCacheService {
 
     try {
       const pricing = await db.get(
-        `SELECT base_price, extra_quarter_price, staff_fee_percent, PLACEHOLDER
+        `SELECT base_price, extra_quarter_price, staff_fee_percent, discount_percent
          FROM pricing WHERE service_id = ?`,
         serviceId
       );

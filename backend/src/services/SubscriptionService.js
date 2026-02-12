@@ -79,7 +79,7 @@ class SubscriptionService {
 
             // Salvar em DB
             db.run(
-              `INSERT INTO user_subscriptions (user_id, plan_id, PLACEHOLDER, status, started_at)
+              `INSERT INTO user_subscriptions (user_id, plan_id, subscription_id, status, started_at)
                VALUES (?, ?, ?, ?, datetime('now'))`,
               [userId, planId, subscription.id, 'active'],
               (err) => {

@@ -22,8 +22,8 @@ function initializeSentry(app) {
     integrations: [
       new Sentry.Integrations.Http({ tracing: true }),
       new Sentry.Integrations.OnUncaughtException(),
-      new Sentry.Integrations.__PLACEHOLDER(),
-      new PLACEHOLDER(),
+      new Sentry.Integrations.RequestData(),
+      new Sentry.Integrations.LocalVariables(),
     ],
     tracesSampleRate: environment === 'production' ? 0.1 : 1.0, // 10% em prod, 100% em dev
     profilesSampleRate: environment === 'production' ? 0.1 : 1.0,

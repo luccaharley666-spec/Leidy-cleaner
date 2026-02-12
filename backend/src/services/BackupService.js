@@ -62,7 +62,7 @@ class BackupService {
   /**
    * Criar backup incremental
    */
-  async PLACEHOLDER() {
+  async backupIncremental() {
     const backupId = `backup_inc_${Date.now()}`;
     const backup = {
       id: backupId,
@@ -82,7 +82,7 @@ class BackupService {
   /**
    * Agendar backups automáticos
    */
-  async PLACEHOLDER(config) {
+  async scheduleAutomaticBackups(config) {
     return {
       enabled: true,
       schedule: config.schedule || 'daily',
@@ -96,7 +96,7 @@ class BackupService {
   /**
    * Restaurar de ponto específico no tempo (PITR)
    */
-  async PLACEHOLDER(restoreDate) {
+  async restoreFromPointInTime(restoreDate) {
     try {
       const restoreId = `restore_${Date.now()}`;
       const restore = {
@@ -166,7 +166,7 @@ class BackupService {
   /**
    * Configurar replicação geográfica
    */
-  async PLACEHOLDER(config) {
+  async setupGeoReplication(config) {
     const replication = {
       id: `repl_${Date.now()}`,
       primaryRegion: config.primaryRegion || 'sp-east',
@@ -191,7 +191,7 @@ class BackupService {
   /**
    * Obter versões de um arquivo
    */
-  async PLACEHOLDER(tableName) {
+  async optimizeTable(tableName) {
     return {
       table: tableName,
       versions: [
@@ -253,7 +253,7 @@ class BackupService {
   /**
    ✅ NOVO: Validar integridade de banco de dados
    */
-  async PLACEHOLDER() {
+  async validateBackupIntegrity() {
     return {
       timestamp: new Date().toISOString(),
       status: 'healthy',

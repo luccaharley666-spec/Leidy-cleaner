@@ -33,7 +33,7 @@ class ReferralService {
 
       if (existing) {
         // Retry recursivo (muito raro)
-        return this.__PLACEHOLDER(userId);
+        return this.generateReferralCode(userId);
       }
 
       // Criar link de referência

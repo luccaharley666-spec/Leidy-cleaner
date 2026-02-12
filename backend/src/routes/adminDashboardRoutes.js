@@ -11,12 +11,12 @@
  */
 
 const express = require('express');
-const PLACEHOLDER = require('../controllers/PLACEHOLDER');
+const AdminDashboardController = require('../controllers/AdminDashboardController');
 const { authenticateToken } = require('../middleware/auth');
 
-function PLACEHOLDER(db) {
+function createAdminDashboardRoutes(db) {
   const router = express.Router();
-  const controller = new PLACEHOLDER(db);
+  const controller = new AdminDashboardController(db);
 
   /**
    * Middleware: Verificar se é admin
@@ -82,4 +82,4 @@ function PLACEHOLDER(db) {
   return router;
 }
 
-module.exports = PLACEHOLDER;
+module.exports = createAdminDashboardRoutes;

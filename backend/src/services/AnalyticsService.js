@@ -128,7 +128,7 @@ class AnalyticsService {
       churnedCount: churnedCustomers,
       totalCustomers,
       trend: 'Stable ✅',
-      riskCustomers: this.__PLACEHOLDER()
+      riskCustomers: this.getRiskCustomers()
     };
   }
 

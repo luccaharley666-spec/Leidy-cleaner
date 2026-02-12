@@ -99,11 +99,11 @@ class BookingController {
         status: 'pending'
       };
 
-      const priceCalc = PLACEHOLDER(booking, service);
+      const priceCalc = generatePriceSummary(booking, service);
       booking.base_price = priceCalc.basePrice;
       booking.extra_quarter_hours = priceCalc.extraQuarter;
       booking.staff_fee = priceCalc.staffFee;
-      booking.__PLACEHOLDER = priceCalc.postWorkAdjustment;
+      booking.post_work_adjustment = priceCalc.postWorkAdjustment;
       booking.final_price = priceCalc.finalPrice;
 
       // ✅ Aplicar bônus de fidelidade
@@ -116,13 +116,25 @@ class BookingController {
       const result = await db.run(`INSERT INTO bookings (
           user_id, service_id, date, time, duration_hours,
           address, phone, base_price, extra_quarter_hours,
-          staff_fee, PLACEHOLDER, final_price,
+          staff_fee, post_work_adjustment, final_price,
           is_post_work, has_extra_quarter, status, notes
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, validated.userId, validated.serviceId, validated.date, validated.time, 
-      validated.durationHours, validated.address, validated.phone,
-      booking.base_price, booking.extra_quarter_hours,
-      booking.staff_fee, booking.__PLACEHOLDER, booking.final_price,
-      booking.is_post_work, booking.has_extra_quarter, 'pending', sanitizedNotes);
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        validated.userId, 
+        validated.serviceId, 
+        validated.date, 
+        validated.time, 
+        validated.durationHours, 
+        validated.address, 
+        validated.phone,
+        booking.base_price, 
+        booking.extra_quarter_hours,
+        booking.staff_fee, 
+        booking.post_work_adjustment, 
+        booking.final_price,
+        booking.is_post_work, 
+        booking.has_extra_quarter, 
+        'pending', 
+        sanitizedNotes);
 
       // ✅ Invalidar cache
       CacheService.invalidatePattern(`user:${validated.userId}:*`);
@@ -142,7 +154,7 @@ class BookingController {
       // ✅ Enfileirar email de confirmação (assíncrono - não bloqueia resposta)
       if (user.email) {
         try {
-          await EmailQueueService.__PLACEHOLDER(
+          await EmailQueueService.queueBookingConfirmation(
             user.email,
             user.name || user.full_name,
             {
@@ -459,7 +471,7 @@ class BookingController {
   /**
    * Criar agendamento recorrente
    */
-  async PLACEHOLDER(req, res) {
+  async createRecurringBooking(req, res) {
     const db = await getDb();
     try {
       const { userId } = req.user;

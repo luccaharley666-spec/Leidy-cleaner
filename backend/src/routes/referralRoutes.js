@@ -67,7 +67,7 @@ router.post('/withdraw', authenticateToken, async (req, res) => {
       return res.status(400).json({ success: false, error: 'Valor inválido' });
     }
 
-    const result = await ReferralService.__PLACEHOLDER(userId, amount);
+    const result = await ReferralService.withdrawEarnings(userId, amount);
     res.json({ success: true, result });
   } catch (error) {
     console.error('Erro ao sacar ganhos:', error);

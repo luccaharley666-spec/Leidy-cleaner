@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.16% </span>
+                <span class="strong">27.01% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>49/174</span>
+                <span class='fraction'>47/174</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">25.31% </span>
+                <span class="strong">24.05% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>20/79</span>
+                <span class='fraction'>19/79</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">28.16% </span>
+                <span class="strong">27.01% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>49/174</span>
+                <span class='fraction'>47/174</span>
             </div>
         
             
@@ -918,10 +918,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -955,30 +955,30 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1415,10 +1415,10 @@ class BookingController {
 &nbsp;
       await db.run(query, params);
 &nbsp;
-      const booking = await db.get('SELECT * FROM bookings WHERE id = ?', bookingId);
+      const booking = <span class="cstat-no" title="statement not covered" >await db.get('SELECT * FROM bookings WHERE id = ?', bookingId);</span>
 &nbsp;
       // ✅ NOVO: Invalidar cache de bookings do usuário
-      QueryCacheService.invalidateUserCache(booking.user_id);
+<span class="cstat-no" title="statement not covered" >      QueryCacheService.invalidateUserCache(booking.user_id);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      await db.close();</span>
 <span class="cstat-no" title="statement not covered" >      res.json({</span>
@@ -1452,9 +1452,9 @@ class BookingController {
 &nbsp;
       // Primeiro, obter o booking antes de cancelar (para pegar o userId)
       const booking = await db.get('SELECT * FROM bookings WHERE id = ?', bookingId);
-      <span class="missing-if-branch" title="else path not taken" >E</span>if (!booking) {
-        await db.close();
-        return res.status(404).json({ error: 'Agendamento não encontrado' });
+<span class="cstat-no" title="statement not covered" >      if (!booking) {</span>
+<span class="cstat-no" title="statement not covered" >        await db.close();</span>
+<span class="cstat-no" title="statement not covered" >        return res.status(404).json({ error: 'Agendamento não encontrado' });</span>
       }
 &nbsp;
       const notes = <span class="cstat-no" title="statement not covered" >reason ? ` | Motivo do cancelamento: ${reason}` : '';</span>
@@ -1473,9 +1473,9 @@ class BookingController {
       });
 &nbsp;
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      logger.error('Erro ao cancelar agendamento:', error);</span>
-<span class="cstat-no" title="statement not covered" >      await db.close();</span>
-<span class="cstat-no" title="statement not covered" >      res.status(500).json({ error: error.message });</span>
+      logger.error('Erro ao cancelar agendamento:', error);
+      await db.close();
+      res.status(500).json({ error: error.message });
     }
   }
 &nbsp;
@@ -1561,7 +1561,7 @@ module.exports = new BookingController();
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T22:31:41.164Z
+                at 2026-02-12T15:07:00.868Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

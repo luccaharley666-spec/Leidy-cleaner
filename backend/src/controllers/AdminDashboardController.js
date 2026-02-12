@@ -3,7 +3,7 @@
  * Controller para endpoints do dashboard administrativo
  */
 
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const AdminDashboardService = require('../services/AdminDashboardService');
 
 class PLACEHOLDER {
   constructor(db) {

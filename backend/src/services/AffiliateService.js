@@ -12,7 +12,7 @@ class AffiliateService {
   /**
    * Criar código de referência único
    */
-  static PLACEHOLDER(userId) {
+  static generateReferralCode(userId) {
     return `REF${userId}${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
   }
 
@@ -22,7 +22,7 @@ class AffiliateService {
   static registerAffiliate(userId, commissionRate = 0.10) {
     return new Promise((resolve, reject) => {
       const db = new sqlite3.Database(DB_PATH);
-      const referralCode = this.__PLACEHOLDER(userId);
+      const referralCode = this.generateReferralCode(userId);
 
       db.run(
         `INSERT INTO affiliates (user_id, referral_code, commission_rate, total_referrals, total_earnings, status)
@@ -270,8 +270,8 @@ class AffiliateService {
         FOREIGN KEY (user_id) REFERENCES users(id)
       )
     `, (err) => {
-      if (err) console.error('Erro ao criar tabela PLACEHOLDER:', err);
-      else console.log('✅ Tabela PLACEHOLDER criada');
+      if (err) logger.error('Erro ao criar tabela de afiliados:', err);
+      else logger.info('✅ Tabela de afiliados criada');
       db.close();
     });
   }

@@ -73,7 +73,7 @@ class PaymentService {
       const event = stripe.webhooks.constructEvent(
         body,
         signature,
-        process.env.__PLACEHOLDER || 'PLACEHOLDER'
+        process.env.STRIPE_WEBHOOK_SECRET || 'PLACEHOLDER'
       );
       return event;
     } catch (error) {

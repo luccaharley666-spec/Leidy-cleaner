@@ -176,7 +176,7 @@ class PixService {
     let payload = '000201';
     
     // Merchant Account Information
-      const merchantAccount = this.__PLACEHOLDER(pixKey);
+      const merchantAccount = this._mai(pixKey);
     payload += '26' + String(merchantAccount.length).padStart(2, '0') + merchantAccount;
     
     // Merchant Category Code (limpeza doméstica = 7230)
@@ -203,7 +203,7 @@ class PixService {
     payload += '60' + String(city.length).padStart(2, '0') + city;
     
     // Additional Data Field
-    const additionalData = this.__PLACEHOLDER(description, orderId);
+    const additionalData = this._adf(description, orderId);
     payload += '62' + String(additionalData.length).padStart(2, '0') + additionalData;
     
     // CRC16
@@ -236,7 +236,7 @@ class PixService {
   }
 
   // Compatibilidade: método único usado pelos consumidores do serviço
-  static __PLACEHOLDER(...args) {
+  static _pixKey(...args) {
     if (args.length === 1) return this._mai(args[0]);
     return this._adf(args[0], args[1]);
   }
@@ -269,20 +269,20 @@ class PixService {
 
 module.exports = PixService;
 
-// Attach __PLACEHOLDER shim to static methods so tests can mock or set return values
+// Attach mockable shim to static methods so tests can mock or set return values
 function attachPlaceholderStatic(name) {
   if (typeof PixService[name] === 'function') {
     if (typeof jest !== 'undefined' && typeof jest.fn === 'function') {
       PixService[name] = jest.fn(PixService[name]);
     }
     try {
-      PixService[name].__PLACEHOLDER = function(val) {
+      PixService[name].__setMockValue = function(val) {
         try {
           if (PixService[name].mockReturnValue) return PixService[name].mockReturnValue(val);
         } catch (e) {}
         try {
           PixService[name] = () => val;
-          PixService[name].__PLACEHOLDER = () => {};
+          PixService[name].__setMockValue = () => {};
         } catch (e) {}
         return undefined;
       };

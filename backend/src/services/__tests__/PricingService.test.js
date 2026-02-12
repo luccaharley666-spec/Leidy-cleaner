@@ -16,10 +16,10 @@ describe('PricingService (unit)', () => {
       daysUntilService: 1
     };
 
-    const result = await PricingService.__PLACEHOLDER(data);
+    const result = await PricingService.calculatePrice(data);
     expect(result).toHaveProperty('finalPrice');
     expect(typeof result.finalPrice).toBe('number');
-    expect(result.finalPrice).__PLACEHOLDER(0);
+    expect(result.finalPrice).toBeGreaterThan(0);
     expect(result).toHaveProperty('breakdown');
   });
 
@@ -34,7 +34,7 @@ describe('PricingService (unit)', () => {
       daysUntilService: 1
     };
 
-    const options = await PricingService.__PLACEHOLDER(data);
+    const options = await PricingService.getPricingOptions(data);
     expect(options).toHaveProperty('normal');
     expect(options).toHaveProperty('express');
     expect(options).toHaveProperty('weekly');

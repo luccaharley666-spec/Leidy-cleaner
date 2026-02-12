@@ -1,6 +1,6 @@
 const express = require('express');
 const { authenticateToken } = require('../middleware/auth');
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const RecurringBookingService = require('../services/RecurringBookingService');
 
 const router = express.Router();
 

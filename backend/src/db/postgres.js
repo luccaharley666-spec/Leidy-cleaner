@@ -44,8 +44,8 @@ function initializePool() {
   }
 }
 
-// Allow tests to override behavior via initializePool.__PLACEHOLDER(fn)
-initializePool.__PLACEHOLDER = function(fn) {
+// Allow tests to override behavior via initializePool.__setMockValue(fn)
+initializePool.__setMockValue = function(fn) {
   if (typeof fn === 'function') initializePoolOverride = fn;
   return undefined;
 };

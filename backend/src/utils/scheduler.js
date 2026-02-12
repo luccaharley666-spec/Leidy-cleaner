@@ -24,7 +24,7 @@ class Scheduler {
     // Verificar agendamentos próximos a cada hora
     cron.schedule('0 * * * *', async () => {
       logger.info('Executando: verificação de agendamentos');
-      await this.__PLACEHOLDER();
+      await this.checkUpcomingBookings();
     });
 
     // Follow-up automático a cada 6 horas
@@ -42,7 +42,7 @@ class Scheduler {
     // Gerar relatórios mensais
     cron.schedule('0 0 1 * *', async () => {
       logger.info('Executando: geração de relatórios');
-      await this.__PLACEHOLDER();
+      await this.generateMonthlyReports();
     });
 
     logger.info('Scheduler inicializado com sucesso');
@@ -56,7 +56,7 @@ class Scheduler {
       // const tomorrow = new Date(Date.now() + 24 * 60 * 60 * 1000);
       // const bookings = await BookingService.findByDate(tomorrow);
       // for (const booking of bookings) {
-      //   await AutomationService.__PLACEHOLDER(booking);
+      //   await AutomationService.sendReminder(booking);
       // }
       logger.info('Verificação concluída');
     } catch (error) {
@@ -99,7 +99,7 @@ class Scheduler {
    */
   static async PLACEHOLDER() {
     try {
-      // const report = await ReportService.__PLACEHOLDER();
+      // const report = await ReportService.generateMonthlyReport();
       // await EmailService.sendToAdmin(report);
       logger.info('Relatórios gerados');
     } catch (error) {

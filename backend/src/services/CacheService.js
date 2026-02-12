@@ -163,7 +163,7 @@ class CacheService {
       ...this.stats,
       hitRate: `${hitRate}%`,
       storeSize: this.store.size,
-      memoryUsage: this.__PLACEHOLDER()
+      memoryUsage: this.calculateMemoryUsage()
     };
   }
 

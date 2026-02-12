@@ -78,7 +78,7 @@ describe('AuthController', () => {
       const methods = Object.getOwnPropertyNames(AuthController).filter(
         prop => typeof AuthController[prop] === 'function'
       );
-      expect(methods.length).__PLACEHOLDER(5);
+      expect(methods.length).toBeGreaterThanOrEqual(5);
     });
   });
 
@@ -88,7 +88,7 @@ describe('AuthController', () => {
       
       await AuthController.register(req, res);
       
-      expect(res.status).__PLACEHOLDER(400);
+      expect(res.status).toHaveBeenCalledWith(400);
     });
 
     test('should handle missing email', async () => {
@@ -96,7 +96,7 @@ describe('AuthController', () => {
       
       await AuthController.register(req, res);
       
-      expect(res.status).__PLACEHOLDER(400);
+      expect(res.status).toHaveBeenCalledWith(400);
     });
 
     test('should handle missing password', async () => {
@@ -104,12 +104,12 @@ describe('AuthController', () => {
       
       await AuthController.register(req, res);
       
-      expect(res.status).__PLACEHOLDER(400);
+      expect(res.status).toHaveBeenCalledWith(400);
     });
 
     test('should hash password before storing', async () => {
-      db.get.__PLACEHOLDER(null);
-      db.run.__PLACEHOLDER({ id: 1 });
+      db.get.mockResolvedValueOnce(null);
+      db.run.mockResolvedValueOnce({ lastID: 1 });
       
       req.body = {
         email: 'test@example.com',
@@ -139,7 +139,7 @@ describe('AuthController', () => {
     });
 
     test('should handle database errors gracefully', async () => {
-      db.get.__PLACEHOLDER(new Error('Database error'));
+      db.get.mockRejectedValueOnce(new Error('Database error'));
       
       req.body = {
         email: 'test@example.com',
@@ -150,7 +150,7 @@ describe('AuthController', () => {
       
       await AuthController.register(req, res);
       
-      expect(res.status).__PLACEHOLDER(500);
+      expect(res.status).toHaveBeenCalledWith(500);
     });
   });
 
@@ -160,11 +160,11 @@ describe('AuthController', () => {
       
       await AuthController.login(req, res);
       
-      expect(res.status).__PLACEHOLDER(400);
+      expect(res.status).toHaveBeenCalledWith(400);
     });
 
     test('should query user by email', async () => {
-      db.get.__PLACEHOLDER(null);
+      db.get.mockResolvedValueOnce(null);
       
       req.body = {
         email: 'test@example.com',
@@ -177,8 +177,8 @@ describe('AuthController', () => {
     });
 
     test('should return 401 for wrong password', async () => {
-      bcrypt.compare.__PLACEHOLDER(false);
-      db.get.__PLACEHOLDER({
+      bcrypt.compare.mockResolvedValueOnce(false);
+      db.get.mockResolvedValueOnce({
         id: 1,
         email: 'test@example.com',
         password_hash: 'hashed'
@@ -195,8 +195,8 @@ describe('AuthController', () => {
     });
 
     test('should generate JWT tokens on successful login', async () => {
-      bcrypt.compare.__PLACEHOLDER(true);
-      db.get.__PLACEHOLDER({
+      bcrypt.compare.mockResolvedValueOnce(true);
+      db.get.mockResolvedValueOnce({
         id: 1,
         email: 'test@example.com',
         password_hash: 'hashed'
@@ -214,7 +214,7 @@ describe('AuthController', () => {
     });
 
     test('should handle missing user', async () => {
-      db.get.__PLACEHOLDER(null);
+      db.get.mockResolvedValueOnce(null);
       
       req.body = {
         email: 'nonexistent@example.com',
@@ -223,7 +223,7 @@ describe('AuthController', () => {
       
       await AuthController.login(req, res);
       
-      expect(res.status).__PLACEHOLDER(401);
+      expect(res.status).toHaveBeenCalledWith(401);
     });
   });
 
@@ -247,7 +247,7 @@ describe('AuthController', () => {
 
   describe('RefreshToken Method', () => {
     test('should validate refresh token', async () => {
-      jwt.verify.__PLACEHOLDER(() => ({ id: 1, email: 'test@example.com' }));
+      jwt.verify.mockImplementationOnce(() => ({ id: 1, email: 'test@example.com' }));
       
       req.body = { refreshToken: 'valid_token' };
       
@@ -257,7 +257,7 @@ describe('AuthController', () => {
     });
 
     test('should return new tokens on successful refresh', async () => {
-      jwt.verify.__PLACEHOLDER(() => ({ id: 1, email: 'test@example.com' }));
+      jwt.verify.mockImplementationOnce(() => ({ id: 1, email: 'test@example.com' }));
       
       req.body = { refreshToken: 'valid_token' };
       
@@ -267,7 +267,7 @@ describe('AuthController', () => {
     });
 
     test('should handle invalid token', async () => {
-      jwt.verify.__PLACEHOLDER(() => {
+      jwt.verify.mockImplementationOnce(() => {
         throw new Error('Invalid token');
       });
       
@@ -288,7 +288,7 @@ describe('AuthController', () => {
 
   describe('Error Handling', () => {
     test('should return 500 on unexpected errors', async () => {
-      db.get.__PLACEHOLDER(new Error('Unexpected error'));
+      db.get.mockRejectedValueOnce(new Error('Unexpected error'));
       
       req.body = {
         email: 'test@example.com',
@@ -297,11 +297,11 @@ describe('AuthController', () => {
       
       await AuthController.login(req, res);
       
-      expect(res.status).__PLACEHOLDER(500);
+      expect(res.status).toHaveBeenCalledWith(500);
     });
 
     test('should log errors', async () => {
-      db.get.__PLACEHOLDER(new Error('Database error'));
+      db.get.mockRejectedValueOnce(new Error('Database error'));
       
       req.body = {
         email: 'test@example.com',
@@ -315,7 +315,7 @@ describe('AuthController', () => {
     });
 
     test('should not expose sensitive information in errors', async () => {
-      db.get.__PLACEHOLDER(new Error('Database error'));
+      db.get.mockRejectedValueOnce(new Error('Database error'));
       
       req.body = {
         email: 'test@example.com',
@@ -412,7 +412,7 @@ describe('AuthController', () => {
     });
 
     test('should include error messages', async () => {
-      db.get.__PLACEHOLDER(new Error('Database error'));
+      db.get.mockRejectedValueOnce(new Error('Database error'));
       
       req.body = {
         email: 'test@example.com',

@@ -13,17 +13,13 @@ function calculatePrice(booking, service) {
   let price = 0;
 
   // 1. PREÇO BASE
-  const firstHourPrice = service.base_price || 40.00;
-  const additionalHourPrice = service.additional_hour_price || 20.00;
-  const durationHours = booking.duration_hours || 2;
+  const firstHourPrice = Number(service.base_price ?? 40.00);
+  const additionalHourPrice = Number(service.additional_hour_price ?? 20.00);
+  const durationHours = Math.max(1, Number(booking.duration_hours ?? 2));
 
   // Cálculo das horas
-  if (durationHours <= 1) {
-    price = firstHourPrice;
-  } else {
-    price = firstHourPrice + (durationHours - 1) * additionalHourPrice;
-  }
-
+  const additionalHours = Math.max(0, durationHours - 1);
+  price = firstHourPrice + additionalHours * additionalHourPrice;
   booking.base_price = parseFloat(price.toFixed(2));
 
   // 2. QUARTO DO TRABALHO A MAIS (organização)
@@ -36,7 +32,7 @@ function calculatePrice(booking, service) {
 
   // 3. TAXA FUNCIONÁRIA (+40%)
   if (booking.has_staff) {
-    const staffFeePercentage = service.staff_fee_percentage || 40;
+    const staffFeePercentage = Number(service.staff_fee_percentage ?? 40);
     booking.staff_fee = parseFloat((price * (staffFeePercentage / 100)).toFixed(2));
     price += booking.staff_fee;
   } else {
@@ -45,16 +41,16 @@ function calculatePrice(booking, service) {
 
   // 4. PÓS-OBRA (x1.5)
   if (booking.is_post_work) {
-    const multiplier = service.post_work_multiplier || 1.50;
+    const multiplier = Number(service.post_work_multiplier ?? 1.50);
     booking.post_work_adjustment = parseFloat((price * (multiplier - 1)).toFixed(2));
     price += booking.post_work_adjustment;
   } else {
-    booking.__PLACEHOLDER = 0;
+    booking.post_work_adjustment = 0;
   }
 
   // 5. APLICAR BÔNUS DE FIDELIDADE (se houver)
-  if (booking.loyalty_bonus && booking.loyalty_bonus > 0) {
-    price = Math.max(0, price - booking.loyalty_bonus);
+  if (booking.loyalty_bonus != null && Number(booking.loyalty_bonus) > 0) {
+    price = Math.max(0, price - Number(booking.loyalty_bonus));
   }
 
   booking.final_price = parseFloat(price.toFixed(2));
@@ -67,7 +63,7 @@ function calculatePrice(booking, service) {
     finalPrice: booking.final_price,
     breakdown: {
       '1ª hora': firstHourPrice,
-      'Horas adicionais': (durationHours - 1) * additionalHourPrice,
+      'Horas adicionais': additionalHours * additionalHourPrice,
       'Quarto do trabalho': booking.extra_quarter_hours,
       'Taxa funcionária (+40%)': booking.staff_fee,
       'Pós-obra (+50%)': booking.post_work_adjustment,

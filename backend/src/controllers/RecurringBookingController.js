@@ -5,13 +5,13 @@
 
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const RecurringBookingService = require('../services/RecurringBookingService');
 
 // POST /api/bookings/recurring
 router.post('/recurring', (req, res) => {
   try {
     const { userId, serviceId, frequency, dayOfWeek, time, startDate, notes } = req.body;
-    const booking = PLACEHOLDER.__PLACEHOLDER({
+    const booking = RecurringBookingService.createRecurring({
       userId,
       serviceId,
       frequency,
@@ -28,7 +28,7 @@ router.post('/recurring', (req, res) => {
 
 // GET /api/bookings/recurring/:userId
 router.get('/recurring/:userId', (req, res) => {
-  const bookings = PLACEHOLDER.__PLACEHOLDER(req.params.userId);
+  const bookings = RecurringBookingService.getUserRecurringBookings(req.params.userId);
   res.json(bookings);
 });
 

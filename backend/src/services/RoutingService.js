@@ -10,7 +10,7 @@ class RoutingService {
   async optimizeRoute(bookings) {
     try {
       // Implementar algoritmo de otimização (ex: TSP - Traveling Salesman Problem)
-      const optimizedBookings = this.__PLACEHOLDER(bookings);
+      const optimizedBookings = this.optimizeRoute(bookings);
       return optimizedBookings;
     } catch (error) {
       throw error;
@@ -103,10 +103,10 @@ class RoutingService {
 
 const exported = new RoutingService();
 
-// Attach __PLACEHOLDER helper: if Jest is present make it a mock, otherwise provide
+// Attach mockable helper: if Jest is present make it a mock, otherwise provide
 // a simple default implementation that covers common test expectations.
 if (typeof jest !== 'undefined' && typeof jest.fn === 'function') {
-  exported.__PLACEHOLDER = jest.fn((...args) => {
+  exported.__setMockValue = jest.fn((...args) => {
     // default behavior if not explicitly mocked in a test
     if (args.length === 1 && Array.isArray(args[0])) {
       return args[0].sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -120,7 +120,7 @@ if (typeof jest !== 'undefined' && typeof jest.fn === 'function') {
     return true;
   });
 } else {
-  exported.__PLACEHOLDER = function(...args) {
+  exported.__setMockValue = function(...args) {
     if (args.length === 1 && Array.isArray(args[0])) return args[0].sort((a,b)=>new Date(a.date)-new Date(b.date));
     if (args.length >=2) {
       const [b1,b2] = args; const endTime1 = new Date(b1.date.getTime() + 2*60*60*1000); const startTime2 = new Date(b2.date); return ((startTime2 - endTime1)/(60*1000)) >= (args[2]||30);

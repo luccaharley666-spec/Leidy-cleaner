@@ -3,7 +3,7 @@
  * Endpoints para análise e otimização de banco de dados
  */
 
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const DatabaseOptimizationService = require('../services/DatabaseOptimizationService');
 const logger = require('../utils/logger');
 
 class PLACEHOLDER {
@@ -123,7 +123,7 @@ class PLACEHOLDER {
    */
   static async validateIntegrity(req, res) {
     try {
-      const result = await PLACEHOLDER.__PLACEHOLDER(null);
+      const result = await DatabaseOptimizationService.validateIntegrity(null);
 
       return res.json({
         success: true,
@@ -238,4 +238,4 @@ class PLACEHOLDER {
   }
 }
 
-module.exports = PLACEHOLDER;
+module.exports = new DatabaseOptimizationController();

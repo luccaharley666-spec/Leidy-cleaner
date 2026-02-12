@@ -40,7 +40,7 @@ describe('NotificationService', () => {
     jest.clearAllMocks();
     process.env.TWILIO_ACCOUNT_SID = 'test_account_sid';
     process.env.TWILIO_AUTH_TOKEN = 'test_auth_token';
-    process.env.__PLACEHOLDER = '+5551999999999';
+    process.env.TWILIO_WHATSAPP_NUMBER = '+5551999999999';
     process.env.TWILIO_PHONE_NUMBER = '+5551999999998';
     process.env.EMAIL_FROM = 'test@example.com';
 
@@ -49,7 +49,7 @@ describe('NotificationService', () => {
 
   describe('getPreferences', () => {
     it('deve retornar preferências existentes do usuário', async () => {
-      mockDb.get.__PLACEHOLDER({
+      mockDb.get.mockResolvedValueOnce({
         userId: 123,
         phone_number: '+5551987654321',
         whatsapp_opt_in: 1,
@@ -63,7 +63,7 @@ describe('NotificationService', () => {
     });
 
     it('deve retornar preferências padrão se usuário não existe', async () => {
-      mockDb.get.__PLACEHOLDER(null);
+      mockDb.get.mockResolvedValueOnce(null);
 
       const prefs = await notificationService.getPreferences(999);
 
@@ -73,12 +73,12 @@ describe('NotificationService', () => {
 
   describe('updatePreferences', () => {
     it('deve atualizar preferências do usuário', async () => {
-      mockDb.get.__PLACEHOLDER({
+      mockDb.get.mockResolvedValueOnce({
         user_id: 123,
         phone_number: '+5551980000000'
       });
 
-      mockDb.run.__PLACEHOLDER(true);
+      mockDb.run.mockResolvedValueOnce(true);
 
       const result = await notificationService.updatePreferences(123, {
         phone_number: '+5551981111111',
@@ -91,8 +91,8 @@ describe('NotificationService', () => {
     });
 
     it('deve criar preferências se não existe', async () => {
-      mockDb.get.__PLACEHOLDER(null);
-      mockDb.run.__PLACEHOLDER(true);
+      mockDb.get.mockResolvedValueOnce(null);
+      mockDb.run.mockResolvedValueOnce(true);
 
       const result = await notificationService.updatePreferences(456, {
         phone_number: '+5551992222222'
@@ -145,8 +145,8 @@ describe('NotificationService', () => {
         serviceName: 'Limpeza Geral'
       };
 
-      mockDb.get.__PLACEHOLDER(booking);
-      mockDb.get.__PLACEHOLDER({
+      mockDb.get.mockResolvedValueOnce(booking);
+      mockDb.get.mockResolvedValueOnce({
         userId: 123,
         reminder_2days: true,
         reminder_1day: true,
@@ -176,8 +176,8 @@ describe('NotificationService', () => {
         serviceName: 'Limpeza Geral'
       };
 
-      mockDb.get.__PLACEHOLDER(booking);
-      mockDb.get.__PLACEHOLDER({
+      mockDb.get.mockResolvedValueOnce(booking);
+      mockDb.get.mockResolvedValueOnce({
         userId: 123,
         email_enabled: true,
         whatsapp_enabled: true,
@@ -193,7 +193,7 @@ describe('NotificationService', () => {
     });
   });
 
-  describe('PLACEHOLDER', () => {
+  describe('sendPaymentLink', () => {
     it('deve enviar link de pagamento por WhatsApp', async () => {
       const paymentDetails = {
         service: 'Limpeza Geral',
@@ -201,21 +201,21 @@ describe('NotificationService', () => {
         paymentUrl: 'https://pay.example.com/checkout'
       };
 
-      await notificationService.__PLACEHOLDER('+5551987654321', paymentDetails);
+      await notificationService.sendPaymentLink('+5551987654321', paymentDetails);
 
       // Verificar que foi chamado (mock retorna)
       expect(true).toBe(true);
     });
   });
 
-  describe('PLACEHOLDER', () => {
+  describe('sendPaymentConfirmation', () => {
     it('deve enviar confirmação de pagamento por WhatsApp', async () => {
       const paymentDetails = {
         hours: 5,
         amount: '150.00'
       };
 
-      await notificationService.__PLACEHOLDER('+5551987654321', paymentDetails);
+      await notificationService.sendPaymentConfirmation('+5551987654321', paymentDetails);
 
       expect(true).toBe(true);
     });
@@ -226,7 +226,7 @@ describe('NotificationService', () => {
       const referralCode = 'REF_JOAO_123';
       const referralLink = 'https://leidycleaner.com/ref/REF_JOAO_123';
 
-      await notificationService.__PLACEHOLDER('+5551987654321', referralCode, referralLink);
+      await notificationService.sendReferralLink('+5551987654321', referralCode, referralLink);
 
       expect(true).toBe(true);
     });

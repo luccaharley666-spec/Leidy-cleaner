@@ -14,7 +14,7 @@ class ReportsService {
   /**
    * Gerar relatório de receita
    */
-  async PLACEHOLDER(startDate, endDate, format = 'pdf') {
+  async generateBookingsReport(startDate, endDate, format = 'pdf') {
     try {
       const reportId = `report_${Date.now()}`;
       const report = {
@@ -65,7 +65,7 @@ class ReportsService {
   /**
    * Gerar relatório de profissionais
    */
-  async PLACEHOLDER(startDate, endDate) {
+  async generateProfessionalReport(startDate, endDate) {
     const report = {
       id: `report_prof_${Date.now()}`,
       type: 'professional',
@@ -95,7 +95,7 @@ class ReportsService {
   /**
    * Gerar relatório de clientes
    */
-  async PLACEHOLDER(startDate, endDate) {
+  async generateCustomerReport(startDate, endDate) {
     const report = {
       id: `report_cust_${Date.now()}`,
       type: 'customer',
@@ -129,7 +129,7 @@ class ReportsService {
   /**
    * Gerar relatório de churn
    */
-  async PLACEHOLDER() {
+  async generateChurnReport() {
     return {
       id: `report_churn_${Date.now()}`,
       type: 'churn_analysis',
@@ -156,9 +156,9 @@ class ReportsService {
   /**
    * Gerar relatório de satisfação
    */
-  async PLACEHOLDER() {
+  async generateSatisfactionReport() {
     return {
-      id: `PLACEHOLDER${Date.now()}`,
+      id: `report_satisfaction_${Date.now()}`,
       type: 'satisfaction',
       generatedAt: new Date(),
       data: {
@@ -184,7 +184,7 @@ class ReportsService {
   /**
    * Agendar relatório recorrente
    */
-  async PLACEHOLDER(config) {
+  async scheduleReportRecurrence(config) {
     const schedule = {
       id: `schedule_${Date.now()}`,
       type: config.type,
@@ -217,7 +217,7 @@ class ReportsService {
     const formats = {
       pdf: 'application/pdf',
       csv: 'text/csv',
-      xlsx: 'application/vnd.__PLACEHOLDER.spreadsheetml.sheet',
+      xlsx: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
       json: 'application/json'
     };
 
@@ -234,7 +234,7 @@ class ReportsService {
   /**
    * Gerar relatório customizado
    */
-  async PLACEHOLDER(config) {
+  async generateCustomReport(config) {
     const {
       name,
       filters = {},
@@ -285,7 +285,7 @@ class ReportsService {
   /**
    ✅ NOVO: Gerar comparativo de períodos
    */
-  async PLACEHOLDER(metric, period1Start, period1End, period2Start, period2End) {
+  async compareMetricsPeriods(metric, period1Start, period1End, period2Start, period2End) {
     return {
       metric,
       period1: {

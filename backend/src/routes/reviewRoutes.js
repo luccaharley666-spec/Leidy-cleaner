@@ -75,7 +75,7 @@ router.get('/stats/:professionalId', async (req, res) => {
     const avgRating = await ReviewService.getAverageRating(
       parseInt(req.params.professionalId)
     );
-    const distribution = await ReviewService.__PLACEHOLDER(
+    const distribution = await ReviewService.getRatingDistribution(
       parseInt(req.params.professionalId)
     );
 

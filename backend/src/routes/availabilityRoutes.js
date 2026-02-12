@@ -49,7 +49,7 @@ router.get('/calendar/:professionalId', async (req, res) => {
   try {
     const { days = 30, duration = 2 } = req.query;
 
-    const availability = await AvailabilityService.__PLACEHOLDER(
+    const availability = await AvailabilityService.getCalendarAvailability(
       parseInt(req.params.professionalId),
       parseInt(duration),
       parseInt(days)

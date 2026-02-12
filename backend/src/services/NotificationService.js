@@ -52,7 +52,7 @@ class NotificationService {
   async sendWhatsApp(phoneNumber, message) {
     try {
       const response = await this.twilioClient.messages.create({
-        from: `whatsapp:${process.env.__PLACEHOLDER}`,
+        from: `whatsapp:${process.env.TWILIO_WHATSAPP_NUMBER}`,
         to: `whatsapp:${phoneNumber}`,
         body: message
       });
@@ -495,7 +495,7 @@ Qualquer dúvida, entre em contato! 📞`;
   /**
    * Enviar pagamento link por WhatsApp
    */
-  async PLACEHOLDER(phoneNumber, paymentDetails) {
+  async sendPaymentLink(phoneNumber, paymentDetails) {
     const message = `
 💳 PAGAMENTO PENDENTE
 
@@ -513,7 +513,7 @@ Qualquer dúvida: https://leidycleaner.com/contato
   /**
    * Enviar confirmação de pagamento
    */
-  async PLACEHOLDER(phoneNumber, paymentDetails) {
+  async sendPaymentConfirmation(phoneNumber, paymentDetails) {
     const message = `
 ✅ PAGAMENTO CONFIRMADO!
 
@@ -529,7 +529,7 @@ Agendar serviço: https://leidycleaner.com/agendar
   /**
    * Enviar referral link
    */
-  async PLACEHOLDER(phoneNumber, referralCode, referralLink) {
+  async sendReferralLink(phoneNumber, referralCode, referralLink) {
     const message = `
 🎁 INDIQUE E GANHE!
 
@@ -547,7 +547,7 @@ Você ganha R$ 50 por cada indicação! 💰
   /**
    * Enviar notificação de nova avaliação
    */
-  async PLACEHOLDER(phoneNumber, customerName, rating) {
+  async notifyReview(phoneNumber, customerName, rating) {
     const message = `
 ⭐ NOVA AVALIAÇÃO
 
@@ -562,9 +562,9 @@ Sua opinião é super importante para melhorarmos!
 
 module.exports = NotificationService;
 
-// Attach __PLACEHOLDER helper on prototype so tests can call notificationService.__PLACEHOLDER(...)
+// Attach mockable helper on prototype so tests can call notificationService.__setMockValue(...)
 if (typeof jest !== 'undefined' && typeof jest.fn === 'function') {
-  NotificationService.prototype.__PLACEHOLDER = jest.fn(async function(...args) {
+  NotificationService.prototype.__setMockValue = jest.fn(async function(...args) {
     // default: map common signatures to existing helpers
     if (args.length === 2 && typeof args[0] === 'string') {
       // phoneNumber, paymentDetails

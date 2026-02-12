@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../controllers/PLACEHOLDER');
+const BackgroundJobController = require('../controllers/BackgroundJobController');
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
 
 /**
@@ -16,7 +16,7 @@ const requireAdmin = authorizeRole('admin');
  * Obter status de todos os jobs
  */
 router.get('/status', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.getJobsStatus(req, res)
+  BackgroundJobController.getJobsStatus(req, res)
 );
 
 /**
@@ -24,7 +24,7 @@ router.get('/status', authenticateToken, requireAdmin, (req, res) =>
  * Obter estatísticas de execução
  */
 router.get('/stats', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.getJobsStats(req, res)
+  BackgroundJobController.getJobsStats(req, res)
 );
 
 /**
@@ -32,23 +32,23 @@ router.get('/stats', authenticateToken, requireAdmin, (req, res) =>
  * Executar reconciliação de pagamentos agora
  */
 router.post('/reconcile-now', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.triggerReconcileNow(req, res)
+  BackgroundJobController.triggerReconcileNow(req, res)
 );
 
 /**
- * GET /api/admin/background-jobs/PLACEHOLDER
+ * GET /api/admin/background-jobs/reconciliation-history
  * Obter histórico de reconciliações
  */
-router.get('/PLACEHOLDER', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.__PLACEHOLDER(req, res)
+router.get('/reconciliation-history', authenticateToken, requireAdmin, (req, res) =>
+  BackgroundJobController.getReconciliationHistory(req, res)
 );
 
 /**
- * GET /api/admin/background-jobs/PLACEHOLDER
+ * GET /api/admin/background-jobs/reconciliation-stats
  * Obter estatísticas de reconciliação
  */
-router.get('/PLACEHOLDER', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.__PLACEHOLDER(req, res)
+router.get('/reconciliation-stats', authenticateToken, requireAdmin, (req, res) =>
+  BackgroundJobController.getReconciliationStats(req, res)
 );
 
 /**
@@ -56,7 +56,7 @@ router.get('/PLACEHOLDER', authenticateToken, requireAdmin, (req, res) =>
  * Iniciar scheduler
  */
 router.post('/start', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.startScheduler(req, res)
+  BackgroundJobController.startScheduler(req, res)
 );
 
 /**
@@ -64,7 +64,7 @@ router.post('/start', authenticateToken, requireAdmin, (req, res) =>
  * Parar scheduler
  */
 router.post('/stop', authenticateToken, requireAdmin, (req, res) =>
-  PLACEHOLDER.stopScheduler(req, res)
+  BackgroundJobController.stopScheduler(req, res)
 );
 
 module.exports = router;

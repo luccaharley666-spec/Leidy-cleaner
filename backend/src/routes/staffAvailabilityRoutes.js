@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../controllers/PLACEHOLDER');
+const StaffAvailabilityController = require('../controllers/StaffAvailabilityController');
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
 
 // ===== PUBLIC ENDPOINTS (sem autenticação) =====
@@ -17,7 +17,7 @@ router.get('/available', (req, res) => {
 });
 
 router.get('/:staffId/availability-status', (req, res) => {
-  PLACEHOLDER.__PLACEHOLDER(req, res);
+  PLACEHOLDER.getAvailabilityStatus(req, res);
 });
 
 router.get('/shift-assignments/suggestions', (req, res) => {

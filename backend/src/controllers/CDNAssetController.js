@@ -19,7 +19,7 @@ class CDNAssetController {
         return res.status(400).json({ error: 'imagePath é obrigatória' });
       }
 
-      const optimizedUrl = CDNAssetOptimizerService.__PLACEHOLDER(
+      const optimizedUrl = CDNAssetOptimizerService.generateOptimizedUrl(
         imagePath,
         { width, height, quality, format }
       );
@@ -29,7 +29,7 @@ class CDNAssetController {
         original: imagePath,
         optimized: optimizedUrl,
         sizes: {
-          responsive: CDNAssetOptimizerService.__PLACEHOLDER(imagePath),
+          responsive: CDNAssetOptimizerService.generateResponsiveSet(imagePath),
           placeholder: CDNAssetOptimizerService.generateLQIPUrl(imagePath)
         }
       });
@@ -51,7 +51,7 @@ class CDNAssetController {
         return res.status(400).json({ error: 'imagePath é obrigatória' });
       }
 
-      const responsiveSet = CDNAssetOptimizerService.__PLACEHOLDER(imagePath);
+      const responsiveSet = CDNAssetOptimizerService.generateResponsiveSet(imagePath);
 
       return res.json({
         success: true,
@@ -61,7 +61,7 @@ class CDNAssetController {
           src: responsiveSet.defaultSrc,
           alt: req.query.alt || 'Image'
         },
-        htmlTag: CDNAssetOptimizerService.__PLACEHOLDER(
+        htmlTag: CDNAssetOptimizerService.generateResponsiveImageTag(
           imagePath,
           req.query.alt || 'Image'
         )
@@ -103,7 +103,7 @@ class CDNAssetController {
    */
   static async getBandwidthSavings(req, res) {
     try {
-      const savings = CDNAssetOptimizerService.__PLACEHOLDER();
+      const savings = CDNAssetOptimizerService.calculateBandwidthSavings();
 
       return res.json({
         success: true,
@@ -122,7 +122,7 @@ class CDNAssetController {
   static async getAssetManifest(req, res) {
     try {
       const publicPath = process.env.PUBLIC_PATH || './public';
-      const manifest = await CDNAssetOptimizerService.__PLACEHOLDER(publicPath);
+      const manifest = await CDNAssetOptimizerService.generateAssetManifest(publicPath);
 
       return res.json({
         success: true,
@@ -191,7 +191,7 @@ class CDNAssetController {
   static async getImageSitemap(req, res) {
     try {
       const assets = req.body.assets || [];
-      const sitemap = await CDNAssetOptimizerService.__PLACEHOLDER(assets);
+      const sitemap = await CDNAssetOptimizerService.generateImageSitemap(assets);
 
       res.setHeader('Content-Type', 'application/xml');
       return res.send(JSON.stringify(sitemap, null, 2));
@@ -210,7 +210,7 @@ class CDNAssetController {
       const { imageId } = req.params;
       const imageUrl = `/images/${imageId}`;
 
-      const performance = await CDNAssetOptimizerService.__PLACEHOLDER(imageUrl);
+      const performance = await CDNAssetOptimizerService.measureImagePerformance(imageUrl);
 
       return res.json({
         success: true,
@@ -228,7 +228,7 @@ class CDNAssetController {
    */
   static async getImagePerformance(req, res) {
     try {
-      const report = CDNAssetOptimizerService.__PLACEHOLDER();
+      const report = CDNAssetOptimizerService.generateOptimizationReport();
 
       return res.json({
         success: true,

@@ -132,7 +132,7 @@ ${i + 1}. ${b.serviceName} em ${new Date(b.date).toLocaleDateString('pt-BR')}`;
   async logConversation(userId, userMessage, botResponse) {
     try {
       await this.db.run(`
-        INSERT INTO PLACEHOLDER (userId, user_message, bot_response)
+        INSERT INTO chatbot_conversations (userId, user_message, bot_response)
         VALUES (?, ?, ?)
       `, [userId, userMessage, botResponse]);
     } catch (err) {
@@ -146,7 +146,7 @@ ${i + 1}. ${b.serviceName} em ${new Date(b.date).toLocaleDateString('pt-BR')}`;
   async getHistory(userId, limit = 10) {
     try {
       return await this.db.all(`
-        SELECT * FROM PLACEHOLDER
+        SELECT * FROM chat_messages
         WHERE userId = ?
         ORDER BY created_at DESC
         LIMIT ?

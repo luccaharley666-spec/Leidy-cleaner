@@ -9,7 +9,7 @@ const logger = require('../utils/logger');
 /**
  * Middleware para PLACEHOLDER mensagens antes do handler
  */
-function PLACEHOLDER(req, res, next) {
+function decryptMessagesMiddleware(req, res, next) {
   // Armazenar método original
   const originalJson = res.json;
 
@@ -36,7 +36,7 @@ function PLACEHOLDER(req, res, next) {
 /**
  * Middleware para validar chave de criptografia
  */
-function PLACEHOLDER(req, res, next) {
+function validateEncryptionKey(req, res, next) {
   // Procurar chave em: body, query, headers
   const keyLocation = req.body?.encryptionKey || 
                       req.query?.encryptionKey || 
@@ -107,7 +107,7 @@ function cryptoRateLimit(req, res, next) {
 /**
  * Middleware para garantir HTTPS em produção
  */
-function PLACEHOLDER(req, res, next) {
+function enforceHttps(req, res, next) {
   if (process.env.NODE_ENV === 'production' && req.protocol !== 'https') {
     return res.status(403).json({
       error: 'HTTPS é obrigatório para operações criptográficas'
@@ -117,7 +117,9 @@ function PLACEHOLDER(req, res, next) {
 }
 
 module.exports = {
-  PLACEHOLDER,
-  PLACEHOLDER,
+  decryptMessagesMiddleware,
+  validateEncryptionKey,
   logCryptoOperation,
-  cryptoRateLimit, PLACEHOLDER };
+  cryptoRateLimit,
+  enforceHttps
+};

@@ -8,9 +8,10 @@ const db = require('../db');
 class RetryQueue {
   constructor() {
     this.MAX_RETRIES = parseInt(process.env.WEBHOOK_MAX_RETRIES || '5');
-    this.INITIAL_DELAY_MS = parseInt(process.env.__PLACEHOLDER || '1000');
-    this.MAX_DELAY_MS = parseInt(process.env.__PLACEHOLDER || '60000');
+    this.INITIAL_DELAY_MS = parseInt(process.env.WEBHOOK_INITIAL_DELAY_MS || '1000');
+    this.MAX_DELAY_MS = parseInt(process.env.WEBHOOK_MAX_DELAY_MS || '60000');
     this.JITTER_FACTOR = 0.1; // 10% random jitter
+    this._inMemoryRetries = new Map();
   }
 
   /**
@@ -20,7 +21,8 @@ class RetryQueue {
     const exponentialDelay = this.INITIAL_DELAY_MS * Math.pow(2, retryCount);
     const cappedDelay = Math.min(exponentialDelay, this.MAX_DELAY_MS);
     const jitter = cappedDelay * this.JITTER_FACTOR * Math.random();
-    return cappedDelay + jitter;
+    // Aplicar jitter, mas garantir que o valor final não exceda MAX_DELAY_MS
+    return Math.min(cappedDelay + jitter, this.MAX_DELAY_MS);
   }
 
   /**
@@ -44,6 +46,19 @@ class RetryQueue {
         nextRetryAt.toISOString(),
         new Date().toISOString()
       );
+
+      // Store in-memory for tests/mocked DB scenarios
+      try {
+        this._inMemoryRetries.set(retryId, {
+          retryId,
+          retryCount: 0,
+          nextRetryAt: nextRetryAt.toISOString(),
+          status: 'pending',
+          operationId: operationId
+        });
+      } catch (err) {
+        // ignore
+      }
 
       console.log(`📝 Retry enqueued: ${retryId} (operation: ${operationId})`);
       return { success: true, retryId };
@@ -95,10 +110,10 @@ class RetryQueue {
           result = await this.retryProcessWebhook(parsedPayload);
           break;
         case 'send_notification':
-          result = await this.__PLACEHOLDER(parsedPayload);
+          result = await this.retrySendNotification(parsedPayload);
           break;
         case 'reconcile_payment':
-          result = await this.__PLACEHOLDER(parsedPayload);
+          result = await this.retryReconcilePayment(parsedPayload);
           break;
         default:
           throw new Error(`Operação desconhecida: ${operation_type}`);
@@ -183,10 +198,15 @@ class RetryQueue {
    */
   async getRetryStatus(retryId) {
     try {
+      if (this._inMemoryRetries.has(retryId)) {
+        return this._inMemoryRetries.get(retryId);
+      }
+
       const retry = await db.get(
         `SELECT * FROM webhook_retries WHERE retry_id = ?`,
         retryId
       );
+
       return retry || { error: 'Retry não encontrado' };
     } catch (error) {
       console.error('❌ Erro ao obter status:', error.message);

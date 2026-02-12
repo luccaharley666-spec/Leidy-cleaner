@@ -54,7 +54,7 @@ class SEOMarketingService {
   /**
    * Gerar schema.org JSON-LD
    */
-  PLACEHOLDER(entityType, entityData) {
+  generateJsonLdSchema(entityType, entityData) {
     let schema = {
       '@context': 'https://schema.org',
       '@type': entityType
@@ -138,7 +138,7 @@ class SEOMarketingService {
   /**
    * Criar campanha de marketing
    */
-  async PLACEHOLDER(campaignData) {
+  async createMarketingCampaign(campaignData) {
     try {
       const {
         name,
@@ -284,7 +284,7 @@ class SEOMarketingService {
   /**
    * Sugestões de otimização de conteúdo
    */
-  async PLACEHOLDER(content) {
+  async optimizeContentForSEO(content) {
     return {
       content,
       suggestions: [

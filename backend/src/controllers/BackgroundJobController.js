@@ -1,14 +1,14 @@
-const PLACEHOLDER = require('../services/PLACEHOLDER');
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const BackgroundJobScheduler = require('../services/BackgroundJobScheduler');
+const DatabaseOptimizationService = require('../services/DatabaseOptimizationService');
 
-class PLACEHOLDER {
+class BackgroundJobController {
   /**
    * GET /api/admin/background-jobs/status
    * Obter status de todos os jobs
    */
   async getJobsStatus(req, res) {
     try {
-      const status = await PLACEHOLDER.getJobsStatus();
+      const status = await BackgroundJobScheduler.getJobsStatus();
       res.json({ success: true, data: status });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -21,7 +21,7 @@ class PLACEHOLDER {
    */
   async getJobsStats(req, res) {
     try {
-      const stats = await PLACEHOLDER.getJobsStats();
+      const stats = await BackgroundJobScheduler.getJobsStats();
       res.json({ success: true, data: stats });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -34,7 +34,7 @@ class PLACEHOLDER {
    */
   async triggerReconcileNow(req, res) {
     try {
-      const result = await PLACEHOLDER.reconcileAll();
+      const result = await BackgroundJobScheduler.reconcileAll();
       res.json({ success: true, data: result });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -42,13 +42,13 @@ class PLACEHOLDER {
   }
 
   /**
-   * GET /api/admin/background-jobs/PLACEHOLDER
+   * GET /api/admin/background-jobs/reconciliation-history
    * Obter histórico de reconciliações
    */
-  async PLACEHOLDER(req, res) {
+  async getReconciliationHistory(req, res) {
     try {
       const limit = req.query.limit || 100;
-      const history = await PLACEHOLDER.getHistory(limit);
+      const history = await BackgroundJobScheduler.getHistory(limit);
       res.json({ success: true, data: history });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -56,12 +56,12 @@ class PLACEHOLDER {
   }
 
   /**
-   * GET /api/admin/background-jobs/PLACEHOLDER
+   * GET /api/admin/background-jobs/reconciliation-stats
    * Obter estatísticas de reconciliação
    */
-  async PLACEHOLDER(req, res) {
+  async getReconciliationStats(req, res) {
     try {
-      const stats = await PLACEHOLDER.getStats();
+      const stats = await BackgroundJobScheduler.getStats();
       res.json({ success: true, data: stats });
     } catch (error) {
       res.status(500).json({ success: false, error: error.message });
@@ -74,8 +74,8 @@ class PLACEHOLDER {
    */
   async startScheduler(req, res) {
     try {
-      if (!PLACEHOLDER.isRunning) {
-        await PLACEHOLDER.start();
+      if (!BackgroundJobScheduler.isRunning) {
+        await BackgroundJobScheduler.start();
         res.json({ success: true, message: 'Scheduler iniciado' });
       } else {
         res.json({ success: false, message: 'Scheduler já está rodando' });
@@ -91,8 +91,8 @@ class PLACEHOLDER {
    */
   async stopScheduler(req, res) {
     try {
-      if (PLACEHOLDER.isRunning) {
-        PLACEHOLDER.stop();
+      if (BackgroundJobScheduler.isRunning) {
+        BackgroundJobScheduler.stop();
         res.json({ success: true, message: 'Scheduler parado' });
       } else {
         res.json({ success: false, message: 'Scheduler já está parado' });
@@ -103,4 +103,4 @@ class PLACEHOLDER {
   }
 }
 
-module.exports = new PLACEHOLDER();
+module.exports = new BackgroundJobController();

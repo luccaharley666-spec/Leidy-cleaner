@@ -19,28 +19,28 @@ jest.mock('../../utils/logger', () => ({
   debug: jest.fn()
 }));
 
-const PLACEHOLDER = require('../../controllers/PLACEHOLDER');
+const NewsletterController = require('../../controllers/NewsletterController');
 
-describe('PLACEHOLDER', () => {
+describe('NewsletterController', () => {
   describe('isValidEmail', () => {
     test('deve validar email correto', () => {
-      expect(PLACEHOLDER.isValidEmail('test@example.com')).toBe(true);
+      expect(NewsletterController.isValidEmail('test@example.com')).toBe(true);
     });
 
     test('deve validar email com múltiplos domínios', () => {
-      expect(PLACEHOLDER.isValidEmail('user@mail.co.uk')).toBe(true);
+      expect(NewsletterController.isValidEmail('user@mail.co.uk')).toBe(true);
     });
 
     test('deve rejeitar email sem @', () => {
-      expect(PLACEHOLDER.isValidEmail('testemail.com')).toBe(false);
+      expect(NewsletterController.isValidEmail('testemail.com')).toBe(false);
     });
 
     test('deve rejeitar email vazio', () => {
-      expect(PLACEHOLDER.isValidEmail('')).toBe(false);
+      expect(NewsletterController.isValidEmail('')).toBe(false);
     });
 
     test('deve rejeitar email com espaços', () => {
-      expect(PLACEHOLDER.isValidEmail('test @example.com')).toBe(false);
+      expect(NewsletterController.isValidEmail('test @example.com')).toBe(false);
     });
   });
 
@@ -65,18 +65,18 @@ describe('PLACEHOLDER', () => {
     test('deve retornar erro com email inválido', async () => {
       mockRequest.body.email = 'invalid-email';
       
-      await PLACEHOLDER.subscribe(mockRequest, mockResponse);
+      await NewsletterController.subscribe(mockRequest, mockResponse);
 
-      expect(mockResponse.status).__PLACEHOLDER(400);
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
       expect(mockResponse.json).toHaveBeenCalled();
     });
 
     test('deve retornar erro com email em branco', async () => {
       mockRequest.body.email = '';
       
-      await PLACEHOLDER.subscribe(mockRequest, mockResponse);
+      await NewsletterController.subscribe(mockRequest, mockResponse);
 
-      expect(mockResponse.status).__PLACEHOLDER(400);
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
     });
   });
 
@@ -100,9 +100,9 @@ describe('PLACEHOLDER', () => {
     test('deve retornar erro com email inválido', async () => {
       mockRequest.body.email = 'invalid-email';
       
-      await PLACEHOLDER.unsubscribe(mockRequest, mockResponse);
+      await NewsletterController.unsubscribe(mockRequest, mockResponse);
 
-      expect(mockResponse.status).__PLACEHOLDER(400);
+      expect(mockResponse.status).toHaveBeenCalledWith(400);
     });
   });
 });

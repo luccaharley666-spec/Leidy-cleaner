@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.25% </span>
+                <span class="strong">53.2% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>139/261</span>
+                <span class='fraction'>141/265</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">12.5% </span>
+                <span class="strong">25% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/8</span>
+                <span class='fraction'>2/8</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.43% </span>
+                <span class="strong">56.91% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>139/242</span>
+                <span class='fraction'>140/246</span>
             </div>
         
             
@@ -724,7 +724,13 @@
 <a name='L659'></a><a href='#L659'>659</a>
 <a name='L660'></a><a href='#L660'>660</a>
 <a name='L661'></a><a href='#L661'>661</a>
-<a name='L662'></a><a href='#L662'>662</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L662'></a><a href='#L662'>662</a>
+<a name='L663'></a><a href='#L663'>663</a>
+<a name='L664'></a><a href='#L664'>664</a>
+<a name='L665'></a><a href='#L665'>665</a>
+<a name='L666'></a><a href='#L666'>666</a>
+<a name='L667'></a><a href='#L667'>667</a>
+<a name='L668'></a><a href='#L668'>668</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -767,6 +773,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
@@ -1004,6 +1011,11 @@
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -1395,10 +1407,10 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 &nbsp;
-// garantir pasta uploads
-const uploadDir = path.join(__dirname, '..', '..', 'backend', 'uploads');
+// garantir pasta uploads (usar backend_data, que é gravável no container de dev)
+const uploadDir = path.join(__dirname, '..', '..', 'backend_data', 'uploads');
 const fs = require('fs');
-<span class="missing-if-branch" title="if path not taken" >I</span>if (!fs.existsSync(uploadDir)) <span class="cstat-no" title="statement not covered" >fs.mkdirSync(uploadDir, { recursive: true });</span>
+if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
 &nbsp;
 const storage = multer.diskStorage({
   destination: <span class="fstat-no" title="function not covered" >fu</span>nction (req, file, cb) {
@@ -1438,6 +1450,7 @@ const AutoPlaceholderController = require('../../src/controllers/AutoPlaceholder
 const ChatController = require('../controllers/ChatController');
 const CDNAssetController = require('../controllers/CDNAssetController');
 const AuthController = require('../controllers/AuthController');
+const ProfileController = require('../controllers/ProfileController');
 // other controllers with masked names now route to AutoPlaceholderController
 &nbsp;
 // Middleware
@@ -1662,9 +1675,14 @@ router.get('/reviews/filter', <span class="fstat-no" title="function not covered
 // const ProfileController = require('../controllers/ProfileController');
 &nbsp;
 // Profile routes
-router.get('/profile/current', authenticateToken, <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >  req.params.userId = req.user.id;</span>
-<span class="cstat-no" title="statement not covered" >  ProfileController.getProfile(req, res);</span>
+router.get('/profile/current', authenticateToken, <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
+<span class="cstat-no" title="statement not covered" >  try {</span>
+<span class="cstat-no" title="statement not covered" >    req.params.userId = req.user.id;</span>
+<span class="cstat-no" title="statement not covered" >    await ProfileController.getProfile(req, res);</span>
+  } catch (err) {
+<span class="cstat-no" title="statement not covered" >    logger.error('Error in profile/current route:', err);</span>
+<span class="cstat-no" title="statement not covered" >    res.status(500).json({ error: 'Erro ao buscar perfil' });</span>
+  }
 });
 &nbsp;
 router.get('/profile/:userId', <span class="fstat-no" title="function not covered" >(r</span>eq, res) =&gt; {
@@ -2053,7 +2071,7 @@ module.exports = router;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T22:31:41.164Z
+                at 2026-02-12T15:07:00.868Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

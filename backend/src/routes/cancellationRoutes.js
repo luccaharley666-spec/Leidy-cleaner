@@ -27,7 +27,7 @@ router.post('/cancel', authenticateToken, async (req, res) => {
 // Obter estatísticas de cancelamento
 router.get('/stats', authenticateToken, async (req, res) => {
   try {
-    const stats = await CancellationService.__PLACEHOLDER();
+    const stats = await CancellationService.getCancellationStats();
     res.json({ success: true, stats });
   } catch (error) {
     console.error('Erro ao obter estatísticas:', error);

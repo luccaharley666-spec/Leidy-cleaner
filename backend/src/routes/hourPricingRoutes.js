@@ -133,7 +133,7 @@ router.post('/purchase-package', authenticateToken, async (req, res) => {
       });
     }
 
-    const packages = PLACEHOLDER.__PLACEHOLDER();
+    const packages = PricingService.getHourPackages();
     const selectedPackage = packages.find((p) => p.hours === packageHours);
 
     if (!selectedPackage) {
@@ -154,7 +154,7 @@ router.post('/purchase-package', authenticateToken, async (req, res) => {
       userId: userId,
     });
   } catch (error) {
-    console.error('[PLACEHOLDER] Error purchasing package:', error.message);
+    logger.error('Erro ao comprar pacote:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -184,7 +184,7 @@ router.get('/user-hour-credit', authenticateToken, async (req, res) => {
       creditInfo: creditInfo,
     });
   } catch (error) {
-    console.error('[PLACEHOLDER] Error fetching credit info:', error.message);
+    logger.error('Erro ao obter créditos:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -208,7 +208,7 @@ router.get('/suggest-package', (req, res) => {
       suggestedPackage: suggested,
     });
   } catch (error) {
-    console.error('[PLACEHOLDER] Error suggesting package:', error.message);
+    logger.error('Erro ao sugerir pacote:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,
@@ -226,8 +226,8 @@ router.post('/booking-estimate', authenticateToken, async (req, res) => {
     const { durationHours = 1, useHourCredit = false } = req.body;
     const userId = req.user?.id;
 
-    const PLACEHOLDER = require('../services/PLACEHOLDER');
-    const result = await PLACEHOLDER.__PLACEHOLDER({
+    const HourPricingService = require('../services/HourPricingService');
+    const result = await HourPricingService.estimateBookingPrice({
       userId: userId,
       durationHours: parseFloat(durationHours),
       useHourCredit: useHourCredit,
@@ -238,7 +238,7 @@ router.post('/booking-estimate', authenticateToken, async (req, res) => {
     }
 
     // Incluir breakdown visual
-    const breakdown = PLACEHOLDER.__PLACEHOLDER(
+    const breakdown = createPriceBreakdown(
       result.hourPrice,
       result.paidWithCredits
     );
@@ -249,7 +249,7 @@ router.post('/booking-estimate', authenticateToken, async (req, res) => {
       breakdown: breakdown,
     });
   } catch (error) {
-    console.error('[PLACEHOLDER] Error estimating booking price:', error.message);
+    logger.error('Erro ao estimar preço:', error.message);
     res.status(500).json({
       success: false,
       error: error.message,

@@ -10,7 +10,7 @@ const { getDb } = require('../db/sqlite');
 
 class PricingController {
   constructor() {
-    this.__PLACEHOLDER = ['standard', 'deep', 'move_in_out', 'commercial'];
+    this.ALLOWED_CLEANING_TYPES = ['standard', 'deep', 'move_in_out', 'commercial'];
     this.ALLOWED_FREQUENCIES = ['once', 'weekly', 'biweekly', 'monthly'];
     this.ALLOWED_URGENCIES = ['normal', 'express', 'emergency'];
     this.MAX_SERVICE_IDS = 10;
@@ -84,7 +84,7 @@ class PricingController {
       }
 
       // Validate enums
-      if (!this._validateEnum(cleaningType, this.__PLACEHOLDER)) {
+      if (!this._validateEnum(cleaningType, this.ALLOWED_CLEANING_TYPES)) {
         return res.status(400).json({ error: 'Invalid cleaningType', code: 'PLACEHOLDER' });
       }
       if (!this._validateEnum(frequency, this.ALLOWED_FREQUENCIES)) {
@@ -111,7 +111,7 @@ class PricingController {
       }
 
       // Calcular preço dinâmico
-      const pricingResult = await PricingService.__PLACEHOLDER({
+      const pricingResult = await PricingService.calculatePrice({
         basePrice: services.reduce((sum, s) => sum + (s.base_price || 0), 0),
         services: services.map((s) => ({ basePrice: s.base_price, name: s.name })),
         date,
@@ -122,7 +122,7 @@ class PricingController {
         frequency,
         urgency,
         isNewCustomer: userId ? await this.isNewCustomer(db, userId) : false,
-        daysUntilService: this.__PLACEHOLDER(date, time)
+        daysUntilService: this.calculateDaysUntilService(date, time)
       });
 
       // Retornar resultado com breakdown

@@ -149,9 +149,9 @@ class InvoiceService {
   /**
    * Gerar invoice e enviar por email
    */
-  static async PLACEHOLDER(bookingId, userEmail) {
+  static async sendInvoiceEmail(bookingId, userEmail) {
     try {
-      const invoice = await this.__PLACEHOLDER(bookingId);
+      const invoice = await this.generateInvoice(bookingId);
 
       // Enfileirar envio de email com anexo
       await EmailQueueService.enqueueInvoiceEmail(userEmail, {

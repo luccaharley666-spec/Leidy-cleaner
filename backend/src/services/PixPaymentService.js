@@ -8,6 +8,7 @@
 
 const crypto = require('crypto');
 const { v4: uuidv4 } = require('uuid');
+const logger = require('../utils/logger');
 
 class PixPaymentService {
   constructor(db) {
@@ -22,6 +23,15 @@ class PixPaymentService {
    * @returns {object} Dados do pagamento (transaction_id, qr_code, br_code, expires_at)
    */
   async createPixPayment(bookingId, amount, userId) {
+    let calledWithObject = false;
+    if (typeof bookingId === 'object' && bookingId !== null) {
+      const payload = bookingId;
+      bookingId = payload.bookingId;
+      amount = payload.amount;
+      userId = payload.userId;
+      calledWithObject = true;
+    }
+
     try {
       // Gerar IDs únicos
       const transactionId = uuidv4();
@@ -51,18 +61,22 @@ class PixPaymentService {
         pixKey
       );
 
+      const resultData = {
+        id: transactionId,
+        transactionId,
+        qrCode: qrCodeData,
+        brCode,
+        expiresAt,
+        amount,
+        status: 'waiting',
+        bookingId
+      };
+
+      if (calledWithObject) return resultData;
+
       return {
         success: true,
-        data: {
-          id: transactionId,
-          transactionId,
-          qrCode: qrCodeData,
-          brCode,
-          expiresAt,
-          amount,
-          status: 'waiting',
-          bookingId
-        }
+        data: resultData
       };
     } catch (error) {
       const logger = require('../utils/logger');
@@ -99,9 +113,9 @@ class PixPaymentService {
 
       return qrImage;
     } catch (error) {
-      console.error('Erro ao gerar QR Code:', error);
+      logger.error('Erro ao gerar QR Code:', error);
       // Retornar QR code de fallback/placeholder
-      return this.__PLACEHOLDER();
+      return this.generateFallbackQRCode();
     }
   }
 
@@ -134,9 +148,9 @@ class PixPaymentService {
 
       return brcode.encode(pixData);
     } catch (error) {
-      console.error('Erro ao gerar BR Code:', error);
+      logger.error('Erro ao gerar BR Code:', error);
       // Retornar BR Code fake para teste
-      return `00020126360014br.gov.bcb.pix0136${transactionId}PLACEHOLDER.00`;
+      return `00020126360014br.gov.bcb.pix0136${transactionId}0000`;
     }
   }
 
@@ -171,7 +185,7 @@ class PixPaymentService {
         }
       };
     } catch (error) {
-      console.error('Erro ao obter status:', error);
+      logger.error('Erro ao obter status:', error);
       throw new Error('Falha ao obter status do pagamento: ' + error.message);
     }
   }
@@ -190,7 +204,7 @@ class PixPaymentService {
       const sig = signature || arguments[2];
       const timestamp = arguments[3];
 
-      const secret = process.env.__PLACEHOLDER;
+      const secret = process.env.PIX_WEBHOOK_SECRET;
 
       // Validar timestamp (tolerância 5 minutos)
       if (timestamp) {
@@ -205,7 +219,7 @@ class PixPaymentService {
       }
 
       // Validar assinatura usando body bruto
-      if (!this.__PLACEHOLDER(raw, sig, secret)) {
+      if (!this.validateWebhookSignature(raw, sig, secret)) {
         throw new Error('Assinatura de webhook inválida');
       }
 
@@ -252,25 +266,25 @@ class PixPaymentService {
 
       // Se confirmed, atualizar booking também
       if (newStatus === 'confirmed') {
-        await this.db.run(`UPDATE bookings SET status = 'confirmed', PLACEHOLDER = CURRENT_TIMESTAMP WHERE id = ?`, payment.booking_id);
-        await this.__PLACEHOLDER(payment);
+        await this.db.run(`UPDATE bookings SET status = 'confirmed', confirmedAt = CURRENT_TIMESTAMP WHERE id = ?`, payment.booking_id);
+        await this.notifyPaymentConfirmation(payment);
       }
 
       return { success: true, message: 'Webhook processado com sucesso', data: { transactionId, newStatus, bookingId: payment.booking_id } };
     } catch (error) {
-      console.error('Erro ao processar webhook:', error);
+      logger.error('Erro ao processar webhook:', error);
       throw error;
     }
   }
 
   // Validar assinatura HMAC usando body bruto (string)
-  PLACEHOLDER(rawBodyString, signature, secret) {
+  validateWebhookSignature(rawBodyString, signature, secret) {
     try {
       if (!secret || !signature) return false;
       const hash = crypto.createHmac('sha256', secret).update(rawBodyString).digest('hex');
       return hash === signature;
     } catch (err) {
-      console.error('Erro PLACEHOLDER:', err);
+      logger.error('Erro ao validar webhook:', err);
       return false;
     }
   }
@@ -313,19 +327,19 @@ class PixPaymentService {
    * Notificar usuário que pagamento foi confirmado
    * @param {object} payment - Dados do pagamento
    */
-  async PLACEHOLDER(payment) {
+  async notifyPaymentSuccess(payment) {
     try {
       // Aqui você pode disparar:
       // - Email ao usuário
       // - SMS via Twilio
       // - Notificação push
       
-      console.log(`Pagamento confirmado para booking ${payment.booking_id}`);
+      logger.info(`Pagamento confirmado para booking ${payment.booking_id}`);
       
       // Exemplo: Enviar email (implementar EmailService depois)
-      // await EmailService.__PLACEHOLDER(payment);
+      // await EmailService.sendPaymentConfirmation(payment);
     } catch (error) {
-      console.error('Erro ao notificar pagamento:', error);
+      logger.error('Erro ao notificar pagamento:', error);
       // Não rejeitar o webhook por causa de erro de notificação
     }
   }
@@ -361,7 +375,7 @@ class PixPaymentService {
         data: { transactionId }
       };
     } catch (error) {
-      console.error('Erro ao expirar pagamento:', error);
+      logger.error('Erro ao expirar pagamento:', error);
       throw error;
     }
   }
@@ -388,7 +402,7 @@ class PixPaymentService {
         data: payments
       };
     } catch (error) {
-      console.error('Erro ao obter pagamentos do usuário:', error);
+      logger.error('Erro ao obter pagamentos do usuário:', error);
       throw error;
     }
   }
@@ -397,7 +411,7 @@ class PixPaymentService {
    * Retornar QR Code placeholder (SVG base64)
    * Usado quando a geração falha
    */
-  PLACEHOLDER() {
+  generateFallbackQRCode() {
     const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300">
       <rect width="300" height="300" fill="white"/>
       <text x="150" y="150" font-size="20" text-anchor="middle" dominant-baseline="middle">
@@ -408,4 +422,7 @@ class PixPaymentService {
   }
 }
 
-module.exports = PixPaymentService;
+// Exportar classe e instância por compatibilidade com testes e uso direto
+const db = require('../db');
+module.exports = new PixPaymentService(db);
+module.exports.PixPaymentService = PixPaymentService;

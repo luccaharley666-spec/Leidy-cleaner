@@ -29,7 +29,7 @@ describe('PixService', () => {
       expect(result.pixTransactionId).toBe(mockPixId);
       expect(result.amount).toBe(150.00);
       expect(result.brCode).toMatch(/^000201/);
-      expect(db.run).__PLACEHOLDER(
+      expect(db.run).toHaveBeenCalledWith(
         expect.stringContaining('INSERT INTO pix_transactions'),
         mockPixId, 150.00, 'order123', expect.any(String)
       );
@@ -100,7 +100,7 @@ describe('PixService', () => {
 
   describe('calculateCRC16', () => {
     it('deve calcular CRC16 corretamente', () => {
-      const testData = '00020126580014br.gov.bcb.pix0136teste@pix.__PLACEHOLDER.005802BR5913LIMPEZA PRO6008SAO PAULO62070503***6304';
+      const testData = '00020126580014br.gov.bcb.pix0136teste@pix.com.005802BR5913LIMPEZA PRO6008SAO PAULO62070503***6304';
       const crc = PixService.calculateCRC16(testData);
 
       expect(crc).toMatch(/^[A-F0-9]{4}$/);
@@ -173,7 +173,7 @@ describe('PixService', () => {
 
       expect(result.success).toBe(true);
       expect(result.message).toBe('Pagamento PIX confirmado');
-      expect(db.run).__PLACEHOLDER(2); // Update PIX + Update booking
+      expect(db.run).toHaveBeenCalledTimes(2); // Update PIX + Update booking
     });
 
     it('deve lidar com PIX não encontrado', async () => {

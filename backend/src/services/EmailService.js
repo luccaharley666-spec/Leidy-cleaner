@@ -20,7 +20,7 @@ class EmailService {
   /**
    * Enviar confirmação de agendamento
    */
-  async PLACEHOLDER(clientEmail, clientName, bookingData) {
+  async sendBookingConfirmation(clientEmail, clientName, bookingData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -256,7 +256,7 @@ class EmailService {
   /**
    * Enviar email de boas-vindas para newsletter
    */
-  async PLACEHOLDER(email, name = 'Leitor') {
+  async sendNewsletterWelcome(email, name = 'Leitor') {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -370,7 +370,7 @@ class EmailService {
   /**
    * Enviar confirmação de pagamento
    */
-  async PLACEHOLDER(clientEmail, clientName, paymentData) {
+  async sendPaymentConfirmation(clientEmail, clientName, paymentData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -434,7 +434,7 @@ class EmailService {
   /**
    * Enviar notificação de reembolso
    */
-  async PLACEHOLDER(clientEmail, clientName, refundData) {
+  async sendRefundNotification(clientEmail, clientName, refundData) {
     try {
       const mailOptions = {
         from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
@@ -491,6 +491,70 @@ class EmailService {
    */
   async sendReviewRequest(clientEmail, clientName, reviewData) {
     return this.sendRatingRequest(clientEmail, clientName, reviewData);
+  }
+
+  /**
+   * Enviar email de reset de senha
+   */
+  async sendPasswordReset(clientEmail, clientName, resetData) {
+    try {
+      const resetUrl = resetData.resetUrl || `${process.env.APP_URL || 'http://localhost:3001'}/reset-password?token=${resetData.token}`;
+      
+      const mailOptions = {
+        from: process.env.EMAIL_USER || 'noreply@leidycleaner.com',
+        to: clientEmail,
+        subject: '🔐 Redefinir Senha - Leidy Cleaner',
+        html: `
+          <!DOCTYPE html>
+          <html>
+            <head>
+              <style>
+                body { font-family: Arial, sans-serif; color: #333; }
+                .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+                .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px 10px 0 0; }
+                .content { background: #f9f9f9; padding: 20px; border-radius: 0 0 10px 10px; }
+                .button { display: inline-block; padding: 12px 30px; background: #667eea; color: white; text-decoration: none; border-radius: 5px; margin-top: 20px; }
+                .warning { color: #d9534f; font-size: 12px; }
+                .footer { text-align: center; margin-top: 20px; color: #999; font-size: 12px; }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <div class="header">
+                  <h1>🔐 Leidy Cleaner</h1>
+                  <p>Redefinir sua senha</p>
+                </div>
+                <div class="content">
+                  <p>Olá <strong>${clientName}</strong>,</p>
+                  
+                  <p>Recebemos uma solicitação para redefinir sua senha. Se não foi você, ignore este email.</p>
+                  
+                  <p>Para redefinir sua senha, clique no botão abaixo (link válido por 1 hora):</p>
+                  
+                  <a href="${resetUrl}" class="button">🔓 Redefinir Senha</a>
+                  
+                  <p style="margin-top: 20px; font-size: 12px;">Ou copie e cole este link no seu navegador:</p>
+                  <p style="font-size: 11px; word-break: break-all; background: #fff; padding: 10px; border-radius: 3px;">${resetUrl}</p>
+                  
+                  <p class="warning">⚠️ Este link expira em 1 hora por segurança.</p>
+                  
+                  <div class="footer">
+                    <p>Leidy Cleaner © 2025 - Todos os direitos reservados</p>
+                    <p>Não reply para este email</p>
+                  </div>
+                </div>
+              </div>
+            </body>
+          </html>
+        `
+      };
+
+      const result = await this.transporter.sendMail(mailOptions);
+      return result;
+    } catch (error) {
+      console.error('❌ Erro ao enviar email de reset de senha:', error);
+      throw error;
+    }
   }
 
   /**

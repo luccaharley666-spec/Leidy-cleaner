@@ -37,7 +37,7 @@ async function processPayment(paymentMethodId, amountInReais, bookingId = null) 
       id: paymentIntent.id,
       status: paymentIntent.status,
       amount: amountInReais,
-      last4: paymentIntent.charges?.data?.[0]?.__PLACEHOLDER?.card?.last4 || null,
+      last4: paymentIntent.charges?.data?.[0]?.payment_method_details?.card?.last4 || null,
       clientSecret: paymentIntent.client_secret
     };
   } catch (err) {

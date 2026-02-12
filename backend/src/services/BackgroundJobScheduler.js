@@ -7,7 +7,7 @@ const RetryQueueService = require('./RetryQueueService');
  * PLACEHOLDER
  * Gerencia jobs de background: reconciliação, limpeza, notificações, etc
  */
-class PLACEHOLDER {
+class BackgroundJobScheduler {
   constructor() {
     this.jobs = new Map();
     this.isRunning = false;
@@ -26,10 +26,10 @@ class PLACEHOLDER {
     console.log('🚀 Iniciando Background Job Scheduler');
 
     // Registrar jobs padrão
-    this.registerJob('reconcile_payments', this.__PLACEHOLDER.bind(this), '*/15 * * * *'); // A cada 15 min
-    this.registerJob('PLACEHOLDER', this.__PLACEHOLDER.bind(this), '*/5 * * * *');  // A cada 5 min
+    this.registerJob('reconcile_payments', this.jobReconcilePayments.bind(this), '*/15 * * * *'); // A cada 15 min
+    this.registerJob('notify_upcoming', this.jobNotifyUpcoming.bind(this), '*/5 * * * *');  // A cada 5 min
     this.registerJob('cleanup_old_events', this.jobCleanupOldEvents.bind(this), '0 3 * * *');         // 3 AM diariamente
-    this.registerJob('PLACEHOLDER', this.__PLACEHOLDER.bind(this), '*/10 * * * *'); // A cada 10 min
+    this.registerJob('update_analytics', this.jobUpdateAnalytics.bind(this), '*/10 * * * *'); // A cada 10 min
 
     // Iniciar processamento
     this.processJobs();
@@ -264,4 +264,4 @@ class PLACEHOLDER {
   }
 }
 
-module.exports = new PLACEHOLDER();
+module.exports = new BackgroundJobScheduler();

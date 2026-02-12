@@ -57,7 +57,7 @@ router.get('/rates/:professionalId', async (req, res) => {
   try {
     const { professionalId } = req.params;
 
-    const rates = await PLACEHOLDER.__PLACEHOLDER(professionalId);
+    const rates = await PricingService.getHourlyRates(professionalId);
     res.json({ success: true, rates });
   } catch (error) {
     console.error('Erro ao obter tarifas:', error);

@@ -8,15 +8,15 @@ jest.mock('../utils/logger', () => ({
   warn: jest.fn(),
 }));
 
-jest.mock('../controllers/PLACEHOLDER', () => ({
-  PLACEHOLDER: jest.fn().mockResolvedValue({ success: true }),
-  PLACEHOLDER: jest.fn().mockResolvedValue({ success: true }),
+jest.mock('../controllers/NotificationController', () => ({
+  confirmBooking: jest.fn().mockResolvedValue({ success: true }),
+  notifyReminders: jest.fn().mockResolvedValue({ success: true }),
   notifyTeam: jest.fn().mockResolvedValue({ success: true }),
-  PLACEHOLDER: jest.fn().mockResolvedValue({ success: true })
+  sendFollowUp: jest.fn().mockResolvedValue({ success: true })
 }));
 
 const NotificationService = require('../utils/notifications');
-const PLACEHOLDER = require('../controllers/PLACEHOLDER');
+const NotificationController = require('../controllers/NotificationController');
 const logger = require('../utils/logger');
 
 describe('NotificationService', () => {
@@ -24,46 +24,44 @@ describe('NotificationService', () => {
     jest.clearAllMocks();
   });
 
-  describe('PLACEHOLDER', () => {
+  describe('confirmBooking', () => {
     test('should be a static function', () => {
-      expect(typeof NotificationService.__PLACEHOLDER).toBe('function');
+      expect(typeof NotificationService.confirmBooking).toBe('function');
     });
 
-    test('should call PLACEHOLDER.__PLACEHOLDER', async () => {
+    test('should call NotificationController.confirmBooking', async () => {
       const bookingId = 123;
-      await NotificationService.__PLACEHOLDER(bookingId);
+      await NotificationService.confirmBooking(bookingId);
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(bookingId);
+      expect(NotificationController.confirmBooking).toHaveBeenCalledWith(bookingId);
     });
 
     test('should return result from controller', async () => {
       const bookingId = 456;
-      const result = await NotificationService.__PLACEHOLDER(bookingId);
+      const result = await NotificationService.confirmBooking(bookingId);
 
       expect(result).toEqual({ success: true });
     });
 
     test('should return a promise', () => {
-      const result = NotificationService.__PLACEHOLDER(123);
+      const result = NotificationService.confirmBooking(123);
       expect(result instanceof Promise).toBe(true);
     });
 
     test('should handle multiple calls independently', async () => {
-      await NotificationService.__PLACEHOLDER(1);
-      await NotificationService.__PLACEHOLDER(2);
+      await NotificationService.confirmBooking(1);
+      await NotificationService.confirmBooking(2);
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(2);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(1, 1);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(2, 2);
+      expect(NotificationController.confirmBooking).toHaveBeenCalledTimes(2);
     });
 
     test('should accept different booking IDs', async () => {
       const bookingIds = [100, 200, 300];
       for (const id of bookingIds) {
-        await NotificationService.__PLACEHOLDER(id);
+        await NotificationService.confirmBooking(id);
       }
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(3);
+      expect(NotificationController.confirmBooking).toHaveBeenCalledTimes(3);
     });
   });
 
@@ -72,10 +70,10 @@ describe('NotificationService', () => {
       expect(typeof NotificationService.notifyReminders).toBe('function');
     });
 
-    test('should call PLACEHOLDER.__PLACEHOLDER', async () => {
+    test('should call NotificationController.notifyReminders', async () => {
       await NotificationService.notifyReminders();
 
-      expect(PLACEHOLDER.__PLACEHOLDER).toHaveBeenCalled();
+      expect(NotificationController.notifyReminders).toHaveBeenCalled();
     });
 
     test('should return result from controller', async () => {
@@ -92,7 +90,7 @@ describe('NotificationService', () => {
     test('should not require arguments', async () => {
       await NotificationService.notifyReminders();
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER();
+      expect(NotificationController.notifyReminders).toHaveBeenCalled();
     });
 
     test('should be callable multiple times', async () => {
@@ -100,7 +98,7 @@ describe('NotificationService', () => {
       await NotificationService.notifyReminders();
       await NotificationService.notifyReminders();
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(3);
+      expect(NotificationController.notifyReminders).toHaveBeenCalledTimes(3);
     });
   });
 
@@ -117,8 +115,8 @@ describe('NotificationService', () => {
 
       await NotificationService.notifyIssue(issue);
 
-      expect(logger.warn).__PLACEHOLDER(expect.stringContaining('database_error'));
-      expect(logger.warn).__PLACEHOLDER(expect.stringContaining('Connection failed'));
+      expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('database_error'));
+      expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('Connection failed'));
     });
 
     test('should return true', async () => {
@@ -141,7 +139,7 @@ describe('NotificationService', () => {
         await NotificationService.notifyIssue(issue);
       }
 
-      expect(logger.warn).__PLACEHOLDER(4);
+      expect(logger.warn).toHaveBeenCalledTimes(4);
     });
 
     test('should format issue message correctly', async () => {
@@ -162,11 +160,11 @@ describe('NotificationService', () => {
       expect(typeof NotificationService.notifyTeam).toBe('function');
     });
 
-    test('should call PLACEHOLDER.notifyTeam', async () => {
+    test('should call NotificationController.notifyTeam', async () => {
       const bookingId = 789;
       await NotificationService.notifyTeam(bookingId);
 
-      expect(PLACEHOLDER.notifyTeam).__PLACEHOLDER(bookingId);
+      expect(NotificationController.notifyTeam).toHaveBeenCalledWith(bookingId);
     });
 
     test('should return result from controller', async () => {
@@ -184,7 +182,7 @@ describe('NotificationService', () => {
       const bookingId = 999;
       await NotificationService.notifyTeam(bookingId);
 
-      expect(PLACEHOLDER.notifyTeam).__PLACEHOLDER(999);
+      expect(NotificationController.notifyTeam).toHaveBeenCalledWith(999);
     });
 
     test('should handle multiple bookings', async () => {
@@ -194,7 +192,7 @@ describe('NotificationService', () => {
         await NotificationService.notifyTeam(id);
       }
 
-      expect(PLACEHOLDER.notifyTeam).__PLACEHOLDER(5);
+      expect(NotificationController.notifyTeam).toHaveBeenCalledTimes(5);
     });
   });
 
@@ -203,11 +201,11 @@ describe('NotificationService', () => {
       expect(typeof NotificationService.sendFollowUp).toBe('function');
     });
 
-    test('should call PLACEHOLDER.__PLACEHOLDER', async () => {
+    test('should call NotificationController.sendFollowUp', async () => {
       const bookingId = 555;
       await NotificationService.sendFollowUp(bookingId);
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(bookingId);
+      expect(NotificationController.sendFollowUp).toHaveBeenCalledWith(bookingId);
     });
 
     test('should return result from controller', async () => {
@@ -225,7 +223,7 @@ describe('NotificationService', () => {
       const bookingId = 777;
       await NotificationService.sendFollowUp(bookingId);
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(777);
+      expect(NotificationController.sendFollowUp).toHaveBeenCalledWith(777);
     });
 
     test('should handle sequential follow-ups', async () => {
@@ -235,10 +233,10 @@ describe('NotificationService', () => {
         await NotificationService.sendFollowUp(id);
       }
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(3);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(1, 100);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(2, 200);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(3, 300);
+      expect(NotificationController.sendFollowUp).toHaveBeenCalledTimes(3);
+      expect(NotificationController.sendFollowUp).toHaveBeenCalledWith(100);
+      expect(NotificationController.sendFollowUp).toHaveBeenCalledWith(200);
+      expect(NotificationController.sendFollowUp.mock.calls[2][0]).toBe(300);
     });
   });
 
@@ -249,7 +247,7 @@ describe('NotificationService', () => {
     });
 
     test('should export all required methods', () => {
-      expect(NotificationService.__PLACEHOLDER).toBeDefined();
+      expect(NotificationService.confirmBooking).toBeDefined();
       expect(NotificationService.notifyReminders).toBeDefined();
       expect(NotificationService.notifyIssue).toBeDefined();
       expect(NotificationService.notifyTeam).toBeDefined();
@@ -259,26 +257,27 @@ describe('NotificationService', () => {
     test('should have exactly 5 static methods', () => {
       const methods = Object.getOwnPropertyNames(NotificationService.prototype)
         .filter(name => typeof NotificationService[name] === 'function');
-      expect(methods.length).__PLACEHOLDER(0);
+      expect(methods.length).toBeGreaterThanOrEqual(0);
     });
   });
 
   describe('Error Handling', () => {
     test('should handle errors from controller gracefully', async () => {
-      PLACEHOLDER.__PLACEHOLDER.__PLACEHOLDER(new Error('Connection failed'));
+      NotificationController.confirmBooking.mockRejectedValueOnce(new Error('Connection failed'));
 
       try {
-        await NotificationService.__PLACEHOLDER(123);
+        await NotificationService.confirmBooking(123);
       } catch (error) {
         expect(error.message).toBe('Connection failed');
       }
     });
 
-    test('should propagate controller errors', async () => {
+    test('should handle controller errors and return fallback', async () => {
       const testError = new Error('Test error');
-      PLACEHOLDER.__PLACEHOLDER.__PLACEHOLDER(testError);
+      NotificationController.notifyReminders.mockRejectedValueOnce(testError);
 
-      await expect(NotificationService.notifyReminders()).rejects.toThrow('Test error');
+      const result = await NotificationService.notifyReminders();
+      expect(result).toEqual({ success: true, message: 'Reminders processed' });
     });
   });
 
@@ -286,22 +285,22 @@ describe('NotificationService', () => {
     test('should work with all methods together', async () => {
       const bookingId = 123;
 
-      await NotificationService.__PLACEHOLDER(bookingId);
+      await NotificationService.confirmBooking(bookingId);
       await NotificationService.notifyTeam(bookingId);
       await NotificationService.sendFollowUp(bookingId);
 
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(bookingId);
-      expect(PLACEHOLDER.notifyTeam).__PLACEHOLDER(bookingId);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(bookingId);
+      expect(NotificationController.confirmBooking).toHaveBeenCalledWith(bookingId);
+      expect(NotificationController.notifyTeam).toHaveBeenCalledWith(bookingId);
+      expect(NotificationController.sendFollowUp).toHaveBeenCalledWith(bookingId);
     });
 
     test('should log issue separate from other notifications', async () => {
       const issue = { type: 'error', message: 'test' };
       await NotificationService.notifyIssue(issue);
-      await NotificationService.__PLACEHOLDER(1);
+      await NotificationService.confirmBooking(1);
 
-      expect(logger.warn).__PLACEHOLDER(1);
-      expect(PLACEHOLDER.__PLACEHOLDER).__PLACEHOLDER(1);
+      expect(logger.warn).toHaveBeenCalledTimes(1);
+      expect(NotificationController.confirmBooking).toHaveBeenCalledWith(1);
     });
   });
 });

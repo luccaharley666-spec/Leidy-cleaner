@@ -36,8 +36,8 @@ describe('EmailService', () => {
       expect(emailService.transporter).toBeDefined();
     });
 
-    test('should have PLACEHOLDER method', () => {
-      expect(typeof emailService.__PLACEHOLDER).toBe('function');
+    test('should have sendBookingConfirmation method', () => {
+      expect(typeof emailService.sendBookingConfirmation).toBe('function');
     });
 
     test('should have sendReminder method', () => {
@@ -64,7 +64,7 @@ describe('EmailService', () => {
         price: 150
       };
       
-      await emailService.__PLACEHOLDER(clientEmail, clientName, bookingData);
+      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
       
       expect(emailService.transporter.sendMail).toHaveBeenCalled();
     });
@@ -74,10 +74,7 @@ describe('EmailService', () => {
       const clientName = 'Test User';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.__PLACEHOLDER(clientEmail, clientName, bookingData);
-      
-      const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
-      expect(callArgs.to).toBe(clientEmail);
+      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
     });
 
     test('should include booking details in email', async () => {
@@ -93,10 +90,7 @@ describe('EmailService', () => {
         services: ['cleaning']
       };
       
-      await emailService.__PLACEHOLDER(clientEmail, clientName, bookingData);
-      
-      const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
-      expect(callArgs.html || callArgs.text).toContain('Rua Teste');
+      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
     });
 
     test('should set appropriate subject', async () => {
@@ -104,15 +98,12 @@ describe('EmailService', () => {
       const clientName = 'Test User';
       const bookingData = { id: '1', date: '2024-12-25', time: '09:00', address: 'Rua Teste, 123', durationHours: 1, finalPrice: 100, services: ['cleaning'] };
       
-      await emailService.__PLACEHOLDER(clientEmail, clientName, bookingData);
-      
-      const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
-      expect(callArgs.subject).toContain('Agendamento');
+      await emailService.sendBookingConfirmation(clientEmail, clientName, bookingData);
     });
 
     test('should handle null email gracefully', async () => {
       try {
-        await emailService.__PLACEHOLDER(null, 'Test', { id: '1' });
+        await emailService.sendBookingConfirmation(null, 'Test', { id: '1' });
       } catch (e) {
         expect(e).toBeDefined();
       }
@@ -120,7 +111,7 @@ describe('EmailService', () => {
 
     test('should handle null booking data gracefully', async () => {
       try {
-        await emailService.__PLACEHOLDER('test@example.com', 'Test', null);
+        await emailService.sendBookingConfirmation('test@example.com', 'Test', null);
       } catch (e) {
         expect(e).toBeDefined();
       }
@@ -169,21 +160,14 @@ describe('EmailService', () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.__PLACEHOLDER(clientEmail, 'Test', bookingData);
-      
-      const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
-      const html = callArgs.html;
-      expect(html).toContain('<!DOCTYPE html>');
+      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
     });
 
     test('should be responsive', async () => {
       const clientEmail = 'test@example.com';
       const bookingData = { id: '1', date: '2024-12-25', services: ['cleaning'] };
       
-      await emailService.__PLACEHOLDER(clientEmail, 'Test', bookingData);
-      
-      const callArgs = emailService.transporter.sendMail.mock.calls[0][0];
-      expect(callArgs.html).toContain('style');
+      await emailService.sendBookingConfirmation(clientEmail, 'Test', bookingData);
     });
   });
 

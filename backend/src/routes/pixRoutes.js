@@ -5,7 +5,7 @@
 
 const express = require('express');
 const { authenticateToken, requireAdmin } = require('../middleware/auth');
-const PLACEHOLDER = require('../controllers/PLACEHOLDER');
+const PixPaymentController = require('../controllers/PixPaymentController');
 
 /**
  * Criar rotas PIX

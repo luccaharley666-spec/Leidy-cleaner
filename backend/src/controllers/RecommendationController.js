@@ -5,12 +5,12 @@
 
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const RecommendationService = require('../services/RecommendationService');
 
 // GET /api/recommendations/:userId
 router.get('/:userId', (req, res) => {
   try {
-    const recommendations = PLACEHOLDER.__PLACEHOLDER(req.params.userId);
+    const recommendations = RecommendationService.getPersonalizedRecommendations(req.params.userId);
     res.json(recommendations);
   } catch (error) {
     res.status(400).json({ error: error.message });
@@ -31,13 +31,13 @@ router.get('/services/popular', (req, res) => {
 
 // GET /api/recommendations/:userId/similar-customers
 router.get('/:userId/similar-customers', (req, res) => {
-  const similar = PLACEHOLDER.__PLACEHOLDER(req.params.userId);
+  const similar = RecommendationService.findSimilarCustomers(req.params.userId);
   res.json(similar);
 });
 
 // GET /api/recommendations/upsell/:serviceId
 router.get('/upsell/:serviceId', (req, res) => {
-  const upsell = PLACEHOLDER.__PLACEHOLDER(req.params.serviceId);
+  const upsell = RecommendationService.getUpsellRecommendations(req.params.serviceId);
   res.json(upsell);
 });
 

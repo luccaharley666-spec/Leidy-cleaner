@@ -5,7 +5,7 @@
 
 const express = require('express');
 const router = express.Router();
-const PLACEHOLDER = require('../services/PLACEHOLDER');
+const PaymentIntegrationService = require('../services/PaymentIntegrationService');
 
 // POST /api/payments/stripe
 router.post('/stripe', async (req, res) => {

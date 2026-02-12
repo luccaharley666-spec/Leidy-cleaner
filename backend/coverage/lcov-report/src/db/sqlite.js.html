@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">77.5% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/40</span>
+                <span class='fraction'>31/40</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/14</span>
+                <span class='fraction'>7/14</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">81.81% </span>
+                <span class="strong">78.78% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>27/33</span>
+                <span class='fraction'>26/33</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -151,31 +151,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25x</span>
 <span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-yes">17x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">17x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">9x</span>
-<span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">13x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,8 +227,8 @@ const candidatePaths = [
 ];
 &nbsp;
 let DB_PATH = candidatePaths.find(p =&gt; fs.existsSync(p));
-<span class="missing-if-branch" title="if path not taken" >I</span>if (!DB_PATH) {
-<span class="cstat-no" title="statement not covered" >  DB_PATH = candidatePaths[0];</span>
+if (!DB_PATH) {
+  DB_PATH = candidatePaths[0];
 }
 &nbsp;
 function ensureDir() {
@@ -241,16 +241,16 @@ function promisifyDb(db) {
     run(sql, ...params) {
       return new Promise((resolve, reject) =&gt; {
         db.run(sql, params, function (err) {
-          if (err) return reject(err);
-          resolve({ lastID: this.lastID, changes: this.changes });
+          <span class="missing-if-branch" title="else path not taken" >E</span>if (err) return reject(err);
+<span class="cstat-no" title="statement not covered" >          resolve({ lastID: this.lastID, changes: this.changes });</span>
         });
       });
     },
     get(sql, ...params) {
       return new Promise((resolve, reject) =&gt; {
         db.get(sql, params, (err, row) =&gt; {
-          if (err) return reject(err);
-          resolve(row);
+          <span class="missing-if-branch" title="else path not taken" >E</span>if (err) return reject(err);
+<span class="cstat-no" title="statement not covered" >          resolve(row);</span>
         });
       });
     },
@@ -295,7 +295,7 @@ module.exports = { getDb };
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T22:31:41.164Z
+                at 2026-02-12T15:07:00.868Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

@@ -22,7 +22,7 @@ jest.mock('../../utils/logger', () => ({
   debug: jest.fn()
 }));
 
-const PLACEHOLDER = require('../../controllers/PLACEHOLDER');
+const NotificationController = require('../../controllers/NotificationController');
 const db = require('../../db');
 
 describe('PLACEHOLDER', () => {
@@ -44,25 +44,25 @@ describe('PLACEHOLDER', () => {
 
   describe('Controller Structure', () => {
     test('should have sendNotification method', () => {
-      expect(typeof PLACEHOLDER.sendNotification === 'function' || PLACEHOLDER.sendNotification === undefined).toBe(true);
+      expect(typeof NotificationController.sendNotification === 'function' || NotificationController.sendNotification === undefined).toBe(true);
     });
 
     test('should have getNotifications method', () => {
-      expect(typeof PLACEHOLDER.getNotifications === 'function' || PLACEHOLDER.getNotifications === undefined).toBe(true);
+      expect(typeof NotificationController.getNotifications === 'function' || NotificationController.getNotifications === undefined).toBe(true);
     });
 
     test('should have markAsRead method', () => {
-      expect(typeof PLACEHOLDER.markAsRead === 'function' || PLACEHOLDER.markAsRead === undefined).toBe(true);
+      expect(typeof NotificationController.markAsRead === 'function' || NotificationController.markAsRead === undefined).toBe(true);
     });
 
     test('should have deleteNotification method', () => {
-      expect(typeof PLACEHOLDER.deleteNotification === 'function' || PLACEHOLDER.deleteNotification === undefined).toBe(true);
+      expect(typeof NotificationController.deleteNotification === 'function' || NotificationController.deleteNotification === undefined).toBe(true);
     });
   });
 
   describe('Send Notification', () => {
     test('should send notification', async () => {
-      if (typeof PLACEHOLDER.sendNotification === 'function') {
+      if (typeof NotificationController.sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Test',
@@ -70,7 +70,7 @@ describe('PLACEHOLDER', () => {
           type: 'booking'
         };
         
-        await PLACEHOLDER.sendNotification(req, res);
+        await NotificationController.sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -80,7 +80,7 @@ describe('PLACEHOLDER', () => {
       if (typeof PLACEHOLDER.sendNotification === 'function') {
         req.body = { title: 'Test' };
         
-        await PLACEHOLDER.sendNotification(req, res);
+        await NotificationController.sendNotification(req, res);
         
         expect(res.status).toHaveBeenCalled();
       }
@@ -98,7 +98,7 @@ describe('PLACEHOLDER', () => {
             type
           };
           
-          await PLACEHOLDER.sendNotification(req, res);
+          await NotificationController.sendNotification(req, res);
           
           expect(res.json || res.status).toBeDefined();
         }
@@ -111,7 +111,7 @@ describe('PLACEHOLDER', () => {
       if (typeof PLACEHOLDER.getNotifications === 'function') {
         req.params.userId = '1';
         
-        await PLACEHOLDER.getNotifications(req, res);
+        await NotificationController.getNotifications(req, res);
         
         expect(db.all).toHaveBeenCalled();
       }
@@ -121,7 +121,7 @@ describe('PLACEHOLDER', () => {
       if (typeof PLACEHOLDER.getNotifications === 'function') {
         req.query = { unreadOnly: 'true' };
         
-        await PLACEHOLDER.getNotifications(req, res);
+        await NotificationController.getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -131,7 +131,7 @@ describe('PLACEHOLDER', () => {
       if (typeof PLACEHOLDER.getNotifications === 'function') {
         req.query = { page: '1', limit: '10' };
         
-        await PLACEHOLDER.getNotifications(req, res);
+        await NotificationController.getNotifications(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
@@ -139,7 +139,7 @@ describe('PLACEHOLDER', () => {
 
     test('should return notification list', async () => {
       if (typeof PLACEHOLDER.getNotifications === 'function') {
-        await PLACEHOLDER.getNotifications(req, res);
+        await NotificationController.getNotifications(req, res);
         
         const callArgs = res.json.mock.calls[0]?.[0];
         expect(Array.isArray(callArgs) || typeof callArgs === 'object').toBe(true);
@@ -149,31 +149,31 @@ describe('PLACEHOLDER', () => {
 
   describe('Mark as Read', () => {
     test('should mark notification as read', async () => {
-      if (typeof PLACEHOLDER.markAsRead === 'function') {
+      if (typeof NotificationController.markAsRead === 'function') {
         req.params.notificationId = '1';
         
-        await PLACEHOLDER.markAsRead(req, res);
+        await NotificationController.markAsRead(req, res);
         
         expect(db.run).toHaveBeenCalled();
       }
     });
 
     test('should mark all notifications as read', async () => {
-      if (typeof PLACEHOLDER.markAsRead === 'function') {
+      if (typeof NotificationController.markAsRead === 'function') {
         req.body = { markAllAsRead: true };
         
-        await PLACEHOLDER.markAsRead(req, res);
+        await NotificationController.markAsRead(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should require notification ID or user ID', async () => {
-      if (typeof PLACEHOLDER.markAsRead === 'function') {
+      if (typeof NotificationController.markAsRead === 'function') {
         req.body = {};
         req.params = {};
         
-        await PLACEHOLDER.markAsRead(req, res);
+        await NotificationController.markAsRead(req, res);
         
         expect(res.status || res.json).toBeDefined();
       }
@@ -182,34 +182,34 @@ describe('PLACEHOLDER', () => {
 
   describe('Delete Notification', () => {
     test('should delete notification', async () => {
-      if (typeof PLACEHOLDER.deleteNotification === 'function') {
+      if (typeof NotificationController.deleteNotification === 'function') {
         req.params.notificationId = '1';
         
-        await PLACEHOLDER.deleteNotification(req, res);
+        await NotificationController.deleteNotification(req, res);
         
         expect(db.run).toHaveBeenCalled();
       }
     });
 
     test('should delete all notifications', async () => {
-      if (typeof PLACEHOLDER.deleteNotification === 'function') {
+      if (typeof NotificationController.deleteNotification === 'function') {
         req.body = { deleteAll: true };
         
-        await PLACEHOLDER.deleteNotification(req, res);
+        await NotificationController.deleteNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should handle missing notification', async () => {
-      if (typeof PLACEHOLDER.deleteNotification === 'function') {
+      if (typeof NotificationController.deleteNotification === 'function') {
         db.get.__PLACEHOLDER((sql, params, callback) => {
           callback(null, null);
         });
         
         req.params.notificationId = 'nonexistent';
         
-        await PLACEHOLDER.deleteNotification(req, res);
+        await NotificationController.deleteNotification(req, res);
         
         expect(res.status).toHaveBeenCalled();
       }
@@ -218,7 +218,7 @@ describe('PLACEHOLDER', () => {
 
   describe('Notification Types', () => {
     test('should support booking notifications', async () => {
-      if (typeof PLACEHOLDER.sendNotification === 'function') {
+      if (typeof NotificationController.sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Agendamento',
@@ -227,14 +227,14 @@ describe('PLACEHOLDER', () => {
           relatedId: 'booking_123'
         };
         
-        await PLACEHOLDER.sendNotification(req, res);
+        await NotificationController.sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }
     });
 
     test('should support payment notifications', async () => {
-      if (typeof PLACEHOLDER.sendNotification === 'function') {
+      if (typeof NotificationController.sendNotification === 'function') {
         req.body = {
           userId: '1',
           title: 'Pagamento',
@@ -243,7 +243,7 @@ describe('PLACEHOLDER', () => {
           relatedId: 'payment_123'
         };
         
-        await PLACEHOLDER.sendNotification(req, res);
+        await NotificationController.sendNotification(req, res);
         
         expect(res.json || res.status).toBeDefined();
       }

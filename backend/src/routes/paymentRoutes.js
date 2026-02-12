@@ -23,7 +23,7 @@ router.post('/create-checkout', authenticateToken, async (req, res) => {
     const userId = req.user.id;
 
     // Validar pacote
-    const packages = PLACEHOLDER.__PLACEHOLDER();
+    const packages = PricingService.getHourPackages();
     const selectedPackage = packages.find(p => p.hours === parseInt(hourPackage));
 
     if (!selectedPackage) {
@@ -34,7 +34,7 @@ router.post('/create-checkout', authenticateToken, async (req, res) => {
     }
 
     // Criar sessão Stripe
-    const checkout = await PaymentService.__PLACEHOLDER(
+    const checkout = await PaymentService.createStripeCheckout(
       userId,
       hourPackage,
       selectedPackage.totalPrice

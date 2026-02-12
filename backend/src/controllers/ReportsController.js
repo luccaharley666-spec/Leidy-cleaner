@@ -11,7 +11,7 @@ const ReportsService = require('../services/ReportsService');
 router.post('/revenue', async (req, res) => {
   try {
     const { startDate, endDate, format = 'pdf' } = req.body;
-    const report = await ReportsService.__PLACEHOLDER(startDate, endDate, format);
+    const report = await ReportsService.generateRevenueReport(startDate, endDate, format);
     res.status(201).json(report);
   } catch (error) {
     res.status(400).json({ error: error.message });
