@@ -16,11 +16,11 @@ export const Button = ({
   const baseStyles = 'font-inter font-600 rounded-lg transition-all duration-200 flex items-center justify-center gap-2'
   
   const variants = {
-    primary: 'bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white shadow-lg hover:shadow-primary-500/30 active:scale-95',
-    secondary: 'bg-white border-2 border-primary-500 text-primary-600 hover:bg-primary-50 active:scale-95',
-    accent: 'bg-gradient-to-r from-accent-500 to-accent-600 hover:from-accent-600 hover:to-accent-700 text-white shadow-lg hover:shadow-accent-500/30 active:scale-95',
-    outline: 'border-2 border-primary-300 text-primary-700 hover:bg-primary-50 active:scale-95',
-    ghost: 'text-primary-600 hover:bg-primary-50 active:scale-95'
+    primary: 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white shadow-lg hover:shadow-green-500/30 active:scale-95',
+    secondary: 'bg-white border-2 border-green-600 text-green-600 hover:bg-green-50 active:scale-95',
+    accent: 'bg-gradient-to-r from-teal-500 to-emerald-600 hover:from-teal-600 hover:to-emerald-700 text-white shadow-lg hover:shadow-teal-500/30 active:scale-95',
+    outline: 'border-2 border-green-300 text-green-700 hover:bg-green-50 active:scale-95',
+    ghost: 'text-green-600 hover:bg-green-50 active:scale-95'
   }
 
   const sizes = {
