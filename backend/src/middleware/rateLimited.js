@@ -95,6 +95,18 @@ const limiters = {
   }),
 
   /**
+   * Admin POST/PUT - Máximo 20 por minuto (criação/atualização de recursos)
+   */
+  adminWrite: RateLimitService.createMiddleware({
+    windowMs: 60 * 1000, // 1 minuto
+    maxRequests: 20,
+    keyGenerator: (req) => req.user?.id || req.ip,
+    message: 'Limite de operações administrativas excedido. Tente novamente em breve.',
+    skipSuccessfulRequests: false,
+    skipFailedRequests: false
+  }),
+
+  /**
    * API geral - Máximo 100 por minuto (proteção DDoS)
    */
   general: RateLimitService.createMiddleware({

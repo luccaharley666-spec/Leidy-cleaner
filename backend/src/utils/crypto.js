@@ -5,10 +5,12 @@ const ALGO = 'aes-256-gcm';
 const IV_LENGTH = 12; // recommended for GCM
 
 function getKey() {
+  // ✅ CORRIGIDO: Encryption key é OBRIGATÓRIA, sem fallback inseguro
   const key = process.env.SECRET_ENC_KEY || process.env.TWO_FA_ENC_KEY;
   if (!key) {
-    logger.warn('Encryption key not set (SECRET_ENC_KEY). Using insecure dev key.');
-    return crypto.createHash('sha256').update('PLACEHOLDER').digest();
+    logger.error('❌ ERRO CRÍTICO: SECRET_ENC_KEY ou TWO_FA_ENC_KEY não estão definidos em .env');
+    logger.error('Criptografia não funciona sem essas chaves. Execute: npm run generate-secrets');
+    throw new Error('Encryption key obrigatório em .env');
   }
   return crypto.createHash('sha256').update(key).digest();
 }

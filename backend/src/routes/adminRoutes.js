@@ -12,8 +12,10 @@
 const express = require('express');
 const router = express.Router();
 const { authenticateToken, authorizeRole } = require('../middleware/auth');
+const { limiters } = require('../middleware/rateLimited');
 const db = require('../db');
 const logger = require('../utils/logger');
+const { validateSchema, teamCreateSchema, teamUpdateSchema, serviceCreateSchema, serviceUpdateSchema } = require('../utils/zodSchemas');
 
 // Middleware: Verificar admin (autenticação + autorização)
 const requireAdmin = [authenticateToken, authorizeRole(['admin'])];
@@ -22,16 +24,9 @@ const requireAdmin = [authenticateToken, authorizeRole(['admin'])];
  * POST /api/admin/teams
  * Criar novo time de limpeza
  */
-router.post('/teams', requireAdmin, async (req, res) => {
+router.post('/teams', requireAdmin, limiters.adminWrite, validateSchema(teamCreateSchema), async (req, res) => {
   try {
-    const { name, description, color, manager_id } = req.body;
-
-    if (!name || !manager_id) {
-      return res.status(400).json({
-        success: false,
-        error: 'Nome e gerente são obrigatórios'
-      });
-    }
+    const { name, description, color, manager_id } = req.validated;
 
     await db.run(
       `INSERT INTO teams (name, description, color, manager_id, created_at, is_active)
@@ -56,22 +51,40 @@ router.post('/teams', requireAdmin, async (req, res) => {
 
 /**
  * GET /api/admin/teams
- * Listar todos os times
+ * Listar todos os times (com paginação)
  */
 router.get('/teams', requireAdmin, async (req, res) => {
   try {
+    // ✅ PAGINAÇÃO: extrair params com validação
+    const limit = Math.min(parseInt(req.query.limit) || 20, 100);
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
+    const offset = (page - 1) * limit;
+
     const teams = await db.all(
       `SELECT t.*, u.name as manager_name, COUNT(DISTINCT tm.staff_id) as member_count
        FROM teams t
        LEFT JOIN users u ON t.manager_id = u.id
        LEFT JOIN team_members tm ON t.id = tm.team_id
        GROUP BY t.id
-       ORDER BY t.created_at DESC`,
+       ORDER BY t.created_at DESC
+       LIMIT ? OFFSET ?`,
+      [limit, offset]
+    );
+
+    // ✅ Contar total de registros
+    const [{ total }] = await db.all(
+      `SELECT COUNT(*) as total FROM teams`
     );
 
     res.json({
       success: true,
-      teams
+      data: teams,
+      pagination: {
+        total,
+        page,
+        pageSize: limit,
+        totalPages: Math.ceil(total / limit)
+      }
     });
   } catch (err) {
     logger.error('List teams failed', err);
@@ -83,9 +96,9 @@ router.get('/teams', requireAdmin, async (req, res) => {
  * PUT /api/admin/teams/:id
  * Atualizar time
  */
-router.put('/teams/:id', requireAdmin, async (req, res) => {
+router.put('/teams/:id', requireAdmin, limiters.adminWrite, validateSchema(teamUpdateSchema), async (req, res) => {
   try {
-    const { name, description, color, is_active } = req.body;
+    const { name, description, color, is_active } = req.validated;
 
     await db.run(
       `UPDATE teams 
@@ -137,16 +150,9 @@ router.delete('/teams/:id', requireAdmin, async (req, res) => {
  * POST /api/admin/services
  * Criar novo serviço
  */
-router.post('/services', requireAdmin, async (req, res) => {
+router.post('/services', requireAdmin, limiters.adminWrite, validateSchema(serviceCreateSchema), async (req, res) => {
   try {
-    const { name, description, category, base_price, duration_minutes, image_url } = req.body;
-
-    if (!name || !category || base_price === undefined) {
-      return res.status(400).json({
-        success: false,
-        error: 'Nome, categoria e preço são obrigatórios'
-      });
-    }
+    const { name, description, category, base_price, duration_minutes, image_url } = req.validated;
 
     await db.run(
       `INSERT INTO services (name, description, category, base_price, duration_minutes, image_url, active, created_at)
@@ -173,19 +179,36 @@ router.post('/services', requireAdmin, async (req, res) => {
 
 /**
  * GET /api/admin/services
- * Listar todos os serviços
+ * Listar todos os serviços (com paginação)
  */
 router.get('/services', requireAdmin, async (req, res) => {
   try {
+    // ✅ PAGINAÇÃO: extrair params com validação
+    const limit = Math.min(parseInt(req.query.limit) || 20, 100);
+    const page = Math.max(parseInt(req.query.page) || 1, 1);
+    const offset = (page - 1) * limit;
+
     const services = await db.all(
       `SELECT * FROM services 
-       ORDER BY category ASC, name ASC`
+       ORDER BY category ASC, name ASC
+       LIMIT ? OFFSET ?`,
+      [limit, offset]
+    );
+
+    // ✅ Contar total de registros
+    const [{ total }] = await db.all(
+      `SELECT COUNT(*) as total FROM services`
     );
 
     res.json({
       success: true,
-      services,
-      total: services.length
+      data: services,
+      pagination: {
+        total,
+        page,
+        pageSize: limit,
+        totalPages: Math.ceil(total / limit)
+      }
     });
   } catch (err) {
     logger.error('List services failed', err);
@@ -197,9 +220,9 @@ router.get('/services', requireAdmin, async (req, res) => {
  * PUT /api/admin/services/:id
  * Atualizar serviço
  */
-router.put('/services/:id', requireAdmin, async (req, res) => {
+router.put('/services/:id', requireAdmin, limiters.adminWrite, validateSchema(serviceUpdateSchema), async (req, res) => {
   try {
-    const { name, description, base_price, duration_minutes, is_active } = req.body;
+    const { name, description, base_price, duration_minutes, is_active } = req.validated;
 
     await db.run(
       `UPDATE services 
@@ -347,6 +370,97 @@ router.get('/hour-sales', requireAdmin, async (req, res) => {
     });
   } catch (err) {
     logger.error('Hour sales report failed', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/admin/settings
+ * Obter configurações do sistema
+ */
+router.get('/settings', requireAdmin, async (req, res) => {
+  try {
+    const settings = await db.all(
+      `SELECT key, value FROM company_settings`
+    );
+
+    const settingsObj = {};
+    settings.forEach(s => {
+      try {
+        settingsObj[s.key] = JSON.parse(s.value);
+      } catch {
+        settingsObj[s.key] = s.value;
+      }
+    });
+
+    res.json({
+      success: true,
+      data: settingsObj
+    });
+  } catch (err) {
+    logger.error('Failed to fetch settings', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * PUT /api/admin/settings
+ * Atualizar configurações do sistema
+ */
+router.put('/settings', requireAdmin, async (req, res) => {
+  try {
+    const settings = req.body;
+
+    for (const [key, value] of Object.entries(settings)) {
+      const valueStr = typeof value === 'string' ? value : JSON.stringify(value);
+      
+      await db.run(
+        `INSERT OR REPLACE INTO company_settings (key, value, updated_at)
+         VALUES (?, ?, datetime('now'))`,
+        key,
+        valueStr
+      );
+    }
+
+    logger.info('Settings updated', { keys: Object.keys(settings) });
+
+    res.json({
+      success: true,
+      message: 'Configurações salvas com sucesso'
+    });
+  } catch (err) {
+    logger.error('Failed to update settings', err);
+    res.status(500).json({ success: false, error: err.message });
+  }
+});
+
+/**
+ * GET /api/admin/settings/:key
+ * Obter configuração específica
+ */
+router.get('/settings/:key', requireAdmin, async (req, res) => {
+  try {
+    const { key } = req.params;
+    const setting = await db.get(
+      `SELECT value FROM company_settings WHERE key = ?`,
+      key
+    );
+
+    if (!setting) {
+      return res.status(404).json({
+        success: false,
+        error: 'Setting not found'
+      });
+    }
+
+    try {
+      const value = JSON.parse(setting.value);
+      res.json({ success: true, data: value });
+    } catch {
+      res.json({ success: true, data: setting.value });
+    }
+  } catch (err) {
+    logger.error('Failed to fetch setting', err);
     res.status(500).json({ success: false, error: err.message });
   }
 });

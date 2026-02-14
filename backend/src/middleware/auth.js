@@ -6,13 +6,14 @@
 const jwt = require('jsonwebtoken');
 const logger = require('../utils/logger');
 
-// Use environment variables or defaults for dev
-const JWT_SECRET = process.env.JWT_SECRET || 'PLACEHOLDER';
-const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'PLACEHOLDER';
+// ✅ CORRIGIDO: Secrets são OBRIGATÓRIOS, sem fallback inseguro
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET;
 
-// Warning if not set in production
-if (process.env.NODE_ENV === 'production' && (!process.env.JWT_SECRET || !process.env.JWT_REFRESH_SECRET)) {
-  logger.error('❌ JWT secrets não definidos em produção');
+// Validação: Secrets OBRIGATÓRIOS em todos os ambientes
+if (!JWT_SECRET || !JWT_REFRESH_SECRET) {
+  logger.error('❌ ERRO CRÍTICO: JWT_SECRET e JWT_REFRESH_SECRET não estão definidos em .env');
+  logger.error('Por favor, execute: npm run generate-secrets');
   process.exit(1);
 }
 

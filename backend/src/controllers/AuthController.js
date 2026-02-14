@@ -232,7 +232,6 @@ class AuthController {
       });
 
     } catch (error) {
-      console.error('Erro no registro:', error.stack || error);
       logger.error('Erro no registro:', error.stack || error.toString());
       // Em ambiente local, retornar detalhe para facilitar debugging
       res.status(500).json({
@@ -320,7 +319,7 @@ class AuthController {
       });
 
     } catch (error) {
-      console.error('Erro no login:', error);
+      logger.error('Erro no login:', error.message);
       res.status(500).json({
         error: 'Erro ao fazer login'
       });

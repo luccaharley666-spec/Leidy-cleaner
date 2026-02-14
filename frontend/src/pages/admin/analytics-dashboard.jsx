@@ -8,7 +8,6 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { AnalyticsDashboard } from '@/components/Dashboard/AnalyticsDashboard';
 import useAnalytics from '@/hooks/useAnalytics';
-import { authenticateToken } from '@/middleware/auth';
 
 export default function AdminAnalytics() {
   const router = useRouter();
@@ -39,9 +38,8 @@ export default function AdminAnalytics() {
     refetch();
   };
 
-  const [REDACTED_TOKEN] = (range) => {
+  const handleRangeSelect = (range) => {
     setDateRange(range);
-    router.push(`/admin/analytics?range=${range}`, undefined, { shallow: true });
   };
 
   return (
@@ -88,7 +86,7 @@ export default function AdminAnalytics() {
                 </label>
                 <select
                   value={dateRange}
-                  onChange={(e) => [REDACTED_TOKEN](e.target.value)}
+                  onChange={(e) => handleRangeSelect(e.target.value)}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 >
                   <option value="7days">Últimos 7 dias</option>
@@ -146,42 +144,10 @@ export default function AdminAnalytics() {
   );
 }
 
-// Server-side authentication check
-export async function getServerSideProps(context) {
-  try {
-    const token = context.req.cookies.token;
-
-    if (!token) {
-      return {
-        redirect: {
-          destination: '/login',
-          permanent: false
-        }
-      };
-    }
-
-    // Verify token (optional - can be done in middleware)
-    // const user = await authenticateToken(token);
-    // if (!user || user.role !== 'admin') {
-    //   return {
-    //     redirect: {
-    //       destination: '/dashboard',
-    //       permanent: false
-    //     }
-    //   };
-    // }
-
-    return {
-      props: {
-        initialToken: token
-      }
-    };
-  } catch (error) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false
-      }
-    };
+// Client-side authentication check
+useEffect(() => {
+  const token = localStorage.getItem('token');
+  if (!token) {
+    router.push('/login');
   }
-}
+}, [router]);

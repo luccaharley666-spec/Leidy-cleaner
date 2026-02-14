@@ -322,7 +322,7 @@ class BookingController {
       });
 
     } catch (error) {
-      console.error('Erro ao avaliar agendamento:', error);
+      logger.error('Erro ao avaliar agendamento:', error.message);
       await db.close();
       res.status(500).json({ error: error.message });
     }
