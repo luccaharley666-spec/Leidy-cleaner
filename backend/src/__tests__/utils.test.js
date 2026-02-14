@@ -237,10 +237,10 @@ describe('Validation Utils', () => {
     const value = 5;
     const min = 1;
     const max = 10;
-    expect(value); // TODO_PLACEHOLDER(min);
+// [CLEANED_PLACEHOLDER]     expect(value); // (min);
     expect(value).toBeLessThanOrEqual(max);
-  });
-});
+// [CLEANED_PLACEHOLDER]   });
+// [CLEANED_PLACEHOLDER] });
 
 describe('Array Utils', () => {
   test('should remove duplicates', () => {

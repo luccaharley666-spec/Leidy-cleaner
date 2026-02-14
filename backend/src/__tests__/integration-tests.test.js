@@ -77,8 +77,8 @@ describe('Integration Tests - Pricing Calculations', () => {
       const price = await PricingService.calculatePrice(data);
       const minimum = PricingService.getMinimumPrice();
       
-      expect(price); // TODO_PLACEHOLDER(minimum);
-    });
+// [CLEANED_PLACEHOLDER]       expect(price); // (minimum);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should handle multiple services correctly', async () => {
       const data = {
@@ -239,8 +239,8 @@ describe('Integration Tests - Pricing Calculations', () => {
       const price = await PricingService.calculatePrice(data);
       const minimum = PricingService.getMinimumPrice();
       
-      expect(price); // TODO_PLACEHOLDER(minimum);
-    });
+// [CLEANED_PLACEHOLDER]       expect(price); // (minimum);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should handle very large metragem', async () => {
       const data = {

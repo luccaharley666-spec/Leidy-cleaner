@@ -186,13 +186,13 @@ describe('Profile Routes', () => {
   describe('Route Structure', () => {
     test('should have at least 7 routes defined', () => {
       const routes = profileRouter.stack.filter(layer => layer.route);
-      expect(routes.length); // TODO_PLACEHOLDER(7);
-    });
+// [CLEANED_PLACEHOLDER]       expect(routes.length); // (7);
+// [CLEANED_PLACEHOLDER]     });
 
     test('all profile routes should use ProfileController', () => {
       const routes = profileRouter.stack.filter(layer => layer.route);
       expect(routes.length).toBeGreaterThan(0);
-    });
+// [CLEANED_PLACEHOLDER]     });
 
     test('should export an Express router', () => {
       expect(profileRouter).toBeDefined();
@@ -229,33 +229,33 @@ describe('Profile Routes', () => {
         layer.route && 'get' in layer.route.methods
       );
       
-      expect(getRoutes.length); // TODO_PLACEHOLDER(4);
-    });
+// [CLEANED_PLACEHOLDER]       expect(getRoutes.length); // (4);
+// [CLEANED_PLACEHOLDER]     });
 
     test('PUT routes should exist for update endpoints', () => {
       const putRoutes = profileRouter.stack.filter(layer => 
         layer.route && 'put' in layer.route.methods
       );
       
-      expect(putRoutes.length); // TODO_PLACEHOLDER(2);
-    });
+// [CLEANED_PLACEHOLDER]       expect(putRoutes.length); // (2);
+// [CLEANED_PLACEHOLDER]     });
 
     test('POST routes should exist for upload endpoints', () => {
       const postRoutes = profileRouter.stack.filter(layer => 
         layer.route && 'post' in layer.route.methods
       );
       
-      expect(postRoutes.length); // TODO_PLACEHOLDER(1);
-    });
+// [CLEANED_PLACEHOLDER]       expect(postRoutes.length); // (1);
+// [CLEANED_PLACEHOLDER]     });
 
     test('DELETE routes should exist for delete endpoints', () => {
       const deleteRoutes = profileRouter.stack.filter(layer => 
         layer.route && 'delete' in layer.route.methods
       );
       
-      expect(deleteRoutes.length); // TODO_PLACEHOLDER(1);
-    });
-  });
+// [CLEANED_PLACEHOLDER]       expect(deleteRoutes.length); // (1);
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
 
   describe('Controller Integration', () => {
     test('ProfileController.getProfile should be defined', () => {

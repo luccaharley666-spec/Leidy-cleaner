@@ -168,9 +168,9 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
       expect(next).not.toHaveBeenCalled();
-    });
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject without services', () => {
       const req = {
@@ -183,8 +183,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject without address', () => {
       const req = {
@@ -197,8 +197,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with past date', () => {
       const req = {
@@ -212,8 +212,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject Sunday booking', () => {
       // Create a Sunday date in the future
@@ -232,8 +232,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should accept valid email when provided', () => {
       const req = {
@@ -264,8 +264,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should accept valid phone when provided', () => {
       const req = {
@@ -296,8 +296,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should accept valid CEP when provided', () => {
       const req = {
@@ -328,8 +328,8 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should return multiple errors', () => {
       const req = {
@@ -339,12 +339,12 @@ describe('Validation Middleware', () => {
 
       validateBookingData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
       expect(res.json).toHaveBeenCalled();
       const callArg = res.json.mock.calls[0][0];
       expect(callArg.errors.length).toBeGreaterThan(1);
-    });
-  });
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
 
   describe('validatePaymentData', () => {
     test('should pass with valid payment data', () => {
@@ -373,8 +373,8 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject without amount', () => {
       const req = {
@@ -387,8 +387,8 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with zero amount', () => {
       const req = {
@@ -402,8 +402,8 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with negative amount', () => {
       const req = {
@@ -417,8 +417,8 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject without paymentMethod', () => {
       const req = {
@@ -431,9 +431,9 @@ describe('Validation Middleware', () => {
 
       validatePaymentData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
-  });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
 
   describe('validateReviewData', () => {
     test('should pass with valid review data', () => {
@@ -462,8 +462,8 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with rating below 1', () => {
       const req = {
@@ -477,8 +477,8 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with rating above 5', () => {
       const req = {
@@ -492,8 +492,8 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should accept rating 1', () => {
       const req = {
@@ -536,8 +536,8 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with empty comment', () => {
       const req = {
@@ -551,8 +551,8 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
 
     test('should reject with only spaces as comment', () => {
       const req = {
@@ -566,9 +566,9 @@ describe('Validation Middleware', () => {
 
       validateReviewData(req, res, next);
 
-      expect(res.status); // TODO_PLACEHOLDER(400);
-    });
-  });
+// [CLEANED_PLACEHOLDER]       expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
 
   describe('validateDateRange', () => {
     test('should return true for valid future date', () => {

@@ -3,9 +3,9 @@ describe('PLACEHOLDER', () => {
     jest.resetModules();
     jest.clearAllMocks();
     delete process.env.VAPID_PRIVATE_KEY;
-    delete process.env; // TODO_PLACEHOLDER;
+// [CLEANED_PLACEHOLDER]     delete process.env; // ;
     delete process.env.VAPID_PUBLIC_KEY;
-  });
+// [CLEANED_PLACEHOLDER]   });
 
   test('subscribe with invalid body returns 400', async () => {
     jest.resetModules();
@@ -18,8 +18,8 @@ describe('PLACEHOLDER', () => {
 
     await PLACEHOLDER.subscribe(req, res);
 
-    expect(res.status); // TODO_PLACEHOLDER(400);
-  });
+// [CLEANED_PLACEHOLDER]     expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]   });
 
   test('sendTest returns 400 when no subscriptions', async () => {
     jest.resetModules();
@@ -32,9 +32,9 @@ describe('PLACEHOLDER', () => {
 
     await PLACEHOLDER.sendTest(req, res);
 
-    expect(res.status); // TODO_PLACEHOLDER(400);
-    expect(res.json); // TODO_PLACEHOLDER(expect.objectContaining({ error: 'Nenhuma subscription registrada' }));
-  });
+// [CLEANED_PLACEHOLDER]     expect(res.status); // (400);
+// [CLEANED_PLACEHOLDER]     expect(res.json); // (expect.objectContaining({ error: 'Nenhuma subscription registrada' }));
+// [CLEANED_PLACEHOLDER]   });
 
   test('sendTest with a subscription sends notification and returns sent count', async () => {
     jest.resetModules();
@@ -59,10 +59,10 @@ describe('PLACEHOLDER', () => {
 
     await PLACEHOLDER.sendTest(req, res);
 
-    expect(res.json); // TODO_PLACEHOLDER(expect.objectContaining({ success: true, sent: 1, total: 1 }));
+// [CLEANED_PLACEHOLDER]     expect(res.json); // (expect.objectContaining({ success: true, sent: 1, total: 1 }));
     expect(mockFs.writeFileSync).toHaveBeenCalled();
-  });
-});
+// [CLEANED_PLACEHOLDER]   });
+// [CLEANED_PLACEHOLDER] });
 /**
  * PLACEHOLDER Integration Tests
  * Testa gerenciamento de notificações

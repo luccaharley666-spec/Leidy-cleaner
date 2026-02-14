@@ -292,13 +292,13 @@ describe('Logging Middleware', () => {
   test('should track response time', () => {
     const startTime = Date.now();
     const elapsed = Date.now() - startTime;
-    expect(elapsed); // TODO_PLACEHOLDER(0);
-  });
+// [CLEANED_PLACEHOLDER]     expect(elapsed); // (0);
+// [CLEANED_PLACEHOLDER]   });
 
   test('should log response status', () => {
     res.statusCode = 200;
     expect(res.statusCode).toBe(200);
-  });
+// [CLEANED_PLACEHOLDER]   });
 });
 
 describe('Rate Limiting Middleware', () => {

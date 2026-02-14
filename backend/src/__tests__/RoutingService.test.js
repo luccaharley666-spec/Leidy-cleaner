@@ -29,19 +29,19 @@ describe('RoutingService', () => {
 
   describe('PLACEHOLDER', () => {
     test('should be a function', () => {
-      expect(typeof RoutingService; // TODO_PLACEHOLDER).toBe('function');
-    });
+// [CLEANED_PLACEHOLDER]       expect(typeof RoutingService; // ).toBe('function');
+// [CLEANED_PLACEHOLDER]     });
 
     test('should return sorted bookings array', () => {
       const bookings = [
         { id: 2, date: new Date('2024-01-15T12:00:00') },
         { id: 1, date: new Date('2024-01-15T10:00:00') }
       ];
-      RoutingService; // TODO_PLACEHOLDER.mockReturnValue(bookings);
-      const result = RoutingService; // TODO_PLACEHOLDER(bookings);
+// [CLEANED_PLACEHOLDER]       RoutingService; // .mockReturnValue(bookings);
+// [CLEANED_PLACEHOLDER]       const result = RoutingService; // (bookings);
       expect(result.length).toBe(2);
-    });
-  });
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
 
   describe('estimateTravelTime', () => {
     test('should be a function', () => {
@@ -87,49 +87,49 @@ describe('RoutingService', () => {
 
   describe('PLACEHOLDER', () => {
     test('should be a function', () => {
-      expect(typeof RoutingService; // TODO_PLACEHOLDER).toBe('function');
-    });
+// [CLEANED_PLACEHOLDER]       expect(typeof RoutingService; // ).toBe('function');
+// [CLEANED_PLACEHOLDER]     });
 
     test('should return true when gap is sufficient', () => {
-      RoutingService; // TODO_PLACEHOLDER.mockReturnValue(true);
+// [CLEANED_PLACEHOLDER]       RoutingService; // .mockReturnValue(true);
       const booking1 = { date: new Date('2024-01-15T10:00:00') };
       const booking2 = { date: new Date('2024-01-15T13:00:00') };
-      const result = RoutingService; // TODO_PLACEHOLDER(booking1, booking2, 30);
+// [CLEANED_PLACEHOLDER]       const result = RoutingService; // (booking1, booking2, 30);
       expect(result).toBe(true);
-    });
+// [CLEANED_PLACEHOLDER]     });
 
     test('should return false when gap is insufficient', () => {
-      RoutingService; // TODO_PLACEHOLDER.mockReturnValue(false);
+// [CLEANED_PLACEHOLDER]       RoutingService; // .mockReturnValue(false);
       const booking1 = { date: new Date('2024-01-15T10:00:00') };
       const booking2 = { date: new Date('2024-01-15T11:30:00') };
-      const result = RoutingService; // TODO_PLACEHOLDER(booking1, booking2, 120);
+// [CLEANED_PLACEHOLDER]       const result = RoutingService; // (booking1, booking2, 120);
       expect(result).toBe(false);
-    });
-  });
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
 
   describe('PLACEHOLDER', () => {
     test('should be a function', () => {
-      expect(typeof RoutingService; // TODO_PLACEHOLDER).toBe('function');
-    });
+// [CLEANED_PLACEHOLDER]       expect(typeof RoutingService; // ).toBe('function');
+// [CLEANED_PLACEHOLDER]     });
 
     test('should return true for valid notification', async () => {
-      RoutingService; // TODO_PLACEHOLDER.mockResolvedValue(true);
+// [CLEANED_PLACEHOLDER]       RoutingService; // .mockResolvedValue(true);
       const itinerary = [
         { order: 1, bookingId: 1, address: 'Rua A', startTime: new Date(), endTime: new Date(), duration: 120 }
       ];
-      const result = await RoutingService; // TODO_PLACEHOLDER('team-1', itinerary);
+// [CLEANED_PLACEHOLDER]       const result = await RoutingService; // ('team-1', itinerary);
       expect(result).toBe(true);
-    });
+// [CLEANED_PLACEHOLDER]     });
 
     test('should handle empty itinerary', async () => {
-      RoutingService; // TODO_PLACEHOLDER.mockResolvedValue(true);
-      const result = await RoutingService; // TODO_PLACEHOLDER('team-2', []);
+// [CLEANED_PLACEHOLDER]       RoutingService; // .mockResolvedValue(true);
+// [CLEANED_PLACEHOLDER]       const result = await RoutingService; // ('team-2', []);
       expect(result).toBe(true);
-    });
+// [CLEANED_PLACEHOLDER]     });
 
     test('should handle error and throw', async () => {
-      RoutingService; // TODO_PLACEHOLDER.mockRejectedValue(new Error('Notification failed'));
-      await expect(RoutingService; // TODO_PLACEHOLDER('team-3', [])).rejects.toThrow();
-    });
-  });
-});
+// [CLEANED_PLACEHOLDER]       RoutingService; // .mockRejectedValue(new Error('Notification failed'));
+// [CLEANED_PLACEHOLDER]       await expect(RoutingService; // ('team-3', [])).rejects.toThrow();
+// [CLEANED_PLACEHOLDER]     });
+// [CLEANED_PLACEHOLDER]   });
+// [CLEANED_PLACEHOLDER] });

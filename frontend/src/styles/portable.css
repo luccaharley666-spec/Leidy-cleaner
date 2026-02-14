@@ -1,0 +1,51 @@
+:root{
+  --brand-1: #6b21a8; /* violet */
+  --brand-2: #4f46e5; /* indigo */
+  --accent: #fb923c; /* orange */
+  --muted: #6b7280;
+  --bg: #ffffff;
+  --card-bg: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(249,250,255,0.9));
+}
+
+html,body,#__next{height:100%}
+body{
+  margin:0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  background: var(--bg);
+  color: #0f172a;
+}
+
+/* Search portable styles */
+.search-logo{width:20px;height:20px;border-radius:9999px;object-fit:cover}
+.search-input{padding:0.6rem 0.75rem;border-radius:9999px;border:2px solid rgba(139,92,246,0.12);background:linear-gradient(90deg,#fff,#fbfaff);font-weight:500}
+.search-button{padding:0.45rem;border-radius:12px;background:linear-gradient(90deg,var(--brand-1),var(--brand-2));color:#fff}
+
+/* Hero and buttons */
+.btn-primary{background:linear-gradient(90deg,var(--brand-1),var(--brand-2));color:#fff;padding:0.6rem 1rem;border-radius:12px;border:none}
+.btn-ghost{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:0.5rem 0.9rem;border-radius:10px}
+
+/* Small utilities used by pages */
+.hero{padding:4rem 1rem}
+.card{background:var(--card-bg);border-radius:16px;padding:1rem;box-shadow:0 6px 18px rgba(11,15,30,0.06)}
+
+/* Ensure images are not blocked by dev servers */
+img{max-width:100%;height:auto;display:block}
+
+/* Header / Footer fallback styles */
+.site-header{position:relative;background:var(--bg);color:var(--muted);border-bottom:1px solid rgba(15,23,42,0.04)}
+.site-header a{color:inherit;text-decoration:none}
+.site-header .logo{display:flex;align-items:center;gap:0.5rem;font-weight:700}
+.site-header .nav-link{padding:0.5rem 0.75rem;border-radius:8px;transition:background .15s,color .15s}
+.site-header .nav-link:hover{background:rgba(79,70,229,0.06)}
+
+.site-footer{background:var(--brand-2);color:#fff}
+.site-footer a{color:#e6f0ff}
+.site-footer .nav-link{color:#e6f0ff}
+.site-footer .nav-link:hover{color:#fff}
+
+/* Mobile menu button fallback */
+.mobile-menu-button{background:transparent;border:none;padding:0.4rem;border-radius:8px}
+
+/* Small utilities used by header/footer */
+.logo{font-size:1.25rem}
+

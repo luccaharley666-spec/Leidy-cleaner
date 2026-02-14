@@ -5,7 +5,10 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
+    "start:integrated": "INTEGRATE_NEXT=true node src/index.js",
     "dev": "nodemon src/index.js",
+    "build:frontend": "cd ../frontend && npm ci --silent && npm run build",
+    "start:prod": "npm run build:frontend && NODE_ENV=production INTEGRATE_NEXT=true node src/index.js",
     "test": "jest",
     "test:unit": "jest --testPathPattern=src",
     "test:integration": "jest --testPathPattern=integration",
@@ -74,8 +77,10 @@
     "twilio": "^5.12.1",
     "web-push": "^3.5.0",
     "winston": "^3.19.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "next": "^16.1.6"
   },
+  
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.29.0",

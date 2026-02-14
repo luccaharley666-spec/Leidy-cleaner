@@ -46,15 +46,22 @@ export function ThemeProvider({ children }) {
 
   // Detectar preferência de tema do sistema
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const systemIsDark = mediaQuery.matches;
       setSystemTheme(systemIsDark ? 'dark' : 'light');
 
       const handler = (e) => setSystemTheme(e.matches ? 'dark' : 'light');
-      mediaQuery.addListener(handler);
+      if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', handler);
+        return () => mediaQuery.removeEventListener('change', handler);
+      }
 
-      return () => mediaQuery.removeListener(handler);
+      // Fallback for older browsers
+      if (typeof mediaQuery.addListener === 'function') {
+        mediaQuery.addListener(handler);
+        return () => mediaQuery.removeListener(handler);
+      }
     }
   }, []);
 

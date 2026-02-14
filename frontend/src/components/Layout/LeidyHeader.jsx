@@ -19,11 +19,11 @@ export default function LeidyHeader() {
   const isActive = (path) => router.pathname === path;
 
   return (
-    <header className={`${theme === 'dark' ? 'bg-gray-900 shadow-2xl' : 'bg-white shadow-md'} fixed w-full top-0 z-50 transition-colors duration-300`}>
+    <header className={`site-header ${theme === 'dark' ? 'bg-gray-900 shadow-2xl' : 'bg-white shadow-md'} fixed w-full top-0 z-50 transition-colors duration-300`}>
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 logo">
             <div className="text-3xl text-green-700">
               <i className="fas fa-spray-can"></i>
             </div>
@@ -36,22 +36,22 @@ export default function LeidyHeader() {
           <nav className="hidden md:flex items-center gap-8">
             <ul className="flex gap-8 list-none">
               <li>
-                <Link href="/" className={`font-semibold transition-colors ${isActive('/') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
+                <Link href="/" className={`font-semibold transition-colors nav-link ${isActive('/') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
                   Início
                 </Link>
               </li>
               <li>
-                <Link href="/servicos" className={`font-semibold transition-colors ${isActive('/servicos') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
+                <Link href="/servicos" className={`font-semibold transition-colors nav-link ${isActive('/servicos') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
                   Serviços
                 </Link>
               </li>
               <li>
-                <Link href="/sobre" className={`font-semibold transition-colors ${isActive('/sobre') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
+                <Link href="/sobre" className={`font-semibold transition-colors nav-link ${isActive('/sobre') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
                   Sobre Nós
                 </Link>
               </li>
               <li>
-                <Link href="/contato" className={`font-semibold transition-colors ${isActive('/contato') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
+                <Link href="/contato" className={`font-semibold transition-colors nav-link ${isActive('/contato') ? 'text-green-600' : theme === 'dark' ? 'text-gray-300 hover:text-green-400' : 'text-green-900 hover:text-green-500'}`}>
                   Contato
                 </Link>
               </li>
@@ -106,7 +106,7 @@ export default function LeidyHeader() {
             
             <button
               onClick={toggleMobileMenu}
-              className="bg-transparent border-none text-2xl cursor-pointer"
+              className="mobile-menu-button bg-transparent border-none text-2xl cursor-pointer"
               style={{ color: theme === 'dark' ? '#ffffff' : '#1b5e20' }}
             >
               <i className={`fas fa-${mobileMenuOpen ? 'times' : 'bars'}`}></i>
