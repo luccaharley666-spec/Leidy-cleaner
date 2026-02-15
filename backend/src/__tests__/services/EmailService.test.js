@@ -1,4 +1,4 @@
-// DISABLED FOR NOW: // DISABLED FOR NOW: /**
+/**
  * EmailService Unit Tests
  * Testa envio de emails via Nodemailer
  */

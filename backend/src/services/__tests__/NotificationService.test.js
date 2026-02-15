@@ -1,4 +1,4 @@
-// DISABLED: /**
+/**
  * NotificationService.test.js
  * Testes para o serviço de notificações (SMS, WhatsApp, Email)
  */

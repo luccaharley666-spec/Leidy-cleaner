@@ -1,4 +1,4 @@
-.skip(describe'BookingController', () => {
+describe('BookingController', () => {
   afterEach(() => {
     jest.resetModules();
     jest.clearAllMocks();

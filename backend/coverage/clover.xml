@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1771131371384" clover="3.2.0">
-  <project timestamp="1771131371384" name="All files">
-    <metrics statements="12381" coveredstatements="607" conditionals="5288" coveredconditionals="271" methods="2316" coveredmethods="95" elements="19985" coveredelements="973" complexity="0" loc="12381" ncloc="12381" packages="12" files="216" classes="216"/>
+<coverage generated="1771134543519" clover="3.2.0">
+  <project timestamp="1771134543519" name="All files">
+    <metrics statements="12388" coveredstatements="639" conditionals="5333" coveredconditionals="293" methods="2311" coveredmethods="104" elements="20032" coveredelements="1036" complexity="0" loc="12388" ncloc="12388" packages="12" files="216" classes="216"/>
     <package name="__tests__">
       <metrics statements="3" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="jest.setup.js" path="/workspaces/avan-o/backend/src/__tests__/jest.setup.js">
@@ -12451,7 +12451,7 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="492" coveredstatements="120" conditionals="372" coveredconditionals="53" methods="92" coveredmethods="11"/>
+      <metrics statements="499" coveredstatements="152" conditionals="417" coveredconditionals="75" methods="87" coveredmethods="20"/>
       <file name="InputValidator.js" path="/workspaces/avan-o/backend/src/utils/InputValidator.js">
         <metrics statements="86" coveredstatements="0" conditionals="139" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="14" count="0" type="stmt"/>
@@ -12575,32 +12575,39 @@
         <line num="45" count="0" type="stmt"/>
       </file>
       <file name="emailTemplates.js" path="/workspaces/avan-o/backend/src/utils/emailTemplates.js">
-        <metrics statements="25" coveredstatements="0" conditionals="6" coveredconditionals="0" methods="14" coveredmethods="0"/>
-        <line num="6" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="69" count="0" type="stmt"/>
-        <line num="70" count="0" type="stmt"/>
-        <line num="77" count="0" type="stmt"/>
-        <line num="113" count="0" type="stmt"/>
-        <line num="115" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="117" count="0" type="stmt"/>
-        <line num="149" count="0" type="stmt"/>
-        <line num="151" count="0" type="stmt"/>
-        <line num="153" count="0" type="stmt"/>
-        <line num="190" count="0" type="stmt"/>
-        <line num="192" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="194" count="0" type="stmt"/>
-        <line num="228" count="0" type="stmt"/>
-        <line num="230" count="0" type="stmt"/>
-        <line num="232" count="0" type="stmt"/>
-        <line num="271" count="0" type="stmt"/>
-        <line num="273" count="0" type="cond" truecount="0" falsecount="1"/>
-        <line num="275" count="0" type="stmt"/>
-        <line num="308" count="0" type="stmt"/>
+        <metrics statements="32" coveredstatements="32" conditionals="51" coveredconditionals="22" methods="9" coveredmethods="9"/>
+        <line num="9" count="13" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="17" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="20" count="5" type="cond" truecount="2" falsecount="2"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="28" count="5" type="stmt"/>
+        <line num="37" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="41" count="3" type="stmt"/>
+        <line num="48" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="3" type="cond" truecount="1" falsecount="2"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="57" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="58" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="60" count="3" type="stmt"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="62" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="64" count="3" type="stmt"/>
+        <line num="71" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="72" count="5" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="79" count="5" type="stmt"/>
+        <line num="80" count="5" type="cond" truecount="4" falsecount="1"/>
+        <line num="81" count="5" type="stmt"/>
+        <line num="86" count="1" type="cond" truecount="3" falsecount="1"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
       </file>
       <file name="health.js" path="/workspaces/avan-o/backend/src/utils/health.js">
         <metrics statements="34" coveredstatements="15" conditionals="16" coveredconditionals="2" methods="7" coveredmethods="3"/>

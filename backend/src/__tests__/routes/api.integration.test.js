@@ -1,4 +1,4 @@
-.skip(/**
+/**
  * API Routes Integration Tests
  * Testa as rotas principais da API sem dependências externas
  */

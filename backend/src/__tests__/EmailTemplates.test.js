@@ -1,5 +1,5 @@
-// DISABLED FOR NOW: // DISABLED FOR NOW: /**
- * Email Templates Tests
+/**
+ * Email Templates Tests (re-enabled)
  */
 
 const emailTemplates = require('../utils/emailTemplates');
@@ -340,3 +340,4 @@ describe('Email Templates', () => {
     });
   });
 });
+

@@ -1,4 +1,5 @@
-.skip(/**
+
+/**
  * Service Model Tests
  */
 

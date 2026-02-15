@@ -1,4 +1,4 @@
-// DISABLED FOR NOW: // DISABLED FOR NOW: /**
+/**
  * Unit Tests for Critical Services
  * PixPaymentService, EmailService, RetryQueueService
  */

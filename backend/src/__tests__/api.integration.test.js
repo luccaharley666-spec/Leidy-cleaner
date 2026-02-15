@@ -1,4 +1,4 @@
-.skip(/**
+/**
  * API Routes Integration Tests
  */
 
