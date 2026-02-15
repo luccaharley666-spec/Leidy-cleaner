@@ -1,9 +1,6 @@
 module.exports = {
-  testPathIgnorePatterns: ['/e2e/'],
-  testEnvironment: 'node'
-};
-module.exports = {
   testEnvironment: 'node',
+  globalSetup: '<rootDir>/jest.globalSetup.js',
   setupFiles: ['<rootDir>/jest.env.js'],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
