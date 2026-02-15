@@ -1,193 +1,200 @@
-/**
- * 2FA Routes - Configurar, verificar e gerenciar 2FA
- * POST /api/auth/2fa/setup - Iniciar setup
- * POST /api/auth/2fa/confirm - Confirmar com token
- * POST /api/auth/2fa/disable - Desabilitar
- * POST /api/auth/2fa/verify - Verificar token no login
- */
-
 const express = require('express');
 const router = express.Router();
-// const TwoFactorAuth = require('../middleware/twoFactorAuth');
+const twoFactorService = require('../services/twoFactorService');
 const { authenticateToken } = require('../middleware/auth');
+const db = require('../db');
 const logger = require('../utils/logger');
 
 /**
- * GET /api/auth/2fa/status
- * Verificar se 2FA está ativado
+ * GET /api/2fa/setup
+ * Generate initial 2FA secret and QR code
  */
-router.get('/status', authenticateToken, async (req, res) => {
+router.get('/setup', authenticateToken, async (req, res) => {
   try {
-    const db = require('../db');
-    const user = await db.get('SELECT two_fa_enabled FROM users WHERE id = ?', req.user.id);
-
-    res.json({
-      success: true,
-      enabled: user.two_fa_enabled === 1
-    });
-  } catch (err) {
-    logger.error('2FA status check failed', err);
-    res.status(500).json({ success: false, error: 'Erro ao verificar status' });
-  }
-});
-
-/**
- * POST /api/auth/2fa/setup
- * Iniciar setup de 2FA com QR code
- * Body: { }
- */
-router.post('/setup', authenticateToken, async (req, res) => {
-  try {
-    const result = await TwoFactorAuth.setupTwoFactor(req.user.id);
-
-    if (!result.success) {
-      return res.status(400).json(result);
+    const { id, email } = req.user;
+    
+    // Verificar se 2FA já está ativado
+    const user = await db.get('SELECT two_factor_enabled FROM users WHERE id = ?', id);
+    if (user?.two_factor_enabled) {
+      return res.status(400).json({ error: '2FA já está ativado para este usuário' });
     }
-
-    logger.info('2FA setup initiated', { userId: req.user.id });
-
+    
+    const twoFaData = await twoFactorService.generateSecret(email);
+    const backupCodes = twoFactorService.generateBackupCodes();
+    
+    // Store temporarily in session (don't save to DB yet)
+    req.session = req.session || {};
+    req.session.temp2faSecret = twoFaData.secret;
+    req.session.tempBackupCodes = backupCodes;
+    
     res.json({
-      success: true,
-      qrCode: result.qrCode,
-      secret: result.secret,
-      backupCodes: result.backupCodes,
-      message: 'Escaneie o código QR e salve os códigos de backup'
+      qr_code_url: twoFaData.qr_code_url,
+      manual_entry_key: twoFaData.manual_entry_key,
+      backup_codes: backupCodes,
+      message: 'Escanee o código QR com seu app autenticador (Google Authenticator, Authy, etc)',
     });
-  } catch (err) {
-    logger.error('2FA setup error', err);
-    res.status(500).json({ success: false, error: 'Erro ao iniciar setup' });
+  } catch (error) {
+    logger.error('Erro ao setup 2FA:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
 /**
- * POST /api/auth/2fa/confirm
- * Confirmar 2FA com token
- * Body: { token: "123456" }
+ * POST /api/2fa/verify
+ * Verify TOTP token and enable 2FA
  */
-router.post('/confirm', authenticateToken, async (req, res) => {
+router.post('/verify', authenticateToken, async (req, res) => {
   try {
     const { token } = req.body;
-
-    if (!token || token.length !== 6) {
-      return res.status(400).json({
-        success: false,
-        error: 'Token inválido (deve ter 6 dígitos)'
-      });
+    const { id } = req.user;
+    
+    if (!req.session?.temp2faSecret) {
+      return res.status(400).json({ error: '2FA não foi iniciado, chame /setup primeiro' });
     }
-
-    const result = await TwoFactorAuth.confirmTwoFactor(req.user.id, token);
-
-    if (!result.success) {
-      return res.status(400).json(result);
+    
+    // Verify token
+    const isValid = twoFactorService.verifyToken(req.session.temp2faSecret, token);
+    if (!isValid) {
+      return res.status(400).json({ error: 'Código inválido ou expirado' });
     }
-
-    logger.info('2FA confirmed', { userId: req.user.id });
-
-    res.json({
-      success: true,
-      message: 'Autenticação de dois fatores ativada com sucesso!'
-    });
-  } catch (err) {
-    logger.error('2FA confirm error', err);
-    res.status(500).json({ success: false, error: 'Erro ao confirmar' });
-  }
-});
-
-/**
- * POST /api/auth/2fa/verify
- * Verificar token durante login (depois de email/senha corretos)
- * Body: { userId, token, useBackupCode }
- */
-router.post('/verify', async (req, res) => {
-  try {
-    const { userId, token, useBackupCode = false } = req.body;
-
-    if (!userId || !token) {
-      return res.status(400).json({ success: false, error: 'Dados incompletos' });
-    }
-
-    const result = await TwoFactorAuth.verifyLogin2FA(
-      userId,
-      token,
-      useBackupCode
+    
+    // Save to database
+    const backupCodesJson = JSON.stringify(req.session.tempBackupCodes);
+    await db.run(
+      `UPDATE users 
+       SET two_factor_enabled = 1, 
+           two_factor_secret = ?,
+           two_factor_backup_codes = ?
+       WHERE id = ?`,
+      [req.session.temp2faSecret, backupCodesJson, id]
     );
-
-    if (!result.success) {
-      return res.status(400).json(result);
-    }
-
-    logger.info('2FA login verification passed', { userId });
-
+    
+    // Clear session
+    delete req.session.temp2faSecret;
+    delete req.session.tempBackupCodes;
+    
+    logger.info(`✅ 2FA ativado para usuário ${id}`);
+    
     res.json({
       success: true,
-      verified: true,
-      message: 'Autenticação bem-sucedida'
+      message: '2FA ativado com sucesso! Guarde os códigos de backup em local seguro.',
+      backup_codes: req.session.tempBackupCodes,
     });
-  } catch (err) {
-    logger.error('2FA verify error', err);
-    res.status(500).json({ success: false, error: 'Erro na verificação' });
+  } catch (error) {
+    logger.error('Erro ao verificar 2FA:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
 /**
- * POST /api/auth/2fa/disable
- * Desabilitar 2FA
- * Body: { password }
+ * POST /api/2fa/disable
+ * Disable 2FA for user (requires password confirmation + current 2FA code)
  */
 router.post('/disable', authenticateToken, async (req, res) => {
   try {
-    const { password } = req.body;
-
-    if (!password) {
-      return res.status(400).json({
-        success: false,
-        error: 'Senha necessária para desabilitar 2FA'
-      });
+    const { password, token } = req.body;
+    const { id } = req.user;
+    const bcrypt = require('bcrypt');
+    
+    // Get user
+    const user = await db.get('SELECT * FROM users WHERE id = ?', id);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuário não encontrado' });
     }
-
-    const result = await TwoFactorAuth.disableTwoFactor(req.user.id, password);
-
-    if (!result.success) {
-      return res.status(400).json(result);
+    
+    // Verify password
+    const passwordMatch = await bcrypt.compare(password, user.password_hash || user.password);
+    if (!passwordMatch) {
+      return res.status(401).json({ error: 'Senha inválida' });
     }
-
-    logger.info('2FA disabled', { userId: req.user.id });
-
+    
+    // If 2FA is enabled, verify current 2FA token
+    if (user.two_factor_enabled) {
+      if (!token) {
+        return res.status(400).json({ error: 'Código 2FA é obrigatório para desativar 2FA' });
+      }
+      
+      const isValid = twoFactorService.verifyToken(user.two_factor_secret, token);
+      if (!isValid) {
+        return res.status(401).json({ error: 'Código 2FA inválido' });
+      }
+    }
+    
+    // Disable 2FA
+    await db.run(
+      `UPDATE users 
+       SET two_factor_enabled = 0, 
+           two_factor_secret = NULL,
+           two_factor_backup_codes = NULL
+       WHERE id = ?`,
+      id
+    );
+    
+    logger.info(`✅ 2FA desativado para usuário ${id}`);
+    
     res.json({
       success: true,
-      message: 'Autenticação de dois fatores desativada'
+      message: '2FA desativado com sucesso',
     });
-  } catch (err) {
-    logger.error('2FA disable error', err);
-    res.status(500).json({ success: false, error: 'Erro ao desabilitar' });
+  } catch (error) {
+    logger.error('Erro ao desativar 2FA:', error);
+    res.status(500).json({ error: error.message });
   }
 });
 
 /**
- * GET /api/auth/2fa/backup-codes
- * Gerar novos códigos de backup
+ * GET /api/2fa/backup-codes
+ * List remaining backup codes (masked for security)
  */
 router.get('/backup-codes', authenticateToken, async (req, res) => {
   try {
-    const newCodes = TwoFactorAuth.generateBackupCodes();
-
-    const db = require('../db');
-    await db.run(
-      'UPDATE users SET two_fa_backup_codes = ? WHERE id = ?',
-      JSON.stringify(newCodes),
-      req.user.id
+    const { id } = req.user;
+    
+    const user = await db.get(
+      'SELECT two_factor_backup_codes FROM users WHERE id = ?',
+      id
     );
-
-    logger.info('Backup codes regenerated', { userId: req.user.id });
-
+    
+    if (!user || !user.two_factor_backup_codes) {
+      return res.status(404).json({ error: 'Nenhum código de backup encontrado' });
+    }
+    
+    const codes = JSON.parse(user.two_factor_backup_codes);
+    const maskedCodes = codes.map(code => code.slice(0, 4) + '****');
+    
     res.json({
-      success: true,
-      backupCodes: newCodes,
-      message: 'Novos códigos de backup gerados. Salve com segurança!'
+      backup_codes_remaining: codes.length,
+      masked_codes: maskedCodes,
+      message: 'Guarde estes códigos em local seguro. Cada código pode ser usado uma única vez para acceso sem seu app autenticador.',
     });
-  } catch (err) {
-    logger.error('Backup codes generation failed', err);
-    res.status(500).json({ success: false, error: 'Erro ao gerar códigos' });
+  } catch (error) {
+    logger.error('Erro ao buscar backup codes:', error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
+/**
+ * POST /api/2fa/test
+ * Test 2FA locally (for development only)
+ */
+router.post('/test', (req, res) => {
+  try {
+    const { secret } = req.body;
+    
+    if (!secret) {
+      return res.status(400).json({ error: 'Secret not provided' });
+    }
+    
+    // Get valid codes in current window
+    const codes = twoFactorService.getTimeBasedCodes(secret, 5);
+    
+    res.json({
+      message: 'Development only - Valid TOTP codes:',
+      current_code: codes.find(c => c.valid)?.code,
+      nearby_codes: codes,
+    });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
   }
 });
 

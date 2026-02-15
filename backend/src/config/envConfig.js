@@ -53,7 +53,7 @@ const configs = {
     ],
     secureCookies: true,
     allowCredentials: true,
-    jwtSecret: readSecret('JWT_SECRET') || process.env.JWT_SECRET || 'change-me-in-env',
+    jwtSecret: readSecret('JWT_SECRET') || process.env.JWT_SECRET, // ✅ OBRIGATÓRIO em staging
     emailService: {
       enabled: true,
       verifyEmail: true

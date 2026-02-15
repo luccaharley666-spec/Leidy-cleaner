@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
+  password_hash TEXT,
   name TEXT NOT NULL,
   phone TEXT,
   cpf_cnpj TEXT,
@@ -26,6 +27,10 @@ CREATE TABLE IF NOT EXISTS users (
   loyalty_bonus DECIMAL(10,2) DEFAULT 0.00,
   bonus_redeemed BOOLEAN DEFAULT 0,
   is_active BOOLEAN DEFAULT 1,
+  -- ✅ NEW: 2FA (Two-Factor Authentication) columns
+  two_factor_enabled BOOLEAN DEFAULT 0,
+  two_factor_secret TEXT,
+  two_factor_backup_codes TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

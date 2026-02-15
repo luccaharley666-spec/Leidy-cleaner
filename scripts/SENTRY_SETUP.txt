@@ -1,0 +1,148 @@
+#!/bin/bash
+
+###############################################################################
+# 🚀 QUICK START GUIDE - Get Sentry DSN (30 minutes)
+###############################################################################
+
+cat << 'EOF'
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                                                                              ║
+║                  📊 SENTRY ERROR TRACKING SETUP (30 min)                    ║
+║                                                                              ║
+║              Enable error tracking + performance monitoring                 ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+STEP 1: Create Sentry Account (5 min)
+════════════════════════════════════
+
+1. Open: https://sentry.io/auth/register/
+2. Sign up with your email
+3. Confirm email verification
+4. You'll be redirected to create organization
+
+STEP 2: Create Sentry Project (5 min)
+═════════════════════════════════════
+
+1. Click "Create Project" (top right)
+2. Select Platform: Node.js
+3. Project Name: leidy-cleaner-prod
+4. Alert rules: Leave default for now
+5. Click "Create Project"
+
+STEP 3: Get Your DSN (2 min)
+═══════════════════════════
+
+After project created, you'll see:
+
+    DSN Example:
+    https://examplePublicKey@o0.ingest.sentry.io/0
+
+This is your SENTRY_DSN!
+
+It should look like:
+    https://[PUBLIC_KEY]@o[ORG_ID].ingest.sentry.io/[PROJECT_ID]
+
+Copy this entire string!
+
+STEP 4: Add to Your Environment (5 min)
+═════════════════════════════════════
+
+Option A: Local Development
+→ Edit backend/.env:
+    SENTRY_DSN=https://[YOUR_DSN_HERE]
+
+Option B: GitHub Secrets (for CI/CD)
+→ Go to: GitHub Settings → Secrets and variables → Actions
+→ New secret: SENTRY_DSN
+→ Paste your DSN
+→ Save
+
+Option C: Production Environment (Railway/Vercel)
+→ Dashboard → Environment variables
+→ Add SENTRY_DSN=[YOUR_DSN]
+→ Deploy
+
+STEP 5: Test Sentry (10 min)
+═══════════════════════════
+
+1. Start your app:
+   npm start
+
+2. Create error:
+   curl -X POST http://localhost:3001/api/auth/login \
+     -H "Content-Type: application/json" \
+     -d '{"email":"test@test.com","password":""}'
+
+3. Check Sentry Dashboard:
+   → https://sentry.io/
+   → Your organization
+   → Your project
+   → Should see errors coming in!
+
+EXPECTED OUTPUT:
+════════════════
+
+In Sentry Dashboard you should see:
+✅ Events coming in
+✅ Errors captured in real-time
+✅ Stack traces visible
+✅ Performance data
+
+═════════════════════════════════════════════════════════════════════════════════
+
+TROUBLESHOOTING
+═══════════════
+
+❌ "No data showing up"
+→ Check console output:
+  npm start 2>&1 | grep -i sentry
+→ Should show: "✅ Sentry inicializado"
+
+❌ "Invalid DSN format"
+→ Make sure you copied entire DSN
+→ Should start with: https://
+→ Should contain: @o[number].ingest.sentry.io/
+
+❌ "Events not appearing"
+→ Wait 30 seconds for sync
+→ Check GitHub Actions secrets passed correctly
+→ Verify DSN in backend/.env
+
+═════════════════════════════════════════════════════════════════════════════════
+
+WHAT'S NEXT
+═══════════
+
+After Sentry is working:
+
+1. Install + Test Redis (5 min)
+   bash scripts/setup-redis.sh
+
+2. Run Integration Tests (5 min)
+   bash scripts/integration-test.sh
+
+3. Load Testing (30 min)
+   npm run test:load
+
+4. Production Deployment (1h)
+   Follow deployment guide
+
+═════════════════════════════════════════════════════════════════════════════════
+
+VALIDATE EVERYTHING
+═══════════════════
+
+✅ Sentry DSN activated
+✅ Error tracking in dashboard
+✅ Performance monitoring active
+✅ 2FA working
+✅ Rate limiting active
+✅ Redis cache ready
+
+= PRODUCTION READY! 🚀
+
+═════════════════════════════════════════════════════════════════════════════════
+
+EOF

@@ -72,10 +72,8 @@ if (process.env.DATABASE_URL?.startsWith('postgresql')) {
 // ✅ CORRIGIDO: trust proxy configurado apenas se em produção com proxy real
 if (process.env.NODE_ENV === 'production' && process.env.TRUST_PROXY === 'true') {
   app.set('trust proxy', 1); // 1 = primeiro proxy
-} else if (process.env.X_FORWARDED_FOR) {
-  // Se temos X-Forwarded-For header (como em containers), trust it
-  app.set('trust proxy', true);
 }
+
 const server = http.createServer(app);
 
 // ✅ CORRIGIDO: Socket.io CORS whitelist (não aberto para "*")

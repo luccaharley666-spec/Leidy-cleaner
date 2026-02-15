@@ -1,23 +1,14 @@
-#!/usr/bin/env bash
-# backup-db.sh - Faz dump do banco SQLite para backups/ com timestamp
-set -euo pipefail
+#!/bin/bash
+DB_NAME="${DB_NAME:-leidy_cleaner}"
+DB_USER="${DB_USER:-postgres}"
+BACKUP_DIR="${BACKUP_DIR:-.backups}"
+RETENTION_DAYS=7
 
-DB_PATH="${DATABASE_PATH:-./backend_data/database.db}"
-BACKUP_DIR="${BACKUP_DIR:-./backups}"
+# Criar backup
+BACKUP_FILE="$BACKUP_DIR/backup_${DB_NAME}_$(date +%Y%m%d_%H%M%S).sql"
+pg_dump -U "$DB_USER" "$DB_NAME" > "$BACKUP_FILE"
+echo "✅ Backup criado: $BACKUP_FILE"
 
-mkdir -p "$BACKUP_DIR"
-TS=$(date +"%Y%m%d_%H%M%S")
-OUT="$BACKUP_DIR/db_backup_$TS.sqlite"
-
-if [ ! -f "$DB_PATH" ]; then
-  echo "Erro: banco não encontrado em $DB_PATH" >&2
-  exit 1
-fi
-
-echo "Fazendo backup de $DB_PATH -> $OUT"
-cp "$DB_PATH" "$OUT"
-
-# Opcional: compactar
-gzip -f "$OUT"
-
-echo "Backup concluído: $OUT.gz"
+# Limpar backups antigos
+find "$BACKUP_DIR" -name "backup_*" -mtime +$RETENTION_DAYS -delete
+echo "🧹 Backups antigos removidos"
