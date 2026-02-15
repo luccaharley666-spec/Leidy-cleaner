@@ -1,4 +1,4 @@
-// DISABLED FOR NOW: // DISABLED FOR NOW: /**
+/**
  * PLACEHOLDER Integration Tests
  * Testa gerenciamento de avaliações públicas
  */

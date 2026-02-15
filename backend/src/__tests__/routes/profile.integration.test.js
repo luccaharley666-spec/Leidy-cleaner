@@ -1,4 +1,4 @@
-// DISABLED FOR NOW: // DISABLED FOR NOW: /**
+/**
  * Profile Routes Integration Tests
  * Testa estrutura e existência das rotas de profile
  */
