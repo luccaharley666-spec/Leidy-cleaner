@@ -4,8 +4,9 @@
  */
 
 const express = require('express');
-const paymentService = require('../services/AdvancedPaymentService');
+const PaymentService = require('../services/PaymentService');
 const logger = require('../utils/logger');
+const paymentService = new PaymentService();
 
 const router = express.Router();
 

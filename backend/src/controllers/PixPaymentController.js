@@ -3,11 +3,11 @@
  * Controllers para endpoints PIX
  */
 
-const PixPaymentService = require('../services/PixPaymentService');
+const PaymentService = require('../services/PaymentService');
 
 class PixPaymentController_Auto_72 {
   constructor(db) {
-    this.pixService = new PixPaymentService(db);
+    this.pixService = new PaymentService(db);
   }
 
   /**

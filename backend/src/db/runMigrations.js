@@ -49,7 +49,6 @@ async function runMigrations() {
         })
         .filter(s => s.length > 0);
 
-      console.log(`📋 Executando ${statements.length} statements SQL...`);
 
       let completed = 0;
       const errors = [];
@@ -63,10 +62,8 @@ async function runMigrations() {
               reject(closeErr);
             } else {
               if (errors.length > 0) {
-                console.warn(`⚠️  ${errors.length} statements falharam:`);
                 errors.forEach(e => console.warn(`  - ${e}`));
               }
-              console.log(`✅ Migrations completadas: ${completed}/${statements.length} statements executados com sucesso`);
               resolve();
             }
           });

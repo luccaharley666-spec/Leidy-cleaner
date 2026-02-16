@@ -10,7 +10,6 @@ const fs = require('fs');
 
 async function migratePixPayments(db) {
   try {
-    console.log('🔄 Iniciando migration PIX Payments...');
 
     // Verificar quais colunas já existem
     const tableInfo = await db.all(`PRAGMA table_info(payments)`);
@@ -32,10 +31,8 @@ async function migratePixPayments(db) {
     for (const column of columnsToAdd) {
       if (!existingColumns.includes(column.name)) {
         const sql = `ALTER TABLE payments ADD COLUMN ${column.name} ${column.type}`;
-        console.log(`  ➕ Adicionando coluna: ${column.name}`);
         await db.run(sql);
       } else {
-        console.log(`  ✓ Coluna já existe: ${column.name}`);
       }
     }
 
@@ -52,13 +49,10 @@ async function migratePixPayments(db) {
       try {
         const sql = `CREATE INDEX IF NOT EXISTS ${index.name} ON payments(${index.column})`;
         await db.run(sql);
-        console.log(`  📊 Índice criado: ${index.name}`);
       } catch (error) {
-        console.log(`  ⚠️  Índice já existe ou erro: ${index.name}`);
       }
     }
 
-    console.log('✅ Migration PIX Payments concluída com sucesso!');
     return { success: true, message: 'PIX migration completed' };
   } catch (error) {
     console.error('❌ Erro durante migration PIX:', error);

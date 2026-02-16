@@ -198,8 +198,7 @@ class BlogService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela blog_posts:', err);
-      else console.log('✅ Tabela blog_posts criada');
-      db.close();
+      else      db.close();
     });
   }
 }

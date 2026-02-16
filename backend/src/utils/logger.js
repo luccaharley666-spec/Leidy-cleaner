@@ -51,7 +51,6 @@ try {
 // //   rotateFile = require('PLACEHOLDER');
 } catch (e) {
   rotateFile = null;
-  console.warn('⚠️ PLACEHOLDER não instalado, usando arquivo simples');
 }
 
 // ✅ NOVO: Configurar transports

@@ -8,7 +8,7 @@ const { getDb } = require('../db/sqlite'); // ✅ Usar pool centralizado
 const ValidationService = require('../services/ValidationService');
 const CacheService = require('../services/CacheService');
 const QueryCacheService = require('../services/QueryCacheService');
-const EmailQueueService = require('../services/EmailQueueService');
+const EmailQueueService = require('../services/EmailService'); // Consolidated service
 const { reviewSchemas, validateSchema } = require('../utils/joiSchemas');
 const logger = require('../utils/logger');
 

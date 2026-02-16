@@ -125,8 +125,7 @@ class HourlyBookingService_Auto_192 {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabelas hourly_bookings:', err);
-      else console.log('✅ Tabelas hourly_bookings criadas');
-      db.close();
+      else      db.close();
     });
   }
 }

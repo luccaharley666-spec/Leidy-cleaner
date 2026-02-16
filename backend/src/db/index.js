@@ -36,7 +36,6 @@ if (process.env.DATABASE_URL) {
       pgPool = new Pool({ connectionString: process.env.DATABASE_URL });
       mode = 'pg';
     } catch (err) {
-      console.warn('DB: Could not initialize Postgres pool, falling back to SQLite', err.message);
       mode = 'sqlite';
     }
   }

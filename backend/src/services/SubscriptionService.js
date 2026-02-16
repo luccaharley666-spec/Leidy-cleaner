@@ -167,8 +167,7 @@ class SubscriptionService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabelas subscriptions:', err);
-      else console.log('✅ Tabelas subscriptions criadas');
-      db.close();
+      else      db.close();
     });
   }
 }

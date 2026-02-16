@@ -60,7 +60,6 @@ class RetryQueue {
         // ignore
       }
 
-      console.log(`📝 Retry enqueued: ${retryId} (operation: ${operationId})`);
       return { success: true, retryId };
     } catch (error) {
       console.error('❌ Erro ao enqueue retry:', error.message);
@@ -81,7 +80,6 @@ class RetryQueue {
         new Date().toISOString()
       );
 
-      console.log(`⏳ Processando ${pending.length} retentativas...`);
 
       for (const retry of pending) {
         await this.processRetry(retry);
@@ -127,7 +125,6 @@ class RetryQueue {
           new Date().toISOString(),
           retry_id
         );
-        console.log(`✅ Retry concluído: ${retry_id}`);
       } else {
         // Falha: reagendar ou desistir
         if (retry_count < this.MAX_RETRIES) {
@@ -141,7 +138,6 @@ class RetryQueue {
             (result && result.error) || 'Operação falhou',
             retry_id
           );
-          console.log(`🔄 Retry reagendado: ${retry_id} (tentativa ${nextRetryCount}/${this.MAX_RETRIES})`);
         } else {
           // Exceder limite de retentativas: marcar como falho
           await db.run(

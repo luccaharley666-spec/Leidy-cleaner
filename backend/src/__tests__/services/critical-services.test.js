@@ -3,7 +3,7 @@
  * PixPaymentService, EmailService, RetryQueueService
  */
 
-const PixPaymentService = require('../../services/PixPaymentService');
+const PaymentService = require('../../services/PaymentService');
 const EmailService = require('../../services/EmailService');
 const RetryQueueService = require('../../services/RetryQueueService');
 const { v4: uuidv4 } = require('uuid');

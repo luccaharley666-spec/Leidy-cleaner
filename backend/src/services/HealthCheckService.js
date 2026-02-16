@@ -5,7 +5,7 @@
 
 const { getDb } = require('../db/sqlite');
 const CacheService = require('./CacheService');
-const EmailQueueService = require('./EmailQueueService');
+const EmailQueueService = require('./EmailService'); // Consolidated service
 const logger = require('../utils/logger');
 const os = require('os');
 

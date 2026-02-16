@@ -235,8 +235,7 @@ class AffiliateService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela affiliates:', err);
-      else console.log('✅ Tabela affiliates criada');
-    });
+      else    });
 
     // Tabela de referrals
     db.run(`
@@ -254,8 +253,7 @@ class AffiliateService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela referrals:', err);
-      else console.log('✅ Tabela referrals criada');
-    });
+      else    });
 
     // Tabela de saques
     db.run(`

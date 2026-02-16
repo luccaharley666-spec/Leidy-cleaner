@@ -157,8 +157,7 @@ class AvailabilityService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela time_blocks:', err);
-      else console.log('✅ Tabela time_blocks criada');
-      db.close();
+      else      db.close();
     });
   }
 }

@@ -106,7 +106,6 @@ if (nodeEnv === 'production') {
   }
 
   if (!process.env.API_BASE_URL) {
-    console.warn('⚠️ API_BASE_URL não definida. Usando valor padrão.');
   }
 
   if (!process.env.DATABASE_URL && !process.env.DB_PATH) {

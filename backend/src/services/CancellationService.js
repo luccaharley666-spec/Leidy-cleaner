@@ -77,8 +77,7 @@ class CancellationService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela cancellations:', err);
-      else console.log('✅ Tabela cancellations criada');
-      db.close();
+      else      db.close();
     });
   }
 }

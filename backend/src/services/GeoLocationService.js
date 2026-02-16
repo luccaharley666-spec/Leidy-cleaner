@@ -127,8 +127,7 @@ class GeoLocationService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela user_addresses:', err);
-      else console.log('✅ Tabela user_addresses criada');
-      db.close();
+      else      db.close();
     });
   }
 }

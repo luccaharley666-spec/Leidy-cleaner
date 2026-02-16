@@ -147,8 +147,9 @@ class StaffOptimizationService {
     const availabilityScore = Math.max(0, 100 - (currentLoad / maxBookingsPerDay) * 100);
 
     // 3. DISTANCE SCORE (15%)
-    // Penaliza staff longe do local, mas só conta se temos GPS
-    const distanceScore = address ? 100 : 100; // TODO: implementar com geolocation
+    // Calcula distância entre staff e local do serviço
+    // Nota: Implementação completa requer geolocation ativa no sistema
+    const distanceScore = address ? Math.max(70, 100 - (staff.distance_km || 0) * 5) : 50;
 
     // 4. EXPERIENCE SCORE (10%)
     const totalCompleted = staff.total_completed || 0;

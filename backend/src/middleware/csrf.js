@@ -16,7 +16,6 @@ function initCsrf(app) {
       return protection(req, res, (err) => {
         if (err) {
           // Ignorar erros de token em GETs
-          console.warn('CSRF token generation warning:', err.message);
           return next();
         }
         try {
@@ -28,7 +27,6 @@ function initCsrf(app) {
           });
         } catch (e) {
           // ignore token generation errors for static GETs
-          console.warn('CSRF cookie set warning:', e.message);
         }
         next();
       });
@@ -43,7 +41,6 @@ function initCsrf(app) {
       return protection(req, res, (err) => {
         if (err) {
           // CSRF token inválido ou faltando
-          console.warn('CSRF validation failed:', err.message);
           // Em desenvolvimento, apenas warn. Em produção, rejeitar.
           if (process.env.NODE_ENV === 'production') {
             return res.status(403).json({ error: 'CSRF token inválido' });

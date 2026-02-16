@@ -14,7 +14,7 @@
 
 require('dotenv').config();
 const logger = require('../utils/logger');
-const EmailQueueService = require('../services/EmailQueueService');
+const EmailQueueService = require('../services/EmailService'); // Consolidated service
 
 class EmailQueueWorker {
   constructor() {

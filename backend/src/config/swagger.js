@@ -125,9 +125,6 @@ function initializeSwagger(app) {
     res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);
   });
-
-  // Simple console for Swagger (during startup, before logger is ready)
-  console.log('✅ Swagger UI disponível em http://localhost:3000/api/docs');
 }
 
 module.exports = {

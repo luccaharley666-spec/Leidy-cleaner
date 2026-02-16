@@ -187,8 +187,7 @@ class ReviewService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela reviews:', err);
-      else console.log('✅ Tabela reviews criada');
-      db.close();
+      else      db.close();
     });
   }
 }

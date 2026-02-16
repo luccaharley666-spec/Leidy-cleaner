@@ -183,7 +183,6 @@ router.post('/users', authenticateToken, authorizeRole(['admin']), async (req, r
       if (existing) return res.status(400).json({ error: 'Usuário já existe' });
     } catch (innerErr) {
       if (innerErr && innerErr.message && innerErr.message.includes('no such table')) {
-        console.warn('Users table missing, running migrations...');
         await runMigrations();
       } else {
         throw innerErr;

@@ -18,12 +18,10 @@ class BackgroundJobScheduler {
    */
   async start() {
     if (this.isRunning) {
-      console.warn('⚠️  Scheduler já está rodando');
       return;
     }
 
     this.isRunning = true;
-    console.log('🚀 Iniciando Background Job Scheduler');
 
     // Registrar jobs padrão
     this.registerJob('reconcile_payments', this.jobReconcilePayments.bind(this), '*/15 * * * *'); // A cada 15 min
@@ -40,7 +38,6 @@ class BackgroundJobScheduler {
    * Parar o scheduler
    */
   stop() {
-    console.log('⏹️  Parando Background Job Scheduler');
     this.isRunning = false;
   }
 
@@ -54,8 +51,6 @@ class BackgroundJobScheduler {
       lastRun: null,
       nextRun: new Date()
     });
-
-    console.log(`📋 Job registrado: ${jobType}`);
   }
 
   /**
@@ -67,7 +62,6 @@ class BackgroundJobScheduler {
 
       for (const [jobType, jobConfig] of this.jobs.entries()) {
         if (now >= jobConfig.nextRun) {
-          console.log(`⏱️  Executando job: ${jobType}`);
 
           try {
             const jobId = uuidv4();
@@ -96,7 +90,6 @@ class BackgroundJobScheduler {
               jobId
             );
 
-            console.log(`✅ Job concluído: ${jobType}`, result);
 
             // Agendar próxima execução (próximos 30 segundos para evitar execução dupla)
             jobConfig.lastRun = now;
@@ -117,7 +110,7 @@ class BackgroundJobScheduler {
                 now.toISOString()
               );
             } catch (dbError) {
-              console.error('❌ Erro ao registrar falha no DB:', dbError.message);
+              // Suprimir log de erro de DB para retry Queue
             }
 
             // Reagendar próxima tentativa em 1 minuto

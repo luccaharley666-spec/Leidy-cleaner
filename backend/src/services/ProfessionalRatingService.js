@@ -111,8 +111,7 @@ class ProfessionalRatingService_Auto_208 {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabela ProfessionalRatingService_Auto_208:', err);
-      else console.log('✅ Tabela ProfessionalRatingService_Auto_208 criada');
-      db.close();
+      else      db.close();
     });
   }
 }

@@ -80,3 +80,4 @@ backups/
 # Docker secrets: ignore real secret files, keep examples
 /docker/secrets/*
 !docker/secrets/*.example
+.bak_auto_replace

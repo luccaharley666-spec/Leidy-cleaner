@@ -85,7 +85,8 @@ router.get('/:slug', async (req, res) => {
       });
     }
 
-    // Incrementar views (TODO: implementar com Redis)
+    // Incrementar views no banco de dados
+    // Nota: Para produção de alta escala, considere implementar cache com Redis
     await db.run(
       'UPDATE blog_posts SET views = views + 1 WHERE id = ?',
       post.id

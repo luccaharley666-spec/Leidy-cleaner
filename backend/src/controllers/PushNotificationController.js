@@ -5,13 +5,13 @@
 
 const express = require('express');
 const router = express.Router();
-const PushNotificationService = require('../services/PushNotificationService');
+const NotificationService = require('../services/NotificationService');
 
 // POST /api/notifications/subscribe
 router.post('/subscribe', async (req, res) => {
   try {
     const { userId, subscription } = req.body;
-    const sub = await PushNotificationService.subscribe(userId, subscription);
+    const sub = await NotificationService.subscribe(userId, subscription);
     res.status(201).json(sub);
   } catch (error) {
     res.status(400).json({ error: error.message });

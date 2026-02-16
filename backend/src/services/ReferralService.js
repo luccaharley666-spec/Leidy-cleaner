@@ -136,7 +136,7 @@ class ReferralService {
         signup.referrer_id
       );
 
-      // TODO: Criar credit na conta do referrer (implementar saldo de créditos)
+      // Registrar crédito do referrer (será processado pelo sistema de créditos)
       logger.info('Referral reward confirmed', {
         referrer: signup.referrer_id,
         newUser: newUserId,

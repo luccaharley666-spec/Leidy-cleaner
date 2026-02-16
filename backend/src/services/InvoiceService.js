@@ -4,7 +4,7 @@
  */
 
 const PDFDocument = require('pdfkit');
-const EmailQueueService = require('./EmailQueueService');
+const EmailQueueService = require('./EmailService'); // Consolidated service
 const logger = require('../utils/logger');
 const { getDb } = require('../db/sqlite');
 const fs = require('fs');

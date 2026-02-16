@@ -149,8 +149,7 @@ class LoyaltyService {
       )
     `, (err) => {
       if (err) console.error('Erro ao criar tabelas loyalty:', err);
-      else console.log('✅ Tabelas loyalty criadas');
-      db.close();
+      else      db.close();
     });
   }
 }

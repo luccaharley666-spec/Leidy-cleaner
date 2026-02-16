@@ -4,7 +4,7 @@
  */
 
 const express = require('express');
-const emailService = require('../services/AdvancedEmailService');
+const emailService = require('../services/EmailService'); // Consolidated service
 const logger = require('../utils/logger');
 
 const router = express.Router();

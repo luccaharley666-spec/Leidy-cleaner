@@ -28,7 +28,6 @@ class TwilioService {
 
   async sendSMS(phoneNumber, message) {
     if (!this.client || !this.phoneNumber) {
-      console.warn('⚠️  SMS desabilitado: Twilio não configurado ou número ausente');
       return { success: false, message: 'Twilio não configurado' };
     }
 
@@ -39,7 +38,6 @@ class TwilioService {
         to: phoneNumber
       });
 
-      console.log('✅ SMS enviado:', result.sid);
       return { success: true, messageId: result.sid };
     } catch (error) {
       console.error('❌ Erro ao enviar SMS:', error.message);
@@ -49,7 +47,6 @@ class TwilioService {
 
   async sendWhatsApp(phoneNumber, message) {
     if (!this.client || !this.whatsappFrom) {
-      console.warn('⚠️  WhatsApp desabilitado: Twilio não configurado ou WhatsApp não ativado');
       return { success: false, message: 'WhatsApp não configurado' };
     }
 
@@ -60,7 +57,6 @@ class TwilioService {
         to: `whatsapp:${phoneNumber}`
       });
 
-      console.log('✅ WhatsApp enviado:', result.sid);
       return { success: true, messageId: result.sid };
     } catch (error) {
       console.error('❌ Erro ao enviar WhatsApp:', error.message);

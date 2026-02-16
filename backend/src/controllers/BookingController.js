@@ -9,7 +9,7 @@ const { calculatePrice, generatePriceSummary } = require('../utils/priceCalculat
 const ValidationService = require('../services/ValidationService');
 const CacheService = require('../services/CacheService');
 const QueryCacheService = require('../services/QueryCacheService');
-const EmailQueueService = require('../services/EmailQueueService');
+const EmailQueueService = require('../services/EmailService'); // Consolidated service - use queueBookingConfirmation()
 const { bookingSchemas, validateSchema } = require('../utils/joiSchemas');
 const logger = require('../utils/logger');
 

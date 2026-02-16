@@ -52,10 +52,10 @@ router.post(
   authenticateToken,
   dtoMiddleware(PLACEHOLDER),
   asyncHandler(async (req, res) => {
-    const PixPaymentService = require('../../services/PixPaymentService');
+    const PaymentService = require('../../services/PaymentService');
     const { metrics } = require('../../config/prometheus');
 
-    const result = await PixPaymentService.createPixPayment(req.dto);
+    const result = await PaymentService.createPixPayment(req.dto);
     metrics.recordPixPayment(req.dto.amount, 'created');
 
     res.status(201).json(ApiResponse.ok(result, 'PIX payment created'));
