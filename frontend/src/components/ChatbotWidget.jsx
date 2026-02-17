@@ -143,13 +143,14 @@ export default function ChatbotWidget() {
   };
 
   // Message renderer with markdown support
-  const renderMessage = (msg) => { let content = msg.content;
+  const renderMessage = (msg) => {
+    let content = msg.content;
 
     // Simple markdown-like rendering
     content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     content = content.replace(/\n/g, '<br/>');
 
-    return <div={{ __html: content }} />;
+    return <div dangerouslySetInnerHTML={{ __html: content }} />;
   };
 
   if (!isOpen) {

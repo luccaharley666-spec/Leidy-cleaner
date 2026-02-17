@@ -1,6 +1,0 @@
-public/*.js
-public/workbox-*.js
-public/sw.js
-node_modules/
-.next/
-coverage/

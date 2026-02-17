@@ -30,7 +30,13 @@ export default function Chat({ bookingId, userId, userRole = 'customer' }) {
     // Conectar ao servidor Socket.io
     const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
     socketRef.current = io(API_URL, {
-      reconnection: true, reconnectionDelay: 1000,: 5000,: 5, autoConnect: true, transports: ['websocket', 'polling'] });
+      reconnection: true,
+      reconnectionDelay: 1000,
+      reconnectionAttempts: 5,
+      timeout: 5000,
+      autoConnect: true,
+      transports: ['websocket', 'polling'],
+    });
 
     const socket = socketRef.current;
 

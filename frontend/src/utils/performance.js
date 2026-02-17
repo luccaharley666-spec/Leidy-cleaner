@@ -31,7 +31,8 @@ export function useLazyImage(src, placeholder = '') {
 }
 
 // Hook para intersection observer (lazy loading)
-export function decodeToken(options = {}) { const [isIntersecting, setIsIntersecting] = useState(false);
+export function decodeToken(options = {}) {
+  const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef(null);
 
@@ -39,22 +40,27 @@ export function decodeToken(options = {}) { const [isIntersecting, setIsIntersec
     const element = ref.current;
     if (!element) return;
 
-    const observer = new(
+    const observer = new IntersectionObserver(
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
         if (entry.isIntersecting && !hasIntersected) {
-          setHasIntersected(true); }
+          setHasIntersected(true);
+        }
       },
       {
         threshold: 0.1,
         rootMargin: '50px',
-        ...options }
+        ...options,
+      }
     );
 
     observer.observe(element);
 
     return () => {
-      observer.unobserve(element);
+      if (observer && element) {
+        observer.unobserve(element);
+        observer.disconnect();
+      }
     };
   }, [hasIntersected, options]);
 
@@ -62,7 +68,7 @@ export function decodeToken(options = {}) { const [isIntersecting, setIsIntersec
 }
 
 // Hook para preload de recursos críticos
-export function usePreloadResources(resources = []) {
+export function usePreloadResources(resources = []);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {

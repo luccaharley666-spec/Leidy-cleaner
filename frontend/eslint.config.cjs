@@ -2,7 +2,16 @@
 module.exports = [
   // Global ignores (replaces .eslintignore)
   {
-    ignores: ["public/**/*.js", "public/*.js", "node_modules/**"]
+    ignores: [
+      "public/**/*.js",
+      "public/*.js",
+      "node_modules/**",
+      "out/**",
+      "public_html/**",
+      "public_html/_next/**",
+      "coverage/**",
+      ".next/**"
+    ]
   },
 
   // Default rules for JS/TS/JSX/TSX files
