@@ -33,7 +33,9 @@ node_modules/
 frontend/.next/
 frontend/.next/**
 frontend/out/
+frontend/public_html/
 frontend/public_html/_next/
+frontend/playwright-report/
 
 # Backend coverage (do not commit coverage reports)
 /coverage
