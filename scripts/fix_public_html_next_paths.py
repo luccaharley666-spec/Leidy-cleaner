@@ -2,7 +2,11 @@
 import sys
 from pathlib import Path
 
-ROOT = Path('/workspaces/termino/frontend/public_html')
+# make ROOT relative to the repository so scripts run anywhere
+ROOT = Path(__file__).resolve().parents[1] / 'frontend' / 'public_html'
+if not ROOT.exists():
+    # fallback to current working directory (CI / dev shells)
+    ROOT = Path.cwd() / 'frontend' / 'public_html'
 if not ROOT.exists():
     print('public_html not found at', ROOT)
     sys.exit(1)

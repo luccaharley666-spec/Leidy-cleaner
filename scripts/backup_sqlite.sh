@@ -3,7 +3,8 @@
 set -euo pipefail
 
 DB_PATH=${1:-backend/backend_data/database.sqlite}
-BACKUP_DIR=${2:-/workspaces/termino/backups}
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
+BACKUP_DIR=${2:-"$REPO_ROOT/backups"}
 TIMESTAMP=$(date +%F_%H%M%S)
 
 mkdir -p "$BACKUP_DIR"
