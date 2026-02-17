@@ -1,2 +1,0 @@
--- Migração 001: Schema Inicial
--- Executa o schema.sql para criar todas as tabelas

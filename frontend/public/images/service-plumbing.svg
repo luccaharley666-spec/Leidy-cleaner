@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="480" height="320" viewBox="0 0 480 320">
-  <rect width="480" height="320" rx="16" fill="#ffffff" />
-  <g transform="translate(40,30)" fill="#2563eb">
-    <path d="M50 30c0-10 20-30 40-30s40 20 40 30v80h-80z" opacity="0.15"/>
-    <rect x="160" y="60" width="20" height="80" rx="8"/>
-  </g>
-  <text x="30" y="220" font-family="Inter, sans-serif" font-size="20" fill="#0f172a">Encanamento</text>
-</svg>
