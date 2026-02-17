@@ -161,8 +161,8 @@ export const useAnalytics = (dateRange = '30days') => {
     error,
     refetch: fetchAnalytics,
     fetchRevenueStats,
-    decoded,
-    decoded,
+    fetchConversionData,
+    fetchCustomersData,
     fetchChurnAnalytics,
     fetchBookingStats,
     exportReport

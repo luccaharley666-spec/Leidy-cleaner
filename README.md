@@ -1,3 +1,25 @@
+# Validação automática de variáveis de ambiente
+
+Antes de rodar em produção, execute:
+
+```bash
+python3 scripts/validate_env.py
+```
+
+Se houver variáveis obrigatórias faltando, o script irá avisar e impedir o deploy.
+# Checklist de Deploy Seguro e Validação de Ambiente
+
+1. Preencha todos os arquivos `.env` e `.env.production` com segredos reais e seguros.
+2. Nunca use valores default ou placeholders em produção.
+3. Rode `chmod +x *.sh` para garantir permissão de execução dos scripts.
+4. Execute todos os testes automatizados (`run-e2e.sh`, `test-ready.sh`, etc.).
+5. Valide logs e monitoramento (Sentry, logs do backend, etc.).
+6. Teste fluxos críticos de usuário (login, cadastro, agendamento, pagamentos).
+7. Valide integrações externas (pagamentos, e-mail, webhooks).
+8. Confira se todas as variáveis obrigatórias estão presentes usando `dotenv-safe` ou similar.
+9. Após deploy, monitore erros e alertas.
+
+> Consulte também: `DEPLOYMENT_READY.md`, `VALIDACAO_FINAL_COMPLETA.md`, `DEPLOYMENT_GUIDE.md`.
 # 🧹 Limpeza Pro - Plataforma de Agendamento de Limpeza
 
 **Status: ✅ Produção-Ready — PCI-DSS Compliant, 100% Testes Passando**

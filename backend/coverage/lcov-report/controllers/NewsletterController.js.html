@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">15.55% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/90</span>
+                <span class='fraction'>14/90</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">13.95% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/43</span>
+                <span class='fraction'>6/43</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">15.55% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/90</span>
+                <span class='fraction'>14/90</span>
             </div>
         
             
@@ -395,9 +395,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -405,12 +405,12 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -487,11 +487,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -540,8 +540,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">7x</span>
+<span class="cline-any cline-yes">7x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -716,28 +716,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * Newsletter Controller
  * Gerencia inscrições de newsletter
  */
 &nbsp;
-const { getDb } = <span class="cstat-no" title="statement not covered" >require('../db/sqlite');</span>
-const EmailService = <span class="cstat-no" title="statement not covered" >require('../services/EmailService');</span>
-const logger = <span class="cstat-no" title="statement not covered" >require('../utils/logger');</span>
+const { getDb } = require('../db/sqlite');
+const EmailService = require('../services/EmailService');
+const logger = require('../utils/logger');
 &nbsp;
 class NewsletterController_Auto_65 {
   /**
    * Inscrever email na newsletter
    * POST /api/newsletter/subscribe
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async subscribe(req, res) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-      const { email, name } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+  static async subscribe(req, res) {
+    try {
+      const { email, name } = req.body;
 &nbsp;
       // Validar email
-<span class="cstat-no" title="statement not covered" >      if (!email || !this.isValidEmail(email)) {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(400).json({</span>
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!email || !this.isValidEmail(email)) {
+        return res.status(400).json({
           success: false,
           message: 'Email inválido'
         });
@@ -813,12 +813,12 @@ class NewsletterController_Auto_65 {
    * Desinscrever da newsletter
    * POST /api/newsletter/unsubscribe
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic async unsubscribe(req, res) {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-      const { email } = <span class="cstat-no" title="statement not covered" >req.body;</span>
+  static async unsubscribe(req, res) {
+    try {
+      const { email } = req.body;
 &nbsp;
-<span class="cstat-no" title="statement not covered" >      if (!email || !this.isValidEmail(email)) {</span>
-<span class="cstat-no" title="statement not covered" >        return res.status(400).json({</span>
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!email || !this.isValidEmail(email)) {
+        return res.status(400).json({
           success: false,
           message: 'Email inválido'
         });
@@ -866,9 +866,9 @@ class NewsletterController_Auto_65 {
   /**
    * Validar formato de email
    */
-<span class="fstat-no" title="function not covered" >  st</span>atic isValidEmail(email) {
-    const emailRegex = <span class="cstat-no" title="statement not covered" >/^[^\s@]+@[^\s@]+\.[^\s@]+$/;</span>
-<span class="cstat-no" title="statement not covered" >    return emailRegex.test(email);</span>
+  static isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   }
 &nbsp;
   /**
@@ -1043,7 +1043,7 @@ class NewsletterController_Auto_65 {
   }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = NewsletterController_Auto_65;</span>
+module.exports = NewsletterController_Auto_65;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -1051,7 +1051,7 @@ class NewsletterController_Auto_65 {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T20:40:08.660Z
+                at 2026-02-15T05:49:01.492Z
             </div>
         <script src="../prettify.js"></script>
         <script>

@@ -37,10 +37,6 @@ describe('API Routes - Structure', () => {
       verifyEmail: jest.fn((req, res) => res.json({ success: true })),
     }));
 
-    jest.mock('../../controllers/PLACEHOLDER', () => ({
-      getNotifications: jest.fn((req, res) => res.json({ notifications: [] })),
-      markAsRead: jest.fn((req, res) => res.json({ success: true })),
-    }));
 
     jest.mock('../../controllers/PhotosController', () => ({
       uploadPhoto: jest.fn((req, res) => res.json({ success: true })),
@@ -54,9 +50,6 @@ describe('API Routes - Structure', () => {
       getStaff: jest.fn((req, res) => res.json({ staff: [] })),
     }));
 
-    jest.mock('../../controllers/PLACEHOLDER', () => ({
-      getPublicReviews: jest.fn((req, res) => res.json({ reviews: [] })),
-    }));
 
     jest.mock('../../middleware/auth', () => ({
       authenticateToken: (req, res, next) => next(),

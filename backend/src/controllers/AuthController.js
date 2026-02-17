@@ -86,6 +86,9 @@ class AuthController {
         });
       }
 
+      // DEBUG: marcar progresso do fluxo de registro
+      logger.debug('[REGISTER] payload received', { email, name });
+
       // Validar email
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailRegex.test(email)) {
@@ -135,8 +138,10 @@ class AuthController {
       }
 
       // Hash da senha
+      logger.debug('[REGISTER] hashing password');
       // ✅ CORRIGIDO: Usar BCRYPT_ROUNDS consistentes (12 rounds é recomendado) 
       const hashedPassword = await bcrypt.hash(password, BCRYPT_ROUNDS);
+      logger.debug('[REGISTER] password hashed');
 
       // Validações adicionais para staff
       if (role === 'staff') {
@@ -154,17 +159,32 @@ class AuthController {
       }
 
       // Inserir usuário no banco (compatível com schema de dev: password_hash)
-      const result = await db.run(
-        `INSERT INTO users (
-          email, password_hash, name, phone, role, is_active
-        ) VALUES (?, ?, ?, ?, ?, 1)`,
-        email, hashedPassword, name, phone, role
-      );
+      logger.debug('[REGISTER] inserting user into DB');
+      let userId = null;
+      try {
+        const result = await db.run(
+          `INSERT INTO users (
+            email, password_hash, name, phone, role, is_active
+          ) VALUES (?, ?, ?, ?, ?, 1)`,
+          email, hashedPassword, name, phone, role
+        );
 
-      const userId = result.lastID || result.lastId || (result.rows && result.rows[0] && result.rows[0].id) || null;
+        logger.debug('[REGISTER] insert result', { result });
+
+        userId = result.lastID || result.lastId || (result.rows && result.rows[0] && result.rows[0].id) || null;
+        
+        if (!userId) {
+          logger.warn('User inserted but no ID returned - trying to find by email');
+          const newUser = await db.get('SELECT id FROM users WHERE email = ?', email);
+          userId = newUser?.id;
+        }
+      } catch (err) {
+        logger.error('[REGISTER] DB INSERT ERROR:', err && err.stack ? err.stack : String(err));
+        throw err;
+      }
 
       // Atualizar campos opcionais (tentar aplicar se existirem nas colunas)
-      try {
+      if (cpf_cnpj || address || city || state || zip_code || company_name || company_cnpj || company_address || company_phone || bank_account || bank_routing) {
         const updateFields = {};
         if (cpf_cnpj) updateFields.cpf_cnpj = cpf_cnpj;
         if (address) updateFields.address = address;
@@ -186,11 +206,10 @@ class AuthController {
           try {
             await db.run(`UPDATE users SET ${setClause}, updated_at = CURRENT_TIMESTAMP WHERE id = ?`, ...values, userId);
           } catch (e) {
-            // Ignore possíveis erros por colunas ausentes
+            logger.warn('[REGISTER] Optional field update failed:', e.message);
+            // Não falhar o registro por causa de campos opcionais
           }
         }
-      } catch (e) {
-        // Não falhar o registro por causa de campos opcionais
       }
 
       // Gerar tokens
@@ -232,12 +251,23 @@ class AuthController {
       });
 
     } catch (error) {
-      console.error('Erro no registro:', error.stack || error);
-      logger.error('Erro no registro:', error.stack || error.toString());
+      // Log extendido para capturar AggregateError e detalhes internos
+      logger.error('Erro no registro:', error && error.stack ? error.stack : String(error));
+      if (error && error.name === 'AggregateError' && Array.isArray(error.errors)) {
+        logger.error('[REGISTER] AggregateError - inner errors:', JSON.stringify(error.errors, null, 2));
+      }
+
+      // Capturar erros internos do AggregateError
+      if (error instanceof AggregateError) {
+        logger.error('[REGISTER] AggregateError - inner errors:', JSON.stringify(error.errors, null, 2));
+      }
+
       // Em ambiente local, retornar detalhe para facilitar debugging
       res.status(500).json({
         error: 'Erro ao registrar usuário',
-        detail: (process.env.NODE_ENV === 'development') ? (error.message || String(error)) : undefined
+        detail: error && error.message ? error.message : String(error),
+        stack: error && error.stack ? error.stack : undefined,
+        aggregate: error && error.errors ? error.errors : undefined
       });
     }
   }
@@ -247,7 +277,7 @@ class AuthController {
    */
   static async login(req, res) {
     try {
-      const { email, password } = req.body;
+      const { email, password, twoFactorToken } = req.body;
 
       if (!email || !password) {
         return res.status(400).json({
@@ -274,20 +304,61 @@ class AuthController {
       }
 
       // Verificar senha
-      const passwordMatch = await bcrypt.compare(password, user.password_hash);
+      const passwordMatch = await bcrypt.compare(password, user.password_hash || user.password);
       if (!passwordMatch) {
         return res.status(401).json({
           error: 'Email ou senha incorretos'
         });
       }
 
-      // Gerar tokens
+      // ✅ NEW: Check if 2FA is enabled
+      if (user.two_factor_enabled) {
+        if (!twoFactorToken) {
+          // Return temporary token that allows only 2FA verification
+          const tempToken = jwt.sign(
+            { 
+              id: user.id, 
+              email: user.email,
+              pending_2fa: true
+            },
+            JWT_SECRET,
+            { expiresIn: '5m' } // Only valid for 5 minutes
+          );
+          
+          return res.status(403).json({
+            error: '2FA requerido',
+            code: 'PENDING_2FA',
+            temp_token: tempToken,
+            message: 'Por favor, forneça seu código 2FA'
+          });
+        }
+        
+        // Verify 2FA token using TwoFactorService
+        try {
+          const TwoFactorService = require('../services/twoFactorService');
+          const isValidToken = TwoFactorService.verifyToken(user.two_factor_secret, twoFactorToken);
+          
+          if (!isValidToken) {
+            return res.status(401).json({
+              error: 'Código 2FA inválido ou expirado'
+            });
+          }
+        } catch (err) {
+          logger.error('Erro ao verificar 2FA:', err);
+          return res.status(401).json({
+            error: 'Erro ao verificar 2FA'
+          });
+        }
+      }
+
+      // ✅ Login bem-sucedido: Gerar tokens
       const accessToken = jwt.sign(
         {
           id: user.id,
           email: user.email,
           role: user.role,
-          name: user.name
+          name: user.name,
+          two_factor_verified: user.two_factor_enabled
         },
         JWT_SECRET,
         { expiresIn: '24h' }
@@ -299,6 +370,8 @@ class AuthController {
         { expiresIn: '7d' }
       );
 
+      logger.info(`✅ Login bem-sucedido para ${email}`);
+
       res.json({
         success: true,
         message: 'Login realizado com sucesso!',
@@ -307,7 +380,8 @@ class AuthController {
           email: user.email,
           name: user.name,
           role: user.role,
-          phone: user.phone
+          phone: user.phone,
+          two_factor_enabled: user.two_factor_enabled
         },
         tokens: {
           accessToken,
@@ -320,7 +394,7 @@ class AuthController {
       });
 
     } catch (error) {
-      console.error('Erro no login:', error);
+      logger.error('Erro no login:', error.message);
       res.status(500).json({
         error: 'Erro ao fazer login'
       });

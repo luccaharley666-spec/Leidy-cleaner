@@ -1,0 +1,287 @@
+/* DemandIndicator.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  border-radius: 12px;
+  border: 1px solid #c8e6c9;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2e7d32;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #558b2f;
+}
+
+.recommended {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  border: 2px solid #4caf50;
+}
+
+.recommendedHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.badge {
+  display: inline-block;
+  background: #4CAF50;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.count {
+  font-size: 12px;
+  color: #999;
+  font-weight: 500;
+}
+
+.timeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 8px;
+}
+
+.timeSlot {
+  padding: 12px 8px;
+  background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 100%);
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  position: relative;
+}
+
+.timeSlot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.timeDisplay {
+  font-size: 14px;
+  color: #1b5e20;
+}
+
+.savingsTag {
+  background: white;
+  color: #2e7d32;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.allTimes {
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  overflow: hidden;
+}
+
+.summary {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  user-select: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fafafa;
+  border-bottom: 1px solid #e1e8ed;
+  transition: background 0.2s ease;
+}
+
+.summary:hover {
+  background: #f0f0f0;
+}
+
+details[open] .summary {
+  background: #f0f0f0;
+  border-bottom: 1px solid #4caf50;
+}
+
+.allTimesList {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeOption {
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: white;
+}
+
+.timeOption:last-child {
+  border-bottom: none;
+}
+
+.timeOption:hover {
+  background: #fafafa;
+}
+
+.timeOption.demand-low {
+  background: #f1f8e9;
+}
+
+.timeOption.demand-low:hover {
+  background: #e8f5e9;
+}
+
+.timeOption.demand-medium {
+  background: white;
+}
+
+.timeOption.demand-medium:hover {
+  background: #fafafa;
+}
+
+.timeOption.demand-high {
+  background: #fff3e0;
+}
+
+.timeOption.demand-high:hover {
+  background: #fff8e1;
+}
+
+.timeInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.demandIcon {
+  font-size: 16px;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.demandLabel {
+  font-size: 12px;
+  color: #999;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.economyTag {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+}
+
+.arrow {
+  color: #ccc;
+  font-size: 16px;
+}
+
+.infoCard {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: #fff3e0;
+  border: 1px solid #ffe0b2;
+  border-radius: 8px;
+  align-items: flex-start;
+}
+
+.infoIcon {
+  font-size: 16px;
+  min-width: 20px;
+}
+
+.infoText {
+  font-size: 12px;
+  color: #e65100;
+  line-height: 1.4;
+}
+
+.infoText strong {
+  color: #d84315;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .timeGrid {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 6px;
+  }
+
+  .timeSlot {
+    padding: 10px 6px;
+  }
+
+  .timeDisplay {
+    font-size: 12px;
+  }
+
+  .timeOption {
+    padding: 10px;
+  }
+
+  .summary {
+    padding: 10px;
+    font-size: 13px;
+  }
+}

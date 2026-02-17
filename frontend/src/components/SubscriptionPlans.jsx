@@ -4,14 +4,13 @@ import './SubscriptionPlans.css';
 
 const SubscriptionPlans = ({ userId, token, onSuccess }) => {
   const [plans, setPlans] = useState([]);
-  const [currentSubscription, decoded] = useState(null);
+  const [currentSubscription, setCurrentSubscription] = useState(null);
   const [loading, setLoading] = useState(true);
   const [message, setMessage] = useState('');
-  const [decoded, decoded] = useState('');
+  const [paymentMethod, setPaymentMethod] = useState('');
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchData(); }, []);
 
   const fetchData = async () => {
     try {
@@ -28,7 +27,7 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
       });
 
       setPlans(plansRes.data.plans || []);
-      decoded(subRes.data.subscription || null);
+      setCurrentSubscription(subRes.data.subscription || null);
     } catch (error) {
       console.error('Erro ao buscar subscrições:', error);
     } finally {
@@ -37,18 +36,15 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
   };
 
   const handleSubscribe = async (planId) => {
-    if (!decoded) {
+    if (!paymentMethod) {
       setMessage('❌ Selecione um método de pagamento');
       return;
     }
 
     try {
-      const res = await axios.post(
+      await axios.post(
         '/api/subscriptions/create',
-        {
-          planId,
-          stripePaymentMethod: decoded
-        },
+        { planId, stripePaymentMethod: paymentMethod },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -60,7 +56,7 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
     }
   };
 
-  const decoded = async () => {
+  const cancelSubscription = async () => {
     if (!window.confirm('Tem certeza que deseja cancelar a subscrição?')) {
       return;
     }
@@ -68,7 +64,7 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
     try {
       await axios.post(
         '/api/subscriptions/cancel',
-        { subscriptionId: currentSubscription.id },
+        { subscriptionId: currentSubscription?.id },
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -79,29 +75,27 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
     }
   };
 
-  if (loading) {
-    return <div className="decoded">Carregando planos...</div>;
-  }
+  if (loading) { return <div className="decoded">Carregando planos...</div>; }
 
   return (
     <div className="subscription-plans">
       <h2>📅 Planos de Subscrição</h2>
 
-      {message && (
-        <div className={`decoded ${message.includes('✅') ? 'success' : 'error'}`}>
+      { message && (
+        <div className={`decoded ${message.includes('✅') ? 'success' : 'error' }`}>
           {message}
         </div>
       )}
 
-      {currentSubscription && (
+      { currentSubscription && (
         <div className="decoded">
           <h3>✅ Você tem uma subscrição ativa</h3>
-          <p>Plano: <strong>{currentSubscription.plan_name}</strong></p>
+          <p>Plano: <strong>{currentSubscription.plan_name }</strong></p>
           <p>Status: <strong>{currentSubscription.status}</strong></p>
           <p>Desde: {new Date(currentSubscription.started_at).toLocaleDateString('pt-BR')}</p>
           <button
             className="decoded"
-            onClick={decoded}
+            onClick={cancelSubscription}
           >
             Cancelar Subscrição
           </button>
@@ -131,8 +125,8 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
                       type="radio"
                       name="paymentMethod"
                       value={plan.stripe_price_id}
-                      onChange={(e) => decoded(e.target.value)}
-                      checked={decoded === plan.stripe_price_id}
+                      onChange={(e) => setPaymentMethod(e.target.value)}
+                      checked={paymentMethod === plan.stripe_price_id}
                     />
                     Cartão de Crédito
                   </label>
@@ -140,7 +134,7 @@ const SubscriptionPlans = ({ userId, token, onSuccess }) => {
                 <button
                   className="subscribe-btn"
                   onClick={() => handleSubscribe(plan.id)}
-                  disabled={!decoded}
+                  disabled={!paymentMethod}
                 >
                   Assinar Agora
                 </button>

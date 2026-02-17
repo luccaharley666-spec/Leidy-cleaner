@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS users (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   email TEXT UNIQUE NOT NULL,
   password TEXT NOT NULL,
+  password_hash TEXT,
   name TEXT NOT NULL,
   phone TEXT,
   cpf_cnpj TEXT,
@@ -26,6 +27,10 @@ CREATE TABLE IF NOT EXISTS users (
   loyalty_bonus DECIMAL(10,2) DEFAULT 0.00,
   bonus_redeemed BOOLEAN DEFAULT 0,
   is_active BOOLEAN DEFAULT 1,
+  -- ✅ NEW: 2FA (Two-Factor Authentication) columns
+  two_factor_enabled BOOLEAN DEFAULT 0,
+  two_factor_secret TEXT,
+  two_factor_backup_codes TEXT,
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
   updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
@@ -102,12 +107,14 @@ CREATE TABLE IF NOT EXISTS payments (
 );
 
 -- ÍNDICES para performance
+-- Payments
 CREATE INDEX IF NOT EXISTS idx_payments_transaction_id ON payments(transaction_id);
 CREATE INDEX IF NOT EXISTS idx_payments_user_id ON payments(user_id);
 CREATE INDEX IF NOT EXISTS idx_payments_booking_id ON payments(booking_id);
 CREATE INDEX IF NOT EXISTS idx_payments_status ON payments(status);
 CREATE INDEX IF NOT EXISTS idx_payments_method ON payments(method);
 CREATE INDEX IF NOT EXISTS idx_payments_created_at ON payments(created_at);
+CREATE INDEX IF NOT EXISTS idx_payments_confirmed_at ON payments(confirmed_at);
 
 -- TABELA: loyalty_history
 CREATE TABLE IF NOT EXISTS loyalty_history (
@@ -139,13 +146,26 @@ CREATE TABLE IF NOT EXISTS recurring_bookings (
 );
 
 -- ÍNDICES PARA PERFORMANCE
+-- Bookings
 CREATE INDEX IF NOT EXISTS idx_bookings_user_id ON bookings(user_id);
+CREATE INDEX IF NOT EXISTS idx_bookings_service_id ON bookings(service_id);
+CREATE INDEX IF NOT EXISTS idx_bookings_staff_id ON bookings(staff_id);
 CREATE INDEX IF NOT EXISTS idx_bookings_status ON bookings(status);
 CREATE INDEX IF NOT EXISTS idx_bookings_date ON bookings(date);
+CREATE INDEX IF NOT EXISTS idx_bookings_created_at ON bookings(created_at);
 CREATE INDEX IF NOT EXISTS idx_bookings_rating ON bookings(rating);
+
+-- Users
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_users_role ON users(role);
+CREATE INDEX IF NOT EXISTS idx_users_created_at ON users(created_at);
+CREATE INDEX IF NOT EXISTS idx_users_is_active ON users(is_active);
+
+-- Loyalty History
 CREATE INDEX IF NOT EXISTS idx_loyalty_user ON loyalty_history(user_id);
+CREATE INDEX IF NOT EXISTS idx_loyalty_booking ON loyalty_history(booking_id);
+
+-- Recurring Bookings
 CREATE INDEX IF NOT EXISTS idx_recurring_user ON recurring_bookings(user_id);
 
 -- TABELA: chat_messages
@@ -253,6 +273,27 @@ CREATE INDEX IF NOT EXISTS idx_payment_reconciliation_transaction_id ON payment_
 CREATE INDEX IF NOT EXISTS idx_payment_reconciliation_reconciled ON payment_reconciliation(reconciled);
 CREATE INDEX IF NOT EXISTS idx_payment_reconciliation_checked_at ON payment_reconciliation(checked_at);
 
+-- TABELA: company_settings (Configurações do sistema)
+CREATE TABLE IF NOT EXISTS company_settings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  key TEXT UNIQUE NOT NULL,
+  value TEXT NOT NULL,
+  updated_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX IF NOT EXISTS idx_company_settings_key ON company_settings(key);
+
+-- (Duplicate recurring_bookings definition removed - canonical table defined earlier)
+
+-- NOTE: The migrations file previously contained a duplicated definition of
+-- `recurring_bookings` with a conflicting schema (columns `customer_id` /
+-- `professional_id`) which caused index creation to fail when the first
+-- `recurring_bookings` table (with `user_id`) was present. The duplicate
+-- block was removed to keep a single canonical table definition above.
+-- If you need migration steps to convert between schemas, add explicit
+-- ALTER TABLE statements here instead of redefining the table.
+
 -- ============================================
 -- SEED DATA (Inserir APÓS todas as tabelas)
 -- ============================================
@@ -266,6 +307,7 @@ INSERT OR IGNORE INTO services (name, description, base_price, discount_per_hour
 ('Limpeza de Vidros', 'Serviço especializado em janelas', 40.00, 20.00, 40.00, 1.50, 60, 'especializado'),
 ('Higienização de Estofados', 'Limpeza de móveis estofados', 40.00, 20.00, 40.00, 1.50, 120, 'especializado');
 
--- SEED: User Admin padrão
-INSERT OR IGNORE INTO users (email, password, name, phone, role) VALUES
-('admin@leidycleaner.com', '$2b$10$placeholder', 'Administrador', '5198030000', 'admin');
+-- ✅ ADMIN CRIADO VIA SCRIPT PÓS-DEPLOY
+-- Não criar admin padrão com senha em migrations (segurança)
+-- Execute em produção: npm run create-admin -- --email=admin@domain.com
+-- Isso vai gerar uma senha aleatória e pedir para trocar na primeira login

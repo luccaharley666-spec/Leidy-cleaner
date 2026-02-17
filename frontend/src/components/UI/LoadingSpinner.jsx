@@ -20,13 +20,11 @@ export function LoadingSpinner({ size = 'md', text = 'Carregando...', variant = 
             className="w-2 h-2 bg-blue-600 rounded-full"
             animate={{
               scale: [1, 1.2, 1],
-              opacity: [0.5, 1, 0.5],
-            }}
+              opacity: [0.5, 1, 0.5] }}
             transition={{
               duration: 1,
               repeat: Infinity,
-              delay: i * 0.2,
-            }}
+              delay: i * 0.2 }}
           />
         ))}
       </div>
@@ -36,15 +34,12 @@ export function LoadingSpinner({ size = 'md', text = 'Carregando...', variant = 
         className={`${sizeClasses[size]} bg-blue-600 rounded-full`}
         animate={{
           scale: [1, 1.1, 1],
-          opacity: [0.5, 1, 0.5],
-        }}
+          opacity: [0.5, 1, 0.5] }}
         transition={{
           duration: 1.5,
-          repeat: Infinity,
-        }}
+          repeat: Infinity }}
       />
-    ),
-  };
+    ) };
 
   return (
     <motion.div
@@ -99,17 +94,14 @@ export function LoadingSkeleton({ count = 3, height = 'h-12', className = '' }) 
           key={i}
           className={`${height} bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 rounded-lg`}
           animate={{
-            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'],
-          }}
+            backgroundPosition: ['0% 50%', '100% 50%', '0% 50%'] }}
           transition={{
             duration: 2,
             repeat: Infinity,
             ease: 'linear',
-            delay: i * 0.1,
-          }}
+            delay: i * 0.1 }}
           style={{
-            backgroundSize: '200% 100%',
-          }}
+            backgroundSize: '200% 100%' }}
         />
       ))}
     </div>

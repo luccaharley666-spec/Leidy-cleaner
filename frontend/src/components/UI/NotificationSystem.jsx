@@ -35,8 +35,7 @@ export function NotificationSystem() {
       id: Date.now(),
       timestamp: new Date(),
       read: false,
-      ...notification,
-    };
+      ...notification };
 
     setNotifications(prev => [newNotification, ...prev]);
 
@@ -46,8 +45,7 @@ export function NotificationSystem() {
     // Mostrar toast
     toast(notification.title, {
       icon: notification.icon || '🔔',
-      duration: 4000,
-    });
+      duration: 4000 });
 
     // Notificação push se permitida
     if (permission === 'granted' && 'serviceWorker' in navigator) {
@@ -56,8 +54,7 @@ export function NotificationSystem() {
           body: notification.message,
           icon: '/icons/icon-192.svg',
           badge: '/icons/badge-72.svg',
-          tag: notification.tag || 'general',
-        });
+          tag: notification.tag || 'general' });
       });
     }
   };
@@ -87,9 +84,7 @@ export function NotificationSystem() {
           duration: 4000,
           style: {
             background: '#363636',
-            color: '#fff',
-          },
-        }}
+            color: '#fff' } }}
       />
 
       <NotificationDropdown

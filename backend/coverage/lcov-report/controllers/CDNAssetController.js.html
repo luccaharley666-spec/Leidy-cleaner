@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.22% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/71</span>
+                <span class='fraction'>0/71</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">4.22% </span>
+                <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/71</span>
+                <span class='fraction'>0/71</span>
             </div>
         
             
@@ -312,8 +312,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -550,14 +550,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * CDN Asset Controller
  * Endpoints para otimização de assets e geração de URLs otimizadas
  */
 &nbsp;
-const CDNAssetOptimizerService = require('../services/CDNAssetOptimizerService');
-const logger = require('../utils/logger');
+const CDNAssetOptimizerService = <span class="cstat-no" title="statement not covered" >require('../services/CDNAssetOptimizerService');</span>
+const logger = <span class="cstat-no" title="statement not covered" >require('../utils/logger');</span>
 &nbsp;
 class CDNAssetController {
   /**
@@ -572,7 +572,7 @@ class CDNAssetController {
 <span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'imagePath é obrigatória' });</span>
       }
 &nbsp;
-      const optimizedUrl = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.__PLACEHOLDER(</span>
+      const optimizedUrl = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.generateOptimizedUrl(</span>
         imagePath,
         { width, height, quality, format }
       );
@@ -582,7 +582,7 @@ class CDNAssetController {
         original: imagePath,
         optimized: optimizedUrl,
         sizes: {
-          responsive: CDNAssetOptimizerService.__PLACEHOLDER(imagePath),
+          responsive: CDNAssetOptimizerService.generateResponsiveSet(imagePath),
           placeholder: CDNAssetOptimizerService.generateLQIPUrl(imagePath)
         }
       });
@@ -604,7 +604,7 @@ class CDNAssetController {
 <span class="cstat-no" title="statement not covered" >        return res.status(400).json({ error: 'imagePath é obrigatória' });</span>
       }
 &nbsp;
-      const responsiveSet = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.__PLACEHOLDER(imagePath);</span>
+      const responsiveSet = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.generateResponsiveSet(imagePath);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -614,7 +614,7 @@ class CDNAssetController {
           src: responsiveSet.defaultSrc,
           alt: req.query.alt || 'Image'
         },
-        htmlTag: CDNAssetOptimizerService.__PLACEHOLDER(
+        htmlTag: CDNAssetOptimizerService.generateResponsiveImageTag(
           imagePath,
           req.query.alt || 'Image'
         )
@@ -656,7 +656,7 @@ class CDNAssetController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async getBandwidthSavings(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const savings = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.__PLACEHOLDER();</span>
+      const savings = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.calculateBandwidthSavings();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -675,7 +675,7 @@ class CDNAssetController {
 <span class="fstat-no" title="function not covered" >  st</span>atic async getAssetManifest(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const publicPath = <span class="cstat-no" title="statement not covered" >process.env.PUBLIC_PATH || './public';</span>
-      const manifest = <span class="cstat-no" title="statement not covered" >await CDNAssetOptimizerService.__PLACEHOLDER(publicPath);</span>
+      const manifest = <span class="cstat-no" title="statement not covered" >await CDNAssetOptimizerService.generateAssetManifest(publicPath);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -744,7 +744,7 @@ class CDNAssetController {
 <span class="fstat-no" title="function not covered" >  st</span>atic async getImageSitemap(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
       const assets = <span class="cstat-no" title="statement not covered" >req.body.assets || [];</span>
-      const sitemap = <span class="cstat-no" title="statement not covered" >await CDNAssetOptimizerService.__PLACEHOLDER(assets);</span>
+      const sitemap = <span class="cstat-no" title="statement not covered" >await CDNAssetOptimizerService.generateImageSitemap(assets);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      res.setHeader('Content-Type', 'application/xml');</span>
 <span class="cstat-no" title="statement not covered" >      return res.send(JSON.stringify(sitemap, null, 2));</span>
@@ -763,7 +763,7 @@ class CDNAssetController {
       const { imageId } = <span class="cstat-no" title="statement not covered" >req.params;</span>
       const imageUrl = <span class="cstat-no" title="statement not covered" >`/images/${imageId}`;</span>
 &nbsp;
-      const performance = <span class="cstat-no" title="statement not covered" >await CDNAssetOptimizerService.__PLACEHOLDER(imageUrl);</span>
+      const performance = <span class="cstat-no" title="statement not covered" >await CDNAssetOptimizerService.measureImagePerformance(imageUrl);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -781,7 +781,7 @@ class CDNAssetController {
    */
 <span class="fstat-no" title="function not covered" >  st</span>atic async getImagePerformance(req, res) {
 <span class="cstat-no" title="statement not covered" >    try {</span>
-      const report = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.__PLACEHOLDER();</span>
+      const report = <span class="cstat-no" title="statement not covered" >CDNAssetOptimizerService.generateOptimizationReport();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return res.json({</span>
         success: true,
@@ -794,7 +794,7 @@ class CDNAssetController {
   }
 }
 &nbsp;
-module.exports = CDNAssetController;
+<span class="cstat-no" title="statement not covered" >module.exports = CDNAssetController;</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -802,7 +802,7 @@ module.exports = CDNAssetController;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T20:40:08.660Z
+                at 2026-02-15T05:49:01.492Z
             </div>
         <script src="../prettify.js"></script>
         <script>

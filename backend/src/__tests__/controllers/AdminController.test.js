@@ -230,9 +230,9 @@ describe('AdminController', () => {
 
     test('should prevent suspending admin', async () => {
       if (typeof AdminController.suspendUser === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, { id: 1, role: 'admin' });
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, { id: 1, role: 'admin' });
+// [CLEANED_PLACEHOLDER]         });
         
         req.params.userId = '1';
         req.body = { reason: 'Testing' };
@@ -354,9 +354,9 @@ describe('AdminController', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.all; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Database error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.all; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Database error'));
+// [CLEANED_PLACEHOLDER]       });
       
       if (typeof AdminController.getUsers === 'function') {
         await AdminController.getUsers(req, res);
@@ -367,9 +367,9 @@ describe('AdminController', () => {
 
     test('should handle missing user', async () => {
       if (typeof AdminController.updateUser === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, null);
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, null);
+// [CLEANED_PLACEHOLDER]         });
         
         req.params.userId = 'nonexistent';
         req.body = { status: 'active' };
@@ -382,9 +382,9 @@ describe('AdminController', () => {
 
     test('should return appropriate error messages', async () => {
       if (typeof AdminController.getDashboard === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(new Error('Connection timeout'));
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(new Error('Connection timeout'));
+// [CLEANED_PLACEHOLDER]         });
         
         await AdminController.getDashboard(req, res);
         

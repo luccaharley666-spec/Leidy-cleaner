@@ -5,19 +5,16 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { CalendarIcon, ClockIcon, BellIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
 import { useNotifications } from './NotificationSystem';
 
-export function RecurringScheduler() {
-  const [scheduledServices, decoded] = useState([]);
+export function RecurringScheduler() { const [scheduledServices,] = useState([]);
   const [showScheduler, setShowScheduler] = useState(false);
   const { addNotification } = useNotifications();
 
-  useEffect(() => {
-    // Carregar agendamentos do localStorage
+  useEffect(() => { // Carregar agendamentos do localStorage
     const saved = localStorage.getItem('decoded');
     if (saved) {
       const services = JSON.parse(saved);
-      decoded(services);
-      setupReminders(services);
-    }
+     (services);
+      setupReminders(services); }
   }, []);
 
   const setupReminders = (services) => {
@@ -32,8 +29,7 @@ export function RecurringScheduler() {
               title: '🔔 Lembrete de Serviço',
               message: `${service.title} está agendado para amanhã às ${service.time}`,
               icon: '⏰',
-              tag: 'reminder',
-            });
+              tag: 'reminder' });
           }, reminderTime - new Date());
 
           // Salvar o timeout ID para limpeza
@@ -48,11 +44,10 @@ export function RecurringScheduler() {
       id: Date.now(),
       ...service,
       createdAt: new Date(),
-      nextDate: calculateNextDate(service),
-    };
+      nextDate: calculateNextDate(service) };
 
     const updatedServices = [...scheduledServices, newService];
-    decoded(updatedServices);
+   (updatedServices);
 
     localStorage.setItem('decoded', JSON.stringify(updatedServices));
     setupReminders([newService]);
@@ -61,8 +56,7 @@ export function RecurringScheduler() {
       title: '✅ Serviço Recorrente Agendado',
       message: `${service.title} será executado ${service.frequency}`,
       icon: '📅',
-      tag: 'schedule',
-    });
+      tag: 'schedule' });
   };
 
   const calculateNextDate = (service) => {
@@ -113,7 +107,7 @@ export function RecurringScheduler() {
     }
 
     const updatedServices = scheduledServices.filter(s => s.id !== id);
-    decoded(updatedServices);
+   (updatedServices);
     localStorage.setItem('decoded', JSON.stringify(updatedServices));
   };
 
@@ -213,8 +207,7 @@ function SchedulerModal({ onClose, onSchedule }) {
     startDate: new Date(),
     time: '09:00',
     reminders: true,
-    reminderHours: 24,
-  });
+    reminderHours: 24 });
 
   const handleSubmit = (e) => {
     e.preventDefault();

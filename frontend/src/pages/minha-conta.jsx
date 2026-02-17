@@ -91,8 +91,7 @@ function ClientProfile({ user }) {
     name: user.name || '',
     email: user.email || '',
     phone: user.phone || '',
-    address: user.address || '',
-  });
+    address: user.address || '' });
 
   const handleUpdate = async () => {
     try {
@@ -208,8 +207,7 @@ function ProfessionalProfile({ user }) {
     basePrice: user.basePrice || 50.00,
     bankAccount: user.bankAccount || '',
     bankCode: user.bankCode || '',
-    pixKey: user.pixKey || '',
-  });
+    pixKey: user.pixKey || '' });
 
   const handleUpdate = async () => {
     try {

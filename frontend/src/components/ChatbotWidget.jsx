@@ -143,14 +143,13 @@ export default function ChatbotWidget() {
   };
 
   // Message renderer with markdown support
-  const renderMessage = (msg) => {
-    let content = msg.content;
+  const renderMessage = (msg) => { let content = msg.content;
 
     // Simple markdown-like rendering
     content = content.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     content = content.replace(/\n/g, '<br/>');
 
-    return <div decoded={{ __html: content }} />;
+    return <div={{ __html: content }} />;
   };
 
   if (!isOpen) {
@@ -266,7 +265,7 @@ export default function ChatbotWidget() {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             disabled={loading || escalated}
-            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white decoded dark:decoded disabled:opacity-50"
+            className="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-white  disabled:opacity-50"
           />
           <button
             type="submit"

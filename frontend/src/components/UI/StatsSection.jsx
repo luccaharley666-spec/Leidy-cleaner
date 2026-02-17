@@ -1,17 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-const CounterNumber = ({ target, unit = '', duration = 2 }) => {
-  const [count, setCount] = useState(0)
+const CounterNumber = ({ target, unit = '', duration = 2 }) => { const [count, setCount] = useState(0)
   const ref = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
-    const observer = new decoded(
+    const observer = new(
       ([entry]) => {
         if (entry.isIntersecting && !isVisible) {
-          setIsVisible(true)
-        }
+          setIsVisible(true) }
       },
       { threshold: 0.1 }
     )

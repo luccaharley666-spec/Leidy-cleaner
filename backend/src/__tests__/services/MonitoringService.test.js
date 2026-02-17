@@ -119,9 +119,9 @@ describe('MonitoringService', () => {
 
     test('should return empty for missing metrics', async () => {
       if (typeof MonitoringService.getMetrics === 'function') {
-        db.all; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, []);
-        });
+// [CLEANED_PLACEHOLDER]         db.all; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, []);
+// [CLEANED_PLACEHOLDER]         });
         
         const result = await MonitoringService.getMetrics('nonexistent');
         expect(Array.isArray(result) || result === null || result === undefined).toBe(true);
@@ -299,9 +299,9 @@ describe('MonitoringService', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Database error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.run; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Database error'));
+// [CLEANED_PLACEHOLDER]       });
       
       if (typeof MonitoringService.recordMetric === 'function') {
         const result = await MonitoringService.recordMetric('metric', 100);
@@ -310,9 +310,9 @@ describe('MonitoringService', () => {
     });
 
     test('should handle retrieval errors', async () => {
-      db.all; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Retrieval error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.all; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Retrieval error'));
+// [CLEANED_PLACEHOLDER]       });
       
       if (typeof MonitoringService.getMetrics === 'function') {
         const result = await MonitoringService.getMetrics('uptime');

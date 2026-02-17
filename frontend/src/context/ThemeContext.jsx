@@ -14,28 +14,22 @@ export const THEME_MODES = {
 const THEME_CONFIGS = {
   light: {
     name: 'Claro ☀️',
-    icon: '☀️',
-  },
+    icon: '☀️' },
   dark: {
     name: 'Escuro 🌙',
-    icon: '🌙',
-  },
+    icon: '🌙' },
   'high-contrast': {
     name: 'Alto Contraste ◆',
-    icon: '◆',
-  },
+    icon: '◆' },
   pastel: {
     name: 'Pastel 🎨',
-    icon: '🎨',
-  },
+    icon: '🎨' },
   cyberpunk: {
     name: 'Cyberpunk 🤖',
-    icon: '🤖',
-  },
+    icon: '🤖' },
   forest: {
     name: 'Floresta 🌲',
-    icon: '🌲',
-  }
+    icon: '🌲' }
 };
 
 export function ThemeProvider({ children }) {
@@ -46,15 +40,22 @@ export function ThemeProvider({ children }) {
 
   // Detectar preferência de tema do sistema
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && typeof window.matchMedia === 'function') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
       const systemIsDark = mediaQuery.matches;
       setSystemTheme(systemIsDark ? 'dark' : 'light');
 
       const handler = (e) => setSystemTheme(e.matches ? 'dark' : 'light');
-      mediaQuery.addListener(handler);
+      if (typeof mediaQuery.addEventListener === 'function') {
+        mediaQuery.addEventListener('change', handler);
+        return () => mediaQuery.removeEventListener('change', handler);
+      }
 
-      return () => mediaQuery.removeListener(handler);
+      // Fallback for older browsers
+      if (typeof mediaQuery.addListener === 'function') {
+        mediaQuery.addListener(handler);
+        return () => mediaQuery.removeListener(handler);
+      }
     }
   }, []);
 
@@ -144,10 +145,11 @@ export function ThemeProvider({ children }) {
       isDark: theme === THEME_MODES.DARK,
       isHighContrast: theme === THEME_MODES.HIGH_CONTRAST,
       isPastel: theme === THEME_MODES.PASTEL,
-      themeConfig: THEME_CONFIGS[theme],
-    }}>
+      themeConfig: THEME_CONFIGS[theme] }}>
       {children}
     </ThemeContext.Provider>
   );
 }
+
+export default ThemeProvider;
 

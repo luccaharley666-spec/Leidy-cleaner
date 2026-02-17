@@ -254,9 +254,9 @@ describe('ReviewController', () => {
 
     test('should handle missing review', async () => {
       if (typeof ReviewController.deleteReview === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, null);
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, null);
+// [CLEANED_PLACEHOLDER]         });
         
         req.params.reviewId = 'nonexistent';
         
@@ -268,9 +268,9 @@ describe('ReviewController', () => {
 
     test('should prevent unauthorized deletion', async () => {
       if (typeof ReviewController.deleteReview === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, { id: 1, userId: '2' });
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, { id: 1, userId: '2' });
+// [CLEANED_PLACEHOLDER]         });
         
         req.user = { id: '1' };
         req.params.reviewId = '1';
@@ -304,9 +304,9 @@ describe('ReviewController', () => {
 
     test('should handle no reviews', async () => {
       if (typeof ReviewController.getAverageRating === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, null);
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, null);
+// [CLEANED_PLACEHOLDER]         });
         
         req.params.bookingId = 'no-reviews';
         
@@ -320,9 +320,9 @@ describe('ReviewController', () => {
   describe('Review Validation', () => {
     test('should prevent duplicate reviews', async () => {
       if (typeof ReviewController.createReview === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, { id: 1 });
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, { id: 1 });
+// [CLEANED_PLACEHOLDER]         });
         
         req.body = {
           bookingId: '1',
@@ -367,9 +367,9 @@ describe('ReviewController', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Database error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.run; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Database error'));
+// [CLEANED_PLACEHOLDER]       });
       
       if (typeof ReviewController.createReview === 'function') {
         req.body = {
@@ -386,9 +386,9 @@ describe('ReviewController', () => {
 
     test('should return appropriate error messages', async () => {
       if (typeof ReviewController.getReviews === 'function') {
-        db.all; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(new Error('Not found'));
-        });
+// [CLEANED_PLACEHOLDER]         db.all; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(new Error('Not found'));
+// [CLEANED_PLACEHOLDER]         });
         
         await ReviewController.getReviews(req, res);
         

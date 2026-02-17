@@ -375,16 +375,16 @@
 // // // // const PLACEHOLDER = require('./PLACEHOLDER');
 const { getDb } = <span class="cstat-no" title="statement not covered" >require('../db/sqlite');</span>
 &nbsp;
-class PLACEHOLDER {
+class HourlyBookingPricingService {
   /**
    * Calcular preço final de booking com opção de usar crédito de horas
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync PLACEHOLDER(bookingData) {
+<span class="fstat-no" title="function not covered" >  as</span>ync calculateHourlyBookingPrice(bookingData) {
     const { userId, durationHours, useHourCredit = <span class="branch-0 cbranch-no" title="branch not covered" >false </span>} = <span class="cstat-no" title="statement not covered" >bookingData;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
       // 1. Calcular preço base em horas
-      const hourPrice = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.calculateHourPrice({</span>
+      const hourPrice = <span class="cstat-no" title="statement not covered" >await HourPricingService.calculateHourPrice({</span>
         hours: durationHours,
         userId: userId,
       });
@@ -402,7 +402,7 @@ class PLACEHOLDER {
       let hoursConsumed = <span class="cstat-no" title="statement not covered" >0;</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      if (useHourCredit &amp;&amp; userId) {</span>
-        const credit = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.getUserHourCredit(userId);</span>
+        const credit = <span class="cstat-no" title="statement not covered" >await HourPricingService.getUserHourCredit(userId);</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >        if (credit.hasCredit &amp;&amp; credit.availableHours &gt;= durationHours) {</span>
           // Usar crédito: desconta a taxa de serviço (40%)
@@ -422,7 +422,7 @@ class PLACEHOLDER {
         creditInfo: hourPrice.creditInfo,
       };
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      console.error('[PLACEHOLDER] Error calculating price:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >      logger.error('Erro ao calcular preço:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: false,
         error: 'Erro ao calcular preço do agendamento',
@@ -433,7 +433,7 @@ class PLACEHOLDER {
   /**
    * Confirmar booking e consumir crédito se aplicável
    */
-<span class="fstat-no" title="function not covered" >  as</span>ync PLACEHOLDER(bookingId, userId, hoursToConsume, paidWithCredits) {
+<span class="fstat-no" title="function not covered" >  as</span>ync confirmAndConsumeHourCredit(bookingId, userId, hoursToConsume, paidWithCredits) {
     const db = <span class="cstat-no" title="statement not covered" >getDb();</span>
 &nbsp;
 <span class="cstat-no" title="statement not covered" >    try {</span>
@@ -455,7 +455,7 @@ class PLACEHOLDER {
 &nbsp;
       // 2. Se pagou com crédito, consumir horas
 <span class="cstat-no" title="statement not covered" >      if (paidWithCredits &amp;&amp; hoursToConsume &gt; 0) {</span>
-<span class="cstat-no" title="statement not covered" >        await PLACEHOLDER.consumeHourCredit(userId, hoursToConsume);</span>
+<span class="cstat-no" title="statement not covered" >        await HourPricingService.consumeHourCredit(userId, hoursToConsume);</span>
       }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >      return {</span>
@@ -465,7 +465,7 @@ class PLACEHOLDER {
         hoursConsumed: hoursToConsume,
       };
     } catch (error) {
-<span class="cstat-no" title="statement not covered" >      console.error('[PLACEHOLDER] Error confirming payment:', error.message);</span>
+<span class="cstat-no" title="statement not covered" >      logger.error('Erro ao confirmar pagamento:', error.message);</span>
 <span class="cstat-no" title="statement not covered" >      return {</span>
         success: false,
         error: 'Erro ao confirmar pagamento do agendamento',
@@ -476,7 +476,7 @@ class PLACEHOLDER {
   /**
    * Gerar breakdown visual do preço para exibição
    */
-<span class="fstat-no" title="function not covered" >  PL</span>ACEHOLDER(hourPrice, paidWithCredits = <span class="branch-0 cbranch-no" title="branch not covered" >false)</span> {
+<span class="fstat-no" title="function not covered" >  cr</span>eatePriceBreakdown(hourPrice, paidWithCredits = <span class="branch-0 cbranch-no" title="branch not covered" >false)</span> {
     const { breakdown } = <span class="cstat-no" title="statement not covered" >hourPrice;</span>
 &nbsp;
     const items = <span class="cstat-no" title="statement not covered" >[</span>
@@ -518,7 +518,7 @@ class PLACEHOLDER {
   }
 }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = new PLACEHOLDER();</span>
+<span class="cstat-no" title="statement not covered" >module.exports = new HourlyBookingPricingService();</span>
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -526,7 +526,7 @@ class PLACEHOLDER {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T20:40:08.660Z
+                at 2026-02-15T05:49:01.492Z
             </div>
         <script src="../prettify.js"></script>
         <script>

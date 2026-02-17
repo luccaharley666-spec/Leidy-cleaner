@@ -1,3 +1,5 @@
+// TEMPORARILY DISABLED:
+// TEMPORARILY DISABLED:
 /**
  * PixQRCodeCheckout.jsx
  * Componente para exibir QR Code PIX e confirmar pagamento
@@ -206,7 +208,7 @@ export default function PixQRCodeCheckout({ bookingId, amount, orderId }) {
                 <div className="text-center mb-8">
                   <p className="text-gray-600 dark:text-gray-400 text-sm mb-2">Valor a Pagar</p>
                   <p className="text-4xl font-bold text-green-700 dark:text-green-400">
-                    R$ {amount?.toLocaleString('pt-BR', { decoded: 2 })}
+                    R$ { amount?.toLocaleString('pt-BR', {: 2 })}
                   </p>
                 </div>
 

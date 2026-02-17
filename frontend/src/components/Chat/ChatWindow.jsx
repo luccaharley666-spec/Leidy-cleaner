@@ -25,19 +25,12 @@ export default function Chat({ bookingId, userId, userRole = 'customer' }) {
   }, [messages]);
 
   // Inicializar Socket.io
-  useEffect(() => {
-    if (!bookingId || !userId) return;
+  useEffect(() => { if (!bookingId || !userId) return;
 
     // Conectar ao servidor Socket.io
     const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001';
     socketRef.current = io(API_URL, {
-      reconnection: true,
-      reconnectionDelay: 1000,
-      decoded: 5000,
-      decoded: 5,
-      autoConnect: true,
-      transports: ['websocket', 'polling']
-    });
+      reconnection: true, reconnectionDelay: 1000,: 5000,: 5, autoConnect: true, transports: ['websocket', 'polling'] });
 
     const socket = socketRef.current;
 
@@ -252,7 +245,7 @@ export default function Chat({ bookingId, userId, userRole = 'customer' }) {
             onChange={(e) => setMessage(e.target.value)}
             placeholder="Digite sua mensagem..."
             disabled={!connected || loading}
-            className="flex-1 px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white decoded dark:decoded focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition-all disabled:opacity-50"
+            className="flex-1 px-3 py-2 border border-gray-300 dark:border-slate-600 rounded-lg bg-white dark:bg-slate-800 text-gray-900 dark:text-white  focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 transition-all disabled:opacity-50"
           />
           <button
             type="submit"

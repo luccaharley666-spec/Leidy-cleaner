@@ -280,13 +280,13 @@
 &nbsp;
 const express = <span class="cstat-no" title="statement not covered" >require('express');</span>
 const router = <span class="cstat-no" title="statement not covered" >express.Router();</span>
-const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >require('../services/PLACEHOLDER');</span>
+const PushNotificationService = <span class="cstat-no" title="statement not covered" >require('../services/PushNotificationService');</span>
 &nbsp;
 // POST /api/notifications/subscribe
 <span class="cstat-no" title="statement not covered" >router.post('/subscribe', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, subscription } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const sub = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.__PLACEHOLDER(userId, subscription);</span>
+    const sub = <span class="cstat-no" title="statement not covered" >await PushNotificationService.subscribe(userId, subscription);</span>
 <span class="cstat-no" title="statement not covered" >    res.status(201).json(sub);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -297,7 +297,7 @@ const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >requir
 <span class="cstat-no" title="statement not covered" >router.post('/send', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userId, title, body, icon, badge, tag, requireInteraction } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const notification = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.__PLACEHOLDER(userId, {</span>
+    const notification = <span class="cstat-no" title="statement not covered" >await PushNotificationService.sendNotification(userId, {</span>
       title,
       body,
       icon,
@@ -315,7 +315,7 @@ const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >requir
 <span class="cstat-no" title="statement not covered" >router.post('/broadcast', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { userIds, title, body, icon } = <span class="cstat-no" title="statement not covered" >req.body;</span>
-    const result = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.__PLACEHOLDER(userIds, {</span>
+    const result = <span class="cstat-no" title="statement not covered" >await PushNotificationService.broadcastNotification(userIds, {</span>
       title,
       body,
       icon
@@ -330,7 +330,7 @@ const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >requir
 <span class="cstat-no" title="statement not covered" >router.get('/history/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
     const { limit = <span class="branch-0 cbranch-no" title="branch not covered" >50 </span>} = <span class="cstat-no" title="statement not covered" >req.query;</span>
-    const history = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.__PLACEHOLDER(req.params.userId, parseInt(limit));</span>
+    const history = <span class="cstat-no" title="statement not covered" >await PushNotificationService.getNotificationHistory(req.params.userId, parseInt(limit));</span>
 <span class="cstat-no" title="statement not covered" >    res.json(history);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -340,7 +340,7 @@ const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >requir
 // GET /api/notifications/preferences/:userId
 <span class="cstat-no" title="statement not covered" >router.get('/preferences/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const preferences = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.__PLACEHOLDER(req.params.userId);</span>
+    const preferences = <span class="cstat-no" title="statement not covered" >await PushNotificationService.getPreferences(req.params.userId);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(preferences);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -350,7 +350,7 @@ const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >requir
 // PUT /api/notifications/preferences/:userId
 <span class="cstat-no" title="statement not covered" >router.put('/preferences/:userId', <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >  try {</span>
-    const result = <span class="cstat-no" title="statement not covered" >await PLACEHOLDER.__PLACEHOLDER(req.params.userId, req.body);</span>
+    const result = <span class="cstat-no" title="statement not covered" >await PushNotificationService.updatePreferences(req.params.userId, req.body);</span>
 <span class="cstat-no" title="statement not covered" >    res.json(result);</span>
   } catch (error) {
 <span class="cstat-no" title="statement not covered" >    res.status(400).json({ error: error.message });</span>
@@ -385,7 +385,7 @@ const PLACEHOLDER = <span class="cstat-no" title="statement not covered" >requir
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T20:40:08.660Z
+                at 2026-02-15T05:49:01.492Z
             </div>
         <script src="../prettify.js"></script>
         <script>

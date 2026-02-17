@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { CalendarIcon, CheckCircleIcon, decoded, ArrowPathIcon, LinkIcon } from '@heroicons/react/24/outline';
+import { CalendarIcon, CheckCircleIcon, ArrowPathIcon, LinkIcon } from '@heroicons/react/24/outline';
 
 const GoogleCalendarSync = ({ clientId }) => {
   const [isConnected, setIsConnected] = useState(false);
@@ -105,13 +105,11 @@ const GoogleCalendarSync = ({ clientId }) => {
     }
   };
 
-  const getSyncStatusIcon = (status) => {
-    switch (status) {
+  const getSyncStatusIcon = (status) => { switch (status) {
       case 'success': return <CheckCircleIcon className="w-5 h-5" />;
       case 'error': return <decoded className="w-5 h-5" />;
       case 'syncing': return <ArrowPathIcon className="w-5 h-5 animate-spin" />;
-      default: return <CalendarIcon className="w-5 h-5" />;
-    }
+      default: return <CalendarIcon className="w-5 h-5" />; }
   };
 
   return (

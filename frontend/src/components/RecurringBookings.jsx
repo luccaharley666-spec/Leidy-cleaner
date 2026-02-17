@@ -16,10 +16,10 @@ const RecurringBookings = ({ token }) => {
   });
 
   useEffect(() => {
-    decodedFunction();
+    loadBookings();
   }, []);
 
-  const decoded = async () => {
+  const loadBookings = async () => {
     try {
       setLoading(true);
       const res = await axios.get('/api/recurring-bookings/my-recurring', {
@@ -33,14 +33,14 @@ const RecurringBookings = ({ token }) => {
     }
   };
 
-  const decoded = async (e) => {
+  const handleCreate = async (e) => {
     e.preventDefault();
     try {
       await axios.post('/api/recurring-bookings/create', formData, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setShowForm(false);
-      decodedFunction();
+      await loadBookings();
       alert('✅ Agendamento recorrente criado!');
     } catch (error) {
       alert('❌ Erro ao criar agendamento');
@@ -53,7 +53,7 @@ const RecurringBookings = ({ token }) => {
       await axios.post(endpoint, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      decodedFunction();
+      await loadBookings();
       alert('✅ Status atualizado!');
     } catch (error) {
       alert('❌ Erro ao atualizar');
@@ -76,8 +76,8 @@ const RecurringBookings = ({ token }) => {
         </button>
       </div>
 
-      {showForm && (
-        <form onSubmit={decoded} className="recurring-form">
+      { showForm && (
+        <form onSubmit={handleCreate} className="recurring-form">
           <input
             type="text"
             placeholder="ID do Profissional"

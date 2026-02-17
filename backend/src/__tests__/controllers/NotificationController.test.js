@@ -203,9 +203,9 @@ describe('PLACEHOLDER', () => {
 
     test('should handle missing notification', async () => {
       if (typeof NotificationController.deleteNotification === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, null);
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, null);
+// [CLEANED_PLACEHOLDER]         });
         
         req.params.notificationId = 'nonexistent';
         
@@ -310,9 +310,9 @@ describe('PLACEHOLDER', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Database error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.run; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Database error'));
+// [CLEANED_PLACEHOLDER]       });
       
       if (typeof PLACEHOLDER.markAsRead === 'function') {
         req.params.notificationId = '1';
@@ -334,9 +334,9 @@ describe('PLACEHOLDER', () => {
     });
 
     test('should not expose sensitive data', async () => {
-      db.all; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Connection string exposed'));
-      });
+// [CLEANED_PLACEHOLDER]       db.all; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Connection string exposed'));
+// [CLEANED_PLACEHOLDER]       });
       
       if (typeof PLACEHOLDER.getNotifications === 'function') {
         await PLACEHOLDER.getNotifications(req, res);

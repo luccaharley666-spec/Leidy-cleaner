@@ -9,7 +9,7 @@ import { apiCall } from '../config/api';
 /**
  * Classe para gerenciar criptografia no cliente
  */
-class decoded {
+class {
   constructor() {
     this.encryptionKey = null;
     this.userId = null;
@@ -30,7 +30,7 @@ class decoded {
    * Derivar chave a partir de senha (PBKDF2)
    * Útil para compartilhar conversa com senha
    */
-  async decoded(password, salt = null) {
+  async(password, salt = null) {
     if (!salt) {
       // Gerar salt aleatório
       const saltArray = new Uint8Array(16);
@@ -149,7 +149,7 @@ class decoded {
   /**
    ✅ NOVO: Compartilhar chave de forma segura (QR Code)
    */
-  decoded(conversationId, encryptionKeyHex) {
+ (conversationId, encryptionKeyHex) {
     // Exemplo: gerar URL para QR code
     const qrData = {
       conversationId,
@@ -189,7 +189,7 @@ class decoded {
   /**
    ✅ NOVO: Download de arquivo descriptografado
    */
-  async decoded(fileId, encryptionKeyHex) {
+  async(fileId, encryptionKeyHex) {
     const response = await apiCall(
       `/api/chat/download-encrypted/${fileId}?encryptionKey=${encryptionKeyHex}`,
       { method: 'GET' }
@@ -201,7 +201,7 @@ class decoded {
   /**
    ✅ NOVO: Enviar mensagem encriptada via API
    */
-  async decoded(receiverId, message, encryptionKey) {
+  async(receiverId, message, encryptionKey) {
     return await apiCall('/api/chat/messages', {
       method: 'POST',
       body: JSON.stringify({
@@ -215,7 +215,7 @@ class decoded {
   /**
    ✅ NOVO: Obter mensagens descriptografadas
    */
-  async decoded(conversationId, encryptionKey) {
+  async(conversationId, encryptionKey) {
     return await apiCall(
       `/api/chat/messages/${conversationId}?encryptionKey=${encryptionKey}`,
       { method: 'GET' }
@@ -245,6 +245,4 @@ class decoded {
 }
 
 // Exportar para uso no frontend
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = decoded;
-}
+if (typeof module !== 'undefined' && module.exports) { module.exports =; }

@@ -30,13 +30,10 @@ const StripeCheckoutButton = ({ bookingId, amount }) => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
+          Authorization: `Bearer ${token}` },
         body: JSON.stringify({
           bookingId: bookingId,
-          amount: amount,
-        }),
-      });
+          amount: amount }) });
 
       const data = await response.json();
 
@@ -56,8 +53,7 @@ const StripeCheckoutButton = ({ bookingId, amount }) => {
       }
 
       const result = await stripe.redirectToCheckout({
-        sessionId: data.sessionId,
-      });
+        sessionId: data.sessionId });
 
       if (result.error) {
         setError(result.error.message);

@@ -67,7 +67,7 @@ class InvoiceService {
       // Company info (lado esquerdo)
       doc.fontSize(12).font('Helvetica-Bold').text('Avante Cleaning', 50, 130);
       doc.fontSize(10).font('Helvetica')
-        .text('São Paulo, SP - Brazil', 50, 145)
+        .text('Brasil - Cobertura Nacional', 50, 145)
         .text('Email: contact@avantecleaning.com', 50, 160)
         .text('Phone: +55 11 98765-4321', 50, 175);
 

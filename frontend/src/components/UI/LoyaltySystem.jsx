@@ -6,22 +6,19 @@ import { useNotifications } from './NotificationSystem';
 
 const LoyaltyContext = createContext();
 
-export function LoyaltyProvider({ children }) {
-  const [userPoints, setUserPoints] = useState(0);
+export function LoyaltyProvider({ children }) { const [userPoints, setUserPoints] = useState(0);
   const [userLevel, setUserLevel] = useState('Bronze');
-  const [completedServices, decoded] = useState(0);
+  const [completedServices,] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const { addNotification } = useNotifications();
 
-  useEffect(() => {
-    // Carregar dados do usuário do localStorage (em produção seria da API)
+  useEffect(() => { // Carregar dados do usuário do localStorage (em produção seria da API)
     const saved = localStorage.getItem('leidy-loyalty');
     if (saved) {
       const data = JSON.parse(saved);
       setUserPoints(data.points || 0);
-      decoded(data.services || 0);
-      setUserLevel(calculateLevel(data.points || 0));
-    }
+     (data.services || 0);
+      setUserLevel(calculateLevel(data.points || 0)); }
   }, []);
 
   const calculateLevel = (points) => {
@@ -31,12 +28,11 @@ export function LoyaltyProvider({ children }) {
     return 'Bronze';
   };
 
-  const addPoints = (points, reason) => {
-    const newPoints = userPoints + points;
+  const addPoints = (points, reason) => { const newPoints = userPoints + points;
     const newLevel = calculateLevel(newPoints);
 
     setUserPoints(newPoints);
-    decoded(prev => prev + 1);
+   (prev => prev + 1);
 
     // Verificar se subiu de nível
     if (newLevel !== userLevel) {
@@ -45,11 +41,9 @@ export function LoyaltyProvider({ children }) {
       setTimeout(() => setShowConfetti(false), 5000);
 
       addNotification({
-        title: '🎉 Nível Atingido!',
-        message: `Parabéns! Você alcançou o nível ${newLevel}!`,
+        title: '🎉 Nível Atingido!', message: `Parabéns! Você alcançou o nível ${newLevel }!`,
         icon: '⭐',
-        tag: 'level-up',
-      });
+        tag: 'level-up' });
     }
 
     // Salvar no localStorage
@@ -57,16 +51,14 @@ export function LoyaltyProvider({ children }) {
       points: newPoints,
       services: completedServices + 1,
       level: newLevel,
-      lastUpdate: new Date(),
-    }));
+      lastUpdate: new Date() }));
 
     // Notificar ganho de pontos
     addNotification({
       title: `+${points} pontos!`,
       message: reason,
       icon: '💎',
-      tag: 'points',
-    });
+      tag: 'points' });
   };
 
   const getLevelProgress = () => {
@@ -74,8 +66,7 @@ export function LoyaltyProvider({ children }) {
       'Bronze': { min: 0, max: 199, next: 'Prata' },
       'Prata': { min: 200, max: 499, next: 'Ouro' },
       'Ouro': { min: 500, max: 999, next: 'Diamante' },
-      'Diamante': { min: 1000, max: Infinity, next: null },
-    };
+      'Diamante': { min: 1000, max: Infinity, next: null } };
 
     const current = levels[userLevel];
     const progress = ((userPoints - current.min) / (current.max - current.min)) * 100;
@@ -84,8 +75,7 @@ export function LoyaltyProvider({ children }) {
       current: userLevel,
       next: current.next,
       progress: Math.min(progress, 100),
-      pointsToNext: current.max === Infinity ? 0 : current.max - userPoints,
-    };
+      pointsToNext: current.max === Infinity ? 0 : current.max - userPoints };
   };
 
   const getAvailableRewards = () => {
@@ -96,32 +86,28 @@ export function LoyaltyProvider({ children }) {
         description: 'Desconto em qualquer serviço',
         cost: 100,
         icon: '💰',
-        available: userPoints >= 100,
-      },
+        available: userPoints >= 100 },
       {
         id: 'free-service',
         title: 'Serviço grátis',
         description: 'Uma limpeza completa grátis',
         cost: 500,
         icon: '🧹',
-        available: userPoints >= 500,
-      },
+        available: userPoints >= 500 },
       {
         id: 'priority-booking',
         title: 'Agendamento prioritário',
         description: 'Pule a fila de agendamentos',
         cost: 200,
         icon: '⚡',
-        available: userPoints >= 200,
-      },
+        available: userPoints >= 200 },
       {
         id: 'birthday-surprise',
         title: 'Surpresa de aniversário',
         description: 'Brinde especial no seu aniversário',
         cost: 300,
         icon: '🎂',
-        available: userPoints >= 300,
-      },
+        available: userPoints >= 300 },
     ];
   };
 
@@ -136,8 +122,7 @@ export function LoyaltyProvider({ children }) {
         title: '🎁 Recompensa Resgatada!',
         message: `Você resgatou: ${reward.title}`,
         icon: '🎉',
-        tag: 'reward',
-      });
+        tag: 'reward' });
 
       // Em produção, isso seria enviado para a API
     }
@@ -151,8 +136,7 @@ export function LoyaltyProvider({ children }) {
       addPoints,
       getLevelProgress,
       getAvailableRewards,
-      redeemReward,
-    }}>
+      redeemReward }}>
       {children}
       {showConfetti && <Confetti recycle={false} numberOfPieces={200} />}
     </LoyaltyContext.Provider>
@@ -171,8 +155,7 @@ export function LoyaltyCard() {
     'Bronze': 'from-amber-600 to-amber-800',
     'Prata': 'from-gray-400 to-gray-600',
     'Ouro': 'from-yellow-400 to-yellow-600',
-    'Diamante': 'from-blue-400 to-blue-600',
-  };
+    'Diamante': 'from-blue-400 to-blue-600' };
 
   return (
     <motion.div

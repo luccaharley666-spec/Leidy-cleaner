@@ -1,0 +1,32 @@
+<svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Círculo externo -->
+  <circle cx="200" cy="200" r="195" fill="none" stroke="#cccccc" stroke-width="3"/>
+  
+  <!-- P + Leaf + Drop -->
+  <g transform="translate(200, 120)">
+    <!-- Letter P (azul) -->
+    <path d="M -30 -20 L -30 40 L -15 40 L -15 5 L 5 5 Q 15 5 15 -5 Q 15 -15 5 -15 L -30 -15 Z" fill="#0066cc" stroke="none"/>
+    
+    <!-- Leaf (verde) -->
+    <ellipse cx="30" cy="-25" rx="8" ry="12" fill="#66cc33" transform="rotate(-30 30 -25)" stroke="none"/>
+    
+    <!-- Drop (azul) -->
+    <path d="M 45 -5 Q 45 -15 50 -20 Q 55 -15 55 -5 Q 55 5 50 10 Q 45 5 45 -5 Z" fill="#0066cc" stroke="none"/>
+    
+    <!-- Sparkles -->
+    <circle cx="70" cy="-10" r="2.5" fill="#0066cc"/>
+    <circle cx="80" cy="5" r="2" fill="#33cc99"/>
+  </g>
+  
+  <!-- Wavy line (azul e verde) -->
+  <g transform="translate(100, 180)">
+    <path d="M 0 0 Q 15 -5 30 0 T 60 0 T 90 0 T 120 0" stroke="#0066cc" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M 0 8 Q 15 3 30 8 T 60 8 T 90 8 T 120 8" stroke="#66cc33" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </g>
+  
+  <!-- LEIDY text -->
+  <text x="200" y="280" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#0066cc" text-anchor="middle">LEIDY</text>
+  
+  <!-- CLEANER SERVICES text -->
+  <text x="200" y="315" font-family="Arial, sans-serif" font-size="24" font-weight="600" fill="#0066cc" text-anchor="middle">CLEANER SERVICES</text>
+</svg>

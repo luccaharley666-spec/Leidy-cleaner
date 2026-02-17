@@ -8,13 +8,13 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Header from '../components/Layout/Header';
 import Footer from '../components/Layout/Footer';
-import PixQRCodeCheckout from '../components/Payment/PixQRCodeCheckout';
+// import PixQRCodeCheckout from '../components/Payment/PixQRCodeCheckout';
 import CheckoutForm from '../components/Payments/CheckoutForm';
 import LoyaltyPanel from '../components/Loyalty/LoyaltyPanel';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
 
-const PushManager = dynamic(() => import('../components/Notifications/PushManager'), { ssr: false });
+// const PushManager = dynamic(() => import('../components/Notifications/PushManager'), { ssr: false });
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -175,13 +175,7 @@ export default function CheckoutPage() {
                 </div>
 
                 {/* Payment Component Based on Method */}
-                {paymentMethod === 'pix' && (
-                  <PixQRCodeCheckout
-                    bookingId={booking_id}
-                    amount={finalAmount}
-                    orderId={`ORDER-${Date.now()}`}
-                  />
-                )}
+                {/* PixQRCodeCheckout desabilitado temporariamente */}
 
                 {paymentMethod !== 'pix' && (
                   <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
@@ -270,7 +264,7 @@ export default function CheckoutPage() {
         </main>
 
         <div className="mt-4">
-          <PushManager />
+          {/* PushManager desabilitado temporariamente */}
         </div>
 
         <Footer />

@@ -1,0 +1,544 @@
+/* AnalyticsDashboard.module.css */
+
+.container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.loading {
+  padding: 60px 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.controls {
+  display: flex;
+  gap: 10px;
+}
+
+.select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  background: white;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #e5e7eb;
+  overflow-x: auto;
+}
+
+.tab {
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  color: #6b7280;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: #1f2937;
+}
+
+.tab.active {
+  color: #2563eb;
+  border-bottom-color: #2563eb;
+}
+
+/* Content */
+.content {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Sections */
+.section {
+  margin-bottom: 30px;
+}
+
+.section h2 {
+  margin: 0 0 20px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  border-bottom: 2px solid #f3f4f6;
+  padding-bottom: 12px;
+}
+
+.section h3 {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* KPI Grid */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.kpiCard {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s;
+}
+
+.kpiCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.kpiHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.kpiHeader h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+}
+
+.kpiValue {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.unit {
+  font-size: 14px;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.trend {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.trend.up {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.trend.down {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Charts */
+.chartContainer {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.chartContainer h3 {
+  margin: 0 0 16px 0;
+  color: #1f2937;
+}
+
+/* Trend Chart */
+.trendChart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 150px;
+  gap: 10px;
+}
+
+.trendBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.trendBar .bar {
+  width: 100%;
+  background: linear-gradient(to top, #3b82f6, #60a5fa);
+  border-radius: 4px 4px 0 0;
+  min-height: 20px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.trendBar .bar:hover {
+  opacity: 0.8;
+}
+
+.trendBar small {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.trendBar tiny {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+/* Staff Table */
+.staffTable {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.staffTable table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.staffTable thead {
+  background: #f9fafb;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.staffTable th {
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+  color: #374151;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+.staffTable tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background 0.2s;
+}
+
+.staffTable tbody tr:hover {
+  background: #f9fafb;
+}
+
+.staffTable td {
+  padding: 12px;
+  color: #1f2937;
+}
+
+.rank {
+  font-weight: 700;
+  background: #f3f4f6;
+}
+
+.staffName {
+  font-weight: 600;
+}
+
+.rating {
+  color: #f59e0b;
+  font-weight: 500;
+}
+
+.high {
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.low {
+  color: #10b981;
+  font-weight: 600;
+}
+
+/* Churn Alerts */
+.churnAlerts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.alert {
+  background: white;
+  border-radius: 8px;
+  padding: 16px;
+  border-left: 4px solid #ef4444;
+}
+
+.alert h3 {
+  margin: 0 0 8px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.alert p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* Customers List */
+.customersList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.customerItem {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.customerItem strong {
+  display: block;
+  color: #1f2937;
+}
+
+.customerItem small {
+  color: #9ca3af;
+  display: block;
+}
+
+.customerItem p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  color: #ef4444;
+}
+
+.actionButton {
+  padding: 6px 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.actionButton:hover {
+  background: #1d4ed8;
+}
+
+/* Recommendations */
+.recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.recommendation {
+  background: #f0f9ff;
+  border-left: 3px solid #3b82f6;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.recommendation h4 {
+  margin: 0 0 6px 0;
+  font-size: 13px;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.recommendation p {
+  margin: 0 0 8px 0;
+  font-size: 12px;
+  color: #1e3a8a;
+  line-height: 1.5;
+}
+
+.badge {
+  display: inline-block;
+  background: #fef3c7;
+  color: #92400e;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+/* Forecast Chart */
+.forecastChart {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  height: 200px;
+  gap: 2px;
+}
+
+.forecastBar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 2px;
+}
+
+.forecastBar .bar {
+  width: 100%;
+  border-radius: 3px 3px 0 0;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.forecastBar .bar.highDemand {
+  background: #ef4444;
+}
+
+.forecastBar .bar.normalDemand {
+  background: #f59e0b;
+}
+
+.forecastBar .bar.lowDemand {
+  background: #10b981;
+}
+
+.forecastBar small {
+  font-size: 10px;
+  color: #6b7280;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .kpiGrid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .kpiValue {
+    font-size: 18px;
+  }
+
+  .trendChart {
+    height: 120px;
+  }
+
+  .staffTable {
+    font-size: 12px;
+    overflow-x: auto;
+  }
+
+  .staffTable th,
+  .staffTable td {
+    padding: 8px;
+  }
+
+  .churnAlerts {
+    grid-template-columns: 1fr;
+  }
+
+  .customerItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px;
+  }
+
+  .header h1 {
+    font-size: 20px;
+  }
+
+  .tabs {
+    gap: 6px;
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+
+  .kpiGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .kpiValue {
+    font-size: 16px;
+  }
+}

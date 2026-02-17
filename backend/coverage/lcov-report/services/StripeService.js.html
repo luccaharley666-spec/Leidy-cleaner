@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">27.27% </span>
+                <span class="strong">19.35% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>6/22</span>
+                <span class='fraction'>6/31</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">26.66% </span>
+                <span class="strong">10.52% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/15</span>
+                <span class='fraction'>2/19</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">21.42% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>6/20</span>
+                <span class='fraction'>6/28</span>
             </div>
         
             
@@ -127,14 +127,26 @@
 <a name='L62'></a><a href='#L62'>62</a>
 <a name='L63'></a><a href='#L63'>63</a>
 <a name='L64'></a><a href='#L64'>64</a>
-<a name='L65'></a><a href='#L65'>65</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">2x</span>
+<a name='L65'></a><a href='#L65'>65</a>
+<a name='L66'></a><a href='#L66'>66</a>
+<a name='L67'></a><a href='#L67'>67</a>
+<a name='L68'></a><a href='#L68'>68</a>
+<a name='L69'></a><a href='#L69'>69</a>
+<a name='L70'></a><a href='#L70'>70</a>
+<a name='L71'></a><a href='#L71'>71</a>
+<a name='L72'></a><a href='#L72'>72</a>
+<a name='L73'></a><a href='#L73'>73</a>
+<a name='L74'></a><a href='#L74'>74</a>
+<a name='L75'></a><a href='#L75'>75</a>
+<a name='L76'></a><a href='#L76'>76</a>
+<a name='L77'></a><a href='#L77'>77</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -184,9 +196,21 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -194,11 +218,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const Stripe = require('stripe');
 const logger = require('../utils/logger');
 &nbsp;
-if (!process.env.STRIPE_SECRET_KEY) {
+<span class="missing-if-branch" title="else path not taken" >E</span>if (!process.env.STRIPE_SECRET_KEY) {
   logger.warn('STRIPE_SECRET_KEY não definido. PaymentService funcionará em modo mock.');
 }
 &nbsp;
-const stripe = process.env.STRIPE_SECRET_KEY ? Stripe(process.env.STRIPE_SECRET_KEY) : null;
+const stripe = process.env.STRIPE_SECRET_KEY ? <span class="branch-0 cbranch-no" title="branch not covered" >Stripe(process.env.STRIPE_SECRET_KEY) </span>: null;
 &nbsp;
 async function <span class="fstat-no" title="function not covered" >processPayment(</span>paymentMethodId, amountInReais, bookingId = <span class="branch-0 cbranch-no" title="branch not covered" >null)</span> {
 <span class="cstat-no" title="statement not covered" >  if (!stripe) {</span>
@@ -230,7 +254,7 @@ async function <span class="fstat-no" title="function not covered" >processPayme
       id: paymentIntent.id,
       status: paymentIntent.status,
       amount: amountInReais,
-      last4: paymentIntent.charges?.data?.[0]?.__PLACEHOLDER?.card?.last4 || null,
+      last4: paymentIntent.charges?.data?.[0]?.payment_method_details?.card?.last4 || null,
       clientSecret: paymentIntent.client_secret
     };
   } catch (err) {
@@ -247,7 +271,19 @@ async function <span class="fstat-no" title="function not covered" >refundPaymen
 &nbsp;
 function <span class="fstat-no" title="function not covered" >constructEvent(</span>body, signature) {
 <span class="cstat-no" title="statement not covered" >  if (!stripe) <span class="cstat-no" title="statement not covered" >throw new Error('Stripe not configured');</span></span>
-<span class="cstat-no" title="statement not covered" >  return stripe.webhooks.constructEvent(body, signature, process.env.__PLACEHOLDER);</span>
+  const webhookSecret = <span class="cstat-no" title="statement not covered" >process.env.STRIPE_WEBHOOK_SECRET;</span>
+<span class="cstat-no" title="statement not covered" >  if (!webhookSecret) <span class="cstat-no" title="statement not covered" >throw new Error('STRIPE_WEBHOOK_SECRET not configured');</span></span>
+  
+<span class="cstat-no" title="statement not covered" >  try {</span>
+<span class="cstat-no" title="statement not covered" >    return stripe.webhooks.constructEvent(body, signature, webhookSecret);</span>
+  } catch (err) {
+<span class="cstat-no" title="statement not covered" >    if (err.type === 'StripeSignatureVerificationError') {</span>
+      const error = <span class="cstat-no" title="statement not covered" >new Error('Invalid Stripe signature');</span>
+<span class="cstat-no" title="statement not covered" >      error.statusCode = 401;</span>
+<span class="cstat-no" title="statement not covered" >      throw error;</span>
+    }
+<span class="cstat-no" title="statement not covered" >    throw err;</span>
+  }
 }
 &nbsp;
 module.exports = {
@@ -262,7 +298,7 @@ module.exports = {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-10T20:40:08.660Z
+                at 2026-02-15T05:49:01.492Z
             </div>
         <script src="../prettify.js"></script>
         <script>

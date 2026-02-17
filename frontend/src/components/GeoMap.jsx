@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './GeoMap.css';
 
-const GeoMap = ({ userId, token, decoded }) => {
+const GeoMap = ({ userId, token, onSelectProfessional }) => {
   const [userLocation, setUserLocation] = useState(null);
-  const [nearbyProfessionals, decoded] = useState([]);
+  const [nearbyProfessionals, setNearbyProfessionals] = useState([]);
   const [radius, setRadius] = useState(5);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
@@ -13,8 +13,7 @@ const GeoMap = ({ userId, token, decoded }) => {
 
   useEffect(() => {
     fetchUserAddresses();
-    getUserLocation();
-  }, []);
+    getUserLocation(); }, []);
 
   const fetchUserAddresses = async () => {
     try {
@@ -54,27 +53,25 @@ const GeoMap = ({ userId, token, decoded }) => {
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
-      const { latitude, longitude } = geocodeRes.data.coordinates;
+      const { latitude, longitude } = geocodeRes.data.coordinates || {};
       setUserLocation({ latitude, longitude });
       setSelectedAddress(address);
-      await decoded(latitude, longitude);
+      await fetchNearby(latitude, longitude);
     } catch (error) {
       setMessage('❌ Erro ao geocodificar endereço');
     } finally {
       setLoading(false);
     }
   };
-
-  const decoded = async (lat, lng) => {
+  const fetchNearby = async (lat, lng) => {
     try {
       setLoading(true);
       const res = await axios.get(
         `/api/geolocation/nearby?latitude=${lat}&longitude=${lng}&radiusKm=${radius}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
-
-      decoded(res.data.professionals || []);
-      if (res.data.professionals?.length === 0) {
+      setNearbyProfessionals(res.data.professionals || []);
+      if ((res.data.professionals || []).length === 0) {
         setMessage(`⚠️ Nenhum profissional encontrado em ${radius}km`);
       }
     } catch (error) {
@@ -89,7 +86,7 @@ const GeoMap = ({ userId, token, decoded }) => {
       setMessage('❌ Obtenha sua localização primeiro');
       return;
     }
-    decoded(userLocation.latitude, userLocation.longitude);
+    fetchNearby(userLocation.latitude, userLocation.longitude);
   };
 
   return (
@@ -172,13 +169,13 @@ const GeoMap = ({ userId, token, decoded }) => {
                   {professional.service} • ⭐ {professional.rating || 'N/A'}
                 </p>
 
-                {professional.address && (
+                { professional.address && (
                   <p className="decoded">{professional.address}</p>
                 )}
 
                 <button
                   className="decoded"
-                  onClick={() => decoded?.(professional)}
+                  onClick={() => onSelectProfessional?.(professional)}
                 >
                   Selecionar
                 </button>

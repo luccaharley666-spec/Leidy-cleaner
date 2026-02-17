@@ -85,8 +85,7 @@ export const usePagination = (items, itemsPerPage = 10) => {
     currentItems,
     goToPage,
     nextPage,
-    prevPage,
-  };
+    prevPage };
 };
 
 /**
@@ -118,8 +117,7 @@ export const useForm = (initialValues, onSubmit) => {
     const { name, value, type, checked } = e.target;
     setValues((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value,
-    }));
+      [name]: type === 'checkbox' ? checked : value }));
     // Limpar erro ao começar a digitar
     if (errors[name]) {
       setErrors((prev) => ({ ...prev, [name]: '' }));
@@ -216,8 +214,7 @@ export const useWindowSize = () => {
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight,
-      });
+        height: window.innerHeight });
     };
 
     window.addEventListener('resize', handleResize);

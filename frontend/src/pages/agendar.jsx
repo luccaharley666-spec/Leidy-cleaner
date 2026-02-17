@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { RecurringScheduler } from '../components/UI/RecurringScheduler';
-import { BookingForm } from '../components/Common/UIComponents';
+// import { BookingForm } from '../components/Common/UIComponents';
 import AvailableStaffWidget from '../components/AvailableStaffWidget';
 import { apiCall } from '../config/api';
 import toast from 'react-hot-toast';

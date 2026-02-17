@@ -68,9 +68,9 @@ export default function Header() {
         {/* Logo + Brand with Theme Image */}
           <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity group">
               {/* Brand Image - Circular with Border */}
-              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-xl overflow-hidden border-2 border-green-500 dark:border-green-400 hover:border-green-400 hover:dark:border-green-300 transition-all hover:shadow-green-500/50">
+              <div className="relative w-14 h-14 sm:w-16 sm:h-16 rounded-full shadow-xl overflow-hidden border-2 border-green-500 dark:border-green-400 hover:border-green-400 hover:dark:border-green-300 transition-all hover:shadow-lg hover:shadow-green-500/50 animate-pulse-slow bg-white dark:bg-slate-800">
                 <Image 
-                  src="https://leidycleaner.com.br/logo-leidy.png" 
+                  src="/images/logo-leidy.svg" 
                   alt="Leidy Cleaner" 
                   width={64} 
                   height={64} 

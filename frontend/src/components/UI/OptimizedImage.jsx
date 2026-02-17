@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { LazyLoadImage } from 'decoded';
-import { decoded } from '../utils/performance';
+import { useLazyImage, decodeToken } from '../utils/performance';
+// Using native `loading="lazy"` as a safe fallback instead of external lazy image lib
 import { LoadingSpinner } from './LoadingSpinner';
 
 export function OptimizedImage({
@@ -17,7 +17,7 @@ export function OptimizedImage({
 }) {
   const [isLoaded, setIsLoaded] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const { ref, hasIntersected } = decoded({ threshold });
+  const { ref, hasIntersected } = decodeToken({ threshold });
 
   const handleLoad = () => {
     setIsLoaded(true);
@@ -42,13 +42,11 @@ export function OptimizedImage({
   return (
     <div ref={ref} className={`relative ${wrapperClassName}`}>
       {hasIntersected && (
-        <LazyLoadImage
+        <img
           src={src}
           alt={alt}
+          loading="lazy"
           className={`${className} ${isLoaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-300`}
-          placeholderSrc={placeholder}
-          effect={effect}
-          threshold={threshold}
           srcSet={generateSrcSet(src)}
           sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           onLoad={handleLoad}
@@ -85,8 +83,7 @@ export function OptimizedAvatar({
     sm: 'w-8 h-8',
     md: 'w-12 h-12',
     lg: 'w-16 h-16',
-    xl: 'w-24 h-24',
-  };
+    xl: 'w-24 h-24' };
 
   const [hasError, setHasError] = useState(false);
 
@@ -169,13 +166,11 @@ export function ImageGallery({
   className = '',
   itemClassName = '',
   columns = 3,
-  gap = 4,
-}) {
+  gap = 4 }) {
   const gridCols = {
     2: 'grid-cols-2',
     3: 'grid-cols-3',
-    4: 'grid-cols-4',
-  };
+    4: 'grid-cols-4' };
 
   return (
     <div className={`grid ${gridCols[columns]} gap-${gap} ${className}`}>

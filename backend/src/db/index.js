@@ -1,17 +1,3 @@
-// Stub do DB para testes locais quando mocks não estiverem presentes
-const makeNoop = () => {
-  if (typeof jest !== 'undefined' && typeof jest.fn === 'function') {
-    return jest.fn();
-  }
-  return () => {};
-};
-
-module.exports = {
-  run: makeNoop(),
-  get: makeNoop(),
-  all: makeNoop(),
-  close: makeNoop()
-};
 const { Pool } = require('pg');
 const sqlite = require('./sqlite');
 

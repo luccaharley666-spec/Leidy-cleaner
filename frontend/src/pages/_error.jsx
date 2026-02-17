@@ -92,8 +92,7 @@ ErrorPage.getInitialProps = ({ res, err }) => {
     503: {
       title: 'Serviço indisponível',
       message: 'O servidor está em manutenção. Tente novamente em breve.'
-    },
-  };
+    } };
 
   const errorInfo = errorMap[statusCode] || {
     title: 'Erro desconhecido',
@@ -103,8 +102,7 @@ ErrorPage.getInitialProps = ({ res, err }) => {
   return {
     statusCode,
     title: errorInfo.title,
-    message: errorInfo.message,
-  };
+    message: errorInfo.message };
 };
 
 export default ErrorPage;

@@ -9,11 +9,10 @@ export default class ErrorBoundary extends React.Component {
       hasError: false,
       error: null,
       errorInfo: null,
-      retryCount: 0,
-    };
+      retryCount: 0 };
   }
 
-  static decoded(error) {
+  static(error) {
     return { hasError: true };
   }
 
@@ -29,10 +28,7 @@ export default class ErrorBoundary extends React.Component {
         contexts: {
           errorBoundary: {
             componentStack: errorInfo.componentStack,
-            retryCount: this.state.retryCount,
-          },
-        },
-      });
+            retryCount: this.state.retryCount } } });
     }
 
     // Log erro para console em desenvolvimento
@@ -45,8 +41,7 @@ export default class ErrorBoundary extends React.Component {
       hasError: false,
       error: null,
       errorInfo: null,
-      retryCount: prevState.retryCount + 1,
-    }));
+      retryCount: prevState.retryCount + 1 }));
   };
 
   handleReload = () => {
@@ -78,13 +73,11 @@ export default class ErrorBoundary extends React.Component {
               <motion.div
                 className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4"
                 animate={{
-                  rotate: [0, 10, -10, 0],
-                }}
+                  rotate: [0, 10, -10, 0] }}
                 transition={{
                   duration: 2,
                   repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                  ease: "easeInOut" }}
               >
                 <span className="text-3xl">⚠️</span>
               </motion.div>
@@ -188,10 +181,7 @@ export function useErrorHandler() {
       Sentry.captureException(error, {
         contexts: {
           hook: {
-            componentStack: errorInfo?.componentStack,
-          },
-        },
-      });
+            componentStack: errorInfo?.componentStack } } });
     }
   };
 }

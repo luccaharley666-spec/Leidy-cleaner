@@ -26,10 +26,12 @@ class SearchService {
 
       // Simulado: em produção fazer full-text search no banco
       const results = [
+        // São Paulo
         {
           id: '1',
           name: 'Limpeza Residencial Premium',
           city: 'São Paulo',
+          state: 'SP',
           price: 250,
           rating: 4.8,
           reviews: 156,
@@ -41,12 +43,130 @@ class SearchService {
           id: '2',
           name: 'Limpeza Comercial Especializada',
           city: 'São Paulo',
+          state: 'SP',
           price: 450,
           rating: 4.6,
           reviews: 89,
           distance: 5.2,
           featured: false,
           tags: ['comercial', 'escritório', 'eficiente']
+        },
+        // Rio de Janeiro
+        {
+          id: '3',
+          name: 'Rio Clean - Serviços Profissionais',
+          city: 'Rio de Janeiro',
+          state: 'RJ',
+          price: 280,
+          rating: 4.7,
+          reviews: 142,
+          distance: 3.1,
+          featured: true,
+          tags: ['residencial', 'premium', 'confiável']
+        },
+        // Belo Horizonte
+        {
+          id: '4',
+          name: 'BH Limpeza Total',
+          city: 'Belo Horizonte',
+          state: 'MG',
+          price: 220,
+          rating: 4.5,
+          reviews: 98,
+          distance: 4.2,
+          featured: false,
+          tags: ['comercial', 'econômico', 'rápido']
+        },
+        // Salvador
+        {
+          id: '5',
+          name: 'Limpeza Salvador Premium',
+          city: 'Salvador',
+          state: 'BA',
+          price: 240,
+          rating: 4.6,
+          reviews: 67,
+          distance: 2.8,
+          featured: true,
+          tags: ['residencial', 'profissional']
+        },
+        // Fortaleza
+        {
+          id: '6',
+          name: 'Fortaleza Clean',
+          city: 'Fortaleza',
+          state: 'CE',
+          price: 230,
+          rating: 4.4,
+          reviews: 45,
+          distance: 3.5,
+          featured: false,
+          tags: ['residencial', 'econômico']
+        },
+        // Brasília
+        {
+          id: '7',
+          name: 'Limpeza Brasília',
+          city: 'Brasília',
+          state: 'DF',
+          price: 260,
+          rating: 4.7,
+          reviews: 84,
+          distance: 2.2,
+          featured: true,
+          tags: ['residencial', 'comercial', 'profissional']
+        },
+        // Florianópolis
+        {
+          id: '8',
+          name: 'SC Clean - Florianópolis',
+          city: 'Florianópolis',
+          state: 'SC',
+          price: 270,
+          rating: 4.8,
+          reviews: 125,
+          distance: 1.9,
+          featured: true,
+          tags: ['residencial', 'premium', 'atencioso']
+        },
+        // Manaus
+        {
+          id: '9',
+          name: 'Amazônia Clean',
+          city: 'Manaus',
+          state: 'AM',
+          price: 300,
+          rating: 4.5,
+          reviews: 32,
+          distance: 4.1,
+          featured: false,
+          tags: ['residencial', 'confiável']
+        },
+        // Campinas
+        {
+          id: '10',
+          name: 'Campinas Limpeza Service',
+          city: 'Campinas',
+          state: 'SP',
+          price: 240,
+          rating: 4.6,
+          reviews: 58,
+          distance: 3.8,
+          featured: false,
+          tags: ['comercial', 'eficiente']
+        },
+        // Niterói
+        {
+          id: '11',
+          name: 'Niterói Clean Premium',
+          city: 'Niterói',
+          state: 'RJ',
+          price: 265,
+          rating: 4.7,
+          reviews: 71,
+          distance: 2.4,
+          featured: true,
+          tags: ['residencial', 'profissional', 'rápido']
         }
       ];
 

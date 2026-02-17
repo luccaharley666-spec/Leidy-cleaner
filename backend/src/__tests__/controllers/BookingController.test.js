@@ -15,14 +15,14 @@ describe('BookingController', () => {
 
     await BookingController.createBooking(req, res);
 
-    expect(res.status); // TODO_PLACEHOLDER(400);
+    expect(res.status).toHaveBeenCalledWith(400);
     expect(res.json).toHaveBeenCalled();
   });
 
   test('createBooking returns 404 when service not found', async () => {
     jest.resetModules();
     const fakeDb = {
-      get: (sql, params, cb) => cb(null, undefined),
+      get: (sql, params, cb) => cb(null, {}), // Simula que o banco retorna algo, mas o service será undefined
       run: (sql, params, cb) => cb(null),
       all: (sql, params, cb) => cb(null, [])
     };
@@ -30,13 +30,23 @@ describe('BookingController', () => {
     jest.doMock('sqlite3', () => ({ verbose: () => ({ Database: function() { return fakeDb; } }) }));
     const BookingController = require('../../controllers/BookingController');
 
-    const req = { body: { userId: 1, serviceId: 2, date: '2022-01-01', time: '10:00', address: 'x', phone: '123' } };
+    // Mock getServiceCached para simular serviço não encontrado
+    BookingController.getServiceCached = jest.fn().mockResolvedValue(undefined);
+
+    // Mock ValidationService para sempre passar
+    jest.mock('../../services/ValidationService', () => ({
+      validateBookingData: jest.fn((data) => ({ ...data }))
+    }));
+
+    // Usar data futura para evitar erro de validação
+    const futureDate = new Date(Date.now() + 86400000).toISOString().slice(0, 10); // yyyy-mm-dd
+    const req = { body: { userId: 1, serviceId: 2, date: futureDate, time: '10:00', address: 'x', phone: '123' } };
     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
     await BookingController.createBooking(req, res);
 
-    expect(res.status); // TODO_PLACEHOLDER(404);
-    expect(res.json); // TODO_PLACEHOLDER(expect.objectContaining({ error: 'Serviço não encontrado' }));
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ error: 'Serviço não encontrado' }));
   });
 
   test.skip('rateBooking returns 400 for invalid rating', async () => {
@@ -50,7 +60,7 @@ describe('BookingController', () => {
 
     await BookingController.rateBooking(req, res);
 
-    expect(res.status); // TODO_PLACEHOLDER(400);
+    expect(res.status).toHaveBeenCalledWith(400);
   }, 60000);
 
   test.skip('rateBooking 5-star updates streak and returns loyalty status', async () => {
@@ -75,7 +85,7 @@ describe('BookingController', () => {
 
     await BookingController.rateBooking(req, res);
 
-    expect(res.json); // TODO_PLACEHOLDER(expect.objectContaining({ success: true }));
+    expect(res.json).toHaveBeenCalledWith(expect.objectContaining({ success: true }));
     const callArg = res.json.mock.calls[0][0];
     expect(callArg.loyaltyStatus).toBeDefined();
     expect(callArg.loyaltyStatus.streak).toBe(10);

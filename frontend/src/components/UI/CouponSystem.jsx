@@ -21,8 +21,7 @@ export function CouponSystem() {
         validUntil: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 dias
         code: 'BEMVINDO20',
         category: 'welcome',
-        active: true,
-      },
+        active: true },
       {
         id: 'flash-50',
         title: 'Oferta Relâmpago - R$50 OFF',
@@ -33,8 +32,7 @@ export function CouponSystem() {
         validUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 dias
         code: 'FLASH50',
         category: 'flash',
-        active: true,
-      },
+        active: true },
       {
         id: 'loyalty-15',
         title: 'Cliente VIP - 15% OFF',
@@ -45,8 +43,7 @@ export function CouponSystem() {
         validUntil: new Date(Date.now() + 90 * 24 * 60 * 60 * 1000), // 90 dias
         code: 'VIP15',
         category: 'loyalty',
-        active: true,
-      },
+        active: true },
       {
         id: 'seasonal-25',
         title: 'Temporada Especial - 25% OFF',
@@ -57,8 +54,7 @@ export function CouponSystem() {
         validUntil: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000), // 14 dias
         code: 'TEMPORADA25',
         category: 'seasonal',
-        active: true,
-      },
+        active: true },
     ];
 
     setAvailableCoupons(coupons);
@@ -77,8 +73,7 @@ export function CouponSystem() {
     const userCoupon = {
       ...coupon,
       claimedAt: new Date(),
-      used: false,
-    };
+      used: false };
 
     const updatedUserCoupons = [...userCoupons, userCoupon];
     setUserCoupons(updatedUserCoupons);
@@ -88,8 +83,7 @@ export function CouponSystem() {
       title: '🎫 Cupom Resgatado!',
       message: `Você ganhou: ${coupon.title}`,
       icon: '🎁',
-      tag: 'coupon',
-    });
+      tag: 'coupon' });
   };
 
   const applyCoupon = (code, serviceValue) => {
@@ -117,8 +111,7 @@ export function CouponSystem() {
     return {
       coupon,
       discountValue,
-      finalValue: serviceValue - discountValue,
-    };
+      finalValue: serviceValue - discountValue };
   };
 
   const useCoupon = (code) => {
@@ -232,8 +225,7 @@ function CouponGrid({ coupons, userCoupons, onClaim }) {
               {/* Pattern overlay */}
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute inset-0" style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-                }} />
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
               </div>
             </motion.div>
           );

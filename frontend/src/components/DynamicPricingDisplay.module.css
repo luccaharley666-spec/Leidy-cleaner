@@ -1,0 +1,265 @@
+/* DynamicPricingDisplay.module.css */
+
+.container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e9ecef 100%);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.loading {
+  padding: 20px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.empty {
+  padding: 20px;
+  text-align: center;
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+/* Price Display */
+.priceDisplay {
+  background: white;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 12px;
+}
+
+.finalPrice {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-size: 12px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1f2937;
+  font-family: 'Monaco', 'Courier New', monospace;
+}
+
+.savings {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.percentage {
+  margin-left: 4px;
+  opacity: 0.9;
+}
+
+.basePrice {
+  margin-top: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+/* Quick Summary */
+.quickSummary {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  padding: 8px 0;
+}
+
+.summaryItem {
+  flex: 0 0 auto;
+  background: white;
+  border-radius: 6px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 80px;
+  text-align: center;
+}
+
+.summaryItem span {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.summaryItem strong {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+/* Expand Button */
+.expandButton {
+  width: 100%;
+  padding: 10px;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.expandButton:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+  color: #374151;
+}
+
+.expandButton:active {
+  background: #f3f4f6;
+}
+
+/* Expanded View */
+.expandedView {
+  animation: slideDown 0.2s ease-out;
+  margin-top: 12px;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section {
+  background: white;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 10px;
+}
+
+.section h4 {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+
+/* Breakdown Chart */
+.breakdownChart {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.step {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  background: #f9fafb;
+  border-radius: 4px;
+  font-size: 13px;
+  transition: background 0.2s;
+}
+
+.step:hover {
+  background: #f3f4f6;
+}
+
+.step span {
+  color: #6b7280;
+}
+
+.step strong {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Reasons List */
+.reasonsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reasonsList li {
+  padding: 8px;
+  background: #f0f9ff;
+  border-left: 3px solid #3b82f6;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #1e40af;
+  line-height: 1.5;
+}
+
+/* Tip */
+.tip {
+  margin: 0;
+  padding: 10px;
+  background: #fef3c7;
+  border-radius: 4px;
+  font-size: 13px;
+  color: #92400e;
+  line-height: 1.5;
+  border-left: 3px solid #fcd34d;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .container {
+    padding: 15px;
+    margin: 10px 0;
+  }
+
+  .value {
+    font-size: 24px;
+  }
+
+  .quickSummary {
+    gap: 6px;
+  }
+
+  .summaryItem {
+    min-width: 70px;
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .section {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .section h4 {
+    font-size: 12px;
+  }
+}

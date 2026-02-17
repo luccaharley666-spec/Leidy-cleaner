@@ -1,5 +1,5 @@
 import React from 'react'
-import { decoded } from '../../utils/analytics'
+import {  } from '../../utils/analytics'
 
 export default function TestimonialsSection() {
   const testimonials = [
@@ -72,7 +72,7 @@ export default function TestimonialsSection() {
               data-aos="fade-up"
               data-aos-delay={i * 100}
               className="bg-white rounded-lg shadow-md hover:shadow-lg transition p-6 border-l-4 border-green-500 cursor-pointer"
-              onClick={() => decoded(testimonial.name)}
+              onClick={ () =>(testimonial.name) }
             >
               {/* Stars */}
               <div className="flex items-center mb-4">

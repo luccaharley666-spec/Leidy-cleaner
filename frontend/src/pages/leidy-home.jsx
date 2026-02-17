@@ -27,71 +27,108 @@ export default function LeidyHome() {
 
       <div className="h-4"></div>
 
-      {/* Hero Section */}
+      {/* Hero Section - Novo Design Moderno */}
       <section 
-        className="hero pt-32 pb-20 text-white text-center bg-cover bg-center relative"
+        className="hero pt-40 pb-24 text-white text-center bg-cover bg-center relative overflow-hidden"
         style={{
-          backgroundImage: "linear-gradient(rgba(46, 125, 50, 0.85), rgba(27, 94, 32, 0.9)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
+          backgroundImage: "linear-gradient(135deg, rgba(139, 92, 246, 0.9), rgba(99, 102, 241, 0.85), rgba(59, 130, 246, 0.9)), url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')",
           backgroundSize: 'cover',
           backgroundPosition: 'center'
         }}
       >
-        <div className="max-w-3xl mx-auto px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-5 leading-tight">
-            Limpeza profissional para seu lar ou empresa
+        {/* Animated background elements */}
+        <div className="absolute top-10 right-10 w-72 h-72 bg-yellow-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        <div className="absolute -bottom-8 left-10 w-72 h-72 bg-pink-300 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        
+        <div className="max-w-4xl mx-auto px-4 relative z-10">
+          <div className="inline-block mb-6 px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30">
+            <span className="text-sm font-semibold">✨ Serviço Premium de Limpeza Nacional</span>
+          </div>
+          
+          <h1 className="text-6xl md:text-7xl font-black mb-6 leading-tight drop-shadow-lg">
+            Seu lar impecável, <br/><span className="bg-gradient-to-r from-yellow-200 to-pink-200 bg-clip-text text-transparent">sem preocupações</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 opacity-90">
-            Com a Leidy Cleaner, sua casa ou negócio ficam impecáveis. Utilizamos produtos ecológicos e técnicas modernas para garantir um ambiente limpo e saudável.
+          
+          <p className="text-xl md:text-2xl mb-10 opacity-95 max-w-2xl mx-auto leading-relaxed">
+            Limpeza profissional com produtos ecológicos e técnicas modernas em todo Brasil. Resultados garantidos ou seu dinheiro de volta!
           </p>
+          
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contato" className="px-8 py-3 bg-green-700 text-white font-semibold rounded-full hover:bg-green-900 transition transform hover:-translate-y-1 shadow-lg">
-              Solicitar Orçamento
+            <Link href="/agendar" className="px-8 py-4 bg-gradient-to-r from-yellow-300 to-orange-300 text-gray-900 font-bold rounded-2xl hover:from-yellow-400 hover:to-orange-400 transition transform hover:scale-105 shadow-2xl inline-flex items-center justify-center gap-2 btn-primary">
+              🚀 Agendar Agora
             </Link>
-            <Link href="/servicos" className="px-8 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-full hover:bg-white hover:text-green-900 transition">
-              Ver Serviços
+            <Link href="/servicos" className="px-8 py-4 bg-white/20 backdrop-blur-md border-2 border-white text-white font-bold rounded-2xl hover:bg-white/30 transition transform hover:scale-105 shadow-lg btn-ghost">
+              📋 Ver Serviços
             </Link>
+          </div>
+          
+          {/* Stats */}
+          <div className="grid grid-cols-3 gap-6 mt-16 pt-12 border-t border-white/20">
+            <div>
+              <div className="text-4xl font-black mb-2">15K+</div>
+              <div className="text-sm opacity-90">Clientes Satisfeitos</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black mb-2">27</div>
+              <div className="text-sm opacity-90">Estados Cobertos</div>
+            </div>
+            <div>
+              <div className="text-4xl font-black mb-2">★★★★★</div>
+              <div className="text-sm opacity-90">4.9 Avaliação</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section className="py-20 bg-white">
+      {/* Services Section - Novo Design */}
+      <section className="py-24 bg-gradient-to-b from-white via-violet-50 to-indigo-50">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-green-900 mb-4 relative pb-4">
-            Nossos Serviços
-            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-green-500"></span>
-          </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
-            Oferecemos uma completa gama de serviços de limpeza para atender todas as suas necessidades
-          </p>
+          <div className="text-center mb-16">
+            <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-violet-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent">
+              Nossos Serviços
+            </h2>
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+              Soluções completas de limpeza para residências, empresas e áreas especiais. Qualidade premium em todo Brasil!
+            </p>
+          </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               {
-                icon: 'fa-home',
+                emoji: '🏠',
                 title: 'Limpeza Residencial',
-                description: 'Serviço completo de limpeza para sua casa, incluindo salas, quartos, cozinha e banheiros.'
+                description: 'Casas e apartamentos impecáveis. Salas, quartos, cozinha e banheiros.',
+                color: 'from-violet-500 to-purple-500'
               },
               {
-                icon: 'fa-building',
+                emoji: '🏢',
                 title: 'Limpeza Comercial',
-                description: 'Limpeza profissional para escritórios, lojas e outros estabelecimentos comerciais.'
+                description: 'Escritórios, lojas e espaços comerciais brilhando para seus clientes.',
+                color: 'from-indigo-500 to-blue-500'
               },
               {
-                icon: 'fa-couch',
+                emoji: '🛋️',
                 title: 'Limpeza de Estofados',
-                description: 'Limpeza profunda de sofás, cadeiras, colchões e outros estofados.'
+                description: 'Sofás, cadeiras e colchões como novos. Sem manchas, perfumado.',
+                color: 'from-pink-500 to-rose-500'
               },
               {
-                icon: 'fa-window-restore',
+                emoji: '🪟',
                 title: 'Limpeza de Vidros',
-                description: 'Deixe suas janelas, portas de vidro e fachadas brilhando como novas.'
+                description: 'Janelas, portas e fachadas brilhando ao sol. Perfeito!',
+                color: 'from-orange-500 to-yellow-500'
               }
             ].map((service, idx) => (
-              <div key={idx} className="bg-gray-100 rounded-lg p-6 text-center hover:shadow-lg transition transform hover:-translate-y-2">
-                <i className={`fas ${service.icon} text-5xl text-green-700 mb-4 block`}></i>
-                <h3 className="text-xl font-bold text-green-900 mb-3">{service.title}</h3>
-                <p className="text-gray-700 text-sm">{service.description}</p>
+              <div key={idx} className={`group bg-gradient-to-br ${service.color} p-0.5 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:scale-105 hover:-translate-y-2`}>
+                <div className="bg-white dark:bg-slate-900 rounded-2xl p-8 text-center h-full relative overflow-hidden card">
+                  <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-5 transition-opacity rounded-2xl"></div>
+                  <div className="text-5xl mb-4 block transform group-hover:scale-110 transition-transform">{service.emoji}</div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-violet-600 group-hover:to-indigo-600 group-hover:bg-clip-text transition-all">{service.title}</h3>
+                  <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
+                  <button className="mt-4 px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-600 text-white rounded-lg text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Saiba mais →
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -167,8 +204,8 @@ export default function LeidyHome() {
                     <i className="fas fa-map-marker-alt"></i>
                   </div>
                   <div>
-                    <h4 className="font-bold text-green-900">Endereço</h4>
-                    <p className="text-gray-700">Rua Limpeza, 123 - Centro, São Paulo - SP</p>
+                    <h4 className="font-bold text-green-900">Cobertura</h4>
+                    <p className="text-gray-700">Atuamos em todo o Brasil - 27 Estados</p>
                   </div>
                 </div>
                 
@@ -178,7 +215,7 @@ export default function LeidyHome() {
                   </div>
                   <div>
                     <h4 className="font-bold text-green-900">Telefone</h4>
-                    <p className="text-gray-700">(11) 99999-9999</p>
+                    <p className="text-gray-700">+55 (11) 98765-4321 - Cobertura Nacional</p>
                   </div>
                 </div>
                 

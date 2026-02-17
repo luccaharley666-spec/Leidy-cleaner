@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for middleware/[REDACTED_TOKEN].js</title>
+    <title>Code coverage report for middleware/encryptionMiddleware.js</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,13 +19,13 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">middleware</a> [REDACTED_TOKEN].js</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">middleware</a> encryptionMiddleware.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/32</span>
+                <span class='fraction'>0/31</span>
             </div>
         
             
@@ -46,7 +46,7 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/32</span>
+                <span class='fraction'>0/31</span>
             </div>
         
             
@@ -193,7 +193,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -318,13 +318,13 @@
  * Middleware para facilitar criptografia/descriptografia de mensagens
  */
 &nbsp;
-const [REDACTED_TOKEN] = <span class="cstat-no" title="statement not covered" >require('../services/[REDACTED_TOKEN]');</span>
+// // // // const PLACEHOLDER = require('../services/PLACEHOLDER');
 const logger = <span class="cstat-no" title="statement not covered" >require('../utils/logger');</span>
 &nbsp;
 /**
- * Middleware para [REDACTED_TOKEN] mensagens antes do handler
+ * Middleware para PLACEHOLDER mensagens antes do handler
  */
-function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>req, res, next) {
+function <span class="fstat-no" title="function not covered" >decryptMessagesMiddleware(</span>req, res, next) {
   // Armazenar método original
   const originalJson = <span class="cstat-no" title="statement not covered" >res.json;</span>
 &nbsp;
@@ -332,7 +332,7 @@ function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](<
 <span class="cstat-no" title="statement not covered" >  res.json = <span class="fstat-no" title="function not covered" >fu</span>nction(data) {</span>
     // Se tem dados de mensagem criptografada, descriptografar
 <span class="cstat-no" title="statement not covered" >    if (data &amp;&amp; data.messages &amp;&amp; Array.isArray(data.messages)) {</span>
-      // [REDACTED_TOKEN] se chave disponível
+      // PLACEHOLDER se chave disponível
 <span class="cstat-no" title="statement not covered" >      data.messages = data.messages.map(<span class="fstat-no" title="function not covered" >ms</span>g =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        if (msg.encryptedMessage &amp;&amp; !msg.decrypted) {</span>
 <span class="cstat-no" title="statement not covered" >          return msg; </span>// Deixar como está para cliente descriptografar
@@ -351,7 +351,7 @@ function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](<
 /**
  * Middleware para validar chave de criptografia
  */
-function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>req, res, next) {
+function <span class="fstat-no" title="function not covered" >validateEncryptionKey(</span>req, res, next) {
   // Procurar chave em: body, query, headers
   const keyLocation = <span class="cstat-no" title="statement not covered" >req.body?.encryptionKey || </span>
                       req.query?.encryptionKey || 
@@ -383,7 +383,7 @@ function <span class="fstat-no" title="function not covered" >logCryptoOperation
 &nbsp;
 <span class="cstat-no" title="statement not covered" >  res.json = <span class="fstat-no" title="function not covered" >fu</span>nction(data) {</span>
 <span class="cstat-no" title="statement not covered" >    if (data.success) {</span>
-<span class="cstat-no" title="statement not covered" >      [REDACTED_TOKEN].logCryptoOperation(</span>
+<span class="cstat-no" title="statement not covered" >      PLACEHOLDER.logCryptoOperation(</span>
         req.user?.id,
         `${req.method} ${req.path}`.toLowerCase(),
         true
@@ -422,7 +422,7 @@ function <span class="fstat-no" title="function not covered" >cryptoRateLimit(</
 /**
  * Middleware para garantir HTTPS em produção
  */
-function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](</span>req, res, next) {
+function <span class="fstat-no" title="function not covered" >enforceHttps(</span>req, res, next) {
 <span class="cstat-no" title="statement not covered" >  if (process.env.NODE_ENV === 'production' &amp;&amp; req.protocol !== 'https') {</span>
 <span class="cstat-no" title="statement not covered" >    return res.status(403).json({</span>
       error: 'HTTPS é obrigatório para operações criptográficas'
@@ -432,11 +432,11 @@ function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](<
 }
 &nbsp;
 <span class="cstat-no" title="statement not covered" >module.exports = {</span>
-  [REDACTED_TOKEN],
-  [REDACTED_TOKEN],
+  decryptMessagesMiddleware,
+  validateEncryptionKey,
   logCryptoOperation,
   cryptoRateLimit,
-  [REDACTED_TOKEN]
+  enforceHttps
 };
 &nbsp;</pre></td></tr></table></pre>
 
@@ -445,7 +445,7 @@ function <span class="fstat-no" title="function not covered" >[REDACTED_TOKEN](<
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-02-09T18:51:14.990Z
+                at 2026-02-15T05:49:01.492Z
             </div>
         <script src="../prettify.js"></script>
         <script>

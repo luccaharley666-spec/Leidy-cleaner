@@ -83,21 +83,114 @@ router.get('/health/db', (req, res) => {
 router.get('/health/queue', (req, res) => {
   AutoPlaceholderController.getQueueStatus(req, res);
 });
-
 // ===== BOOKINGS =====
 // ===== AUTH =====
+
+/**
+ * @swagger
+ * /auth/register:
+ *   post:
+ *     summary: Registrar novo usuário
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, password, name, phone]
+ *             properties:
+ *               email: { type: string, format: email }
+ *               password: { type: string, minLength: 8 }
+ *               name: { type: string }
+ *               phone: { type: string }
+ *     responses:
+ *       201:
+ *         description: Usuário registrado com sucesso
+ *         content:
+ *           application/json:
+ *             schema: { $ref: '#/components/schemas/AuthResponse' }
+ *       400:
+ *         description: Validação falhou
+ *         content:
+ *           application/json:
+ *             schema: { $ref: '#/components/schemas/Error' }
+ */
 router.post('/auth/register', limiters.register, validateSchema(userSchemas.register), (req, res) => {
   AuthController.register(req, res);
 });
 
+/**
+ * @swagger
+ * /auth/login:
+ *   post:
+ *     summary: Login do usuário
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [email, password]
+ *             properties:
+ *               email: { type: string, format: email }
+ *               password: { type: string }
+ *     responses:
+ *       200:
+ *         description: Login realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema: { $ref: '#/components/schemas/AuthResponse' }
+ *       401:
+ *         description: Credenciais inválidas
+ */
 router.post('/auth/login', limiters.login, validateSchema(userSchemas.login), (req, res) => {
   AuthController.login(req, res);
 });
 
+/**
+ * @swagger
+ * /auth/refresh:
+ *   post:
+ *     summary: Renovar token JWT
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               refreshToken: { type: string }
+ *     responses:
+ *       200:
+ *         description: Token renovado
+ */
 router.post('/auth/refresh', (req, res) => {
   AuthController.refreshToken(req, res);
 });
 
+/**
+ * @swagger
+ * /auth/verify:
+ *   get:
+ *     summary: Verificar token JWT
+ *     tags: [Auth]
+ *     security:
+ *       - BearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Token válido
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success: { type: boolean }
+ *                 userId: { type: integer }
+ *                 user: { $ref: '#/components/schemas/User' }
+ */
 router.get('/auth/verify', authenticateToken, (req, res) => {
   // retornar informações do usuário a partir do token
   res.json({ success: true, userId: req.user.userId, user: req.user });
@@ -107,21 +200,126 @@ router.post('/auth/logout', authenticateToken, (req, res) => {
   AuthController.logout(req, res);
 });
 
+// ✅ NEW: 2FA (Two-Factor Authentication) Routes
+const TwoFactorRoutes = require('./twoFactorRoutes');
+router.use('/2fa', authenticateToken, TwoFactorRoutes);
+
+/**
+ * @swagger
+ * /bookings:
+ *   post:
+ *     summary: Criar novo agendamento
+ *     tags: [Bookings]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required: [userId, serviceId, date, time, address, phone]
+ *             properties:
+ *               userId: { type: integer }
+ *               serviceId: { type: integer }
+ *               date: { type: string, format: date }
+ *               time: { type: string, format: time }
+ *               address: { type: string }
+ *               phone: { type: string }
+ *               durationHours: { type: integer, default: 2 }
+ *     responses:
+ *       201:
+ *         description: Agendamento criado
+ *         content:
+ *           application/json:
+ *             schema: { $ref: '#/components/schemas/BookingResponse' }
+ */
 router.post('/bookings', authenticateToken, limiters.createBooking, validateSchema(bookingSchemas.create), (req, res) => {
   BookingController.createBooking(req, res);
 });
 
 // Upload de arquivos (fotos)
+/**
+ * @swagger
+ * /uploads:
+ *   post:
+ *     summary: Upload de fotos
+ *     tags: [Files]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               photos:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *     responses:
+ *       200:
+ *         description: Fotos enviadas com sucesso
+ */
 router.post('/uploads', authenticateToken, limiters.upload, upload.array('photos', 8), (req, res) => {
   const files = req.files || [];
   const urls = files.map(f => ({ filename: f.filename, url: `${process.env.BASE_URL || ''}/uploads/${f.filename}` }));
   res.json({ success: true, files: urls });
 });
 
+/**
+ * @swagger
+ * /bookings/{userId}:
+ *   get:
+ *     summary: Listar agendamentos do usuário
+ *     tags: [Bookings]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Lista de agendamentos
+ */
 router.get('/bookings/:userId', authenticateToken, (req, res) => {
   BookingController.getUserBookings(req, res);
 });
 
+/**
+ * @swagger
+ * /bookings/{bookingId}:
+ *   put:
+ *     summary: Atualizar agendamento
+ *     tags: [Bookings]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: bookingId
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Agendamento atualizado
+ *   delete:
+ *     summary: Cancelar agendamento
+ *     tags: [Bookings]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: bookingId
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Agendamento cancelado
+ */
 router.put('/bookings/:bookingId', authenticateToken, limiters.general, validateSchema(bookingSchemas.update), (req, res) => {
   BookingController.updateBooking(req, res);
 });
@@ -131,10 +329,50 @@ router.delete('/bookings/:bookingId', authenticateToken, (req, res) => {
 });
 
 // ===== PAYMENTS =====
+
+/**
+ * @swagger
+ * /payments:
+ *   post:
+ *     summary: Processar pagamento
+ *     tags: [Payments]
+ *     security:
+ *       - BearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               bookingId: { type: integer }
+ *               amount: { type: number }
+ *               method: { type: string, enum: [stripe, pix, cash] }
+ *     responses:
+ *       200:
+ *         description: Pagamento processado
+ */
 router.post('/payments', authenticateToken, limiters.payment, validateSchema(paymentSchemas.process), (req, res) => {
   PaymentController.processPayment(req, res);
 });
 
+/**
+ * @swagger
+ * /payments/{userId}:
+ *   get:
+ *     summary: Histórico de pagamentos
+ *     tags: [Payments]
+ *     security:
+ *       - BearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: userId
+ *         required: true
+ *         schema: { type: integer }
+ *     responses:
+ *       200:
+ *         description: Lista de pagamentos
+ */
 router.get('/payments/:userId', authenticateToken, (req, res) => {
   PaymentController.getPaymentHistory(req, res);
 });
@@ -779,5 +1017,14 @@ router.use('/recurring-bookings', authenticateToken, (req, res) => AutoPlacehold
 // REFERRAL PROGRAM
 // const referralRoutes = require('./referralRoutes');
 // // router.use('/referrals', authenticateToken, referralRoutes);
+
+// ===== SMART FEATURES (5 Advanced Features) =====
+// Feature #1: Smart Availability Widget
+// Feature #2: Dynamic Pricing Engine
+// Feature #3: Intelligent Cross-Selling
+// Feature #4: Advanced Analytics Dashboard
+// Feature #5: Intelligent Staff Optimization
+const smartFeaturesRoutes = require('./smartFeaturesRoutes');
+router.use('/smart', smartFeaturesRoutes);
 
 module.exports = router;

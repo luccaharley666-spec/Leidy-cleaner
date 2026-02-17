@@ -203,8 +203,8 @@ const AvailableStaffWidget = ({
                   <div className={styles.loadBar}>
                     <div
                       className={styles.loadFill}
-                      style={{
-                        width: `${100 - s.decoded}%`,
+                      style={ {
+                        width: `${100 - s.decoded }%`,
                         backgroundColor: getLoadStatusColor(s.load_status)
                       }}
                     />
@@ -218,7 +218,7 @@ const AvailableStaffWidget = ({
                 <div className={styles.metric}>
                   <label>Disponibilidade</label>
                   <span className={styles.metricValue}>
-                    {s.decoded}%
+                    { s.decoded }%
                   </span>
                   <small className={styles.metricLabel}>
                     {getLoadStatusLabel(s.load_status)}

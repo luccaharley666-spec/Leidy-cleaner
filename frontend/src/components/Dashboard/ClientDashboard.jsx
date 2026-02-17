@@ -6,8 +6,7 @@ function ClientDashboard({ userId }) {
   const [stats, setStats] = useState({
     totalServices: 0,
     totalSpent: 0,
-    nextBooking: null,
-  });
+    nextBooking: null });
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -23,8 +22,7 @@ function ClientDashboard({ userId }) {
         setStats({
           totalServices: 0,
           totalSpent: 0,
-          nextBooking: null,
-        });
+          nextBooking: null });
         setBookings([]);
         setLoading(false);
       }
@@ -39,8 +37,7 @@ function ClientDashboard({ userId }) {
     const badges = {
       scheduled: 'bg-blue-100 text-blue-800',
       completed: 'bg-green-100 text-green-800',
-      cancelled: 'bg-red-100 text-red-800',
-    };
+      cancelled: 'bg-red-100 text-red-800' };
     return badges[status] || 'bg-gray-100 text-gray-800';
   };
 

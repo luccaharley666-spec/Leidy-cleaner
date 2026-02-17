@@ -31,8 +31,7 @@ export function useLazyImage(src, placeholder = '') {
 }
 
 // Hook para intersection observer (lazy loading)
-export function decodeToken(options = {}) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
+export function decodeToken(options = {}) { const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasIntersected, setHasIntersected] = useState(false);
   const ref = useRef(null);
 
@@ -40,18 +39,16 @@ export function decodeToken(options = {}) {
     const element = ref.current;
     if (!element) return;
 
-    const observer = new decoded(
+    const observer = new(
       ([entry]) => {
         setIsIntersecting(entry.isIntersecting);
         if (entry.isIntersecting && !hasIntersected) {
-          setHasIntersected(true);
-        }
+          setHasIntersected(true); }
       },
       {
         threshold: 0.1,
         rootMargin: '50px',
-        ...options,
-      }
+        ...options }
     );
 
     observer.observe(element);
@@ -130,8 +127,7 @@ export function decodeToken(name) {
           window.gtag('event', 'performance', {
             event_category: 'performance',
             event_label: name,
-            value: Math.round(duration),
-          });
+            value: Math.round(duration) });
         }
       }
     };
@@ -143,8 +139,7 @@ export function useConnectionSpeed() {
   const [connection, setConnection] = useState({
     effectiveType: 'unknown',
     downlink: 0,
-    rtt: 0,
-  });
+    rtt: 0 });
 
   useEffect(() => {
     if ('connection' in navigator) {
@@ -152,15 +147,13 @@ export function useConnectionSpeed() {
       setConnection({
         effectiveType: connectionInfo.effectiveType,
         downlink: connectionInfo.downlink,
-        rtt: connectionInfo.rtt,
-      });
+        rtt: connectionInfo.rtt });
 
       const updateConnection = () => {
         setConnection({
           effectiveType: connectionInfo.effectiveType,
           downlink: connectionInfo.downlink,
-          rtt: connectionInfo.rtt,
-        });
+          rtt: connectionInfo.rtt });
       };
 
       connectionInfo.addEventListener('change', updateConnection);
@@ -199,8 +192,7 @@ export function useCache(key, ttl = 5 * 60 * 1000) { // 5 minutes default
     try {
       const item = {
         data,
-        expiry: Date.now() + ttl,
-      };
+        expiry: Date.now() + ttl };
       localStorage.setItem(key, JSON.stringify(item));
     } catch {
       // Silently continue on error

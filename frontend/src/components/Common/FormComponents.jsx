@@ -179,14 +179,12 @@ export const CardGrid = ({ cols = 'auto', gap = 'lg', children }) => {
     2: 'lg:grid-cols-2',
     3: 'lg:grid-cols-3',
     4: 'lg:grid-cols-4',
-    auto: 'grid-cols-auto',
-  };
+    auto: 'grid-cols-auto' };
 
   const gapClasses = {
     sm: 'gap-4',
     md: 'gap-6',
-    lg: 'gap-8',
-  };
+    lg: 'gap-8' };
 
   return (
     <div className={`grid ${colsClasses[cols] || colsClasses.auto} ${gapClasses[gap] || gapClasses.lg}`}>

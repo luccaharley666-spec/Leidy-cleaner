@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function LeidyFooter() {
   return (
-    <footer className="bg-green-900 text-white py-12">
+    <footer className="site-footer bg-green-900 text-white py-12">
       <div className="max-w-6xl mx-auto px-4">
         {/* Footer Content Grid */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
@@ -32,10 +32,10 @@ export default function LeidyFooter() {
           <div>
             <h3 className="text-lg font-semibold mb-4 text-green-400">Links Rápidos</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/" className="text-gray-300 hover:text-green-400 transition">Início</Link></li>
-              <li><Link href="/servicos" className="text-gray-300 hover:text-green-400 transition">Serviços</Link></li>
-              <li><Link href="/sobre" className="text-gray-300 hover:text-green-400 transition">Sobre Nós</Link></li>
-              <li><Link href="/contato" className="text-gray-300 hover:text-green-400 transition">Contato</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-green-400 transition nav-link">Início</Link></li>
+              <li><Link href="/servicos" className="text-gray-300 hover:text-green-400 transition nav-link">Serviços</Link></li>
+              <li><Link href="/sobre" className="text-gray-300 hover:text-green-400 transition nav-link">Sobre Nós</Link></li>
+              <li><Link href="/contato" className="text-gray-300 hover:text-green-400 transition nav-link">Contato</Link></li>
             </ul>
           </div>
 

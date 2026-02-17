@@ -152,7 +152,7 @@ export default function AdvancedFAQ() {
                   <h3 className="text-left text-lg font-semibold text-gray-900 dark:text-white">
                     {faq.question}
                   </h3>
-                  <div className={`text-2xl decoded ${expandedId === faq.id ? 'rotate-180' : ''}`}>
+                  <div className={ `text-2xl ${expandedId === faq.id ? 'rotate-180' : '' }`}>
                     ▼
                   </div>
                 </button>

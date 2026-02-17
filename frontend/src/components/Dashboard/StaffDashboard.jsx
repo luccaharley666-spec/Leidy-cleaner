@@ -9,8 +9,7 @@ function StaffDashboard() {
     totalJobs: 0,
     completedJobs: 0,
     rating: 0,
-    streak: 0,
-  });
+    streak: 0 });
   const [upcomingBookings, setUpcomingBookings] = useState([]);
   const [earningsChart, setEarningsChart] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,8 +31,7 @@ function StaffDashboard() {
           totalJobs: 42,
           completedJobs: 40,
           rating: 4.9,
-          streak: 12,
-        });
+          streak: 12 });
         setUpcomingBookings(decodedFunction());
         setEarningsChart(decodedFunction());
         setLoading(false);

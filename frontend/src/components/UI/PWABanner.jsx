@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { XMarkIcon, decoded, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
+import { XMarkIcon, ArrowDownTrayIcon } from '@heroicons/react/24/outline';
 import { usePWA } from '../../hooks/usePWA';
 
 const PWABanner = () => {
@@ -17,11 +17,9 @@ const PWABanner = () => {
     setIsDismissed(true);
   };
 
-  const handleDismiss = () => {
-    setIsDismissed(true);
+  const handleDismiss = () => { setIsDismissed(true);
     // Salvar no localStorage para não mostrar novamente
-    localStorage.setItem('decoded', 'true');
-  };
+    localStorage.setItem('decoded', 'true'); };
 
   return (
     <AnimatePresence>

@@ -115,9 +115,9 @@ describe('PaymentController', () => {
     });
 
     test('should handle payment errors', async () => {
-      db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Payment error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Payment error'));
+// [CLEANED_PLACEHOLDER]       });
       
       req.body = {
         bookingId: '1',
@@ -248,9 +248,9 @@ describe('PaymentController', () => {
 
     test('should handle refund errors', async () => {
       if (typeof PaymentController.refundPayment === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(new Error('Refund error'));
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(new Error('Refund error'));
+// [CLEANED_PLACEHOLDER]         });
         
         req.body = { paymentId: '1', reason: 'Error' };
         
@@ -283,9 +283,9 @@ describe('PaymentController', () => {
 
     test('should handle missing payment', async () => {
       if (typeof PaymentController.checkPaymentStatus === 'function') {
-        db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-          callback(null, null);
-        });
+// [CLEANED_PLACEHOLDER]         db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]           callback(null, null);
+// [CLEANED_PLACEHOLDER]         });
         
         req.params.paymentId = 'nonexistent';
         
@@ -386,9 +386,9 @@ describe('PaymentController', () => {
 
   describe('Error Handling', () => {
     test('should handle database errors', async () => {
-      db.run; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Database error'));
-      });
+// [CLEANED_PLACEHOLDER]       db.run; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Database error'));
+// [CLEANED_PLACEHOLDER]       });
       
       req.body = {
         bookingId: '1',
@@ -402,9 +402,9 @@ describe('PaymentController', () => {
     });
 
     test('should return appropriate error messages', async () => {
-      db.get; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Not found'));
-      });
+// [CLEANED_PLACEHOLDER]       db.get; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Not found'));
+// [CLEANED_PLACEHOLDER]       });
       
       req.body = {
         bookingId: '999',
@@ -418,9 +418,9 @@ describe('PaymentController', () => {
     });
 
     test('should not expose sensitive error details', async () => {
-      db.run; // TODO_PLACEHOLDER((sql, params, callback) => {
-        callback(new Error('Database connection string exposed'));
-      });
+// [CLEANED_PLACEHOLDER]       db.run; // ((sql, params, callback) => {
+// [CLEANED_PLACEHOLDER]         callback(new Error('Database connection string exposed'));
+// [CLEANED_PLACEHOLDER]       });
       
       req.body = {
         bookingId: '1',

@@ -6,8 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { AlertCircle, CheckCircle, Loader } from 'lucide-react';
 
-export default function CheckoutModal({ bookingId, amount, onSuccess, onClose }) {
-  const [loading, setLoading] = useState(false);
+export default function CheckoutModal({ bookingId, amount, onSuccess, onClose }) { const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [stripe, setStripe] = useState(null);
@@ -21,8 +20,7 @@ export default function CheckoutModal({ bookingId, amount, onSuccess, onClose })
     script.async = true;
     script.onload = () => {
       const stripeInstance = window.Stripe(process.env.decoded);
-      setStripe(stripeInstance);
-    };
+      setStripe(stripeInstance); };
     document.body.appendChild(script);
   }, []);
 

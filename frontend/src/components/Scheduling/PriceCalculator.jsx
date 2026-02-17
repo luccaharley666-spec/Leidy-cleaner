@@ -10,14 +10,12 @@ const PriceCalculator = ({ services = [], date = null }) => {
     unica: { label: 'Única vez', multiplier: 1 },
     semanal: { label: 'Semanal', multiplier: 0.8 },
     quinzenal: { label: 'Quinzenal', multiplier: 0.9 },
-    mensal: { label: 'Mensal', multiplier: 0.95 },
-  };
+    mensal: { label: 'Mensal', multiplier: 0.95 } };
 
   const urgencies = {
     normal: { label: 'Normal (2-3 dias)', multiplier: 1 },
     express: { label: 'Express (24h)', multiplier: 1.3 },
-    emergencia: { label: 'Emergência (mesma hora)', multiplier: 1.5 },
-  };
+    emergencia: { label: 'Emergência (mesma hora)', multiplier: 1.5 } };
 
   useEffect(() => {
     const serviceTotal = services.reduce((sum, service) => sum + service.price, 0);

@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/portable.css'
 import React, { useEffect } from 'react'
 import '../sentry.client'
 import { ThemeProvider } from '../context/ThemeContext'

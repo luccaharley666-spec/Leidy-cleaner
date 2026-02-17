@@ -17,8 +17,7 @@ export const StatsCard = ({
     purple: 'from-purple-500 to-violet-600',
     green: 'from-green-500 to-emerald-600',
     blue: 'from-blue-500 to-cyan-600',
-    orange: 'from-orange-500 to-red-600',
-  };
+    orange: 'from-orange-500 to-red-600' };
 
   return (
     <div className="card bg-gradient-to-br " style={{ backgroundImage: `linear-gradient(135deg, var(--surface), var(--surface-secondary))` }}>
@@ -102,8 +101,7 @@ export const UpcomingCard = ({
   const statusColors = {
     confirmed: 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border-green-200 dark:border-green-700',
     pending: 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-700 dark:text-yellow-300 border-yellow-200 dark:border-yellow-700',
-    cancelled: 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-red-200 dark:border-red-700',
-  };
+    cancelled: 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border-red-200 dark:border-red-700' };
 
   return (
     <div className="card border-l-4 border-purple-500">
@@ -150,8 +148,7 @@ export const InfoBox = ({ icon, title, value, subtitle, color = 'purple' }) => {
   const colors = {
     purple: 'from-purple-500 to-violet-600',
     green: 'from-green-500 to-emerald-600',
-    blue: 'from-blue-500 to-cyan-600',
-  };
+    blue: 'from-blue-500 to-cyan-600' };
 
   return (
     <div className={`bg-gradient-to-br ${colors[color]} p-6 rounded-xl text-white shadow-lg`}>

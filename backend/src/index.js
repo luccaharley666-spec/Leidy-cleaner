@@ -42,6 +42,10 @@ const { globalErrorHandler, handle404, asyncHandler } = require('./middleware/gl
 const { initializeSwagger } = require('./config/swagger');
 // const { metricsMiddleware, metricsEndpoint } = require('./config/prometheus');
 
+// Integração opcional do Next.js (quando INTEGRATE_NEXT=true)
+const INTEGRATE_NEXT = process.env.INTEGRATE_NEXT === 'true';
+const NEXT_DIR = path.join(__dirname, '..', '..', 'frontend');
+
 // ===== VALIDATE ENVIRONMENT =====
 validateEnv();
 
@@ -68,10 +72,8 @@ if (process.env.DATABASE_URL?.startsWith('postgresql')) {
 // ✅ CORRIGIDO: trust proxy configurado apenas se em produção com proxy real
 if (process.env.NODE_ENV === 'production' && process.env.TRUST_PROXY === 'true') {
   app.set('trust proxy', 1); // 1 = primeiro proxy
-} else if (process.env.X_FORWARDED_FOR) {
-  // Se temos X-Forwarded-For header (como em containers), trust it
-  app.set('trust proxy', true);
 }
+
 const server = http.createServer(app);
 
 // ✅ CORRIGIDO: Socket.io CORS whitelist (não aberto para "*")
@@ -333,6 +335,19 @@ if (process.env.NODE_ENV !== 'test' || process.env.FORCE_RUN === 'true') {
   });
 
   (async () => {
+    // Se pedido, preparar Next.js e delegar rotas não-API para o handler do Next
+    if (INTEGRATE_NEXT) {
+      try {
+        const nextApp = require('next')({ dev: process.env.NODE_ENV !== 'production', dir: NEXT_DIR });
+        await nextApp.prepare();
+        const handleNext = nextApp.getRequestHandler();
+        // Registrar rota fallback do Next (deve ficar depois das rotas /api)
+        app.get('*', (req, res) => handleNext(req, res));
+        logger.info(`Next.js integrado (dir=${NEXT_DIR})`);
+      } catch (err) {
+        logger.error('Falha ao preparar Next.js para integração:', err && err.message ? err.message : err);
+      }
+    }
     try {
       await ensureSchema();
       logger.info('Schema do banco verificado/atualizado');

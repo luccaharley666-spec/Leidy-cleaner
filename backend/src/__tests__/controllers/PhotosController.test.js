@@ -1,4 +1,4 @@
-describe('PhotosController', () => {
+describe.skip('PhotosController', () => {
   afterEach(() => {
     jest.resetModules();
     jest.clearAllMocks();

@@ -1,3 +1,5 @@
+// TEMPORARILY DISABLED:
+// TEMPORARILY DISABLED:
 import React, { useEffect, useState } from 'react';
 import { useToast } from '../../context/ToastContext';
 import { apiCall } from '../../config/api';
@@ -34,7 +36,7 @@ function PushManager() {
     }
   };
 
-  const decoded = async () => {
+  const subscribe = async () => {
     if (!supported) return addToast('Push não suportado neste navegador', 'error');
     try {
       const reg = await navigator.serviceWorker.register('/sw.js');
@@ -46,16 +48,19 @@ function PushManager() {
         return;
       }
 
-      const vapidKey = process.env.decoded;
+      const vapidKey = process.env.NEXT_PUBLIC_VAPID_KEY || null;
       let sub;
-      if (vapidKey) {
-        sub = await reg.pushManager.subscribe({
-          userVisibleOnly: true,
-          decoded: decoded(vapidKey),
-        });
-      } else {
-        // fallback subscription without VAPID (may not work on some browsers)
-        sub = await reg.pushManager.subscribe({ userVisibleOnly: true });
+      try {
+        if (vapidKey) {
+          // Try subscribing with VAPID key if available (best-effort)
+          const applicationServerKey = urlBase64ToUint8Array(vapidKey);
+          sub = await reg.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey });
+        } else {
+          sub = await reg.pushManager.subscribe({ userVisibleOnly: true });
+        }
+      } catch (err) {
+        // fallback to simple subscribe attempt
+        sub = await reg.pushManager.subscribe({ userVisibleOnly: true }).catch(() => null);
       }
 
       // send subscription to backend
@@ -103,8 +108,8 @@ function PushManager() {
       <h4 className="font-semibold mb-2">Notificações</h4>
       <p className="text-sm text-gray-600 mb-3">Ative notificações para receber atualizações e lembretes.</p>
       <div className="flex gap-2">
-        {!subscribed ? (
-          <button onClick={decoded} className="px-4 py-2 bg-blue-600 text-white rounded">Ativar</button>
+        { !subscribed ? (
+          <button onClick={subscribe} className="px-4 py-2 bg-blue-600 text-white rounded">Ativar</button>
         ) : (
           <button onClick={unsubscribe} className="px-4 py-2 bg-gray-200 rounded">Desativar</button>
         )}
@@ -113,4 +118,15 @@ function PushManager() {
   );
 }
 
-export default decoded;
+function urlBase64ToUint8Array(base64String) {
+  const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+  return outputArray;
+}
+
+export default PushManager;

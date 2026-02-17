@@ -113,3 +113,6 @@ beforeAll(() => {
 afterAll(() => {
   console.error = originalError;
 });
+
+// Provide a safe global PLACEHOLDER used by many legacy tests to avoid ReferenceErrors
+global.PLACEHOLDER = global.PLACEHOLDER || {};

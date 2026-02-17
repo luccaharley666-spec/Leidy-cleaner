@@ -8,8 +8,7 @@ function AdminPanel() {
     revenue: 0,
     customers: 0,
     teamMembers: 0,
-    satisfaction: 0,
-  });
+    satisfaction: 0 });
   const [revenueByMonth, setRevenueByMonth] = useState([]);
   const [recentBookings, setRecentBookings] = useState([]);
   const [serviceBreakdown, setServiceBreakdown] = useState([]);
@@ -37,8 +36,7 @@ function AdminPanel() {
           revenue: 0,
           customers: 0,
           teamMembers: 0,
-          satisfaction: 0,
-        });
+          satisfaction: 0 });
         setRevenueByMonth(decodedFunction());
         setRecentBookings(decodedFunction());
         setServiceBreakdown(decodedFunction());

@@ -22,8 +22,7 @@ export function ReviewSystem() {
         date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000),
         verified: true,
         photos: [],
-        response: null,
-      },
+        response: null },
       {
         id: 2,
         serviceId: 'limpeza-comercial',
@@ -36,9 +35,7 @@ export function ReviewSystem() {
         photos: [],
         response: {
           text: 'Obrigado pelo feedback, João! Pedimos desculpas pelo pequeno atraso e ficamos felizes que tenha gostado do resultado.',
-          date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000),
-        },
-      },
+          date: new Date(Date.now() - 4 * 24 * 60 * 60 * 1000) } },
       {
         id: 3,
         serviceId: 'limpeza-residencial',
@@ -49,8 +46,7 @@ export function ReviewSystem() {
         date: new Date(Date.now() - 7 * 24 * 60 * 60 * 1000),
         verified: true,
         photos: [],
-        response: null,
-      },
+        response: null },
     ];
 
     setReviews(mockReviews);
@@ -70,8 +66,7 @@ export function ReviewSystem() {
       title: '⭐ Avaliação Enviada!',
       message: 'Obrigado por avaliar nosso serviço!',
       icon: '📝',
-      tag: 'review',
-    });
+      tag: 'review' });
 
     setShowReviewModal(false);
   };
@@ -336,8 +331,7 @@ function ReviewModal({ onClose, onSubmit }) {
     rating: 5,
     comment: '',
     photos: [],
-    anonymous: false,
-  });
+    anonymous: false });
 
   const handleSubmit = (e) => {
     e.preventDefault();

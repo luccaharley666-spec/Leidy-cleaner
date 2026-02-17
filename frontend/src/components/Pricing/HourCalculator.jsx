@@ -54,10 +54,8 @@ const HourCalculator = ({ onCalculate, userId }) => {
           serviceFee,
           postWorkFee,
           organizationFee,
-          productFee,
-        },
-        finalPrice,
-      };
+          productFee },
+        finalPrice };
 
       setPriceResult(result);
       if (onCalculate) onCalculate(result);
@@ -132,8 +130,7 @@ const HourCalculator = ({ onCalculate, userId }) => {
                 onChange={(e) =>
                   setCharacteristics({
                     ...characteristics,
-                    environments: parseInt(e.target.value) || 1,
-                  })
+                    environments: parseInt(e.target.value) || 1 })
                 }
                 className="w-full px-4 py-2 border border-gray-300 rounded"
               />
@@ -151,8 +148,7 @@ const HourCalculator = ({ onCalculate, userId }) => {
                 onChange={(e) =>
                   setCharacteristics({
                     ...characteristics,
-                    people: parseInt(e.target.value) || 1,
-                  })
+                    people: parseInt(e.target.value) || 1 })
                 }
                 className="w-full px-4 py-2 border border-gray-300 rounded"
               />
@@ -167,8 +163,7 @@ const HourCalculator = ({ onCalculate, userId }) => {
                 onChange={(e) =>
                   setCharacteristics({
                     ...characteristics,
-                    complexity: e.target.value,
-                  })
+                    complexity: e.target.value })
                 }
                 className="w-full px-4 py-2 border border-gray-300 rounded"
               >

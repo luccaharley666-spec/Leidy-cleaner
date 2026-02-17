@@ -11,8 +11,7 @@ export const ServiceCard = ({
   basePrice,
   badge,
   link = '/agendar'
-}) => {
-  const [displayPrice, setDisplayPrice] = useState(basePrice)
+}) => { const [displayPrice, setDisplayPrice] = useState(basePrice)
   const [isHovered, setIsHovered] = useState(false)
 
   // Animar número do preço ao renderizar
@@ -28,12 +27,11 @@ export const ServiceCard = ({
         const progress = (currentTime - startTime) / duration
         if (progress < 1) {
           setDisplayPrice(Math.floor(start + (end - start) * progress))
-          decoded(animate)
-        } else {
+         (animate) } else {
           setDisplayPrice(end)
         }
       }
-      decoded(animate)
+     (animate)
     }
   }, [basePrice])
 

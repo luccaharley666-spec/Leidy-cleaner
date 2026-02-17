@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { GiftIcon, ShareIcon, UsersIcon, TrophyIcon } from '@heroicons/react/24/outline';
 
-const ReferralSystem = () => {
-  const [referralCode, setReferralCode] = useState('');
+const ReferralSystem = () => { const [referralCode, setReferralCode] = useState('');
   const [referrals, setReferrals] = useState([]);
   const [showShareModal, setShowShareModal] = useState(false);
 
@@ -13,8 +12,7 @@ const ReferralSystem = () => {
       const chars = 'decoded';
       let code = '';
       for (let i = 0; i < 8; i++) {
-        code += chars.charAt(Math.floor(Math.random() * chars.length));
-      }
+        code += chars.charAt(Math.floor(Math.random() * chars.length)); }
       return code;
     };
 

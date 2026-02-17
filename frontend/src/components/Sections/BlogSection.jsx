@@ -153,7 +153,7 @@ export default function BlogSection() {
             Dicas semanais para manter sua casa limpa e bem cuidada
           </p>
           <form 
-            onSubmit={(e) => {
+            onSubmit={ (e) => {
               e.preventDefault();
               const email = e.target[0].value;
               trackFormSubmit('decoded', { email });

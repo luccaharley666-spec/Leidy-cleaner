@@ -71,14 +71,13 @@ export default function FeaturesGridGreen() {
                 key={index}
                 className="group relative bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-primary-100 hover:border-primary-300 overflow-hidden"
                 style={{
-                  animationDelay: `${index * 0.1}s`,
-                }}
+                  animationDelay: `${index * 0.1}s` }}
               >
                 {/* Background gradient no hover */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${feature.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
 
                 {/* Ícone com gradiente */}
-                <div className={`relative inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl mb-6 group-hover:scale-110 decoded duration-300`}>
+                <div className={`relative inline-flex items-center justify-center w-14 h-14 bg-gradient-to-br ${feature.color} rounded-xl mb-6 group-hover:scale-110 duration-300`}>
                   <Icon className="w-7 h-7 text-white" />
                 </div>
 

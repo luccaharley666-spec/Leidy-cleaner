@@ -34,9 +34,8 @@ const PaymentSystem = ({ amount, onPaymentSuccess, onPaymentError }) => {
     }
   ];
 
-  const generatePixCode = () => {
-    // Simulação de código PIX
-    const code = `00020126580014BR.GOV.BCB.decoded.COM.decoded${amount.toFixed(2).replace('.', '')}5802BR5913Leidy Cleaner6009SAO PAULO62070503***6304`;
+  const generatePixCode = () => { // Simulação de código PIX
+    const code = `00020126580014BR.GOV.BCB.decoded.COM.decoded${amount.toFixed(2).replace('.', '') }5802BR5913Leidy Cleaner6009SAO PAULO62070503***6304`;
     setPixCode(code);
   };
 
@@ -212,13 +211,13 @@ const PaymentSystem = ({ amount, onPaymentSuccess, onPaymentError }) => {
             disabled={isProcessing || !cardData.number || !cardData.expiry || !cardData.cvv || !cardData.name}
             className="w-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white font-bold py-3 rounded-lg hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isProcessing ? (
+            { isProcessing ? (
               <div className="flex items-center justify-center gap-2">
-                <div className="w-5 h-5 border-2 border-white decoded rounded-full animate-spin"></div>
+                <div className="w-5 h-5 border-2 border-white rounded-full animate-spin"></div>
                 Processando...
               </div>
             ) : (
-              `Pagar R$ ${amount.toFixed(2)}`
+              `Pagar R$ ${amount.toFixed(2) }`
             )}
           </button>
         </motion.div>

@@ -13,11 +13,7 @@ export const initializeGA = (measurementId) => {
     }
     window.gtag = gtag;
     gtag('js', new Date());
-    gtag('config', measurementId, {
-      'anonymize_ip': true,
-      'decoded': true,
-      'decoded': true
-    });
+    gtag('config', measurementId, { 'anonymize_ip': true, 'decoded': true, 'decoded': true });
   }
 }
 
@@ -117,13 +113,9 @@ export const trackSectionView = (sectionName) => {
 }
 
 // Rastrear clique em testemunha/case
-export const trackTestimonialClick = (testimonialAuthor) => {
-  if (typeof window !== 'undefined' && window.gtag) {
+export const trackTestimonialClick = (testimonialAuthor) => { if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'decoded', {
-      'event_category': 'engagement',
-      'testimonial_author': testimonialAuthor,
-      'timestamp': new Date().toISOString()
-    });
+      'event_category': 'engagement', 'testimonial_author': testimonialAuthor, 'timestamp': new Date().toISOString() });
   }
 }
 

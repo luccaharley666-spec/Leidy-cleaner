@@ -1,0 +1,232 @@
+/* QuickStats.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 100%);
+  border-radius: 12px;
+  border: 1px solid #f8bbd0;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #c2185b;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.statCard {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  background: white;
+  border-radius: 8px;
+  border: 1px solid #f8bbd0;
+  transition: all 0.2s ease;
+}
+
+.statCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.icon {
+  font-size: 28px;
+  min-width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.label {
+  font-size: 11px;
+  color: #999;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.value {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+}
+
+.helper {
+  font-size: 11px;
+  color: #bbb;
+}
+
+.infoRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.infoBlock {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #e91e63;
+}
+
+.infoIcon {
+  font-size: 24px;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.infoBlock strong {
+  display: block;
+  font-size: 12px;
+  color: #999;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 4px;
+  letter-spacing: 0.5px;
+}
+
+.infoValue {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.benefitsCard {
+  padding: 14px;
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  border-radius: 8px;
+  border: 1px solid #ffe0b2;
+}
+
+.benefitsTitle {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  font-weight: 700;
+  color: #e65100;
+}
+
+.benefitsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.benefitsList li {
+  font-size: 12px;
+  color: #d84315;
+  font-weight: 500;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primaryBtn {
+  background: linear-gradient(135deg, #e91e63, #c2185b);
+  color: white;
+}
+
+.primaryBtn:hover {
+  box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  background: white;
+  color: #c2185b;
+  border: 2px solid #e91e63;
+}
+
+.secondaryBtn:hover {
+  background: #fce4ec;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .container {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .title {
+    font-size: 16px;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 12px;
+  }
+
+  .value {
+    font-size: 15px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .infoRow {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .infoBlock {
+    padding: 10px;
+  }
+
+  .actions {
+    gap: 8px;
+  }
+
+  .primaryBtn,
+  .secondaryBtn {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+}
