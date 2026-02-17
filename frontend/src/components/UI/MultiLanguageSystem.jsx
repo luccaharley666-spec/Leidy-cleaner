@@ -16,7 +16,7 @@ const translations = { pt: {
     // Navigation
     home: 'Início', services: 'Serviços', about: 'Sobre', contact: 'Contato', login: 'Entrar', register: 'Cadastrar', logout: 'Sair', // Common
     loading: 'Carregando...', save: 'Salvar', cancel: 'Cancelar', confirm: 'Confirmar', delete: 'Excluir', edit: 'Editar', add: 'Adicionar', search: 'Buscar', filter: 'Filtrar', sort: 'Ordenar', export: 'Exportar', import: 'Importar', // Services
-    residentialCleaning: 'Limpeza Residencial', deepCleaning: 'Limpeza Profunda', windowCleaning: 'Limpeza de Vidros',: 'Limpeza Pós-Obra', scheduleService: 'Agendar Serviço', serviceDetails: 'Detalhes do Serviço', // Payment
+    residentialCleaning: 'Limpeza Residencial', deepCleaning: 'Limpeza Profunda', windowCleaning: 'Limpeza de Vidros', postConstructionCleaning: 'Limpeza Pós-Obra', scheduleService: 'Agendar Serviço', serviceDetails: 'Detalhes do Serviço', // Payment
     payment: 'Pagamento', paymentMethod: 'Método de Pagamento', creditCard: 'Cartão de Crédito', pix: 'PIX', bankTransfer: 'Transferência Bancária', total: 'Total', subtotal: 'Subtotal', discount: 'Desconto', // User
     profile: 'Perfil', settings: 'Configurações', preferences: 'Preferências', notifications: 'Notificações', history: 'Histórico', // Admin
     dashboard: 'Painel', analytics: 'Analytics', clients: 'Clientes', reports: 'Relatórios', backup: 'Backup', // Messages
@@ -25,7 +25,7 @@ const translations = { pt: {
   en: { // Navigation
     home: 'Home', services: 'Services', about: 'About', contact: 'Contact', login: 'Login', register: 'Register', logout: 'Logout', // Common
     loading: 'Loading...', save: 'Save', cancel: 'Cancel', confirm: 'Confirm', delete: 'Delete', edit: 'Edit', add: 'Add', search: 'Search', filter: 'Filter', sort: 'Sort', export: 'Export', import: 'Import', // Services
-    residentialCleaning: 'Residential Cleaning', deepCleaning: 'Deep Cleaning', windowCleaning: 'Window Cleaning',: 'Post-Construction Cleaning', scheduleService: 'Schedule Service', serviceDetails: 'Service Details', // Payment
+    residentialCleaning: 'Residential Cleaning', deepCleaning: 'Deep Cleaning', windowCleaning: 'Window Cleaning', postConstructionCleaning: 'Post-Construction Cleaning', scheduleService: 'Schedule Service', serviceDetails: 'Service Details', // Payment
     payment: 'Payment', paymentMethod: 'Payment Method', creditCard: 'Credit Card', pix: 'PIX', bankTransfer: 'Bank Transfer', total: 'Total', subtotal: 'Subtotal', discount: 'Discount', // User
     profile: 'Profile', settings: 'Settings', preferences: 'Preferences', notifications: 'Notifications', history: 'History', // Admin
     dashboard: 'Dashboard', analytics: 'Analytics', clients: 'Clients', reports: 'Reports', backup: 'Backup', // Messages
