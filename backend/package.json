@@ -4,11 +4,13 @@
   "description": "Backend Express para plataforma de limpeza",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "start:integrated": "INTEGRATE_NEXT=true node src/index.js",
-    "dev": "nodemon src/index.js",
+    "build": "tsc",
+    "start": "node dist/main.js",
+    "start:integrated": "INTEGRATE_NEXT=true node dist/main.js",
+    "start:dev": "cross-env NODE_ENV=development tsx watch src/main.ts",
+    "dev": "cross-env NODE_ENV=development tsx watch src/main.ts",
     "build:frontend": "cd ../frontend && npm ci --silent && npm run build",
-    "start:prod": "npm run build:frontend && NODE_ENV=production INTEGRATE_NEXT=true node src/index.js",
+    "start:prod": "npm run build && npm run build:frontend && NODE_ENV=production INTEGRATE_NEXT=true node dist/main.js",
     "test": "jest",
     "test:unit": "jest --testPathPattern=src",
     "test:integration": "jest --testPathPattern=integration",
@@ -18,8 +20,8 @@
     "test:load": "node scripts/load-test.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "migrate": "node src/db/runMigrations.js",
-    "seed": "node src/db/seed.js",
+    "migrate": "tsx src/db/runMigrations.ts",
+    "seed": "tsx src/db/seed.ts",
     "db:init": "node scripts/initDb.js",
     "queue:worker": "node src/workers/emailQueueWorker.js",
     "queue:worker:watch": "nodemon src/workers/emailQueueWorker.js",
@@ -45,7 +47,7 @@
   "dependencies": {
     "@sentry/node": "^7.84.0",
     "axios": "^1.13.5",
-    "bcrypt": "^6.0.0",
+    "bcryptjs": "^2.4.3",
     "bull": "^4.16.5",
     "compression": "^1.8.1",
     "cookie-parser": "^1.4.7",
@@ -87,9 +89,14 @@
     "@playwright/test": "^1.58.1",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.11.1",
+    "cross-env": "^7.0.3",
     "eslint": "^9.39.2",
     "jest": "^29.7.0",
     "nodemon": "^3.1.11",
-    "supertest": "^6.3.3"
+    "supertest": "^6.3.3",
+    "tsx": "^4.7.0",
+    "typescript": "^5.3.3"
   }
 }
