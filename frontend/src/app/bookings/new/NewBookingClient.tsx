@@ -18,6 +18,18 @@ export default function NewBookingClient({ serviceId }: { serviceId: string }) {
     e.preventDefault();
     setError('');
     setLoading(true);
+      // client-side validation
+      try {
+        const v = require('@/utils/validators');
+        const err = v.validateBooking({ bookingDate: date, address, notes });
+        if (err) {
+          setError(err);
+          setLoading(false);
+          return;
+        }
+      } catch (_) {
+        // ignore
+      }
     try {
       await apiClient.client.post('/bookings', {
         serviceId,

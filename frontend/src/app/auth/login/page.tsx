@@ -23,6 +23,15 @@ export default function LoginPage() {
     setError('');
     setLoading(true);
 
+    // client-side validation
+    const v = require('@/utils/validators');
+    const err = v.validateAuth(email, password);
+    if (err) {
+      setError(err);
+      setLoading(false);
+      return;
+    }
+
     try {
       await login(email, password);
       router.push('/');

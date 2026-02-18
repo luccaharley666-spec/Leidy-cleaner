@@ -32,8 +32,10 @@ export default function RegisterPage() {
     e.preventDefault();
     setError('');
 
-    if (formData.password !== formData.confirmPassword) {
-      setError('Senhas não correspondem');
+    const v = require('@/utils/validators');
+    const err = v.validateRegister(formData);
+    if (err) {
+      setError(err);
       return;
     }
 
