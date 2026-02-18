@@ -23,9 +23,14 @@ export default function HomePage() {
 
   return (
     <div>
+      <section className="mb-8 bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 rounded-lg shadow-lg">
+        <h1 className="text-4xl font-bold mb-3">Limpeza Profissional que Você Merece</h1>
+        <p className="text-lg">Serviços de limpeza para casa, escritório ou evento. Rápido, confiável e com qualidade garantida!</p>
+      </section>
+
       <section className="mb-6">
-        <h1 className="text-3xl font-bold">Serviços</h1>
-        <p className="text-gray-600">Escolha entre nossos serviços profissionais.</p>
+        <h2 className="text-2xl font-bold">Nossos Serviços</h2>
+        <p className="text-gray-600">Escolha o serviço ideal e agende com facilidade:</p>
       </section>
 
       <section>

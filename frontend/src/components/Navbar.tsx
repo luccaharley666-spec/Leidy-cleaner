@@ -17,11 +17,11 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-blue-600 text-white shadow-lg">
+    <nav className="bg-blue-700 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-2xl font-bold">
-            🧹 Vammos
+            ✨ Limpar Plus
           </Link>
 
           <div className="hidden md:flex items-center space-x-6">
@@ -50,7 +50,7 @@ export default function Navbar() {
             ) : (
               <>
                 <Link href="/auth/login" className="hover:text-blue-100 transition">Login</Link>
-                <Link href="/auth/register" className="bg-blue-500 px-4 py-2 rounded hover:bg-blue-700 transition">Registrar</Link>
+                <Link href="/auth/register" className="bg-blue-500 px-4 py-2 rounded hover:bg-blue-600 transition">Registrar</Link>
               </>
             )}
           </div>
@@ -60,22 +60,18 @@ export default function Navbar() {
 
         {mobileMenuOpen && (
           <div className="md:hidden pb-4 space-y-2">
-            <Link href="/" className="block px-4 py-2 hover:bg-blue-500 rounded">Home</Link>
-            <Link href="/services" className="block px-4 py-2 hover:bg-blue-500 rounded">Serviços</Link>
-
+            <Link href="/" className="block py-2 hover:text-blue-100">Home</Link>
+            <Link href="/services" className="block py-2 hover:text-blue-100">Serviços</Link>
             {isAuthenticated ? (
               <>
-                <Link href="/bookings" className="block px-4 py-2 hover:bg-blue-500 rounded">Meus Agendamentos</Link>
-                {user?.role === 'admin' && (
-                  <Link href="/admin" className="block px-4 py-2 hover:bg-blue-500 rounded font-semibold">Admin</Link>
-                )}
-                <Link href="/profile" className="block px-4 py-2 hover:bg-blue-500 rounded">Perfil</Link>
-                <button onClick={handleLogout} className="block w-full text-left px-4 py-2 hover:bg-blue-500 rounded text-red-200">Logout</button>
+                <Link href="/bookings" className="block py-2 hover:text-blue-100">Meus Agendamentos</Link>
+                {user?.role === 'admin' && <Link href="/admin" className="block py-2 hover:text-blue-100 font-semibold">Admin</Link>}
+                <button onClick={handleLogout} className="block w-full text-left py-2 text-red-400 hover:text-red-300">Logout</button>
               </>
             ) : (
               <>
-                <Link href="/auth/login" className="block px-4 py-2 hover:bg-blue-500 rounded">Login</Link>
-                <Link href="/auth/register" className="block px-4 py-2 hover:bg-blue-500 rounded">Registrar</Link>
+                <Link href="/auth/login" className="block py-2 hover:text-blue-100">Login</Link>
+                <Link href="/auth/register" className="block py-2 hover:text-blue-100">Registrar</Link>
               </>
             )}
           </div>
@@ -84,4 +80,3 @@ export default function Navbar() {
     </nav>
   );
 }
-

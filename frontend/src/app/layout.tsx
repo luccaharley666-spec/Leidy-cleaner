@@ -6,8 +6,8 @@ import Navbar from '@/components/Navbar';
 import { AuthProvider } from '@/contexts/AuthContext';
 
 export const metadata: Metadata = {
-  title: 'Limpeza Pro - Plataforma de Agendamento',
-  description: 'Agende serviços de limpeza profissional com facilidade',
+  title: 'Limpar Plus - Limpeza Profissional & Confiável',
+  description: 'Serviços de limpeza profissional para residências e empresas. Agende agora mesmo!',
 };
 
 export const viewport = {
