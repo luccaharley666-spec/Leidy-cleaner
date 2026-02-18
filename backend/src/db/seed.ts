@@ -16,7 +16,7 @@ async function seedDatabase() {
         // Create admin user
         const adminPassword = await hashPassword(process.env.ADMIN_PASSWORD || 'admin123456');
         await query(
-          `INSERT INTO users (email, password_hash, name, phone, role, is_active)
+          `INSERT INTO users (email, password_hash, full_name, phone, role, is_active)
            VALUES ($1, $2, $3, $4, $5, $6)`,
           [
             'admin@vammos.com',

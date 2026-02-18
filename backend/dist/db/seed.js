@@ -10,7 +10,7 @@ async function seedDatabase() {
             if (existingAdmin[0].count === 0) {
                 // Create admin user
                 const adminPassword = await hashPassword(process.env.ADMIN_PASSWORD || 'admin123456');
-                await query(`INSERT INTO users (email, password_hash, name, phone, role, is_active)
+                await query(`INSERT INTO users (email, password_hash, full_name, phone, role, is_active)
            VALUES ($1, $2, $3, $4, $5, $6)`, [
                     'admin@vammos.com',
                     adminPassword,
@@ -31,63 +31,77 @@ async function seedDatabase() {
         // Check if services already exist
         const existingServices = await query('SELECT COUNT(*) as count FROM services');
         if (existingServices[0].count === 0) {
-            // Default service categories and services
+            // Default service categories and services - Professional Cleaning
             const services = [
                 {
-                    name: 'Limpeza Residencial Simples',
-                    description: 'Limpeza completa de residências, incluindo aspiração, varrição e limpeza de pisos',
+                    name: 'Limpeza Residencial Básica',
+                    description: 'Varredura, limpeza de pisos, banheiros e cozinha. Ideal para casas pequenas e manutenção periódica.',
                     category: 'Residencial',
-                    base_price: 150.00,
-                    duration_minutes: 120
+                    base_price: 180.00,
+                    duration_minutes: 90
                 },
                 {
-                    name: 'Limpeza Residencial Premium',
-                    description: 'Limpeza profunda incluindo móveis, vidros e desinfecção',
+                    name: 'Limpeza Residencial Profunda',
+                    description: 'Limpeza completa e detalhada: móveis, cortinas, vidros, base, rodapés. Recomendado mensalmente.',
                     category: 'Residencial',
-                    base_price: 300.00,
-                    duration_minutes: 180
-                },
-                {
-                    name: 'Limpeza Comercial',
-                    description: 'Limpeza de escritórios, consultórios e pequenos comerciais',
-                    category: 'Comercial',
-                    base_price: 250.00,
-                    duration_minutes: 150
-                },
-                {
-                    name: 'Limpeza Pós-Obra',
-                    description: 'Limpeza completa após reforma ou construção',
-                    category: 'Pós-Obra',
-                    base_price: 500.00,
+                    base_price: 400.00,
                     duration_minutes: 240
                 },
                 {
-                    name: 'Limpeza de Vidros',
-                    description: 'Limpeza especializada de janelas, vidros e fachadas',
-                    category: 'Especializada',
-                    base_price: 200.00,
-                    duration_minutes: 90
+                    name: 'Limpeza Pós-Obra',
+                    description: 'Remoção de poeira, tinta, cimento e debris. Deixa a obra pronta para mobiliário.',
+                    category: 'Residencial',
+                    base_price: 800.00,
+                    duration_minutes: 360
                 },
                 {
-                    name: 'Limpeza de Tapetes',
-                    description: 'Limpeza profissional com equipamento especializado',
-                    category: 'Especializada',
-                    base_price: 180.00,
+                    name: 'Limpeza de Escritório',
+                    description: 'Limpeza diária de mesas, pisos, banheiros e áreas comuns. Contrato mensal com desconto.',
+                    category: 'Comercial',
+                    base_price: 250.00,
                     duration_minutes: 120
                 },
                 {
-                    name: 'Organização de Ambiente',
-                    description: 'Serviço de organização e limpeza conjunta',
+                    name: 'Limpeza de Lojas e Comércios',
+                    description: 'Limpeza de vitrines, balcões e áreas externas. Adaptamos ao seu horário comercial.',
+                    category: 'Comercial',
+                    base_price: 350.00,
+                    duration_minutes: 150
+                },
+                {
+                    name: 'Limpeza Pós-Evento',
+                    description: 'Limpeza após festas, casamentos ou confraternizações. Remoção completa de resíduos.',
+                    category: 'Eventos',
+                    base_price: 600.00,
+                    duration_minutes: 180
+                },
+                {
+                    name: 'Higienização com Ozônio',
+                    description: 'Desinfecção profissional com ozônio. Elimina 99% de bactérias e vírus.',
+                    category: 'Especializado',
+                    base_price: 500.00,
+                    duration_minutes: 120
+                },
+                {
+                    name: 'Limpeza de Tapetes e Sofás',
+                    description: 'Limpeza profissional com extratora de vapor. Ideal para tapetes e estofados.',
+                    category: 'Especializado',
+                    base_price: 300.00,
+                    duration_minutes: 90
+                },
+                {
+                    name: 'Limpeza de Vidros e Fachadas',
+                    description: 'Limpeza especializada de janelas, vidros e fachadas de prédios.',
+                    category: 'Especializado',
+                    base_price: 400.00,
+                    duration_minutes: 120
+                },
+                {
+                    name: 'Serviço de Organização',
+                    description: 'Organização completa de ambientes + limpeza profunda.',
                     category: 'Organização',
-                    base_price: 200.00,
-                    duration_minutes: 120
-                },
-                {
-                    name: 'Limpeza de Cozinha',
-                    description: 'Limpeza profunda de cozinha',
-                    category: 'Especializada',
-                    base_price: 180.00,
-                    duration_minutes: 90
+                    base_price: 350.00,
+                    duration_minutes: 150
                 }
             ];
             for (const service of services) {
@@ -104,17 +118,17 @@ async function seedDatabase() {
         if (existingCompany[0].count === 0) {
             await query(`INSERT INTO company_info (name, legal_name, email, phone, address, city, state, country, postal_code, logo_url, description, terms, created_at, updated_at)
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,NOW(),NOW())`, [
-                process.env.COMPANY_NAME || 'Vammos Serviços',
-                process.env.COMPANY_LEGAL_NAME || 'Vammos Ltda',
-                process.env.COMPANY_EMAIL || 'contato@vammos.com',
-                process.env.COMPANY_PHONE || '+55 11 4000-0000',
-                process.env.COMPANY_ADDRESS || 'Rua Exemplo, 123',
+                process.env.COMPANY_NAME || 'Limpar Plus',
+                process.env.COMPANY_LEGAL_NAME || 'Limpar Plus Serviços de Limpeza Ltda',
+                process.env.COMPANY_EMAIL || 'contato@limparplus.com.br',
+                process.env.COMPANY_PHONE || '(11) 98765-4321',
+                process.env.COMPANY_ADDRESS || 'Av. Paulista, 1000',
                 process.env.COMPANY_CITY || 'São Paulo',
                 process.env.COMPANY_STATE || 'SP',
                 process.env.COMPANY_COUNTRY || 'Brasil',
-                process.env.COMPANY_POSTAL_CODE || '00000-000',
+                process.env.COMPANY_POSTAL_CODE || '01311-100',
                 process.env.COMPANY_LOGO_URL || 'https://example.com/logo.png',
-                process.env.COMPANY_DESCRIPTION || 'Empresa especializada em serviços de limpeza comercial e residencial.',
+                process.env.COMPANY_DESCRIPTION || 'Limpar Plus é uma empresa especializada em serviços de limpeza profissional de alta qualidade. Atendemos residências, escritórios e eventos em São Paulo e região metropolitana. Garantia de satisfação em 100% dos serviços.',
                 process.env.COMPANY_TERMS || 'Termos e políticas padrão.'
             ]);
             logger.info('✨ Company info seeded');

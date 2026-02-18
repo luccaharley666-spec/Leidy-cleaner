@@ -78,9 +78,16 @@ export class AuthController {
       throw ApiError('User not found', 404);
     }
 
+    // Map full_name to name for response
+    const userResponse = {
+      ...user,
+      name: (user as any).full_name,
+    };
+    delete (userResponse as any).full_name;
+
     res.status(200).json({
       message: 'User profile retrieved',
-      data: { user },
+      data: { user: userResponse },
     });
   });
 
@@ -97,9 +104,16 @@ export class AuthController {
       throw ApiError('User not found', 404);
     }
 
+    // Map full_name to name for response
+    const userResponse = {
+      ...user,
+      name: (user as any).full_name,
+    };
+    delete (userResponse as any).full_name;
+
     res.status(200).json({
       message: 'User profile updated',
-      data: { user },
+      data: { user: userResponse },
     });
   });
 }

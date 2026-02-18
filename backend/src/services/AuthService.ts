@@ -33,9 +33,9 @@ export class AuthService {
 
     // Create user
     const result = await query(
-      `INSERT INTO users (email, password_hash, name, phone, role, created_at, updated_at)
+      `INSERT INTO users (email, password_hash, full_name, phone, role, created_at, updated_at)
        VALUES ($1, $2, $3, $4, $5, NOW(), NOW())
-       RETURNING id, email, name, phone, role, created_at`,
+       RETURNING id, email, full_name, phone, role, created_at`,
       [email, passwordHash, name, phone || null, roleToAssign]
     );
 
@@ -56,7 +56,7 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
-        name: user.name,
+        name: user.full_name,
         phone: user.phone,
         role: user.role,
       },
@@ -71,7 +71,7 @@ export class AuthService {
   ): Promise<{ user: UserResponse; accessToken: string; refreshToken: string }> {
     // Get user by email
     const users = await query(
-      'SELECT id, email, name, phone, role, password_hash FROM users WHERE email = $1',
+      'SELECT id, email, full_name, phone, role, password_hash FROM users WHERE email = $1',
       [email]
     );
 
@@ -103,7 +103,7 @@ export class AuthService {
       user: {
         id: user.id,
         email: user.email,
-        name: user.name,
+        name: user.full_name,
         phone: user.phone,
         role: user.role,
       },
@@ -132,7 +132,7 @@ export class AuthService {
 
   static async getUserById(id: string): Promise<User | null> {
     const result = await query(
-      'SELECT id, email, name, phone, role, created_at FROM users WHERE id = $1',
+      'SELECT id, email, full_name, phone, role, created_at FROM users WHERE id = $1',
       [id]
     );
 
@@ -148,7 +148,7 @@ export class AuthService {
     let paramCount = 1;
 
     if (updates.name) {
-      fields.push(`name = $${paramCount++}`);
+      fields.push(`full_name = $${paramCount++}`);
       values.push(updates.name);
     }
     if (updates.phone) {

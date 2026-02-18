@@ -61,9 +61,15 @@ AuthController.getProfile = asyncHandler(async (req, res) => {
     if (!user) {
         throw ApiError('User not found', 404);
     }
+    // Map full_name to name for response
+    const userResponse = {
+        ...user,
+        name: user.full_name,
+    };
+    delete userResponse.full_name;
     res.status(200).json({
         message: 'User profile retrieved',
-        data: { user },
+        data: { user: userResponse },
     });
 });
 AuthController.updateProfile = asyncHandler(async (req, res) => {
@@ -75,9 +81,15 @@ AuthController.updateProfile = asyncHandler(async (req, res) => {
     if (!user) {
         throw ApiError('User not found', 404);
     }
+    // Map full_name to name for response
+    const userResponse = {
+        ...user,
+        name: user.full_name,
+    };
+    delete userResponse.full_name;
     res.status(200).json({
         message: 'User profile updated',
-        data: { user },
+        data: { user: userResponse },
     });
 });
 //# sourceMappingURL=AuthController.js.map
