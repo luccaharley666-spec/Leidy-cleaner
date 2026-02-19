@@ -26,22 +26,33 @@
   @apply box-border;
 }
 
+
 html {
   @apply scroll-smooth;
+  font-size: 16px;
 }
 
-body {
   @apply bg-gray-50 text-gray-900 font-sans;
+  min-height: 100vh;
+  line-height: 1.5;
 }
 
-a {
-  @apply text-primary hover:text-primary-dark transition-colors;
+  @apply text-primary hover:text-primary-dark transition-colors underline-offset-2 focus:outline-none focus:ring-2 focus:ring-primary;
 }
 
-button {
-  @apply transition-colors duration-200;
+  @apply transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary;
 }
 
-input, textarea, select {
   @apply rounded-lg border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  font-size: 1rem;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
 }

@@ -1,4 +1,48 @@
 "use client";
+import React, { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { apiClient, Service } from '@/services/api';
+
+export default function ServiceDetailPage() {
+  const params = useParams();
+  const router = useRouter();
+  const [service, setService] = useState<Service | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!params?.id) return;
+    apiClient.getServiceById(params.id as string)
+      .then(setService)
+      .catch(() => router.push('/services'))
+      .finally(() => setLoading(false));
+  }, [params, router]);
+
+  if (loading) return <div>Carregando...</div>;
+  if (!service) return <div>Serviço não encontrado.</div>;
+
+  return (
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow mt-8">
+      <h1 className="text-3xl font-bold mb-2">{service.name}</h1>
+      <p className="mb-4 text-gray-700">{service.description}</p>
+      <div className="mb-4">
+        <span className="font-semibold">Preço:</span> R$ {service.basePrice}
+      </div>
+      <div className="mb-4">
+        <span className="font-semibold">Duração:</span> {service.durationMinutes} min
+      </div>
+      <button
+        className="bg-blue-600 text-white px-4 py-2 rounded"
+        onClick={() => router.push(`/bookings/new?serviceId=${service.id}`)}
+      >
+        Agendar este serviço
+      </button>
+      <button
+        className="ml-4 text-blue-600 underline"
+        onClick={() => router.back()}
+      >Voltar</button>
+    </div>
+  );
+}"use client";
 
 import React, { useEffect, useState } from 'react';
 import { apiClient, Service } from '../../../services/api';

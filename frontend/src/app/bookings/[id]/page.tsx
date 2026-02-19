@@ -1,4 +1,65 @@
 "use client";
+import React, { useEffect, useState } from 'react';
+import { useParams, useRouter } from 'next/navigation';
+import { apiClient, Booking } from '@/services/api';
+
+export default function BookingDetailPage() {
+  const params = useParams();
+  const router = useRouter();
+  const [booking, setBooking] = useState<Booking | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
+  const [canceling, setCanceling] = useState(false);
+  const [cancelError, setCancelError] = useState('');
+
+  useEffect(() => {
+    if (!params?.id) return;
+    apiClient.getBookingById(params.id as string)
+      .then(setBooking)
+      .catch(() => setError('Agendamento não encontrado'))
+      .finally(() => setLoading(false));
+  }, [params]);
+
+  const handleCancel = async () => {
+    if (!booking) return;
+    setCanceling(true);
+    setCancelError('');
+    try {
+      await apiClient.updateBookingStatus(booking.id, 'cancelled');
+      setBooking({ ...booking, status: 'cancelled' });
+    } catch (err: any) {
+      setCancelError(err.message || 'Erro ao cancelar agendamento');
+    } finally {
+      setCanceling(false);
+    }
+  };
+
+  if (loading) return <div>Carregando...</div>;
+  if (error) return <div>{error}</div>;
+  if (!booking) return <div>Agendamento não encontrado.</div>;
+
+  return (
+    <div className="max-w-2xl mx-auto p-6 bg-white rounded shadow mt-8">
+      <h1 className="text-2xl font-bold mb-2">Detalhes do Agendamento</h1>
+      <div className="mb-2"><strong>Serviço:</strong> {booking.serviceName || booking.serviceId}</div>
+      <div className="mb-2"><strong>Data:</strong> {new Date(booking.scheduledDate).toLocaleString()}</div>
+      <div className="mb-2"><strong>Status:</strong> {booking.status}</div>
+      {booking.address && <div className="mb-2"><strong>Endereço:</strong> {booking.address}</div>}
+      {booking.notes && <div className="mb-2"><strong>Notas:</strong> {booking.notes}</div>}
+      {booking.status !== 'cancelled' && (
+        <button
+          className="mt-4 bg-red-600 text-white px-4 py-2 rounded disabled:opacity-50"
+          onClick={handleCancel}
+          disabled={canceling}
+        >
+          Cancelar Agendamento
+        </button>
+      )}
+      {cancelError && <div className="mt-2 text-red-600">{cancelError}</div>}
+      <button className="mt-4 ml-4 text-blue-600 underline" onClick={() => router.back()}>Voltar</button>
+    </div>
+  );
+}"use client";
 
 import React, { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';

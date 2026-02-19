@@ -17,6 +17,8 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const { register, isAuthenticated } = useAuth();
   const router = useRouter();
+  const toastHook = require('@/components/useToast').default;
+  const { show } = toastHook();
 
   if (isAuthenticated) {
     router.push('/');
@@ -43,9 +45,11 @@ export default function RegisterPage() {
 
     try {
       await register(formData.email, formData.password, formData.name, formData.phone);
+      show('Cadastro realizado com sucesso!', 'success');
       router.push('/');
     } catch (err: any) {
       setError(err.message || 'Erro ao se registrar');
+      show(err.message || 'Erro ao se registrar', 'error');
     } finally {
       setLoading(false);
     }

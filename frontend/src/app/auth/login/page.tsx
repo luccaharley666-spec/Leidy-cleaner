@@ -12,6 +12,8 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const { login, isAuthenticated } = useAuth();
   const router = useRouter();
+  const toastHook = require('@/components/useToast').default;
+  const { show } = toastHook();
 
   if (isAuthenticated) {
     router.push('/');
@@ -34,9 +36,11 @@ export default function LoginPage() {
 
     try {
       await login(email, password);
+      show('Login realizado com sucesso!', 'success');
       router.push('/');
     } catch (err: any) {
       setError(err.message || 'Erro ao fazer login');
+      show(err.message || 'Erro ao fazer login', 'error');
     } finally {
       setLoading(false);
     }

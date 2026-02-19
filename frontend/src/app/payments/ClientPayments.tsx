@@ -24,25 +24,28 @@ export default function ClientPayments() {
 
   const handlePay = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (bookingId) {
-      setMessage('Processando pagamento...');
-      try {
+    setMessage('Processando pagamento...');
+    try {
+      if (bookingId) {
         const res = await apiClient.createCheckoutSession(bookingId);
         if (res.url) {
-          // redirect to Stripe checkout
-          redirectTo(res.url);
+          setMessage('Redirecionando para o checkout seguro...');
+          setTimeout(() => redirectTo(res.url), 1200);
+          return;
         } else {
-          setMessage('Pagamento confirmado!');
-          router.push(`/bookings/${bookingId}`);
+          setMessage('Pagamento confirmado! Redirecionando para seus agendamentos...');
+          setTimeout(() => router.push(`/bookings/${bookingId}`), 1800);
+          return;
         }
-      } catch (err: any) {
-        setMessage(err.message || 'Erro no pagamento');
       }
-      return;
+      // Simulação para casos sem bookingId
+      setTimeout(() => {
+        setMessage('Pagamento (simulado) concluído. Redirecionando...');
+        setTimeout(() => router.push('/bookings'), 1500);
+      }, 1000);
+    } catch (err: any) {
+      setMessage(err.message || 'Erro no pagamento. Tente novamente.');
     }
-
-    setMessage('Processando (placeholder)...');
-    setTimeout(() => setMessage('Pagamento (simulado) concluído.'), 900);
   };
 
   return (
@@ -66,7 +69,11 @@ export default function ClientPayments() {
             {booking ? 'Pagar agendamento' : 'Pagar (simulado)'}
           </button>
         </form>
-        {message && <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded text-blue-800">{message}</div>}
+        {message && (
+          <div className={`mt-4 p-3 rounded border text-sm ${message.toLowerCase().includes('erro') ? 'bg-red-100 border-red-300 text-red-700' : message.toLowerCase().includes('processando') ? 'bg-yellow-50 border-yellow-200 text-yellow-800' : 'bg-green-50 border-green-200 text-green-800'}`}>
+            {message}
+          </div>
+        )}
       </div>
     </ProtectedRoute>
   );
