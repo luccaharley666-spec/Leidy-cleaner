@@ -1,13 +1,17 @@
-import { Router } from 'express';
-import { AuthController } from '../controllers/AuthController';
-import { authenticateToken } from '../middleware/auth';
-const router = Router();
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const AuthController_1 = require("../controllers/AuthController");
+const auth_1 = require("../middleware/auth");
+const router = (0, express_1.Router)();
 // Public routes
-router.post('/register', AuthController.register);
-router.post('/login', AuthController.login);
-router.post('/refresh-token', AuthController.refreshToken);
+router.post('/register', AuthController_1.AuthController.register);
+router.post('/login', AuthController_1.AuthController.login);
+router.post('/refresh-token', AuthController_1.AuthController.refreshToken);
 // Protected routes
-router.get('/me', authenticateToken, AuthController.getProfile);
-router.put('/me', authenticateToken, AuthController.updateProfile);
-export default router;
+router.get('/me', auth_1.authenticateToken, AuthController_1.AuthController.getProfile);
+router.put('/me', auth_1.authenticateToken, AuthController_1.AuthController.updateProfile);
+// Admin route to list users by role (e.g. ?role=staff)
+router.get('/users', auth_1.authenticateToken, AuthController_1.AuthController.listByRole);
+exports.default = router;
 //# sourceMappingURL=auth.js.map

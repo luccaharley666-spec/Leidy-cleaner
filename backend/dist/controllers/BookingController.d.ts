@@ -6,6 +6,9 @@ export declare class BookingController {
     static getById: (req: AuthRequest, res: Response, next: import("express").NextFunction) => void;
     static updateStatus: (req: AuthRequest, res: Response, next: import("express").NextFunction) => void;
     static remove: (req: AuthRequest, res: Response, next: import("express").NextFunction) => void;
+    static listAll: (req: AuthRequest, res: Response, next: import("express").NextFunction) => void;
+    static assignStaff: (req: AuthRequest, res: Response, next: import("express").NextFunction) => void;
+    static listByStaff: (req: AuthRequest, res: Response, next: import("express").NextFunction) => void;
 }
 export default BookingController;
 //# sourceMappingURL=BookingController.d.ts.map

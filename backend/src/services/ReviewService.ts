@@ -1,5 +1,4 @@
 import { query } from '../utils/database';
-import { Review } from '../types/models';
 
 export class ReviewService {
   static async createReview(

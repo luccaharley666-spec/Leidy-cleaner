@@ -5,19 +5,21 @@ services:
   backend:
     build:
       context: ./backend
-      dockerfile: ../Dockerfile.backend
+      dockerfile: Dockerfile
     container_name: avan-backend
     ports:
       - "3001:3001"
     environment:
       - NODE_ENV=development
       - PORT=3001
-      - DATABASE_URL=backend_data/database.sqlite
-    volumes:
-      - ./backend:/app
-      - /app/node_modules
-      - ./backend/backend_data:/app/backend_data
-    command: npm start
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_NAME=vammos_dev
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
       - avan-network
     healthcheck:
@@ -31,30 +33,46 @@ services:
   frontend:
     build:
       context: ./frontend
-      dockerfile: ../Dockerfile.frontend
+      dockerfile: Dockerfile
     container_name: avan-frontend
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=development
       - PORT=3000
-      - NEXT_PUBLIC_API_URL=http://localhost:3001
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
-      - /app/.next
-    command: npm run start
+      - NEXT_PUBLIC_API_URL=http://backend:3001
     depends_on:
       backend:
         condition: service_healthy
     networks:
       - avan-network
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:3000"]
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
       interval: 30s
       timeout: 10s
       retries: 3
       start_period: 40s
+
+  # Database (Postgres) for development
+  db:
+    image: postgres:15
+    container_name: avan-postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=vammos_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - ./backend/postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - avan-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   avan-network:

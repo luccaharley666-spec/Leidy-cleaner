@@ -54,8 +54,10 @@ async function runMigrations() {
 
       for (const statement of statements) {
         try {
+          logger.info(`Executing SQL statement: ${statement.slice(0, 240).replace(/\n/g, ' ')}`);
           await query(statement);
         } catch (err) {
+          logger.error('Error executing statement:', statement.slice(0,240).replace(/\n/g,' '));
           // Log but continue if it's a "already exists" error
           if (err instanceof Error && err.message.includes('already exists')) {
             logger.warn(`⚠️  ${err.message}`);

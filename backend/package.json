@@ -94,6 +94,7 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/jest": "^29.5.11",
     "@types/morgan": "^1.9.10",
+    "@types/multer": "^2.0.0",
     "@types/node": "^20.11.1",
     "@types/pg": "^8.16.0",
     "@types/supertest": "^6.0.3",

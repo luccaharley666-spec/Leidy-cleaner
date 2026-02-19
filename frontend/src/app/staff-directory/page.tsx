@@ -43,7 +43,6 @@ export default function StaffDirectoryPage() {
               {s.photoUrl && <img src={s.photoUrl} alt={s.name} className="w-12 h-12 rounded-full object-cover" />}
               <div>
                 <h2 className="font-semibold">{s.name}</h2>
-                {s.rating != null && <p className="text-yellow-600">{s.rating.toFixed(1)} ⭐</p>}
                 {s.bio && <p className="text-sm text-gray-600 truncate w-64">{s.bio}</p>}
               </div>
             </Link>

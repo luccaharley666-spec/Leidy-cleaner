@@ -1,12 +1,5 @@
 import React from 'react';
-
-export interface Review {
-  id: string;
-  rating: number;
-  comment?: string;
-  createdAt: string;
-  serviceName?: string;
-}
+import { Review } from '../services/api';
 
 export default function ReviewList({ reviews }: { reviews: Review[] }) {
   if (reviews.length === 0) {

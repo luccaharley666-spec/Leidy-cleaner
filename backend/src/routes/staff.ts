@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { StaffController } from '../controllers/StaffController';
-import { authMiddleware } from '../middleware/auth';
+import { authenticate } from '../middleware/auth';
 
 const router = Router();
 
@@ -9,9 +9,9 @@ router.get('/', StaffController.list);
 router.get('/:id', StaffController.getById);
 
 // protected profile updates and availability
-router.put('/:id', authMiddleware, StaffController.updateProfile);
-router.get('/:id/availability', authMiddleware, StaffController.getAvailability);
-router.put('/:id/availability', authMiddleware, StaffController.setAvailability);
+router.put('/:id', authenticate, StaffController.updateProfile);
+router.get('/:id/availability', authenticate, StaffController.getAvailability);
+router.put('/:id/availability', authenticate, StaffController.setAvailability);
 
 // reviews & rating (public)
 router.get('/:id/reviews', StaffController.getReviews);

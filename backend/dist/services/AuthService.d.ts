@@ -16,5 +16,6 @@ export declare class AuthService {
     }>;
     static getUserById(id: string): Promise<User | null>;
     static updateUser(id: string, updates: Partial<User>): Promise<User | null>;
+    static getUsersByRole(role: string): Promise<User[]>;
 }
 //# sourceMappingURL=AuthService.d.ts.map

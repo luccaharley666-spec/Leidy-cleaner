@@ -1,17 +1,22 @@
-import request from 'supertest';
-import express from 'express';
-import authRoutes from '../auth';
-import { errorHandler } from '../../middleware/errorHandler';
-const app = express();
-app.use(express.json());
-app.use('/api/v1/auth', authRoutes);
-app.use(errorHandler);
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const supertest_1 = __importDefault(require("supertest"));
+const express_1 = __importDefault(require("express"));
+const auth_1 = __importDefault(require("../auth"));
+const errorHandler_1 = require("../../middleware/errorHandler");
+const app = (0, express_1.default)();
+app.use(express_1.default.json());
+app.use('/api/v1/auth', auth_1.default);
+app.use(errorHandler_1.errorHandler);
 const uniqueSuffix = () => `${Date.now()}${Math.floor(Math.random() * 1000)}`;
 describe('Auth Routes', () => {
     describe('POST /api/v1/auth/register', () => {
         it('should register a new user', async () => {
             const email = `newemail+${uniqueSuffix()}@test.com`;
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email,
@@ -27,7 +32,7 @@ describe('Auth Routes', () => {
             expect(response.body.data.tokens).toHaveProperty('refreshToken');
         });
         it('should return 400 for missing required fields', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email: 'test@test.com',
@@ -38,7 +43,7 @@ describe('Auth Routes', () => {
         it('should return 400 for duplicate email', async () => {
             const email = `duplicate+${uniqueSuffix()}@test.com`;
             // First registration
-            await request(app)
+            await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email,
@@ -47,7 +52,7 @@ describe('Auth Routes', () => {
                 phone: '11999999999'
             });
             // Second registration with same email
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email,
@@ -63,7 +68,7 @@ describe('Auth Routes', () => {
         beforeEach(async () => {
             // Create a user for login tests
             loginEmail = `login+${uniqueSuffix()}@test.com`;
-            await request(app)
+            await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email: loginEmail,
@@ -73,7 +78,7 @@ describe('Auth Routes', () => {
             });
         });
         it('should login successfully with correct credentials', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/login')
                 .send({
                 email: loginEmail,
@@ -87,7 +92,7 @@ describe('Auth Routes', () => {
             expect(response.body.data.tokens).toHaveProperty('refreshToken');
         });
         it('should return 400 for wrong password', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/login')
                 .send({
                 email: 'login@test.com',
@@ -96,7 +101,7 @@ describe('Auth Routes', () => {
             expect(response.status).toBe(400);
         });
         it('should return 400 for non-existent email', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/login')
                 .send({
                 email: 'nonexistent@test.com',
@@ -110,7 +115,7 @@ describe('Auth Routes', () => {
         beforeEach(async () => {
             // Create a user and get refresh token
             const email = `refresh+${uniqueSuffix()}@test.com`;
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email,
@@ -121,7 +126,7 @@ describe('Auth Routes', () => {
             refreshToken = response.body.data.tokens.refreshToken;
         });
         it('should refresh token successfully', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/refresh-token')
                 .send({
                 refreshToken
@@ -133,7 +138,7 @@ describe('Auth Routes', () => {
             expect(response.body.data.tokens).toHaveProperty('refreshToken');
         });
         it('should return 401 for invalid refresh token', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/refresh-token')
                 .send({
                 refreshToken: 'invalid_token'
@@ -146,7 +151,7 @@ describe('Auth Routes', () => {
         beforeEach(async () => {
             // Create a user and get access token
             const email = `profile+${uniqueSuffix()}@test.com`;
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email,
@@ -157,7 +162,7 @@ describe('Auth Routes', () => {
             accessToken = response.body.data.tokens.accessToken;
         });
         it('should get user profile successfully', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .get('/api/v1/auth/me')
                 .set('Authorization', `Bearer ${accessToken}`);
             expect(response.status).toBe(200);
@@ -165,12 +170,12 @@ describe('Auth Routes', () => {
             expect(response.body.data).toHaveProperty('user');
         });
         it('should return 401 for missing access token', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .get('/api/v1/auth/me');
             expect(response.status).toBe(401);
         });
         it('should return 401 for invalid access token', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .get('/api/v1/auth/me')
                 .set('Authorization', 'Bearer invalid_token');
             expect(response.status).toBe(401);
@@ -181,7 +186,7 @@ describe('Auth Routes', () => {
         beforeEach(async () => {
             // Create a user and get access token
             const email = `update+${uniqueSuffix()}@test.com`;
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .post('/api/v1/auth/register')
                 .send({
                 email,
@@ -192,7 +197,7 @@ describe('Auth Routes', () => {
             accessToken = response.body.data.tokens.accessToken;
         });
         it('should update user profile successfully', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .put('/api/v1/auth/me')
                 .set('Authorization', `Bearer ${accessToken}`)
                 .send({
@@ -203,7 +208,7 @@ describe('Auth Routes', () => {
             expect(response.body.data.user.name).toBe('Updated Name');
         });
         it('should return 401 for missing access token', async () => {
-            const response = await request(app)
+            const response = await (0, supertest_1.default)(app)
                 .put('/api/v1/auth/me')
                 .send({
                 name: 'Updated Name'

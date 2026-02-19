@@ -5,7 +5,9 @@ export interface Booking {
     scheduled_date: string;
     status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
     total_price: number;
+    address?: string;
     notes?: string;
+    staff_id?: string;
     created_at: string;
     updated_at: string;
 }

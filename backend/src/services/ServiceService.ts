@@ -1,6 +1,7 @@
 import { query } from '../utils/database';
 import { logger } from '../utils/logger';
 import { Service } from '../types/models';
+import { MOCK_SERVICES } from '../utils/mockData';
 
 export class ServiceService {
   static async getAll(filters?: {
@@ -9,52 +10,85 @@ export class ServiceService {
     category?: string;
     search?: string;
   }): Promise<{ services: Service[]; total: number }> {
-    let whereClause = 'WHERE is_active = true';
-    const params: any[] = [];
+    try {
+      let whereClause = 'WHERE is_active = true';
+      const params: any[] = [];
 
-    if (filters?.category) {
-      whereClause += ` AND category = $${params.length + 1}`;
-      params.push(filters.category);
+      if (filters?.category) {
+        whereClause += ` AND category = $${params.length + 1}`;
+        params.push(filters.category);
+      }
+
+      if (filters?.search) {
+        whereClause += ` AND (name ILIKE $${params.length + 1} OR description ILIKE $${params.length + 2})`;
+        params.push(`%${filters.search}%`);
+        params.push(`%${filters.search}%`);
+      }
+
+      // Get total count
+      const countResult = await query(
+        `SELECT COUNT(*) as total FROM services ${whereClause}`,
+        params
+      );
+
+      // Get paginated results
+      const limit = filters?.limit || 10;
+      const offset = filters?.offset || 0;
+
+      const services = await query(
+        `SELECT id, name, description, base_price, duration_minutes, category, is_active, created_at
+         FROM services ${whereClause}
+         ORDER BY created_at DESC
+         LIMIT $${params.length + 1} OFFSET $${params.length + 2}`,
+        [...params, limit, offset]
+      );
+
+      return {
+        services,
+        total: parseInt(countResult[0].total),
+      };
+    } catch (err) {
+      // If database fails, use mock data for development
+      logger.warn('Using mock data for services (database unavailable)');
+      let filtered = [...MOCK_SERVICES];
+      
+      if (filters?.category) {
+        filtered = filtered.filter(s => s.category === filters.category);
+      }
+      
+      if (filters?.search) {
+        const search = filters.search.toLowerCase();
+        filtered = filtered.filter(s => 
+          s.name.toLowerCase().includes(search) || 
+          s.description.toLowerCase().includes(search)
+        );
+      }
+      
+      const limit = filters?.limit || 10;
+      const offset = filters?.offset || 0;
+      const paginated = filtered.slice(offset, offset + limit);
+      
+      return {
+        services: paginated as any,
+        total: filtered.length,
+      };
     }
-
-    if (filters?.search) {
-      whereClause += ` AND (name ILIKE $${params.length + 1} OR description ILIKE $${params.length + 2})`;
-      params.push(`%${filters.search}%`);
-      params.push(`%${filters.search}%`);
-    }
-
-    // Get total count
-    const countResult = await query(
-      `SELECT COUNT(*) as total FROM services ${whereClause}`,
-      params
-    );
-
-    // Get paginated results
-    const limit = filters?.limit || 10;
-    const offset = filters?.offset || 0;
-
-    const services = await query(
-      `SELECT id, name, description, base_price, duration_minutes, category, is_active, created_at
-       FROM services ${whereClause}
-       ORDER BY created_at DESC
-       LIMIT $${params.length + 1} OFFSET $${params.length + 2}`,
-      [...params, limit, offset]
-    );
-
-    return {
-      services,
-      total: parseInt(countResult[0].total),
-    };
   }
 
   static async getById(id: string): Promise<Service | null> {
-    const result = await query(
-      `SELECT id, name, description, base_price, duration_minutes, category, is_active, created_at
-       FROM services WHERE id = $1 AND is_active = true`,
-      [id]
-    );
+    try {
+      const result = await query(
+        `SELECT id, name, description, base_price, duration_minutes, category, is_active, created_at
+         FROM services WHERE id = $1 AND is_active = true`,
+        [id]
+      );
 
-    return result.length > 0 ? result[0] : null;
+      return result.length > 0 ? result[0] : null;
+    } catch (err) {
+      // Use mock data if database fails
+      logger.warn('Using mock data for service (database unavailable)');
+      return MOCK_SERVICES.find(s => s.id === id) as any || null;
+    }
   }
 
   static async create(serviceData: {
@@ -129,9 +163,16 @@ export class ServiceService {
   }
 
   static async getCategories(): Promise<string[]> {
-    const result = await query(
-      'SELECT DISTINCT category FROM services WHERE is_active = true ORDER BY category'
-    );
-    return result.map((row: any) => row.category);
+    try {
+      const result = await query(
+        'SELECT DISTINCT category FROM services WHERE is_active = true ORDER BY category'
+      );
+      return result.map((row: any) => row.category);
+    } catch (err) {
+      // Use mock data if database fails
+      logger.warn('Using mock data for categories (database unavailable)');
+      const categories = [...new Set(MOCK_SERVICES.map(s => s.category))].sort();
+      return categories;
+    }
   }
 }

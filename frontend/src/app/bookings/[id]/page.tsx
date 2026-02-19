@@ -59,7 +59,7 @@ export default function BookingDetail() {
       <p><strong>Preço total:</strong> R$ {booking.totalPrice.toFixed(2)}</p>
       <p><strong>Status:</strong> {booking.status}</p>
       {booking.paymentStatus && <p><strong>Pagamento:</strong> {booking.paymentStatus}</p>}
-      <p><strong>Criado em:</strong> {new Date(booking.created_at).toLocaleString()}</p>
+      <p><strong>Criado em:</strong> {new Date(booking.createdAt).toLocaleString()}</p>
       <div className="mt-4 space-x-2">
         {booking.status === 'pending' && (
           <a href={`/payments?bookingId=${booking.id}`} className="inline-block bg-green-600 text-white px-4 py-2 rounded">

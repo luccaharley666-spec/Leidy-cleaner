@@ -36,12 +36,16 @@ export const serviceUpdateSchema = Joi.object({
 });
 
 // Booking schemas
+const numericString = Joi.string().pattern(/^[0-9]+$/);
+
 export const bookingSchema = Joi.object({
-  serviceId: Joi.string().uuid().required(),
+  serviceId: Joi.alternatives()
+    .try(Joi.string().uuid(), Joi.number().integer(), numericString)
+    .required(),
   bookingDate: Joi.date().iso().required(),
   address: Joi.string().required(),
   notes: Joi.string().optional(),
-  staffId: Joi.string().uuid().optional(),
+  staffId: Joi.alternatives().try(Joi.string().uuid(), Joi.number().integer(), numericString).optional(),
   metragem: Joi.number().positive().optional(),
   frequency: Joi.string().valid('once', 'weekly', 'biweekly', 'monthly').default('once'),
   urgency: Joi.string().valid('low', 'normal', 'high').default('normal'),
@@ -49,7 +53,7 @@ export const bookingSchema = Joi.object({
 
 // Review schema
 export const reviewSchema = Joi.object({
-  bookingId: Joi.string().uuid().required(),
+  bookingId: Joi.alternatives().try(Joi.string().uuid(), Joi.number().integer(), numericString).required(),
   rating: Joi.number().integer().min(1).max(5).required(),
   comment: Joi.string().optional(),
   images: Joi.array().items(Joi.string().uri()).optional(),
@@ -57,8 +61,8 @@ export const reviewSchema = Joi.object({
 
 // Staff assignment schema (admin)
 export const assignStaffSchema = Joi.object({
-  bookingId: Joi.string().uuid().required(),
-  staffId: Joi.string().uuid().required(),
+  bookingId: Joi.alternatives().try(Joi.string().uuid(), Joi.number().integer(), numericString).required(),
+  staffId: Joi.alternatives().try(Joi.string().uuid(), Joi.number().integer(), numericString).required(),
 });
 
 // Profile update schema (used by staff themselves or admin)

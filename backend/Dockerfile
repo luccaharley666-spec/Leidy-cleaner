@@ -1,26 +1,31 @@
 # Multi-stage Dockerfile: builds frontend, installs backend, and runs integrated server
-FROM node:20-bullseye AS frontend-builder
+FROM node:20-bullseye AS builder
 WORKDIR /app
-COPY frontend/package*.json ./frontend/
-COPY frontend/ ./frontend/
-WORKDIR /app/frontend
-RUN npm ci --silent --legacy-peer-deps && npm run build
+
+# Install backend deps and build TypeScript
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY ./src ./src
+COPY ./migrations ./migrations
+COPY ./package*.json ./
+RUN npm ci --silent --legacy-peer-deps
+RUN npm run build
 
 FROM node:20-bullseye AS runtime
 WORKDIR /app
-# Copy backend sources
-COPY backend/package*.json ./backend/
-COPY backend/ ./backend/
-# Install backend production deps
-WORKDIR /app/backend
+COPY --from=builder /app/dist ./dist
+# copy migrations into image runtime so entrypoint can run them
+COPY ./migrations ./migrations
+COPY package*.json ./
 RUN npm ci --only=production --silent --legacy-peer-deps || true
 
-# Copy built frontend into backend for Next integration
-COPY --from=frontend-builder /app/frontend/.next ./frontend/.next
-COPY --from=frontend-builder /app/frontend/public ./frontend/public
-COPY --from=frontend-builder /app/frontend/package.json ./frontend/package.json
+# install curl for healthchecks
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
 
-ENV NODE_ENV=production INTEGRATE_NEXT=true PORT=3001
+# copy entrypoint and make it executable
+COPY docker-entrypoint.sh ./docker-entrypoint.sh
+RUN chmod +x ./docker-entrypoint.sh
+
+ENV NODE_ENV=production PORT=3001
 EXPOSE 3001
-WORKDIR /app/backend
-CMD ["node", "src/index.js"]
+ENTRYPOINT ["./docker-entrypoint.sh"]

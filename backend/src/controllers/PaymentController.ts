@@ -72,11 +72,11 @@ export class PaymentController {
       metadata: { bookingId },
     });
 
-    res.status(200).json({ message: 'Session created', data: { url: session.url } });
+    return res.status(200).json({ message: 'Session created', data: { url: session.url } });
   });
 
   // webhook endpoint
-  static webhook = async (req: Request, res: Response) => {
+  static webhook = async (req: Request, res: Response): Promise<any> => {
     const sig = req.headers['stripe-signature'] as string | undefined;
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET || '';
     let event;
@@ -102,7 +102,7 @@ export class PaymentController {
       }
     }
 
-    res.status(200).json({ received: true });
+    return res.status(200).json({ received: true });
   };
 }
 

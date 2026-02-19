@@ -547,4 +547,4 @@ class ApiClient {
 }
 
 export const apiClient = new ApiClient();
-export type { User, Service, AuthTokens, ApiError };
+export type { User, Service, AuthTokens, ApiError, Review, Booking };

@@ -1,29 +1,31 @@
-import { Router } from 'express';
+import { Router, Request } from 'express';
 import { ReviewController } from '../controllers/ReviewController';
 import { authenticate } from '../middleware/auth';
-
-const router = Router();
 import multer from 'multer';
 import path from 'path';
 
+const router = Router();
+
 // configure multer storage
 const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
+  destination: function (_req: Request, _file: any, cb: any) {
     cb(null, path.join(__dirname, '..', '..', 'uploads', 'reviews'));
   },
-  filename: function (req, file, cb) {
+  filename: function (_req: Request, _file: any, cb: any) {
     const unique = Date.now() + '-' + Math.round(Math.random() * 1e9);
-    const ext = path.extname(file.originalname);
-    cb(null, file.fieldname + '-' + unique + ext);
+    const ext = path.extname(_file.originalname);
+    cb(null, _file.fieldname + '-' + unique + ext);
   }
 });
-const upload = multer({ storage, limits: { fileSize: 5 * 1024 * 1024 } });
+const upload = multer({ storage: storage, limits: { fileSize: 5 * 1024 * 1024 } });
 
-// all routes require authentication
+// public routes (no authentication needed)
+router.get('/public', ReviewController.getPublic);
+
+// all routes below require authentication
 router.use(authenticate);
 
 router.post('/', ReviewController.create);
-router.get('/public', ReviewController.getPublic);
 router.get('/:bookingId', ReviewController.getByBooking);
 
 // allow image uploads for a given review id (owner or admin)

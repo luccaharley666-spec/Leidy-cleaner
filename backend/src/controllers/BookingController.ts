@@ -2,8 +2,6 @@ import { Response } from 'express';
 import { AuthRequest, asyncHandler, ApiError } from '../middleware/errorHandler';
 import { query } from '../utils/database';
 import BookingService from '../services/BookingService';
-import { ServiceService } from '../services/ServiceService';
-import { bookingSchema } from '../utils/schemas';
 
 
 // helper to convert snake_case keys to camelCase recursively
@@ -48,7 +46,8 @@ export class BookingController {
       throw ApiError('Service not found', 404);
     }
 
-    const totalPrice = service.basePrice;
+    // service.base_price from DB (snake_case) or service.basePrice (camelized)
+    const totalPrice = Number(service.basePrice || service.base_price || 0);
 
     const booking = await BookingService.createBooking(
       req.user.id,

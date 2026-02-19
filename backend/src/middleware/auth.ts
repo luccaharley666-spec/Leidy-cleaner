@@ -46,3 +46,5 @@ export const authorizeRole = (...roles: string[]) => {
     return next();
   };
 };
+
+export const authenticate = authenticateToken;

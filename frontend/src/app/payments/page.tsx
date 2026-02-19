@@ -6,6 +6,11 @@ import { useSearchParams, useRouter } from 'next/navigation';
 import { apiClient, Booking } from '@/services/api';
 import { redirectTo } from '@/utils/navigation';
 
+// Skip static generation by returning empty array - prevents SSG for this page
+export async function generateStaticParams() {
+  return [];
+}
+
 export default function PaymentsPage() {
   const [amount, setAmount] = useState('');
   const [message, setMessage] = useState('');

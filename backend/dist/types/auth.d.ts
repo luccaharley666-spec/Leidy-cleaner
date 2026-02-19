@@ -4,8 +4,17 @@ export interface User {
     name: string;
     phone?: string;
     role: 'customer' | 'staff' | 'admin';
+    bio?: string | null;
+    photoUrl?: string | null;
     createdAt: Date;
     updatedAt: Date;
+}
+export interface Availability {
+    id: string;
+    staffId: string;
+    day: string;
+    startTime: string;
+    endTime: string;
 }
 export type UserResponse = Omit<User, 'createdAt' | 'updatedAt'>;
 export interface AuthToken {
