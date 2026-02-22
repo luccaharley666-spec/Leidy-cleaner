@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.closeServer = void 0;
 const dotenv_1 = __importDefault(require("dotenv"));
 dotenv_1.default.config();
 const express_1 = __importDefault(require("express"));
@@ -10,6 +11,7 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const express_rate_limit_1 = __importDefault(require("express-rate-limit"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const logger_1 = require("./utils/logger");
 const sanitize_1 = require("./middleware/sanitize");
 const errorHandler_1 = require("./middleware/errorHandler");
@@ -25,6 +27,7 @@ const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3001;
 // Trust proxy for rate limiting
 app.set('trust proxy', 1);
+let server = null;
 // Middleware de segurança
 app.use((0, helmet_1.default)({
     contentSecurityPolicy: {
@@ -54,7 +57,8 @@ app.use((0, cors_1.default)({
             'https://leidycleaner.com',
             process.env.FRONTEND_URL
         ].filter(Boolean);
-        if (allowedOrigins.includes(origin)) {
+        // Accept exact match or allow origins that start with an allowed origin
+        if (allowedOrigins.includes(origin) || allowedOrigins.some(o => origin.startsWith(o))) {
             return callback(null, true);
         }
         return callback(new Error('Not allowed by CORS'));
@@ -63,6 +67,8 @@ app.use((0, cors_1.default)({
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With']
 }));
+// Cookie parser to read HttpOnly cookies (refresh tokens)
+app.use((0, cookie_parser_1.default)());
 // Request logging
 app.use((0, morgan_1.default)('combined', {
     stream: {
@@ -70,13 +76,6 @@ app.use((0, morgan_1.default)('combined', {
     }
 }));
 // Rate limiting
-const generalLimiter = (0, express_rate_limit_1.default)({
-    windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 100,
-    message: 'Too many requests from this IP, please try again later.',
-    standardHeaders: true,
-    legacyHeaders: false,
-});
 const authLimiter = (0, express_rate_limit_1.default)({
     windowMs: 15 * 60 * 1000, // 15 minutos
     max: 5, // Mais restritivo para auth
@@ -94,7 +93,6 @@ const apiLimiter = (0, express_rate_limit_1.default)({
 // Aplicar rate limiting
 app.use('/api/v1/auth', authLimiter);
 app.use('/api/v1', apiLimiter);
-app.use(generalLimiter);
 // Body parsing
 app.use(express_1.default.json({ limit: '10mb' }));
 app.use(express_1.default.urlencoded({ limit: '10mb', extended: true }));
@@ -188,7 +186,7 @@ app.use((req, res) => {
 app.use(errorHandler_1.errorHandler);
 // Start server only if not being used as middleware
 if (!process.env.NEXT_INTEGRATION) {
-    app.listen(PORT, () => {
+    server = app.listen(PORT, () => {
         logger_1.logger.info(`✅ Backend running on http://localhost:${PORT}`);
         logger_1.logger.info(`📚 API: http://localhost:${PORT}/api/v1`);
         logger_1.logger.info(`💚 Health: http://localhost:${PORT}/health`);
@@ -197,5 +195,21 @@ if (!process.env.NEXT_INTEGRATION) {
         logger_1.logger.info(`🛍️  Services: http://localhost:${PORT}/api/v1/services`);
     });
 }
+// Helper to close the server (used in tests to let Jest exit cleanly)
+const closeServer = async () => {
+    return new Promise((resolve) => {
+        if (server) {
+            server.close(() => {
+                logger_1.logger.info('✅ HTTP server closed');
+                server = null;
+                resolve();
+            });
+        }
+        else {
+            resolve();
+        }
+    });
+};
+exports.closeServer = closeServer;
 exports.default = app;
 //# sourceMappingURL=main.js.map

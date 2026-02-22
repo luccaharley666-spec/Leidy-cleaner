@@ -8,6 +8,7 @@ const router = (0, express_1.Router)();
 router.post('/register', AuthController_1.AuthController.register);
 router.post('/login', AuthController_1.AuthController.login);
 router.post('/refresh-token', AuthController_1.AuthController.refreshToken);
+router.post('/logout', AuthController_1.AuthController.logout);
 // Protected routes
 router.get('/me', auth_1.authenticateToken, AuthController_1.AuthController.getProfile);
 router.put('/me', auth_1.authenticateToken, AuthController_1.AuthController.updateProfile);

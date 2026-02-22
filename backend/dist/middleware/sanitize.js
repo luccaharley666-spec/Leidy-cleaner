@@ -5,8 +5,12 @@ const sanitizeInput = (req, _res, next) => {
     // Sanitizar query parameters
     if (req.query) {
         Object.keys(req.query).forEach(key => {
-            if (typeof req.query[key] === 'string') {
-                req.query[key] = sanitizeString(req.query[key]);
+            const val = req.query[key];
+            if (typeof val === 'string') {
+                req.query[key] = sanitizeString(val);
+            }
+            else if (Array.isArray(val)) {
+                req.query[key] = val.map(v => (typeof v === 'string' ? sanitizeString(v) : v));
             }
         });
     }

@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getDatabase = exports.getClient = exports.query = void 0;
+exports.closeDatabase = exports.getDatabase = exports.getClient = exports.query = void 0;
 const pg_1 = __importDefault(require("pg"));
 const logger_1 = require("./logger");
 const { Pool } = pg_1.default;
@@ -85,8 +85,16 @@ const query = async (text, params) => {
     }
     return new Promise((resolve, reject) => {
         if (getDBType() === 'sqlite' && sqliteDb) {
-            if (text.trim().toLowerCase().startsWith('select')) {
-                sqliteDb.all(text, params || [], (err, rows) => {
+            // Preprocess SQL for SQLite compatibility
+            let sql = text;
+            const wantsReturning = /RETURNING\s+/i.test(sql);
+            if (wantsReturning) {
+                sql = sql.replace(/RETURNING[\s\S]*$/i, '');
+            }
+            sql = sql.replace(/\bNOW\(\)/ig, 'CURRENT_TIMESTAMP');
+            const trimmed = sql.trim().toLowerCase();
+            if (trimmed.startsWith('select')) {
+                sqliteDb.all(sql, params || [], (err, rows) => {
                     if (err)
                         reject(err);
                     else
@@ -94,11 +102,43 @@ const query = async (text, params) => {
                 });
             }
             else {
-                sqliteDb.run(text, params || [], function (err) {
+                sqliteDb.run(sql, params || [], function (err) {
                     if (err)
-                        reject(err);
-                    else
+                        return reject(err);
+                    if (wantsReturning) {
+                        // Try to detect table name for INSERT/UPDATE to fetch the affected row
+                        const insertMatch = sql.match(/insert\s+into\s+["'`]?([a-zA-Z0-9_]+)["'`]?/i);
+                        const updateMatch = sql.match(/update\s+["'`]?([a-zA-Z0-9_]+)["'`]?/i);
+                        if (insertMatch) {
+                            const table = insertMatch[1];
+                            const lastID = this && this.lastID;
+                            sqliteDb.all(`SELECT * FROM ${table} WHERE id = ?`, [lastID], (err2, rows) => {
+                                if (err2)
+                                    reject(err2);
+                                else
+                                    resolve(rows);
+                            });
+                        }
+                        else if (updateMatch) {
+                            const table = updateMatch[1];
+                            // Assume the id was passed as the last parameter for updates using RETURNING
+                            const idParam = params && params.length ? params[params.length - 1] : null;
+                            if (idParam == null)
+                                return resolve([]);
+                            sqliteDb.all(`SELECT * FROM ${table} WHERE id = ?`, [idParam], (err2, rows) => {
+                                if (err2)
+                                    reject(err2);
+                                else
+                                    resolve(rows);
+                            });
+                        }
+                        else {
+                            resolve([]);
+                        }
+                    }
+                    else {
                         resolve([]);
+                    }
                 });
             }
         }
@@ -141,16 +181,34 @@ exports.default = exports.getDatabase;
 const closeDatabaseGracefully = async () => {
     try {
         if (sqliteDb) {
-            sqliteDb.close((err) => {
-                if (err)
-                    logger_1.logger.error('Error closing SQLite:', err);
-                else
-                    logger_1.logger.info('✅ SQLite database closed gracefully');
+            await new Promise((resolve, reject) => {
+                try {
+                    sqliteDb.close((err) => {
+                        if (err) {
+                            logger_1.logger.error('Error closing SQLite:', err);
+                            return reject(err);
+                        }
+                        logger_1.logger.info('✅ SQLite database closed gracefully');
+                        sqliteDb = null;
+                        resolve();
+                    });
+                }
+                catch (err) {
+                    // if close throws synchronously
+                    logger_1.logger.error('SQLite close threw error:', err);
+                    sqliteDb = null;
+                    return resolve();
+                }
             });
         }
         else if (pool) {
-            await pool.end();
-            logger_1.logger.info('✅ PostgreSQL pool closed gracefully');
+            try {
+                await pool.end();
+                logger_1.logger.info('✅ PostgreSQL pool closed gracefully');
+            }
+            finally {
+                pool = null;
+            }
         }
     }
     catch (err) {
@@ -159,4 +217,6 @@ const closeDatabaseGracefully = async () => {
 };
 process.on('SIGINT', closeDatabaseGracefully);
 process.on('SIGTERM', closeDatabaseGracefully);
+// Exported helper to allow tests to close DB connections gracefully
+exports.closeDatabase = closeDatabaseGracefully;
 //# sourceMappingURL=database.js.map

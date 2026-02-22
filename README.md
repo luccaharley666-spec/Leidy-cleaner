@@ -262,6 +262,35 @@ npm run type-check
 5. Token expira → cliente usa `refreshToken` para obter novo token
 6. Logout limpa tokens do localStorage
 
+## 🔁 Rollout: mudança para refresh token em HttpOnly cookie
+
+Recomendação de rollout ao ativar o envio do `refreshToken` por cookie HttpOnly:
+
+- Em `production`, habilitar `COOKIE_SECURE=true` (HTTPS obrigatório). Se usar
+	`COOKIE_SAMESITE=None`, `COOKIE_SECURE` precisa ser `true`.
+- Atualize o `README`/`.env` e a infraestrutura antes do deploy (load balancers,
+	proxies e domínio). Use `COOKIE_DOMAIN` para ambientes com domínio específico.
+- Para evitar logout forçado dos usuários, adote rotação de segredo dos refresh
+	tokens com sobreposição: gere um novo `JWT_REFRESH_SECRET`, mantenha o antigo
+	por um curto período e valide ambos durante a transição.
+- Procedimento de revogação: ao forçar logout, incremente um `tokenVersion` no
+	banco ou registre `revoked_at` para refresh tokens e rejeite tokens antigos.
+- Atualize o frontend para não depender do armazenamento local do `refreshToken`.
+	Em vez disso, chame `POST /api/v1/auth/refresh-token` sem enviar o token (o
+	cookie HttpOnly será incluído automaticamente). Opcionalmente, mantenha
+	retorno do token no corpo para compatibilidade enquanto o frontend é atualizado.
+
+Comandos úteis locais para testar via HTTPS (exemplo com `local-ssl-proxy`):
+
+```bash
+# start backend com NODE_ENV=production (require HTTPS for secure cookies)
+NODE_ENV=production COOKIE_SECURE=true npm run dev
+
+# testar refresh via cookie (supertest/local client)
+# o teste de integração `backend/src/routes/__tests__/refreshCookie.test.ts` valida o fluxo
+npm test -- --runInBand
+```
+
 ## 📦 Stack Tecnológico
 
 | Camada | Tecnologia |

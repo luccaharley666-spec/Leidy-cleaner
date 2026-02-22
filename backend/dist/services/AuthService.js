@@ -1,4 +1,7 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const database_1 = require("../utils/database");
@@ -6,6 +9,8 @@ const password_1 = require("../utils/password");
 const jwt_1 = require("../utils/jwt");
 const logger_1 = require("../utils/logger");
 const errorHandler_1 = require("../middleware/errorHandler");
+const crypto_1 = __importDefault(require("crypto"));
+const jwt_2 = require("../utils/jwt");
 class AuthService {
     static async register(email, password, name, phone) {
         // Check if user already exists
@@ -17,7 +22,7 @@ class AuthService {
         const adminCheck = await (0, database_1.query)("SELECT COUNT(*) as count FROM users WHERE role = 'admin'");
         const roleToAssign = adminCheck[0].count === '0' || adminCheck[0].count === 0
             ? 'admin'
-            : 'user';
+            : 'customer';
         // Hash password
         const passwordHash = await (0, password_1.hashPassword)(password);
         // Create user
@@ -32,6 +37,8 @@ class AuthService {
             role: user.role,
         };
         const { accessToken, refreshToken } = (0, jwt_1.generateTokens)(payload);
+        // persist refresh token for revocation support
+        await AuthService.saveRefreshToken(user.id, refreshToken);
         logger_1.logger.info(`✅ User registered: ${email}`);
         return {
             user: {
@@ -67,6 +74,8 @@ class AuthService {
         };
         const { accessToken, refreshToken } = (0, jwt_1.generateTokens)(payload);
         logger_1.logger.info(`✅ User logged in: ${email}`);
+        // persist refresh token
+        await AuthService.saveRefreshToken(user.id, refreshToken);
         return {
             user: {
                 id: user.id,
@@ -82,16 +91,59 @@ class AuthService {
         };
     }
     static async refreshToken(refreshToken) {
+        // verify token signature first
         const payload = (0, jwt_1.verifyRefreshToken)(refreshToken);
+        // ensure token is not revoked
+        const revoked = await AuthService.isRefreshTokenRevoked(refreshToken);
+        if (revoked) {
+            throw (0, errorHandler_1.ApiError)('Invalid refresh token', 401);
+        }
         const { accessToken, refreshToken: newRefreshToken } = (0, jwt_1.generateTokens)({
             id: payload.id,
             email: payload.email,
             role: payload.role,
         });
+        // save new refresh token and revoke old one
+        await AuthService.saveRefreshToken(String(payload.id), newRefreshToken);
+        await AuthService.revokeRefreshToken(refreshToken);
         return {
             accessToken,
             refreshToken: newRefreshToken,
         };
+    }
+    static hashToken(token) {
+        return crypto_1.default.createHash('sha256').update(token).digest('hex');
+    }
+    static async saveRefreshToken(userId, token) {
+        const tokenHash = AuthService.hashToken(token);
+        const decoded = (0, jwt_2.decodeToken)(token) || {};
+        const expiresAt = decoded && decoded.exp ? new Date(decoded.exp * 1000) : null;
+        try {
+            await (0, database_1.query)('INSERT INTO refresh_tokens (user_id, token_hash, expires_at, revoked, created_at) VALUES ($1, $2, $3, false, NOW())', [userId, tokenHash, expiresAt]);
+        }
+        catch (err) {
+            // ignore duplicate inserts
+            logger_1.logger.debug('saveRefreshToken: insert error (possibly duplicate)', err);
+        }
+    }
+    static async revokeRefreshToken(token) {
+        const tokenHash = AuthService.hashToken(token);
+        await (0, database_1.query)('UPDATE refresh_tokens SET revoked = true WHERE token_hash = $1', [tokenHash]);
+    }
+    static async isRefreshTokenRevoked(token) {
+        const tokenHash = AuthService.hashToken(token);
+        const rows = await (0, database_1.query)('SELECT revoked, expires_at FROM refresh_tokens WHERE token_hash = $1', [tokenHash]);
+        if (!rows || rows.length === 0)
+            return true; // unknown tokens treated as revoked
+        const row = rows[0];
+        if (row.revoked)
+            return true;
+        if (row.expires_at) {
+            const exp = new Date(row.expires_at);
+            if (exp.getTime() < Date.now())
+                return true;
+        }
+        return false;
     }
     static async getUserById(id) {
         const result = await (0, database_1.query)('SELECT id, email, full_name, phone, role, bio, photo_url, created_at, updated_at FROM users WHERE id = $1', [id]);

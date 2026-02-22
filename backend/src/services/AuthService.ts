@@ -4,6 +4,8 @@ import { generateTokens, verifyRefreshToken } from '../utils/jwt';
 import { logger } from '../utils/logger';
 import { ApiError } from '../middleware/errorHandler';
 import { User, UserResponse, JWTPayload } from '../types/auth';
+import crypto from 'crypto';
+import { decodeToken } from '../utils/jwt';
 
 export class AuthService {
   static async register(
@@ -49,6 +51,9 @@ export class AuthService {
     };
 
     const { accessToken, refreshToken } = generateTokens(payload);
+
+    // persist refresh token for revocation support
+    await AuthService.saveRefreshToken(user.id, refreshToken);
 
     logger.info(`✅ User registered: ${email}`);
 
@@ -101,6 +106,9 @@ export class AuthService {
 
     logger.info(`✅ User logged in: ${email}`);
 
+    // persist refresh token
+    await AuthService.saveRefreshToken(user.id, refreshToken);
+
     return {
       user: {
         id: user.id,
@@ -120,7 +128,14 @@ export class AuthService {
     accessToken: string;
     refreshToken: string;
   }> {
+    // verify token signature first
     const payload = verifyRefreshToken(refreshToken);
+
+    // ensure token is not revoked
+    const revoked = await AuthService.isRefreshTokenRevoked(refreshToken);
+    if (revoked) {
+      throw ApiError('Invalid refresh token', 401);
+    }
 
     const { accessToken, refreshToken: newRefreshToken } = generateTokens({
       id: payload.id,
@@ -128,10 +143,51 @@ export class AuthService {
       role: payload.role,
     });
 
+    // save new refresh token and revoke old one
+    await AuthService.saveRefreshToken(String(payload.id), newRefreshToken);
+    await AuthService.revokeRefreshToken(refreshToken);
+
     return {
       accessToken,
       refreshToken: newRefreshToken,
     };
+  }
+
+  static hashToken(token: string) {
+    return crypto.createHash('sha256').update(token).digest('hex');
+  }
+
+  static async saveRefreshToken(userId: string | number, token: string) {
+    const tokenHash = AuthService.hashToken(token);
+    const decoded: any = decodeToken(token) || {};
+    const expiresAt = decoded && decoded.exp ? new Date((decoded.exp as number) * 1000) : null;
+    try {
+      await query(
+        'INSERT INTO refresh_tokens (user_id, token_hash, expires_at, revoked, created_at) VALUES ($1, $2, $3, false, NOW())',
+        [userId, tokenHash, expiresAt]
+      );
+    } catch (err) {
+      // ignore duplicate inserts
+      logger.debug('saveRefreshToken: insert error (possibly duplicate)', err);
+    }
+  }
+
+  static async revokeRefreshToken(token: string) {
+    const tokenHash = AuthService.hashToken(token);
+    await query('UPDATE refresh_tokens SET revoked = true WHERE token_hash = $1', [tokenHash]);
+  }
+
+  static async isRefreshTokenRevoked(token: string) {
+    const tokenHash = AuthService.hashToken(token);
+    const rows = await query('SELECT revoked, expires_at FROM refresh_tokens WHERE token_hash = $1', [tokenHash]);
+    if (!rows || rows.length === 0) return true; // unknown tokens treated as revoked
+    const row = rows[0] as any;
+    if (row.revoked) return true;
+    if (row.expires_at) {
+      const exp = new Date(row.expires_at);
+      if (exp.getTime() < Date.now()) return true;
+    }
+    return false;
   }
 
   static async getUserById(id: string): Promise<User | null> {

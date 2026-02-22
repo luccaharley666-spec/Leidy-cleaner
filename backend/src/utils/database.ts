@@ -171,13 +171,31 @@ export default getDatabase;
 const closeDatabaseGracefully = async () => {
   try {
     if (sqliteDb) {
-      sqliteDb.close((err: Error | null) => {
-        if (err) logger.error('Error closing SQLite:', err);
-        else logger.info('✅ SQLite database closed gracefully');
+      await new Promise<void>((resolve, reject) => {
+        try {
+          sqliteDb.close((err: Error | null) => {
+            if (err) {
+              logger.error('Error closing SQLite:', err);
+              return reject(err);
+            }
+            logger.info('✅ SQLite database closed gracefully');
+            sqliteDb = null;
+            resolve();
+          });
+        } catch (err) {
+          // if close throws synchronously
+          logger.error('SQLite close threw error:', err);
+          sqliteDb = null;
+          return resolve();
+        }
       });
     } else if (pool) {
-      await pool.end();
-      logger.info('✅ PostgreSQL pool closed gracefully');
+      try {
+        await pool.end();
+        logger.info('✅ PostgreSQL pool closed gracefully');
+      } finally {
+        pool = null as any;
+      }
     }
   } catch (err) {
     // ignore

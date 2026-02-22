@@ -100,6 +100,32 @@ export class AuthController {
     });
   });
 
+  static logout = asyncHandler(async (req: AuthRequest, res: Response) => {
+    // Accept refresh token from body or HttpOnly cookie
+    const refreshToken = (req.body && (req.body as any).refreshToken) || (req.cookies && (req.cookies as any).refreshToken);
+
+    if (refreshToken) {
+      try {
+        await AuthService.revokeRefreshToken(refreshToken);
+      } catch (err) {
+        // ignore revoke errors
+      }
+    }
+
+    // clear cookie
+    const cookieOptionsLogout: any = {
+      httpOnly: true,
+      secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+      sameSite: (process.env.COOKIE_SAMESITE || 'lax') as any,
+      maxAge: 0,
+      domain: process.env.COOKIE_DOMAIN || undefined,
+      path: process.env.COOKIE_PATH || '/',
+    };
+    res.clearCookie('refreshToken', cookieOptionsLogout);
+
+    res.status(200).json({ message: 'Logged out' });
+  });
+
   static getProfile = asyncHandler(async (req: AuthRequest, res: Response) => {
     if (!req.user) {
       throw ApiError('Not authenticated', 401);

@@ -5,6 +5,7 @@ class MemoryCache {
     constructor() {
         this.cache = new Map();
         this.defaultTTL = 300000; // 5 minutos
+        this.intervalId = null;
     }
     set(key, data, ttl) {
         const expires = Date.now() + (ttl || this.defaultTTL);
@@ -37,7 +38,14 @@ class MemoryCache {
     }
     // Executar cleanup a cada 5 minutos
     startCleanup() {
-        setInterval(() => this.cleanup(), 300000);
+        this.intervalId = setInterval(() => this.cleanup(), 300000);
+    }
+    // Parar cleanup (útil em testes para evitar handles abertos)
+    stopCleanup() {
+        if (this.intervalId) {
+            clearInterval(this.intervalId);
+            this.intervalId = null;
+        }
     }
 }
 exports.cache = new MemoryCache();

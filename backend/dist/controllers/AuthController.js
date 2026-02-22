@@ -16,6 +16,17 @@ AuthController.register = (0, errorHandler_1.asyncHandler)(async (req, res) => {
     }
     const { email, password, name, phone } = value;
     const result = await AuthService_1.AuthService.register(email, password, name, phone);
+    // Set refresh token as HttpOnly cookie (also return tokens in body for backwards compatibility)
+    const refreshCookieMaxAge = Number(process.env.JWT_REFRESH_MAX_AGE_MS) || 7 * 24 * 60 * 60 * 1000; // 7 days default
+    const cookieOptionsReg = {
+        httpOnly: true,
+        secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+        sameSite: (process.env.COOKIE_SAMESITE || 'lax'),
+        maxAge: refreshCookieMaxAge,
+        domain: process.env.COOKIE_DOMAIN || undefined,
+        path: process.env.COOKIE_PATH || '/',
+    };
+    res.cookie('refreshToken', result.refreshToken, cookieOptionsReg);
     res.status(201).json({
         message: 'User registered successfully',
         data: {
@@ -34,6 +45,16 @@ AuthController.login = (0, errorHandler_1.asyncHandler)(async (req, res) => {
     }
     const { email, password } = value;
     const result = await AuthService_1.AuthService.login(email, password);
+    const refreshCookieMaxAge = Number(process.env.JWT_REFRESH_MAX_AGE_MS) || 7 * 24 * 60 * 60 * 1000; // 7 days default
+    const cookieOptionsLogin = {
+        httpOnly: true,
+        secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+        sameSite: (process.env.COOKIE_SAMESITE || 'lax'),
+        maxAge: refreshCookieMaxAge,
+        domain: process.env.COOKIE_DOMAIN || undefined,
+        path: process.env.COOKIE_PATH || '/',
+    };
+    res.cookie('refreshToken', result.refreshToken, cookieOptionsLogin);
     res.status(200).json({
         message: 'User logged in successfully',
         data: {
@@ -46,16 +67,49 @@ AuthController.login = (0, errorHandler_1.asyncHandler)(async (req, res) => {
     });
 });
 AuthController.refreshToken = (0, errorHandler_1.asyncHandler)(async (req, res) => {
-    const { error, value } = schemas_1.refreshTokenSchema.validate(req.body);
-    if (error) {
-        throw (0, errorHandler_1.ApiError)(error.details[0].message, 400);
+    // Accept refresh token from body or HttpOnly cookie
+    const refreshToken = (req.body && req.body.refreshToken) || (req.cookies && req.cookies.refreshToken);
+    if (!refreshToken) {
+        throw (0, errorHandler_1.ApiError)('Refresh token required', 400);
     }
-    const { refreshToken } = value;
     const tokens = await AuthService_1.AuthService.refreshToken(refreshToken);
+    const refreshCookieMaxAge = Number(process.env.JWT_REFRESH_MAX_AGE_MS) || 7 * 24 * 60 * 60 * 1000; // 7 days default
+    const cookieOptionsRefresh = {
+        httpOnly: true,
+        secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+        sameSite: (process.env.COOKIE_SAMESITE || 'lax'),
+        maxAge: refreshCookieMaxAge,
+        domain: process.env.COOKIE_DOMAIN || undefined,
+        path: process.env.COOKIE_PATH || '/',
+    };
+    res.cookie('refreshToken', tokens.refreshToken, cookieOptionsRefresh);
     res.status(200).json({
         message: 'Token refreshed successfully',
         data: { tokens },
     });
+});
+AuthController.logout = (0, errorHandler_1.asyncHandler)(async (req, res) => {
+    // Accept refresh token from body or HttpOnly cookie
+    const refreshToken = (req.body && req.body.refreshToken) || (req.cookies && req.cookies.refreshToken);
+    if (refreshToken) {
+        try {
+            await AuthService_1.AuthService.revokeRefreshToken(refreshToken);
+        }
+        catch (err) {
+            // ignore revoke errors
+        }
+    }
+    // clear cookie
+    const cookieOptionsLogout = {
+        httpOnly: true,
+        secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+        sameSite: (process.env.COOKIE_SAMESITE || 'lax'),
+        maxAge: 0,
+        domain: process.env.COOKIE_DOMAIN || undefined,
+        path: process.env.COOKIE_PATH || '/',
+    };
+    res.clearCookie('refreshToken', cookieOptionsLogout);
+    res.status(200).json({ message: 'Logged out' });
 });
 AuthController.getProfile = (0, errorHandler_1.asyncHandler)(async (req, res) => {
     if (!req.user) {
