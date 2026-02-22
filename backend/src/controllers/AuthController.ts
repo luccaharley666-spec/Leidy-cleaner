@@ -17,12 +17,15 @@ export class AuthController {
 
     // Set refresh token as HttpOnly cookie (also return tokens in body for backwards compatibility)
     const refreshCookieMaxAge = Number(process.env.JWT_REFRESH_MAX_AGE_MS) || 7 * 24 * 60 * 60 * 1000; // 7 days default
-    res.cookie('refreshToken', result.refreshToken, {
+    const cookieOptionsReg: any = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+      sameSite: (process.env.COOKIE_SAMESITE || 'lax') as any,
       maxAge: refreshCookieMaxAge,
-    });
+      domain: process.env.COOKIE_DOMAIN || undefined,
+      path: process.env.COOKIE_PATH || '/',
+    };
+    res.cookie('refreshToken', result.refreshToken, cookieOptionsReg);
 
     res.status(201).json({
       message: 'User registered successfully',
@@ -48,12 +51,15 @@ export class AuthController {
     const result = await AuthService.login(email, password);
 
     const refreshCookieMaxAge = Number(process.env.JWT_REFRESH_MAX_AGE_MS) || 7 * 24 * 60 * 60 * 1000; // 7 days default
-    res.cookie('refreshToken', result.refreshToken, {
+    const cookieOptionsLogin: any = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+      sameSite: (process.env.COOKIE_SAMESITE || 'lax') as any,
       maxAge: refreshCookieMaxAge,
-    });
+      domain: process.env.COOKIE_DOMAIN || undefined,
+      path: process.env.COOKIE_PATH || '/',
+    };
+    res.cookie('refreshToken', result.refreshToken, cookieOptionsLogin);
 
     res.status(200).json({
       message: 'User logged in successfully',
@@ -78,12 +84,15 @@ export class AuthController {
     const tokens = await AuthService.refreshToken(refreshToken);
 
     const refreshCookieMaxAge = Number(process.env.JWT_REFRESH_MAX_AGE_MS) || 7 * 24 * 60 * 60 * 1000; // 7 days default
-    res.cookie('refreshToken', tokens.refreshToken, {
+    const cookieOptionsRefresh: any = {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'lax',
+      secure: process.env.COOKIE_SECURE === 'true' || process.env.NODE_ENV === 'production',
+      sameSite: (process.env.COOKIE_SAMESITE || 'lax') as any,
       maxAge: refreshCookieMaxAge,
-    });
+      domain: process.env.COOKIE_DOMAIN || undefined,
+      path: process.env.COOKIE_PATH || '/',
+    };
+    res.cookie('refreshToken', tokens.refreshToken, cookieOptionsRefresh);
 
     res.status(200).json({
       message: 'Token refreshed successfully',
