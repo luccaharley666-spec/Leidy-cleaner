@@ -2,20 +2,7 @@ import { Response } from 'express';
 import { AuthRequest, asyncHandler, ApiError } from '../middleware/errorHandler';
 import { ReviewService } from '../services/ReviewService';
 import { reviewSchema } from '../utils/schemas';
-
-// helper to camelize
-function camelize(obj: any): any {
-  if (Array.isArray(obj)) return obj.map(camelize);
-  if (obj && typeof obj === 'object') {
-    return Object.fromEntries(
-      Object.entries(obj).map(([k, v]) => {
-        const camelKey = k.replace(/_([a-z])/g, (_m, c) => c.toUpperCase());
-        return [camelKey, camelize(v)];
-      })
-    );
-  }
-  return obj;
-}
+import { camelize } from '../utils/transformers';
 
 export class ReviewController {
   static create = asyncHandler(async (req: AuthRequest, res: Response) => {

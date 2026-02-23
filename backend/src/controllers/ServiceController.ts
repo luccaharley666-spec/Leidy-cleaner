@@ -3,21 +3,8 @@ import { AuthRequest, asyncHandler, ApiError } from '../middleware/errorHandler'
 import { ServiceService } from '../services/ServiceService';
 import { serviceSchema, serviceUpdateSchema } from '../utils/schemas';
 import { cache } from '../utils/cache';
-
-
-// helper to convert snake_case keys to camelCase recursively
-function camelize(obj: any): any {
-  if (Array.isArray(obj)) return obj.map(camelize);
-  if (obj && typeof obj === 'object') {
-    return Object.fromEntries(
-      Object.entries(obj).map(([k, v]) => {
-        const camelKey = k.replace(/_([a-z])/g, (_m, c) => c.toUpperCase());
-        return [camelKey, camelize(v)];
-      })
-    );
-  }
-  return obj;
-}
+import { camelize } from '../utils/transformers';
+import { UserRole } from '../utils/constants';
 
 export class ServiceController {
   static getAll = asyncHandler(async (req: AuthRequest, res: Response) => {
@@ -85,7 +72,7 @@ export class ServiceController {
     }
 
     // Then check admin role
-    if (req.user?.role !== 'admin') {
+    if (req.user?.role !== UserRole.ADMIN) {
       throw ApiError('Only admins can create services', 403);
     }
 
@@ -119,7 +106,7 @@ export class ServiceController {
     }
 
     // Then check admin role
-    if (req.user?.role !== 'admin') {
+    if (req.user?.role !== UserRole.ADMIN) {
       throw ApiError('Only admins can update services', 403);
     }
 
@@ -137,7 +124,7 @@ export class ServiceController {
 
   static delete = asyncHandler(async (req: AuthRequest, res: Response) => {
     // Check admin role
-    if (req.user?.role !== 'admin') {
+    if (req.user?.role !== UserRole.ADMIN) {
       throw ApiError('Only admins can delete services', 403);
     }
 

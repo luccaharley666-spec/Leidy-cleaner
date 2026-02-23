@@ -6,12 +6,12 @@ import http from 'http';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import rateLimit from 'express-rate-limit';
 import cookieParser from 'cookie-parser';
 import { logger } from './utils/logger-advanced';
 import { setupSwagger } from './utils/swagger';
 import { sanitizeInput } from './middleware/sanitize';
 import { errorHandler } from './middleware/errorHandler';
+import { userRateLimit, authRateLimit } from './middleware/userRateLimit';
 import authRoutes from './routes/auth';
 import serviceRoutes from './routes/services';
 import bookingsRoutes from './routes/bookings';
@@ -81,26 +81,11 @@ app.use(morgan('combined', {
   }
 }));
 
-// Rate limiting
-const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 5, // Mais restritivo para auth
-  message: 'Too many authentication attempts, please try again later.',
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 200, // Mais permissivo para API
-  message: 'API rate limit exceeded.',
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-// Aplicar rate limiting
-app.use('/api/v1/auth', authLimiter);
-app.use('/api/v1', apiLimiter);
+// Rate limiting (updated with user-based limiting)
+// auth has priority on email/IP + user for authenticated
+app.use('/api/v1/auth', authRateLimit);
+// General API uses user-based limiting
+app.use('/api/v1', userRateLimit);
 
 // Body parsing
 app.use(express.json({ limit: '10mb' }));
