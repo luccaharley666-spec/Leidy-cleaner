@@ -2,7 +2,8 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerUi from 'swagger-ui-express';
 
 const options = {
-  definition: {
+  // swagger-jsdoc v1 expects `swaggerDefinition`; keep `apis` alongside
+  swaggerDefinition: {
     openapi: '3.0.0',
     info: {
       title: 'Leidy Cleaner API',

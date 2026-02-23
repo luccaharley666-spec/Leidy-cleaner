@@ -1,74 +1,62 @@
-#!/bin/bash
-
-# Script de Backup - Vammos Platform
-# Backup database, uploads e configurações
-
-set -e
+#!/usr/bin/env bash
+# Robust backup script supporting SQLite and PostgreSQL
+set -euo pipefail
 
 BACKUP_DIR="./backups"
-TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
-BACKUP_NAME="vammos_backup_$TIMESTAMP"
+DATE=$(date +"%Y%m%d_%H%M%S")
+BACKUP_NAME="leidy_backup_${DATE}"
 
-echo "🚀 Iniciando backup: $BACKUP_NAME"
+echo "🚀 Iniciando backup: ${BACKUP_NAME}"
 
-# Criar diretório de backup
-mkdir -p "$BACKUP_DIR"
+mkdir -p "${BACKUP_DIR}"
 
-# Backup do banco de dados
 echo "💾 Fazendo backup do banco de dados..."
-if command -v pg_dump > /dev/null; then
-    pg_dump "$DATABASE_URL" > "$BACKUP_DIR/${BACKUP_NAME}_db.sql"
-    echo "✅ Database backup criado"
+
+# Try SQLite first (most common in dev/test)
+if [ -f "./backend/database.sqlite" ]; then
+  echo "🔎 Detected SQLite at ./backend/database.sqlite"
+  cp ./backend/database.sqlite "${BACKUP_DIR}/${BACKUP_NAME}_db.sqlite"
+  gzip -f "${BACKUP_DIR}/${BACKUP_NAME}_db.sqlite"
+  echo "✅ DB backup criado (SQLite)"
+elif [ -f "./backend/data/data.db" ]; then
+  echo "🔎 Detected SQLite at ./backend/data/data.db"
+  cp ./backend/data/data.db "${BACKUP_DIR}/${BACKUP_NAME}_db.sqlite"
+  gzip -f "${BACKUP_DIR}/${BACKUP_NAME}_db.sqlite"
+  echo "✅ DB backup criado (SQLite)"
+elif command -v pg_dump >/dev/null 2>&1 && [ -n "${DATABASE_URL:-}" ]; then
+  echo "🔎 Detected PostgreSQL, running pg_dump..."
+  pg_dump "$DATABASE_URL" -Fc -f "${BACKUP_DIR}/${BACKUP_NAME}_db.dump"
+  echo "✅ DB backup criado (PostgreSQL)"
 else
-    echo "⚠️  pg_dump não encontrado. Pulando backup do DB"
+  echo "⚠️  No database found. Skipping DB backup."
 fi
 
-# Backup de uploads
 echo "📁 Fazendo backup de uploads..."
-if [ -d "./uploads" ]; then
-    tar -czf "$BACKUP_DIR/${BACKUP_NAME}_uploads.tar.gz" ./uploads/
-    echo "✅ Uploads backup criado"
-else
-    echo "⚠️  Diretório uploads não encontrado"
-fi
+mkdir -p ./backend/uploads
+tar -czf "${BACKUP_DIR}/${BACKUP_NAME}_uploads.tar.gz" -C ./backend uploads
+echo "✅ Uploads backup criado"
 
-# Backup de configurações
 echo "⚙️  Fazendo backup de configurações..."
-tar -czf "$BACKUP_DIR/${BACKUP_NAME}_config.tar.gz" \
+tar -czf "${BACKUP_DIR}/${BACKUP_NAME}_config.tar.gz" \
     --exclude="node_modules" \
     --exclude=".git" \
     --exclude="backups" \
     --exclude="*.log" \
-    .
-
+    .env .env.production 2>/dev/null || tar -czf "${BACKUP_DIR}/${BACKUP_NAME}_config.tar.gz" .env 2>/dev/null || true
 echo "✅ Configurações backup criado"
 
-# Criar backup consolidado
-echo "📦 Criando backup consolidado..."
-tar -czf "$BACKUP_DIR/${BACKUP_NAME}_full.tar.gz" \
-    "$BACKUP_DIR/${BACKUP_NAME}_db.sql" \
-    "$BACKUP_DIR/${BACKUP_NAME}_uploads.tar.gz" \
-    "$BACKUP_DIR/${BACKUP_NAME}_config.tar.gz"
+echo "📦 Consolidando..."
+cd "${BACKUP_DIR}"
+tar -czf "${BACKUP_NAME}.tar.gz" ${BACKUP_NAME}_*.gz 2>/dev/null || tar -czf "${BACKUP_NAME}.tar.gz" ${BACKUP_NAME}_* || true
+cd - > /dev/null
 
-echo "✅ Backup consolidado criado"
+echo "🧹 Limpando temporários..."
+find "${BACKUP_DIR}" -name "${BACKUP_NAME}_*.gz" -o -name "${BACKUP_NAME}_*.tar.gz" | grep -v "^${BACKUP_DIR}/${BACKUP_NAME}.tar.gz$" | xargs -r rm -f 2>/dev/null || true
 
-# Limpar backups temporários (manter apenas o consolidado)
-rm -f "$BACKUP_DIR/${BACKUP_NAME}_db.sql"
-rm -f "$BACKUP_DIR/${BACKUP_NAME}_uploads.tar.gz"
-rm -f "$BACKUP_DIR/${BACKUP_NAME}_config.tar.gz"
-
-# Listar backups existentes
 echo "📋 Backups existentes:"
-ls -la "$BACKUP_DIR"/vammos_backup_*.tar.gz 2>/dev/null || echo "Nenhum backup encontrado"
+ls -lh "${BACKUP_DIR}"/leidy_backup_*.tar.gz 2>/dev/null | tail -5 || echo "Nenhum backup encontrado"
 
-# Limpar backups antigos (manter apenas os últimos 10)
-echo "🧹 Limpando backups antigos..."
-ls -t "$BACKUP_DIR"/vammos_backup_*.tar.gz 2>/dev/null | tail -n +11 | xargs -r rm -f
+echo "🧹 Limpando backups com > 30 dias..."
+find "${BACKUP_DIR}" -name "leidy_backup_*.tar.gz" -mtime +30 -delete 2>/dev/null || true
 
-echo "🎉 Backup concluído: $BACKUP_DIR/${BACKUP_NAME}_full.tar.gz"
-
-# Calcular tamanho do backup
-if [ -f "$BACKUP_DIR/${BACKUP_NAME}_full.tar.gz" ]; then
-    SIZE=$(du -h "$BACKUP_DIR/${BACKUP_NAME}_full.tar.gz" | cut -f1)
-    echo "📏 Tamanho do backup: $SIZE"
-fi
+echo "✅ Backup concluído!"

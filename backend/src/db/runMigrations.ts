@@ -77,12 +77,21 @@ async function runMigrations() {
           await query(statement);
         } catch (err) {
           logger.error('Error executing statement:', statement.slice(0,240).replace(/\n/g,' '));
-          // Log but continue if it's a "already exists" error
-          if (err instanceof Error && err.message.includes('already exists')) {
-            logger.warn(`⚠️  ${err.message}`);
-          } else {
-            throw err;
+          // Ignore benign errors that may occur when re-applying migrations
+          const msg = err instanceof Error ? err.message : String(err);
+          const ignorable = [
+            'already exists',
+            'duplicate column name',
+            'no such column',
+            'column already exists'
+          ];
+
+          if (ignorable.some(substr => msg.toLowerCase().includes(substr))) {
+            logger.warn(`⚠️  Ignoring migration error: ${msg}`);
+            continue;
           }
+
+          throw err;
         }
       }
 

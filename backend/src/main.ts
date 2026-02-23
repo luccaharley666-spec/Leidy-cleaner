@@ -8,7 +8,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import rateLimit from 'express-rate-limit';
 import cookieParser from 'cookie-parser';
-import { logger } from './utils/logger';
+import { logger } from './utils/logger-advanced';
+import { setupSwagger } from './utils/swagger';
 import { sanitizeInput } from './middleware/sanitize';
 import { errorHandler } from './middleware/errorHandler';
 import authRoutes from './routes/auth';
@@ -111,6 +112,9 @@ app.use(sanitizeInput);
 // static file serving for uploads
 import path from 'path';
 app.use('/uploads', express.static(path.join(__dirname, '..', 'uploads')));
+
+// Swagger (API documentation)
+setupSwagger(app);
 
 // Health check endpoint (público)
 app.get('/health', async (_req: Request, res: Response) => {
