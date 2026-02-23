@@ -14,7 +14,7 @@ services:
       - JWT_SECRET=${JWT_SECRET:-your-secret-key-change-in-prod}
       - PORT=3001
     expose:
-      - "3001"
+      - "3001"  # Apenas interno (Nginx acessa)
     volumes:
       - ./backend/data:/app/data
     healthcheck:
@@ -40,13 +40,12 @@ services:
     networks:
       - leidy-network
 
-  # Nginx Reverse Proxy
+  # Nginx Reverse Proxy (ÚNICA PORTA PÚBLICA)
   nginx:
     image: nginx:alpine
     container_name: leidy-nginx
     ports:
-      - "80:80"
-      - "443:443"
+      - "80:80"  # ← ÚNICA PORTA para acessar tudo
     volumes:
       - ./nginx.prod.conf:/etc/nginx/nginx.conf:ro
       - ./certs:/etc/nginx/certs:ro
